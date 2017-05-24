@@ -23,6 +23,7 @@ namespace DM_Skills.Controls
         public TablesControl()
         {
             InitializeComponent();
+            
         }
     }
 }
