@@ -10,6 +10,7 @@ namespace DM_Skills.Converters
 {
     class TimeSpanToStringConverter : IValueConverter
     {
+
         /// <summary>
         /// Lav en TimeSpan om til en læselig tekst
         /// </summary>
