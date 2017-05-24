@@ -8,10 +8,6 @@
              mc:Ignorable="d" x:Name="controller" 
              Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="2"
              d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.Resources>
-        <Converters:ProcentOfValueConverter x:Key="ProcentOfValueConvert"/>
-
-    </UserControl.Resources>
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -19,18 +15,21 @@
         </Grid.RowDefinitions>
 
         <TextBlock 
-            Grid.Row="0" 
-            Text="00:00:00" 
+            
+            x:Name="txt_Timer"
+            Grid.Row="0"
+            Text="{Binding ElementName=controller, Path=DisplayTime, Converter={StaticResource TimeToStringConvert}}"
             FontSize="{Binding ElementName=controller, Path=FontSize, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=400}"
             VerticalAlignment="Center" 
             HorizontalAlignment="Center"/>
 
+        
         <!-- Styring af stopur-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-            <Button Content="Start"   Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <Button Content="Stop"    Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <Button Content="Omgang"  Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <Button Content="Nulstil" Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Button x:Name="btn_Start" Content="Start"   Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"     Click="Button_TimeControl_Click"/>
+            <Button x:Name="btn_Stop" Content="Stop"    Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"      Click="Button_TimeControl_Click"/>
+            <Button x:Name="btn_Lap" Content="Omgang"  Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"       Click="Button_TimeControl_Click"/>
+            <Button x:Name="btn_Reset" Content="Nulstil" Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"     Click="Button_TimeControl_Click"/>
         </StackPanel>
         
     </Grid>

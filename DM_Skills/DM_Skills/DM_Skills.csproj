@@ -81,6 +81,7 @@
       <DependentUpon>TimerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ProcentOfValueConverter.cs" />
+    <Compile Include="Converters\TimeSpanToStringConverter.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

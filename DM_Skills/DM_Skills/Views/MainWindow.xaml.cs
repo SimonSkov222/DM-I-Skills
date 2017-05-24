@@ -23,6 +23,11 @@ namespace DM_Skills
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void timer_OnLap(TimeSpan obj)
+        {
         }
     }
 }

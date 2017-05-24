@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:DM_Skills"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Includes/ConvertersInc.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
