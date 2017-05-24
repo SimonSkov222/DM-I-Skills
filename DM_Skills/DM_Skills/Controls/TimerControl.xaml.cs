@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace DM_Skills.Controls
 {
     /// <summary>
-    /// Interaction logic for TablesControl.xaml
+    /// Interaction logic for TimerControl.xaml
     /// </summary>
-    public partial class TablesControl : UserControl
+    public partial class TimerControl : UserControl
     {
-        public TablesControl()
+        public TimerControl()
         {
             InitializeComponent();
         }

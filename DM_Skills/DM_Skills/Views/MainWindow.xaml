@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Controls:TablesControl/>
+        <Controls:TimerControl Height="200" FontSize="22"/>
     </Grid>
 </Window>

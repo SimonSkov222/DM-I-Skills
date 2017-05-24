@@ -23,7 +23,6 @@ namespace DM_Skills
         public MainWindow()
         {
             InitializeComponent();
-            
         }
     }
 }

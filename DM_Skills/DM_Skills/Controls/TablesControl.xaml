@@ -7,11 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
-      <label Content="Bord 1"/>
-      <TextBox VerticalAlignment="Top"  x:Name="SkolensNavnB1" text="Skolens Navn"/>
-      <!--<TextBox VerticalAlignment="Top" id="KlasseB1" text="Klasse Nr"/>
-      <TextBox VerticalAlignment="Top" id="HoldB1" text="Hold Nr"/>
-      <TextBox VerticalAlignment="Top" id="DeltagereB1" text="Tilføj Deltagere"/>
-      <TextBox VerticalAlignment="Top" id="TidB1" text="Træk tiden ind her"/>-->
+        <TextBox VerticalAlignment="Top"/>
+        <TextBox VerticalAlignment="Top"/>
+        <TextBox VerticalAlignment="Top"/>
     </StackPanel>
 </UserControl>

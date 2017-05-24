@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="DM_Skills.Controls.TimerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DM_Skills.Controls" 
+             xmlns:Converters="clr-namespace:DM_Skills.Converters"
+             mc:Ignorable="d" x:Name="controller" 
+             Background="#FFE4E4E4" BorderBrush="Black" BorderThickness="2"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Converters:ProcentOfValueConverter x:Key="ProcentOfValueConvert"/>
+
+    </UserControl.Resources>
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            Grid.Row="0" 
+            Text="00:00:00" 
+            FontSize="{Binding ElementName=controller, Path=FontSize, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=400}"
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"/>
+
+        <!-- Styring af stopur-->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+            <Button Content="Start"   Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Button Content="Stop"    Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Button Content="Omgang"  Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Button Content="Nulstil" Margin="2 0" Padding="5 2"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
