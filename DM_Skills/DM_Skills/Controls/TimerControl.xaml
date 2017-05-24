@@ -15,7 +15,6 @@
         </Grid.RowDefinitions>
 
         <TextBlock 
-            
             x:Name="txt_Timer"
             Grid.Row="0"
             Text="{Binding ElementName=controller, Path=DisplayTime, Converter={StaticResource TimeToStringConvert}}"
