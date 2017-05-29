@@ -28,6 +28,8 @@ namespace DM_Skills
 
         private void timer_OnLap(TimeSpan obj)
         {
+            
+            Console.WriteLine(obj);
         }
     }
 }

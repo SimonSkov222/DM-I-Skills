@@ -5,9 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DM_Skills"
         xmlns:Controls="clr-namespace:DM_Skills.Controls"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Controls:TimerControl x:Name="timer" Height="200" FontSize="22" OnLap="timer_OnLap" ToolTip="dfdsgsdgdg"/>
-    </Grid>
+    <StackPanel x:Name="testtt">
+        <Controls:Autocomplete VerticalAlignment="Top" >
+            <Controls:Autocomplete.Target>
+                <TextBox Text="hej"/>
+            </Controls:Autocomplete.Target>
+            <Controls:Autocomplete.Children>
+                <System:String>Test1</System:String>
+                <System:String>Test2</System:String>
+                <System:String>Test3</System:String>
+                <System:String>dfg</System:String>
+                <System:String>Test5</System:String>
+                <System:String>Test6</System:String>
+            </Controls:Autocomplete.Children>
+        </Controls:Autocomplete>
+        
+        <Controls:TimerControl x:Name="timer" Height="200" FontSize="22" OnLap="timer_OnLap" ToolTip=""/>
+        <TextBlock x:Name="HejTime" Text="Hej Tid..." FontSize="22"/>
+    </StackPanel>
 </Window>

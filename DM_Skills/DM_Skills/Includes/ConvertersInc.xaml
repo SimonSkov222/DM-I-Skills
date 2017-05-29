@@ -5,4 +5,6 @@
 
     <Converters:ProcentOfValueConverter x:Key="ProcentOfValueConvert"/>
     <Converters:TimeSpanToStringConverter x:Key="TimeToStringConvert"/>
-</ResourceDictionary>
+    <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConvert" TrueValue="Visible" FalseValue="Collapsed"/>
+    <Converters:ValueToThicknessConverter x:Key="HorizontalThicknessConvert" UseOnLeft="True" UseOnRight="True"/>
+</ResourceDictionary> 

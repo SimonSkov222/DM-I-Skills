@@ -25,6 +25,8 @@ namespace DM_Skills.Controls
     public partial class TimerControl : UserControl, INotifyPropertyChanged
     {
 
+        
+
         /****************************
          * 
          *      Properties
@@ -50,7 +52,7 @@ namespace DM_Skills.Controls
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        
 
 
 
@@ -60,6 +62,7 @@ namespace DM_Skills.Controls
             EventTimer = new DispatcherTimer();
             EventTimer.Interval = TimeSpan.FromMilliseconds(1);
             EventTimer.Tick += Timer_Tick;
+            
         }
 
 
