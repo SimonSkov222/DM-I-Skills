@@ -17,9 +17,12 @@ namespace DM_Skills.Converters
         /// <param name="parameter">Procent f.eks 10% = int 10</param>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+
+
             double procent = System.Convert.ToDouble(parameter);
             double number = System.Convert.ToDouble(value);
-            
+
+            Console.WriteLine(number);
             return number / 100 * procent;
         }
 

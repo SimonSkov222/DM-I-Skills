@@ -8,6 +8,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Controls:TimerControl x:Name="timer" Height="200" FontSize="22" OnLap="timer_OnLap" ToolTip="dfdsgsdgdg"/>
+        <Controls:TimerControl Height="200" FontSize="22" OnLap="TimerControl_OnLap" Margin="0,60,165,59"/>
+        <Controls:TablesControl Height="300" x:Name="asd" Margin="0,10,195,9"/>
+        <Controls:DragAndDropTimerControl Margin="357,60,-67,95" x:Name="timeList" Height="200" HorizontalAlignment="Left"/>
+
+        <Button Click="Button_Click" Content="hej" Margin="65,260,102,-5" />
     </Grid>
 </Window>
