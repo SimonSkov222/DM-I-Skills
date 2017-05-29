@@ -7,6 +7,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Includes/ConvertersInc.xaml"/>
+                <ResourceDictionary Source="Templates/Autocomplete_Template_Default.xaml"/>
+                
+                <ResourceDictionary Source="Styles/Autocomplete_Style_Default.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
