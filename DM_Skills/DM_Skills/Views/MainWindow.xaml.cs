@@ -28,10 +28,7 @@ namespace DM_Skills
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(asd.SkolensNavnpropB1);
-            MessageBox.Show(asd.KlasseNavnpropB1);
-            MessageBox.Show(asd.DeltagerepropB1);
-            MessageBox.Show(asd.TidpropB1);
+            timeList.Reset();
         }
 
 

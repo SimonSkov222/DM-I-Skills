@@ -26,18 +26,21 @@ namespace DM_Skills.Controls
 
         }
         int rowNumber = 0;
+
         public void Add(TimeSpan time)
         {
 
+            var txtNumber = new TextBlock();
+            var txtTime = new TextBlock();
             if (time != null)
             {
                 listPanel.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
-                var txtNumber = new TextBlock();
-                txtNumber.Text = rowNumber.ToString() + ".";
+                
+                txtNumber.Text = rowNumber + 1 + ".";
                 Grid.SetRow(txtNumber, rowNumber);
                 Grid.SetColumn(txtNumber, 0);
-                var txtTime = new TextBlock();
+                
 
                 txtTime.SetBinding(TextBlock.TextProperty, new Binding()
                 {
@@ -49,14 +52,20 @@ namespace DM_Skills.Controls
 
                 listPanel.Children.Add(txtNumber);
                 listPanel.Children.Add(txtTime);
-
+                
                 rowNumber++;
+
             }
+
 
         }
 
-        private void btn_removeRow_Click(object sender, RoutedEventArgs e)
+        public void Reset()
         {
+
+            listPanel.RowDefinitions.Clear();
+            listPanel.Children.Clear();
+            rowNumber = 0;
 
         }
     }

@@ -6,17 +6,17 @@
              xmlns:local="clr-namespace:DM_Skills.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    
+
     <Grid>
-        
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         
-        <Button Name="btn_removeRow" Content="Reset" Click="btn_removeRow_Click" Grid.Row="0"/>
+        
         <Label Content="Omgangs Tider:" Grid.Row="1" />
-        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="1">
+        <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="2">
             <Grid Name="listPanel">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="40"/>
