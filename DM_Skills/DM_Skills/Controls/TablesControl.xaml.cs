@@ -21,66 +21,78 @@ namespace DM_Skills.Controls
     public partial class TablesControl : UserControl
     {
 
-        static int holdnr = 10;
 
-        public string SkolensNavnpropB1
+        public string Title
         {
-            get { return (string)GetValue(Skolenavnproperty); }
-            set { SetValue(Skolenavnproperty, value); }
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty Skolenavnproperty =
-            DependencyProperty.Register("SkolensNavnprop", typeof(string), typeof(TablesControl), new PropertyMetadata("1"));
+        // Using a DependencyProperty as the backing store for TitleProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register("Title", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
 
 
 
-        public string KlasseNavnpropB1
+        public string School
         {
-            get { return (string)GetValue(KlasseNavnpropB1Property); }
-            set { SetValue(KlasseNavnpropB1Property, value); }
+            get { return (string)GetValue(SchoolProperty); }
+            set { SetValue(SchoolProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for KlasseNrpropB1.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty KlasseNavnpropB1Property =
-            DependencyProperty.Register("KlasseNrpropB1", typeof(string), typeof(TablesControl), new PropertyMetadata("2"));
+        // Using a DependencyProperty as the backing store for SchoolProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SchoolProperty =
+            DependencyProperty.Register("School", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
 
 
 
-        public int HoldNrpropB1
+
+        public string ClassID
         {
-            get { return (int)GetValue(HoldNrpropB1Property); }
-            set { SetValue(HoldNrpropB1Property, value); }
+            get { return (string)GetValue(ClassIDProperty); }
+            set { SetValue(ClassIDProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for HoldNrpropB1.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty HoldNrpropB1Property =
-            DependencyProperty.Register("HoldNrpropB1", typeof(int), typeof(TablesControl), new PropertyMetadata(1));
+        // Using a DependencyProperty as the backing store for ClassID.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ClassIDProperty =
+            DependencyProperty.Register("ClassID", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
 
 
 
-        public string DeltagerepropB1
+
+        public int TeamID
         {
-            get { return (string)GetValue(DeltagereB1propProperty); }
-            set { SetValue(DeltagereB1propProperty, value); }
+            get { return (int)GetValue(TeamIDProperty); }
+            set { SetValue(TeamIDProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for DeltagereB1.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty DeltagereB1propProperty =
-            DependencyProperty.Register("DeltagerepropB1", typeof(string), typeof(TablesControl), new PropertyMetadata("4"));
+        // Using a DependencyProperty as the backing store for TeamID.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TeamIDProperty =
+            DependencyProperty.Register("TeamID", typeof(int), typeof(TablesControl));
 
 
 
-        public string TidpropB1
+        public string Players
         {
-            get { return (string)GetValue(TidpropB1Property); }
-            set { SetValue(TidpropB1Property, value); }
+            get { return (string)GetValue(PlayersProperty); }
+            set { SetValue(PlayersProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for TidB1.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TidpropB1Property =
-            DependencyProperty.Register("TidpropB1", typeof(string), typeof(TablesControl), new PropertyMetadata("5"));
+        // Using a DependencyProperty as the backing store for Players.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PlayersProperty =
+            DependencyProperty.Register("Players", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
 
+
+
+        public TimeSpan Time
+        {
+            get { return (TimeSpan)GetValue(TimeProperty); }
+            set { SetValue(TimeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Time.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TimeProperty =
+            DependencyProperty.Register("Time", typeof(TimeSpan), typeof(TablesControl));
 
 
 

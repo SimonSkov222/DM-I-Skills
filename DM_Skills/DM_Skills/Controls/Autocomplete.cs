@@ -35,9 +35,10 @@ namespace DM_Skills.Controls {
 		public ObservableCollection<string> Children	{ get; set; }
 		
 		public StackPanel childContainer;
+
 		private int LastIndex = -1;
 		private TextBlock LastSelected = null;
-
+        private bool TextHasChange = false;
         private IMultiValueConverter VisibilityConvert = new Converters.AutocomplateConvert();
 
 
@@ -94,7 +95,7 @@ namespace DM_Skills.Controls {
 
             SetHighlight(-1);			
 		}
-		private bool TextHasChange = false;
+		
 		
 		private void Target_KeyDown(object sender,KeyEventArgs e) {
 			

@@ -8,25 +8,22 @@
              x:Name="Controller"
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
-        <Grid Name="gridBord1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="50"/>
-                <ColumnDefinition Width="50"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Bord 1" Grid.Row="0" Grid.Column="0"/>
-            <TextBox VerticalAlignment="Top" Name="skolensNavnB1" Text="{Binding ElementName=Controller, Path=SkolensNavnpropB1}" ToolTip="Skolens navn" Grid.Row="1" Grid.Column="0" />
-            <TextBox VerticalAlignment="Top" Name="klasseB1" Text="{Binding ElementName=Controller, Path=KlasseNavnpropB1}" ToolTip="Klasse Navn" Grid.Row="1" Grid.Column="1"/>
-            <TextBlock VerticalAlignment="Top" Name="holdB1" Text="{Binding ElementName=Controller, Path=HoldNrpropB1}" ToolTip="Hold Nr" Grid.Row="2" Grid.Column="0"/>
-            <TextBox VerticalAlignment="Top" Name="deltagereB1" Text="{Binding ElementName=Controller, Path=DeltagerepropB1}" ToolTip="Deltagere Navn" Grid.Row="2" Grid.Column="1"/>
-            <TextBox VerticalAlignment="Top" Name="tidB1" Text="{Binding ElementName=Controller, Path=TidpropB1}" ToolTip="Tider" Grid.Row="2" Grid.Column="2"/>
+        <TextBlock Text="{Binding ElementName=Controller, Path=Title}" Grid.Row="0" Grid.ColumnSpan="3"/>
+
+        <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+            <TextBox Text="{Binding ElementName=Controller, Path=School}" Padding="5 3" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=69}" ToolTip="Skolens navn" />
+            <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
+            <TextBox Text="{Binding ElementName=Controller, Path=ClassID}" Padding="5 3" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=29}" ToolTip="Klasse Navn" />
+        </StackPanel>
 
 
-        </Grid>
+        <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+            <TextBox Text="{Binding ElementName=Controller, Path=TeamID}" ToolTip="Hold Nr" IsEnabled="False" Padding="5 3"   Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=10}"/>
+            <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
+            <TextBox   Text="{Binding ElementName=Controller, Path=Players}" ToolTip="Deltagere Navn" Padding="5 3"   Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />
+            <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
+            <TextBox   Text="{Binding ElementName=Controller, Path=Time, Converter={StaticResource TimeToStringConvert}}" ToolTip="Tider"                Padding="5 3"   Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
+
+        </StackPanel>
     </StackPanel>
 </UserControl>
