@@ -42,10 +42,6 @@ namespace DM_Skills
 
             if (!Database.Exist("Locations"))
             {
-                Database.Create("Locations",
-                    new Column { name = "ID", type = Column.TYPE_INT, isPrimaryKey = true, isAutoIncrement = true },
-                    new Column { name = "Name", type = Column.TYPE_STRING, isNotNull = true }
-                );
 
                 Database.Insert("Locations", "Name", "Ballerup");
                 Database.Insert("Locations", "Name", "Hvidovre");

@@ -105,6 +105,7 @@
       <DependentUpon>TimerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\AutocomplateConvert.cs" />
+    <Compile Include="Converters\AutocompleteItemConverter.cs" />
     <Compile Include="Converters\BoolToValueConverter.cs" />
     <Compile Include="Converters\ProcentOfValueConverter.cs" />
     <Compile Include="Converters\TimeSpanToStringConverter.cs" />

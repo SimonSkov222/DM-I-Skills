@@ -21,12 +21,21 @@ namespace DM_Skills.Converters
             string seconds      = ((TimeSpan)value).Seconds.ToString().PadLeft(2, '0');
             string milliseconds = (((TimeSpan)value).Milliseconds/10).ToString().PadLeft(2, '0'); //dividere 10 for at fjerne et 0
 
+            if (parameter != null && parameter.Equals("HideOnNull") && ((TimeSpan)value).TotalMilliseconds == 0)
+                return "";
             return string.Format("{0}:{1}:{2}", minutes, seconds, milliseconds);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            var timeParams = value.ToString().Split(':');
+            if (timeParams.Length != 3)
+                return new TimeSpan();
+            
+            int minutes = System.Convert.ToInt32(timeParams[0]);
+            int seconds = System.Convert.ToInt32(timeParams[1]);
+            int mSeconds = System.Convert.ToInt32(timeParams[2])*10;
+            return new TimeSpan(0, 0, minutes, seconds, mSeconds);
         }
     }
 }

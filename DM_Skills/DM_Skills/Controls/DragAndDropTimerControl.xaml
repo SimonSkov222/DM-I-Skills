@@ -15,11 +15,11 @@
         </Grid.RowDefinitions>
         
         
-        <Label Content="Omgangs Tider:" Grid.Row="1" />
+        <Label Content="Omgangs Tider:" Grid.Row="1" FontSize="16" FontWeight="Bold" />
         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="2">
-            <Grid Name="listPanel">
+            <Grid Name="listPanel" Margin="5 0 0 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="auto" MinWidth="25"/>
                     <ColumnDefinition Width="200"/>
                 </Grid.ColumnDefinitions>
             </Grid>

@@ -7,4 +7,5 @@
     <Converters:TimeSpanToStringConverter x:Key="TimeToStringConvert"/>
     <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConvert" TrueValue="Visible" FalseValue="Collapsed"/>
     <Converters:ValueToThicknessConverter x:Key="HorizontalThicknessConvert" UseOnLeft="True" UseOnRight="True"/>
+    <Converters:AutocompleteItemConverter x:Key="AutocompleteItemConvert"/>
 </ResourceDictionary> 
