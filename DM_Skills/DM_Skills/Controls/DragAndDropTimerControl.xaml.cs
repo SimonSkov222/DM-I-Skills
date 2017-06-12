@@ -55,9 +55,16 @@ namespace DM_Skills.Controls
                 
                 rowNumber++;
 
+
+                txtTime.MouseDown += TxtTime_MouseMove;
             }
 
 
+        }
+
+        private void TxtTime_MouseMove(object sender, MouseEventArgs e)
+        {
+            DragDrop.DoDragDrop((sender as TextBlock), (sender as TextBlock).Text, DragDropEffects.All);
         }
 
         public void Reset()

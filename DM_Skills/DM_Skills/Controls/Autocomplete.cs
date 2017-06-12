@@ -31,8 +31,22 @@ namespace DM_Skills.Controls {
 		public CornerRadius BorderRadius	{ get { return (CornerRadius)GetValue(BorderRadiusProperty); }		set { SetValue(BorderRadiusProperty, value); } }
 		public bool IsOpen					{ get { return (bool)GetValue(IsOpenProperty); }					set { SetValue(IsOpenProperty, value); } }
 
-		
-		public ObservableCollection<string> Children	{ get; set; }
+
+
+
+        public ObservableCollection<string> Children
+        {
+            get { return (ObservableCollection<string>)GetValue(ChildrenProperty); }
+            set { SetValue(ChildrenProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Children.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ChildrenProperty =
+            DependencyProperty.Register("Children", typeof(ObservableCollection<string>), typeof(Autocomplete), new PropertyMetadata(new ObservableCollection<string>()));
+
+
+
+        //public ObservableCollection<string> Children	{ get; set; }
 		
 		public StackPanel childContainer;
 

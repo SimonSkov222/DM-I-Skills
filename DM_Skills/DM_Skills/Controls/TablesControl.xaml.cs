@@ -22,6 +22,7 @@ namespace DM_Skills.Controls
     {
 
 
+
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
@@ -96,14 +97,22 @@ namespace DM_Skills.Controls
 
 
 
+        public List<string> SchoolList
+        {
+            get { return (List<string>)GetValue(SchoolListProperty); }
+            set { SetValue(SchoolListProperty, value); }
+        }
 
+        // Using a DependencyProperty as the backing store for SchoolList.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SchoolListProperty =
+            DependencyProperty.Register("SchoolList", typeof(List<string>), typeof(TablesControl), new PropertyMetadata(new List<string>()));
 
 
 
         public TablesControl()
         {
             InitializeComponent();
-            
         }
+        
     }
 }

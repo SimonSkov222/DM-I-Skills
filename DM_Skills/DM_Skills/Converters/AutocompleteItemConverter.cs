@@ -8,21 +8,11 @@ using System.Windows.Data;
 
 namespace DM_Skills.Converters
 {
-    class ProcentOfValueConverter : IValueConverter
+    class AutocompleteItemConverter : IValueConverter
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="value">Det tal der skal beregnes ud fra</param>
-        /// <param name="parameter">Procent f.eks 10% = int 10</param>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-
-
-            double procent = System.Convert.ToDouble(parameter);
-            double number = System.Convert.ToDouble(value);
-            
-            return number / 100 * procent;
+            return new System.Collections.ObjectModel.ObservableCollection<string>((List<string>)value);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
