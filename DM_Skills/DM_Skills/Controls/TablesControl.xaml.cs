@@ -34,6 +34,7 @@ namespace DM_Skills.Controls
 
 
 
+
         public string School
         {
             get { return (string)GetValue(SchoolProperty); }
@@ -44,6 +45,7 @@ namespace DM_Skills.Controls
         public static readonly DependencyProperty SchoolProperty =
             DependencyProperty.Register("School", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
 
+        
 
 
 
