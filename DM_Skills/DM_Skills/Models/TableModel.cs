@@ -41,14 +41,14 @@ namespace DM_Skills.Models
             {
                 Database.Insert("Schools","Name",School);
             }
-            var SchoolId = Database.GetRow<int>("Schools", new string[] { "ID" }, string.Format("WHERE 'NAME' = '{0}'", School));
+            var SchoolId = Database.GetRow<int>("Schools", new string[] { "ID" }, string.Format("WHERE `Name` = '{0}'", School));
 
             if (!Database.Exist("Locations", "Name", Location))
             {
                 Database.Insert("Locations", "Name", Location);
             }
-            var LocationId = Database.GetRow<int>("Locations", new string[] { "ID" }, string.Format("WHERE 'NAME' = '{0}'", Location));
-
+            var LocationId = Database.GetRow<int>("Locations", new string[] { "ID" }, string.Format("WHERE `Name` = '{0}'", Location));
+            
             var TeamId = Database.Insert("Teams", new string[] { "SchoolID", "LocationID", "Class", "Number", "Time", "Date" }, new object[] { SchoolId[0], LocationId[0], Class, Team, Time, Date.ToShortDateString() });
 
 
