@@ -107,7 +107,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="#" Foreground="Transparent" Grid.Row="0" FontSize="16"/>
                 <Button Grid.Row="1" Content="Indsend" Foreground="White" Background="CadetBlue" FontSize="20" Padding="15 5" FontWeight="Bold" VerticalAlignment="Top" Click="Button_Upload_Click"/>
-                <Button Grid.Row="2" Content="Nulstilling af rounde" Margin="0 10 0 0" Padding="15 0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Button_Reset_Click"/>
+                <Button Grid.Row="2" Content="Nulstilling af runde" Margin="0 10 0 0" Padding="15 0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Button_Reset_Click"/>
                 <TextBlock  Grid.Row="3" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 5">
                     #<Run Text="{Binding ElementName=controller, Path=Round}"/>
                 </TextBlock>
