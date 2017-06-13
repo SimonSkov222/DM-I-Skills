@@ -13,7 +13,7 @@
         <StackPanel  Panel.ZIndex="1000" Orientation="Horizontal" Margin="0 5 0 0">
 
             <local:Autocomplete
-                Children="{Binding ElementName=Controller, Path=SchoolList, Converter={StaticResource AutocompleteItemConvert}}"
+                Children="{Binding ElementName=Controller, Path=SchoolList, Converter={StaticResource AutocompleteItemConvert}, Mode=OneWay}"
                 Margin="0" Padding="0" Panel.ZIndex="1000" x:Name="schoolList" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=69}">
                 <local:Autocomplete.Target>
                     <TextBox AllowDrop="False" Text="{Binding ElementName=Controller, Path=School}" Padding="5 3" ToolTip="Skolens navn" />

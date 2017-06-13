@@ -20,9 +20,6 @@ namespace DM_Skills.Controls
     /// </summary>
     public partial class TablesControl : UserControl
     {
-
-
-
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
@@ -115,6 +112,15 @@ namespace DM_Skills.Controls
         {
             InitializeComponent();
         }
-        
+
+        public void Reset()
+        {
+            School = null;
+            Time = new TimeSpan();
+            ClassID = null;
+            Players = null;
+
+            BorderThickness = new Thickness(0);
+        }
     }
 }

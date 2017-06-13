@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DM_Skills"
         xmlns:Controls="clr-namespace:DM_Skills.Controls"
+        xmlns:Models="clr-namespace:DM_Skills.Models"
         mc:Ignorable="d" x:Name="controller"
-        Title="MainWindow" Height="350" Width="525">
+        
+        Title="MainWindow" Height="800" Width="1200">
+    <Window.Resources>
+        <Models:TableModel x:Key="table1" Location="Ballerup"/>
+        <Models:TableModel x:Key="table2" Location="Ballerup"/>
+        <Models:TableModel x:Key="table3" Location="Ballerup"/>
+        <Models:TableModel x:Key="table4" Location="Ballerup"/>
+        <Models:TableModel x:Key="table5" Location="Ballerup"/>
+    </Window.Resources>
     <ScrollViewer>
         <Grid HorizontalAlignment="Center" Margin="0 15">
             <Grid.RowDefinitions>
@@ -20,11 +29,72 @@
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Row="0" Grid.Column="0">
-                <Controls:TablesControl Margin="0 0 0 0" SchoolList="{Binding ElementName=controller, Path=SchoolAutoComplete}" FontSize="16" Title="Bord 1" Panel.ZIndex="1005"/>
-                <Controls:TablesControl Margin="0 10 0 0" FontSize="16" Title="Bord 2" Panel.ZIndex="1004"/>
-                <Controls:TablesControl Margin="0 10 0 0" FontSize="16" Title="Bord 3" Panel.ZIndex="1003"/>
-                <Controls:TablesControl Margin="0 10 0 0" FontSize="16" Title="Bord 4" Panel.ZIndex="1002"/>
-                <Controls:TablesControl Margin="0 10 0 0" FontSize="16" Title="Bord 5" Panel.ZIndex="1001"/>
+                <Controls:TablesControl 
+                    x:Name="cTable1"
+                    Title="Bord 1" 
+                    DataContext="{StaticResource table1}"
+                    School="{Binding Path=School, Mode=TwoWay}"
+                    TeamID="{Binding Path=Team, Mode=TwoWay}"
+                    Players="{Binding Path=Persons, Mode=TwoWay}"
+                    ClassID="{Binding Path=Class, Mode=TwoWay}"
+                    Time="{Binding Path=Time, Mode=TwoWay}"
+                    Margin="0 0 0 0" 
+                    FontSize="16" 
+                    Panel.ZIndex="1005"/>
+
+                <Controls:TablesControl 
+                    x:Name="cTable2"
+                    Title="Bord 2" 
+                    DataContext="{StaticResource table2}"
+                    School="{Binding Path=School, Mode=TwoWay}"
+                    TeamID="{Binding Path=Team, Mode=OneWay}"
+                    Players="{Binding Path=Persons, Mode=TwoWay}"
+                    ClassID="{Binding Path=Class, Mode=TwoWay}"
+                    Time="{Binding Path=Time, Mode=TwoWay}"
+                    Margin="0 0 0 0" 
+                    FontSize="16" 
+                    Panel.ZIndex="1004"/>
+
+                <Controls:TablesControl 
+                    x:Name="cTable3"
+                    Title="Bord 3" 
+                    DataContext="{StaticResource table3}"
+                    School="{Binding Path=School, Mode=TwoWay}"
+                    TeamID="{Binding Path=Team, Mode=OneWay}"
+                    Players="{Binding Path=Persons, Mode=TwoWay}"
+                    ClassID="{Binding Path=Class, Mode=TwoWay}"
+                    Time="{Binding Path=Time, Mode=TwoWay}"
+                    Margin="0 0 0 0" 
+                    FontSize="16" 
+                    Panel.ZIndex="1003"/>
+
+                <Controls:TablesControl 
+                    x:Name="cTable4"
+                    Title="Bord 4" 
+                    DataContext="{StaticResource table4}"
+                    School="{Binding Path=School, Mode=TwoWay}"
+                    TeamID="{Binding Path=Team, Mode=OneWay}"
+                    Players="{Binding Path=Persons, Mode=TwoWay}"
+                    ClassID="{Binding Path=Class, Mode=TwoWay}"
+                    Time="{Binding Path=Time, Mode=TwoWay}"
+                    Margin="0 0 0 0" 
+                    FontSize="16" 
+                    Panel.ZIndex="1002"/>
+
+                <Controls:TablesControl 
+                    x:Name="cTable5"
+                    Title="Bord 5" 
+                    DataContext="{StaticResource table5}"
+                    School="{Binding Path=School, Mode=TwoWay}"
+                    TeamID="{Binding Path=Team, Mode=OneWay}"
+                    Players="{Binding Path=Persons, Mode=TwoWay}"
+                    ClassID="{Binding Path=Class, Mode=TwoWay}"
+                    Time="{Binding Path=Time, Mode=TwoWay}"
+                    Margin="0 0 0 0" 
+                    FontSize="16" 
+                    Panel.ZIndex="1001"/>
+
+
             </StackPanel>
 
             <Grid Grid.Row="0" Grid.Column="2">
@@ -36,15 +106,15 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="#" Foreground="Transparent" Grid.Row="0" FontSize="16"/>
-                <Button Grid.Row="1" Content="Indsend" Foreground="White" Background="CadetBlue" FontSize="20" Padding="15 5" FontWeight="Bold" VerticalAlignment="Top" Click="Button_Click"/>
-                <Button Grid.Row="2" Content="Nulstilling af rounde" Margin="0 10 0 0" Padding="15 0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                <Button Grid.Row="1" Content="Indsend" Foreground="White" Background="CadetBlue" FontSize="20" Padding="15 5" FontWeight="Bold" VerticalAlignment="Top" Click="Button_Upload_Click"/>
+                <Button Grid.Row="2" Content="Nulstilling af rounde" Margin="0 10 0 0" Padding="15 0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Button_Reset_Click"/>
                 <TextBlock  Grid.Row="3" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 5">
-                    #<Run Text="1"/>
+                    #<Run Text="{Binding ElementName=controller, Path=Round}"/>
                 </TextBlock>
                 <Controls:DragAndDropTimerControl x:Name="LapList" Grid.Row="4" BorderThickness="2" BorderBrush="Black" Background="LightGray" Height="250" VerticalAlignment="Bottom"/>
             </Grid>
 
-            <Controls:TimerControl Grid.Row="1" Grid.ColumnSpan="3" Margin="0 25 0 0" OnLap="TimerControl_OnLap" OnReset="TimerControl_OnReset"/>
+            <Controls:TimerControl x:Name="stopwatch" Grid.Row="1" Grid.ColumnSpan="3" Margin="0 25 0 0" OnLap="TimerControl_OnLap" OnReset="TimerControl_OnReset"/>
         </Grid>
     </ScrollViewer>
 </Window>

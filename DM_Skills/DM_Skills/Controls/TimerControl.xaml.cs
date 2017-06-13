@@ -65,10 +65,9 @@ namespace DM_Skills.Controls
             
         }
 
-
-        private void Timer_Tick(object sender, EventArgs e)
+        public void Reset()
         {
-            NotifyPropertyChanged("DisplayTime");
+            Button_TimeControl_Click(btn_Reset, null);
         }
 
 
@@ -94,6 +93,7 @@ namespace DM_Skills.Controls
                 case 1:     //Stop tiden
                     _Watch.Stop();
                     EventTimer.Stop();
+                    NotifyPropertyChanged("DisplayTime");
                     break;
                 case 3:     //Stop og nulstil
                     EventTimer.Stop();
@@ -113,6 +113,11 @@ namespace DM_Skills.Controls
                 case 3: OnReset?.Invoke();              break;
             }
 
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            NotifyPropertyChanged("DisplayTime");
         }
     }   
 }       

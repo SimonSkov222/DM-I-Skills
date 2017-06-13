@@ -23,7 +23,27 @@ namespace DM_Skills
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        public List<string> SchoolAutoComplete { get; set;}
+        public List<string> SchoolAutoComplete { get {
+                List<string> result = new List<string>();
+                if (Database.IsConnected)
+                {
+                    var data = Database.GetRows<int>("Schools", new string[] { "Name" });
+                    if (data != null)
+                        foreach (var item in data)
+                            result.Add((string)item[0]);
+                }
+                return result;
+            }
+        }
+
+        private int _Round = 1;
+        public int Round {
+            get { return _Round; }
+            set {
+                _Round = value;
+                NotifyPropertyChanged("Round");
+            }
+        }
 
         /****************************
         * 
@@ -39,23 +59,20 @@ namespace DM_Skills
 
         public MainWindow()
         {
-            SchoolAutoComplete = new List<string>();
             Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
             
 
             InitializeComponent();
             CreateDatabase();
 
-            var data = Database.GetRows<int>("Schools", new string[] { "Name" });
-            if (data != null)
-            {
-                SchoolAutoComplete.Clear();
-                foreach (var item in data)
-                {
-                    SchoolAutoComplete.Add((string)item[0]);
-                }
-            }
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
             NotifyPropertyChanged("SchoolAutoComplete");
+            UpdateTableTeam();
+            UpdateSchoolList();
         }
 
         public void CreateDatabase()
@@ -101,6 +118,33 @@ namespace DM_Skills
 
         }
 
+        private void UpdateTableTeam()
+        {
+            cTable1.TeamID = (Round -1) * 10 + 1;
+            cTable2.TeamID = (Round -1) * 10 + 2;
+            cTable3.TeamID = (Round -1) * 10 + 3;
+            cTable4.TeamID = (Round -1) * 10 + 4;
+            cTable5.TeamID = (Round -1) * 10 + 5;
+        }
+
+        private void UpdateSchoolList()
+        {
+            cTable1.schoolList.Children.Clear();
+            cTable2.schoolList.Children.Clear();
+            cTable3.schoolList.Children.Clear();
+            cTable4.schoolList.Children.Clear();
+            cTable5.schoolList.Children.Clear();
+
+            foreach (var item in SchoolAutoComplete)
+            {
+                cTable1.schoolList.Children.Add(item);
+                cTable2.schoolList.Children.Add(item);
+                cTable3.schoolList.Children.Add(item);
+                cTable4.schoolList.Children.Add(item);
+                cTable5.schoolList.Children.Add(item);
+            }
+        }
+
         private void TimerControl_OnLap(TimeSpan obj)
         {
             LapList.Add(obj);
@@ -111,30 +155,67 @@ namespace DM_Skills
             LapList.Reset();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Upload_Click(object sender, RoutedEventArgs e)
         {
-           var table1 = new Models.TableModel();
-            table1.Location = "Ballerup";
-            table1.School = "Min Skole";
-            table1.Class = "4a";
-            table1.Persons = "Kim,Simon";
-            table1.Time = "01:00:11";
-            table1.Date = DateTime.Now;
-
-            //Console.WriteLine(table1.HasData());
-            //Console.WriteLine(table1.CanUpload());
-            table1.Uplaod();
-
-            var data = Database.GetRows<int>("Schools", new string[] { "Name" });
-            if (data != null)
+            UserControl[] values =
             {
-                SchoolAutoComplete.Clear();
-                foreach (var item in data)
+                cTable1,
+                cTable2,
+                cTable3,
+                cTable4,
+                cTable5
+            };
+
+            bool canUpload = true;
+
+            foreach (var table in values)
+            {
+                var model = table.DataContext as Models.TableModel;
+                if (model.HasData() && !model.CanUpload())
                 {
-                    SchoolAutoComplete.Add((string)item[0]);
+                    table.BorderThickness = new Thickness(2);
+                    table.BorderBrush = Brushes.Red;
+                    canUpload = false;
+                }
+                else
+                {
+                    table.BorderThickness = new Thickness(0);
                 }
             }
+
+            if (canUpload)
+            {
+                foreach (var table in values)
+                {
+                    var model = table.DataContext as Models.TableModel;
+                    if (model.HasData())
+                        model.Uplaod();
+                }
+
+                MessageBox.Show("Er nu uploadet til databasen.");
+                Round++;
+                UpdateTableTeam();
+                UpdateSchoolList();
+                Button_Reset_Click(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Kan ikke uploade. Ret fejlne.");
+            }
+            
             NotifyPropertyChanged("SchoolAutoComplete");
+        }
+
+        private void Button_Reset_Click(object sender, RoutedEventArgs e)
+        {
+            cTable1.Reset();
+            cTable2.Reset();
+            cTable3.Reset();
+            cTable4.Reset();
+            cTable5.Reset();
+
+            stopwatch.Reset();
+            LapList.Reset();
         }
     }
 }

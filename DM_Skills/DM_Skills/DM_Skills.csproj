@@ -108,7 +108,9 @@
     <Compile Include="Converters\AutocompleteItemConverter.cs" />
     <Compile Include="Converters\BoolToValueConverter.cs" />
     <Compile Include="Converters\ProcentOfValueConverter.cs" />
+    <Compile Include="Converters\TeamIDconvert.cs" />
     <Compile Include="Converters\TimeSpanToStringConverter.cs" />
+    <Compile Include="Converters\ToStringConverter.cs" />
     <Compile Include="Converters\ValueToThickness.cs" />
     <Compile Include="Models\TableModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

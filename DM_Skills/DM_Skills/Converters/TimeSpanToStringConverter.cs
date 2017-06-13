@@ -16,6 +16,7 @@ namespace DM_Skills.Converters
         /// </summary>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+
             //Hent tallet og gør hvis det er mindre en 10 at der er 0 foran
             string minutes      = ((TimeSpan)value).Minutes.ToString().PadLeft(2, '0');
             string seconds      = ((TimeSpan)value).Seconds.ToString().PadLeft(2, '0');
