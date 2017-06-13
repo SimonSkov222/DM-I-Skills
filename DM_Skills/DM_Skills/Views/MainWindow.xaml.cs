@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SimonSkov.SQLite;
+using SQLite_DB_LIB;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -88,6 +88,10 @@ namespace DM_Skills
 
             if (!Database.Exist("Locations"))
             {
+                Database.Create("Locations",
+                    new Column { name = "ID", type = Column.TYPE_INT, isPrimaryKey = true, isAutoIncrement = true },
+                    new Column { name = "Name", type = Column.TYPE_STRING, isNotNull = true }
+                );
 
                 Database.Insert("Locations", "Name", "Ballerup");
                 Database.Insert("Locations", "Name", "Hvidovre");

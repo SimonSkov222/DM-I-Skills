@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using SimonSkov.SQLite;
+using SQLite_DB_LIB;
 
 namespace DM_Skills.Models
 {
