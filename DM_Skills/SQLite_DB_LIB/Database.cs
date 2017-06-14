@@ -7,7 +7,11 @@ using SQLite_LIB = System.Data.SQLite;
 
 namespace SQLite_DB_LIB
 {
-
+    /// <summary>
+    /// Klassen indholder static metoder 
+    /// Der bestemmer hvordan vi skal snakke med 
+    /// databasen
+    /// </summary>
     public class Database
     {
         private static string _prefix;

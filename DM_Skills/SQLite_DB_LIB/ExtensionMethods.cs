@@ -1,5 +1,9 @@
 ﻿namespace SQLite_DB_LIB
 {
+    /// <summary>
+    /// Denne klasse bruges de metoder der 
+    /// skal være extension methods på objecter
+    /// </summary>
     public static class ExtensionMethods
     {
         /// <summary>
