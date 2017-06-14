@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using SQLite_DB_LIB;
 
 namespace DM_Skills.Models
 {
-    public class TableModel : Control
+    /// <summary>
+    /// Denne Klasse styre regler og hvordan
+    /// man kan uploade til databasen
+    /// </summary>
+    public class TableModel
     {
 
         public string School { get; set; }
@@ -23,7 +21,9 @@ namespace DM_Skills.Models
         public string Time { get; set; }
         
 
-
+        /// <summary>
+        /// Tjek om klassen har data
+        /// </summary>
         public bool HasData()
         {
             return (School != null && School != "") 
@@ -31,6 +31,10 @@ namespace DM_Skills.Models
                 || (Class != null && Class != "")
                 || Time != null && Time != new TimeSpan().ToString();
         }
+
+        /// <summary>
+        /// Tjek om vi må/kan uploade til database
+        /// </summary>
         public bool CanUpload()
         {
             return (School != null && School != "")
@@ -38,25 +42,30 @@ namespace DM_Skills.Models
                 && (Class != null && Class != "")
                 && Time != null && Time != new TimeSpan().ToString();
         }
+
+        /// <summary>
+        /// Upload dataen til databasen
+        /// </summary>
         public void Uplaod()
         {
+            //Tjek om skolen findes i database og hent dens id bagefter
             if (!Database.Exist("Schools","Name",School))
                 Database.Insert("Schools","Name",School);
 
             var SchoolId = Database.GetRow<int>("Schools", new string[] { "ID" }, string.Format("WHERE `Name` = '{0}'", School));
 
+            //Tjek om lokationen findes i database og hent dens id bagefter
             if (!Database.Exist("Locations", "Name", Location))
                 Database.Insert("Locations", "Name", Location);
             var LocationId = Database.GetRow<int>("Locations", new string[] { "ID" }, string.Format("WHERE `Name` = '{0}'", Location));
             
+            //Gem holdet i databasen og hent dens id
             var TeamId = Database.Insert("Teams", new string[] { "SchoolID", "LocationID", "Class", "Number", "Time", "Date" }, new object[] { SchoolId[0], LocationId[0], Class, Team, Time, Date.ToShortDateString() });
 
+            //Gem deltagerne til holdet
             string[] Names = Persons.Replace(", ", ",").Split(',');
-
             foreach (var item in Names)
-            {
                 Database.Insert("Persons", new string[] { "TeamID", "Name" }, new object[] { TeamId, item});
-            }
 
         }
 

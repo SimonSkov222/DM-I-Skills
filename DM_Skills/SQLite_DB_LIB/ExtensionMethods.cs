@@ -2,7 +2,9 @@
 {
     public static class ExtensionMethods
     {
-
+        /// <summary>
+        /// Tjekker om et object er et hel tal
+        /// </summary>
         public static bool IsInt(this object value)
         {
             return value is short || value is ushort || value is int

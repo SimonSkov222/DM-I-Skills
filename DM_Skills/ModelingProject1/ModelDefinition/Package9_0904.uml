@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="dd13404b-6760-4dd2-82bc-7f0d94144bc6"
+  name="Specialized"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="84fe5c88-90a0-4d1e-bb67-ba060359405f"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DSystem.Collections.Specialized"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="f29f4ac0-de34-47df-993c-de1945c8b067"
+        name="NotifyCollectionChangedEventArgs"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="f693b5a3-a08f-42c2-a24c-0c82bac3f172"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FSystem.dll&quot; Namespace%3DSystem.Collections.Specialized Type%3DNotifyCollectionChangedEventArgs"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="0b61266f-2f59-4bca-8363-39e6a38d2023"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f163a08c-3e28-4d99-8f57-b4874e074e1f">
+                <propertyInstance
+                  Id="8fa7979a-db10-4f19-a78a-76f54c5a3181"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="5a3d5fb3-c70d-4fef-a867-59c44583fb43">
+                <propertyInstance
+                  Id="3fd9cabd-6acb-4ac3-91ca-5e07458b0879"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="310c8bd4-2da1-4ea0-93e0-567083a835bc">
+                <propertyInstance
+                  Id="bbf7733b-ef36-41b6-b3b3-d84c83e41289"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1c625f47-6517-447f-89fa-fd4e9c17f343">
+                <propertyInstance
+                  Id="953a6696-f1cf-4aa5-9110-35f880a98a40"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e015382c-f677-4c6f-bb25-b3a6c7f66835">
+                <propertyInstance
+                  Id="7f6978c2-045b-4034-a731-65b5b3108383"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="361d0463-c5ef-4427-80f1-36eac6551b3a"
+            isSubstitutable="false">
+            <classMoniker
+              Id="bdc66ded-de34-4bca-834e-d4905f90bec5"
+              LastKnownName="EventArgs"
+              LastKnownLocation="Package2_0904.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

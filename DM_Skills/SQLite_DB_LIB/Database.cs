@@ -22,11 +22,15 @@ namespace SQLite_DB_LIB
         private static SQLite_LIB.SQLiteConnection sql_conn;
         private static SQLite_LIB.SQLiteCommand sql_cmd;
 
+        /// <summary>
+        /// Opret forbindelse til databasen
+        /// </summary>
         public static bool Connect(string connectionString, string prefix = "")
         {
 
             if (IsConnected) return false;
 
+            //Start connection
             sql_conn = new SQLite_LIB.SQLiteConnection(connectionString);
             sql_conn.Open();
             sql_cmd = sql_conn.CreateCommand();
@@ -36,27 +40,35 @@ namespace SQLite_DB_LIB
 
             return true;
         }
+
+        /// <summary>
+        /// Afbryd forbindelse til databasen
+        /// </summary>
         public static bool Disconnect()
         {
 
             if (!IsConnected) return false;
-            sql_cmd.Dispose();
+            sql_cmd.Dispose(); //release all resouces
             sql_conn.Close();
             _isConnected = false;
 
             return true;
         }
 
-
+        /// <summary>
+        /// Indsæt en row med en enkelt værdi til tabel
+        /// </summary>
         public static object Insert(string table, string column, object value)
         {
             return Insert(table, new string[] { column }, new object[] { value });
         }
 
+        /// <summary>
+        /// Indsæt en row med flere værdier til tabel
+        /// </summary>
         public static object Insert(string table, string[] columns, object[] values)
         {
             string tableWithPrefix = Prefix + table;
-
             values = CleanValues(values);
 
             string columnsCMD = string.Format("`{0}`", string.Join("`, `", columns.ToArray()));
@@ -85,6 +97,9 @@ namespace SQLite_DB_LIB
             return false;
         }
 
+        /// <summary>
+        /// Opdater en row med flere værdier
+        /// </summary>
         public static void Update(string table, string[] columns, object[] newValues, params object[] primaryKeyVal)
         {
             string tableWithPrefix = Prefix + table;
@@ -105,10 +120,17 @@ namespace SQLite_DB_LIB
             CustomQuery(string.Format("UPDATE `{0}` SET {1} WHERE `{2}` IN ({3});", tableWithPrefix, statementsCMD, pColumn, pVals));
         }
 
+        /// <summary>
+        /// Opdater en row med en enkelt værdi
+        /// </summary>
         public static void Update(string table, string column, object newValue, params object[] primaryKeyVal)
         {
             Update(table, new string[] { column }, new object[] { newValue }, primaryKeyVal);
         }
+
+        /// <summary>
+        /// Slet en eller flere rows fra tabel
+        /// </summary>
         public static void Delete(string table, params object[] primaryKeyVal)
         {
             string tableWithPrefix = Prefix + table;
@@ -121,6 +143,12 @@ namespace SQLite_DB_LIB
             CustomQuery(string.Format("DELETE FROM `{0}` WHERE `{1}` IN ({2});", tableWithPrefix, pColumn, pVals));
         }
 
+        /// <summary>
+        /// Hent den første row her kan man bestemme om 
+        /// man vil bruge column navn eller den position
+        /// den har i columns som key for at finde 
+        /// frem til værdien
+        /// </summary>
         public static Dictionary<T, object> GetRow<T>(string table, string[] columns, string more = "")
         {
             string query = BuildGetRowsCMD(table, columns, more);
@@ -130,6 +158,14 @@ namespace SQLite_DB_LIB
             if (result.Count == 0) return null;
             else return result[0];
         }
+
+
+        /// <summary>
+        /// Hent flere rows her kan man bestemme om 
+        /// man vil bruge column navn eller den position
+        /// den har i columns som key for at finde 
+        /// frem til værdien
+        /// </summary>
         public static List<Dictionary<T, object>> GetRows<T>(string table, string[] columns, string more = "")
         {
             string query = BuildGetRowsCMD(table, columns, more);
@@ -140,7 +176,9 @@ namespace SQLite_DB_LIB
             else return result;
         }
 
-
+        /// <summary>
+        /// Opret en tabel i databasen
+        /// </summary>
         public static void Create(string table, params Column[] columns)
         {
             string tableWithPrefix = Prefix + table;
@@ -165,6 +203,10 @@ namespace SQLite_DB_LIB
             string command = string.Format("CREATE TABLE `{0}`\n(\n {1}{2}\n);", tableWithPrefix, columnPart, foreignKeyPart);
             CustomQuery(command);
         }
+
+        /// <summary>
+        /// Slet en tabel i databasen
+        /// </summary>
         public static void Drop(string table)
         {
             string tableWithPrefix = Prefix + table;
@@ -172,6 +214,10 @@ namespace SQLite_DB_LIB
             string command = string.Format("DROP TABLE `{0}`;", tableWithPrefix);
             CustomQuery(command);
         }
+
+        /// <summary>
+        /// Tjek om en tabel findes i databasen
+        /// </summary>
         public static bool Exist(string table)
         {
             string tableWithPrefix = Prefix + table;
@@ -181,6 +227,10 @@ namespace SQLite_DB_LIB
 
             return result.Count > 0;
         }
+
+        /// <summary>
+        /// Tjek om en tabel har en row med disse værdier
+        /// </summary>
         public static bool Exist(string table, string[] columns, object[] values)
         {
             string tableWithPrefix = Prefix + table;
@@ -201,14 +251,26 @@ namespace SQLite_DB_LIB
 
             return result.Count > 0;
         }
+
+        /// <summary>
+        /// Tjek om en tabel har en row med denne værdi
+        /// </summary>
         public static bool Exist(string table, string column, object value)
         {
             return Exist(table, new string[] { column }, new object[] { value });
         }
+
+        /// <summary>
+        /// Tjekker om en bestemt row har en bestemt værdi
+        /// </summary>
         public static bool IsEquals(string table, string column, object value, object primaryKeyVal)
         {
             return IsEquals(table, new string[] { column }, new object[] { value }, primaryKeyVal);
         }
+
+        /// <summary>
+        /// Tjekker om en bestemt row har flere bestemte værdier
+        /// </summary>
         public static bool IsEquals(string table, string[] columns, object[] values, object primaryKeyVal)
         {
 
@@ -232,6 +294,11 @@ namespace SQLite_DB_LIB
             else return false;
         }
 
+        /// <summary>
+        /// Kan udføre en selv skrevet SQL query/kommando
+        /// og hvis det er en select kan man selv 
+        /// vælge man bruge columns eller position som key
+        /// </summary>
         public static List<Dictionary<T, object>> CustomQuery<T>(string cmd)
         {
             SQLite_LIB.SQLiteDataReader sql_reader;
@@ -278,8 +345,17 @@ namespace SQLite_DB_LIB
             sql_reader.Close();
             return result;
         }
+
+        /// <summary>
+        /// Kan udføre en selv skrevet SQL query/kommando
+        /// og hvis det er en select vil position være key
+        /// </summary>
         public static List<Dictionary<int, object>> CustomQuery(string cmd) { return CustomQuery<int>(cmd); }
 
+        /// <summary>
+        /// Laver en sql backup fil med med tabel sql query
+        /// samt data
+        /// </summary>
         public static void Backup(string filename)
         {
             SQLite_LIB.SQLiteDataReader sql_reader;
@@ -336,6 +412,10 @@ namespace SQLite_DB_LIB
             }
             fileWriter.Close();
         }
+
+        /// <summary>
+        /// Læser en sql kommando fil igennem og udføre kommandoerne
+        /// </summary>
         public static void Load(string filename)
         {
             string pComment = "(?:\\/\\*.+?\\*\\/|--.*?(?:\n|$))";
@@ -382,6 +462,9 @@ namespace SQLite_DB_LIB
             }
         }
 
+        /// <summary>
+        /// Hent primary key column navn fra en tabel
+        /// </summary>
         public static string GetPrimaryKeyName(string table)
         {
 
@@ -396,8 +479,14 @@ namespace SQLite_DB_LIB
             return null;
         }
 
+        /// <summary>
+        /// Fjerner ' fra strings
+        /// </summary>
         public static string EscapeString(string value) { return value.Replace("'", ""); }
 
+        /// <summary>
+        /// Sætter object som er string i ''
+        /// </summary>
         private static object[] CleanValues(object[] values)
         {
 
@@ -408,6 +497,10 @@ namespace SQLite_DB_LIB
             return values;
         }
 
+
+        /// <summary>
+        /// Bygger SQL Select query
+        /// </summary>
         private static string BuildGetRowsCMD(string table, string[] columns, string more = "")
         {
 

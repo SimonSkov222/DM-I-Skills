@@ -1,89 +1,77 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Diagnostics;
 
 namespace DM_Skills.Controls
 {
     /// <summary>
-    /// Interaction logic for TimerControl.xaml
+    /// Klassen arver fra UserControl og bruger interface`et INotifyPropertyChanged
+    /// Klassen styre hvordan stopuret skal fungere
     /// </summary>
     public partial class TimerControl : UserControl, INotifyPropertyChanged
     {
-
-        
-
-        /****************************
-         * 
-         *      Properties
-         * 
-         ***************************/
-
         public event Action OnStart;
         public event Action OnStop;
         public event Action<TimeSpan> OnLap;
         public event Action OnReset;
+        public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 
         private DispatcherTimer EventTimer;
         private Stopwatch _Watch = new Stopwatch();
         public TimeSpan DisplayTime { get { return _Watch.Elapsed; } }
-
-        /****************************
-         * 
-         *      Interface: INotifyPropertyChanged
-         * 
-         ***************************/
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         
 
-
-
+        /// <summary>
+        /// Opretter elementerne fra xaml samt laver 
+        /// en timer der opdatere tiden i view
+        /// </summary>
         public TimerControl()
         {
             InitializeComponent();
             EventTimer = new DispatcherTimer();
             EventTimer.Interval = TimeSpan.FromMilliseconds(1);
-            EventTimer.Tick += Timer_Tick;
-            
+            EventTimer.Tick += (o, e) => { NotifyPropertyChanged("DisplayTime"); };
         }
 
+
+        /// <summary>
+        /// Fortæller at en property har ændret sig
+        /// </summary>
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            //Tjekker om PropertyChanged er sat og kalder den hvis den er
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+        /// <summary>
+        /// Gør at man kan nulstille tiden 
+        /// uden at trykke på knappen Nulstil
+        /// </summary>
         public void Reset()
         {
             Button_TimeControl_Click(btn_Reset, null);
         }
-
-
-        /****************************
-         * 
-         *      Events
-         * 
-         ***************************/
+        
+        /// <summary>
+        /// Når man trykker på en knap vil denne metode blive kaldt
+        /// Denne metode finder frem til hvad knap man har trykket på
+        /// og udføre det knappen skal gøre
+        /// </summary>
         private void Button_TimeControl_Click(object sender, RoutedEventArgs e)
         {
+            //Find knap id
             int id = -1;
             if ((sender as Button).Name == btn_Start.Name) id = 0;
             else if ((sender as Button).Name == btn_Stop.Name) id = 1;
             else if ((sender as Button).Name == btn_Lap.Name) id = 2;
             else if ((sender as Button).Name == btn_Reset.Name) id = 3;
 
+            //Hvad skal knappen gøre
             switch (id)
             {
                 case 0:     //Start tiden
@@ -115,10 +103,6 @@ namespace DM_Skills.Controls
 
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            NotifyPropertyChanged("DisplayTime");
-        }
     }   
 }       
            

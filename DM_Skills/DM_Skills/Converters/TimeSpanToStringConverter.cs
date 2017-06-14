@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace DM_Skills.Converters
 {
+    /// <summary>
+    /// Klassen bruger interface`et IValueConverter
+    /// Klassen laver en timespan om til det format 
+    /// vi gerne vil have vist
+    /// </summary>
     class TimeSpanToStringConverter : IValueConverter
     {
 
@@ -27,6 +28,9 @@ namespace DM_Skills.Converters
             return string.Format("{0}:{1}:{2}", minutes, seconds, milliseconds);
         }
 
+        /// <summary>
+        /// Her laver vi en tekst om til en timespan
+        /// </summary>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var timeParams = value.ToString().Split(':');

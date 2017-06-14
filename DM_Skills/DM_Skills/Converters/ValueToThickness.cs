@@ -8,6 +8,11 @@ using System.Windows.Data;
 
 namespace DM_Skills.Converters
 {
+    /// <summary>
+    /// Klassen bruger interface`et IValueConverter
+    /// Laver en thickness fra en double/int hvor 
+    /// man også kan angive et procent tal 
+    /// </summary>
     public class ValueToThicknessConverter : IValueConverter
     {
         public bool UseOnLeft { get; set; }
@@ -15,7 +20,11 @@ namespace DM_Skills.Converters
         public bool UseOnRight { get; set; }
         public bool UseOnBottom { get; set; }
 
-
+        /// <summary>
+        /// Laver int/double om til thickness
+        /// parameter er hvor mange procent af
+        /// værdien skal bruges
+        /// </summary>
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
 
@@ -30,6 +39,9 @@ namespace DM_Skills.Converters
             return margin;
         }
 
+        /// <summary>
+        /// Bruges ikke
+        /// </summary>
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             return null;

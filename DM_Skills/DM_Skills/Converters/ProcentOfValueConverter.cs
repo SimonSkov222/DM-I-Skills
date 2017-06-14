@@ -1,30 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace DM_Skills.Converters
 {
+    /// <summary>
+    /// Klassen bruger interface`et IValueConverter
+    /// Klassen giver os et procent del af en samlet værdi
+    /// </summary>
     class ProcentOfValueConverter : IValueConverter
     {
         /// <summary>
-        /// 
+        /// Den giver os en procent del af den samlet værdi
+        /// procent delen blivet angivet som parameter
         /// </summary>
-        /// <param name="value">Det tal der skal beregnes ud fra</param>
-        /// <param name="parameter">Procent f.eks 10% = int 10</param>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-
-
             double procent = System.Convert.ToDouble(parameter);
             double number = System.Convert.ToDouble(value);
             
             return number / 100 * procent;
         }
 
+        /// <summary>
+        /// Bruges ikke
+        /// </summary>
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
