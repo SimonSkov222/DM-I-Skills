@@ -73,12 +73,12 @@ namespace SQLite_DB_LIB
         public static object Insert(string table, string[] columns, object[] values)
         {
             string tableWithPrefix = Prefix + table;
-            values = CleanValues(values);
+            values = StringsSQLready(values);
 
             string columnsCMD = string.Format("`{0}`", string.Join("`, `", columns.ToArray()));
             string valuesCMD = string.Join(", ", values.ToArray());
 
-            CustomQuery(string.Format("INSERT INTO `{0}`({1}) VALUES({2});", tableWithPrefix, columnsCMD, valuesCMD));
+            ExecuteQuery(string.Format("INSERT INTO `{0}`({1}) VALUES({2});", tableWithPrefix, columnsCMD, valuesCMD));
 
 
             string pColumn = GetPrimaryKeyName(table);
@@ -110,8 +110,8 @@ namespace SQLite_DB_LIB
             List<string> statements = new List<string>();
 
 
-            newValues = CleanValues(newValues);
-            primaryKeyVal = CleanValues(primaryKeyVal);
+            newValues = StringsSQLready(newValues);
+            primaryKeyVal = StringsSQLready(primaryKeyVal);
 
             for (int i = 0; i < columns.Length; i++)
                 statements.Add(string.Format("`{0}` = {1}", columns[i], newValues[i]));
@@ -121,7 +121,7 @@ namespace SQLite_DB_LIB
             string pVals = string.Join(", ", primaryKeyVal);
             string statementsCMD = string.Join(", ", statements.ToArray());
 
-            CustomQuery(string.Format("UPDATE `{0}` SET {1} WHERE `{2}` IN ({3});", tableWithPrefix, statementsCMD, pColumn, pVals));
+            ExecuteQuery(string.Format("UPDATE `{0}` SET {1} WHERE `{2}` IN ({3});", tableWithPrefix, statementsCMD, pColumn, pVals));
         }
 
         /// <summary>
@@ -139,12 +139,12 @@ namespace SQLite_DB_LIB
         {
             string tableWithPrefix = Prefix + table;
 
-            primaryKeyVal = CleanValues(primaryKeyVal);
+            primaryKeyVal = StringsSQLready(primaryKeyVal);
 
             string pColumn = GetPrimaryKeyName(table);
             string pVals = string.Join(", ", primaryKeyVal);
 
-            CustomQuery(string.Format("DELETE FROM `{0}` WHERE `{1}` IN ({2});", tableWithPrefix, pColumn, pVals));
+            ExecuteQuery(string.Format("DELETE FROM `{0}` WHERE `{1}` IN ({2});", tableWithPrefix, pColumn, pVals));
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace SQLite_DB_LIB
         {
             string query = BuildGetRowsCMD(table, columns, more);
 
-            var result = CustomQuery<T>(query);
+            var result = ExecuteQuery<T>(query);
 
             if (result.Count == 0) return null;
             else return result[0];
@@ -174,7 +174,7 @@ namespace SQLite_DB_LIB
         {
             string query = BuildGetRowsCMD(table, columns, more);
 
-            var result = CustomQuery<T>(query);
+            var result = ExecuteQuery<T>(query);
 
             if (result.Count == 0) return null;
             else return result;
@@ -205,7 +205,7 @@ namespace SQLite_DB_LIB
             string foreignKeyPart = foreignCMD.Count > 0 ? ",\n " + string.Join(",\n ", foreignCMD.ToArray()) : "";
 
             string command = string.Format("CREATE TABLE `{0}`\n(\n {1}{2}\n);", tableWithPrefix, columnPart, foreignKeyPart);
-            CustomQuery(command);
+            ExecuteQuery(command);
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace SQLite_DB_LIB
             string tableWithPrefix = Prefix + table;
 
             string command = string.Format("DROP TABLE `{0}`;", tableWithPrefix);
-            CustomQuery(command);
+            ExecuteQuery(command);
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace SQLite_DB_LIB
             string tableWithPrefix = Prefix + table;
 
             string command = string.Format("SELECT `name` FROM `sqlite_master` WHERE `type`='table' AND `name`='{0}';", tableWithPrefix);
-            var result = CustomQuery(command);
+            var result = ExecuteQuery(command);
 
             return result.Count > 0;
         }
@@ -241,7 +241,7 @@ namespace SQLite_DB_LIB
 
             List<string> statements = new List<string>();
 
-            values = CleanValues(values);
+            values = StringsSQLready(values);
 
 
 
@@ -251,7 +251,7 @@ namespace SQLite_DB_LIB
 
             string statementsCMD = string.Join(" AND ", statements.ToArray());
             string command = string.Format("SELECT * FROM `{0}` WHERE {1};", tableWithPrefix, statementsCMD);
-            var result = CustomQuery(command);
+            var result = ExecuteQuery(command);
 
             return result.Count > 0;
         }
@@ -282,7 +282,7 @@ namespace SQLite_DB_LIB
 
             string pKey = GetPrimaryKeyName(table);
 
-            values = CleanValues(values);
+            values = StringsSQLready(values);
 
             string whrEnd = "";
             for (int i = 0; i < columns.Length; i++)
@@ -291,7 +291,7 @@ namespace SQLite_DB_LIB
             }
 
             string command = string.Format("SELECT * FROM `{0}` WHERE `{1}` = {2}{3};", tableWithPrefix, pKey, primaryKeyVal, whrEnd);
-            var result = CustomQuery(command);
+            var result = ExecuteQuery(command);
 
             if (result == null) return false;
             else if (result.Count == 1) return true;
@@ -303,13 +303,15 @@ namespace SQLite_DB_LIB
         /// og hvis det er en select kan man selv 
         /// vælge man bruge columns eller position som key
         /// </summary>
-        public static List<Dictionary<T, object>> CustomQuery<T>(string cmd)
+        public static List<Dictionary<T, object>> ExecuteQuery<T>(string cmd)
         {
             SQLite_LIB.SQLiteDataReader sql_reader;
             var result = new List<Dictionary<T, object>>();
-            string[] readMethods = { "SELECT", "PRAGMA" };
             bool isRead = false;
+            //Metoder der vil hente data
+            string[] readMethods = { "SELECT", "PRAGMA" };
 
+            //Find ud af om vi skal hente data
             foreach (var item in readMethods)
             {
                 if (cmd.ToUpper().StartsWith(item))
@@ -319,17 +321,19 @@ namespace SQLite_DB_LIB
                 }
             }
 
-            SQLite_LIB.SQLiteDataAdapter da = new System.Data.SQLite.SQLiteDataAdapter();
+            //SQLite_LIB.SQLiteDataAdapter da = new System.Data.SQLite.SQLiteDataAdapter();
 
             _lastQuery = cmd;
             sql_cmd.CommandText = cmd;
 
+            //udfør kommando hvor man ikke venter på data
             if (!isRead)
             {
                 sql_cmd.ExecuteNonQuery();
                 return null;
             }
 
+            //Udfør kommando hvor man skal have data tilbage
             sql_reader = sql_cmd.ExecuteReader();
             while (sql_reader.Read())
             {
@@ -338,6 +342,7 @@ namespace SQLite_DB_LIB
                 for (int i = 0; i < sql_reader.FieldCount; i++)
                 {
 
+                    //Find ud af om vi skal bruge columns navn eller position som key
                     object key;
                     if (typeof(T) == typeof(String)) key = sql_reader.GetName(i);
                     else key = i;
@@ -354,7 +359,7 @@ namespace SQLite_DB_LIB
         /// Kan udføre en selv skrevet SQL query/kommando
         /// og hvis det er en select vil position være key
         /// </summary>
-        public static List<Dictionary<int, object>> CustomQuery(string cmd) { return CustomQuery<int>(cmd); }
+        public static List<Dictionary<int, object>> ExecuteQuery(string cmd) { return ExecuteQuery<int>(cmd); }
 
         /// <summary>
         /// Laver en sql backup fil med med tabel sql query
@@ -367,15 +372,16 @@ namespace SQLite_DB_LIB
             List<string> tableNames = new List<string>();
             string[] ignoreTables = { "sqlite_sequence" };
 
-
+            //Lav en kommentar i filen
             fileWriter.WriteLine("/*");
             fileWriter.WriteLine(" * Creating Tables");
             fileWriter.WriteLine(" */\n");
 
-
+            //Hent tabel oprettelserne fra databasen
             sql_cmd.CommandText = "SELECT `name`, `sql` FROM `sqlite_master` WHERE `type` = 'table';";
             sql_reader = sql_cmd.ExecuteReader();
 
+            //Skriv tabel oprettelserne i filen
             while (sql_reader.Read())
             {
 
@@ -392,6 +398,7 @@ namespace SQLite_DB_LIB
             }
             sql_reader.Close();
 
+            //Hent alt data fra tabellerne og skrive dem i filen som insert
             foreach (string table in tableNames)
             {
 
@@ -403,12 +410,14 @@ namespace SQLite_DB_LIB
 
                     List<string> values = new List<string>();
 
+                    //Find ud af hvad type data værdi er (int/string)
                     for (int i = 0; i < sql_reader.FieldCount; i++)
                     {
                         if (sql_reader.GetDataTypeName(i) == Column.TYPE_INT) values.Add(sql_reader[i].ToString());
                         else values.Add(string.Format("'{0}'", sql_reader[i].ToString()));
                     }
 
+                    //Her skriver vi i filen
                     fileWriter.WriteLine(string.Format("INSERT INTO `{0}` VALUES({1});", table, string.Join(", ", values.ToArray())));
                 }
                 fileWriter.Write("\n");
@@ -422,37 +431,54 @@ namespace SQLite_DB_LIB
         /// </summary>
         public static void Load(string filename)
         {
+            //Regex pattern for at hente noget text
             string pComment = "(?:\\/\\*.+?\\*\\/|--.*?(?:\n|$))";
             string pString = @"'.*?(?<!\\)'";
 
+            //Regex pattern for at hente hele SQL kommandoer
             string[] sqlCMD = { "CREATE", "DROP", "SELECT", "INSERT", "UPDATE", "UPDATE", "DELETE" };
             string pQueries = string.Format("(?:{0}).+?;", string.Join("|", sqlCMD));
 
+            //Når vi brugere vores regex vil vi gerne ignorere 
+            //om det er store eller små bogstaver.
+            //Vi vil også gerne have at . også tæller for \n (newline)
             RegexOptions rOptions = RegexOptions.Singleline | RegexOptions.IgnoreCase;
 
             string content = File.ReadAllText(filename);
 
+            //Fjern kommentar
             content = Regex.Replace(content, pComment, "", rOptions);
 
+            //Hent alle strings i kommando og skift dem ud med det ID de har i vores liste
+            //      ### Vigtigt ###
+            //Vi gør dette fordi vi ikke vil risikere at en af disse strings indeholder ;
+            //for gør den det vil en sql kommando stoppe der når vi prøver at hente dem
             MatchCollection mcStrings = Regex.Matches(content, pString, rOptions);
             for (int i = 0; i < mcStrings.Count; i++)
             {
+                //Vigtigt at i kommer imellem '' så vi ved at det er
+                //en string der skal står der
                 content = content.Replace(mcStrings[i].Value, "'" + i + "'");
             }
 
+            //Hent alle sql kommandoer
             MatchCollection mcQueries = Regex.Matches(content, pQueries, rOptions);
 
+            //Nu skifter vi de string der blev byttede ud med IDs tilbage
             List<string> conQueries = new List<string>();
             foreach (Match mQuery in mcQueries)
             {
+                //Hent string IDs i kommando
                 string query = mQuery.Value;
                 MatchCollection mcCstrings = Regex.Matches(query, "'(.+?)'");
 
                 foreach (Match mString in mcCstrings)
                 {
-
+                    //Efterhånd som vi skifter strings tilbage kan vi risikere 
+                    //at en string slutter på '1 f.eks 'Hallo\'1'
+                    //så bruger vi denne pattern til kun at tage string
+                    //der ser f.eks sådan ud her '1'
                     Regex pattern = new Regex(@"(?<!\\)" + mString.Value);
-
                     int index = int.Parse(mString.Groups[1].Value);
                     query = pattern.Replace(query, mcStrings[index].Value, 1);
                 }
@@ -460,9 +486,10 @@ namespace SQLite_DB_LIB
                 conQueries.Add(query);
             }
 
+            //Udføre alle sql kommandoerne
             foreach (var Query in conQueries)
             {
-                CustomQuery(Query);
+                ExecuteQuery(Query);
             }
         }
 
@@ -473,7 +500,7 @@ namespace SQLite_DB_LIB
         {
 
             string tableWithPrefix = Prefix + table;
-            var result = CustomQuery(string.Format("PRAGMA table_info(`{0}`)", tableWithPrefix));
+            var result = ExecuteQuery(string.Format("PRAGMA table_info(`{0}`)", tableWithPrefix));
 
             for (int i = 0; i < result.Count; i++)
             {
@@ -491,7 +518,7 @@ namespace SQLite_DB_LIB
         /// <summary>
         /// Sætter object som er string i ''
         /// </summary>
-        private static object[] CleanValues(object[] values)
+        private static object[] StringsSQLready(object[] values)
         {
 
             for (int i = 0; i < values.Length; i++)
@@ -503,7 +530,7 @@ namespace SQLite_DB_LIB
 
 
         /// <summary>
-        /// Bygger SQL Select query
+        /// Bygger SQL for SELECT query
         /// </summary>
         private static string BuildGetRowsCMD(string table, string[] columns, string more = "")
         {
