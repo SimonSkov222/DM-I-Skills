@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="93aa9007-edc4-4192-8afd-7b07b2bc0a0b"
   name="Models"
@@ -67,16 +67,6 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
-        <generalsInternal>
-          <generalization
-            Id="7758fb82-811e-4a04-8f43-b4070b13158c"
-            isSubstitutable="false">
-            <classMoniker
-              Id="3094a40d-feb5-4e7d-a82f-9cbdea37743f"
-              LastKnownName="Control"
-              LastKnownLocation="Package10_0904.uml" />
-          </generalization>
-        </generalsInternal>
         <targetEnds>
           <association
             Id="06c8bf88-18cc-4a9c-9ad5-1f2ab53b83a0"
@@ -148,10 +138,11 @@
         <ownedAttributesInternal>
           <property
             Id="04a04de1-c321-4a64-92fd-3712f042219f"
-            name="Class"
+            name="5.1.0 Class"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -228,10 +219,11 @@
           </property>
           <property
             Id="ece3b786-5f0d-435c-ab64-a14937eed44a"
-            name="Date"
+            name="5.1.0 Date"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -308,10 +300,11 @@
           </property>
           <property
             Id="e7056613-cdc5-4f5c-899a-186394b7ecb0"
-            name="Id"
+            name="5.1.0 Id"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -388,10 +381,11 @@
           </property>
           <property
             Id="f5f63b9a-7486-4738-890a-794f48cf146c"
-            name="Location"
+            name="5.1.0 Location"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -468,10 +462,11 @@
           </property>
           <property
             Id="7c888f77-b993-4fe0-bc29-d867c1733888"
-            name="Persons"
+            name="5.1.0 Persons"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -548,10 +543,11 @@
           </property>
           <property
             Id="55e48510-5afe-4bff-8d67-852aeb420b53"
-            name="School"
+            name="5.1.0 School"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -628,10 +624,11 @@
           </property>
           <property
             Id="692acdc8-ee71-4079-8c43-5d6f291e989e"
-            name="Team"
+            name="5.1.0 Team"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -708,10 +705,11 @@
           </property>
           <property
             Id="fcbe68d6-bbc7-4339-b288-42e2bc3b69e7"
-            name="Time"
+            name="5.1.0 Time"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -789,73 +787,8 @@
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="f2d74a4a-0ac1-4fb3-bd62-ca54cd2c5a96"
-            name="TableModel"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="3b098522-0e0a-4282-9675-c17821d3baed"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Models Type%3DTableModel Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="0bbc1684-ab82-4ef9-a923-07928e0a4235"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3d550759-af08-455a-b9e7-fe326331688e">
-                    <propertyInstance
-                      Id="fc911537-d646-47b9-b45a-c0db5f431aeb"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="fd7f3a65-215a-4f29-9008-b993e80312f1">
-                    <propertyInstance
-                      Id="32bedcb7-e09b-4213-b0b9-6f04bcdf53e6"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="2936d777-0cd9-454d-8bf3-c74729e3108a">
-                    <propertyInstance
-                      Id="064e0db0-e15a-4d9e-b12d-8ee7d8fed271"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="27f58b32-62d5-4607-89a4-35f639bc3f32">
-                    <propertyInstance
-                      Id="4fa8288e-c55c-4f0c-9932-278c3ba38d8f"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="5d31ae0f-7d08-4b08-a272-89d26d7e2061">
-                    <propertyInstance
-                      Id="95cc6b55-61dd-47ec-b831-035cb39489b3"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="9fc25699-39bd-419c-bc95-08fcad6aef9b">
-                    <propertyInstance
-                      Id="a5e3258d-8e2a-4863-88cf-f2b6853e806b"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
             Id="1bbfd6d0-6041-45c8-bcc1-894006ef17cd"
-            name="CanUpload"
+            name="5.1.2 CanUpload"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -921,7 +854,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="03f4a8f6-3331-4367-9d3a-b8550f54b7ac"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
@@ -934,7 +868,7 @@
           </operation>
           <operation
             Id="91c5acd0-ec54-4d14-93b9-41a3c776dc79"
-            name="HasData"
+            name="5.1.1 HasData"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -1000,7 +934,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="8663d2fd-96bf-4e90-b507-48b1962130ff"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
@@ -1013,7 +948,7 @@
           </operation>
           <operation
             Id="ddb6348e-cb40-48c4-aa54-d9922693f35e"
-            name="Uplaod"
+            name="5.1.3 Uplaod"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="d5e7165b-e43f-41b4-ac85-364f7e491931"
   name="Controls"
@@ -280,10 +280,11 @@
         <ownedAttributesInternal>
           <property
             Id="5b472713-8f3a-428b-b3a7-b0e0bc7d8162"
-            name="BorderRadius"
+            name="1.5.0 BorderRadius"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -360,10 +361,11 @@
           </property>
           <property
             Id="430b25c9-fd97-47e6-a78d-34b4c3dd7cff"
-            name="Children"
+            name="1.5.0 Children"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -432,18 +434,19 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
             <type_NamedElement>
-              <classMoniker
-                Id="d5adbcf0-62be-45fb-8148-2ff1700e5cb1"
-                LastKnownName="ObservableCollection&lt;String‎&gt;"
-                LastKnownLocation="Package11_0904.uml" />
+              <undefinedTypeMoniker
+                Id="b9302341-58e1-466f-a2cb-fa148c4d1b9b"
+                LastKnownName="ModelingProject1::System::Collections::ObjectModel::ObservableCollection&lt;String&gt;"
+                LastKnownLocation="ModelingProject1.uml" />
             </type_NamedElement>
           </property>
           <property
             Id="04fac2dd-d9b4-498c-a6ae-b808b6f3ef78"
-            name="IsOpen"
+            name="1.5.0 IsOpen"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -520,10 +523,11 @@
           </property>
           <property
             Id="758a6ff1-619f-40f3-9ae6-52bccbccc798"
-            name="Target"
+            name="1.5.0 Target"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -600,10 +604,11 @@
           </property>
           <property
             Id="13adeb7c-27dc-44b5-a34c-f993b8953427"
-            name="BorderRadiusProperty"
+            name="1.5.0 BorderRadiusProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -666,10 +671,11 @@
           </property>
           <property
             Id="e5a07e32-6bad-404b-8954-be9e7250a0d7"
-            name="ChildrenProperty"
+            name="1.5.0 ChildrenProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -732,10 +738,11 @@
           </property>
           <property
             Id="98b8a930-e84f-4d21-9643-1000dc4f087d"
-            name="IsOpenProperty"
+            name="1.5.0 IsOpenProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -798,11 +805,12 @@
           </property>
           <property
             Id="16659a2f-3997-48d4-9f7c-83c6db394999"
-            name="LastIndex"
+            name="1.5.0 LastIndex"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -865,11 +873,12 @@
           </property>
           <property
             Id="aa0b119b-3d8c-4583-a3b7-fb738faec0ac"
-            name="LastSelected"
+            name="1.5.0 LastSelected"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -932,10 +941,11 @@
           </property>
           <property
             Id="2ecfbc97-f798-408b-82b2-e431ab794b31"
-            name="TargetProperty"
+            name="1.5.0 TargetProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -998,11 +1008,12 @@
           </property>
           <property
             Id="a65663de-d975-48b8-9c6f-4ebe63902aba"
-            name="TextHasChange"
+            name="1.5.0 TextHasChange"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1065,11 +1076,12 @@
           </property>
           <property
             Id="4afc5730-5198-440b-bc81-4c863c42133b"
-            name="VisibilityConvert"
+            name="1.5.0 VisibilityConvert"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1132,10 +1144,11 @@
           </property>
           <property
             Id="b06e6753-e4c6-4d81-8540-eac2f2ec16b8"
-            name="childContainer"
+            name="1.5.0 childContainer"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1199,73 +1212,8 @@
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="ae557dfc-3d3d-4a7a-96d8-427226b39a1a"
-            name="Autocomplete"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="d83294c3-06ae-4b29-bbf3-3af6cda1f480"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="3f0932cd-42c1-4e83-97a7-fef028646ecb"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="74a06bda-dd2a-40b2-b7de-ee3fa37946b9">
-                    <propertyInstance
-                      Id="607655f4-d560-43e1-b581-0dabc44b657f"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b0aa0b53-f5ce-43d0-9db1-beafcb8746b7">
-                    <propertyInstance
-                      Id="4979d045-f158-4df2-a53b-ed0c196c3ab4"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3903de14-f1a0-411f-abf6-3458daf1739c">
-                    <propertyInstance
-                      Id="dee08a89-1e51-4a78-a845-ab315fb8932b"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="8e44c739-d40d-4868-9456-b1db1715a183">
-                    <propertyInstance
-                      Id="1027fcad-e1cc-4e30-8b86-e1d483439837"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c12ac6b2-4fed-4c03-a96e-fa14a1b3db8c">
-                    <propertyInstance
-                      Id="e33cd4e1-50ee-4cd8-8ee5-9982dd90137a"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="d19476e1-f56e-4e88-913f-31c871026738">
-                    <propertyInstance
-                      Id="f837975a-de87-4f69-9282-a98573b714e3"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
             Id="137fdf81-2e2f-4955-a1a5-e589af6bb951"
-            name="AddChild"
+            name="1.5.9 AddChild"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -1331,15 +1279,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="675b826d-7deb-415f-8ecc-eaef48225510"
+                  Id="b94564d5-5e18-40b7-97c8-d69da46960fe"
                   name="text"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="cd882470-43e2-49c7-a403-0518970718c0"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DAddChild OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dtext"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -1352,7 +1295,7 @@
           </operation>
           <operation
             Id="761f31b6-42a4-4e15-a190-d54decf5a1d8"
-            name="ChildTB_MouseLeftButtonDown"
+            name="1.5.10 ChildTB_MouseLeftButtonDown"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -1418,15 +1361,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="41070e71-5b83-49e3-a52c-b18390031026"
+                  Id="0036f02d-0947-4cd6-9cba-7e685a86faad"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="702a7123-9d6b-40df-b6c1-485700f30e18"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DChildTB_MouseLeftButtonDown OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DMouseButtonEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1437,15 +1375,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="227c531d-25ae-4244-8c7b-7cc2acdc7270"
+                  Id="1e085e20-18e0-4227-973d-5e6109fac72d"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="655e4982-74ec-4872-a52d-21a70f87c14d"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DChildTB_MouseLeftButtonDown OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DMouseButtonEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="e7e8be30-e8bd-4bfd-b3bd-0a6675e8c907"
@@ -1458,7 +1391,7 @@
           </operation>
           <operation
             Id="5a5feca3-6128-46c4-87fa-290de3ef347d"
-            name="ChildTB_MouseLeftButtonUp"
+            name="1.5.11 ChildTB_MouseLeftButtonUp"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -1524,15 +1457,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="6621d9a6-576a-4602-96c8-7bc2011cf37b"
+                  Id="a879d88b-f3e6-4a3e-97ca-314ba0bbb6eb"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="45806ef8-eb9a-4f7a-8b58-9a5b3b19497e"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DChildTB_MouseLeftButtonUp OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DMouseButtonEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1543,15 +1471,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="16625417-890c-4ef7-b8ca-c21b77a6ee7b"
+                  Id="d46f46b9-96f9-4bfa-8194-7585cd631795"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="eedbbbbf-1014-4027-9259-998a547b8b7e"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DChildTB_MouseLeftButtonUp OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DMouseButtonEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="e7e8be30-e8bd-4bfd-b3bd-0a6675e8c907"
@@ -1564,7 +1487,7 @@
           </operation>
           <operation
             Id="e8f76ab9-588e-4165-8333-98bac56e2c43"
-            name="Children_CollectionChanged"
+            name="1.5.12 Children_CollectionChanged"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -1630,15 +1553,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="0796ab31-f6d2-4d45-8bfa-4b4c1ef6479e"
+                  Id="084572c1-9a54-4eb2-a7b5-94e949974589"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="7c2dcef3-7115-486f-9c23-00338e2d8d66"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DChildren_CollectionChanged OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FSystem.dll&quot; Namespace%3DSystem.Collections.Specialized Type%3DNotifyCollectionChangedEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1649,15 +1567,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="08ebf1c2-e85d-4ac2-aefa-d926bb929af2"
+                  Id="93a25d49-4ccc-4e60-8c77-dcc53efa133e"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="0c3d2f4e-9c06-4a04-b4a0-c1dbf2698318"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DChildren_CollectionChanged OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FSystem.dll&quot; Namespace%3DSystem.Collections.Specialized Type%3DNotifyCollectionChangedEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="f29f4ac0-de34-47df-993c-de1945c8b067"
@@ -1670,7 +1583,7 @@
           </operation>
           <operation
             Id="e430da68-d850-4de3-8e5d-8a70f9dfa4b9"
-            name="SetHighlight"
+            name="1.5.13 SetHighlight"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -1736,15 +1649,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="98893e4e-b648-4af6-8006-c9dc5fa4cf52"
+                  Id="97fe839d-069f-43fa-8a97-22da942622ce"
                   name="index"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="665332ea-9549-40cf-a2f3-bfd14c093bca"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DSetHighlight OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)]) ParameterIdentifier%3Dindex"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="220a3521-e091-4221-bae9-3ef9018e845c"
@@ -1757,7 +1665,7 @@
           </operation>
           <operation
             Id="c3e0a9f7-151a-433a-92d6-ab283afb00d5"
-            name="Target_KeyDown"
+            name="1.5.8 Target_KeyDown"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -1823,15 +1731,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="d0d36cbc-fdcc-45ce-967d-b350865dd517"
+                  Id="c6b97b06-af2e-4259-95a2-f686c423a6c6"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="33c752cf-e662-4026-b167-f6e206a769a0"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DTarget_KeyDown OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DKeyEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1842,15 +1745,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="0594ccb4-f65a-4476-a7b2-b03c96df9831"
+                  Id="fba7324e-06cb-4bfb-a19c-d06dfe6c24e9"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="271ba793-c60f-4649-a8ff-498240572509"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DTarget_KeyDown OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DKeyEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="8a6b0dfe-44bc-4e89-b4fd-63b8d15ae63d"
@@ -1863,7 +1761,7 @@
           </operation>
           <operation
             Id="51579f97-767e-4321-836f-2f37b5ba92f6"
-            name="Target_LostFocus"
+            name="1.5.6 Target_LostFocus"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -1929,15 +1827,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="15ac7230-08f4-40d4-a8ec-b3492cd7289a"
+                  Id="d9dc2a78-3238-44b3-acb7-6513e0f82baf"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="6a76be63-f0cb-4fa2-8a5e-f3f4825b07d7"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DTarget_LostFocus OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows Type%3DRoutedEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1948,15 +1841,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="ac2b8cc0-bc52-4403-ae24-141d9d6eb28f"
+                  Id="b76d0176-d40a-4293-aab8-9ea20e6c2510"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="d8bab092-53a4-4aaa-955c-da0aa27d4220"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DTarget_LostFocus OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows Type%3DRoutedEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="bc30f6ce-e949-4aaa-b661-b547d9008f9b"
@@ -1969,7 +1857,7 @@
           </operation>
           <operation
             Id="e59d2f76-7a99-4b1b-b59a-ee9b125c3e0b"
-            name="Target_MouseDoubleClick"
+            name="1.5.4 Target_MouseDoubleClick"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -2035,15 +1923,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="3acca209-0481-4d0e-8f57-944c8631cddb"
+                  Id="22bfede3-736c-498b-baab-c8afac5d55a3"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="cd1dc8f2-af29-4697-a09b-3297a2a3d1c4"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DTarget_MouseDoubleClick OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DMouseButtonEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -2054,15 +1937,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="e89f7e53-3fc1-4c28-a069-9c6cc7e8bda2"
+                  Id="31146e8f-ba58-4bda-8b0e-c93da81f0cf5"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="fd945044-a224-4869-81de-1d3e6876ce54"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DTarget_MouseDoubleClick OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DMouseButtonEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="e7e8be30-e8bd-4bfd-b3bd-0a6675e8c907"
@@ -2075,7 +1953,7 @@
           </operation>
           <operation
             Id="6909f81d-4cab-40ef-bffb-c449599d71b9"
-            name="Target_TextChanged"
+            name="1.5.7 Target_TextChanged"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -2141,15 +2019,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="ff2d1697-bb2f-44e8-9934-3f9dead2956e"
+                  Id="96bf55d7-bc4d-4936-bbd4-473b64200adf"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="38afb4ce-df55-4fd0-bb46-ece7ef231508"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DTarget_TextChanged OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationFramework.dll&quot; Namespace%3DSystem.Windows.Controls Type%3DTextChangedEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -2160,15 +2033,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="e18118f6-4023-4ff2-83ca-29144d461a0f"
+                  Id="2637b8cc-15cf-4da9-b1e1-53141bc57ac5"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="6dd0e8fa-8c9c-4df4-91b1-ad7665e9364d"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DTarget_TextChanged OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationFramework.dll&quot; Namespace%3DSystem.Windows.Controls Type%3DTextChangedEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1b5a4ab0-36e4-461c-baf4-ba1025bfccea"
@@ -2181,7 +2049,7 @@
           </operation>
           <operation
             Id="dbce4594-0e9e-42f1-8b36-ed9d0c6131f1"
-            name="TextblockIsVisible"
+            name="1.5.5 TextblockIsVisible"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -2248,7 +2116,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="368d9f2c-64fa-482b-83e8-d53b9d18c3a2"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
@@ -2259,15 +2128,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="d08d90f4-e169-4adb-92ee-4eab913b6861"
+                  Id="8b469963-d2e1-454f-a0d6-b2ea89dfceea"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="6e0b4e4e-cfd1-4287-b3dd-90679a8f4110"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D(Name%3DTextblockIsVisible OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationFramework.dll&quot; Namespace%3DSystem.Windows.Controls Type%3DTextBlock)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="750edc2a-647d-43bc-9379-2e8b1320cf1a"
@@ -2279,74 +2143,8 @@
             </ownedParameters>
           </operation>
           <operation
-            Id="d1bb145a-0791-47ce-a4f6-34721554c764"
-            name="static Autocomplete"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="true"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="bfd8c49e-d0ac-43ec-8c8d-08bfb3cf04db"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D.cctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="a21e56f4-56ab-4e6a-88b1-68d2384a4d70"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="811c45b4-9c2d-4616-b845-410e666119f3">
-                    <propertyInstance
-                      Id="c54db8bb-e129-4dd9-824f-9103d1ed92e5"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="756ccfc3-b821-4c66-988f-3f33c01b6f94">
-                    <propertyInstance
-                      Id="698ed40b-411c-4787-9ca0-f7a55253f850"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3889b1be-abe2-431c-8119-4bf4f71e1343">
-                    <propertyInstance
-                      Id="e783ed67-9346-460e-be28-7c27bcba24f0"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="db6ec106-90c1-49ff-9a09-4f50e86e08d4">
-                    <propertyInstance
-                      Id="f94af634-62be-48d2-8b92-114f5d9b9a67"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="206d087c-6e3e-42a0-a1d7-46f5030ebf1d">
-                    <propertyInstance
-                      Id="f8d1f864-f6eb-4255-8941-d335cd38073a"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="12c083aa-26bc-4004-8268-46c7e51f3bf9">
-                    <propertyInstance
-                      Id="3ae6a69a-84fe-4e13-a0f0-b0cc6c507f2f"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
             Id="aea5d727-5203-40d7-8809-1badf55b0063"
-            name="OnApplyTemplate"
+            name="1.5.3 OnApplyTemplate"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -2402,6 +2200,137 @@
                     Id="8c5fb432-f2f6-45c2-a6df-d7e8ede76d5b">
                     <propertyInstance
                       Id="39f134b5-5696-4058-a1be-a10aae800b7b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="49f7a3b0-cb1e-4612-9dba-f63afc7dbc55"
+            name="1.5.2 Autocomplete"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="04c08751-8098-4e76-ba25-3611915b1c9f"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="86e63803-5eaa-463d-bf7e-20d55b13aaed"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="42a803d4-a9dd-4b3d-93f2-d5ef75c7a610">
+                    <propertyInstance
+                      Id="7549e2f9-d70c-4736-adc7-7702b82b6d74"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c418f6d1-69af-4bea-87f1-49d5162ecb06">
+                    <propertyInstance
+                      Id="d9d18aa6-8505-4f1b-8b52-d2ff8111f366"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d39a8359-372d-4ccf-98c5-95149aa28cff">
+                    <propertyInstance
+                      Id="0a5b6814-3fbd-4d99-add3-8f8a70eb4f29"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bce46c6e-9daa-41ab-bfa4-1d93b7348f67">
+                    <propertyInstance
+                      Id="888b7f78-ce87-4bc5-b3f5-57da18f83bd6"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="36673b7e-ef69-43c7-afbf-be94a3f781ea">
+                    <propertyInstance
+                      Id="c5f96078-eb16-4fa0-b98b-63c34b95f156"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f7fb0d88-7702-4b3f-9661-1b2b8bbe89c2">
+                    <propertyInstance
+                      Id="09357352-3a56-4615-9192-6e7575f3101a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="4a752e08-4a79-468f-803d-566167465f5d"
+            name="1.5.1 static Autocomplete"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5009d783-e6b5-4c61-a649-f28f161f0a71"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DAutocomplete Member%3D.cctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8365a2d8-4713-4cf6-84a3-5e56a13170f4"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ba48f002-a2de-4920-ad11-1badf94196c8">
+                    <propertyInstance
+                      Id="c03ad178-a055-4bfe-857e-4ca311ea9a7b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f5877d5b-102f-4e3b-8f09-a45ac9b76071">
+                    <propertyInstance
+                      Id="c1a0faee-2900-4e7e-b9cf-a6e5abe85dac"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1027814c-423e-4ba7-b41d-47c5acc29b77">
+                    <propertyInstance
+                      Id="d57a638f-0211-4f72-b5b8-6876f1922b27"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fb0b06b9-0c8c-4ebc-8020-e8fff585d58b">
+                    <propertyInstance
+                      Id="459d1bd6-41eb-4201-9374-6c53ff9b10ba"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da8b4c27-220c-4777-b2de-c2767eb6afbd">
+                    <propertyInstance
+                      Id="e8df2365-3bd2-426e-948c-55701613a289"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e6801103-e282-4e49-9c63-9e12ba019316">
+                    <propertyInstance
+                      Id="ef53929c-0fde-4688-91f6-c91ea96d5d16"
                       name="params"
                       value="false" />
                   </stereotypeInstanceHasPropertyInstances>
@@ -2489,79 +2418,13 @@
         </generalsInternal>
         <ownedAttributesInternal>
           <property
-            Id="c4443211-400b-417a-b65f-878d1bc2ce40"
-            name="_contentLoaded"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <referencesInternal>
-              <reference
-                Id="90b20b98-e333-46a8-864d-ea29fab0bb1b"
-                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DDragAndDropTimerControl Member%3D_contentLoaded"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="29b50b9e-7a9b-4c44-98cc-ffa1f89e1fc7"
-                name="field"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="30043e83-a830-43ec-95df-339b0b5e1d2a">
-                    <propertyInstance
-                      Id="c2c9d110-846a-4634-a707-789eec412a31"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="f287a86f-0dc1-4ed3-ad7d-9f1f2e0c2537">
-                    <propertyInstance
-                      Id="81766dea-a7c9-4eca-9143-90d0ad4832ce"
-                      name="IsConst"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="7b638e79-740c-4ad8-bce7-59f65447acf7">
-                    <propertyInstance
-                      Id="d085dbee-6831-4bdf-a2ee-994588ba7dde"
-                      name="IsNullable"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="8b4a3416-52d9-4572-9e93-695746f17924">
-                    <propertyInstance
-                      Id="ef76cd2a-237b-4535-9e5c-0dfee4470c35"
-                      name="IsVolatile"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="0b9cc6ec-aa84-4ebd-b1ed-7277e8f25a91">
-                    <propertyInstance
-                      Id="dc757a7a-44e8-49df-a424-974f5e049eef"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <type_NamedElement>
-              <primitiveTypeMoniker
-                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                LastKnownName="Boolean"
-                LastKnownLocation="ModelingProject1.uml" />
-            </type_NamedElement>
-          </property>
-          <property
             Id="f7a7601c-0dc0-46d0-b91c-db69a86a7d1f"
-            name="listPanel"
+            name="2.4 listPanel"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -2624,11 +2487,12 @@
           </property>
           <property
             Id="bc10d9f8-d464-4c66-9920-a1383d4d8d09"
-            name="rowNumber"
+            name="1.4.0 rowNumber"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -2692,244 +2556,8 @@
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="9cae2bd8-d5a9-4acb-b4f5-d0ca9bbe4485"
-            name="System‎.Windows‎.Markup‎.IComponentConnector‎.Connect"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="004ddc58-f3ca-42bf-8f9e-f229c0ea3a69"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DDragAndDropTimerControl Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="68d3b919-980b-4d56-a21c-eff7068b6551"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3ffe9058-1fe6-40a1-8138-0f5f8217d9b6">
-                    <propertyInstance
-                      Id="68b7f64f-fa1d-49d1-a074-2d0bd2b37dbd"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="883469d5-5141-4563-8324-ba40b9ddf8fc">
-                    <propertyInstance
-                      Id="5a595534-df25-4a11-9730-b4c512832294"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="87b0eda1-e25f-474a-a280-2a79625a77ab">
-                    <propertyInstance
-                      Id="8b94043d-90ea-4f5b-a651-1d38dc11c215"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3ddd175b-26ff-4867-a1fc-a74abaeea8e7">
-                    <propertyInstance
-                      Id="954f7a05-82f2-41b8-bc49-f0bca58d432c"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="04425c99-fc22-43d4-b56d-c0809905202f">
-                    <propertyInstance
-                      Id="6ad2af5c-5b68-401b-80bb-ef9b7b4eb416"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="672f55b7-0cc7-44bf-ad83-021bbc8262b7">
-                    <propertyInstance
-                      Id="7f797914-4f6a-4f15-86e9-a59ce42bd2ef"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="86769335-9e64-414e-a8c3-bcef22b68e48"
-                  name="connectionId"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="d585a073-be52-4a8c-b985-5ca5c7607adf"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DDragAndDropTimerControl Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3DconnectionId"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="8fd5285f-3a4d-4a1d-aa64-b217f01a44f9"
-                  name="target"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="b66e9b32-d5ef-4192-bc24-58ce27694be8"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DDragAndDropTimerControl Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dtarget"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="ee40ff44-b7ed-45bc-bb19-66fecf065553"
-            name="DragAndDropTimerControl"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="4e04c6ef-2854-497e-b0d9-43c00da1c564"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DDragAndDropTimerControl Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="fef5596a-7396-4c7c-9f13-0640f4a45589"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="2733dc64-3259-4b2d-a646-d7df6e52149a">
-                    <propertyInstance
-                      Id="0b7c0300-4871-4f78-8af9-5dc753c83d7b"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="88691228-ff9d-43ea-a0ed-9b5fb8828643">
-                    <propertyInstance
-                      Id="259f95d7-7d6e-4353-a80d-486fb17d4ac8"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a06ce432-325f-447f-b050-bee496874d10">
-                    <propertyInstance
-                      Id="9d84e7e1-8aba-421c-8858-03d30f027bb7"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="85a22e58-d2bd-464c-93dc-47c56c4d890f">
-                    <propertyInstance
-                      Id="3d539f8e-ce98-418f-9d4f-a9bd279b5eba"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="17b02434-dda0-4392-a4dd-2e9479a0bdf5">
-                    <propertyInstance
-                      Id="780c623d-1063-4f2d-8f9b-916704b746b8"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="5626bfd3-186e-4515-9541-d1fd67d6f0d4">
-                    <propertyInstance
-                      Id="b032e6fe-d5c1-4537-8878-21a1cc421035"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
-            Id="6d994982-8136-41ff-a045-8f4f97c865dd"
-            name="InitializeComponent"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="cfea6722-7562-4702-9c05-8242a6447d0f"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DDragAndDropTimerControl Member%3DInitializeComponent"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="aee062b8-45a7-4c7a-9761-8320aea5054c"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="4bf8cfda-32c0-442c-b60d-020bc8e66f1b">
-                    <propertyInstance
-                      Id="3907f3a9-b40b-41de-a9f6-aa094b5e1f85"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="fad494f1-c39a-44c5-ae22-0795cb60c443">
-                    <propertyInstance
-                      Id="5ca4a637-7d05-44e7-9e0c-6bb013f1afda"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="6efbd4e0-3a89-4101-8e45-dd62daa35f2a">
-                    <propertyInstance
-                      Id="786a4809-50bd-4893-a565-dffccba2720c"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="0917b87e-cd0c-476e-bef1-4e25d5041bd7">
-                    <propertyInstance
-                      Id="76a11920-3032-4213-b6a0-842cbc9bd90d"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c08d122c-dfba-4fb9-bfc8-0b7c3884c31a">
-                    <propertyInstance
-                      Id="1fb1bd46-32b9-4d1b-90c8-aa59fc6859b8"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="93d56895-55e2-416c-81ed-f72681932128">
-                    <propertyInstance
-                      Id="46a1c68b-b2c0-4844-b2c1-82510f3d1d5a"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
             Id="63b709b6-ddcb-4d0c-80f7-eb69e08dec4b"
-            name="Add"
+            name="1.4.2 Add"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -2994,15 +2622,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="7a0f03c8-8325-41a6-bc54-610ed489fb16"
+                  Id="19ca69c4-333c-41c5-8c2a-ca5ec7cde293"
                   name="time"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="e542bab5-a5dd-4ff3-abe7-8f54c193e3db"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DDragAndDropTimerControl Member%3D(Name%3DAdd OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DTimeSpan)]) ParameterIdentifier%3Dtime"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="171ddacd-0188-427e-a342-72d6fa2022cd"
@@ -3015,7 +2638,7 @@
           </operation>
           <operation
             Id="fe3cb5f2-0939-4759-ac47-e1b2699f61e0"
-            name="TxtTime_MouseMove"
+            name="1.4.4TxtTime_MouseMove"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -3081,15 +2704,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c871bd45-10fa-4e2b-97ac-c042d14bd386"
+                  Id="133bbc7f-5f5d-4fdf-a944-2f9f626f085b"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="b037861b-2ec5-4fbb-9430-52d378ab6a3d"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DDragAndDropTimerControl Member%3D(Name%3DTxtTime_MouseMove OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DMouseEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -3100,15 +2718,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="20776afd-46d1-4b0b-b668-b24b336f9ec2"
+                  Id="d9337a61-b18b-4e16-9972-bce551c0248c"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="cf7c8c5e-f887-4a9f-accd-85405d525684"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DDragAndDropTimerControl Member%3D(Name%3DTxtTime_MouseMove OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows.Input Type%3DMouseEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="dbd446ce-c260-4e7e-819b-6f1a980fde34"
@@ -3121,7 +2734,7 @@
           </operation>
           <operation
             Id="4230c9ba-b733-41e8-b8de-62a0b6d2df62"
-            name="Reset"
+            name="1.4.3 Reset"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -3177,6 +2790,71 @@
                     Id="622825ad-fdd4-4d38-a887-780e7995d58e">
                     <propertyInstance
                       Id="f4a89b6e-1538-47af-b99f-47c40718bada"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="91da3514-ddcc-48b0-97e1-8a4cfb05baf7"
+            name="1.4.1 DragAndDropTimerControl"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="901594fb-ca88-4f47-b5eb-27fcf449454d"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DDragAndDropTimerControl Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="09182218-2383-449e-bdea-56656b752da8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1da752ff-7be8-4c5c-a628-442a4a1bae75">
+                    <propertyInstance
+                      Id="735f6d5f-5eec-4656-b623-c6c8f4a5e845"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="48c767c2-744f-455f-aca0-10f96891ff7c">
+                    <propertyInstance
+                      Id="16f9e530-d2ff-40ae-8e35-c52b4bed2076"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6b011001-a025-4151-abfd-1cd83f832c50">
+                    <propertyInstance
+                      Id="fa0d0494-4140-4b87-8327-b9346c6a325d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9561903e-cd08-40aa-8dda-08425e61aeeb">
+                    <propertyInstance
+                      Id="5f8f9b42-f54e-4a77-bf9a-3ceb3e88672a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="673a6bb0-17ac-48b4-b5fc-640c6b392470">
+                    <propertyInstance
+                      Id="9bca54ab-5265-45a5-8b00-8deb608d85b3"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c804b990-3793-4832-a7c3-f1f6a3e48a4e">
+                    <propertyInstance
+                      Id="13f68217-1998-43be-81e2-37f9694bd652"
                       name="params"
                       value="false" />
                   </stereotypeInstanceHasPropertyInstances>
@@ -3399,10 +3077,11 @@
         <ownedAttributesInternal>
           <property
             Id="d9b5f1b4-5731-4a0f-b038-77a3002f5316"
-            name="ClassID"
+            name="1.2.0 ClassID"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3479,10 +3158,11 @@
           </property>
           <property
             Id="4d99c68b-ad8d-4f4b-9152-42b83d5ed6c1"
-            name="Players"
+            name="1.2.0 Players"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3559,10 +3239,11 @@
           </property>
           <property
             Id="f8a010e7-c6d5-431a-bf31-9a18a4fd6e19"
-            name="School"
+            name="1.2.0 School"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3639,10 +3320,11 @@
           </property>
           <property
             Id="1bbb03e2-5803-4ac3-94f7-e8ce8627af5b"
-            name="SchoolList"
+            name="1.2.0 SchoolList"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3711,18 +3393,19 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
             <type_NamedElement>
-              <classMoniker
-                Id="b3b33690-d2b0-4288-aa2f-104ce09c8746"
-                LastKnownName="List&lt;String‎&gt;"
-                LastKnownLocation="Package13_0904.uml" />
+              <undefinedTypeMoniker
+                Id="29942a87-ffe6-4fb5-b8c8-da926e27b852"
+                LastKnownName="ModelingProject1::System::Collections::Generic::List&lt;String&gt;"
+                LastKnownLocation="ModelingProject1.uml" />
             </type_NamedElement>
           </property>
           <property
             Id="b3e10540-6b9c-4d7b-beaa-549ba9728a7a"
-            name="TeamID"
+            name="1.2.0 TeamID"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3799,10 +3482,11 @@
           </property>
           <property
             Id="ea4f960f-8da7-4a64-9b60-fc857bf6f4e2"
-            name="Time"
+            name="1.2.0 Time"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3879,10 +3563,11 @@
           </property>
           <property
             Id="b1988444-0642-4670-aef6-ea819f8a01d5"
-            name="Title"
+            name="1.2.0 Title"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3958,78 +3643,12 @@
             </type_NamedElement>
           </property>
           <property
-            Id="b86f20b6-d7e1-4e2d-82ea-d68028a83953"
-            name="_contentLoaded"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <referencesInternal>
-              <reference
-                Id="db28bbc1-ae1e-47bc-8d44-5162800cc83d"
-                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3D_contentLoaded"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="0f19cb78-ccf8-4aa6-93ba-06e6986c27e0"
-                name="field"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="00a5a7b1-32a8-4e57-9cdb-f1d9ac21c2ae">
-                    <propertyInstance
-                      Id="d2bd783c-50a0-42d3-ac4f-9fb098659ab3"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a5b3115d-6ebc-4ee4-9b73-64c22fe3d799">
-                    <propertyInstance
-                      Id="cddbe2c8-aacf-4e0c-ba4e-675e451449a2"
-                      name="IsConst"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="bc50af01-6912-4504-95c4-3c09cbbbeecd">
-                    <propertyInstance
-                      Id="51cf5258-3b06-4161-bf8d-777ed3c7ed14"
-                      name="IsNullable"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="4067d2c7-3a66-4091-a31e-cdd1b499950c">
-                    <propertyInstance
-                      Id="2b4ebdae-d754-435b-b4b9-d5a54c857f4e"
-                      name="IsVolatile"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="274eee1c-c967-483a-8ae4-e989c953bc0d">
-                    <propertyInstance
-                      Id="028b82de-1841-4d01-a1a2-433475010de3"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <type_NamedElement>
-              <primitiveTypeMoniker
-                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                LastKnownName="Boolean"
-                LastKnownLocation="ModelingProject1.uml" />
-            </type_NamedElement>
-          </property>
-          <property
             Id="848316ed-1380-440d-a96a-5dd5a11b84c8"
-            name="ClassIDProperty"
+            name="1.2.0 ClassIDProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -4091,78 +3710,12 @@
             </type_NamedElement>
           </property>
           <property
-            Id="5b3ad5f7-2bd1-4615-b742-30b3fe8cf4ed"
-            name="Controller"
-            visibility="Package"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <referencesInternal>
-              <reference
-                Id="afce16e8-834b-417a-95fd-c811aa734414"
-                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3DController"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="17f5417c-a20b-4181-9af4-d3d3e18e8e9a"
-                name="field"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="cd587f4d-24d0-40ec-bab6-1d67d9c61d8a">
-                    <propertyInstance
-                      Id="f65d05fd-5a45-4728-a13c-cf22c6aba05d"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="6bbc2ad5-d89c-4c28-a299-1e7dd8c8e55a">
-                    <propertyInstance
-                      Id="7fd98098-434e-482b-b1a6-2483b78a761a"
-                      name="IsConst"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a455672f-a5c2-411b-937c-87fa68e54bc7">
-                    <propertyInstance
-                      Id="e40f4a8a-a67f-4614-8f28-c6b714d05683"
-                      name="IsNullable"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="9bc0161c-cd77-4a16-bc3b-90e282db9ca1">
-                    <propertyInstance
-                      Id="0be7531c-d610-4587-b5d9-d57fd48ce0e8"
-                      name="IsVolatile"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="fae4ec3d-7fa5-4037-bea2-521a11639f38">
-                    <propertyInstance
-                      Id="e98f6c78-449e-408b-9195-0303e6a0a419"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <type_NamedElement>
-              <classMoniker
-                Id="2842a912-3139-4440-8557-c728dbf21112"
-                LastKnownName="TablesControl"
-                LastKnownLocation="Package6_0904.uml" />
-            </type_NamedElement>
-          </property>
-          <property
             Id="3c7c9d2b-70b9-4c1c-a9d4-8e4af67a5497"
-            name="PlayersProperty"
+            name="1.2.0 PlayersProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -4225,10 +3778,11 @@
           </property>
           <property
             Id="07d7f530-a864-4513-bb72-427176ed25f6"
-            name="SchoolListProperty"
+            name="1.2.0 SchoolListProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -4291,10 +3845,11 @@
           </property>
           <property
             Id="9faa0ef4-26f5-4f8d-84a3-c5b5e007a8be"
-            name="SchoolProperty"
+            name="1.2.0 SchoolProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -4357,10 +3912,11 @@
           </property>
           <property
             Id="bbc13206-18bf-4a9d-8728-fc81ef7bae50"
-            name="TeamIDProperty"
+            name="1.2.0 TeamIDProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -4423,10 +3979,11 @@
           </property>
           <property
             Id="7fc5df15-330e-4e54-bb06-df14a7fb4516"
-            name="TimeProperty"
+            name="1.2.0 TimeProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -4489,10 +4046,11 @@
           </property>
           <property
             Id="f05c2fa1-6bb1-4a2e-92ac-efa16a1bdaf2"
-            name="TitleProperty"
+            name="1.2.0 TitleProperty"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -4555,11 +4113,12 @@
           </property>
           <property
             Id="51619de7-336e-4e8c-8d3d-1515dfe5beee"
-            name="schoolList"
+            name="2.2 schoolList"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -4623,362 +4182,8 @@
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="7d8b2314-7bf9-48a7-a8f3-863d8d70e11d"
-            name="System‎.Windows‎.Markup‎.IComponentConnector‎.Connect"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="ea4553cc-5fee-42a9-9ff5-4e60389451e2"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="8d67ac0f-7b57-43c1-868a-015b6a65f883"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="cbcede8a-0c11-45e6-96c1-ad741e90616c">
-                    <propertyInstance
-                      Id="898d649c-949e-437d-b458-3df965add74b"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="628e6308-47d9-436c-aa8c-0d53e5a49907">
-                    <propertyInstance
-                      Id="ff7701b6-bc3f-4535-b790-d4528f2576ab"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="2e17daf7-316f-4b9b-b375-b0a428e6a92c">
-                    <propertyInstance
-                      Id="ac836682-8269-4e19-9645-37b18cf2feb1"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c55057b5-ad3d-4ecf-8ab6-f81a9e4419bb">
-                    <propertyInstance
-                      Id="e4fd2f59-774a-4130-b512-4f6910dc430d"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="7f15ded0-938b-47b3-a655-7cae9b1238a7">
-                    <propertyInstance
-                      Id="5234e68b-6136-4d10-a71a-7219fc98f6ca"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="5c876ff4-7638-420c-bc1d-a768f97eddc2">
-                    <propertyInstance
-                      Id="a0cae333-cdc4-4106-9a92-69faf6aca830"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="7111bf1b-e222-418d-b1c6-65c32e8bbe96"
-                  name="connectionId"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="e3f7c32b-17d5-42b5-9559-f33c9ed0ff48"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3DconnectionId"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="5f09d125-0652-4350-ab0c-467af71f52ee"
-                  name="target"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="bb84b2c8-d246-4270-87d6-496a10cc2efc"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dtarget"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="0c028436-ea6e-4ee6-8b09-38f218acf48c"
-            name="TablesControl"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="a12a7dcd-c922-4da5-811f-4ef2cf6de659"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="f7959151-d72e-425d-a490-8a876bf8f6c6"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="e455e4eb-9672-43d0-96e4-e1e5b6e99063">
-                    <propertyInstance
-                      Id="eb78908f-1c93-4308-9584-fd1323bbffd4"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c472b1b4-e214-4b37-8274-a8f0a1b07aaf">
-                    <propertyInstance
-                      Id="5f5e2bc2-d47d-4a64-be14-6d8ff0483f97"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="6184670e-1920-48bd-853f-2769794063a7">
-                    <propertyInstance
-                      Id="2032a0aa-653b-4f28-88b0-03d49ee29e3a"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="16b492f1-c08b-495a-9a4f-b5a675c1d345">
-                    <propertyInstance
-                      Id="a38d87f5-affd-4c1f-bc88-03736d491e0a"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3211bec8-b0ef-4c38-b3a4-673a67a59235">
-                    <propertyInstance
-                      Id="83d5bbae-944b-45de-a089-712f46943a0b"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="87482727-b5d6-4996-b6a3-39d4c89243a7">
-                    <propertyInstance
-                      Id="776292fc-c23e-4e3a-98b0-48b6e757dc81"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
-            Id="a05aa604-9ae2-4c4e-8928-685c9d6aa862"
-            name="InitializeComponent"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="ac9a99a6-34c8-4326-a1c7-38c6623c9086"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3DInitializeComponent"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="a4654834-0190-4558-beac-95e2b7d9abae"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="8766abd6-4815-45c6-978e-421275cf4a83">
-                    <propertyInstance
-                      Id="d11db19b-579e-4fef-bb69-7f9f426c1fa5"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="f25a8948-45df-4d60-9707-d7fcbbebf373">
-                    <propertyInstance
-                      Id="45de124d-af6c-4b6d-9d14-efd2ec815299"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="2f4ad10f-95c4-4153-9d69-74f94e1c5895">
-                    <propertyInstance
-                      Id="475f817d-0ad7-4e4f-91e7-09435cbdbf61"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="ae50117f-fc3c-46d5-9442-d1ab14877ac4">
-                    <propertyInstance
-                      Id="44eb22bf-4d95-49a6-b3b1-f6ddf1e4f9eb"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="0cda168b-c5fc-4b5e-940b-2751e0884983">
-                    <propertyInstance
-                      Id="c420e10c-f1a6-4324-97bd-7ff871ce33f5"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="e65d149e-fa71-4dc5-b0b9-2314bc47b385">
-                    <propertyInstance
-                      Id="eb916dae-738e-45c8-80f3-a9a889254e58"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
-            Id="fcac1c21-3fe1-4897-aa35-8de30cfb93fb"
-            name="_CreateDelegate"
-            visibility="Package"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="d2afc874-ee56-434a-918c-79681e2bfaf8"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3D(Name%3D_CreateDelegate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="3ed26ff8-8d1b-4378-924a-19935d8c30e7"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c5d21719-24bd-4232-9027-1a693f423dcd">
-                    <propertyInstance
-                      Id="d0bf8e4f-d648-4847-9dc3-7f13bf3a4c46"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="fe764899-a9e7-49f5-b869-9974b72df59d">
-                    <propertyInstance
-                      Id="824c98e4-b6a7-4566-b174-bb74813f2f31"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="66cd4251-c1c8-4df7-83f7-81ba9b048e6d">
-                    <propertyInstance
-                      Id="899bd477-bb82-440c-9fb0-8870c941a0c7"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="e3e95a74-2991-423d-b383-5c8ca2d7def9">
-                    <propertyInstance
-                      Id="66476765-993c-4a32-9387-3c67f5886740"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="d4245df6-373e-4386-810f-871947d2d29a">
-                    <propertyInstance
-                      Id="b83beda8-c789-4130-844a-b8e53269cec1"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="7776e120-2afe-4c11-8c22-c0c1c6c26180">
-                    <propertyInstance
-                      Id="1e75a44f-ca21-4a9c-a74d-7c391a0657b8"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="1340a72a-5c67-4865-b875-ca712949c748"
-                  direction="Return">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="7771dac9-8e50-4eda-88fc-12bac490c30c"
-                      LastKnownName="Delegate"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="752c277b-64dc-4427-b38f-d6cb53938e86"
-                  name="delegateType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="be174ab4-c263-48c7-97b5-5afdfe87c89f"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3D(Name%3D_CreateDelegate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DdelegateType"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="99696748-f12c-417f-a95f-ecf9913b047e"
-                      LastKnownName="Type"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="304eae69-6636-4ddf-8e8c-b0864fe18de5"
-                  name="handler"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="d6d16f59-4b63-4c76-b06c-c34d74c40411"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3D(Name%3D_CreateDelegate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dhandler"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
             Id="fd919ed3-e87e-4ba3-8e77-c27bd8ac31e1"
-            name="Reset"
+            name="1.2.2 Reset"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -5034,6 +4239,71 @@
                     Id="89bbc20f-88e2-4378-a581-c7644e008b8a">
                     <propertyInstance
                       Id="35afbcd9-794f-40f3-8b6e-7df5b58c84fa"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="df33d639-4686-4d34-9cd1-15f9d4e5376a"
+            name="1.2.1 TablesControl"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="e111d95d-0f78-4cac-9050-e099e939f397"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTablesControl Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="dcd7ae05-064e-4222-ad76-ef72143ba441"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9788487d-fa54-409b-8daf-d846f818cd04">
+                    <propertyInstance
+                      Id="e1e921f3-724d-4dd6-b326-f3c3afc6e1e6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a02144f6-5de0-43fa-8b49-7a269f5c5595">
+                    <propertyInstance
+                      Id="cdfbb0d2-0db9-4eca-860c-6c1701cf5ada"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d38c6358-aab5-486c-8c2c-9b0490fe8571">
+                    <propertyInstance
+                      Id="6188150d-ec7d-416f-91af-2c355c47f3a2"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eff22014-4992-44d2-8fc3-ebe646779d67">
+                    <propertyInstance
+                      Id="b7f68627-0c34-463e-843a-e7cd9c8cfdc0"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b8c562d3-11e9-4b4a-9edc-3aa2b3d44dc4">
+                    <propertyInstance
+                      Id="0f02e7de-9e9d-4982-9ab4-b1228b9e9572"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="31df4594-d50f-48eb-9410-fb9abbb0ee75">
+                    <propertyInstance
+                      Id="baefc649-53ab-4fe3-8784-1f33fb94e64d"
                       name="params"
                       value="false" />
                   </stereotypeInstanceHasPropertyInstances>
@@ -5197,10 +4467,11 @@
         <ownedAttributesInternal>
           <property
             Id="e4077e6d-e669-4dbd-819f-8ad7a54510da"
-            name="DisplayTime"
+            name="1.3.0 DisplayTime"
             isLeaf="false"
             isStatic="false"
             isReadOnly="true"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -5276,79 +4547,13 @@
             </type_NamedElement>
           </property>
           <property
-            Id="da8c5459-f6d1-4c10-9ccd-67ec5dd1fd3c"
-            name="_contentLoaded"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <referencesInternal>
-              <reference
-                Id="265a366f-fa84-44d4-bcb1-ad10cd382d32"
-                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D_contentLoaded"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="e52dd0b6-3994-423b-bf6a-b67697830184"
-                name="field"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="d92c0f73-9c3f-43d0-b315-23dbc8b7d45c">
-                    <propertyInstance
-                      Id="051def1f-74d6-4566-83aa-5b09fd7f9bb9"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="ed8a68ce-be6e-49b5-9c80-2e2bee4bb2eb">
-                    <propertyInstance
-                      Id="bc7367a1-4e23-4547-8c2b-94b9ec58a141"
-                      name="IsConst"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="5f4c20de-a394-47b7-8c5e-21ef3bf9f54b">
-                    <propertyInstance
-                      Id="3a29068d-ce2b-41b5-a0a8-9d9c611a4ad1"
-                      name="IsNullable"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b3f6281b-5937-4805-aece-c6131154747f">
-                    <propertyInstance
-                      Id="bed3fe02-5e9e-4feb-b1a5-90d1d674e764"
-                      name="IsVolatile"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="839c0f8d-30ad-4732-90b2-678427040e56">
-                    <propertyInstance
-                      Id="c312d168-684b-4860-b4bc-c1228f5ca20b"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <type_NamedElement>
-              <primitiveTypeMoniker
-                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                LastKnownName="Boolean"
-                LastKnownLocation="ModelingProject1.uml" />
-            </type_NamedElement>
-          </property>
-          <property
             Id="47b2d8f5-e557-4742-831c-2e45a3afb0c8"
-            name="EventTimer"
+            name="1.3.0 EventTimer"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -5411,10 +4616,11 @@
           </property>
           <property
             Id="d1bffbae-74bc-419f-b753-40f7c1a6ffb2"
-            name="OnLap"
+            name="1.3.0 OnLap"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -5469,18 +4675,19 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
             <type_NamedElement>
-              <classMoniker
-                Id="b8ca2ced-cb23-460e-8063-8aa4a92b0693"
-                LastKnownName="Action&lt;TimeSpan‎&gt;"
-                LastKnownLocation="Package2_0904.uml" />
+              <undefinedTypeMoniker
+                Id="9c0652ea-2595-43b4-9217-8135aa526d3f"
+                LastKnownName="ModelingProject1::System::Action&lt;TimeSpan&gt;"
+                LastKnownLocation="ModelingProject1.uml" />
             </type_NamedElement>
           </property>
           <property
             Id="c1b3ebf9-3686-4ab8-939b-793c216cc56f"
-            name="OnReset"
+            name="1.3.0 OnReset"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -5536,17 +4743,18 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <classMoniker
-                Id="676f586b-f655-440b-adab-9d7e1f7649ba"
+                Id="31c16d4f-7b1b-4561-95e8-d566f8a5e1a0"
                 LastKnownName="Action"
                 LastKnownLocation="Package2_0904.uml" />
             </type_NamedElement>
           </property>
           <property
             Id="157b0c0c-5521-4b48-acf0-494fb013d023"
-            name="OnStart"
+            name="1.3.0 OnStart"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -5602,17 +4810,18 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <classMoniker
-                Id="676f586b-f655-440b-adab-9d7e1f7649ba"
+                Id="31c16d4f-7b1b-4561-95e8-d566f8a5e1a0"
                 LastKnownName="Action"
                 LastKnownLocation="Package2_0904.uml" />
             </type_NamedElement>
           </property>
           <property
             Id="b3364549-1df0-4b36-83f1-0eee8315e695"
-            name="OnStop"
+            name="1.3.0 OnStop"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -5668,17 +4877,18 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <classMoniker
-                Id="676f586b-f655-440b-adab-9d7e1f7649ba"
+                Id="31c16d4f-7b1b-4561-95e8-d566f8a5e1a0"
                 LastKnownName="Action"
                 LastKnownLocation="Package2_0904.uml" />
             </type_NamedElement>
           </property>
           <property
             Id="58f2c4f8-af62-4f10-8c16-74faf1b405b4"
-            name="PropertyChanged"
+            name="1.3.0 PropertyChanged"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -5741,11 +4951,12 @@
           </property>
           <property
             Id="9b961de1-deac-4d60-a253-d704ab3c29d7"
-            name="_Watch"
+            name="1.3.0 _Watch"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -5808,11 +5019,12 @@
           </property>
           <property
             Id="0e91cff9-20a5-47c1-86e7-bb20eb78becb"
-            name="btn_Lap"
+            name="2.3 btn_Lap"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -5875,11 +5087,12 @@
           </property>
           <property
             Id="5045b1e7-0e80-4245-b352-c503eb26bf17"
-            name="btn_Reset"
+            name="2.3 btn_Reset"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -5942,11 +5155,12 @@
           </property>
           <property
             Id="2c7cc48d-9a19-4134-bd4a-74efc22ca84e"
-            name="btn_Start"
+            name="2.3 btn_Start"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -6009,11 +5223,12 @@
           </property>
           <property
             Id="57558e13-0814-41a6-8ad4-8db5bc42d724"
-            name="btn_Stop"
+            name="2.3 btn_Stop"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -6075,79 +5290,13 @@
             </type_NamedElement>
           </property>
           <property
-            Id="f084cb39-e9b9-49bf-ba05-aa93313e5507"
-            name="controller"
-            visibility="Package"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <referencesInternal>
-              <reference
-                Id="7807835e-5a44-4b04-bb6a-f363903a7ce3"
-                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3Dcontroller"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="e683d441-5d55-48d5-abcd-14bf39c344ec"
-                name="field"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="53338262-5309-44c9-97dd-d9ba36b395f2">
-                    <propertyInstance
-                      Id="1feeb2fe-0f28-43c8-bf58-4c6af738f8fb"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="42e1c585-5734-41c8-b926-83fa74fb99a6">
-                    <propertyInstance
-                      Id="bdb88ec2-78d3-4c64-bf89-031bd4794e69"
-                      name="IsConst"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="054ecaaa-16df-4ea2-a94c-b6ee441a6f88">
-                    <propertyInstance
-                      Id="8a585fff-28e7-4a7d-9d5d-4acdd62a5019"
-                      name="IsNullable"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="9230c9d4-5011-40e1-ab57-3c0988cf844d">
-                    <propertyInstance
-                      Id="0cb67ef1-4663-4d02-aad4-50bcb43c9ff7"
-                      name="IsVolatile"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c62c3601-92e9-4682-9470-c816e6537362">
-                    <propertyInstance
-                      Id="66581354-38b8-4828-9588-1fd8c4311922"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <type_NamedElement>
-              <classMoniker
-                Id="c966699c-3f68-4074-a030-e56c49a7ce5c"
-                LastKnownName="TimerControl"
-                LastKnownLocation="Package6_0904.uml" />
-            </type_NamedElement>
-          </property>
-          <property
             Id="b1fe1177-c464-4e0c-a97a-b924e45c0590"
-            name="txt_Timer"
+            name="2.3 txt_Timer"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -6211,244 +5360,8 @@
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="a65163b2-881a-4044-a19b-1d75cdfd3734"
-            name="System‎.Windows‎.Markup‎.IComponentConnector‎.Connect"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="fdc68eec-fb6c-48b9-b0d5-18541593dd5b"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="7350a073-861c-4716-b460-cf20667ca669"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="f0201e37-1d51-45fb-8058-c47aed428866">
-                    <propertyInstance
-                      Id="454a5374-7b8d-4ef2-9cdc-f848d781d62b"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="07646e5b-172a-4e33-8237-57349b099e85">
-                    <propertyInstance
-                      Id="fd68f6f1-05d5-44e1-97d6-cb1fb50eb0b8"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="8226b3e1-851f-4b44-a540-55dbf3965fc4">
-                    <propertyInstance
-                      Id="07b31104-7f62-438b-a155-d38c877ad7f9"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="fc8c3895-aece-4eca-b0de-1f2081f17c50">
-                    <propertyInstance
-                      Id="80b45d4e-f9ca-4ea3-be4d-50f6adf52c8e"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b72d303a-7653-4274-92fb-55c71c2ae84a">
-                    <propertyInstance
-                      Id="f7c7bc1c-938b-43da-8df4-446f649487fa"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3242eb1a-245f-4fa7-b2aa-ca920b1166f4">
-                    <propertyInstance
-                      Id="b4d61c31-611e-4a34-ad95-8ab5c18e9906"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="837f4d68-3508-4488-be5a-981aed353508"
-                  name="connectionId"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="4865e265-cece-4880-860e-723c9464d838"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3DconnectionId"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="eccb396a-575d-4a55-ac43-8c02a621707c"
-                  name="target"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="6fdd905a-c00f-4813-8727-14acef3ee236"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dtarget"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="cd26d316-f2e1-49c8-b37f-c0db643b180e"
-            name="TimerControl"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="e4eaf660-4246-477c-aea8-7827f3049d20"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="161c26a7-7daa-41e0-9da8-b6dc85fa9a4b"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="78df6fe1-ec05-4097-b838-e955ab22c551">
-                    <propertyInstance
-                      Id="15d5defa-fd88-4e2c-ba57-b7760e230012"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="de0f3767-c37f-4ecf-89fc-29fe5da8e8d8">
-                    <propertyInstance
-                      Id="40914554-1f21-4a34-b0b1-f542b90e20bb"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a8f93179-6c4a-40e8-831a-ae9474ba9a37">
-                    <propertyInstance
-                      Id="962d7e0e-acc1-41a3-998e-00304b6ccba0"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="e90053eb-fb2c-4bb0-975a-ad1592d643b1">
-                    <propertyInstance
-                      Id="2e429da5-4b0a-4922-a306-6715bce1970a"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="f9ed58d3-0a05-4990-bc3d-19a64b480883">
-                    <propertyInstance
-                      Id="66d66d88-3f76-486a-b3a1-2a45b1a43484"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="221bd78d-65c7-40d3-b688-3247eb18f642">
-                    <propertyInstance
-                      Id="bfbad0dc-3d82-4b31-9bae-3940cab289c8"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
-            Id="1fd47696-e97e-4df2-8b3d-06dee4163022"
-            name="InitializeComponent"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="095e8241-2be9-47ea-a072-ae642f60aa35"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3DInitializeComponent"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="5cf8b534-3cf0-4e38-b3c3-b88855e3f2ea"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b8b0aa3a-c975-43fe-b40b-e783c95618ed">
-                    <propertyInstance
-                      Id="54ec1af0-0f5e-490e-8b56-2657c8106770"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="289a66e9-1b2c-4048-b0b2-bbe60df78bcc">
-                    <propertyInstance
-                      Id="8eedf77b-84e5-4e35-b043-2ede43a38134"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="27b73743-ad96-44b9-9129-82be7f54f2ea">
-                    <propertyInstance
-                      Id="6e5f3844-5064-4ea7-b359-d5a223b94184"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a98d5782-171d-4739-8702-52ecc451861e">
-                    <propertyInstance
-                      Id="fb497d7d-a176-4499-ad46-c1b0bb6c1687"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b6becd55-6e87-459d-897a-b1999ab55e7b">
-                    <propertyInstance
-                      Id="06c2a6ed-6bfc-48f9-a470-cdd24dd00cbb"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="8f9eed1c-17e2-45f2-ad2b-30471bf96e24">
-                    <propertyInstance
-                      Id="7065a50e-816a-4b62-93c6-eb31c9adbbe5"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
             Id="8b25aebb-ccf9-450d-b336-ac9ccbb0dbd8"
-            name="Button_TimeControl_Click"
+            name="1.3.4 Button_TimeControl_Click"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -6514,15 +5427,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="7f028ca3-ef0e-4d52-a751-65161ecd5964"
+                  Id="3ad65faa-ce31-4f61-a98a-874381d39830"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="578cbed3-5c1a-436a-81e6-899e131cbeb2"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D(Name%3DButton_TimeControl_Click OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows Type%3DRoutedEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -6533,15 +5441,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="48e5a0d7-aab7-46b1-b685-cede491cf202"
+                  Id="364d8c5e-50b3-4a9e-bcb2-acd4f775f6ef"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="fa1a8c8a-7a71-472b-aa7d-0399a270e13f"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D(Name%3DButton_TimeControl_Click OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows Type%3DRoutedEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="bc30f6ce-e949-4aaa-b661-b547d9008f9b"
@@ -6554,7 +5457,7 @@
           </operation>
           <operation
             Id="15aaf409-1d10-4ced-91d5-06e5d422498c"
-            name="NotifyPropertyChanged"
+            name="1.3.2 NotifyPropertyChanged"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -6620,15 +5523,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="a9b89c6a-9baa-47ce-8cf8-a1ea362ee4c3"
+                  Id="b53c56fa-500a-40c1-8202-a6028ad88b9b"
                   name="propertyName"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="4f6ba62c-50a0-4b52-a359-60fe1135125d"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D(Name%3DNotifyPropertyChanged OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DpropertyName"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -6640,114 +5538,8 @@
             </ownedParameters>
           </operation>
           <operation
-            Id="a463bf3a-db9b-401d-8238-3a7d625829aa"
-            name="Timer_Tick"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="2523d2ab-093b-4b66-9242-9517f4af3baf"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D(Name%3DTimer_Tick OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DEventArgs)])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="3da7a30c-5da3-4a15-bca6-d1f8bc23cd98"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="903eee37-40c2-4786-a4a8-ac82400c5505">
-                    <propertyInstance
-                      Id="7775a642-0ac0-4ffe-a804-a5f0b0c9dd71"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="cf6f02ff-b2c2-4ed0-b17e-33d65c6a297d">
-                    <propertyInstance
-                      Id="890b9dbb-4699-495d-9e61-f93021a25425"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c009baa4-60de-4b66-ba61-ee76c2629be8">
-                    <propertyInstance
-                      Id="daa8b1c5-812d-41e7-a0f8-fdf1038ff746"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="45bfab5a-354c-480a-9f33-8040639ef823">
-                    <propertyInstance
-                      Id="1ccfa2c8-805a-4b8c-bd6a-ee99c47dd9df"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="f0fdb0eb-079f-4ec5-ae95-8bd11ec8b796">
-                    <propertyInstance
-                      Id="1f13b07d-39aa-4ad0-bc63-10d4c0887107"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="59f4978c-96f0-4525-aa39-a18707a9fca2">
-                    <propertyInstance
-                      Id="b6519bf1-0e53-4eb7-9983-cd872f4c0fb4"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="6491dd7c-3eb5-48a3-ae32-1d3b2ead3bf0"
-                  name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="bec2976c-615a-46e6-9bc5-6b39bde71e0c"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D(Name%3DTimer_Tick OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="563c511b-05ea-40e4-b0ea-ae2fe8aa5d1c"
-                  name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="92ac52ff-367b-4e45-a8de-1e6108a2c334"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D(Name%3DTimer_Tick OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="bdc66ded-de34-4bca-834e-d4905f90bec5"
-                      LastKnownName="EventArgs"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
             Id="746fa274-ab59-4221-b8c7-8aec437f054f"
-            name="Reset"
+            name="1.3.3 Reset"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -6803,6 +5595,71 @@
                     Id="b2bfd6ce-e692-4d8f-b64f-0856ed725e62">
                     <propertyInstance
                       Id="01006e09-85f7-4416-a2a4-12b7ea00424f"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="09679328-30ba-4fb5-b520-592a198a0825"
+            name="1.3.1 TimerControl"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="9fa0ca04-6273-4fbb-bc4e-89947879d6b0"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Controls Type%3DTimerControl Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d8ecf887-5656-44f6-90d7-183d79fe40ed"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f4ea0a08-5bbe-46e2-afbc-104c57b01adb">
+                    <propertyInstance
+                      Id="cae81452-45a1-416a-aeb0-f377b993a826"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f4c44478-c659-470d-b51a-f5b9c6df5ea2">
+                    <propertyInstance
+                      Id="775c028e-074d-4b51-9cea-c5a3ad8407e4"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="40b1557d-ed60-4c59-923e-6fdf006951b4">
+                    <propertyInstance
+                      Id="91478495-3269-4f0b-80eb-91d1d0e77818"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4e258997-392e-4502-b553-379339fb3872">
+                    <propertyInstance
+                      Id="60f767e2-858e-4d3a-8040-ea33330dad0a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0a403ef6-5f68-4a65-9070-87a5c3553ae1">
+                    <propertyInstance
+                      Id="eb47c50b-1c28-4e46-a944-582eaebecbcb"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0619b867-988a-4aad-b0aa-b8ced46b2b72">
+                    <propertyInstance
+                      Id="03022f7b-5f0a-4982-8a04-b6d80bd1a4c5"
                       name="params"
                       value="false" />
                   </stereotypeInstanceHasPropertyInstances>

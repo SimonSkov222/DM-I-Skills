@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="ad651748-8823-445d-963d-a6418bee13e4"
   name="ModelingProject1" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -41,6 +41,51 @@
         Id="3215e16a-42cf-44fd-943f-d8c7d7cb9474"
         LastKnownName="SQLite_DB_LIB"
         LastKnownLocation="Package12_0904.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="29942a87-ffe6-4fb5-b8c8-da926e27b852"
+        name="ModelingProject1::System::Collections::Generic::List&lt;String&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="089c3a3c-9504-4f60-b461-b1de2f646704"
+        name="List&lt;String&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="e540620e-bad8-4fe4-a5dd-528ffa7e6be0"
+        name="Object" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="fe46043c-c23b-41e4-97b9-11edaba85f0b"
+        name="RoutedEventArgs" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="9c0652ea-2595-43b4-9217-8135aa526d3f"
+        name="ModelingProject1::System::Action&lt;TimeSpan&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="b9302341-58e1-466f-a2cb-fa148c4d1b9b"
+        name="ModelingProject1::System::Collections::ObjectModel::ObservableCollection&lt;String&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="f868f324-0a75-4985-8a1f-68d7c185a40e"
+        name="ModelingProject1::System::Collections::Generic::List&lt;Dictionary&lt;T, Object&gt;&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="548ff431-f619-4740-9bfe-86c1e062c7eb"
+        name="ModelingProject1::System::Collections::Generic::List&lt;Dictionary&lt;Int32, Object&gt;&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="e414b1b2-3372-4b17-aa1c-109e7266904e"
+        name="ModelingProject1::System::Collections::Generic::Dictionary&lt;T, Object&gt;" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

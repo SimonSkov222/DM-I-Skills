@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="3215e16a-42cf-44fd-943f-d8c7d7cb9474"
   name="SQLite_DB_LIB"
@@ -71,10 +71,11 @@
         <ownedAttributesInternal>
           <property
             Id="4336f829-e65a-4a84-bb62-9eadbf7a9e7b"
-            name="TYPE_BLOB"
+            name="4.1.0 TYPE_BLOB"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -131,10 +132,11 @@
           </property>
           <property
             Id="eb82c10a-864e-4600-a2f8-dace20336963"
-            name="TYPE_INT"
+            name="4.1.0 TYPE_INT"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -191,10 +193,11 @@
           </property>
           <property
             Id="8a035113-c154-4878-98a8-56c282ec0f04"
-            name="TYPE_STRING"
+            name="4.1.0 TYPE_STRING"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -251,10 +254,11 @@
           </property>
           <property
             Id="c3fa39a5-67cf-4bdd-a080-14cb7a9b5d1e"
-            name="defaultValue"
+            name="4.1.0 defaultValue"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -317,10 +321,11 @@
           </property>
           <property
             Id="23fe695d-0446-4f64-ae23-a3108dd6c2dc"
-            name="foreignKeyReferences"
+            name="4.1.0 foreignKeyReferences"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -383,10 +388,11 @@
           </property>
           <property
             Id="e204af46-5296-454e-b496-87a4c2ac94c0"
-            name="isAutoIncrement"
+            name="4.1.0 isAutoIncrement"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -449,10 +455,11 @@
           </property>
           <property
             Id="81a6ec39-42d9-480c-b11d-2ca32d617961"
-            name="isNotNull"
+            name="4.1.0 isNotNull"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -515,10 +522,11 @@
           </property>
           <property
             Id="e91fa22c-9aac-4ef7-947e-7bcba94d3fb3"
-            name="isPrimaryKey"
+            name="4.1.0 isPrimaryKey"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -581,10 +589,11 @@
           </property>
           <property
             Id="eb5037c6-c44f-482f-a67e-82b198d55bc7"
-            name="isUniqueKey"
+            name="4.1.0 isUniqueKey"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -647,10 +656,11 @@
           </property>
           <property
             Id="d756c9f9-2ae9-4e0a-8373-f8f88c2c25c0"
-            name="name"
+            name="4.1.0 name"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -713,10 +723,11 @@
           </property>
           <property
             Id="4d92addc-4033-47d9-b419-2d5bebb401c1"
-            name="type"
+            name="4.1.0 type"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -780,73 +791,8 @@
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="d3dc9d03-c79d-48c2-acb0-db65838ecccc"
-            name="Column"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="4211c1b5-b7c9-499e-8415-02340956f7ac"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DColumn Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="39c3c6e0-b332-48d8-bf3a-02ecc84fc7d4"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="1e57e694-2ba5-41e6-9ad1-d9bcf3acc4a6">
-                    <propertyInstance
-                      Id="5fe3e9e1-8794-4a26-91f4-ae3cd7803af1"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="35e354bd-870d-467a-9b90-27ad3b066990">
-                    <propertyInstance
-                      Id="859fe193-5bb4-4fbd-9382-4ba8d4d1fa95"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="cfea7ee8-4c87-4a04-bf45-1983e89f7ff3">
-                    <propertyInstance
-                      Id="51884070-725f-434e-be6b-b801ca00719c"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="77c5e070-2708-4690-9e5b-2c9010fdc4ff">
-                    <propertyInstance
-                      Id="b58d8b2d-90a4-4b3e-9324-378da4287574"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="93933fe9-8eab-4861-b082-52b199d8d38f">
-                    <propertyInstance
-                      Id="c099bb99-f313-45be-aed7-609ad1e0043c"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="511efec2-1dd5-474c-a303-eecf3b5117af">
-                    <propertyInstance
-                      Id="c262bc6e-aeab-4117-be33-9572c6eafc48"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
             Id="5b42421e-78d5-4556-b195-7c3bc61b35e8"
-            name="GetColumn"
+            name="4.1.1 GetColumn"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -912,7 +858,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="cb3f04a7-4169-4cc0-9432-efc5b505283a"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -925,7 +872,7 @@
           </operation>
           <operation
             Id="b0a5f9fd-4846-430a-9073-94b54e5e011e"
-            name="GetForeignKey"
+            name="4.1.2 GetForeignKey"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -991,7 +938,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="dcce7df2-328b-40df-9e03-eb4a0690f7c4"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -1064,10 +1012,11 @@
         <ownedAttributesInternal>
           <property
             Id="f35c0a2e-e742-4442-892b-f00d8239e05a"
-            name="IsConnected"
+            name="4.2.0 IsConnected"
             isLeaf="false"
             isStatic="true"
             isReadOnly="true"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1144,10 +1093,11 @@
           </property>
           <property
             Id="602e939c-8ccb-4cbc-a98c-9a21e9b1bdea"
-            name="LastQuery"
+            name="4.2.0 LastQuery"
             isLeaf="false"
             isStatic="true"
             isReadOnly="true"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1224,10 +1174,11 @@
           </property>
           <property
             Id="20e5a9b0-f613-4345-a6cf-4a16d1d30d8d"
-            name="Prefix"
+            name="4.2.0 Prefix"
             isLeaf="false"
             isStatic="true"
             isReadOnly="true"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1304,11 +1255,12 @@
           </property>
           <property
             Id="2ae2594b-0625-411e-b64f-46cddcf51a19"
-            name="_isConnected"
+            name="4.2.0 _isConnected"
             visibility="Private"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1371,11 +1323,12 @@
           </property>
           <property
             Id="03259ede-bf13-48b3-8e76-c8742936e1ef"
-            name="_lastQuery"
+            name="4.2.0 _lastQuery"
             visibility="Private"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1438,11 +1391,12 @@
           </property>
           <property
             Id="49b921a3-cbd7-4eff-9203-190db1deb3be"
-            name="_prefix"
+            name="4.2.0 _prefix"
             visibility="Private"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1505,11 +1459,12 @@
           </property>
           <property
             Id="de77ba8b-323e-4cb8-b129-461d5419bbfe"
-            name="sql_cmd"
+            name="4.2.0 sql_cmd"
             visibility="Private"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1572,11 +1527,12 @@
           </property>
           <property
             Id="d567fb92-8726-40ef-b9fb-0593a60d4b5b"
-            name="sql_conn"
+            name="4.2.0 sql_conn"
             visibility="Private"
             isLeaf="false"
             isStatic="true"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1640,73 +1596,8 @@
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="60768b1a-9c12-4e7b-abf6-6cf273dcec89"
-            name="Database"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="80b3c6d8-1d7c-48f5-a671-bf746dd4a348"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="ab079ae8-39c4-4cad-9ae8-7ba9c987c8de"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="e064aadf-3020-473f-9e49-bbab137f9300">
-                    <propertyInstance
-                      Id="28fd5453-283a-4a76-93d8-63d15ef709fb"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b1a97f75-6246-47f9-b75c-2b59f77c2068">
-                    <propertyInstance
-                      Id="bdef8f74-5a51-4d85-b880-64caf2e0d8df"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="ff2ef831-3be0-4205-944d-22c6b74727e9">
-                    <propertyInstance
-                      Id="964a9348-96c1-4605-a05e-23822e0b51f7"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c65b7bcc-bc5c-489a-9eff-b6815f062d0e">
-                    <propertyInstance
-                      Id="db358c26-cc30-480c-badd-a86aef4a1308"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3e18b4aa-2407-406e-84b5-b951400dba21">
-                    <propertyInstance
-                      Id="d20331a5-6768-43d2-8b68-d293b785dd72"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="780d9e0b-0fc5-4ca5-8966-54397766efc6">
-                    <propertyInstance
-                      Id="ea2d5ecf-417c-4591-a7c0-c5f90a5ee126"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
             Id="94ed3fae-f509-48fd-8ccb-ad9ecea83f63"
-            name="Backup"
+            name="4.2.19 Backup"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -1771,15 +1662,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="266e5fac-d85f-4db2-96c6-bf52df243bbd"
+                  Id="d9ed2d33-d44e-4377-b758-b10d34500fc1"
                   name="filename"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="bb55376a-12eb-46b5-a0f1-2f1aacff6291"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DBackup OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dfilename"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -1792,7 +1678,7 @@
           </operation>
           <operation
             Id="cdc97a24-3c31-4095-8e7e-74126319f3f2"
-            name="BuildGetRowsCMD"
+            name="4.2.24 BuildGetRowsCMD"
             visibility="Private"
             isLeaf="false"
             isStatic="true"
@@ -1859,7 +1745,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="33479a46-218b-4dc1-b1df-6f5213dfedbb"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -1870,15 +1757,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="94b4f512-9666-4f83-b84b-6dba9d83d209"
+                  Id="06f57ac0-eae7-4dba-84e7-25641baf798e"
                   name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="f90d00b7-bbc1-4578-8396-e60b87162c6c"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DBuildGetRowsCMD OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -1889,25 +1771,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="264415fc-4593-420d-8e75-ac3669ce5c26"
+                  Id="07364762-26f0-44d6-8c0a-c5780be18184"
                   name="columns"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="7aad6cbc-b8b5-4c23-8dac-4f4b752a839c"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DBuildGetRowsCMD OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dcolumns"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="29bc4afa-5e4d-402f-8c05-51d0586012c5"
+                      Id="c0859fb2-e303-4307-a1fd-e74004ceb73a"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="eaa45813-509d-4750-9de9-5c346bd9ac9b"
+                      Id="86274233-2d09-494c-81b5-8f6055339e29"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -1921,145 +1797,15 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="e8050276-ffb4-4fd0-86ab-8f1fba3a80c0"
+                  Id="1208dcb6-6e42-49d2-8036-49cdc9921888"
                   name="more"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="fe98ea71-af66-440c-828e-729d0903f589"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DBuildGetRowsCMD OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dmore"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
                       LastKnownName="String"
                       LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="d0921a9d-864a-4b8d-84b7-0fed58ebcd65"
-            name="CleanValues"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="true"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="99f975b4-26da-4fb9-bfbd-59ef8c01ca1d"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DCleanValues OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="61a7d652-e926-431b-91d8-b99a0ba98ef3"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="30eb72e6-77f0-4b52-8985-76545950e5f8">
-                    <propertyInstance
-                      Id="ee481580-844f-4ef2-ab92-f6200069a0f8"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="17e19f70-3242-4704-b7f8-9eb408693ac0">
-                    <propertyInstance
-                      Id="0a687cfe-4879-49ef-b564-3af00ceebf65"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="7612ae25-d846-48a8-8506-7c031870bab5">
-                    <propertyInstance
-                      Id="b7c7aeb5-6604-4601-9d30-2559386403ac"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="dc62399e-0a11-43ae-b696-2b7b0ab655e3">
-                    <propertyInstance
-                      Id="d8e43596-a884-452c-ad26-ae807016a459"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="93af7697-9b07-4c5a-ac5f-62231f1fa84f">
-                    <propertyInstance
-                      Id="e2216e8d-82f6-4924-8b7a-891cfb8406d7"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3e9357c5-826c-45a2-a992-7cde4170fc25">
-                    <propertyInstance
-                      Id="e4d483b6-85bd-42e2-8b97-125b35673250"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="36c0b7c5-2bee-45d6-a5ec-6835f9f6064f"
-                  direction="Return"
-                  isOrdered="true">
-                  <lowerValueInternal>
-                    <literalString
-                      Id="d380c92b-586b-41a1-b1a2-844b5da5c681"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="6a60b2b1-9ed6-4788-875f-5f3ec355c1ab"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="b8bbd912-f7b9-4b1d-985e-5d8c5b4e2f78"
-                  name="values"
-                  direction="In"
-                  isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="1dfb25f2-f16b-4342-9a57-0702dc42a7e6"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DCleanValues OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3Dvalues"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <lowerValueInternal>
-                    <literalString
-                      Id="ee37186c-2ae3-4a82-9ca5-3b82c06955ae"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="cee56aa3-fce1-4ab5-a6cb-ab2bd6fdad49"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -2067,7 +1813,7 @@
           </operation>
           <operation
             Id="7ef7f08f-d0c6-420b-8640-61cf5c493318"
-            name="Connect"
+            name="4.2.1 Connect"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -2133,7 +1879,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="394a0765-6f67-46e2-9cf2-8200d526d106"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
@@ -2144,15 +1891,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="7e1366da-dd8c-405a-830b-f0013dcf0ac5"
+                  Id="3ec40067-6dd4-4663-85c3-c52b1f6f2bd9"
                   name="connectionString"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="d493351f-204f-4231-84eb-073e51810640"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DConnect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DconnectionString"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -2163,15 +1905,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="7d15b093-d76d-4d03-b540-1d0802448da4"
+                  Id="8d60d10b-4b0e-47e7-b69b-0548f3de44a3"
                   name="prefix"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="c394a2d6-16fc-46da-ab27-85f285a9536e"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DConnect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dprefix"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -2184,7 +1921,7 @@
           </operation>
           <operation
             Id="9102e685-d388-4490-af2a-0a97a50e45d7"
-            name="Create"
+            name="4.2.10 Create"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -2249,15 +1986,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="fe41885d-0eac-4747-bf0b-f1e6143df9f3"
+                  Id="dedd79d0-7017-4f79-9adb-51e031f9f371"
                   name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="bb213cbb-61a8-4456-8329-24b80f912a75"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DCreate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3D(Name%3DColumn ArrayRank%3D1 ParentType%3DColumn))]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -2268,25 +2000,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="7687d4bc-26b9-49fc-a78e-654fc3d29e91"
+                  Id="9ed4488c-9d68-45ab-b0f5-e931bab9e6ed"
                   name="columns"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="5a4f42a7-7a8a-4fc1-9586-c1348b6e2284"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DCreate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3D(Name%3DColumn ArrayRank%3D1 ParentType%3DColumn))]) ParameterIdentifier%3Dcolumns"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="ce5fec57-2d42-4e2b-bb31-241b85323983"
+                      Id="04af50cd-00db-44b4-acd5-a6920d42bb36"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="3a2f4308-3dd8-4da1-9d05-36502afd8b6e"
+                      Id="cae8b5cd-2a1c-4a49-ae39-16e21f877772"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -2301,204 +2027,8 @@
             </ownedParameters>
           </operation>
           <operation
-            Id="5b351103-6f4e-4a58-a12d-f56644f9700a"
-            name="CustomQuery‎&lt;T‎&gt;"
-            isLeaf="false"
-            isStatic="true"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="321cba73-75da-4db9-a355-59fbc518469d"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DCustomQuery GenericParameterCount%3D1 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="bc49b613-263d-4c97-9fec-c4803ee634ba"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="cb7f600c-8269-48d8-9c32-a4b32f02b413">
-                    <propertyInstance
-                      Id="d00d8977-c103-414d-b5ba-b23a1944741a"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="23f5c939-fab8-4c32-9bd2-c30ef176f737">
-                    <propertyInstance
-                      Id="8d08b800-1a40-448a-96d8-8da6272d0629"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="87b82033-4c6c-4105-900c-0f92a43fab8c">
-                    <propertyInstance
-                      Id="32f899e1-2549-42b5-bfd8-cd720efb9f19"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="adebdbee-fc55-4de6-a44f-ffb6bbff4e7f">
-                    <propertyInstance
-                      Id="3c900526-638e-489f-93cb-a85dd1e04dfb"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="bc917db3-8db2-4874-a964-7b9b4288e7f0">
-                    <propertyInstance
-                      Id="4ccc74ad-93c6-4447-9963-437230bb9fc2"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="1ea5f524-b0e3-48d3-be20-a5914e583988">
-                    <propertyInstance
-                      Id="da6a8a8f-b264-4d4e-ba31-3383006bf2b9"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="da6172db-9b9d-4013-a33c-192107f63802"
-                  direction="Return">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="39a5a4d7-2a5d-4f63-8a58-f1d8fdc94363"
-                      LastKnownName="List&lt;Dictionary‎&lt;T‎, Object‎&gt;‎&gt;"
-                      LastKnownLocation="Package13_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="9708e86e-f95b-4c05-b3ab-868412f867eb"
-                  name="cmd"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="99ba22a6-83c1-4d0b-93b5-8bc036d41abf"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DCustomQuery GenericParameterCount%3D1 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dcmd"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="67a4eaef-1501-4d3a-94ee-caa383a296de"
-            name="CustomQuery"
-            isLeaf="false"
-            isStatic="true"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="bf19182e-c1fb-4d66-a6ef-a527c2322b3e"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DCustomQuery OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="55fb2615-9dad-4f1c-8cd0-f7072e3d95af"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3b65a4f5-bc05-444d-86f9-38dcf2a5870e">
-                    <propertyInstance
-                      Id="ac53bf21-8c16-4e4d-bc8e-c70decf4bef5"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="64f65553-1563-416f-8fea-ed87cb805c03">
-                    <propertyInstance
-                      Id="9fff7596-9d4a-41ce-afe8-e48f8b338037"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="2b792284-e0d2-4ae6-b713-3ae20724078f">
-                    <propertyInstance
-                      Id="ad3cb62b-12c0-4219-9457-e25f74d90348"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="49f93617-8ce4-4d96-ad0f-10aa8f9df40c">
-                    <propertyInstance
-                      Id="314412d4-a25e-4d36-b449-b0f9c1db1c2c"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="84d206bb-a5ce-4fb1-98bc-d2df6b436af7">
-                    <propertyInstance
-                      Id="0e7f31b0-92f6-4550-a78b-c6a136403f95"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="49279d91-9c35-47bd-a336-bd3c8c0908c2">
-                    <propertyInstance
-                      Id="c2ca2a0a-b163-4c48-8e4c-b0427fa23d2c"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="4511757b-fef5-4067-834b-715fd13d452d"
-                  direction="Return">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="0ac2ce82-eceb-41b7-992c-9b2eed89d47e"
-                      LastKnownName="List&lt;Dictionary‎&lt;Int32‎, Object‎&gt;‎&gt;"
-                      LastKnownLocation="Package13_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="0c7cc9eb-9681-4d52-b317-38ec0832e1ac"
-                  name="cmd"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="d37607c5-6a87-4f2b-9ec4-d14ec49fe059"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DCustomQuery OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dcmd"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
             Id="c5b2dbd0-7726-4d9e-8b26-ed4486d8e4ad"
-            name="Delete"
+            name="4.2.7 Delete"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -2563,15 +2093,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="4383c8f1-8fb3-47f3-8b4f-37bff08bcac5"
+                  Id="2d9151ec-7e4b-484b-a9d8-d9d22b7f379c"
                   name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="402c44ac-cfbe-46a8-bc4a-81098fbaf094"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DDelete OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -2582,25 +2107,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="a340b99d-2309-4e8a-a30f-43f71a5cb1da"
+                  Id="1468b0c7-68a1-43c7-8361-ff42a1bbe0fc"
                   name="primaryKeyVal"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="db5e9a59-9b77-4f4e-8555-84da4d32aad2"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DDelete OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3DprimaryKeyVal"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="68bf443b-27e7-4f34-8bc3-4f438484d1d2"
+                      Id="b4848bae-b99a-4503-beaa-a2331d5bf3f1"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="16e90f6f-0625-49cf-afa3-c6570b98acc0"
+                      Id="35a29a78-7a6c-4b9a-9f25-a3d26fb56c7e"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -2616,7 +2135,7 @@
           </operation>
           <operation
             Id="4dc4e52a-a992-490d-b67a-1582dc3adcf9"
-            name="Drop"
+            name="4.2.11 Drop"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -2681,15 +2200,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="a4bd5d8e-d885-4e5e-997d-d22ab2990103"
+                  Id="cd64a888-86f3-4999-820b-07e6798b4d36"
                   name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="a2394d4d-a5f1-4c73-ba65-12c0873fc53b"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DDrop OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -2702,7 +2216,7 @@
           </operation>
           <operation
             Id="94064f27-b1e0-43f1-b068-e627a562cf77"
-            name="EscapeString"
+            name="4.2.22 EscapeString"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -2768,7 +2282,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="724e9421-ad73-4b95-9b10-6ceac0d12aa9"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -2779,15 +2294,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c41e425e-b480-4385-bf13-7abcfdf95901"
+                  Id="21f87a1b-99ab-4924-b81d-5144362e6f5d"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="7d88977c-7644-49c0-b668-c98181fe269b"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DEscapeString OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -2800,7 +2310,7 @@
           </operation>
           <operation
             Id="3240a4cf-c775-4a24-a7a1-0b13d4c508f9"
-            name="Exist"
+            name="4.2.12 Exist"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -2866,7 +2376,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="aa679f84-136f-464c-a87b-9802abe0e19f"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
@@ -2877,15 +2388,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="fbf4cc25-696d-4483-837a-f0644214e0bc"
+                  Id="11d4142a-ee66-462a-a510-6e5ece06d6f9"
                   name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="f1ac6d53-aa1c-495e-9dc8-07bf3da5308e"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DExist OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -2898,7 +2404,7 @@
           </operation>
           <operation
             Id="164b9607-7349-4c1d-bb52-596cf25bd2b4"
-            name="Exist"
+            name="4.2.13 Exist"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -2964,7 +2470,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="84f17e52-f9c6-4a50-a3df-28ff2e644061"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
@@ -2975,15 +2482,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="421c7c36-bd1d-4af0-af52-f9c066d0a59f"
+                  Id="e27cdb67-305e-4058-9825-94b49169c290"
                   name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="8a5da454-c01a-425a-86e2-4f2c5a74b486"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DExist OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -2994,25 +2496,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="aea8cbc3-e156-4cfd-b337-c3a8d5cb991d"
+                  Id="b6b2bbf5-e7ff-4ad9-85bd-11bfdd976e1f"
                   name="columns"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="7f4b0ae0-0aa5-4858-826b-696b7a2716aa"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DExist OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3Dcolumns"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="c7d5f63d-c40f-4f74-9fa9-947503ff6981"
+                      Id="d51b96ee-2008-4e18-bcd8-a999999090ad"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="2a68cc71-5e3e-4d61-b9c6-f8f388305393"
+                      Id="0ec5ad5d-9efc-491c-b89a-85d672dc67b3"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -3026,25 +2522,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c0a9842b-25c7-4bd8-890c-a04cf1635c8d"
+                  Id="f96e930d-1e18-4b2f-b830-2637efb135f3"
                   name="values"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="599a80d9-87df-4448-b7c9-beba4640fcbb"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DExist OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3Dvalues"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="08a679f1-2e7d-4e37-8f41-4d0cca9416e3"
+                      Id="a2466a20-7b8b-4870-8b4b-7f7dddd0215f"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="75cc4cea-fd72-47fd-a03b-69f71f7df62f"
+                      Id="3658c1dc-0265-457a-a011-45f39818e9e2"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -3060,7 +2550,7 @@
           </operation>
           <operation
             Id="ee02dbc6-46d4-44de-b245-aa0e74c8eb63"
-            name="GetPrimaryKeyName"
+            name="4.2.21 GetPrimaryKeyName"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -3126,7 +2616,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="77a78f02-e4c8-4a2c-9d95-d64c311790e3"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -3137,15 +2628,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="8833b44b-614b-4af2-8c1e-8dc23f9b1472"
+                  Id="6193571a-be21-4e41-908d-bcb674261641"
                   name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="4142e4c8-5212-4ead-a344-32efe18a998a"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DGetPrimaryKeyName OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -3158,7 +2644,7 @@
           </operation>
           <operation
             Id="e4f0e508-e7c8-47d6-9c72-82ef286c5efb"
-            name="GetRow‎&lt;T‎&gt;"
+            name="4.2.8 GetRow&lt;T&gt;"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -3224,26 +2710,22 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="050c82bb-e08c-4db9-82e4-4c840c98f55e"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
-                    <classMoniker
-                      Id="e0443c78-8ee2-4c9c-9880-3153290b4f9f"
-                      LastKnownName="Dictionary&lt;T‎, Object‎&gt;"
-                      LastKnownLocation="Package13_0904.uml" />
+                    <undefinedTypeMoniker
+                      Id="e414b1b2-3372-4b17-aa1c-109e7266904e"
+                      LastKnownName="ModelingProject1::System::Collections::Generic::Dictionary&lt;T, Object&gt;"
+                      LastKnownLocation="ModelingProject1.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="286f8b94-0725-4f4e-91ec-b575ee9fc9f4"
+                  Id="ba8598d2-bc2d-48d0-871f-5eedd70a5881"
                   name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="9c904dac-3d30-4ed8-8887-6cccc10847f0"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DGetRow GenericParameterCount%3D1 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -3254,25 +2736,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="81000e36-93ac-4bb9-bdf5-11940f7272ec"
+                  Id="704fda02-10dd-48ce-b0c8-a3066a257952"
                   name="columns"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="5021cecb-fb3e-4e43-9db2-f775f22fd2c0"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DGetRow GenericParameterCount%3D1 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dcolumns"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="6519044b-a012-411c-885c-35dc18995617"
+                      Id="bdf50edb-46af-4693-9bfd-c31a207476ac"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="3049e62d-d142-4339-8ce2-41ac2ad65f36"
+                      Id="87f52b56-9158-467b-a0bc-1f933e6d3ef9"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -3286,15 +2762,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="b46af5c6-0f4d-45c8-88fe-4c127189772e"
+                  Id="b4ac4916-efec-4ff6-a989-98fbb4ce7dc7"
                   name="more"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="dc34be7e-6b8e-464e-8c62-ae25c8f3d64f"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DGetRow GenericParameterCount%3D1 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dmore"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -3307,7 +2778,7 @@
           </operation>
           <operation
             Id="e1a7217f-121b-472b-b9a3-75712f46be07"
-            name="GetRows‎&lt;T‎&gt;"
+            name="4.2.9 GetRows&lt;T&gt;"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -3373,26 +2844,22 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="e832c658-70de-43b8-8f19-5a972594bc5a"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
-                    <classMoniker
-                      Id="09dd2109-d583-4137-996d-830dbec2b27c"
-                      LastKnownName="List&lt;Dictionary‎&lt;T‎, Object‎&gt;‎&gt;"
-                      LastKnownLocation="Package13_0904.uml" />
+                    <undefinedTypeMoniker
+                      Id="f868f324-0a75-4985-8a1f-68d7c185a40e"
+                      LastKnownName="ModelingProject1::System::Collections::Generic::List&lt;Dictionary&lt;T, Object&gt;&gt;"
+                      LastKnownLocation="ModelingProject1.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="7715e425-2680-4b13-97db-17857d53eede"
+                  Id="660992b5-5bc7-4fc5-a72c-8020e228a1f8"
                   name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="9acd9573-1772-497c-9d14-5eb78b161451"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DGetRows GenericParameterCount%3D1 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -3403,25 +2870,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="1a858cd7-0786-4283-915b-f3a916e38125"
+                  Id="19bbed9f-c89c-46f6-97b5-ebfa0e8fc48a"
                   name="columns"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="696e51b7-fd02-476d-904b-0fd1b4673c20"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DGetRows GenericParameterCount%3D1 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dcolumns"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="3210436c-f547-40ca-91bb-f69c5a2e60ee"
+                      Id="e0de6f1b-e665-427d-a826-e2f933c5d88a"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="b171a766-1a53-43bf-9de0-dc322f239655"
+                      Id="8c49dd55-dbbd-4355-bb68-b54e96e9b016"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -3435,15 +2896,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f68a16e4-32cf-43b0-b411-234ef44ea3b3"
+                  Id="b74c56d2-7a69-4d2f-96b9-6b40c74e12b5"
                   name="more"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="a224167f-92ca-4e7b-a2bc-930ece111930"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DGetRows GenericParameterCount%3D1 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dmore"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -3456,7 +2912,7 @@
           </operation>
           <operation
             Id="435273e7-9bf3-4116-bf6b-cc7040bb585b"
-            name="Insert"
+            name="4.2.4 Insert"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -3522,7 +2978,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="d5e97ef8-358d-4580-b8b3-172333b52203"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -3533,15 +2990,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="9b32c19d-8129-487b-bce9-096b74a2e2a1"
+                  Id="b9011d7a-c7af-483d-ad7a-db23b572bf7c"
                   name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="5c18d8b4-d69c-40fa-898e-b9c85639cede"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DInsert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -3552,25 +3004,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="43601e29-3c8e-4d69-b1f0-4766c90ee3de"
+                  Id="2cb0ce24-dc95-470b-9c6f-1c8bb84ac819"
                   name="columns"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="2d83ea3e-af49-452c-a4ca-b1fa93d42803"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DInsert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3Dcolumns"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="7ddd400b-601c-4a6e-be6b-e29e889195ad"
+                      Id="78ae5544-616e-4d30-a70b-dbdc273e8b13"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="4a874b43-4c49-42cc-a80f-229f1073afc8"
+                      Id="e4822414-6f3e-47fc-85b8-e8b40dfe5fe5"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -3584,206 +3030,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="7b0290e4-677d-47be-bd30-2a8f7b29184d"
+                  Id="f5c6838f-a246-4f2d-84e0-73914760fc83"
                   name="values"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="e0eb00bc-5082-4ad0-b4e8-111875583ada"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DInsert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3Dvalues"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="ef116d6a-cb07-4de3-b57b-5a472429a82a"
+                      Id="44d746bf-b24e-4562-ba45-a8664188d7b1"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="a4adf14c-f7d7-4a1a-9b27-0f39fd5da4b8"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="82194720-033f-46fa-b316-abb8b8b8f804"
-            name="IsEquals"
-            isLeaf="false"
-            isStatic="true"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="aec4aa7a-e070-4243-9f7a-fe021c083bde"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DIsEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="ec527b6b-812e-4330-a636-300379866bb5"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="20c0e92b-6f3c-4af1-a2e7-c6ec9680fc37">
-                    <propertyInstance
-                      Id="7445f7d7-1179-41ae-9780-005ddafe6e88"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="44e76964-65e3-47ef-a1b5-e5affff4d83a">
-                    <propertyInstance
-                      Id="aced9fd0-3654-44ec-b5a1-fd5c3fdca28f"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="5d592317-4971-422e-88e7-59b3ebadca16">
-                    <propertyInstance
-                      Id="d82e16d6-521a-490a-8596-3ee94c3e83ce"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="125e0a76-c941-41c5-b9d9-8f479f9d78df">
-                    <propertyInstance
-                      Id="f9ea0300-7218-4ed9-a4d9-f41bb486cf13"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="96815848-b661-4fb9-8e04-b5803178b01a">
-                    <propertyInstance
-                      Id="82132fa7-6418-4f6d-bdd0-c3c263056bb6"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="58caa78e-3105-4ea9-85b7-8beb4eaccfe0">
-                    <propertyInstance
-                      Id="5abcd480-034c-4f9e-852a-522b9327d133"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="8641d764-0e8c-4ada-b825-3c0c920d5872"
-                  direction="Return">
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                      LastKnownName="Boolean"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="aea8d25b-12eb-4106-9257-7f52bfc0143e"
-                  name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="6ce85554-9866-4436-87b9-ed71327359fe"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DIsEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="fcc57c3e-1fd5-4732-ad64-e7987714eb35"
-                  name="primaryKeyVal"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="f7a54871-ee42-48ff-8484-e06d9c643ee0"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DIsEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3DprimaryKeyVal"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="91e831c4-1ac3-4a0e-9d97-e57c549d5857"
-                  name="columns"
-                  direction="In"
-                  isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="3d77c32a-dc32-4b00-96b8-e7425e71f7c3"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DIsEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dcolumns"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <lowerValueInternal>
-                    <literalString
-                      Id="f343e466-8420-4ff0-af22-5a35b0c7b494"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="311041b9-5264-4bd0-bbe7-55fb7b0b6d64"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="49674b14-f698-4bc9-9bfa-19556b109ae4"
-                  name="values"
-                  direction="In"
-                  isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="14ea2924-1704-45bc-8c83-100fdd1ea53e"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DIsEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dvalues"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <lowerValueInternal>
-                    <literalString
-                      Id="92e475ac-c6df-4a13-9e09-e8628005cf47"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="0c1042c9-3291-4423-97e9-c1bcba71fd59"
+                      Id="0f0cc6d2-e79e-4923-abec-336ae0d85c3f"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -3799,7 +3058,7 @@
           </operation>
           <operation
             Id="131404d3-40a6-45f3-bbc3-1d33f81ddd1e"
-            name="Load"
+            name="4.2.20 Load"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -3864,202 +3123,15 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="aef3bb0e-4bff-4723-a825-07555b120abd"
+                  Id="f70154e7-1f40-4182-b835-a4c3b8e47148"
                   name="filename"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="314ea5eb-485c-4373-b2d9-69870ad93574"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DLoad OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dfilename"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
                       LastKnownName="String"
                       LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="969493f9-176e-4c2f-8ee5-17e48ade5e54"
-            name="Update"
-            isLeaf="false"
-            isStatic="true"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="32b1006a-a4d5-44f3-b1a8-5ef4a219e4fd"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DUpdate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="58ab5dca-552e-4f1d-b3b6-afeb191da23e"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a3fc1dbd-001e-44af-8f78-246e8ea1e7f0">
-                    <propertyInstance
-                      Id="e7acb2d1-ed94-42c3-bebd-875d086b340a"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="f97d73c3-bad0-4817-a76f-5a666759cc58">
-                    <propertyInstance
-                      Id="48221682-802c-45f3-9500-8ff6b68e43ad"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="71304592-8d66-481b-a493-845d6c7b4375">
-                    <propertyInstance
-                      Id="3a33e317-8a01-4ebd-aff0-3129f7c7423d"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="aa0cb0e5-409c-4725-92d6-d8bfcade3958">
-                    <propertyInstance
-                      Id="19c982cf-7c10-4954-8302-c9b9562ee0ff"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="05b84dcc-7614-4709-81ba-fa2845991257">
-                    <propertyInstance
-                      Id="5b7fe636-c3e3-4044-b58d-35cf10483afe"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b2940024-19dc-4812-98d9-0fcdc0d2f8f8">
-                    <propertyInstance
-                      Id="1cfb2d2f-798f-4eb8-b045-4bbea7558f43"
-                      name="params"
-                      value="True" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="d9ffcf0f-ef35-4caa-be4d-e7a012178720"
-                  name="table"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="a0479576-f583-404a-a1ed-2803d15f870c"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DUpdate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3Dtable"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="7755b942-4c0b-4318-bd10-1849ea225f16"
-                  name="primaryKeyVal"
-                  direction="In"
-                  isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="5b55f676-8225-4860-b4e9-e02a2f9ae9bf"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DUpdate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3DprimaryKeyVal"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <lowerValueInternal>
-                    <literalString
-                      Id="cc8adb89-c9a9-4dff-8ed6-c4d0b7c0d5e1"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="cf620fc2-8d91-4102-866d-488553dac296"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="750a2167-a32e-4179-a21b-69bea0545dc3"
-                  name="columns"
-                  direction="In"
-                  isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="417cb7b9-0f6b-460e-b695-0dc58e3c8e68"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DUpdate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3Dcolumns"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <lowerValueInternal>
-                    <literalString
-                      Id="4465764b-0c15-42e6-8488-873e4d47a582"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="a81b31e8-fe6a-4aad-bdcb-e53117612748"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="864d661a-1b2d-46bf-978b-bc6c7effed3d"
-                  name="newValues"
-                  direction="In"
-                  isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="9d11f0f9-676e-46ef-9b20-da7495272d06"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DUpdate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))]) ParameterIdentifier%3DnewValues"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <lowerValueInternal>
-                    <literalString
-                      Id="b641e00d-a6fb-47b9-93ec-437f84b89d4d"
-                      name="Lower"
-                      value="*" />
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString
-                      Id="1aa7ea78-d288-42b5-ab67-3d09d13c976a"
-                      name="Upper"
-                      value="*" />
-                  </upperValueInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -4067,7 +3139,7 @@
           </operation>
           <operation
             Id="32c45079-aa6a-4a88-aba8-105bb487cb9c"
-            name="Disconnect"
+            name="4.2.2 Disconnect"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -4133,7 +3205,913 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="def3c985-7f6e-4c79-8c94-9f44f568eb75"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="df6ff84b-c617-4e15-9314-ea4a641bb402"
+            name="4.2.17 ExecuteQuery&lt;T&gt;"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="f76e7730-5899-4234-ac28-334c23a6b3d2"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DExecuteQuery GenericParameterCount%3D1 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="063a8760-5f66-4aae-a3b6-6558fdf85190"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1cb0b9b9-0a37-4061-a38c-39bff74af60a">
+                    <propertyInstance
+                      Id="077bc0a0-90fe-4408-a713-5f3fb137a146"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3e949eaf-d0f3-4c51-9765-cf622b23c28e">
+                    <propertyInstance
+                      Id="232ed526-9126-458b-aaaf-80a3b7b861d7"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3a6c3fdc-dc00-44a5-9bdc-d2483306b432">
+                    <propertyInstance
+                      Id="a08ec5f5-0606-4bf2-902b-77b3e2b12777"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f98b53b6-7c62-43b8-9785-fcafb846950e">
+                    <propertyInstance
+                      Id="b51a6977-4a24-4fc3-8a03-b9a2d1d89094"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="526b48d2-c598-4522-aaa7-c6d97ccb62bc">
+                    <propertyInstance
+                      Id="fd75af2c-9c67-42e3-92ea-a92004466098"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a0417965-9c84-44cd-8079-176de813b466">
+                    <propertyInstance
+                      Id="54da40ad-8b10-45c2-bdd8-b0e4575c016a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e7ce07c5-e14c-412f-b49d-7365cd8345e6"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="f868f324-0a75-4985-8a1f-68d7c185a40e"
+                      LastKnownName="ModelingProject1::System::Collections::Generic::List&lt;Dictionary&lt;T, Object&gt;&gt;"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4f20ca56-40a0-4fa3-ae07-ad2c9cab747a"
+                  name="cmd"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="be6dde1d-2533-438e-af7d-c075d9e6dc5e"
+            name="4.2.18 ExecuteQuery"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="6e52b9b1-36a7-4659-b327-2291aaf64300"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DExecuteQuery OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="16348b7f-f1af-42df-bdb3-05f73d5d13aa"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="624ec3c1-c4f3-4425-b6eb-ae527d56dce1">
+                    <propertyInstance
+                      Id="14fe43a3-c979-40f2-9d35-9ad565e07774"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f3003ad2-e707-4e86-b230-328e45c3ec49">
+                    <propertyInstance
+                      Id="7129f567-4adf-490c-bc2b-ba218cf07783"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8e0481ad-9b7a-4ce5-9f41-9bd479156732">
+                    <propertyInstance
+                      Id="7a88bb89-7561-4741-9b57-9f7a0a7c3c2c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ea7f2756-0583-42be-918b-ea5752dafabf">
+                    <propertyInstance
+                      Id="9da54e90-3857-421b-b808-9ecaf8b3bf9d"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e2b821c4-3da0-4919-82c1-30bb8fb10a02">
+                    <propertyInstance
+                      Id="f04d6971-18e1-4531-bf5c-52fe51096523"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3de6e629-f47e-4957-b5da-d59c829de59b">
+                    <propertyInstance
+                      Id="42d06606-365b-4a94-875e-c697ff59f927"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7ebfa04a-8629-4a9d-b365-d37752c2c12a"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="548ff431-f619-4740-9bfe-86c1e062c7eb"
+                      LastKnownName="ModelingProject1::System::Collections::Generic::List&lt;Dictionary&lt;Int32, Object&gt;&gt;"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="13ccd31d-6bee-4bb6-a454-b74f4d73837d"
+                  name="cmd"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f7ecccbe-5771-4564-8a59-d989d8ae0096"
+            name="4.2.16 IsEquals"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="0a60e124-0bac-4ed4-8af7-adad94613bb9"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DIsEquals OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c5d04720-c0c6-46e3-ad4d-3754230edfd1"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4b4b2abe-0f80-44bc-97c2-8014de2696d8">
+                    <propertyInstance
+                      Id="52389088-bf11-482e-a715-254186e29771"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="01aab155-cd44-4469-ac67-2b7483986d63">
+                    <propertyInstance
+                      Id="d72d345d-9b45-4ce7-8053-ba50a0d1ec47"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c3bd137f-8e1f-4b8a-8a16-c072937f8143">
+                    <propertyInstance
+                      Id="9f6386e5-83db-40ea-8506-4200bb30d577"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="49b1e2f4-8d9d-4d44-b358-969911e81bbb">
+                    <propertyInstance
+                      Id="bf98309d-4a02-4f63-8462-77ac39f854af"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="64c19a14-b7f6-49ce-9a5a-8a42e38b46b2">
+                    <propertyInstance
+                      Id="f78a4f2d-2ef9-440b-bbdd-e7ad69eb99a2"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c968993c-3873-484f-9736-f5d3a467f589">
+                    <propertyInstance
+                      Id="48e46533-9962-46cd-8ff3-154db0622578"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bb1fd69e-ad81-4954-9fff-6aa20abd877f"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="49527436-51c2-4fa9-a019-f40f7dde3f35"
+                  name="table"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="498dc2dd-249c-442c-a219-005a1bbaa522"
+                  name="primaryKeyVal"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f487d9b8-f3eb-4f5a-8def-4159b6e75e90"
+                  name="columns"
+                  direction="In"
+                  isOrdered="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="8821f82c-8d4c-4de9-ad54-3f95c861f788"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="6c611b0c-3e70-4ca8-a6e5-32adb0f6a03e"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a456dfde-c41b-4efa-ac71-3aba1599dcf5"
+                  name="values"
+                  direction="In"
+                  isOrdered="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="9e6a9f2c-8b10-4e21-9450-87a5ba9084a0"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="9dd7b677-e911-48ac-93ea-d4553e317ec2"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="6597de7d-e9dc-4eb9-abdc-89990d2907d3"
+            name="4.2.23 StringsSQLready"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="74894375-0df7-4ba4-82bf-b6bbab5b427a"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DStringsSQLready OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="71b71f6f-99b1-446e-af8c-f7a9db01ef8f"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3fc6050a-08eb-4325-a896-55fa88a00ec2">
+                    <propertyInstance
+                      Id="fd48aa4b-ee66-42ff-9494-716dcd0d0bae"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="32607aaf-19e8-4a70-9ac0-1a5f46e38fba">
+                    <propertyInstance
+                      Id="35818300-8992-4609-9b32-7d2cef2f29f6"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ea81634f-26b9-417d-a161-957761e7fce7">
+                    <propertyInstance
+                      Id="a5b4aba2-9626-426f-9aa6-ac1330945d0b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5de16768-7f26-4b39-8875-4000b1420c90">
+                    <propertyInstance
+                      Id="e561d728-e6ba-482b-bd02-d3950f18a8dc"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bce69966-caeb-4819-bf3a-4844b16e3db8">
+                    <propertyInstance
+                      Id="109977d5-7837-4374-a037-e46ef6f26b65"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="55dc6192-0a2f-4927-a36f-8dbe8e79e8ce">
+                    <propertyInstance
+                      Id="b85bfb1f-ccf3-4b06-a13f-b1808c4097d6"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="35be8906-78a5-4f00-88be-ced6a7079104"
+                  direction="Return"
+                  isOrdered="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="073cec3c-8a12-438d-a712-31b1c26a0ad8"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="c17b9f43-6d2a-4f2c-bb83-3fa9724d79b4"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f2ce4552-1230-45c3-a1fd-4dcc54b8cb54"
+                  name="values"
+                  direction="In"
+                  isOrdered="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="75d680b3-0aca-4e2d-8a7d-5a75b8558b9e"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="be393ea5-8c8b-4594-8c0c-813b3148055f"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0abf6615-693c-4baf-b8fb-5d9bee2e6be4"
+            name="4.2.5 Update"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="335dfedf-dc39-4edc-86b7-4b3567ef45d7"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DUpdate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a50cd5bb-96cb-4a7d-85a4-ed0f5510edb8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="41a89e0f-3c30-4075-a189-605e41b3aea4">
+                    <propertyInstance
+                      Id="f3e02fef-97a6-4bc1-aed6-e5284af04790"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c141b2a2-4211-4ac3-a76a-3650194b1907">
+                    <propertyInstance
+                      Id="924ce946-5552-4ed8-aab8-c38cfaf8d82c"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="625c215d-9b63-44ab-ad87-5cfb95885d3e">
+                    <propertyInstance
+                      Id="6cdae3d8-29b5-4c06-b55f-f8108398a906"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e9565d1a-f356-4e89-8004-f9566b58dfc3">
+                    <propertyInstance
+                      Id="87cae568-3924-4e76-a2b5-9541132236ad"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="611c9403-bb45-4d86-8779-db9fa4f3ef1e">
+                    <propertyInstance
+                      Id="63a2a02e-43ac-481e-a2b0-66a952dcff65"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="255dc99d-028b-4f5d-9dd9-8a9278e89738">
+                    <propertyInstance
+                      Id="eab76201-72eb-445f-9795-95fb4f3d33ae"
+                      name="params"
+                      value="True" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="36a1312c-0bb8-45af-a3bc-b360daf0d52c"
+                  name="table"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9cdf8a08-7a47-42ef-b566-cbfcfbb4cf81"
+                  name="primaryKeyVal"
+                  direction="In"
+                  isOrdered="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="22858444-579d-4095-95ed-a2c56d5b0e8b"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ff5960bc-9d67-4c67-a03a-eae84db2bd49"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="715dca64-9027-4980-a539-74d0c0a0f956"
+                  name="columns"
+                  direction="In"
+                  isOrdered="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="8dfdd12c-5969-49bb-8364-11daaa2456c5"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="834275e8-53c8-4088-a2c3-5c9298799d05"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="765db306-47d0-4657-9ea7-c9f290cceec7"
+                  name="newValues"
+                  direction="In"
+                  isOrdered="true">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="b078e746-5cd1-4237-81e0-54b6bd5ae26a"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="05565506-fece-4462-845f-bddb569f20a4"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="7749e078-c49b-4424-a33b-1d02cde0c940"
+            name="4.2.3 Insert"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ec987d94-971a-4538-bb61-1a02d1a73e01"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c8661167-1ae2-4cf0-8de0-d2a021968e7e"
+                  name="table"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="664cbed8-acb1-4ca4-b595-fa85642f6a9c"
+                  name="columns"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1cdf6a4f-caeb-4276-bc33-a01b617a4d71"
+                  name="values"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="6edad9a7-06de-4486-8e22-3456eb449d56"
+            name="4.2.6 Update"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="eb273515-90b6-4ec2-8f5e-a1b81557cce9"
+                  name="table"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e2f7190a-0820-4eae-8682-4211f9d1ddae"
+                  name="primaryKeyVal"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e18d2af3-4c8d-4bd7-8009-56941a79e47a"
+                  name="columns"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="01f30e51-98de-4a44-afbf-4ab1f0aa7ed7"
+                  name="newValues"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a1aabc71-5086-46e2-a150-1ac587d24868"
+            name="4.2.14 Exist"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fd0ad363-a52e-4b24-a98f-11e96d121780"
+                  name="table"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f0514969-63c9-4595-8a07-445e62b656e2"
+                  name="columns"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f77fb46f-f0c0-4d63-b645-862238073ada"
+                  name="values"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="eb01b58e-1ae6-416f-8cb7-b887fe539db8"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="f116d24d-b55b-4b5d-8116-5158cb2ae0eb"
+            name="4.2.15 IsEquals"
+            isLeaf="false"
+            isStatic="true"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="aefc3b7a-46c6-419c-9fbc-06c271f83254"
+                  name="table"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="65bb2d66-999b-4d1f-949a-34714eb24cf2"
+                  name="primaryKeyVal"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="dcb23ecc-2ea2-4ffa-b312-8e5978754c00"
+                  name="columns"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="cbc1970b-c383-48b2-b00e-67566154ae91"
+                  name="values"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_0904.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="73aff067-167b-4aba-ad0c-2dc548daa984"
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
@@ -4206,7 +4184,7 @@
         <ownedOperationsInternal>
           <operation
             Id="5f57aad7-b134-48ae-bae8-a91283391a0b"
-            name="IsInt"
+            name="4.3.1 IsInt"
             isLeaf="false"
             isStatic="true"
             isAbstract="false"
@@ -4272,7 +4250,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="f8732ae6-c2ec-468e-ac44-458976c07915"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
@@ -4283,15 +4262,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="a5296dd9-d799-4388-a95d-1f8e1d79d9c5"
+                  Id="861be56e-b63f-4e23-8a9b-76d91375f574"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="282ce336-dfc2-4b0b-b159-a3a28fea2eb2"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DExtensionMethods Member%3D(Name%3DIsInt OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -4304,6 +4278,18 @@
           </operation>
         </ownedOperationsInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="0adf8659-d7ed-4deb-94e9-56e819ba6201"
+        name="T">
+        <referencesInternal>
+          <reference
+            Id="d0f285e6-ac10-464f-9da5-e81fc325e75b"
+            handle="viewcode://./CodeSchema_GenericParameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FSQLite_DB_LIB%2Fbin%2FDebug%2FSQLite_DB_LIB.dll&quot; Namespace%3DSQLite_DB_LIB Type%3DDatabase Member%3D(Name%3DGetRows GenericParameterCount%3D1 OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DString ArrayRank%3D1 ParentType%3DString))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3D0"
+            tag="ViewCode" />
+        </referencesInternal>
+      </undefinedType>
     </packageHasNamedElement>
   </packagedElements>
 </package>

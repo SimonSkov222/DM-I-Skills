@@ -9,7 +9,7 @@ using System.Windows.Data;
 namespace DM_Skills.Converters
 {
     /// <summary>
-    /// Klassen bruger interface`et IValueConverter
+    /// Klassen bruger interface`et IValueConverterC:\Users\Simon Skov\Source\Repos\Opgaver\DM_Skills\DM_Skills\Converters\ValueToThickness.cs
     /// Laver en thickness fra en double/int hvor 
     /// man også kan angive et procent tal 
     /// </summary>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="2c9d9188-a69c-49b3-8869-fd91d3773dc5"
   name="Converters"
@@ -106,10 +106,11 @@
         <ownedAttributesInternal>
           <property
             Id="ac223448-f5f5-49e3-8bdc-04d398bd1a4f"
-            name="FalseValue"
+            name="3.3.0 FalseValue"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -179,17 +180,18 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <classMoniker
-                Id="931f3bf9-fe5b-4972-af7f-8d0db84549f3"
+                Id="156ae68f-f129-4f5f-a016-529ca72df576"
                 LastKnownName="T"
-                LastKnownLocation="Package1_0904.uml" />
+                LastKnownLocation="Package11_0904.uml" />
             </type_NamedElement>
           </property>
           <property
             Id="fb545160-eaf9-4e7b-b7c8-9869d7829ef6"
-            name="TrueValue"
+            name="3.3.0 TrueValue"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -259,16 +261,16 @@
             </appliedStereotypesInternal>
             <type_NamedElement>
               <classMoniker
-                Id="931f3bf9-fe5b-4972-af7f-8d0db84549f3"
+                Id="156ae68f-f129-4f5f-a016-529ca72df576"
                 LastKnownName="T"
-                LastKnownLocation="Package1_0904.uml" />
+                LastKnownLocation="Package11_0904.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
             Id="0330a2bd-f70b-410d-9bba-24c359eea1ec"
-            name="Convert"
+            name="3.3.1 Convert"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -334,7 +336,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="7fc6f253-5c51-41ef-804e-44bc0d01d81b"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -345,15 +348,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="3ea29765-cee7-4cc3-a266-24deeaa8706a"
+                  Id="196fcf88-7648-49a6-a62e-b2190955ec5c"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="0b5fd013-72b9-4389-a71c-0fe566a26f90"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3D(Name%3DBoolToValueConverter GenericParameterCount%3D1) Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -364,15 +362,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="d95650c2-f8d1-43a7-ac38-2aa532345a52"
+                  Id="a8fd81b2-5788-4659-bf19-3fbe59d2d157"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="105fe87b-1a3f-4b2b-8e40-300fe93c8b61"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3D(Name%3DBoolToValueConverter GenericParameterCount%3D1) Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -383,15 +376,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="5b4efc95-2ef7-4725-a3d2-2de3b0c7a0d0"
+                  Id="7b355cf1-0b30-45d7-9f35-b637ea176d27"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="55199ca4-1a9f-4661-9795-0111cefce30a"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3D(Name%3DBoolToValueConverter GenericParameterCount%3D1) Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -402,15 +390,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="35fa0bda-25b0-4fc8-a262-4913ed325022"
+                  Id="3c97a1a7-19e3-404a-9b9d-0abda8b52c89"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="cfee3621-86a4-4f4c-8e5f-01b9adc5ef8b"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3D(Name%3DBoolToValueConverter GenericParameterCount%3D1) Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -423,7 +406,7 @@
           </operation>
           <operation
             Id="73cb40d5-ca1b-427f-bf52-309e8f9f6c5a"
-            name="ConvertBack"
+            name="3.3.2 ConvertBack"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -489,7 +472,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="05d96566-59b1-4b7b-9664-cffca2dc82d1"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -500,15 +484,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="72a1c280-901f-4d9f-bc7a-363e40e1f449"
+                  Id="31b67c03-cf05-45b2-a266-44368576df85"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="e67bc7af-16cc-45bd-96f2-397e843d7db4"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3D(Name%3DBoolToValueConverter GenericParameterCount%3D1) Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -519,15 +498,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="6c9bce69-705c-4a04-835a-03ff51174f03"
+                  Id="e619eaf3-7529-4c44-9df7-6d256e2ac762"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="99c6c062-9df6-4871-9d39-f299bccd0f5f"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3D(Name%3DBoolToValueConverter GenericParameterCount%3D1) Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -538,15 +512,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="cf026e7d-7f83-4330-970d-ef3b803ab906"
+                  Id="3dd3d576-b780-45bf-9968-39700abc13ee"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="3ad1b5ea-88be-41ea-af9a-98db02016c79"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3D(Name%3DBoolToValueConverter GenericParameterCount%3D1) Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -557,15 +526,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="83330a59-87bf-4c67-a13d-20f2ec55ab25"
+                  Id="0643acb8-6d6e-43f0-9a76-f26bd7e00256"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="faac5a4b-9220-47d7-9bf2-c1c0d02de41b"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3D(Name%3DBoolToValueConverter GenericParameterCount%3D1) Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -575,71 +539,6 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
-          </operation>
-          <operation
-            Id="81862425-9e65-4665-a683-b8d0c97d0c52"
-            name="BoolToValueConverter"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="594813bd-98b4-4fa0-b39d-f470c69f8fd4"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3D(Name%3DBoolToValueConverter GenericParameterCount%3D1) Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="f0638dc9-1e46-49cc-bb41-2213e676be97"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="5039ab1b-f0b5-4042-b45c-b40af9b1a2e9">
-                    <propertyInstance
-                      Id="2f36ffb7-b877-4674-addb-c6d99864eed3"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="9d22fba6-8fdc-47e7-89fe-f803591e40b2">
-                    <propertyInstance
-                      Id="9481fcbb-5af0-4522-bb4e-b6fe31450678"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="f8240563-d09d-4c70-a86d-5e63902ad2bc">
-                    <propertyInstance
-                      Id="49bf9a81-ec41-478f-a3e2-4a90c8756b36"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b170ef40-b2c5-40d0-a1a7-1ca626c06692">
-                    <propertyInstance
-                      Id="6bd668ab-bfa0-4680-92f2-ba9a681ce819"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="71c10d05-bf2f-4c4c-95d0-a907b3f71093">
-                    <propertyInstance
-                      Id="4503dfd4-0302-42cf-a5b6-2b59cd866b8b"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="ecb2e43b-8984-42b3-9c2c-f0b2ab12c602">
-                    <propertyInstance
-                      Id="9b8b455e-84c4-4a97-93cc-f849626bb8e5"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -712,73 +611,8 @@
         </suppliersInternal>
         <ownedOperationsInternal>
           <operation
-            Id="bb83de25-9f7a-4467-af3a-03df0ec770d2"
-            name="AutocomplateConvert"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="e2323680-09c3-43f3-b2a2-5d83f16c3b3f"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocomplateConvert Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="dc5534cb-586b-4aca-aa92-68ca8ae9bb11"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="45704180-b9a4-4cd1-aeb6-57f3e876f56b">
-                    <propertyInstance
-                      Id="26796b2a-eba5-4f8b-b46c-75c2d3944121"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="0462e5a7-31d2-42f5-a041-4a8399670caf">
-                    <propertyInstance
-                      Id="7a273683-4a63-4e4c-a658-a82db9d8863d"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="f94a6cbb-d42b-4458-a388-6e5fb6ab8bee">
-                    <propertyInstance
-                      Id="f4fdc647-fe6c-4b96-af9b-46216962d756"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="df841f14-dea7-46f2-8c0b-799904330467">
-                    <propertyInstance
-                      Id="88826c76-6736-4c6c-b2e9-6fd1b9c1e085"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3e4213fc-2df9-4bb1-b019-520f93f48ba8">
-                    <propertyInstance
-                      Id="3eb77d45-bcd4-4bfa-b9fd-aaeb72091ae4"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="6b7b3c40-a79f-4c3b-8d53-3139d6c7fed7">
-                    <propertyInstance
-                      Id="13c74246-1b30-47d0-a09a-c9b421d19936"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
             Id="f8f8744b-6369-464d-949d-80618b4777f8"
-            name="Convert"
+            name="3.1.1 Convert"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -844,7 +678,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="1efeeda8-523c-4938-a40e-9c1c3af7d37a"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -855,25 +690,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="17857af8-4ed7-4d6b-b06c-4e7be73e6939"
+                  Id="89b2bfff-fb5b-43b6-9c5f-e0b0a9876bbf"
                   name="values"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="054471ba-d4f8-4db3-bf2a-776415377571"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocomplateConvert Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalues"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="8bcee241-ca10-4feb-8fb0-e101c4658f93"
+                      Id="8db9750a-b931-4786-8c9d-6054ceb53cee"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="b5befa22-5dc8-4998-986b-c3d360e2ef71"
+                      Id="a45529c8-2a4b-4021-80ad-a936aedfa095"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -887,15 +716,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="bd5ddb04-9b9c-4c54-afb9-d80f543093fe"
+                  Id="305939e3-0088-4691-957a-0db9180671c7"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="4291d503-2add-4699-9c53-b6b4446543fa"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocomplateConvert Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -906,15 +730,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="8c2dedd2-e3b1-43c3-ab89-5649af808887"
+                  Id="961ef1f7-52bd-485b-916c-6f937add0752"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="c41a1cfa-8111-4154-96c7-d53fcc4a553c"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocomplateConvert Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -925,15 +744,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="d4c1b18a-ddab-4a8a-85f7-f09d9324ec16"
+                  Id="104ce7e2-7cba-4540-ade1-ba671adb9632"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="c715f5ba-01f5-43c9-9c96-de7be5799867"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocomplateConvert Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DObject ArrayRank%3D1 ParentType%3DObject))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -946,7 +760,7 @@
           </operation>
           <operation
             Id="47890863-09d4-4920-be28-ccbea006d6f0"
-            name="ConvertBack"
+            name="3.1.2 ConvertBack"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -1036,15 +850,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="3e11cc0e-7f0b-45dd-875c-5aa71c06a3cf"
+                  Id="612b4c88-1a87-4713-b686-f75aead268a7"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="877d831e-c4ac-438e-b333-342ea9ddb688"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocomplateConvert Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DType ArrayRank%3D1 ParentType%3DType))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1055,25 +864,19 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="cec3418f-d554-45b1-a1c0-eeaf744c54c3"
+                  Id="86999a37-46d6-4399-a78c-bd975cfec0d1"
                   name="targetTypes"
                   direction="In"
                   isOrdered="true">
-                  <referencesInternal>
-                    <reference
-                      Id="cffd3380-7661-4373-92c1-fd08b2a980ff"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocomplateConvert Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DType ArrayRank%3D1 ParentType%3DType))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetTypes"
-                      tag="ViewCode" />
-                  </referencesInternal>
                   <lowerValueInternal>
                     <literalString
-                      Id="15eed7b5-a7ac-46c6-80a3-5bfa80dc80b1"
+                      Id="75c318fb-d23c-4c12-95ad-ee2acc8a10be"
                       name="Lower"
                       value="*" />
                   </lowerValueInternal>
                   <upperValueInternal>
                     <literalString
-                      Id="c14d3e41-66fd-4537-a244-ee64e9296c1f"
+                      Id="6c224c8a-6743-4ba5-86ab-64bf37ff922d"
                       name="Upper"
                       value="*" />
                   </upperValueInternal>
@@ -1087,15 +890,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="fb7c18b6-2408-4e46-b4d5-c0f2dbc98479"
+                  Id="50503059-f130-4244-974e-7596f854acbe"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="986e77db-a2e2-4e0d-a82f-c03c5c6d5c27"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocomplateConvert Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DType ArrayRank%3D1 ParentType%3DType))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1106,15 +904,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="29c23ed6-4f1f-436c-99d7-ab33b0ecedea"
+                  Id="deacc3a9-f090-48ec-b55c-b7ee6218ff80"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="d65a6a74-37c4-44bc-bde7-cd67c636d5f8"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocomplateConvert Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DType ArrayRank%3D1 ParentType%3DType))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -1197,7 +990,7 @@
         <ownedOperationsInternal>
           <operation
             Id="47c79882-6822-46c2-9b93-f42f9e30a69d"
-            name="Convert"
+            name="3.2.1 Convert"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -1263,7 +1056,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="ff9c7bf0-ccc4-471d-95e5-8677e21363f3"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1274,15 +1068,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="bd98fe76-1858-465f-9154-8cf288ebec9f"
+                  Id="eb30ad6d-d914-4cd7-8a68-00602b2b029d"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="e2c5d5cd-0492-42cf-a97e-0fd5159d56ba"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocompleteItemConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1293,15 +1082,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f3ba4270-65be-4b9c-b2f8-acc8b9c78865"
+                  Id="75089ba1-428c-43bf-8656-552947534c43"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="69755e79-d8ec-483d-b18a-9fba315cd77f"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocompleteItemConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -1312,15 +1096,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="a6a250a5-f397-4145-a7dd-4fccedeef42a"
+                  Id="ad0bef25-88dc-4f92-8aa4-edd8921f222d"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="13f561b1-1e7d-47b1-b8b0-a74a4d23f226"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocompleteItemConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1331,15 +1110,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="3bbff54e-6bdb-43dc-8c64-cdd94fe2c0bc"
+                  Id="39c02258-2665-4381-83fe-8608391bbc61"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="e7c76018-0489-4b3f-b602-a344898c33d6"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocompleteItemConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -1352,7 +1126,7 @@
           </operation>
           <operation
             Id="5671af1b-cb4e-436c-9339-195cd165ce13"
-            name="ConvertBack"
+            name="3.2.2 ConvertBack"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -1418,7 +1192,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="d6960695-848f-478f-b718-ac4f8f26c477"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1429,15 +1204,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="6c42ab26-4382-461f-b779-a71dc3544f47"
+                  Id="cbb9aa90-e4e4-44ff-8c8d-59d0df36f65e"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="b6498a79-fab4-42cd-87df-b7ab6d41aa2b"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocompleteItemConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1448,15 +1218,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="a2c19509-8c0e-4d90-88ad-e42dcc19e237"
+                  Id="7c20bdad-dca7-4287-817c-677d2d39f101"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="45d36c52-8d97-4568-acff-6b464c6e3806"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocompleteItemConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -1467,15 +1232,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="808429bf-a218-45f0-8d22-eb0dac073e79"
+                  Id="627aa75d-691e-444f-9280-1b3a20c2d2ff"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="54fd4194-2494-457a-a591-998e80be088a"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocompleteItemConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1486,15 +1246,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="23159742-ff53-4948-b0ea-ae142aadd877"
+                  Id="30aadb17-2c12-4e3b-84df-ecd673607118"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="bb2d935a-5d93-4fe8-b80c-66568788e3ce"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocompleteItemConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -1504,71 +1259,6 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
-          </operation>
-          <operation
-            Id="b010f457-5e59-46ce-9b86-1733ae2dacc4"
-            name="AutocompleteItemConverter"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="a91bbc46-69ca-42e1-af34-e4dd6f5aab54"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DAutocompleteItemConverter Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="8902ae6c-8856-4bf7-81b8-804890013945"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="603e083f-0dd1-496c-a0ea-40d1bb9b5889">
-                    <propertyInstance
-                      Id="c7ed0a87-9d0a-4cdc-ab20-5941783ad9a5"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="df0526c7-6c97-4d3b-a05b-5220185a1b65">
-                    <propertyInstance
-                      Id="aa8700d9-70b8-48a1-8ef3-1ca023d0d964"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="0a2e41c0-0f02-42fe-afe2-5b7b6201fe22">
-                    <propertyInstance
-                      Id="b29114d3-8aee-4218-9ee2-504c1ae58d6e"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="e0ef4d06-928e-4f0c-8f5e-9dc06d2a8f3d">
-                    <propertyInstance
-                      Id="647e0067-a9ac-4552-bdfd-08680fb27d5c"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="92f6cd4d-94b3-4bf6-9f2d-dbf2e51a84a4">
-                    <propertyInstance
-                      Id="de2aff15-97b3-4c1e-ba4f-929526bab195"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3929b77d-8791-4e9c-838f-59591794b15a">
-                    <propertyInstance
-                      Id="acc22c2f-7a7b-4de7-8143-3933ae927a0e"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -1629,91 +1319,6 @@
             </propertyInstances>
           </stereotypeInstance>
         </appliedStereotypesInternal>
-        <generalsInternal>
-          <generalization
-            Id="7cddd398-6af8-491d-9554-473623d91fba"
-            isSubstitutable="false">
-            <classMoniker
-              Id="f6144cd4-c35a-475b-88fc-347dbf0294a4"
-              LastKnownName="BoolToValueConverter&lt;Visibility‎&gt;"
-              LastKnownLocation="Package1_0904.uml" />
-          </generalization>
-          <generalization
-            Id="06531739-57d8-411c-be24-525795e36aa7"
-            isSubstitutable="false">
-            <classMoniker
-              Id="9e1c21e4-6c5b-4db1-98af-df5695cf639b"
-              LastKnownName="BoolToValueConverter"
-              LastKnownLocation="Package1_0904.uml" />
-          </generalization>
-        </generalsInternal>
-        <ownedOperationsInternal>
-          <operation
-            Id="cf98accf-e99f-471a-a790-42b620e33c49"
-            name="BoolToVisibilityConverter"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="97aa54ec-f4d4-44b6-9d07-08e97e3599e1"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DBoolToVisibilityConverter Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="2f7f46b4-47cc-4e9f-956f-d6b294e90743"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="00d3ff7f-4982-4038-959f-f8c83425a170">
-                    <propertyInstance
-                      Id="e2027f02-7823-4ff6-9cfc-c9f007faeb03"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a59dec23-eb4c-4272-b9d5-949373134f9f">
-                    <propertyInstance
-                      Id="2bd35ca9-e4a4-460e-98e6-3d938e803a12"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="36531f7d-c5ee-420f-b9ca-512fd4b2a0e2">
-                    <propertyInstance
-                      Id="19928728-ed22-4454-9b4c-712c7d223e19"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="04f6e132-3ec5-4c04-bd4c-f6aa3aa8405c">
-                    <propertyInstance
-                      Id="f1031086-dd3d-42bb-9088-0f5140db575d"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="4186100b-a42e-4ba2-8b96-c04c73dd36a2">
-                    <propertyInstance
-                      Id="41131b02-15e2-45c9-8ca4-222f0afaf11e"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a3fa7c53-06c6-4765-b558-e6b5f8a2e2f1">
-                    <propertyInstance
-                      Id="b16880e3-ed74-4b22-a2fa-1127e93700d0"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1872,7 +1477,7 @@
         <ownedOperationsInternal>
           <operation
             Id="d76d6b74-24b0-41be-ab08-fbd3d162a9d9"
-            name="Convert"
+            name="3.4.1 Convert"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -1938,7 +1543,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="1fc9a07e-d632-4c53-a76b-655a4f518cbc"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1949,15 +1555,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f289ebda-2f98-492b-86b2-3ad0de2d6e6d"
+                  Id="b7d4ce19-f534-4f9f-ba93-8f374744a361"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="20bca6ce-e32a-4a55-8cda-6fe32dddf5da"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DProcentOfValueConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1968,15 +1569,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="5c7de376-da3c-461a-bd05-973a7ada0195"
+                  Id="a105e940-1042-4e69-bbdc-786c554268da"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="28beade0-b1e8-47f7-9e03-3c8569c5ba9a"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DProcentOfValueConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -1987,15 +1583,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="b14a3bce-4cb5-438a-b40f-6393bec2d605"
+                  Id="60fefa25-b103-4e34-98c6-9c3909304767"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="b5ccc0c8-9052-4177-9a4d-1ad02d2b12dc"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DProcentOfValueConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -2006,15 +1597,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="3f9b80a2-8fd4-4881-8ca2-e0ea007206a1"
+                  Id="7da21a9a-85b8-4cfa-9a91-399f50265690"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="2064b871-57b8-4b3e-9cff-f34eb6739c20"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DProcentOfValueConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -2027,7 +1613,7 @@
           </operation>
           <operation
             Id="6831da22-053c-4f60-89f3-fb549b773921"
-            name="ConvertBack"
+            name="3.4.2 ConvertBack"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -2093,7 +1679,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="21b504ce-0668-492e-9470-a1c00dd9461c"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -2104,15 +1691,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="5a1d9b73-e32b-4cc7-b983-28ab45d31180"
+                  Id="fedb0291-44f6-4a10-b300-e4f3e64586b1"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="477c5559-0ab2-4788-b734-b5396f914514"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DProcentOfValueConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -2123,15 +1705,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="ba32803e-e7e9-4156-b398-182fa7e33552"
+                  Id="aa7f9ba1-661d-4b0b-9901-3c311a4e348d"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="92232160-d935-4229-928f-4f4f06dd2bc6"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DProcentOfValueConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -2142,15 +1719,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="5f5e5ad4-235e-44fe-832b-2a815bb4cf65"
+                  Id="ac9b02c9-3fa1-4e75-8bc3-bc9020664418"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="855348eb-6aee-4e5b-846f-d587fdce4a8a"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DProcentOfValueConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -2161,15 +1733,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c96781f8-f642-43c2-967d-2fe19cf5c8b4"
+                  Id="16975ce6-f1eb-423f-a096-473de42e8659"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="acf925ec-8ca5-444d-8265-32f7d5e8e105"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DProcentOfValueConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -2179,71 +1746,6 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
-          </operation>
-          <operation
-            Id="83cbbe3c-ac17-42b8-b48c-f9663fe376d9"
-            name="ProcentOfValueConverter"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="65a205b1-a255-483c-a04e-03997667e5d7"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DProcentOfValueConverter Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="b91c8621-bc6a-4717-8041-1cd8be3556c8"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="eda85328-a7b6-4c0c-859f-9a800b3914bc">
-                    <propertyInstance
-                      Id="bdcbe13e-dcd3-4846-8343-46ab376fc03b"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="2b0423d2-5a58-449c-a01e-b553f998004e">
-                    <propertyInstance
-                      Id="60e26b32-4660-4f79-95da-47a50c63023e"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="456b9bb8-b104-431c-978c-ebc2bbedded8">
-                    <propertyInstance
-                      Id="64744868-a59b-49c3-94ca-23d8919b3b83"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="23f78498-92b2-48ba-b887-7b9f072046e8">
-                    <propertyInstance
-                      Id="f373e11e-7fd2-4508-91cb-cf766fbb9e14"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="2fe1e7f0-6ae2-472c-b107-97475242f44b">
-                    <propertyInstance
-                      Id="63ff8b95-f5e1-4518-86c6-58d664bd804d"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3211b67e-1537-4713-929b-7372fe8fb5ba">
-                    <propertyInstance
-                      Id="71462fda-6a61-481b-8566-0d1dece3822c"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -2762,7 +2264,7 @@
         <ownedOperationsInternal>
           <operation
             Id="fd48b79e-c679-48be-8391-869b96c6615e"
-            name="Convert"
+            name="3.5.1 Convert"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -2828,7 +2330,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="959d9d48-ce0d-437b-9ddd-35234a7aa889"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -2839,15 +2342,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="e133ada9-cfa3-4580-902c-e4d0a217799c"
+                  Id="517eb9b8-5496-4d35-b10d-387ea61770cc"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="35d663d5-f7a9-48f3-9ea4-8548679d3885"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DTimeSpanToStringConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -2858,15 +2356,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c0461c00-5a57-48c2-9d49-cc66cef7b853"
+                  Id="62e792ef-3a7b-4346-88ac-e04122343760"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="955b8184-ceb5-4e51-a229-f6cd39c04b6b"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DTimeSpanToStringConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -2877,15 +2370,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="1c461603-f619-4f76-95e5-df4273862fe5"
+                  Id="d91fdbc7-c537-436e-8636-fc8aad7b3185"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="06f94ceb-c30e-4273-bcec-b7829cfeb189"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DTimeSpanToStringConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -2896,15 +2384,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="24ad8a68-cc76-45e4-be9a-a75ff10207d1"
+                  Id="42dac1ee-7412-46da-ad99-86845cb5a2f2"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="3cac642b-9a58-4280-8ae3-37e8ab0a98d0"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DTimeSpanToStringConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -2917,7 +2400,7 @@
           </operation>
           <operation
             Id="17fdbfcc-fcb9-478d-82c2-31ac5d921f01"
-            name="ConvertBack"
+            name="3.5.2 ConvertBack"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -2983,7 +2466,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="10e2b90a-af0f-4ab0-9019-7e17f1203c4c"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -2994,15 +2478,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="02b70ede-199b-4fca-890a-0c73f78035f1"
+                  Id="c7046134-bd89-428a-a7ba-79845dea2b9b"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="ad104715-9b74-4a8a-9086-bf4859f3a7ec"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DTimeSpanToStringConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -3013,15 +2492,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="500c74ec-d8d4-4412-96d4-fd08a0ac7ddc"
+                  Id="e0e6f73a-4f00-49d7-8bf5-08daa6910114"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="80f32c1e-835c-4615-be4e-acba52ca36b4"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DTimeSpanToStringConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -3032,15 +2506,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c474fa75-aafe-402c-b78c-26ea27189d93"
+                  Id="184013c0-cab4-4548-8b06-74f82488e601"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="9d1e65f1-8370-4068-a879-799cd150ea9e"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DTimeSpanToStringConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -3051,15 +2520,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="1a896d45-fcd2-48dc-b3c5-d67e15cbf62a"
+                  Id="a1583e41-37cb-488d-8db4-c601df7b5497"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="81c7e1a1-f37b-4578-b0d5-5c9704e4338c"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DTimeSpanToStringConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -3069,71 +2533,6 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
-          </operation>
-          <operation
-            Id="a5a82057-57a9-41f1-8b8e-d1bd37545b42"
-            name="TimeSpanToStringConverter"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="97d377a8-399c-4ab5-be85-147228b2f7d8"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DTimeSpanToStringConverter Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="7d2bf506-2b1e-4028-9f8e-3ed0ec8c5fe7"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="094ba323-d33e-4650-8729-fe8e1254aace">
-                    <propertyInstance
-                      Id="ee6280ca-aed8-43c6-b7a9-3736c9cc2c31"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="bc1b003d-d507-47a0-90b5-baf9e0de80d3">
-                    <propertyInstance
-                      Id="d31f416b-a397-4046-a800-b62c1afeac6e"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="df5d25b0-d69b-4bf7-bbd3-54521544efe0">
-                    <propertyInstance
-                      Id="7205c52d-c94b-4689-803d-9692d88a4870"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c83dbe45-a7cb-4a99-b71a-d265b6a07170">
-                    <propertyInstance
-                      Id="febbc0f9-607f-4e2a-87b8-5368f0ce1ee8"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="a3dcbbb2-a1f0-4ca5-8192-a733b006e29b">
-                    <propertyInstance
-                      Id="90101fea-7df4-4aa6-9f4f-3d3a85396608"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c6bf8762-036a-4262-bc01-712a3f4e6c4e">
-                    <propertyInstance
-                      Id="e7ab4221-a4ad-4ee2-aea0-9c706b4db1ff"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -3651,10 +3050,11 @@
         <ownedAttributesInternal>
           <property
             Id="38b230af-b679-4185-9b88-64114b6eadc1"
-            name="UseOnBottom"
+            name="3.6.0 UseOnBottom"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3731,10 +3131,11 @@
           </property>
           <property
             Id="14e92549-0f3b-4797-8ce9-2ab373a45eaf"
-            name="UseOnLeft"
+            name="3.6.0 UseOnLeft"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3811,10 +3212,11 @@
           </property>
           <property
             Id="7244dde8-188e-43b1-9d8f-4d3c0e47be22"
-            name="UseOnRight"
+            name="3.6.0 UseOnRight"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3891,10 +3293,11 @@
           </property>
           <property
             Id="b2064fa4-2a48-4497-a240-1e70aa207224"
-            name="UseOnTop"
+            name="3.6.0 UseOnTop"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -3973,7 +3376,7 @@
         <ownedOperationsInternal>
           <operation
             Id="3b94b10b-9d58-414f-bdf6-e28fd2177793"
-            name="Convert"
+            name="3.6.1 Convert"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -4039,7 +3442,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="f822e618-ae6e-41be-802b-bf98f6e3baa6"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -4050,15 +3454,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="0b176010-8bf3-4894-948d-3139f6ff89c4"
+                  Id="19ff5087-7556-4032-8ef4-149c14cb8972"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="d6fde7bc-54c8-44f5-b444-bcf50921055a"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DValueToThicknessConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -4069,15 +3468,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="525c8280-aad4-461c-9075-c853a6b2e63f"
+                  Id="ec2660bc-58e6-46f1-af1f-da769c265e41"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="885691fa-d9b0-46ba-9f3e-a8af74bf7077"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DValueToThicknessConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -4088,15 +3482,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="974c137a-158d-4923-bc37-a61b18408a0b"
+                  Id="f20ddda0-4c40-4352-907c-bb22dc36af6c"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="e825d9d5-7b97-4be4-8f2c-32210b8f6f8c"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DValueToThicknessConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -4107,15 +3496,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="794c4391-ae30-446c-8c51-0229958d597c"
+                  Id="45b3734c-1074-416f-988d-1f9851e979a8"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="038e5b2f-d441-4628-abcd-d70384b1aebc"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DValueToThicknessConverter Member%3D(Name%3DConvert OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -4128,7 +3512,7 @@
           </operation>
           <operation
             Id="0108bc58-5118-41fc-868e-f099acaf00f3"
-            name="ConvertBack"
+            name="3.6.2 ConvertBack"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -4194,7 +3578,8 @@
               <operationHasOwnedParameters>
                 <parameter
                   Id="84f9e178-17f6-4c2c-bf87-dd7aad4005ea"
-                  direction="Return">
+                  direction="Return"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -4205,15 +3590,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="42a9d58e-e21f-43b2-aefe-2a68edc6db81"
+                  Id="54a0f3ba-258b-4971-962c-37eb4d176ffc"
                   name="value"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="6cc1c27c-507b-46bb-8e13-91369f352e8a"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DValueToThicknessConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dvalue"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -4224,15 +3604,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="72b875f3-cebb-4610-9138-2a7a8bd22b83"
+                  Id="8208aafc-8f1d-4678-8493-8a03c53e7c18"
                   name="targetType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="eb63586f-b2ac-4143-9515-d33345380704"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DValueToThicknessConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3DtargetType"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="99696748-f12c-417f-a95f-ecf9913b047e"
@@ -4243,15 +3618,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="1b0b7578-3ed5-48d7-afb8-fad0e3ae7b8f"
+                  Id="a3b83052-bebb-4aad-8867-06209575ca18"
                   name="parameter"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="5fac6e7f-ae0a-4024-bc42-a9856b312ac7"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DValueToThicknessConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dparameter"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -4262,15 +3632,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="ca94b0a0-e8f9-4457-b18a-44b0760419db"
+                  Id="b640ec1e-18ec-4b95-834f-4aebda481366"
                   name="culture"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="ccf82bc3-6273-44bf-8261-ef0c5fc69d96"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DValueToThicknessConverter Member%3D(Name%3DConvertBack OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem.Globalization Type%3DCultureInfo)]) ParameterIdentifier%3Dculture"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="1ef5e7ee-0010-4fdd-973d-b090542b26ed"
@@ -4280,71 +3645,6 @@
                 </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
-          </operation>
-          <operation
-            Id="2455f8f7-7e9d-46cc-b117-25032a429fd6"
-            name="ValueToThicknessConverter"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="9176fd52-dd71-4af8-8ad8-c660597e8abf"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills.Converters Type%3DValueToThicknessConverter Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="becbc9a2-10ec-46f8-be31-41b8b84f5ea5"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="7fddb4b6-c0fc-4ae8-a1a2-303a8f6f4d28">
-                    <propertyInstance
-                      Id="3bdf7faa-6422-495e-bbae-3c4cc59b821e"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="d300b4b6-e62b-40b7-82ea-a57b845ef942">
-                    <propertyInstance
-                      Id="8ba310b2-d7f7-47f3-ba36-162dbd80787c"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="4a69b251-23a3-4b27-895e-60021e6b090e">
-                    <propertyInstance
-                      Id="00252e2e-4be1-46f6-ace7-96ce5314ccb9"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="14676bad-85d5-4f82-a455-214371d2f09f">
-                    <propertyInstance
-                      Id="643992bd-7aee-4884-a3a7-effe7399d0d5"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="4b041e07-8b92-44bc-92d6-60ba5a119429">
-                    <propertyInstance
-                      Id="e3c6acb6-f8d3-4a6d-ad9e-86c0219eb6e2"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="cff9b7f2-383c-4aaa-bc42-c6beca731fc2">
-                    <propertyInstance
-                      Id="21267f7f-8af5-456f-ab57-03ed060241fc"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
           </operation>
         </ownedOperationsInternal>
       </class>

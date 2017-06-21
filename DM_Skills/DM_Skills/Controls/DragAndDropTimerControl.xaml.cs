@@ -30,7 +30,7 @@ namespace DM_Skills.Controls
         /// format vi gerne vil have
         /// </summary>
         public void Add(TimeSpan time)
-        {
+            {
             //Top element
             if (time == null) return;
 

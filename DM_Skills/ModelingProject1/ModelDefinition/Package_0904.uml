@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="60689f88-5bc2-4055-94c1-217a5e19e029"
   name="DM_Skills"
@@ -154,71 +154,6 @@
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="dc42ba0e-6fdf-42d5-92a4-542a8eef9888"
-            name="App"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="8e041bc6-97a5-4b6b-85dc-495d0f79d1c4"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DApp Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="123dab17-b383-45b4-a03f-a5ba7b6a868a"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="2454b7a2-1347-4152-8800-36f3cf2d2f72">
-                    <propertyInstance
-                      Id="9f281cd2-0fd2-4f29-9221-6b163cdeaef8"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="938b5b90-c35a-4141-a95e-94ba8106d27e">
-                    <propertyInstance
-                      Id="a3890c30-0f15-449e-8274-3bc17c01acb6"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="52a93b5f-e882-4979-ac4a-aeffe583bcd2">
-                    <propertyInstance
-                      Id="f62affc4-a59b-4221-afec-1d90965ed9ba"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="5ee7e911-631d-4ce4-aea1-f7fab62aadeb">
-                    <propertyInstance
-                      Id="6d530bf1-e362-4a77-b9ea-ff86abd01c11"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="61092f5a-ab06-4188-9b44-86dbd3374c5e">
-                    <propertyInstance
-                      Id="68126279-66d9-4daf-b2a6-dc4c7423b9fa"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="396b2783-a508-4ce3-b581-077a9246607a">
-                    <propertyInstance
-                      Id="a752128a-8379-4734-93f0-f0fe976cc82b"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
             Id="7475b9d3-97c8-46d0-a3b2-19f59f600e9b"
             name="InitializeComponent"
             isLeaf="false"
@@ -341,6 +276,71 @@
                     Id="82bfc791-d049-4aa8-b2eb-f10fbc70c949">
                     <propertyInstance
                       Id="c285970d-149c-4ea3-8063-40aa4c668b14"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="c2973361-ffd8-4db7-b37c-fc405884f882"
+            name="App"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="5d4a8ee9-1d24-416c-9e09-4eebdfdea017"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DApp Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d8270d13-4729-46ce-af88-048c6d8e408b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ef713199-3123-4e4c-aaaa-675b6683bd66">
+                    <propertyInstance
+                      Id="02c56dbb-c873-4ce9-9e27-8c3343cf7387"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="30d753fc-4d3f-44f6-8e78-0ef81c45976c">
+                    <propertyInstance
+                      Id="34eb40c9-559e-4d46-bd9b-9fb6422a9e79"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="12390d67-47a7-4b23-b204-a574af7c27d4">
+                    <propertyInstance
+                      Id="dbbcb177-7d25-4299-810f-40e55ebfd995"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="433ab63d-4799-4089-ae39-4a658d545d84">
+                    <propertyInstance
+                      Id="203f489f-96ba-4d91-b392-bb93de0cc7eb"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b2db103c-aca1-492a-bfe1-27315d1bd945">
+                    <propertyInstance
+                      Id="a5e28d21-51cb-479d-b804-97e7ce58ef69"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7709c056-a36c-4e45-aaf1-eea5aa4708e5">
+                    <propertyInstance
+                      Id="7de0d6a9-6c6f-40bf-88a2-84587c81af68"
                       name="params"
                       value="false" />
                   </stereotypeInstanceHasPropertyInstances>
@@ -510,10 +510,11 @@
         <ownedAttributesInternal>
           <property
             Id="62eff36a-1144-4196-90a1-5b72f42b06e3"
-            name="Round"
+            name="1.1.0 Round"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -590,10 +591,11 @@
           </property>
           <property
             Id="e3dbea96-035e-494c-9283-fb5f3b75faaf"
-            name="SchoolAutoComplete"
+            name="1.1.1 SchoolAutoComplete"
             isLeaf="false"
             isStatic="false"
             isReadOnly="true"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -662,86 +664,20 @@
               </stereotypeInstance>
             </appliedStereotypesInternal>
             <type_NamedElement>
-              <classMoniker
-                Id="b3b33690-d2b0-4288-aa2f-104ce09c8746"
-                LastKnownName="List&lt;String‎&gt;"
-                LastKnownLocation="Package13_0904.uml" />
-            </type_NamedElement>
-          </property>
-          <property
-            Id="c44c6310-747f-4bd0-b2a0-274997bce0e0"
-            name="_contentLoaded"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <referencesInternal>
-              <reference
-                Id="1366ac6a-1d9c-40ce-83c5-fc378717f345"
-                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D_contentLoaded"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="644639bb-403f-40b9-ad23-9e8378bacf3b"
-                name="field"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c13b277d-8cbf-45ab-a95f-9483f5935481">
-                    <propertyInstance
-                      Id="1d77e718-4ebb-4f91-a8d0-386ca96f1c4c"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="522bde4d-5d12-4edd-8c9a-7adf423cf92f">
-                    <propertyInstance
-                      Id="38ad065e-5336-4ac9-b19a-026f21066405"
-                      name="IsConst"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="b000b970-1839-4cff-b9ec-6b7ecf411622">
-                    <propertyInstance
-                      Id="6565ed16-3ae9-4078-a9af-c7f68aa896cb"
-                      name="IsNullable"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="99877c76-4d3c-4412-825b-bce789bc1ecf">
-                    <propertyInstance
-                      Id="92599c3c-cf7f-4608-94af-1aee374ce6f2"
-                      name="IsVolatile"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="ea8f5a0d-6e37-4f38-9425-f2091a905988">
-                    <propertyInstance
-                      Id="6a97363c-08de-47c0-885c-0a109109ab71"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <type_NamedElement>
-              <primitiveTypeMoniker
-                Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
-                LastKnownName="Boolean"
+              <undefinedTypeMoniker
+                Id="089c3a3c-9504-4f60-b461-b1de2f646704"
+                LastKnownName="List&lt;String&gt;"
                 LastKnownLocation="ModelingProject1.uml" />
             </type_NamedElement>
           </property>
           <property
             Id="5cb3b10d-91c5-46a2-a4ef-afb662b0b195"
-            name="LapList"
+            name="2.1 LapList"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -804,10 +740,11 @@
           </property>
           <property
             Id="ef4bfa16-d8e8-49bc-835c-560591dd68a0"
-            name="PropertyChanged"
+            name="1.1.0 PropertyChanged"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -870,11 +807,12 @@
           </property>
           <property
             Id="7570ebf3-b86a-48f6-8744-5f891e63eb18"
-            name="_Round"
+            name="1.1.0 _Round"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -937,11 +875,12 @@
           </property>
           <property
             Id="f7601d1f-9082-4010-96e8-dae425c1ee21"
-            name="cTable1"
+            name="2.1 cTable1"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1004,11 +943,12 @@
           </property>
           <property
             Id="85a4db8c-2c9d-4969-9bf3-0f119028c516"
-            name="cTable2"
+            name="2.1 cTable2"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1071,11 +1011,12 @@
           </property>
           <property
             Id="2d1b3aa6-fd18-475c-8025-2ed67411b224"
-            name="cTable3"
+            name="2.1 cTable3"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1138,11 +1079,12 @@
           </property>
           <property
             Id="e4914ea9-c441-4ce7-b0fa-43190ebe427f"
-            name="cTable4"
+            name="2.1 cTable4"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1205,11 +1147,12 @@
           </property>
           <property
             Id="5885064e-c080-4eb3-b26a-b6c03607717d"
-            name="cTable5"
+            name="2.1 cTable5"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1271,79 +1214,13 @@
             </type_NamedElement>
           </property>
           <property
-            Id="e5f4fec3-a30c-46af-8ed4-3a5428fe4cce"
-            name="controller"
-            visibility="Package"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <referencesInternal>
-              <reference
-                Id="862a498f-3e96-4666-91a3-63702c206b20"
-                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3Dcontroller"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="28a824bd-00ea-46b6-b7d1-3bd12869bda6"
-                name="field"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="33bc678a-775b-4ca6-a827-b52330d603d4">
-                    <propertyInstance
-                      Id="72ad35d1-114d-4830-b139-96f589775e05"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="9d2bdea5-1a6d-451b-90ea-3dcdf7f83b1f">
-                    <propertyInstance
-                      Id="087b70e7-4301-42c1-a552-40a4fd5a27cf"
-                      name="IsConst"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="067f0595-eb11-4a6f-9844-78ba47c3cbe0">
-                    <propertyInstance
-                      Id="7e67ba9c-d06f-4982-9851-56f2e3ed3508"
-                      name="IsNullable"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c8f71f4d-ee50-44be-858a-d5f1203c2aa9">
-                    <propertyInstance
-                      Id="6abc0c4e-5599-4b44-9537-4258e212470f"
-                      name="IsVolatile"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="e228510d-4973-45a4-a4b4-f560629b8a52">
-                    <propertyInstance
-                      Id="b1113642-3793-49b3-9e23-c86c4de2a374"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <type_NamedElement>
-              <classMoniker
-                Id="2617fbe2-9ae8-4342-8ade-1b1a2c7a9d16"
-                LastKnownName="MainWindow"
-                LastKnownLocation="Package_0904.uml" />
-            </type_NamedElement>
-          </property>
-          <property
             Id="9d81376e-a69d-42b0-afb1-50e919ad5ef1"
-            name="stopwatch"
+            name="2.1 stopwatch"
             visibility="Package"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
@@ -1407,244 +1284,8 @@
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="f42c6cca-bf80-4548-91b1-e38bff153f97"
-            name="System‎.Windows‎.Markup‎.IComponentConnector‎.Connect"
-            visibility="Private"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="95c631f6-b72e-4e32-b33b-a0c6c3886e92"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="85584857-3fad-47e5-8336-a56122c6f5bc"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="7b3c8d2a-09ba-48d6-be11-41c7c768c9ac">
-                    <propertyInstance
-                      Id="15fa354e-b454-4e39-a2f0-639e40d89268"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="6f652ef2-e0d7-4263-a00b-eea5ad86b9d5">
-                    <propertyInstance
-                      Id="70ea78c0-dec7-4bf5-b6a8-ed3b0ff648a3"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="533d1872-5f98-490b-a6f7-b3b36e4004b4">
-                    <propertyInstance
-                      Id="568a696f-0b3f-4e3f-a498-f5d08c137bc6"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="69e6082b-6a0a-492e-8b0b-74cb5a617027">
-                    <propertyInstance
-                      Id="b2004181-bb98-4c4b-9d40-848b0bbd5bd4"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="be15ba62-5abf-45f6-a59e-1264275372e0">
-                    <propertyInstance
-                      Id="171a36ac-9b81-46c2-90e9-7ff229ab7c8c"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3931ce87-86e4-439b-90e7-67fed0f8f5c0">
-                    <propertyInstance
-                      Id="10d5ee1d-60d7-492b-9bb3-5cf5aed74d60"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="8f5a8148-5719-4ae3-9764-b7d061be4ab0"
-                  name="connectionId"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="b0fb92b5-13cb-4a1a-b4ac-d046c8a9b2d9"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3DconnectionId"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="220a3521-e091-4221-bae9-3ef9018e845c"
-                      LastKnownName="Integer"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="4e36340c-9d87-4ad0-979e-b3778513344e"
-                  name="target"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="c9c9edb8-b2a4-487e-80e9-027552bd97df"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DSystem.Windows.Markup.IComponentConnector.Connect OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DInt32)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dtarget"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
-                      LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
-            Id="2c9e047a-984a-4b67-8102-b8a4e6a8f1b4"
-            name="MainWindow"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="37a8eb09-98e5-4fc3-a9ba-f3fe02bf086c"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D.ctor"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="97ababa3-8453-41da-b26d-b11fc5c06730"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="408e6aa4-fcad-46ec-a0b8-65799e43210e">
-                    <propertyInstance
-                      Id="343f5c82-a44f-45a8-8579-0f00ae92d859"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="81e65858-a35e-4a35-a89c-c952bfd1cb21">
-                    <propertyInstance
-                      Id="e51d3834-108c-47b2-9a48-472583f592b0"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="0e8d2cd8-0cde-4285-a9a2-866cbd9fd7a1">
-                    <propertyInstance
-                      Id="bf8fc247-4a96-42ce-81e7-18d36043ecc9"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="896b671e-1817-4ee4-a14d-30f2e593222d">
-                    <propertyInstance
-                      Id="ac45875e-4311-45fa-a771-e8bf45ee0d68"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="d8436eb6-54b0-41f0-9cca-785e990db02a">
-                    <propertyInstance
-                      Id="eed2467e-e2db-41e3-b8f2-ca0213592e20"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="0eec4381-8215-4be4-bf99-ddaa66dee0a9">
-                    <propertyInstance
-                      Id="79dde1a4-6ab4-46f9-b513-9502f9a271af"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
-            Id="375a3e47-66ff-409f-b0de-9bf37222b098"
-            name="InitializeComponent"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="afc8f8ec-ae8a-4ade-bbd8-bf610d550801"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3DInitializeComponent"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="1267f320-8b96-45c1-87ea-81d752934093"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="3a03bc3e-cadb-46ba-a26f-f73615b813a8">
-                    <propertyInstance
-                      Id="2d065945-65da-40db-801a-7c25b87c859a"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="545638c7-52bd-425b-9196-8b2d5c19412b">
-                    <propertyInstance
-                      Id="79f39961-744c-4d76-bf8b-a8906b000254"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="f4756f9a-31a5-42c5-aef4-3e68f44c93b6">
-                    <propertyInstance
-                      Id="f217fa51-97be-4472-ba6f-981f2004f729"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="40d62f97-5d2d-4ebb-89c8-6c463683d7e7">
-                    <propertyInstance
-                      Id="dd032c1e-1861-4bdb-9ec4-9e5777ccaf31"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="1da5ab35-31d0-44f4-92f4-e6d804b6359c">
-                    <propertyInstance
-                      Id="03c42c01-25a0-4d15-8c88-88bfe0c15018"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="201199b9-2d36-47ae-8503-8bbeae7ebc59">
-                    <propertyInstance
-                      Id="ec4d572b-f303-4ab5-91db-2ef622890764"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-          </operation>
-          <operation
             Id="8eb920be-89e8-416f-b7fb-a87940cfa979"
-            name="Button_Reset_Click"
+            name="1.1.11 Button_Reset_Click"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -1710,39 +1351,29 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="9d5d835b-f3d7-4865-a9e2-936fb5cfe523"
+                  Id="baa0a980-c7e5-4126-829e-8ea0a4700274"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="5c84156d-4b72-4bb0-9246-073072ad5363"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DButton_Reset_Click OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows Type%3DRoutedEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
-                    <classMoniker
-                      Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
+                    <undefinedTypeMoniker
+                      Id="e540620e-bad8-4fe4-a5dd-528ffa7e6be0"
                       LastKnownName="Object"
-                      LastKnownLocation="Package2_0904.uml" />
+                      LastKnownLocation="ModelingProject1.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="2ba19c50-e3f5-49fb-a893-bbd5d6e9afe0"
+                  Id="db9ca190-e1f6-49ba-8cdb-dc2a4e3fc76d"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="670747f5-5adc-488b-8cec-ba33e00d6792"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DButton_Reset_Click OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows Type%3DRoutedEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
-                    <classMoniker
-                      Id="bc30f6ce-e949-4aaa-b661-b547d9008f9b"
+                    <undefinedTypeMoniker
+                      Id="fe46043c-c23b-41e4-97b9-11edaba85f0b"
                       LastKnownName="RoutedEventArgs"
-                      LastKnownLocation="Package4_0904.uml" />
+                      LastKnownLocation="ModelingProject1.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -1750,7 +1381,7 @@
           </operation>
           <operation
             Id="35ed1c88-8787-45f0-b21d-b7ab463d4aef"
-            name="Button_Upload_Click"
+            name="1.1.10 Button_Upload_Click"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -1816,15 +1447,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="700aedac-827e-44fb-97da-f283fd64ce47"
+                  Id="9b2017df-669b-4a89-b00b-1588a36aa6af"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="ac2cf94d-42eb-423b-9f2d-c6cf42fb311b"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DButton_Upload_Click OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows Type%3DRoutedEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1835,15 +1461,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="75650954-9950-49d8-95c6-bddee0ffcc4d"
+                  Id="4afbdbfd-e458-4573-b129-619b1bd67137"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="99191910-cce9-4a14-8315-40eeabd729c4"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DButton_Upload_Click OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows Type%3DRoutedEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="bc30f6ce-e949-4aaa-b661-b547d9008f9b"
@@ -1856,7 +1477,7 @@
           </operation>
           <operation
             Id="383be041-6f3e-4bd6-9804-7a519d635751"
-            name="MainWindow_Loaded"
+            name="1.1.4 MainWindow_Loaded"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -1922,15 +1543,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="3174749a-8b2e-4f5c-828f-133a195a7b78"
+                  Id="c408a142-9aea-4ab5-832f-f06a02e640ba"
                   name="sender"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="e90e9fbf-9c66-4986-923d-60b1b57bf7d2"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DMainWindow_Loaded OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows Type%3DRoutedEventArgs)]) ParameterIdentifier%3Dsender"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="ea7b272f-6904-4c59-9e36-bbee1d522d62"
@@ -1941,15 +1557,10 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="06d13940-98f8-40de-8cf8-1199afc917ff"
+                  Id="237c367c-4cc4-4728-8aa8-15ae52db72c0"
                   name="e"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="4c5b2e9a-a4e5-46b7-ac3d-a4d4e7e256e5"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DMainWindow_Loaded OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2FPresentationCore.dll&quot; Namespace%3DSystem.Windows Type%3DRoutedEventArgs)]) ParameterIdentifier%3De"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="bc30f6ce-e949-4aaa-b661-b547d9008f9b"
@@ -1962,7 +1573,7 @@
           </operation>
           <operation
             Id="83c79267-b503-4804-b20c-b54a77308a49"
-            name="NotifyPropertyChanged"
+            name="1.1.2 NotifyPropertyChanged"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -2028,15 +1639,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="b87a72a6-5e99-4a99-baa8-1031305c36bb"
+                  Id="02ef9c70-1feb-474e-a516-e5a542cd3e1d"
                   name="propertyName"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="2eb37d25-3e8e-4b69-bf61-d52346261bdc"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DNotifyPropertyChanged OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DpropertyName"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <primitiveTypeMoniker
                       Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
@@ -2049,7 +1655,7 @@
           </operation>
           <operation
             Id="03160893-e0fb-4c17-9384-3dbcfd2d6b2d"
-            name="TimerControl_OnLap"
+            name="1.1.8 TimerControl_OnLap"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -2115,15 +1721,10 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="a4f46274-8417-484a-959c-756dbeaef658"
+                  Id="dff847e0-b3e5-440e-bf36-0b52c9e4aa36"
                   name="obj"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="5487602a-c34a-4abd-bfbb-49b93c1ddd54"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3DTimerControl_OnLap OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DTimeSpan)]) ParameterIdentifier%3Dobj"
-                      tag="ViewCode" />
-                  </referencesInternal>
+                  direction="In"
+                  isUnique="false">
                   <type_NamedElement>
                     <classMoniker
                       Id="171ddacd-0188-427e-a342-72d6fa2022cd"
@@ -2135,126 +1736,9 @@
             </ownedParameters>
           </operation>
           <operation
-            Id="eee15595-20eb-474d-934d-0a607140547a"
-            name="_CreateDelegate"
-            visibility="Package"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false">
-            <referencesInternal>
-              <reference
-                Id="593d185a-0d82-4901-a1c9-0bb8c990a248"
-                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3D_CreateDelegate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
-                tag="ViewCode" />
-            </referencesInternal>
-            <appliedStereotypesInternal>
-              <stereotypeInstance
-                Id="0152beea-0e6e-493f-9b43-4b9bd7c1c2bd"
-                name="method"
-                profile="CSharpProfile">
-                <propertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="7e2cc964-5389-47d2-9822-114c21014c14">
-                    <propertyInstance
-                      Id="df86244f-3c1e-47e7-94fc-cd4cf5e2c94b"
-                      name="ClrAttributes" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="c7159689-42d2-48d1-a561-91d101a2cae6">
-                    <propertyInstance
-                      Id="c12a08b0-dc98-4ba2-9948-04e5ffef9d5d"
-                      name="IsPartial"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="31756248-7fc2-4a9c-9ce8-40339ed2921e">
-                    <propertyInstance
-                      Id="7ed375ae-e634-4933-92bf-04af3024d55e"
-                      name="IsUnsafe"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="1a92620b-8531-4fb3-8839-028018d685d7">
-                    <propertyInstance
-                      Id="36fff6f9-b253-453a-866d-75ed879632ca"
-                      name="Inheritance"
-                      value="none" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="73a8a9b0-e7ac-4c8a-86ca-aafeddfd3d37">
-                    <propertyInstance
-                      Id="3f1d4646-ca47-497f-a045-7ffe4fb82f2d"
-                      name="PackageVisibility"
-                      value="internal" />
-                  </stereotypeInstanceHasPropertyInstances>
-                  <stereotypeInstanceHasPropertyInstances
-                    Id="abe3a0e3-76b1-4dba-ab0f-5783b90b54e6">
-                    <propertyInstance
-                      Id="f27de2e4-66b8-42dd-a1ca-063503f5096f"
-                      name="params"
-                      value="false" />
-                  </stereotypeInstanceHasPropertyInstances>
-                </propertyInstances>
-              </stereotypeInstance>
-            </appliedStereotypesInternal>
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="8b680260-5f7c-4b94-a181-d501ee391f38"
-                  direction="Return">
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="7771dac9-8e50-4eda-88fc-12bac490c30c"
-                      LastKnownName="Delegate"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="7357f51f-646b-41f9-8707-1a61a1e12c17"
-                  name="delegateType"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="2e5f9757-ae75-443d-987d-bb88670d677c"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3D_CreateDelegate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DdelegateType"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <classMoniker
-                      Id="99696748-f12c-417f-a95f-ecf9913b047e"
-                      LastKnownName="Type"
-                      LastKnownLocation="Package2_0904.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="895ad16d-ca1b-4318-9702-c571f2f75684"
-                  name="handler"
-                  direction="In">
-                  <referencesInternal>
-                    <reference
-                      Id="c167e81a-5252-4929-b992-4c8b4a077488"
-                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D(Name%3D_CreateDelegate OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DType)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5.2%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3Dhandler"
-                      tag="ViewCode" />
-                  </referencesInternal>
-                  <type_NamedElement>
-                    <primitiveTypeMoniker
-                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
-                      LastKnownName="String"
-                      LastKnownLocation="ModelingProject1.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
-          <operation
             Id="9bd6e572-ee6c-42b1-bae0-077737500230"
-            name="CreateDatabase"
+            name="1.1.5 CreateDatabase"
+            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -2319,7 +1803,7 @@
           </operation>
           <operation
             Id="31594137-b33d-429f-9c72-4d7e4b3ed183"
-            name="TimerControl_OnReset"
+            name="1.1.9 TimerControl_OnReset"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -2385,7 +1869,7 @@
           </operation>
           <operation
             Id="5444d918-69ac-4bb3-a657-d2af64ec0045"
-            name="UpdateSchoolList"
+            name="1.1.7 UpdateSchoolList"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -2451,7 +1935,7 @@
           </operation>
           <operation
             Id="822b3efc-e23e-4da6-bd0c-d94ee9276e9f"
-            name="UpdateTableTeam"
+            name="1.1.6 UpdateTableTeam"
             visibility="Private"
             isLeaf="false"
             isStatic="false"
@@ -2508,6 +1992,71 @@
                     Id="3766cd24-9b87-4fc7-9c1c-ecfb70e50713">
                     <propertyInstance
                       Id="c6af0ae7-5cac-4748-b7e0-3538fffa825c"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="10001bf8-c15b-4368-ab5b-8121ffefda09"
+            name="1.1.3 MainWindow"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="c395ad93-5781-4540-998e-fbf7d92c4b64"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FSimon Skov%2FSource%2FRepos%2FOpgaver%2FDM_Skills%2FDM_Skills%2Fbin%2FDebug%2FDM_Skills.exe&quot; Namespace%3DDM_Skills Type%3DMainWindow Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b6d8583d-91e5-46cb-9768-26a74ff3ef5f"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="980f7312-322c-4107-ac10-2d3578d6b170">
+                    <propertyInstance
+                      Id="fd68a94f-a49e-46c6-9530-9f4108cfb624"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2a34e05e-9d1a-4d1d-a907-f736a0ecf730">
+                    <propertyInstance
+                      Id="485f897c-6adf-44d3-8011-75498a3f2a76"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1d58e300-af67-43ce-a72c-b6ef2a65f15a">
+                    <propertyInstance
+                      Id="cc59367f-019c-488d-bc0f-094fff0d6565"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="191d326e-227c-49c0-ab67-8ed38b01c67a">
+                    <propertyInstance
+                      Id="d40f9a69-b7ea-49d4-b033-d864f5122d2a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cb0ee412-b163-4497-b3e8-32046a560d1d">
+                    <propertyInstance
+                      Id="482d1ff8-b009-4404-8c9b-9b3691ae2e10"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d8f2e0ec-41ef-46b1-bbcc-8df89007c4b9">
+                    <propertyInstance
+                      Id="cf2110f5-93fe-4ca6-8358-72ab25f16cd2"
                       name="params"
                       value="false" />
                   </stereotypeInstanceHasPropertyInstances>

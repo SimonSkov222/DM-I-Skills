@@ -17,7 +17,7 @@ namespace DM_Skills.Controls {
     [TemplatePart(Name="PART_CONTENT", Type= typeof(StackPanel))] //Gør hvis man opretter flere template skal den have dette element med navnet
 	public class Autocomplete : Control {
 
-        public static readonly DependencyProperty ChildrenProperty = DependencyProperty.Register("Children", typeof(ObservableCollection<string>), typeof(Autocomplete), new PropertyMetadata(new ObservableCollection<string>()));
+        public static readonly DependencyProperty ChildrenProperty          = DependencyProperty.Register("Children", typeof(ObservableCollection<string>), typeof(Autocomplete), new PropertyMetadata(new ObservableCollection<string>()));
         public static readonly DependencyProperty TargetProperty			= DependencyProperty.Register("Target",			typeof(TextBox),	typeof(Autocomplete));
 		public static readonly DependencyProperty BorderRadiusProperty		= DependencyProperty.Register("BorderRadius",	typeof(CornerRadius),	typeof(Autocomplete));
 		public static readonly DependencyProperty IsOpenProperty			= DependencyProperty.Register("IsOpen",			typeof(bool),	typeof(Autocomplete), new PropertyMetadata(false));
