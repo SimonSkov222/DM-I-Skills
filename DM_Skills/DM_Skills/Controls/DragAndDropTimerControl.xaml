@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DM_Skills.Controls"
+             BorderThickness="2" BorderBrush="#3385ff" Background="#f1f1f5"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
@@ -13,14 +14,14 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        
-        
-        <Label Content="Omgangs Tider:" Grid.Row="1" FontSize="16" FontWeight="Bold" />
+
+
+        <Label Content="Omgangs Tider:" Grid.Row="1" FontSize="18" FontWeight="Bold" Foreground="#4c4c4c" Padding="15 10 15 15"/>
         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="2">
-            <Grid Name="listPanel" Margin="5 0 0 0">
+            <Grid Name="listPanel" Margin="0 0 0 0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" MinWidth="25"/>
-                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="1*" MinWidth="25"/>
+                    <ColumnDefinition Width="6*"/>
                 </Grid.ColumnDefinitions>
             </Grid>
         </ScrollViewer>

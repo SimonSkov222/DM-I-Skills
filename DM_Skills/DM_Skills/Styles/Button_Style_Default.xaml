@@ -1,0 +1,68 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DM_Skills.Styles">
+
+    <Style x:Key="Button_Style_Default" TargetType="Button">
+        <Style.Resources>
+
+            <ScaleTransform x:Key="scaleTransform"/>
+
+        </Style.Resources>
+
+        <Setter Property="RenderTransform" Value="{StaticResource scaleTransform}"/>
+        <Setter Property="RenderTransformOrigin" Value="0.5 0.5"/>
+        <Setter Property="Margin" Value="2 5"/>
+        <Setter Property="Padding" Value="25 5"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Background" Value="LightGray"/>
+        <Setter Property="Template" Value="{StaticResource Button_Template_Flat}"/>
+
+        
+
+
+
+
+        <Style.Triggers>
+
+            <Trigger Property="IsPressed" Value="True">
+            <Trigger.EnterActions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation 
+                                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                From="1" To="0.9" Duration="0:0:0.15"/>
+                        <DoubleAnimation
+                                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                From="1" To="0.9" Duration="0:0:0.15" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="RenderTransform.ScaleX"
+                                From="0.9" To="1" Duration="0:0:0.15"/>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="RenderTransform.ScaleY"
+                                From="0.9" To="1" Duration="0:0:0.15"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+        </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.7"/>
+            </Trigger>
+
+        </Style.Triggers>
+
+    </Style>
+
+
+
+
+</ResourceDictionary>

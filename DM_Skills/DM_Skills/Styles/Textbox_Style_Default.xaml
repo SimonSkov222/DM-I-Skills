@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DM_Skills.Styles">
+
+    <Style x:Key="TextBox_Style_Default" TargetType="TextBox">
+
+        <Setter Property="Text" Value=""/>
+        <Setter Property="Tag" Value="Placeholder..."/>
+        
+        <Setter Property="Template" Value="{StaticResource Textbox_Template_Default}"/>
+        <Style.Triggers>
+
+            <Trigger Property="Text" Value="">
+                <Setter Property="Background" Value="Red"/>
+            </Trigger>
+        </Style.Triggers>
+        
+    </Style>
+</ResourceDictionary>

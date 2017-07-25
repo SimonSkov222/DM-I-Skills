@@ -17,7 +17,10 @@
         <Models:TableModel x:Key="table4" Location="Ballerup"/>
         <Models:TableModel x:Key="table5" Location="Ballerup"/>
     </Window.Resources>
-    <ScrollViewer>
+
+
+    <Grid>
+        <ScrollViewer Visibility="Visible">
         <Grid HorizontalAlignment="Center" Margin="0 15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -103,16 +106,43 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Text="#" Foreground="Transparent" Grid.Row="0" FontSize="16"/>
-                <Button Grid.Row="1" Content="Indsend" Foreground="White" Background="CadetBlue" FontSize="20" Padding="15 5" FontWeight="Bold" VerticalAlignment="Top" Click="Button_Upload_Click"/>
-                <Button Grid.Row="2" Content="Nulstilling af runde" Margin="0 10 0 0" Padding="15 0" VerticalAlignment="Top" HorizontalAlignment="Center" Click="Button_Reset_Click"/>
-                <TextBlock  Grid.Row="3" FontSize="20" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 5">
+                <Button 
+                    Grid.Row="1" 
+                    Content="Indsend" 
+                    Foreground="White" 
+                    Background="#3385ff" 
+                    FontSize="20" 
+                    Height="50"
+                    FontWeight="Bold" 
+                    HorizontalAlignment="Stretch"
+                    Style="{StaticResource Button_Style_Default}"
+                    Click="Button_Upload_Click"/>
+                
+                <Button 
+                    Grid.Row="2" 
+                    Content="Nulstilling af runde" 
+                    Padding="15 0" 
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Center"
+                    Style="{StaticResource Button_Style_Default}"
+                    Click="Button_Reset_Click"/>
+                
+                <TextBlock  
+                    Grid.Row="3" 
+                    FontSize="20" 
+                    FontWeight="Bold" 
+                    VerticalAlignment="Center" 
+                    HorizontalAlignment="Center"
+                    Foreground="#262626"
+                    Margin="0 5">
                     #<Run Text="{Binding ElementName=controller, Path=Round}"/>
                 </TextBlock>
-                <Controls:DragAndDropTimerControl x:Name="LapList" Grid.Row="4" BorderThickness="2" BorderBrush="Black" Background="LightGray" Height="250" VerticalAlignment="Bottom"/>
+                <Controls:DragAndDropTimerControl x:Name="LapList" Grid.Row="4" Height="250" VerticalAlignment="Bottom"/>
             </Grid>
 
             <!-- StopUr -->
-            <Controls:TimerControl x:Name="stopwatch" Grid.Row="1" Grid.ColumnSpan="3" Margin="0 25 0 0" OnLap="TimerControl_OnLap" OnReset="TimerControl_OnReset"/>
+            <Controls:TimerControl x:Name="stopwatch" Grid.Row="1" Grid.ColumnSpan="3" Margin="0 25 0 0" Height="170" OnLap="TimerControl_OnLap" OnReset="TimerControl_OnReset"/>
         </Grid>
     </ScrollViewer>
+    </Grid>
 </Window>

@@ -20,7 +20,7 @@
                 </local:Autocomplete.Target>
             </local:Autocomplete>
             <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
-            <TextBox AllowDrop="False" Text="{Binding ElementName=Controller, Path=ClassID}" Padding="5 3" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=29}" ToolTip="Klasse Navn" />
+            <TextBox Tag="tag" Style="{StaticResource TextBox_Style_Default}" AllowDrop="False"  Padding="5 3" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=29}" ToolTip="Klasse Navn" />
         </StackPanel>
 
 

@@ -39,16 +39,22 @@ namespace DM_Skills.Controls
             //Position nummer
             var txtNumber = new TextBlock();
             txtNumber.Text = rowNumber + 1 + ".";
+            txtNumber.VerticalAlignment = VerticalAlignment.Center;
+            txtNumber.FontWeight = FontWeights.Bold;
+            txtNumber.HorizontalAlignment = HorizontalAlignment.Right;
+
             Grid.SetRow(txtNumber, rowNumber);
             Grid.SetColumn(txtNumber, 0);
 
             //Vis tid
-            var txtTime = new TextBlock();
-            txtTime.SetBinding(TextBlock.TextProperty, new Binding()
+            var txtTime = new Label();
+            txtTime.SetBinding(Label.ContentProperty, new Binding()
+
             {
                 Source = time,
                 Converter = (IValueConverter)FindResource("TimeToStringConvert")
             });
+            txtTime.Style = (Style)FindResource("Label_Style_Default");
             Grid.SetRow(txtTime, rowNumber);
             Grid.SetColumn(txtTime, 1);
 

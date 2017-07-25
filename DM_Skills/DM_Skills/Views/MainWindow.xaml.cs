@@ -59,7 +59,7 @@ namespace DM_Skills
         public MainWindow()
         {
             InitializeComponent();
-
+            
             
             Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
             CreateDatabase();
