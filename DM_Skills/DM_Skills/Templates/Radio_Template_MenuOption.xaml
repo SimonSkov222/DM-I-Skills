@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DM_Skills.Templates">
+
+    <ControlTemplate x:Key="Radio_Template_MenuOption" TargetType="RadioButton">
+        <Label 
+            Content="{TemplateBinding Content}"
+            Background="{TemplateBinding Background}"
+            Foreground="{TemplateBinding Foreground}"
+            Padding="{TemplateBinding Padding}"
+            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+    </ControlTemplate>
+</ResourceDictionary>

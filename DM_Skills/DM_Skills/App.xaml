@@ -13,11 +13,13 @@
                 <ResourceDictionary Source="Templates/Autocomplete_Template_Default.xaml"/>
                 <ResourceDictionary Source="Templates/Button_Template_Flat.xaml"/>
                 <ResourceDictionary Source="Templates/Textbox_Template_Default.xaml"/>
+                <ResourceDictionary Source="Templates/Radio_Template_MenuOption.xaml"/>
 
                 <ResourceDictionary Source="Styles/Autocomplete_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/Label_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/Button_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/Textbox_Style_Default.xaml"/>
+                <ResourceDictionary Source="Styles/Radio_Style_MenuOption.xaml"/>
                 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
