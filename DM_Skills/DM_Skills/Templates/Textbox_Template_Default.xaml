@@ -32,7 +32,7 @@
         <Setter Property="Background" Value="White"/>-->
 
         <Grid>
-                <TextBox 
+            <TextBox 
                     Text="{Binding Path=Text,
                     RelativeSource={RelativeSource TemplatedParent}, 
                     UpdateSourceTrigger=PropertyChanged}"
@@ -46,13 +46,12 @@
                     Width="{TemplateBinding Width}"
                     Padding="{TemplateBinding Padding}"
                     Margin="{TemplateBinding Margin}"
-                    
+                IsEnabled="{TemplateBinding IsEnabled}"
 
-                    
                     BorderBrush="Transparent"
                     Background="Transparent" 
-                    Panel.ZIndex="2" />
-                <TextBox 
+                    Panel.ZIndex="2"/>
+            <TextBox 
                     Text="{TemplateBinding ToolTip}" 
                     Background="{TemplateBinding Background}" 
                     FontSize="{TemplateBinding FontSize}"
@@ -61,6 +60,7 @@
                     HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                     FontStyle="Italic"
+                    IsEnabled="{TemplateBinding IsEnabled}"
                     Width="{TemplateBinding Width}"
                     Padding="{TemplateBinding Padding}"
                     Margin="{TemplateBinding Margin}"
@@ -74,9 +74,10 @@
                             <Setter Property="Foreground" Value="Transparent"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
-                                    <Setter Property="Foreground" Value="Gray"/>
+                                    <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
                                 </DataTrigger>
-                            </Style.Triggers>
+
+                        </Style.Triggers>
                         </Style>
                     </TextBox.Style>
                 </TextBox>

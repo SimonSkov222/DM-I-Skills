@@ -15,16 +15,17 @@
         <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="BorderThickness" Value="1.5"/>
         <Setter Property="BorderBrush" Value="#7F7F7F"/>
-        <Setter Property="Width" Value="150"/>
         <Setter Property="Padding" Value="5 3"/>
         <Setter Property="Margin" Value="0"/>
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="{StaticResource Color_Background_InputBox}"/>
+        <Setter Property="Foreground" Value="{StaticResource Color_Foreground_Program}"/>
 
         <Setter Property="Template" Value="{StaticResource Textbox_Template_Default}"/>
         <Style.Triggers>
 
             <Trigger Property="Text" Value="">
-                <Setter Property="Background" Value="#f1f1f5"/>
+                <Setter Property="Foreground" Value="{StaticResource Color_Foreground_Placeholder}"/>
+                <Setter Property="Background" Value="{StaticResource Color_Background_Placeholder}"/>
             </Trigger>
         </Style.Triggers>
         
