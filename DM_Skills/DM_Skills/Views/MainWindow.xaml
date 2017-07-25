@@ -8,6 +8,7 @@
         xmlns:Controls="clr-namespace:DM_Skills.Controls"
         xmlns:Models="clr-namespace:DM_Skills.Models"
         xmlns:View="clr-namespace:DM_Skills.Views"
+		xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d" x:Name="controller"
         FontFamily="Calibri"
         Background="{StaticResource Color_Background_Program}"
@@ -30,75 +31,23 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="True"  Style="{StaticResource Radio_Style_MenuOption}"/>
-            <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="False"  Style="{StaticResource Radio_Style_MenuOption}"/>
+            <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="False"  Style="{StaticResource Radio_Style_MenuOption}"/>
+            <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="True"  Style="{StaticResource Radio_Style_MenuOption}"/>
         </Grid>
         
         <ScrollViewer Grid.Row="1" Padding="5">
-            <StackPanel Visibility="Visible">
-                <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}">
-                    <Grid.Style>
-                        <Style TargetType="Grid">
-                            <Style.Triggers>
-                                <Trigger Property="Tag" Value="True">
-                                    <!--<Trigger.ExitActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation From="1" To="0" Duration="0:0:2" Storyboard.TargetProperty="Opacity"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.ExitActions>
+			<StackPanel Visibility="Visible">
+				<Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+					<View:Forside/>
+				</Grid>
 
-                                    <Trigger.EnterActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation To="1" From="0" Duration="0:0:2" Storyboard.TargetProperty="Opacity"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.EnterActions>-->
-                                    <Setter Property="Background" Value="Red"/>
-                                </Trigger>
+				<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+					<Controls:PersonListControl Width="200"/>
+					<!--<TextBox Text="Søg på TIDER!!!" FontSize="50"/>-->
+				</Grid>
 
 
-
-                                <!--<Trigger Property="Opacity" Value="1">
-                                    <Setter Property="Visibility" Value="Visible"/>
-                                </Trigger>
-                                <Trigger Property="Opacity" Value="0">
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                </Trigger>-->
-                            </Style.Triggers>
-                        </Style>
-                    </Grid.Style>
-                    <View:Forside />
-                </Grid>
-                <Grid Visibility="{Binding ElementName=Menu_Side2, Path=IsChecked, Converter={StaticResource BoolToVisibilityConvert}}" VerticalAlignment="Top">
-                    <Grid.Style>
-                        <Style TargetType="Grid">
-                            <Style.Triggers>
-                                <Trigger Property="Visibility" Value="Collapsed">
-                                    <Trigger.EnterActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation From="1" To="0" Duration="0:0:0.15" Storyboard.TargetProperty="Opacity"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.EnterActions>
-
-                                    <Trigger.ExitActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation To="1" From="0" Duration="0:0:0.15" Storyboard.TargetProperty="Opacity"/>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </Trigger.ExitActions>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Grid.Style>
-                    <TextBox Text="Søg på TIDER!!!" FontSize="50"/>
-                </Grid>
-            </StackPanel>
+			</StackPanel>
         </ScrollViewer>
     </Grid>
 </Window>
