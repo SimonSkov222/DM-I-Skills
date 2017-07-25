@@ -18,22 +18,63 @@
                      
                      Background="Transparent" BorderBrush="Transparent"/>-->
 
+        <!--<Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
+        <Setter Property="BorderBrush" Value="#7F7F7F"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Margin" Value="0 2.5"/>
+        <Setter Property="Background" Value="White"/>-->
 
-            <Grid>
+        <Grid>
                 <TextBox 
-                        Text="{Binding Path=Text,
-                        RelativeSource={RelativeSource TemplatedParent}, 
-                        UpdateSourceTrigger=PropertyChanged}"
-                        x:Name="textSource" 
-                        Background="Transparent" 
-                        Panel.ZIndex="2" />
-                <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
+                    Text="{Binding Path=Text,
+                    RelativeSource={RelativeSource TemplatedParent}, 
+                    UpdateSourceTrigger=PropertyChanged}"
+                    x:Name="textSource" 
+                    Foreground="{TemplateBinding Foreground}"
+                    FontSize="{TemplateBinding FontSize}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Width="{TemplateBinding Width}"
+                    Padding="{TemplateBinding Padding}"
+                    Margin="{TemplateBinding Margin}"
+                    
+
+                    
+                    BorderBrush="Transparent"
+                    Background="Transparent" 
+                    Panel.ZIndex="2" />
+                <TextBox 
+                    Text="{TemplateBinding ToolTip}" 
+                    Background="{TemplateBinding Background}" 
+                    FontSize="{TemplateBinding FontSize}"
+                    VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                    HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                    HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                    FontStyle="Italic"
+                    Width="{TemplateBinding Width}"
+                    Padding="{TemplateBinding Padding}"
+                    Margin="{TemplateBinding Margin}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    Panel.ZIndex="1" >
+                    
+                    
                     <TextBox.Style>
                         <Style TargetType="{x:Type TextBox}">
                             <Setter Property="Foreground" Value="Transparent"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
-                                    <Setter Property="Foreground" Value="LightGray"/>
+                                    <Setter Property="Foreground" Value="Gray"/>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
