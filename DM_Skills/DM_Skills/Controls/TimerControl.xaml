@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:DM_Skills.Controls" 
              xmlns:Converters="clr-namespace:DM_Skills.Converters"
              mc:Ignorable="d" x:Name="controller" 
-             Background="#f1f1f5" BorderBrush="#3385ff" BorderThickness="2"
+             Background="{StaticResource Color_Background_Box}" 
+             BorderBrush="{StaticResource Color_Border_Box}" 
+             BorderThickness="2"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Margin="15">
         <Grid.RowDefinitions>
@@ -17,7 +19,7 @@
         <TextBlock 
             x:Name="txt_Timer"
             Grid.Row="0"
-            Foreground="#262626"
+            Foreground="{StaticResource Color_Foreground_Dark_2}"
             Margin="0 0 0 0"
             Text="{Binding ElementName=controller, Path=DisplayTime, Converter={StaticResource TimeToStringConvert}}"
             FontSize="{Binding ElementName=controller, Path=FontSize, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=800}"
@@ -28,9 +30,9 @@
         
         <!-- Styring af stopur-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-            <Button x:Name="btn_Start" Content="Start" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}" Background="LightBlue"/>
+            <Button x:Name="btn_Start" Content="Start" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}" Background="{StaticResource Color_Background_Button_LightBlue}"/>
             <Button x:Name="btn_Stop" Content="Stop" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}"/>
-            <Button x:Name="btn_Lap" Content="Omgang" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}" Background="LightGreen"/>
+            <Button x:Name="btn_Lap" Content="Omgang" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}" Background="{StaticResource Color_Background_Button_LightGreen}"/>
             <Button x:Name="btn_Reset" Content="Nulstil" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}"/>
         </StackPanel>
         
