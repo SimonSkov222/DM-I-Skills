@@ -8,6 +8,8 @@
         xmlns:Controls="clr-namespace:DM_Skills.Controls"
         xmlns:Models="clr-namespace:DM_Skills.Models"
         mc:Ignorable="d" x:Name="controller"
+        Background="{StaticResource Color_Background_Program}"
+        Foreground="{StaticResource Color_Foreground_Program}"
         
         Title="MainWindow" Height="800" Width="1200">
     <Window.Resources>
@@ -105,12 +107,15 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+                <!-- Gør at vores indsend knap står i samme højde som TablesControl textboxes-->
                 <TextBlock Text="#" Foreground="Transparent" Grid.Row="0" FontSize="16"/>
+                
+                
                 <Button 
                     Grid.Row="1" 
                     Content="Indsend" 
-                    Foreground="White" 
-                    Background="#3385ff" 
+                    Foreground="{StaticResource Color_Foreground_Light_1}" 
+                    Background="{StaticResource Color_Background_Button_Blue}" 
                     FontSize="20" 
                     Height="50"
                     FontWeight="Bold" 
@@ -133,15 +138,26 @@
                     FontWeight="Bold" 
                     VerticalAlignment="Center" 
                     HorizontalAlignment="Center"
-                    Foreground="#262626"
+                    Foreground="{StaticResource Color_Foreground_Dark_2}"
                     Margin="0 5">
                     #<Run Text="{Binding ElementName=controller, Path=Round}"/>
                 </TextBlock>
-                <Controls:DragAndDropTimerControl x:Name="LapList" Grid.Row="4" Height="250" VerticalAlignment="Bottom"/>
+                <Controls:DragAndDropTimerControl 
+                    x:Name="LapList" 
+                    Grid.Row="4" 
+                    Height="250" 
+                    VerticalAlignment="Bottom"/>
             </Grid>
 
             <!-- StopUr -->
-            <Controls:TimerControl x:Name="stopwatch" Grid.Row="1" Grid.ColumnSpan="3" Margin="0 25 0 0" Height="170" OnLap="TimerControl_OnLap" OnReset="TimerControl_OnReset"/>
+            <Controls:TimerControl 
+                x:Name="stopwatch" 
+                Grid.Row="1" 
+                Grid.ColumnSpan="3" 
+                Margin="0 25 0 0" 
+                Height="170" 
+                OnLap="TimerControl_OnLap" 
+                OnReset="TimerControl_OnReset"/>
         </Grid>
     </ScrollViewer>
     </Grid>

@@ -10,10 +10,11 @@ namespace DM_Skills.Models
     {
 
         public event Action<object> CallbackUpload;
-
+        
+        public virtual bool Exist       { get; protected set; }
         public virtual bool CanUpload   { get { return true; } }
         public virtual int ErrNo        { get; protected set; }
-        public virtual string ErrMsg    { get; protected set; }
+        public virtual string Error   { get; protected set; }
 
         protected abstract bool OnUpload();
         //public abstract object OnGetRow();
