@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DM_Skills.Models
 {
-    abstract class ModelSettings
+    public abstract class ModelSettings
     {
 
         public event Action<object> CallbackUpload;

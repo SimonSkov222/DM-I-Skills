@@ -5,8 +5,8 @@
         <Grid x:Name="CONTAINER">
             <Label 
                 x:Name="CONTENT"
+                Padding="0"
                 Content="{TemplateBinding Content}" 
-                Padding="{TemplateBinding Padding}" 
                 VerticalAlignment="{TemplateBinding VerticalAlignment}" 
                 VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                 HorizontalAlignment="{TemplateBinding HorizontalAlignment}" 

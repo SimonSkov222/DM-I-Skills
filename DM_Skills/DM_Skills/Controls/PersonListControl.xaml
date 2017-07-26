@@ -6,21 +6,86 @@
              xmlns:local="clr-namespace:DM_Skills.Controls"
              mc:Ignorable="d" 
 			 x:Name="controller"
-             d:DesignHeight="300" d:DesignWidth="300">
-	<Grid>
-		<CheckBox/>
+             
+             d:DesignHeight="40" d:DesignWidth="150">
 
-		<Canvas>
-			<ScrollViewer Background="White"  >
-				<Grid Margin="0 0 5 0" Width="200">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="auto"/>
-					</Grid.ColumnDefinitions>
-					<TextBox Grid.Column="0" ToolTip="Navn" Style="{StaticResource TextBox_Style_Default}" VerticalAlignment="Top"/>
-					<Button Grid.Column="1" Content="X" FontWeight="Bold" Foreground="White" Background="Red" Style="{StaticResource Button_Style_Default}" Width="30" Height="30" Margin="6 0 0 0" Padding="0"/>
-				</Grid>
-			</ScrollViewer>
-		</Canvas>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="MouseEnter">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="dropdownBorder" 
+                                        Storyboard.TargetProperty="MaxHeight"
+                                        From="0" To="150" Duration="0:0:0.3" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="dropdownBorder" 
+                                        Storyboard.TargetProperty="MaxHeight"
+                                        To="0" From="150" Duration="0:0:0.3" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+
+
+
+    <Grid>
+        <Label x:Name="debug" 
+               BorderThickness="0" 
+               Background="{Binding ElementName=controller, Path=Background}"
+               HorizontalContentAlignment="{Binding ElementName=controller, Path=HorizontalContentAlignment}"
+               FontWeight="{Binding ElementName=controller, Path=FontWeight}"
+               Padding="{Binding ElementName=controller, Path=Padding}"
+               Content="{Binding ElementName=controller, Path=Title}"
+               Margin="0" 
+               Style="{StaticResource Label_Style_Default}" 
+               HorizontalAlignment="Stretch" 
+               VerticalAlignment="Stretch" 
+               MouseEnter="debug_MouseEnter"
+               Width="auto"/>
+
+        <Canvas Margin="{Binding ElementName=controller, Path=Padding, Converter={StaticResource ValueToThicknessConvert}, ConverterParameter='-100'}">
+            <!---->
+            <!---->
+
+            <Border 
+                x:Name="dropdownBorder"
+                Canvas.Top="{Binding ElementName=controller, Path=ActualHeight}"
+                Canvas.Left="{Binding ElementName=controller, Path=BorderThickness, Converter={StaticResource ThicknessToDoubleReverseConvert}, ConverterParameter=left}"
+                SnapsToDevicePixels="True"
+                BorderBrush="{Binding ElementName=controller, Path=BorderBrush}" 
+                BorderThickness="{Binding ElementName=controller, Path=BorderThickness}"
+                Width="{Binding ElementName=debug, Path=ActualWidth}"
+                MouseEnter="dropdownBorder_MouseEnter"
+                Margin="0"
+                Padding="0"
+                MinWidth="200"
+                Background="White"
+                MaxHeight="0"
+                >
+
+                <ScrollViewer 
+                    x:Name="scroll" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    
+                    <Grid Margin="15 3"  x:Name="gridListOfPlayers" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <!--<Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Column="0" ToolTip="Navn" Style="{StaticResource TextBox_Style_Default}" Margin="0 5 0 0" />
+                        <Button Grid.Column="1" Content="X" FontWeight="Bold" Foreground="White" Background="Red" Style="{StaticResource Button_Style_Default}" Width="30" Height="30" Margin="6 5 0 0" Padding="0"/>-->
+                    </Grid>
+                </ScrollViewer>
+            </Border>
+        </Canvas>
 	</Grid>
 </UserControl>

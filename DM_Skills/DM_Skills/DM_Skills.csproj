@@ -65,6 +65,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\tes123.xaml.cs">
+      <DependentUpon>tes123.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
     <Compile Include="Views\sog pa tider.xaml.cs">
       <DependentUpon>sog pa tider.xaml</DependentUpon>
     </Compile>
@@ -77,6 +81,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\TablesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\tes123.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,7 +170,7 @@
     <Compile Include="Converters\BoolToValueConverter.cs" />
     <Compile Include="Converters\ProcentOfValueConverter.cs" />
     <Compile Include="Converters\TimeSpanToStringConverter.cs" />
-    <Compile Include="Converters\ValueToThickness.cs" />
+    <Compile Include="Converters\ValueToThicknessConverter.cs" />
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\ModelSettings.cs" />
     <Compile Include="Models\PersonModel.cs" />

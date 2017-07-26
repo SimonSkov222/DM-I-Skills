@@ -94,11 +94,11 @@ namespace DM_Skills.Views
             /// </summary>
             private void UpdateTableTeam()
             {
-                cTable1.TeamID = (Round - 1) * 10 + 1;
-                cTable2.TeamID = (Round - 1) * 10 + 2;
-                cTable3.TeamID = (Round - 1) * 10 + 3;
-                cTable4.TeamID = (Round - 1) * 10 + 4;
-                cTable5.TeamID = (Round - 1) * 10 + 5;
+                //cTable1.TeamID = (Round - 1) * 10 + 1;
+                //cTable2.TeamID = (Round - 1) * 10 + 2;
+                //cTable3.TeamID = (Round - 1) * 10 + 3;
+                //cTable4.TeamID = (Round - 1) * 10 + 4;
+                //cTable5.TeamID = (Round - 1) * 10 + 5;
             }
 
             /// <summary>
@@ -108,22 +108,22 @@ namespace DM_Skills.Views
             /// </summary>
             private void UpdateSchoolList()
             {
-                //Nulstil bordene
-                cTable1.schoolList.Children.Clear();
-                cTable2.schoolList.Children.Clear();
-                cTable3.schoolList.Children.Clear();
-                cTable4.schoolList.Children.Clear();
-                cTable5.schoolList.Children.Clear();
+                ////Nulstil bordene
+                //cTable1.schoolList.Children.Clear();
+                //cTable2.schoolList.Children.Clear();
+                //cTable3.schoolList.Children.Clear();
+                //cTable4.schoolList.Children.Clear();
+                //cTable5.schoolList.Children.Clear();
 
-                //Tilføj skolerne
-                foreach (var item in SchoolAutoComplete)
-                {
-                    cTable1.schoolList.Children.Add(item);
-                    cTable2.schoolList.Children.Add(item);
-                    cTable3.schoolList.Children.Add(item);
-                    cTable4.schoolList.Children.Add(item);
-                    cTable5.schoolList.Children.Add(item);
-                }
+                ////Tilføj skolerne
+                //foreach (var item in SchoolAutoComplete)
+                //{
+                //    cTable1.schoolList.Children.Add(item);
+                //    cTable2.schoolList.Children.Add(item);
+                //    cTable3.schoolList.Children.Add(item);
+                //    cTable4.schoolList.Children.Add(item);
+                //    cTable5.schoolList.Children.Add(item);
+                //}
             }
 
             /// <summary>
@@ -157,11 +157,11 @@ namespace DM_Skills.Views
                 //Gør vi kan loop igennem bordene med et loop
                 UserControl[] values =
                 {
-                cTable1,
-                cTable2,
-                cTable3,
-                cTable4,
-                cTable5
+                //cTable1,
+                //cTable2,
+                //cTable3,
+                //cTable4,
+                //cTable5
             };
 
                 //Fortæller om vi kan oploade eller ej
@@ -219,11 +219,11 @@ namespace DM_Skills.Views
             /// </summary>
             private void Button_Reset_Click(object sender, RoutedEventArgs e)
             {
-                cTable1.Reset();
-                cTable2.Reset();
-                cTable3.Reset();
-                cTable4.Reset();
-                cTable5.Reset();
+                //cTable1.Reset();
+                //cTable2.Reset();
+                //cTable3.Reset();
+                //cTable4.Reset();
+                //cTable5.Reset();
 
                 stopwatch.Reset();
                 LapList.Reset();
