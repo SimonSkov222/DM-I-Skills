@@ -5,24 +5,51 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DM_Skills.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="800" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="330"/>
+            <ColumnDefinition Width="330"/>
+            <ColumnDefinition Width="140"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Søg efter tider:" Grid.Row="0" Grid.Column="0"/>
+        <TextBlock Text="Søg efter tider:" Grid.Row="0" Grid.Column="0" Margin="20 30" FontSize="16"/>
 
-        <TextBox Text="hej"  Grid.Row="1" Grid.Column="0"/>
-        <TextBox Text="hej1" Grid.Row="1" Grid.Column="1"/>
-        <TextBox Text="hej2" Grid.Row="1" Grid.Column="2"/>
+        <TextBox Grid.Row="1" Grid.Column="0" Style="{StaticResource TextBox_Style_Default}" Margin="3 0" ToolTip="Skolens navn...."/>
+        <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBox_Style_Default}" Margin="3 0" ToolTip="Deltagers navn...."/>
+        <DatePicker Text="hej1" Grid.Row="1" Grid.Column="2" Style="{StaticResource DatePicker_Style_Default}" Margin="3 0"/>
 
+        <ComboBox Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="6 20" Style="{StaticResource ComboBox_Style_Default}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="10,0">
+                            <TextBlock Text="hejjjjjjjjj" FontWeight="Bold" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+            <ComboBoxItem IsSelected="True">Nyeste tider</ComboBoxItem>
+            <ComboBoxItem>Hurtigste tider</ComboBoxItem>
+            <ComboBoxItem>Alfabetisk rækkefølge</ComboBoxItem>
+            
+        </ComboBox>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" >
+            <CheckBox Content="Hold Nr." Margin="45 0"/>
+            <CheckBox Content="Bord Nr."/>
+            
+        </StackPanel>
+        <Button Grid.Row="2" Grid.Column="2" Content="Søg" VerticalAlignment="Center" Margin="6 0"                  
+                Foreground="{StaticResource Color_Foreground_Light_1}" 
+                Background="{StaticResource Color_Background_Button_Blue}" 
+                Style="{StaticResource Button_Style_Default}"/>
+
+        
 
     </Grid>
 </UserControl>

@@ -9,6 +9,7 @@
         xmlns:Models="clr-namespace:DM_Skills.Models"
         xmlns:View="clr-namespace:DM_Skills.Views"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
+        
         mc:Ignorable="d" x:Name="controller"
         FontFamily="Calibri"
         Background="{StaticResource Color_Background_Program}"
@@ -42,9 +43,9 @@
 				</Grid>
 
 				<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
-					<Controls:PersonListControl Width="200"/>
-					<!--<TextBox Text="Søg på TIDER!!!" FontSize="50"/>-->
-				</Grid>
+                    <View:sog_pa_tider HorizontalAlignment="Center"/>
+
+                </Grid>
 
 
 			</StackPanel>

@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DM_Skills.Templates">
+    <ControlTemplate x:Key="ComboBox_Template_Default" TargetType="ComboBox">
+        <Grid x:Name="CONTAINER">
+            <Label
+                x:Name="CONTENT"
+               
+                DataContext="{TemplateBinding DataContext}"
+                VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                FontSize="{TemplateBinding FontSize}"
+                Height="{TemplateBinding Height}"
+                Width="{TemplateBinding Width}"
+                Foreground="{TemplateBinding Foreground}"
+                Background="{TemplateBinding Background}"/>
+
+            <Grid
+                x:Name="OVERLAY"
+                Width="{Binding ElementName=CONTENT, Path=ActualWidth}"
+                Height="{Binding ElementName=CONTENT, Path=ActualHeight}"/>
+
+        </Grid>
+        
+        
+        
+    </ControlTemplate>
+
+</ResourceDictionary>

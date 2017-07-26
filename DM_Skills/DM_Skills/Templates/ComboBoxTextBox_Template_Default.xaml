@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DM_Skills.Templates">
+
+    <DataTemplate x:Key="ComboBox1">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Hej1"></TextBlock>
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>
