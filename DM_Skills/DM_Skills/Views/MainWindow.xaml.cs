@@ -78,5 +78,10 @@ namespace DM_Skills
 
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            debug_plc.Persons.Add(new Models.PersonModel());
+        }
     }
 }

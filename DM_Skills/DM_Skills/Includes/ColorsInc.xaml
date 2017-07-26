@@ -10,6 +10,7 @@
     <SolidColorBrush x:Key="Color_Background_Button_LightBlue"  Color="LightBlue"/>
     <SolidColorBrush x:Key="Color_Background_Button_LightGreen" Color="LightGreen"/>
     <SolidColorBrush x:Key="Color_Background_Button_LightGray"  Color="LightGray"/>
+    <SolidColorBrush x:Key="Color_Background_Button_LightRed"  Color="Red"/>
 
     <SolidColorBrush x:Key="Color_Border_Box"                   Color="#3385ff"/>
     <SolidColorBrush x:Key="Color_Border_InputBox"              Color="#7F7F7F"/>

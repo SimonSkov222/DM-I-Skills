@@ -9,8 +9,7 @@
         xmlns:Models="clr-namespace:DM_Skills.Models"
         xmlns:View="clr-namespace:DM_Skills.Views"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
-        
-        mc:Ignorable="d" x:Name="controller"
+        mc:Ignorable="d"
         FontFamily="Calibri"
         Background="{StaticResource Color_Background_Program}"
         Foreground="{StaticResource Color_Foreground_Program}"
@@ -37,15 +36,51 @@
         </Grid>
         
         <ScrollViewer Grid.Row="1" Padding="5">
-			<StackPanel Visibility="Visible">
-				<Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+            <StackPanel Visibility="Visible">
+
+                <Controls:tes123/>
+                <ComboBox >
+                    <ComboBox.ItemTemplate>
+
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="5656"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    
+                    <ComboBoxItem>test</ComboBoxItem>
+                    <ComboBoxItem>test</ComboBoxItem>
+                    <ComboBoxItem>test</ComboBoxItem>
+                </ComboBox>
+
+                <Button Content="Debug" Click="Button_Click"/>
+                
+                <TextBox  AllowDrop="False"  
+                          Text="" 
+                          ToolTip="Deltagere Navn" 
+                          Style="{StaticResource TextBox_Style_Default}"  
+                          Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />
+
+
+                <Controls:PersonListControl 
+                    x:Name="debug_plc" 
+                    Title="Deltagere" 
+                    Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"
+                    Padding="5 3"
+                    BorderBrush="Gray" 
+                    Background="LightGray" 
+                    BorderThickness="1.5"/>
+                
+                <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
 					<View:Forside/>
 				</Grid>
 
 				<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
-                    <View:sog_pa_tider HorizontalAlignment="Center"/>
+					
+					<TextBox Text="Søg på TIDER!!!" FontSize="50"/>
+				</Grid>
 
-                </Grid>
 
 
 			</StackPanel>

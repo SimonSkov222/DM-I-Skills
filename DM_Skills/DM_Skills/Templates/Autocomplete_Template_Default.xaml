@@ -16,9 +16,10 @@
 					CornerRadius="{TemplateBinding BorderRadius}"
 					Visibility="{TemplateBinding IsOpen, Converter={StaticResource BoolToVisibilityConvert}}"
                     Width="{Binding ActualWidth,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=98}"
-			        Margin="{Binding ActualWidth,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource HorizontalThicknessConvert}, ConverterParameter=1}"
+			        
                     MaxHeight="150">
 
+                    <!--Margin="{Binding ActualWidth,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource ValueToThicknessConvert}, ConverterParameter='1 0 1 0'}"-->
                    <ScrollViewer 
 								ScrollViewer.HorizontalScrollBarVisibility="Auto" 
 								ScrollViewer.VerticalScrollBarVisibility="Auto">

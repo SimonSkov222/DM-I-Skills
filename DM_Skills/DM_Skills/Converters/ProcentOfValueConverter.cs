@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 
 namespace DM_Skills.Converters
@@ -16,6 +17,8 @@ namespace DM_Skills.Converters
         /// </summary>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            value = value is Thickness ? ((Thickness)value).Left : value;
+
             double procent = System.Convert.ToDouble(parameter);
             double number = System.Convert.ToDouble(value);
             

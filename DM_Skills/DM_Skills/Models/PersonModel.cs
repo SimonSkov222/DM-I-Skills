@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DM_Skills.Models
 {
-    class PersonModel : ModelSettings
+    public class PersonModel : ModelSettings
     {
 
         const int ERRNO_NAME_NULL = 1;

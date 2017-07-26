@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:DM_Skills.Views"
             xmlns:Controls="clr-namespace:DM_Skills.Controls"
             xmlns:Models="clr-namespace:DM_Skills.Models"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" x:Name="controller"
              d:DesignHeight="800" d:DesignWidth="800">
     <UserControl.Resources>
         <Models:TableModel x:Key="table1" Location="Ballerup"/>
@@ -30,7 +30,7 @@
 
                 <!-- Borderne -->
                 <StackPanel Grid.Row="0" Grid.Column="0">
-                    <Controls:TablesControl 
+                    <!--<Controls:TablesControl 
                     x:Name="cTable1"
                     Title="Bord 1" 
                     DataContext="{StaticResource table1}"
@@ -89,7 +89,7 @@
                     Time="{Binding Path=Time, Mode=TwoWay}"
                     Margin="0 0 0 0" 
                     FontSize="16" 
-                    Panel.ZIndex="1001"/>
+                    Panel.ZIndex="1001"/>-->
                 </StackPanel>
 
                 <!-- Indsend, nulstil og tid liste -->
