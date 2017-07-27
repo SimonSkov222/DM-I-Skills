@@ -27,6 +27,8 @@ namespace DM_Skills
             Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
             CreateDatabase();
         }
+
+        
         
         /// <summary>
         /// Opretter databasen.

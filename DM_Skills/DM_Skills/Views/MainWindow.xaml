@@ -30,14 +30,13 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
+            
             <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="False"  Style="{StaticResource Radio_Style_MenuOption}"/>
             <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="True"  Style="{StaticResource Radio_Style_MenuOption}"/>
         </Grid>
         
         <ScrollViewer Grid.Row="1" Padding="5">
             <StackPanel Visibility="Visible">
-
                 <Controls:tes123/>
                 <ComboBox >
                     <ComboBox.ItemTemplate>
@@ -76,10 +75,14 @@
 					<View:Forside/>
 				</Grid>
 
-				<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+                <Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+                    <View:sog_pa_tider/>
+                </Grid>
+
+                <!--<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
 					
 					<TextBox Text="Søg på TIDER!!!" FontSize="50"/>
-				</Grid>
+				</Grid>-->
 
 
 

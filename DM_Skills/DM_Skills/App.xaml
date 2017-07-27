@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Templates/Radio_Template_MenuOption.xaml"/>
                 <ResourceDictionary Source="Templates/ComboBox_Template_Default.xaml"/>
                 <ResourceDictionary Source="Templates/ComboBoxTextBox_Template_Default.xaml"/>
+                <ResourceDictionary Source="Templates/CheckBox_Template_Default.xaml"/>
 
                 <ResourceDictionary Source="Styles/Autocomplete_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/Label_Style_Default.xaml"/>
@@ -25,6 +26,8 @@
 				<ResourceDictionary Source="Styles/Grid_Style_FadeAnimation.xaml"/>
                 <ResourceDictionary Source="Styles/DatePicker_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/ComboBox_Style_Default.xaml"/>
+                <ResourceDictionary Source="Styles/ComboBoxItem_Style_Default.xaml"/>
+                <ResourceDictionary Source="Styles/CheckBox_Style_Default.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
