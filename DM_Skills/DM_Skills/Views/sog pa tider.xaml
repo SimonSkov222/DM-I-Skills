@@ -23,7 +23,7 @@
 
         <TextBox x:Name="txtSchoolName" Grid.Row="1" Grid.Column="0" Style="{StaticResource TextBox_Style_Default}" Margin="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ValueToThicknessConvert}, ConverterParameter='1 0'}" ToolTip="Skolens navn...."/>
         <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBox_Style_Default}" Margin="{Binding ElementName=txtSchoolName, Path=Margin}" ToolTip="Deltagers navn...."/>
-        <DatePicker  Text="hej1" Grid.Row="1" Grid.Column="2" Style="{StaticResource DatePicker_Style_Default}" Margin="{Binding ElementName=txtSchoolName, Path=Margin}"/>
+        <DatePicker Grid.Row="1" Grid.Column="2" Style="{StaticResource DatePicker_Style_Default}" Margin="{Binding ElementName=txtSchoolName, Path=Margin}"/>
 
 
         <ComboBox Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="{Binding ElementName=txtSchoolName, Path=Margin}" >
