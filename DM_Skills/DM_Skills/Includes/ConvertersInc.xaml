@@ -10,4 +10,5 @@
     <Converters:ValueToThicknessConverter x:Key="ValueToThicknessConvert"/>
     <Converters:AutocompleteItemConverter x:Key="AutocompleteItemConvert"/>
     <Converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleReverseConvert" Reverse="True"/>
+    <Converters:CompareValuesBoolConverter x:Key="CompareValuesToBoolConvert" TrueValue="True" FalseValue="False" />
 </ResourceDictionary> 
