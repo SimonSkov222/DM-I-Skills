@@ -6,6 +6,7 @@
     <Converters:ProcentOfValueConverter x:Key="ProcentOfValueConvert"/>
     <Converters:TimeSpanToStringConverter x:Key="TimeToStringConvert"/>
     <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConvert" TrueValue="Visible" FalseValue="Collapsed"/>
+    <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityHiddenConvert" TrueValue="Visible" FalseValue="Hidden"/>
     <Converters:ValueToThicknessConverter x:Key="ValueToThicknessConvert"/>
     <Converters:AutocompleteItemConverter x:Key="AutocompleteItemConvert"/>
     <Converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleReverseConvert" Reverse="True"/>
