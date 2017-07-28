@@ -15,7 +15,7 @@
             <Grid Width="100">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="{Binding ElementName=DatePickerText, Path=ActualHeight}"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="DatePickerText" Grid.Column="0"
 
@@ -39,7 +39,7 @@
                     </TextBox.Triggers>
                     </TextBox>
                     <Grid Grid.Column="1">
-                    <Image Source="/DM_Skills;component/Images/calendar-1559935_960_720.png"/>
+                    <Image Source="/DM_Skills;component/Images/calendar1600.png"/>
                 </Grid>
 
                     <Popup x:Name="PART_Popup"
