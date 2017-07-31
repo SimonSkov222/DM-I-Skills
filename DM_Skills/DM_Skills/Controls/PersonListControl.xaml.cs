@@ -33,9 +33,7 @@ namespace DM_Skills.Controls
                 "Persons", 
                 typeof(ObservableCollection<Models.PersonModel>), 
                 typeof(PersonListControl), 
-                new PropertyMetadata(
-                    new ObservableCollection<Models.PersonModel>()
-                )
+                new PropertyMetadata(null)
             );
 
         public static readonly DependencyProperty TitleProperty =
@@ -59,7 +57,7 @@ namespace DM_Skills.Controls
 
         public bool HasPersons
         {
-            get { return Persons.Count > 0; }
+            get { return Persons != null && Persons.Count > 0; }
         }
 
 
@@ -75,6 +73,9 @@ namespace DM_Skills.Controls
             InitializeComponent();
             styleTxtInput = (Style)FindResource("TextBox_Style_Default");
             styleBtnInput = (Style)FindResource("Button_Style_Default");
+
+            if (Persons == null)
+                Persons = new ObservableCollection<Models.PersonModel>();
 
             Persons.CollectionChanged += Persons_CollectionChanged;
 
@@ -247,7 +248,7 @@ namespace DM_Skills.Controls
 
             if (propertyName == nameof(Persons))
             {
-                BindingOperations.GetBindingExpressionBase(display, Label.ContentProperty).UpdateTarget();
+                BindingOperations.GetBindingExpressionBase((TextBlock)display.Content, TextBlock.TextProperty).UpdateTarget();
                 NotifyPropertyChanged(nameof(HasPersons));
             }
         }

@@ -27,7 +27,15 @@
         <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
             <Label AllowDrop="False" Content="{Binding ElementName=Controller, Path=TeamID}" ToolTip="Hold Nr" Style="{StaticResource Label_Style_Default}"  Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=10}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="5 3" Margin="0" FontWeight="Normal"/>
             <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
-            <TextBox  AllowDrop="False"   Text="{Binding ElementName=Controller, Path=Players}" ToolTip="Deltagere Navn" Style="{StaticResource TextBox_Style_Default}"   Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />
+
+            <local:PersonListControl Title="Deltagere" Tag="Navn"
+                                     Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
+            <!--<TextBox  AllowDrop="False"   
+            Text="{Binding ElementName=Controller, Path=Players}" 
+            ToolTip="Deltagere Navn" Style="{StaticResource TextBox_Style_Default}"   
+            Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />-->
+            
+            
             <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
             <TextBox  AllowDrop="True" Text="{Binding ElementName=Controller, Path=Time, Converter={StaticResource TimeToStringConvert}, ConverterParameter='HideOnNull'}" ToolTip="Tider" Style="{StaticResource TextBox_Style_Default}" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
 

@@ -6,6 +6,11 @@
              xmlns:local="clr-namespace:DM_Skills.Controls"
              mc:Ignorable="d" 
 			 x:Name="controller"
+            Padding="5 3"
+            BorderBrush="Gray" 
+            Background="{Binding ElementName=controller, Path=HasPersons, Converter={StaticResource PersonListBackground}}"
+            Foreground="{Binding ElementName=controller, Path=HasPersons, Converter={StaticResource PersonListForeground}}"
+            BorderThickness="1.5"
              
              d:DesignHeight="40" d:DesignWidth="150">
     <UserControl.Resources>
@@ -44,7 +49,7 @@
         <Label x:Name="display" 
                BorderThickness="0" 
                Background="Transparent"
-               HorizontalContentAlignment="{Binding ElementName=controller, Path=HorizontalContentAlignment}"
+               HorizontalContentAlignment="{Binding ElementName=controller, Path=HorizontalContentAlignment}"               
                FontWeight="{Binding ElementName=controller, Path=FontWeight}"
                Padding="{Binding ElementName=controller, Path=Padding}"
                Margin="0" 
@@ -52,10 +57,14 @@
                HorizontalAlignment="Stretch" 
                VerticalAlignment="Stretch" 
                Width="auto">
-            <MultiBinding Converter="{StaticResource PersonListConvert}">
-                <Binding ElementName="controller" Path="Persons"/>
-                <Binding ElementName="controller" Path="Title"/>
-            </MultiBinding>
+            <TextBlock TextTrimming="CharacterEllipsis" Foreground="{Binding ElementName=controller, Path=Foreground}">
+                <TextBlock.Text>
+                    <MultiBinding Converter="{StaticResource PersonListConvert}">
+                        <Binding ElementName="controller" Path="Persons"/>
+                        <Binding ElementName="controller" Path="Title"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
         </Label>
 
         <Popup x:Name="popup" 

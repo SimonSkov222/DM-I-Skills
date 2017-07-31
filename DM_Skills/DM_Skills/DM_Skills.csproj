@@ -65,9 +65,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\AutocompleteControl.xaml.cs">
+      <DependentUpon>AutocompleteControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\tes123.xaml.cs">
       <DependentUpon>tes123.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\AutocompleteConverter.cs" />
     <Compile Include="Converters\CompareValuesConverter.cs" />
     <Compile Include="Converters\PersonListConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
@@ -75,6 +79,10 @@
     <Compile Include="Views\sog pa tider.xaml.cs">
       <DependentUpon>sog pa tider.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\AutocompleteControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\DragAndDropTimerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

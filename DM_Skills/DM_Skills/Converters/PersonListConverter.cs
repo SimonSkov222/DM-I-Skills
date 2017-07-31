@@ -15,19 +15,22 @@ namespace DM_Skills.Converters
         {
             var persons = (ObservableCollection<Models.PersonModel>)values[0];
             var title = (string)values[1];
-            
+
             List<string> firstnames = new List<string>();
 
-            foreach (var item in persons)
-            {
-                if (item.Name != null && item.Name != "")
+            if (persons != null)
+            { 
+                foreach (var item in persons)
                 {
-                    var names = item.Name.Split(' ');
-                    firstnames.Add(names[0]);
+                    if (item.Name != null && item.Name != "")
+                    {
+                        var names = item.Name.Split(' ');
+                        firstnames.Add(names[0]);
+                    }
                 }
             }
 
-            if (persons.Count == 0 || firstnames.Count == 0)
+            if ((persons != null && persons.Count == 0) || firstnames.Count == 0)
                 return title;
             else
                 return string.Join(", ", firstnames);

@@ -39,23 +39,8 @@
             <StackPanel Visibility="Visible">
 
                 <Button Content="Debug" Click="Button_Click"/>
-                
-                <TextBox  AllowDrop="False"  
-                          Text="" 
-                          ToolTip="Deltagere Navn" 
-                          Style="{StaticResource TextBox_Style_Default}"  
-                          Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />
+                <Controls:AutocompleteControl/>
 
-
-                <Controls:PersonListControl 
-                    x:Name="debug_plc" 
-                    Title="Deltagere" 
-                    Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"
-                    Padding="5 3"
-                    BorderBrush="Gray" 
-                    Background="{Binding ElementName=debug_plc, Path=HasPersons, Converter={StaticResource PersonListBackground}}"
-                    BorderThickness="1.5"/>
-                
                 <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
 					<View:Forside/>
 				</Grid>
