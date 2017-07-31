@@ -6,8 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Includes/ConvertersInc.xaml"/>
                 <ResourceDictionary Source="Includes/ColorsInc.xaml"/>
+                <ResourceDictionary Source="Includes/ConvertersInc.xaml"/>
                 
                 
                 <ResourceDictionary Source="Templates/Autocomplete_Template_Default.xaml"/>

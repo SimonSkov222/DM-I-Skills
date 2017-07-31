@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace DM_Skills.Converters
 {
 
+    public class BoolToBrushConverter : BoolToValueConverter<Brush> { }
     public class BoolToVisibilityConverter : BoolToValueConverter<Visibility> { }
 
     /// <summary>

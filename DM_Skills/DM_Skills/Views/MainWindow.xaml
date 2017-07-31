@@ -38,24 +38,6 @@
         <ScrollViewer Grid.Row="1" Padding="5">
             <StackPanel Visibility="Visible">
 
-                <TextBox x:Name="fff"/>
-                <Label Content="{Binding ElementName=fff, Path=IsManipulationEnabled}"/>
-                <Controls:tes123/>
-                <ComboBox >
-                    <ComboBox.ItemTemplate>
-
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="5656"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                    
-                    <ComboBoxItem>test</ComboBoxItem>
-                    <ComboBoxItem>test</ComboBoxItem>
-                    <ComboBoxItem>test</ComboBoxItem>
-                </ComboBox>
-
                 <Button Content="Debug" Click="Button_Click"/>
                 
                 <TextBox  AllowDrop="False"  
@@ -71,7 +53,7 @@
                     Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"
                     Padding="5 3"
                     BorderBrush="Gray" 
-                    Background="LightGray" 
+                    Background="{Binding ElementName=debug_plc, Path=HasPersons, Converter={StaticResource PersonListBackground}}"
                     BorderThickness="1.5"/>
                 
                 <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
@@ -79,7 +61,7 @@
 				</Grid>
 
                 <Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
-                    <View:sog_pa_tider/>
+                    <!--<View:sog_pa_tider/>-->
                 </Grid>
 
                 <!--<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
