@@ -30,7 +30,9 @@
 
                 <!-- Borderne -->
                 <StackPanel Grid.Row="0" Grid.Column="0">
-                    <!--<Controls:TablesControl 
+            <Controls:TablesControl/>
+
+            <!--<Controls:TablesControl 
                     x:Name="cTable1"
                     Title="Bord 1" 
                     DataContext="{StaticResource table1}"

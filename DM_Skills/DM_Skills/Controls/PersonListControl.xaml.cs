@@ -14,22 +14,26 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace DM_Skills.Controls
 {
     /// <summary>
     /// Interaction logic for PersonListControl.xaml
     /// </summary>
-    public partial class PersonListControl : UserControl
+    public partial class PersonListControl : UserControl, INotifyPropertyChanged
     {
+        
+
+
+
         public static readonly DependencyProperty PersonsProperty =
             DependencyProperty.Register(
                 "Persons", 
                 typeof(ObservableCollection<Models.PersonModel>), 
                 typeof(PersonListControl), 
-                new PropertyMetadata(
-                    new ObservableCollection<Models.PersonModel>()
-                )
+                new PropertyMetadata(null)
             );
 
         public static readonly DependencyProperty TitleProperty =
@@ -40,27 +44,28 @@ namespace DM_Skills.Controls
         public ObservableCollection<Models.PersonModel> Persons
         {
             get { return (ObservableCollection<Models.PersonModel>)GetValue(PersonsProperty); }
-            set { SetValue(PersonsProperty, value); }
+            set { SetValue(PersonsProperty, value); NotifyPropertyChanged(nameof(Persons)); }
         }
         
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); }
+            set { SetValue(TitleProperty, value); NotifyPropertyChanged(nameof(Title)); }
         }
-        
-        
-        
+
+
+
+        public bool HasPersons
+        {
+            get { return Persons != null && Persons.Count > 0; }
+        }
+
+
+
+
         private Style styleTxtInput;
         private Style styleBtnInput;
-        private ControlTemplate templatePerson;
 
-
-        //private static void PersonsChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-        //    (d as PersonListControl).InsertNewInputBox();
-            
-        //}
 
 
         public PersonListControl()
@@ -68,210 +73,185 @@ namespace DM_Skills.Controls
             InitializeComponent();
             styleTxtInput = (Style)FindResource("TextBox_Style_Default");
             styleBtnInput = (Style)FindResource("Button_Style_Default");
-            templatePerson = (ControlTemplate)FindResource("person");
+
+            if (Persons == null)
+                Persons = new ObservableCollection<Models.PersonModel>();
 
             Persons.CollectionChanged += Persons_CollectionChanged;
 
-            if (Persons.Count == 0)
-                Persons.Add(new Models.PersonModel() { Name = "Debug 1" });
-
-            for (int i = 2; i < 5; i++)
-            {
-
-                Persons.Add(new Models.PersonModel() { Name = "Debug "+i });
-            }
-
-
+            InsertNewInputBox();
         }
+
+        
+        private void Txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!(sender as TextBox).IsLoaded) return;
+
+            var input = (Grid)newPerson.Children[0];
+            var txt = (TextBox)input.Children[0];
+            var model = (Models.PersonModel)input.DataContext;
+            Persons.Add(model);
+        }
+        
+
 
         private void Persons_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-                    int maxID = Persons.Count -1;
+
                     for (int i = 0; i < e.NewItems.Count; i++)
                     {
-                        var item = e.NewItems[i] as Models.PersonModel;
-                        int oldPos = e.NewStartingIndex + i;
-                        int newPos = Persons.Count-2;
-                        int currentID = e.NewStartingIndex + i;
+                        var item = e.NewItems[i];
+                        
 
-                        Console.WriteLine("Add: {0}", item.Name);
-                        Console.WriteLine("{0} - {1} - {2} - {3}", oldPos, newPos, currentID, maxID);
+                        if (newPerson.Children.Count == 0) {
+                            //Opret input element og find  fjern knappen
+                            var input = BuildInputElement();
+                            var btn = (Button)input.Children[1];
 
-                        InsertNewInputBox(item);
+                            //Sæt textboxen bindingen
+                            input.DataContext = item;
+                            //Tilføj event
+                            btn.Click += Btn_Click;
 
-                        if (currentID == maxID && maxID > 0)
+                            //Tilføj til view
+                            listOfPersons.Children.Add(input);
+                        }
+                        else
                         {
-                            Persons.Move(currentID, maxID - 1);
+                            //Find nuværnde input element/textbox og button
+                            var input = (Grid)newPerson.Children[0];
+                            var txt = (TextBox)input.Children[0];
+                            var btn = (Button)input.Children[1];
+
+                            //Fjern event
+                            txt.TextChanged -= Txt_TextChanged;
+
+                            //Tilføj event
+                            btn.Click += Btn_Click;
+
+                            //Går at bindingen på textbox vil skifte til det nye item der er tilføjet
+                            input.DataContext = item;
+
+                            //Skift parent for input element
+                            newPerson.Children.Clear();
+                            listOfPersons.Children.Add(input);
+
+                            //Lav et nyt input element
+                            InsertNewInputBox();
                         }
                     }
                     break;
                 case NotifyCollectionChangedAction.Remove:
-                    Console.WriteLine("Remove");
-                    int lastID = Persons.Count + e.OldItems.Count -1;
 
                     for (int i = 0; i < e.OldItems.Count; i++)
                     {
-                        var item = e.OldItems[i] as Models.PersonModel;
-                        DeleteInputBox(item);
+                        var item = e.OldItems[i];
+                        var input = listOfPersons.Children.Cast<UIElement>().Where(o => o is Grid && ((Grid)o).DataContext == item).First();
+                        listOfPersons.Children.Remove(input);
 
-                        Console.WriteLine("{0} - {1}", lastID, e.OldStartingIndex + i);
-
-                        if (lastID == e.OldStartingIndex + i)
-                        {
-                            Console.WriteLine("R Add");
-                            Persons.Add(item);
-                        }
                     }
-                    break;
+                        break;
                 case NotifyCollectionChangedAction.Replace:
-                    Console.WriteLine("Replace");
                     break;
                 case NotifyCollectionChangedAction.Move:
-                    Console.WriteLine("Move");
-
-                    for (int i = 0; i < e.NewItems.Count; i++)
-                    {
-                        var item = e.NewItems[i] as Models.PersonModel;
-                        DeleteInputBox(item);
-                        InsertNewInputBox(item, e.NewStartingIndex + i);
-                    }
-
-                    //stackPanel1.Children.Remove(item);
-                    //stackPanel1.Children.Insert(newIndex, item);
-
-
-                    //listOfPersons.Children.RemoveAt(e.OldStartingIndex);
                     break;
                 case NotifyCollectionChangedAction.Reset:
-                    Console.WriteLine("Reset");
                     break;
                 default:
                     break;
             }
+            NotifyPropertyChanged("Persons");
         }
 
-        private void InsertNewInputBox(Models.PersonModel model, int index = -1)
+        private void Btn_Click(object sender, RoutedEventArgs e)
         {
-            var item = new Label();
-            item.Template = templatePerson;
-            item.SetBinding(Label.ContentProperty, new Binding()
+            var input = (Grid)(sender as Button).Parent;
+            Persons.Remove((Models.PersonModel)input.DataContext);
+        }
+
+        private Grid BuildInputElement()
+        {
+            var input = new Grid();
+            var txt = new TextBox();
+            var btn = new Button();
+
+            //Placering
+            input.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
+            input.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Auto });
+
+            Grid.SetColumn(txt, 0);
+            Grid.SetColumn(btn, 1);
+
+            //Model
+            input.DataContext = new Models.PersonModel();
+            txt.SetBinding(TextBox.TextProperty, new Binding()
             {
-                Source = model
+                Path = new PropertyPath("Name"),
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
             });
-            
 
-            if (index == -1)
-                listOfPersons.Children.Add(item);
-            else
-                listOfPersons.Children.Insert(index, item);
+            //Events
+            txt.TextChanged += (o,e) => NotifyPropertyChanged("Persons");
 
+            //Styling
+            txt.Style = styleTxtInput;
+            txt.ToolTip = "Navn";
+            txt.Margin = new Thickness(0, 5, 0, 0);
+            txt.Height = 30;
+            txt.TabIndex = 2000 + Persons.Count;
 
-            //var txtName = new TextBox();
-            //var btnDelete = new Button();
+            btn.Style = styleBtnInput;
+            btn.Content = "X";
+            btn.FontWeight = FontWeights.Bold;
+            btn.Foreground = (Brush)FindResource("Color_Foreground_Light_1");
+            btn.Background = (Brush)FindResource("Color_Background_Button_LightRed");
+            btn.Margin = new Thickness(6, 5, 0, 0);
+            btn.Padding = new Thickness(0);
+            btn.Width = 30;
+            btn.Height = 30;
 
-            ////Sæt placering
-            //int rowID = gridListOfPlayers.RowDefinitions.Count;
-            //gridListOfPlayers.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-            ////gridListOfPlayers.RowDefinitions.Add(new RowDefinition());
-
-            //Grid.SetRow(txtName, rowID);
-            //Grid.SetRow(btnDelete, rowID);
-            //Grid.SetColumn(txtName, 0);
-            //Grid.SetColumn(btnDelete, 1);
-
-
-            ////Styling
-            //txtName.Style = styleTxtInput;
-            //txtName.ToolTip = "Navn";
-            //txtName.Margin = new Thickness(0, 5, 0, 0);
-            //txtName.Height = 30;
-
-            //btnDelete.Style = styleBtnInput;
-            //btnDelete.Content = "X";
-            //btnDelete.FontWeight = FontWeights.Bold;
-            //btnDelete.Foreground = (Brush)FindResource("Color_Foreground_Light_1");
-            //btnDelete.Background = (Brush)FindResource("Color_Background_Button_LightRed");
-            //btnDelete.Margin = new Thickness(6, 5, 0, 0);
-            //btnDelete.Padding = new Thickness(0);
-            //btnDelete.Width = 30;
-            //btnDelete.Height = 30;
+            //Fjern tab
+            FocusManager.SetIsFocusScope(btn, false);
+            KeyboardNavigation.SetIsTabStop(btn, false);
 
 
-            ////Event
-            //txtName.TextChanged += (o, e) =>
-            //{
-            //    if ((o as TextBox).Text == null || (o as TextBox).Text == "")
-            //        return;
-            //    if (IsInputElementLast((UIElement)o))
-            //        InsertNewInputBox();
-            //};
+            //view
+            input.Children.Add(txt);
+            input.Children.Add(btn);
 
-            //btnDelete.Click += (o, e) =>
-            //{
-            //    if (!IsInputElementLast((UIElement)o))
-            //        DeleteInputBoxByRowID(Grid.GetRow((UIElement)o));
-            //};
-
-
-            ////Add to view
-            //gridListOfPlayers.Children.Add(txtName);
-            //gridListOfPlayers.Children.Add(btnDelete);
-
-
-            // < TextBox Grid.Column = "0" ToolTip = "Navn" Style = "{StaticResource TextBox_Style_Default}" VerticalAlignment = "Top" />
-            //       < Button Grid.Column = "1" Content = "X" 
-            //FontWeight = "Bold" Foreground = "White" Background = "Red" 
-            //    Style = "{StaticResource Button_Style_Default}" Width = "30" Height = "30" Margin = "6 0 0 0" Padding = "0" />
-
-
+            return input;
         }
 
-        private void DeleteInputBox(Models.PersonModel model)
+        private void InsertNewInputBox()
         {
-            foreach (var deleteMe in FindInputBox(model))
+            var input = BuildInputElement();
+            var txt = (TextBox)input.Children[0];
+
+            //Events
+            txt.TextChanged += Txt_TextChanged;
+
+            //Add til view
+            newPerson.Children.Add(input);
+        }
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // This method is called by the Set accessor of each property.
+        // The CallerMemberName attribute that is applied to the optional propertyName
+        // parameter causes the property name of the caller to be substituted as an argument.
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+            if (propertyName == nameof(Persons))
             {
-                listOfPersons.Children.Remove(deleteMe);
+                BindingOperations.GetBindingExpressionBase((TextBlock)display.Content, TextBlock.TextProperty).UpdateTarget();
+                NotifyPropertyChanged(nameof(HasPersons));
             }
         }
 
-        private bool IsInputElementLast(Models.PersonModel model)
-        {
-            return Persons.IndexOf(model) == Persons.Count - 1;
-        }
-
-        private UIElement[] FindInputBox(Models.PersonModel model)
-        {
-            return listOfPersons.Children.Cast<UIElement>().Where(o => o is Label && ((Label)o).Content == model).ToArray();
-        }
-
-        private void dropdownBorder_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Console.WriteLine("Border Size {0}", (sender as Border).ActualWidth);
-        }
-
-        private void debug_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Console.WriteLine("Label Size {0}", (sender as Label).ActualWidth);
-
-        }
-
-        private void Button_DeleteInput_Click(object sender, RoutedEventArgs e)
-        {
-            var item = (sender as Button).Tag as Models.PersonModel;
-            if (!IsInputElementLast(item))
-                Persons.Remove(item);
-        }
-
-        private void TextBox_Input_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var txt = (TextBox)sender;
-            if (IsInputElementLast(txt.Tag as Models.PersonModel) && txt.Text != null && txt.Text != "" )
-            {
-                Persons.Add(new Models.PersonModel());
-            }
-        }
     }
 }

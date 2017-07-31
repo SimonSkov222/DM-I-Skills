@@ -84,7 +84,7 @@ namespace DM_Skills.Controls
         /// </summary>
         private void TxtTime_MouseMove(object sender, MouseEventArgs e)
         {
-            DragDrop.DoDragDrop((sender as TextBlock), (sender as TextBlock).Text, DragDropEffects.All);
+            DragDrop.DoDragDrop((sender as Label), (sender as Label).Content, DragDropEffects.All);
         }
 
     }
