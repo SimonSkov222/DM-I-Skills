@@ -45,7 +45,6 @@
                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                     Width="{TemplateBinding Width}"
                     Padding="{TemplateBinding Padding}"
-                    Margin="{TemplateBinding Margin}"
                 IsEnabled="{TemplateBinding IsEnabled}"
 
                     BorderBrush="Transparent"
@@ -63,7 +62,6 @@
                     IsEnabled="{TemplateBinding IsEnabled}"
                     Width="{TemplateBinding Width}"
                     Padding="{TemplateBinding Padding}"
-                    Margin="{TemplateBinding Margin}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     Panel.ZIndex="1" >

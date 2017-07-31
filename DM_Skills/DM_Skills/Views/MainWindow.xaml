@@ -8,7 +8,8 @@
         xmlns:Controls="clr-namespace:DM_Skills.Controls"
         xmlns:Models="clr-namespace:DM_Skills.Models"
         xmlns:View="clr-namespace:DM_Skills.Views"
-        mc:Ignorable="d" x:Name="controller"
+		xmlns:System="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
         FontFamily="Calibri"
         Background="{StaticResource Color_Background_Program}"
         Foreground="{StaticResource Color_Foreground_Program}"
@@ -17,10 +18,78 @@
 
 
     <Grid>
-        <ScrollViewer Visibility="Visible">
-            <StackPanel>
-                <View:Forside/>
-            </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Height="30" Background="{StaticResource Color_Background_Button_Blue}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="False"  Style="{StaticResource Radio_Style_MenuOption}"/>
+            <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="True"  Style="{StaticResource Radio_Style_MenuOption}"/>
+        </Grid>
+        
+        <ScrollViewer Grid.Row="1" Padding="5">
+            <StackPanel Visibility="Visible">
+
+                <TextBox x:Name="fff"/>
+                <Label Content="{Binding ElementName=fff, Path=IsManipulationEnabled}"/>
+                <Controls:tes123/>
+                <ComboBox >
+                    <ComboBox.ItemTemplate>
+
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="5656"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    
+                    <ComboBoxItem>test</ComboBoxItem>
+                    <ComboBoxItem>test</ComboBoxItem>
+                    <ComboBoxItem>test</ComboBoxItem>
+                </ComboBox>
+
+                <Button Content="Debug" Click="Button_Click"/>
+                
+                <TextBox  AllowDrop="False"  
+                          Text="" 
+                          ToolTip="Deltagere Navn" 
+                          Style="{StaticResource TextBox_Style_Default}"  
+                          Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />
+
+
+                <Controls:PersonListControl 
+                    x:Name="debug_plc" 
+                    Title="Deltagere" 
+                    Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"
+                    Padding="5 3"
+                    BorderBrush="Gray" 
+                    Background="LightGray" 
+                    BorderThickness="1.5"/>
+                
+                <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+					<View:Forside/>
+				</Grid>
+
+                <Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+                    <View:sog_pa_tider/>
+                </Grid>
+
+                <!--<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+					
+					<TextBox Text="Søg på TIDER!!!" FontSize="50"/>
+				</Grid>-->
+
+
+
+			</StackPanel>
         </ScrollViewer>
     </Grid>
 </Window>

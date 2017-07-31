@@ -8,13 +8,14 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>DM_Skills</RootNamespace>
     <AssemblyName>DM_Skills</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,7 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SQLite_DB_LIB">
-      <HintPath>..\SQLite_DB_LIB\bin\Release\SQLite_DB_LIB.dll</HintPath>
+      <HintPath>..\SQLite_DB_LIB\bin\Debug\SQLite_DB_LIB.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -64,6 +65,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\tes123.xaml.cs">
+      <DependentUpon>tes123.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\CompareValuesConverter.cs" />
+    <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
+    <Compile Include="Scripts\Helper.cs" />
     <Compile Include="Views\sog pa tider.xaml.cs">
       <DependentUpon>sog pa tider.xaml</DependentUpon>
     </Compile>
@@ -71,7 +78,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\PersonListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\TablesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\tes123.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -95,7 +110,31 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\CheckBox_Style_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBoxItem_Style_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBox_Style_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DatePicker_Style_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Grid_Style_FadeAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Label_Style_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Radio_Style_MenuOption.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,6 +147,22 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Templates\Button_Template_Flat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\CheckBox_Template_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\ComboBoxTextBox_Template_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\ComboBox_Template_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\Radio_Template_MenuOption.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,6 +186,9 @@
       <DependentUpon>DragAndDropTimerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Autocomplete.cs" />
+    <Compile Include="Controls\PersonListControl.xaml.cs">
+      <DependentUpon>PersonListControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TablesControl.xaml.cs">
       <DependentUpon>TablesControl.xaml</DependentUpon>
     </Compile>
@@ -142,7 +200,7 @@
     <Compile Include="Converters\BoolToValueConverter.cs" />
     <Compile Include="Converters\ProcentOfValueConverter.cs" />
     <Compile Include="Converters\TimeSpanToStringConverter.cs" />
-    <Compile Include="Converters\ValueToThickness.cs" />
+    <Compile Include="Converters\ValueToThicknessConverter.cs" />
     <Compile Include="Models\LocationModel.cs" />
     <Compile Include="Models\ModelSettings.cs" />
     <Compile Include="Models\PersonModel.cs" />
@@ -191,7 +249,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />
-    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Calendar-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\calendar1600.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" />

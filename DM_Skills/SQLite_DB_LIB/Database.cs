@@ -197,8 +197,7 @@ namespace SQLite_DB_LIB
 
             values = StringsSQLready(values);
 
-
-
+            
             for (int i = 0; i < columns.Length; i++)
                 statements.Add(string.Format("`{0}` = {1}", columns[i], values[i]));
 

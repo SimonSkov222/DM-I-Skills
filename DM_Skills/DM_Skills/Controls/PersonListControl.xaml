@@ -1,0 +1,127 @@
+﻿<UserControl x:Class="DM_Skills.Controls.PersonListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DM_Skills.Controls"
+             mc:Ignorable="d" Background="White"
+			 x:Name="controller"
+             
+             d:DesignHeight="40" d:DesignWidth="150">
+    <UserControl.Resources>
+
+        <Storyboard x:Key="slideDown">
+            <DoubleAnimation
+            Storyboard.TargetName="dropdownBorder" 
+            Storyboard.TargetProperty="MaxHeight"
+            From="{Binding ElementName=dropdownBorder, Path=MaxHeight}"
+            To="150" Duration="0:0:0.3" />
+        </Storyboard>
+
+        <Storyboard x:Key="slideUp">
+            <DoubleAnimation
+            Storyboard.TargetName="dropdownBorder" 
+            Storyboard.TargetProperty="MaxHeight"
+            To="{Binding ElementName=dropdownBorder, Path=MaxHeight}" 
+            From="150" Duration="0:0:0.3" />
+        </Storyboard>
+
+        <ControlTemplate x:Key="person" TargetType="Label">
+
+            <Grid Margin="15 3" DataContext="{TemplateBinding Content}" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox 
+                    Grid.Column="0" Text="{Binding Path=Name}" 
+                    Tag="{TemplateBinding Content}" 
+                    ToolTip="Navn" 
+                    Style="{StaticResource TextBox_Style_Default}" 
+                    TextChanged="TextBox_Input_TextChanged"
+                    Margin="0 5 0 0" />
+                <Button 
+                    Grid.Column="1" Content="X" 
+                    Tag="{TemplateBinding Content}" 
+                    FontWeight="Bold" 
+                    Foreground="White" 
+                    Background="Red" 
+                    Style="{StaticResource Button_Style_Default}" 
+                    Width="30" Height="30" 
+                    Margin="6 5 0 0" Padding="0" 
+                    Click="Button_DeleteInput_Click"/>
+
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Resources>
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="MouseEnter">
+            <BeginStoryboard Storyboard="{StaticResource slideDown}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="MouseLeave">
+            <BeginStoryboard Storyboard="{StaticResource slideUp}" />
+        </EventTrigger>
+    </UserControl.Triggers>
+
+
+
+
+    <Grid>
+        <Label x:Name="display" 
+               BorderThickness="0" 
+               Background="{Binding ElementName=controller, Path=Background}"
+               HorizontalContentAlignment="{Binding ElementName=controller, Path=HorizontalContentAlignment}"
+               FontWeight="{Binding ElementName=controller, Path=FontWeight}"
+               Padding="{Binding ElementName=controller, Path=Padding}"
+               Content="{Binding ElementName=controller, Path=Title}"
+               Margin="0" 
+               Style="{StaticResource Label_Style_Default}" 
+               HorizontalAlignment="Stretch" 
+               VerticalAlignment="Stretch" 
+               MouseEnter="debug_MouseEnter"
+               Width="auto"/>
+
+        <Popup x:Name="popup" 
+               PlacementTarget="{Binding ElementName=controller}">
+            <Popup.IsOpen>
+                <MultiBinding Converter="{StaticResource CompareValuesToBoolConvert}" ConverterParameter="OR" Mode="OneWay">
+                    <Binding ElementName="controller" Path="IsMouseOver"/>
+                    <Binding ElementName="dropdownBorder" Path="MaxHeight" Converter="{StaticResource CompareValuesToBoolConvert}" ConverterParameter="0 False"/>
+                </MultiBinding>
+            </Popup.IsOpen>
+            <Popup.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard Storyboard="{StaticResource slideDown}" />
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard Storyboard="{StaticResource slideUp}" />
+                </EventTrigger>
+            </Popup.Triggers>
+
+            <Border 
+                x:Name="dropdownBorder"
+                SnapsToDevicePixels="True"
+                BorderBrush="{Binding ElementName=controller, Path=BorderBrush}" 
+                BorderThickness="{Binding ElementName=controller, Path=BorderThickness}"
+                Width="{Binding ElementName=controller, Path=ActualWidth}"
+                MouseEnter="dropdownBorder_MouseEnter"
+                Padding="0"
+                MinWidth="200"
+                Background="White"
+                MaxHeight="0"
+                >
+
+                <ScrollViewer 
+                    x:Name="scroll" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+                    <StackPanel x:Name="listOfPersons"/>
+
+   
+                </ScrollViewer>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

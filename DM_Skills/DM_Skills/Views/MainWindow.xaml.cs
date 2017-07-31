@@ -27,6 +27,8 @@ namespace DM_Skills
             Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
             CreateDatabase();
         }
+
+        
         
         /// <summary>
         /// Opretter databasen.
@@ -77,6 +79,11 @@ namespace DM_Skills
             }
 
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            debug_plc.Persons.Add(new Models.PersonModel());
         }
     }
 }
