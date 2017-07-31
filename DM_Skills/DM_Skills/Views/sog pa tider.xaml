@@ -8,14 +8,14 @@
              x:Name="Controller"
              d:DesignHeight="800" d:DesignWidth="800">
 
-    <Grid Grid.Row="0">
+    <Grid Grid.Row="0" Margin="6,0,-6,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="8"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="3"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="330"/>
@@ -28,15 +28,17 @@
         <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBox_Style_Default}" Margin="{Binding ElementName=txtSchoolName, Path=Margin}" ToolTip="Deltagers navn...."/>
         <DatePicker Grid.Row="1" Grid.Column="2" Style="{StaticResource DatePicker_Style_Default}" Margin="{Binding ElementName=txtSchoolName, Path=Margin}" />
         
+        
 
-        <ComboBox Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="{Binding ElementName=txtSchoolName, Path=Margin}" >
+
+        <ComboBox Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="{Binding ElementName=txtSchoolName, Path=Margin}" >
 
             <ComboBoxItem IsSelected="True">Nyeste tider</ComboBoxItem>
             <ComboBoxItem>Hurtigste tider</ComboBoxItem>
             <ComboBoxItem>Alfabetisk rækkefølge</ComboBoxItem>
 
         </ComboBox>
-        <Grid Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" Margin="{Binding ElementName=txtSchoolName, Path=Margin}">
+        <Grid Grid.Row="3" Grid.Column="1" VerticalAlignment="Stretch" Margin="{Binding ElementName=txtSchoolName, Path=Margin}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -45,18 +47,26 @@
             <CheckBox Content="Bord Nr." Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource CheckBox_Style_Default}"/>
 
         </Grid>
-        <Button Grid.Row="2" Grid.Column="2" Content="Søg" VerticalAlignment="Center"                  
+        <Button Grid.Row="3" Grid.Column="2" Content="Søg" VerticalAlignment="Center"                  
                 Foreground="{StaticResource Color_Foreground_Light_1}" 
                 Background="{StaticResource Color_Background_Button_Blue}" 
                 Style="{StaticResource Button_Style_Default}"
                 HorizontalAlignment="Stretch" 
                 Margin="{Binding ElementName=txtSchoolName, Path=Margin}"/>
 
-        <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="Red" Margin="0 0 0 0">
+        <Grid Grid.Row="5" Grid.ColumnSpan="3" Margin="0 0 0 0" HorizontalAlignment="Center" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=95}">
+            <Grid.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="Transparent" Offset="1"/>
+                    <GradientStop Color="#407F7F7F" Offset="0.95"/>
+                    <GradientStop Color="#7F7F7F" Offset="0.717"/>
+                    <GradientStop Color="#7F7F7F"/>
+                </RadialGradientBrush>
+            </Grid.Background>
         </Grid>
 
     </Grid>
-        
+
 
 
 

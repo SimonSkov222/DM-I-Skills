@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DM_Skills.Templates">
+
+    <ControlTemplate x:Key="DatePickerCalendar_Template_Default" TargetType="{x:Type Calendar}">
+        <ControlTemplate.Resources>
+            <!--<DataTemplate x:Key="{x:Static CalendarItem}">
+                
+            </DataTemplate>-->
+        </ControlTemplate.Resources>
+        
+    </ControlTemplate>
+    
+</ResourceDictionary>

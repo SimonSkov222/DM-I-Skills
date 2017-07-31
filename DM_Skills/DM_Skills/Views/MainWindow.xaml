@@ -38,7 +38,7 @@
         <ScrollViewer Grid.Row="1" Padding="5">
             <StackPanel Visibility="Visible">
 
-                <TextBox x:Name="fff"/>
+                <!--<TextBox x:Name="fff"/>
                 <Label Content="{Binding ElementName=fff, Path=IsManipulationEnabled}"/>
                 <Controls:tes123/>
                 <ComboBox >
@@ -76,10 +76,10 @@
                 
                 <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
 					<View:Forside/>
-				</Grid>
+				</Grid>-->
 
                 <Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
-                    <View:sog_pa_tider/>
+                    <View:sog_pa_tider HorizontalAlignment="Center"/>
                 </Grid>
 
                 <!--<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">

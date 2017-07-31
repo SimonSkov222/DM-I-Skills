@@ -59,7 +59,7 @@
                                 Background="{StaticResource Color_Background_InputBox}"
 
                                 BorderThickness="1.5"
-                                BorderBrush="#7F7F7F"/>
+                                BorderBrush="{StaticResource Color_Border_InputBox}"/>
                                 <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
                                 </ScrollViewer>

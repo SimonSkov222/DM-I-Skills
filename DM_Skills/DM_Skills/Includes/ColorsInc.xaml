@@ -14,6 +14,8 @@
 
     <SolidColorBrush x:Key="Color_Border_Box"                   Color="#3385ff"/>
     <SolidColorBrush x:Key="Color_Border_InputBox"              Color="#7F7F7F"/>
+    
+    
 
     <SolidColorBrush x:Key="Color_Foreground_Program"           Color="#262626"/>
     <SolidColorBrush x:Key="Color_Foreground_Placeholder"       Color="#9e9e9e"/>

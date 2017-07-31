@@ -7,17 +7,102 @@
                 Background="{TemplateBinding Background}"
                 >-->
 
-        <CheckBox x:Name="OpenPopUp" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+        <!--<CheckBox x:Name="OpenPopUp" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
                   IsChecked="{Binding ElementName=DatePickerText, Path=IsKeyboardFocused, Mode=OneWay}" 
                   
-                  >
-
-            <Grid Width="100">
+                  >-->
+        <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}"
+                Background="{TemplateBinding Background}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <DatePickerTextBox x:Name="PART_TextBox" Grid.Column="0" Background="Transparent" Margin="0" Padding="0" BorderThickness="0" 
+                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                    <DatePickerTextBox.Template>
+                        <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
+                            <Grid>
+                                <Grid.Resources>
+                                    <SolidColorBrush x:Key="WatermarkBrush" Color="#FFAAAAAA"/>
+                                </Grid.Resources>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualStateGroup.Transitions>
+                                            <VisualTransition GeneratedDuration="0"/>
+                                            <VisualTransition GeneratedDuration="0:0:0.1" To="MouseOver"/>
+                                        </VisualStateGroup.Transitions>
+                                        <VisualState x:Name="Normal"/>
+                                        <VisualState x:Name="MouseOver">
+                                            <Storyboard>
+                                                <ColorAnimation Duration="0" To="#FF99C1E2" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="ContentElement"/>
+                                                <ColorAnimation Duration="0" To="#FF99C1E2" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" Storyboard.TargetName="watermark_decorator"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="WatermarkStates">
+                                        <VisualStateGroup.Transitions>
+                                            <VisualTransition GeneratedDuration="0"/>
+                                        </VisualStateGroup.Transitions>
+                                        <VisualState x:Name="Unwatermarked"/>
+                                        <VisualState x:Name="Watermarked">
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="ContentElement"/>
+                                                <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_Watermark"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                    <VisualStateGroup x:Name="FocusStates">
+                                        <VisualStateGroup.Transitions>
+                                            <VisualTransition GeneratedDuration="0"/>
+                                        </VisualStateGroup.Transitions>
+                                        <VisualState x:Name="Unfocused"/>
+                                        <VisualState x:Name="Focused">
+                                            <Storyboard>
+                                                <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="FocusVisual"/>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="1" Opacity="1" Padding="{TemplateBinding Padding}">
+                                    <Grid x:Name="WatermarkContent" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                        <Border x:Name="ContentElement" BorderBrush="#FFFFFFFF" BorderThickness="1" Visibility="Hidden"/>
+                                        <Border x:Name="watermark_decorator" BorderBrush="#FFFFFFFF" BorderThickness="1" Visibility="Hidden">
+                                            <ContentControl x:Name="PART_Watermark" Focusable="False" IsHitTestVisible="False" Opacity="0" Padding="2"/>
+                                        </Border>
+                                        <ScrollViewer x:Name="PART_ContentHost" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                        <Border x:Name="FocusVisual" BorderBrush="#FF45D6FA" CornerRadius="1" IsHitTestVisible="False" Opacity="0"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </DatePickerTextBox.Template>
+                </DatePickerTextBox>
+                <Button x:Name="PART_Button" Padding="0" Style="{StaticResource Button_Style_Default}" Margin="0" Grid.Column="1" Background="Transparent"
+                        Width="{TemplateBinding ActualHeight}" Height="{Binding ActualHeight}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Image Source="/DM_Skills;component/Images/calendar1600.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="None"/>
+                    
+                </Button>
+                
+                <Popup x:Name="PART_Popup"
+                     AllowsTransparency="True"
+                     Placement="Bottom"
+                       PlacementRectangle="-100 -20 0 0"
+                       Margin="0"
+                     StaysOpen="False" 
+                       PlacementTarget="{Binding ElementName=border}"
+                       />
+            </Grid>
+        </Border>
+        
+        
+            <!--<Grid Width="100">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox x:Name="DatePickerText" Grid.Column="0"
+            <TextBox x:Name="DatePickerText" Grid.Column="0"
 
                  VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                  HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -29,8 +114,7 @@
                              
                  Background="Transparent"
                  >
-
-                    <TextBox.Triggers>
+                <TextBox.Triggers>
                         <EventTrigger RoutedEvent="MouseDown">
                             <EventTrigger.Actions>
                                 
@@ -39,21 +123,25 @@
                     </TextBox.Triggers>
                     </TextBox>
                     <Grid Grid.Column="1">
+                <Button x:Name="PART_Button" HorizontalAlignment="Right" Width="30" >
                     <Image Source="/DM_Skills;component/Images/calendar1600.png"/>
+
+                </Button>
+                        --><!--<Image Source="/DM_Skills;component/Images/calendar1600.png" x:Name="OpenPopUp"/>--><!--
                 </Grid>
 
-                    <Popup x:Name="PART_Popup"
+            <Popup x:Name="PART_Popup"
                      AllowsTransparency="True"
                      Placement="Bottom"
                      PlacementTarget="{Binding ElementName=DatePickerText}"
                      StaysOpen="False" 
                        IsOpen="{Binding ElementName=OpenPopUp, Path=IsChecked}"
                        />
+        </Grid>-->
+        
+        
 
 
-                </Grid>
-
-            </CheckBox>
 
         <!--</Border>-->
 

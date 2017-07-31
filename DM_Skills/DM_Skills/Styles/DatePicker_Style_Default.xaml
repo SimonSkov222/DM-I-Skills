@@ -18,6 +18,8 @@
         <Setter Property="Background" Value="{StaticResource Color_Background_InputBox}"/>
         <Setter Property="Foreground" Value="{StaticResource Color_Foreground_Program}"/>
         <Setter Property="Template" Value="{StaticResource DatePicker_Template_Default}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="CalendarStyle" Value="{StaticResource DatePickerCalendar_Style_Default}"/>
 
 
 
