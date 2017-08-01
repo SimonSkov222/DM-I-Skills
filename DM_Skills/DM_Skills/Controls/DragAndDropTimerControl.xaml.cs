@@ -66,7 +66,9 @@ namespace DM_Skills.Controls
 
 
             txtTime.MouseDown += TxtTime_MouseMove;
+            txtTime.QueryContinueDrag += TxtTime_QueryContinueDrag;
         }
+
 
         /// <summary>
         /// Fjerner de tider vi kan se i view
@@ -84,8 +86,16 @@ namespace DM_Skills.Controls
         /// </summary>
         private void TxtTime_MouseMove(object sender, MouseEventArgs e)
         {
-            DragDrop.DoDragDrop((sender as Label), (sender as Label).Content, DragDropEffects.All);
+            
+            DragDrop.DoDragDrop((sender as Label), (sender as Label).Content, DragDropEffects.Copy | DragDropEffects.Move);
         }
 
+        private void TxtTime_QueryContinueDrag(object sender, QueryContinueDragEventArgs e)
+        {
+            Label lblFrom = e.Source as Label;
+
+            if (!e.KeyStates.HasFlag(DragDropKeyStates.LeftMouseButton))
+                lblFrom.Content = "...";
+        }
     }
 }

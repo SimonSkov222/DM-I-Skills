@@ -100,5 +100,10 @@ namespace DM_Skills.Controls
 
             BorderThickness = new Thickness(0);
         }
+
+        private void Label_Drop(object sender, DragEventArgs e)
+        {
+            Console.WriteLine("Item Dropped");
+        }
     }
 }

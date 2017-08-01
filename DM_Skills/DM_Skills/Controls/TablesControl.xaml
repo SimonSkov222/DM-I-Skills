@@ -7,38 +7,46 @@
              mc:Ignorable="d" 
              x:Name="Controller"
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
-        <TextBlock Text="{Binding ElementName=Controller, Path=Title}" Grid.Row="0" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="18" Margin="0 8 0 2"/>
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="{Binding ElementName=Controller, Path=Title}" Grid.Row="0" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="18" Margin="0 8 0 2"/>
 
-        <StackPanel  Panel.ZIndex="1000" Orientation="Horizontal">
+            <StackPanel  Panel.ZIndex="1000" Orientation="Horizontal">
 
-            <local:Autocomplete
+                <local:Autocomplete
                 Children="{Binding ElementName=Controller, Path=SchoolList, Converter={StaticResource AutocompleteItemConvert}, Mode=OneWay}"
                 Margin="0" Padding="0" Panel.ZIndex="1000" x:Name="schoolList" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=69}">
-                <local:Autocomplete.Target>
-                    <TextBox AllowDrop="False" Text="{Binding ElementName=Controller, Path=School}" Padding="5 3" ToolTip="Skolens navn" Style="{StaticResource TextBox_Style_Default}"/>
-                </local:Autocomplete.Target>
-            </local:Autocomplete>
-            <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
-            <TextBox Tag="tag" Style="{StaticResource TextBox_Style_Default}" AllowDrop="False"  Padding="5 3" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=29}" ToolTip="Klasse Navn" />
-        </StackPanel>
+                    <local:Autocomplete.Target>
+                        <TextBox Text="{Binding ElementName=Controller, Path=School}" Padding="5 3" ToolTip="Skolens navn" Style="{StaticResource TextBox_Style_Default}"/>
+                    </local:Autocomplete.Target>
+                </local:Autocomplete>
+                <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
+                <TextBox Tag="tag" Style="{StaticResource TextBox_Style_Default}" Padding="5 3" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=29}" ToolTip="Klasse Navn" />
+            </StackPanel>
 
 
-        <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
-            <Label AllowDrop="False" Content="{Binding ElementName=Controller, Path=TeamID}" ToolTip="Hold Nr" Style="{StaticResource Label_Style_Default}"  Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=10}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="5 3" Margin="0" FontWeight="Normal"/>
-            <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                <Label Content="{Binding ElementName=Controller, Path=TeamID}" ToolTip="Hold Nr" Style="{StaticResource Label_Style_Default}"  Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=10}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="5 3" Margin="0" FontWeight="Normal"/>
+                <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
 
-            <local:PersonListControl Title="Deltagere" Tag="Navn"
+                <local:PersonListControl Title="Deltagere" Tag="Navn"
                                      Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
-            <!--<TextBox  AllowDrop="False"   
+                <!--<TextBox  AllowDrop="False"   
             Text="{Binding ElementName=Controller, Path=Players}" 
             ToolTip="Deltagere Navn" Style="{StaticResource TextBox_Style_Default}"   
             Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />-->
-            
-            
-            <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
-            <TextBox  AllowDrop="True" Text="{Binding ElementName=Controller, Path=Time, Converter={StaticResource TimeToStringConvert}, ConverterParameter='HideOnNull'}" ToolTip="Tider" Style="{StaticResource TextBox_Style_Default}" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
 
+
+                <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
+                <TextBox AllowDrop="False" Text="{Binding ElementName=Controller, Path=Time, Converter={StaticResource TimeToStringConvert}, ConverterParameter='HideOnNull'}" ToolTip="Tider" Style="{StaticResource TextBox_Style_Default}" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
+
+            </StackPanel>
         </StackPanel>
-    </StackPanel>
+
+        <Label Content="Drop Her" 
+               Background="Gray" Foreground="White" 
+               HorizontalContentAlignment="Center" 
+               VerticalContentAlignment="Center"
+               Drop="Label_Drop"/>
+    </Grid>
 </UserControl>
