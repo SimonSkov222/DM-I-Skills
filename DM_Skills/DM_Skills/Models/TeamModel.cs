@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DM_Skills.Models
 {
-    class TeamModel : ModelSettings
+    public class TeamModel : ModelSettings
     {
         const int ERRNO_TIME_NULL = 1;
 

@@ -81,17 +81,18 @@
                 </DatePickerTextBox>
                 <Button x:Name="PART_Button" Padding="0" Style="{StaticResource Button_Style_Default}" Margin="0" Grid.Column="1" Background="Transparent"
                         Width="{TemplateBinding ActualHeight}" Height="{Binding ActualHeight}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <Image Source="/DM_Skills;component/Images/calendar1600.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="None"/>
+                    <Image Source="/DM_Skills;component/Images/calendar1600.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="None" />
                     
                 </Button>
                 
                 <Popup x:Name="PART_Popup"
                      AllowsTransparency="True"
+                       StaysOpen="True"
                      Placement="Bottom"
                        PlacementRectangle="-100 -20 0 0"
                        Margin="0"
-                     StaysOpen="False" 
                        PlacementTarget="{Binding ElementName=border}"
+                       
                        />
             </Grid>
         </Border>

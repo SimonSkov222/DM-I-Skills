@@ -12,7 +12,7 @@
         <Setter Property="BorderThickness" Value="1.5"/>
         <Setter Property="BorderBrush" Value="#7F7F7F"/>
         <Setter Property="Padding" Value="5 2"/>
-        <Setter Property="IsDropDownOpen" Value="True"/>
+        <Setter Property="IsDropDownOpen" Value="False"/>
 
         <Setter Property="Margin" Value="0"/>
         <Setter Property="Background" Value="{StaticResource Color_Background_InputBox}"/>

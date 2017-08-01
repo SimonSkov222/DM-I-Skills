@@ -69,8 +69,12 @@
       <DependentUpon>tes123.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\CompareValuesConverter.cs" />
+    <Compile Include="Converters\PersonListConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
     <Compile Include="Scripts\Helper.cs" />
+    <Compile Include="Views\Connection.xaml.cs">
+      <DependentUpon>Connection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\sog pa tider.xaml.cs">
       <DependentUpon>sog pa tider.xaml</DependentUpon>
     </Compile>
@@ -154,6 +158,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Templates\Calendar_Template_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Templates\CheckBox_Template_Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,10 +174,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Templates\DatePickerCalendar_Template_Default.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Templates\DatePicker_Template_Default.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -179,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Templates\Textbox_Template_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Connection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
