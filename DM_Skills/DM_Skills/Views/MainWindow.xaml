@@ -72,15 +72,16 @@
                     Padding="5 3"
                     BorderBrush="Gray" 
                     Background="LightGray" 
-                    BorderThickness="1.5"/>
-                
+                    BorderThickness="1.5"/>-->
+
+                <Controls:AutocompleteControl Text=""/>
                 <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
 					<View:Forside/>
-				</Grid>-->
+				</Grid>
 
-                <Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+                <!--<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
                     <View:sog_pa_tider HorizontalAlignment="Center"/>
-                </Grid>
+                </Grid>-->
 
                 <!--<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
 					

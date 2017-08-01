@@ -24,10 +24,6 @@ namespace DM_Skills.Controls
     /// </summary>
     public partial class PersonListControl : UserControl, INotifyPropertyChanged
     {
-        
-
-
-
         public static readonly DependencyProperty PersonsProperty =
             DependencyProperty.Register(
                 "Persons", 

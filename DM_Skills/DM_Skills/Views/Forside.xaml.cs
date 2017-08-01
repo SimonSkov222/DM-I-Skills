@@ -228,7 +228,18 @@ namespace DM_Skills.Views
                 stopwatch.Reset();
                 LapList.Reset();
             }
+
+        private void TablesControl_Drop(object sender, DragEventArgs e)
+        {
+            Console.WriteLine("Drop");
         }
+
+        private void TablesControl_DragEnter(object sender, DragEventArgs e)
+        {
+            Console.WriteLine("drag enter");
+
+        }
+    }
 
 
 
