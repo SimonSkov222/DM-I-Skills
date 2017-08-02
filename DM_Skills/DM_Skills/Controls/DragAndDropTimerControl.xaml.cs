@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace DM_Skills.Controls
 {
@@ -12,7 +13,23 @@ namespace DM_Skills.Controls
     /// </summary>
     public partial class DragAndDropTimerControl : UserControl
     {
-        int rowNumber = 0;
+
+
+        public bool IsDraggingItem
+        {
+            get { return (bool)GetValue(IsDraggingItemProperty); }
+            private set { SetValue(IsDraggingItemProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsDraggingItem.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsDraggingItemProperty =
+            DependencyProperty.Register("IsDraggingItem", typeof(bool), typeof(DragAndDropTimerControl), new PropertyMetadata(false));
+
+        
+        private IValueConverter timespanConverter;
+
+        
+
 
         /// <summary>
         /// Skal være har da den opretter de elementer
@@ -21,7 +38,7 @@ namespace DM_Skills.Controls
         public DragAndDropTimerControl()
         {
             InitializeComponent();
-
+            timespanConverter = (IValueConverter)FindResource("TimeToStringConvert");
         }
 
         /// <summary>
@@ -30,43 +47,68 @@ namespace DM_Skills.Controls
         /// format vi gerne vil have
         /// </summary>
         public void Add(TimeSpan time)
-            {
+        {
             //Top element
             if (time == null) return;
 
+            int rowID = listPanel.RowDefinitions.Count;
             listPanel.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
             //Position nummer
             var txtNumber = new TextBlock();
-            txtNumber.Text = rowNumber + 1 + ".";
+            var txtTime = BuildTimeLabel(time);
+
+
+            //Placering
+            Grid.SetRow(txtTime, rowID);
+            Grid.SetColumn(txtTime, 1);
+            Grid.SetRow(txtNumber, rowID);
+            Grid.SetColumn(txtNumber, 0);
+
+            //Styling
+            txtNumber.Text = string.Format("{0}.", rowID + 1);
             txtNumber.VerticalAlignment = VerticalAlignment.Center;
             txtNumber.FontWeight = FontWeights.Bold;
             txtNumber.HorizontalAlignment = HorizontalAlignment.Right;
 
-            Grid.SetRow(txtNumber, rowNumber);
-            Grid.SetColumn(txtNumber, 0);
-
-            //Vis tid
-            var txtTime = new Label();
-            txtTime.SetBinding(Label.ContentProperty, new Binding()
-
-            {
-                Source = time,
-                Converter = (IValueConverter)FindResource("TimeToStringConvert")
-            });
-            txtTime.Style = (Style)FindResource("Label_Style_Default");
-            Grid.SetRow(txtTime, rowNumber);
-            Grid.SetColumn(txtTime, 1);
-
+            
             //Tilføj til view
             listPanel.Children.Add(txtNumber);
             listPanel.Children.Add(txtTime);
+        }
 
-            rowNumber++;
+        private Label BuildTimeLabel(object content) {
+            var label = new Label();
+
+            //Nicenis er et library der gør at når vi trækker i et element vil vi kunne se elementet
+            Nicenis.Windows.DragSource.SetAllowDrag(label, true);
+            Nicenis.Windows.DragSource.SetData(label, content);
+            Nicenis.Windows.DragSource.SetAllowedEffects(label, DragDropEffects.Move);
+            Nicenis.Windows.DragSource.SetVisualFeedbackOpacity(label, 0.8);
 
 
-            txtTime.MouseDown += TxtTime_MouseMove;
-            txtTime.QueryContinueDrag += TxtTime_QueryContinueDrag;
+            Nicenis.Windows.DragSource.AddGiveFeedbackHandler(label, (o,e) => {
+                Mouse.SetCursor(Cursors.Hand);
+                e.Handled = true;
+            });
+            Nicenis.Windows.DragSource.AddPreviewDraggedHandler(label, (o, e) => { IsDraggingItem = false; });
+            Nicenis.Windows.DragSource.AddDraggingHandler(label, (o, e) => { IsDraggingItem = true; });
+
+
+            label.SetBinding(Nicenis.Windows.DragSource.VisualFeedbackOffsetProperty, new Binding() {
+                Path = new PropertyPath(Nicenis.Windows.DragSource.ContactPositionProperty),
+                RelativeSource = RelativeSource.Self
+            });
+
+            label.SetBinding(Label.ContentProperty, new Binding()
+
+            {
+                Source = content,
+                Converter = timespanConverter
+            });
+            label.Style = (Style)FindResource("Label_Style_Default");
+
+            return label;
         }
 
 
@@ -77,25 +119,6 @@ namespace DM_Skills.Controls
         {
             listPanel.RowDefinitions.Clear();
             listPanel.Children.Clear();
-            rowNumber = 0;
-        }
-
-        /// <summary>
-        /// Når man trækker i en tid i listen kan man 
-        /// flytte teksten hent i en textbox 
-        /// </summary>
-        private void TxtTime_MouseMove(object sender, MouseEventArgs e)
-        {
-            
-            DragDrop.DoDragDrop((sender as Label), (sender as Label).Content, DragDropEffects.Copy | DragDropEffects.Move);
-        }
-
-        private void TxtTime_QueryContinueDrag(object sender, QueryContinueDragEventArgs e)
-        {
-            Label lblFrom = e.Source as Label;
-
-            if (!e.KeyStates.HasFlag(DragDropKeyStates.LeftMouseButton))
-                lblFrom.Content = "...";
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿<UserControl x:Class="DM_Skills.Views.Forside"
+﻿
+    <UserControl x:Class="DM_Skills.Views.Forside"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -30,7 +31,9 @@
 
                 <!-- Borderne -->
                 <StackPanel Grid.Row="0" Grid.Column="0">
-            <Controls:TablesControl Background="Red" AllowDrop="True" Drop="TablesControl_Drop" DragEnter="TablesControl_DragEnter"/>
+
+
+            <Controls:TablesControl Background="Red" ShowDropLocation="{Binding ElementName=LapList, Path=IsDraggingItem, Mode=OneWay}" />
 
             <!--<Controls:TablesControl 
                     x:Name="cTable1"

@@ -31,6 +31,7 @@
 
                 <local:PersonListControl Title="Deltagere" Tag="Navn"
                                      Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
+                
                 <!--<TextBox  AllowDrop="False"   
             Text="{Binding ElementName=Controller, Path=Players}" 
             ToolTip="Deltagere Navn" Style="{StaticResource TextBox_Style_Default}"   
@@ -47,6 +48,8 @@
                Background="Gray" Foreground="White" 
                HorizontalContentAlignment="Center" 
                VerticalContentAlignment="Center"
+               Visibility="{Binding ElementName=Controller, Path=ShowDropLocation, Converter={StaticResource BoolToVisibilityConvert}}"
+               AllowDrop="True"
                Drop="Label_Drop"/>
     </Grid>
 </UserControl>

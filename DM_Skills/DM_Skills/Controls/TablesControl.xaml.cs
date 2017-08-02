@@ -12,7 +12,12 @@ namespace DM_Skills.Controls
     /// </summary>
     public partial class TablesControl : UserControl
     {
-        
+
+        public static readonly DependencyProperty ShowDropLocationProperty =
+            DependencyProperty.Register("ShowDropLocation", typeof(bool), typeof(TablesControl), new PropertyMetadata(false));
+
+
+
 
         public static readonly DependencyProperty TitleProperty =
             DependencyProperty.Register("Title", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
@@ -35,6 +40,14 @@ namespace DM_Skills.Controls
         public static readonly DependencyProperty SchoolListProperty =
             DependencyProperty.Register("SchoolList", typeof(List<string>), typeof(TablesControl), new PropertyMetadata(new List<string>()));
 
+
+
+
+        public bool ShowDropLocation
+        {
+            get { return (bool)GetValue(ShowDropLocationProperty); }
+            set { SetValue(ShowDropLocationProperty, value); }
+        }
 
         public string Title
         {
@@ -103,7 +116,9 @@ namespace DM_Skills.Controls
 
         private void Label_Drop(object sender, DragEventArgs e)
         {
-            Console.WriteLine("Item Dropped");
+
+            Console.WriteLine(e.Data);
+            Time = (TimeSpan)e.Data.GetData(typeof(TimeSpan));
         }
     }
 }

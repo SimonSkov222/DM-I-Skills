@@ -13,13 +13,13 @@ namespace DM_Skills.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var persons = (ObservableCollection<Models.PersonModel>)values[0];
-            var title = (string)values[1];
+            var persons = values[0] as ObservableCollection<Models.PersonModel>;
+            var title = values[1] as string;
 
             List<string> firstnames = new List<string>();
 
             if (persons != null)
-            { 
+            {
                 foreach (var item in persons)
                 {
                     if (item.Name != null && item.Name != "")
