@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Media.Animation;
 
 namespace DM_Skills.Controls
 {
@@ -29,7 +30,7 @@ namespace DM_Skills.Controls
                 "Persons", 
                 typeof(ObservableCollection<Models.PersonModel>), 
                 typeof(PersonListControl), 
-                new PropertyMetadata(null)
+                new PropertyMetadata(new ObservableCollection<Models.PersonModel>())
             );
 
         public static readonly DependencyProperty TitleProperty =
@@ -249,5 +250,46 @@ namespace DM_Skills.Controls
             }
         }
 
+
+        private void Animation_Slide(object sender, MouseEventArgs e) {
+            int speed = 1000;//msec
+
+
+            DoubleAnimation animation = null;
+            if ((sender as UIElement).IsMouseOver)
+            {
+                int msec = (int)Math.Round((1 - dropdownBorder.MaxHeight / 150) * speed);
+                animation = new DoubleAnimation()
+                {
+                    Duration = new TimeSpan(0, 0, 0, 0, msec),
+                    From = dropdownBorder.MaxHeight,
+                    To = 150,
+                };
+            }
+            else
+            {
+                int msec = (int)Math.Round((dropdownBorder.MaxHeight / 150) * speed);
+                animation = new DoubleAnimation()
+                {
+                    Duration = new TimeSpan(0, 0, 0, 0, msec),
+                    From = dropdownBorder.MaxHeight,
+                    To = 0,
+                };
+            }
+
+            dropdownBorder.BeginAnimation(Border.MaxHeightProperty, null);
+            dropdownBorder.BeginAnimation(Border.MaxHeightProperty, animation);
+        }
+
+
+        private void Grid_MouseMove(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("Move");
+        }
+
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("Leave");
+        }
     }
 }

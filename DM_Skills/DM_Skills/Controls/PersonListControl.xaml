@@ -19,33 +19,60 @@
             <DoubleAnimation
             Storyboard.TargetName="dropdownBorder" 
             Storyboard.TargetProperty="MaxHeight"
-            From="{Binding ElementName=dropdownBorder, Path=MaxHeight}"
-            To="150" Duration="0:0:0.3" />
+            From="{Binding Path=MaxHeigth, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Border}}"
+            To="150" Duration="0:0:1" />
         </Storyboard>
 
         <Storyboard x:Key="slideUp">
             <DoubleAnimation
-            Storyboard.TargetName="dropdownBorder" 
-            Storyboard.TargetProperty="MaxHeight"
-            To="{Binding ElementName=dropdownBorder, Path=MaxHeight}" 
-            From="150" Duration="0:0:0.3" />
+                Storyboard.TargetName="dropdownBorder" 
+                Storyboard.TargetProperty="MaxHeight"
+                To="0"
+                From="{Binding Path=MaxHeigth, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Border}}"
+                Duration="0:0:1" 
+                BeginTime="0:0:1"/>
         </Storyboard>
 
     </UserControl.Resources>
 
     <UserControl.Triggers>
-        <EventTrigger RoutedEvent="MouseEnter">
-            <BeginStoryboard Storyboard="{StaticResource slideDown}" />
+        
+        <!--<EventTrigger RoutedEvent="MouseEnter">
+            <RemoveStoryboard  BeginStoryboardName="slideUp"/>
+            <BeginStoryboard x:Name="slideDown" Storyboard="{StaticResource slideDown}"/>
         </EventTrigger>
+        
         <EventTrigger RoutedEvent="MouseLeave">
-            <BeginStoryboard Storyboard="{StaticResource slideUp}" />
-        </EventTrigger>
+            <RemoveStoryboard  BeginStoryboardName="slideDown"/>
+            <BeginStoryboard x:Name="slideUp" Storyboard="{StaticResource slideUp}"/>
+        </EventTrigger>-->
+
     </UserControl.Triggers>
 
 
 
 
-    <Grid>
+    <Grid MouseEnter="Animation_Slide" MouseLeave="Animation_Slide">
+        <Grid.Triggers>
+
+            <EventTrigger RoutedEvent="Loaded">
+                <BeginStoryboard x:Name="slideDown" Storyboard="{StaticResource slideDown}"/>
+                <PauseStoryboard BeginStoryboardName="slideDown"/>
+            </EventTrigger>
+            
+            <EventTrigger RoutedEvent="MouseEnter">
+                
+                <ResumeStoryboard BeginStoryboardName="slideDown"/>
+                <!--<RemoveStoryboard  BeginStoryboardName="slideUp"/>
+                <BeginStoryboard x:Name="slideDown" Storyboard="{StaticResource slideDown}"/>-->
+            </EventTrigger>
+
+            <!--<EventTrigger RoutedEvent="MouseLeave">
+                <RemoveStoryboard  BeginStoryboardName="slideDown"/>
+                <BeginStoryboard x:Name="slideUp" Storyboard="{StaticResource slideUp}"/>
+            </EventTrigger>-->
+        </Grid.Triggers>
+
         <Label x:Name="display" 
                BorderThickness="0" 
                Background="Transparent"
@@ -57,9 +84,10 @@
                HorizontalAlignment="Stretch" 
                VerticalAlignment="Stretch" 
                Width="auto">
+            
             <TextBlock TextTrimming="CharacterEllipsis" Foreground="{Binding ElementName=controller, Path=Foreground}">
                 <TextBlock.Text>
-                    <MultiBinding Converter="{StaticResource PersonListConvert}">
+                    <MultiBinding Converter="{StaticResource PersonListConvert}" ConverterParameter="Hej">
                         <Binding ElementName="controller" Path="Persons"/>
                         <Binding ElementName="controller" Path="Title"/>
                     </MultiBinding>
@@ -76,12 +104,19 @@
                 </MultiBinding>
             </Popup.IsOpen>
             <Popup.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <BeginStoryboard Storyboard="{StaticResource slideDown}" />
+
+                <!--<EventTrigger RoutedEvent="MouseEnter">
+                    <RemoveStoryboard  BeginStoryboardName="slideUp"/>
+                    <RemoveStoryboard  BeginStoryboardName="slideUp2"/>
+                    <BeginStoryboard x:Name="slideDown2" Storyboard="{StaticResource slideDown}"/>
                 </EventTrigger>
+
                 <EventTrigger RoutedEvent="MouseLeave">
-                    <BeginStoryboard Storyboard="{StaticResource slideUp}" />
-                </EventTrigger>
+                    <RemoveStoryboard  BeginStoryboardName="slideDown"/>
+                    <RemoveStoryboard  BeginStoryboardName="slideDown2"/>
+                    <BeginStoryboard x:Name="slideUp2" Storyboard="{StaticResource slideUp}"/>
+                </EventTrigger>-->
+
             </Popup.Triggers>
 
             <Border 
