@@ -30,13 +30,13 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
+
             <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="False"  Style="{StaticResource Radio_Style_MenuOption}"/>
             <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="True"  Style="{StaticResource Radio_Style_MenuOption}"/>
         </Grid>
-        
+
         <ScrollViewer Grid.Row="1" Padding="5">
-            <StackPanel Visibility="Visible">
+            <StackPanel Visibility="Visible" Width="700" HorizontalAlignment="Center">
 
                 <!--<TextBox x:Name="fff"/>
                 <Label Content="{Binding ElementName=fff, Path=IsManipulationEnabled}"/>
@@ -74,10 +74,15 @@
                     Background="LightGray" 
                     BorderThickness="1.5"/>-->
 
-                <Controls:AutocompleteControl Text=""/>
+                <!--<Controls:AutocompleteControl Text=""/>-->
+                <!--<Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+                    <View:Forside/>
+                </Grid>-->
+
+
                 <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
-					<View:Forside/>
-				</Grid>
+                    <View:Connection/>
+                </Grid>
 
                 <!--<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
                     <View:sog_pa_tider HorizontalAlignment="Center"/>
@@ -90,7 +95,7 @@
 
 
 
-			</StackPanel>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Window>

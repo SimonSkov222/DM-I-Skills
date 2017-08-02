@@ -23,6 +23,8 @@ namespace DM_Skills.Views
         public Connection()
         {
             InitializeComponent();
+            var p = new PasswordBox();
+            //PasswordBox.p
         }
     }
 }

@@ -84,6 +84,18 @@ namespace DM_Skills.Controls
 
 
 
+        public bool IsPasswordBox
+        {
+            get { return (bool)GetValue(IsPasswordBoxProperty); }
+            set { SetValue(IsPasswordBoxProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsPasswordBox.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsPasswordBoxProperty =
+            DependencyProperty.Register("IsPasswordBox", typeof(bool), typeof(PlaceholderBox), new PropertyMetadata(false));
+
+
+
 
         public string Placeholder
         {

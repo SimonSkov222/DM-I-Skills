@@ -45,7 +45,7 @@
                     VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
                     Width="{TemplateBinding Width}"
                     Padding="{TemplateBinding Padding}"
-                IsEnabled="{TemplateBinding IsEnabled}"
+                    IsEnabled="{TemplateBinding IsEnabled}"
 
                     BorderBrush="Transparent"
                     Background="Transparent" 
@@ -71,10 +71,9 @@
                         <Style TargetType="{x:Type TextBox}">
                             <Setter Property="Foreground" Value="Transparent"/>
                             <Style.Triggers>
-                                <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
-                                    <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
-                                </DataTrigger>
-
+                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </DataTrigger>
                         </Style.Triggers>
                         </Style>
                     </TextBox.Style>

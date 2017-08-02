@@ -18,6 +18,9 @@
                 <ResourceDictionary Source="Templates/ComboBoxTextBox_Template_Default.xaml"/>
                 <ResourceDictionary Source="Templates/CheckBox_Template_Default.xaml"/>
                 <ResourceDictionary Source="Templates/Calendar_Template_Default.xaml"/>
+                <ResourceDictionary Source="Templates/PlaceholderBox_Template_Default.xaml"/>
+                <!--<ResourceDictionary Source="Templates/PasswordBox_Template_Default.xaml"/>-->
+                <ResourceDictionary Source="Templates/CheckBox_Template_Status.xaml"/>
 
                 <ResourceDictionary Source="Styles/Autocomplete_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/Label_Style_Default.xaml"/>
@@ -29,7 +32,16 @@
                 <ResourceDictionary Source="Styles/ComboBoxItem_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/CheckBox_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/DatePickerCalendar_Style_Default.xaml"/>
+                <ResourceDictionary Source="Styles/PlaceholderBox_Style_Default.xaml"/>
+                <ResourceDictionary Source="Styles/PasswordBox_Style_Default.xaml"/>
 
+
+                <ResourceDictionary Source="Templates/Slider_Template_Default_Thumb.xaml"/>
+                <ResourceDictionary Source="Styles/Slider_Style_Default_Thumb.xaml"/>
+ 
+                <ResourceDictionary Source="Templates/Slider_Template_Default.xaml"/>
+                <ResourceDictionary Source="Styles/Slider_Style_Default.xaml"/>
+                
                 <ResourceDictionary Source="Templates/DatePicker_Template_Default.xaml"/>
                 <ResourceDictionary Source="Styles/DatePicker_Style_Default.xaml"/>
                 

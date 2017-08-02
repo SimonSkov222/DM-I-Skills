@@ -19,19 +19,7 @@
                  TextChanged="Input_TextChanged"
                  Text="{Binding Path=Text, ElementName=controller}"
             
-                Padding="10"
-                Placeholder="Place"
-                BorderBrush="Red" 
-                Background="Blue" 
-                Foreground="Green"
-                PlaceholderBackground="OliveDrab"
-                PlaceholderForeground="Firebrick"
-                PlaceholderBorderBrush="Beige"
-                PlaceholderFontStyle="Italic"
-                PlaceholderFontWeight="Bold"
-                BorderThickness="5" 
-                FontSize="30"
-                FontWeight="Bold"/>
+                />
 
 
         <Popup 
