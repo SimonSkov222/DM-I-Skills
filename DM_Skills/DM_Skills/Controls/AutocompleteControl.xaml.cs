@@ -26,6 +26,31 @@ namespace DM_Skills.Controls
 
 
 
+        public bool IsPopupOpen
+        {
+            get { return (bool)GetValue(IsPopupOpenProperty); }
+            set { SetValue(IsPopupOpenProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsPopupOpen.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsPopupOpenProperty =
+            DependencyProperty.Register("IsPopupOpen", typeof(bool), typeof(AutocompleteControl), new PropertyMetadata(false));
+
+
+
+
+        public string Placeholder
+        {
+            get { return (string)GetValue(PlaceholderProperty); }
+            set { SetValue(PlaceholderProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Placeholder.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PlaceholderProperty =
+            DependencyProperty.Register("Placeholder", typeof(string), typeof(AutocompleteControl), new PropertyMetadata(""));
+
+
+
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
@@ -163,6 +188,9 @@ namespace DM_Skills.Controls
                         input.CaretIndex = input.Text.Length;
                     }
                     break;
+                case Key.Escape:
+                    IsPopupOpen = false;
+                    break;
             }
 
 
@@ -182,6 +210,7 @@ namespace DM_Skills.Controls
 
         private void Input_TextChanged(object sender, TextChangedEventArgs e)
         {
+            IsPopupOpen = true;
             options.SelectedIndex = -1;
             NotifyPropertyChange("IsOpen");
         }
@@ -189,6 +218,16 @@ namespace DM_Skills.Controls
         {
             input.Text = ((ListViewItem)sender).Content.ToString();
             input.CaretIndex = input.Text.Length;
+        }
+        
+        private void Input_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            IsPopupOpen = !IsPopupOpen;
+        }
+
+        private void Controller_LostFocus(object sender, RoutedEventArgs e)
+        {
+            IsPopupOpen = false;
         }
     }
 }

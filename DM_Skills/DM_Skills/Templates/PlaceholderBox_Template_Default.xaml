@@ -8,12 +8,17 @@
             <Grid>
                 <TextBlock x:Name="placeholder"
                     Text="{TemplateBinding Placeholder}"
+                    FontSize="{TemplateBinding FontSize}"
+                    FontStyle="{TemplateBinding PlaceholderFontStyle}"
+                    FontWeight="{TemplateBinding PlaceholderFontWeight}"
                     Background="Transparent" 
                     Padding="{TemplateBinding Padding}"
                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                     Foreground="{TemplateBinding PlaceholderForeground}"/>
-                <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                
+                <ScrollViewer Margin="0" x:Name="PART_ContentHost"
+                              FontSize="{TemplateBinding FontSize}"/>
             </Grid>
         </Border>
         <ControlTemplate.Triggers>

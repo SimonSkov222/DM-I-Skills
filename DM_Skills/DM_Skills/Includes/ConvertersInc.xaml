@@ -15,4 +15,6 @@
     <Converters:PersonListConverter x:Key="PersonListConvert"/>
     <Converters:BoolToBrushConverter x:Key="PersonListBackground" TrueValue="{StaticResource Color_Background_InputBox}" FalseValue="{StaticResource Color_Background_Placeholder}"/>
     <Converters:BoolToBrushConverter x:Key="PersonListForeground" TrueValue="{StaticResource Color_Foreground_Dark_2}" FalseValue="{StaticResource Color_Foreground_Placeholder}"/>
+    <Converters:ValueToValueConverter x:Key="ValueToValueConvert"/>
+
 </ResourceDictionary> 

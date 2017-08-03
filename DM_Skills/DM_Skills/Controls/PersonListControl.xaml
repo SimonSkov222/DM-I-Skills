@@ -15,7 +15,7 @@
              d:DesignHeight="40" d:DesignWidth="150">
     <UserControl.Resources>
 
-        <Storyboard x:Key="slideDown">
+        <!--<Storyboard x:Key="slideDown">
             <DoubleAnimation
             Storyboard.TargetName="dropdownBorder" 
             Storyboard.TargetProperty="MaxHeight"
@@ -31,7 +31,7 @@
                 From="{Binding Path=MaxHeigth, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Border}}"
                 Duration="0:0:1" 
                 BeginTime="0:0:1"/>
-        </Storyboard>
+        </Storyboard>-->
 
     </UserControl.Resources>
 
@@ -53,26 +53,6 @@
 
 
     <Grid MouseEnter="Animation_Slide" MouseLeave="Animation_Slide">
-        <Grid.Triggers>
-
-            <EventTrigger RoutedEvent="Loaded">
-                <BeginStoryboard x:Name="slideDown" Storyboard="{StaticResource slideDown}"/>
-                <PauseStoryboard BeginStoryboardName="slideDown"/>
-            </EventTrigger>
-            
-            <EventTrigger RoutedEvent="MouseEnter">
-                
-                <ResumeStoryboard BeginStoryboardName="slideDown"/>
-                <!--<RemoveStoryboard  BeginStoryboardName="slideUp"/>
-                <BeginStoryboard x:Name="slideDown" Storyboard="{StaticResource slideDown}"/>-->
-            </EventTrigger>
-
-            <!--<EventTrigger RoutedEvent="MouseLeave">
-                <RemoveStoryboard  BeginStoryboardName="slideDown"/>
-                <BeginStoryboard x:Name="slideUp" Storyboard="{StaticResource slideUp}"/>
-            </EventTrigger>-->
-        </Grid.Triggers>
-
         <Label x:Name="display" 
                BorderThickness="0" 
                Background="Transparent"
@@ -89,13 +69,13 @@
                 <TextBlock.Text>
                     <MultiBinding Converter="{StaticResource PersonListConvert}" ConverterParameter="Hej">
                         <Binding ElementName="controller" Path="Persons"/>
-                        <Binding ElementName="controller" Path="Title"/>
+                        <Binding ElementName="controller" Path="Placeholder" Mode="OneWay"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
         </Label>
 
-        <Popup x:Name="popup" 
+        <Popup x:Name="popup"   MouseEnter="Animation_Slide" MouseLeave="Animation_Slide"
                PlacementTarget="{Binding ElementName=controller}">
             <Popup.IsOpen>
                 <MultiBinding Converter="{StaticResource CompareValuesToBoolConvert}" ConverterParameter="OR" Mode="OneWay">
@@ -103,22 +83,6 @@
                     <Binding ElementName="dropdownBorder" Path="MaxHeight" Converter="{StaticResource CompareValuesToBoolConvert}" ConverterParameter="0 False"/>
                 </MultiBinding>
             </Popup.IsOpen>
-            <Popup.Triggers>
-
-                <!--<EventTrigger RoutedEvent="MouseEnter">
-                    <RemoveStoryboard  BeginStoryboardName="slideUp"/>
-                    <RemoveStoryboard  BeginStoryboardName="slideUp2"/>
-                    <BeginStoryboard x:Name="slideDown2" Storyboard="{StaticResource slideDown}"/>
-                </EventTrigger>
-
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <RemoveStoryboard  BeginStoryboardName="slideDown"/>
-                    <RemoveStoryboard  BeginStoryboardName="slideDown2"/>
-                    <BeginStoryboard x:Name="slideUp2" Storyboard="{StaticResource slideUp}"/>
-                </EventTrigger>-->
-
-            </Popup.Triggers>
-
             <Border 
                 x:Name="dropdownBorder"
                 SnapsToDevicePixels="True"
@@ -138,6 +102,7 @@
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
                     <StackPanel Margin="5 3">
+                        <ListView ItemsSource="{Binding ElementName=controller, Path=Person1}"/>
                         <StackPanel x:Name="listOfPersons"/>
                         <Grid x:Name="newPerson"/>
                     </StackPanel>

@@ -5,9 +5,9 @@
 
     <Style TargetType="{x:Type control:PlaceholderBox}" >
 
-        <Setter Property="PlaceholderBackground" Value="LightGray"/>
-        <Setter Property="PlaceholderBorderBrush" Value="#7F7F7F"/>
-        <Setter Property="PlaceholderForeground" Value="Black"/>
+        <Setter Property="PlaceholderBackground" Value="{StaticResource Color_Background_Placeholder}"/>
+        <Setter Property="PlaceholderBorderBrush" Value="{StaticResource Color_Border_InputBox}"/>
+        <Setter Property="PlaceholderForeground" Value="{StaticResource Color_Foreground_Placeholder}"/>
         <Setter Property="PlaceholderFontStyle" Value="Italic"/>
         <Setter Property="PlaceholderFontWeight" Value="Normal"/>
         <Setter Property="ToolTip" Value="{Binding Path=Placeholder, RelativeSource={RelativeSource Self}}"/>

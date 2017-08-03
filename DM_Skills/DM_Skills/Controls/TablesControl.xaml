@@ -9,9 +9,51 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <StackPanel>
-            <TextBlock Text="{Binding ElementName=Controller, Path=Title}" Grid.Row="0" Grid.ColumnSpan="3" FontWeight="Bold" FontSize="18" Margin="0 8 0 2"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
 
-            <StackPanel  Panel.ZIndex="1000" Orientation="Horizontal">
+                <TextBlock 
+                    Grid.Row="0" Grid.ColumnSpan="3"
+                    Text="{Binding ElementName=Controller, Path=Title}"  
+                    FontWeight="Bold" FontSize="18" Margin="0 8 0 2"/>
+
+
+                <local:AutocompleteControl 
+                    Grid.Row="1" Grid.Column="0"
+                    Placeholder="Skolens Navn..."/>
+
+                <local:PlaceholderBox 
+                    Grid.Row="1" Grid.Column="2"
+                    Placeholder="Klasse..."/>
+
+
+                <local:PersonListControl
+                    Grid.Row="3" Grid.Column="0"
+                    Placeholder="Deltagere..."
+                    Persons="{Binding ElementName=Controller,Path=MyPersons}"/>
+                <!--<local:PlaceholderBox />-->
+
+                <local:PlaceholderBox 
+                    Grid.Row="3" Grid.Column="2"
+                    Placeholder="Tider..."
+                    Text="{Binding ElementName=Controller, Path=Time, Converter={StaticResource TimeToStringConvert}}"/>
+
+
+            </Grid>
+            
+            
+
+            <!--<StackPanel  Panel.ZIndex="1000" Orientation="Horizontal">
 
                 <local:Autocomplete
                 Children="{Binding ElementName=Controller, Path=SchoolList, Converter={StaticResource AutocompleteItemConvert}, Mode=OneWay}"
@@ -32,16 +74,20 @@
                 <local:PersonListControl Title="Deltagere" Tag="Navn"
                                      Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
                 
-                <!--<TextBox  AllowDrop="False"   
+                --><!--<TextBox  AllowDrop="False"   
             Text="{Binding ElementName=Controller, Path=Players}" 
             ToolTip="Deltagere Navn" Style="{StaticResource TextBox_Style_Default}"   
-            Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />-->
+            Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />--><!--
 
 
                 <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
-                <TextBox AllowDrop="False" Text="{Binding ElementName=Controller, Path=Time, Converter={StaticResource TimeToStringConvert}, ConverterParameter='HideOnNull'}" ToolTip="Tider" Style="{StaticResource TextBox_Style_Default}" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
+                <TextBox
+                    Text="{Binding ElementName=Controller, Path=Time, Converter={StaticResource TimeToStringConvert}}"
+                    ToolTip="Tider" Style="{StaticResource TextBox_Style_Default}" 
+                    Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
+                    
 
-            </StackPanel>
+            </StackPanel>-->
         </StackPanel>
 
         <Label Content="Drop Her" 

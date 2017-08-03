@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Nicenis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Nicenis.dll</HintPath>
+    </Reference>
     <Reference Include="SQLite_DB_LIB">
       <HintPath>..\SQLite_DB_LIB\bin\Debug\SQLite_DB_LIB.dll</HintPath>
     </Reference>
@@ -79,6 +83,7 @@
     <Compile Include="Converters\PersonListConverter.cs" />
     <Compile Include="Converters\TextToHiddenConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
+    <Compile Include="Converters\ValueToValueConverter.cs" />
     <Compile Include="Scripts\Helper.cs" />
     <Compile Include="Views\Instillinger.xaml.cs">
       <DependentUpon>Instillinger.xaml</DependentUpon>

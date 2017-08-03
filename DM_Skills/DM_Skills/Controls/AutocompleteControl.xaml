@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DM_Skills.Controls"
-
+            LostFocus="Controller_LostFocus"
              mc:Ignorable="d" x:Name="controller"
              BorderBrush="{StaticResource Color_Border_InputBox}"
              BorderThickness="1.5"
@@ -15,20 +15,23 @@
 
         <local:PlaceholderBox
              x:Name="input"
+            BorderThickness="0"
                  PreviewKeyDown="Input_KeyDown" 
                  TextChanged="Input_TextChanged"
                  Text="{Binding Path=Text, ElementName=controller}"
-            
+                 Placeholder="{Binding ElementName=controller, Path=Placeholder}"
+                 MouseDoubleClick="Input_MouseDoubleClick"
                 />
 
 
         <Popup 
             x:Name="popup"
-            Placement="Bottom" PlacementTarget="{Binding ElementName=controller}" StaysOpen="False">
+            Placement="Bottom" PlacementTarget="{Binding ElementName=controller}" >
             <Popup.IsOpen>
                 <MultiBinding Converter="{StaticResource AutocompleteConvert}" ConverterParameter="Popup" Mode="OneWay">
                     <Binding ElementName="options" Path="Items"/>
                     <Binding ElementName="input" Path="Text"/>
+                    <Binding ElementName="controller" Path="IsPopupOpen"/>
                 </MultiBinding>
             </Popup.IsOpen>
 
