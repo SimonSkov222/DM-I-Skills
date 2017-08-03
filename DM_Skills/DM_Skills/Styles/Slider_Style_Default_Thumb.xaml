@@ -19,7 +19,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="RepeatButton">
-                    <Border  BorderThickness="1" BorderBrush="Gray" Background="Gray" Height="3"/>
+                    <Border  BorderThickness="1" BorderBrush="Gray" Background="Gray" Height="5"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -32,7 +32,7 @@
             <Setter.Value>
                 <ControlTemplate TargetType="RepeatButton">
                     <Border SnapsToDevicePixels="True" Background="{StaticResource Color_Background_Button_Blue}"  
-                            BorderThickness="1" BorderBrush="{StaticResource Color_Background_Button_Blue}" Height="3"/>
+                            BorderThickness="1" BorderBrush="{StaticResource Color_Background_Button_Blue}" Height="5"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -44,7 +44,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Thumb">
-                    <Ellipse Height="10" Width="10" Fill="LightGray"></Ellipse>
+                    <Ellipse Height="13" Width="13" Fill="LightGray"></Ellipse>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

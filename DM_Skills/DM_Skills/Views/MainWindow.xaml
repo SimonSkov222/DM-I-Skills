@@ -75,9 +75,9 @@
                     BorderThickness="1.5"/>-->
 
                 <!--<Controls:AutocompleteControl Text=""/>-->
-                <!--<Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
-                    <View:Forside/>
-                </Grid>-->
+                <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+                    <View:Forside x:Name="view_forside"/>
+                </Grid>
 
 
                 <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">

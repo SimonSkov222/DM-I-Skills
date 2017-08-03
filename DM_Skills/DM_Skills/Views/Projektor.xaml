@@ -1,0 +1,99 @@
+﻿<Window x:Class="DM_Skills.Views.Projektor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:DM_Skills.Controls"
+        MouseDoubleClick="Controller_MouseDoubleClick"
+        StateChanged="Controller_StateChanged" 
+        PreviewKeyDown="Controller_PreviewKeyDown"
+        xmlns:local="clr-namespace:DM_Skills.Views"
+        mc:Ignorable="d" 
+        x:Name="controller"
+        Title="Projektor" Height="600" Width="800" Background="#1a76ff">
+    <Window.Resources>
+
+        <SolidColorBrush x:Key="background_Light" Color="#b03a2e"/>
+        <!--<SolidColorBrush x:Key="tecBackground" Color="#fa5050"/>-->
+        <SolidColorBrush x:Key="tecBackground" Color="#3385ff"/>
+        <SolidColorBrush x:Key="background_drak" Color="#4791ff"/>
+        <!--<SolidColorBrush x:Key="background_drak" Color="#922b21"/>-->
+        <SolidColorBrush x:Key="background_Row2" Color="#2d77e5"/>
+        <SolidColorBrush x:Key="background_Row1" Color="#4284e7"/>
+    </Window.Resources>
+
+    <Grid>
+
+        <Grid.LayoutTransform>
+            <ScaleTransform
+                        ScaleX="{Binding ElementName=controller, Path=ActualWidth, Converter={StaticResource ProjektorConvert}, ConverterParameter='800'}"
+                        ScaleY="{Binding ElementName=controller, Path=ActualHeight, Converter={StaticResource ProjektorConvert}, ConverterParameter='600'}"
+                        CenterX=".5" CenterY=".5" />
+        </Grid.LayoutTransform>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4">
+            <Ellipse Width="400" Height="400" Fill="{StaticResource tecBackground}" Canvas.Top="369" Canvas.Left="-200" RenderTransformOrigin="0.469,0.52" >
+            </Ellipse>
+            <Ellipse Width="364" Height="415" Fill="{StaticResource tecBackground}" Canvas.Top="354" Canvas.Left="618" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="82" Height="192" Fill="{StaticResource tecBackground}" Canvas.Top="64" Canvas.Left="-44" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="100" Height="114" Fill="{StaticResource tecBackground}" Canvas.Top="-62" Canvas.Left="736" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="186" Height="106" Fill="{StaticResource tecBackground}" Canvas.Top="-62" Canvas.Left="275" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="172" Height="129" Fill="{StaticResource tecBackground}" Canvas.Top="-62" Canvas.Left="441" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="288" Height="254" Fill="{StaticResource tecBackground}" Canvas.Top="435" Canvas.Left="258" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="253" Height="154" Fill="{StaticResource tecBackground}" Canvas.Top="-42" RenderTransformOrigin="0.469,0.52" Canvas.Left="-22" />
+            <Ellipse Width="172" Height="160" Fill="{StaticResource tecBackground}" Canvas.Top="230" Canvas.Left="700" RenderTransformOrigin="0.469,0.52" />
+
+        </Canvas>
+
+        <Image Source="/DM_Skills;component/Images/TecWhite.png" Grid.Row="0" Grid.Column="0" Width="200" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,1,0"/>
+        <Border CornerRadius="10" SnapsToDevicePixels="True" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="{StaticResource tecBackground}"
+            BorderBrush="{StaticResource tecBackground}" BorderThickness="5" ClipToBounds="True" Grid.ColumnSpan="2" Margin="1,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+
+
+                <Label Content="Tid" FontSize="16" Grid.Row="0" Grid.Column="1" Foreground="White"/>
+                <Label Content="Skole:" FontSize="16" Grid.Row="0" Grid.Column="2" Foreground="White"/>
+                <Label Content="Klasse:" FontSize="16" Grid.Row="0" Grid.Column="3" Foreground="White"/>
+
+
+                <Label Content="TEC - Ballerups bedste tid:" FontSize="16" Grid.Row="1" Grid.Column="0" Foreground="White"/>
+
+                <Label Content="11:00:00" FontSize="16" Grid.Row="1" Grid.Column="1" Foreground="White" Background="{StaticResource background_Row1}"/>
+                <Label Content="øbro fri skole eeeeeeeeee" FontSize="16" Grid.Row="1" Grid.Column="2" Foreground="White" Background="{StaticResource background_Row1}"/>
+                <Label Content="8X" FontSize="16" Grid.Row="1" Grid.Column="3" Foreground="White" Background="{StaticResource background_Row1}"/>
+
+
+                <Label Content="Dagens bedste tid:" FontSize="16" Grid.Row="2" Grid.Column="0" Foreground="White"/>
+                <Label Content="11:34:00" FontSize="16" Grid.Row="2" Grid.Column="1" Foreground="White" Background="{StaticResource background_Row2}"/>
+                <Label Content="Hanels" FontSize="16" Grid.Row="2" Grid.Column="2" Foreground="White" Background="{StaticResource background_Row2}"/>
+                <Border Grid.Row="2" Grid.Column="3" CornerRadius="0 0 7 0" Background="{StaticResource background_Row2}" SnapsToDevicePixels="True">
+                    <Label Content="8Z" FontSize="16" Foreground="White"  />
+                </Border>
+            </Grid>
+        </Border>
+
+        <Label Content="{Binding ElementName=controller, Path=Timer.DisplayTime, Converter={StaticResource TimeToStringConvert}}"/>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" >
+            <Label Content="Dato: 03/08/2017" FontSize="16" Foreground="White"/>
+            <Label Content="Sted: Ballerup" FontSize="16" Foreground="White"/>
+        </StackPanel>
+    </Grid>
+</Window>

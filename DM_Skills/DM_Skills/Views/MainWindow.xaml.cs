@@ -22,10 +22,22 @@ namespace DM_Skills
         public MainWindow()
         {
             InitializeComponent();
+
             
-            
+
             Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
             CreateDatabase();
+
+            Loaded += (o, e) =>
+            {
+                Console.WriteLine(view_forside.stopwatch.DisplayTime);
+                var win = new Views.Projektor(view_forside.stopwatch);
+                win.Timer = view_forside.stopwatch;
+                win.Show();
+
+                
+
+            };
         }
 
         
