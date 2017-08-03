@@ -5,7 +5,7 @@
     xmlns:local="clr-namespace:DM_Skills.Controls">
 
 
-    <Style TargetType="{x:Type local:PlaceholderBox}">
+    <!--<Style TargetType="{x:Type local:PlaceholderBox}">
 
         <Setter Property="PlaceholderBackground" Value="LightGray"/>
         <Setter Property="PlaceholderBorderBrush" Value="#7F7F7F"/>
@@ -23,6 +23,6 @@
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="Foreground" Value="#262626"/>
         <Setter Property="Template" Value="{StaticResource Generic_Template_Default}"/>
-    </Style>
+    </Style>-->
 
 </ResourceDictionary>

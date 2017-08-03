@@ -20,7 +20,8 @@ namespace DM_Skills.Converters
             switch ((string)parameter)
             {
                 case PARAMS_POPUP:
-                    return IsPopupOpen((ItemCollection)values[0], values[1].ToString());
+                    var isOpen = values[2] != DependencyProperty.UnsetValue && (bool)values[2];
+                    return IsPopupOpen((ItemCollection)values[0], values[1].ToString(), isOpen);
                 case PARAMS_OPTION:
                     return GetVisibilityForOption((string)values[0], values[1].ToString());
             }
@@ -36,16 +37,16 @@ namespace DM_Skills.Converters
             throw new NotImplementedException();
         }
 
-        private bool IsPopupOpen(ItemCollection items, string textbox)
+        private bool IsPopupOpen(ItemCollection items, string textbox, bool isOpen)
         {
 
             var visibleItems = items.Cast<ListViewItem>().Where(o => o.Visibility == Visibility.Visible).ToArray();
-            Console.WriteLine("V Item: {0}", visibleItems.Length);
+
             if (visibleItems.Length == 1) {
-                return !visibleItems[0].Content.ToString().Equals(textbox);
+                return isOpen && !visibleItems[0].Content.ToString().Equals(textbox);
             }
             if (visibleItems.Length > 0) {
-                return true;
+                return isOpen;
             }
             else {
                 return false;

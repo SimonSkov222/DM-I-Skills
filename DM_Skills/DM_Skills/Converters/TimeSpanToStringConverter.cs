@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text.RegularExpressions;
 using System.Windows.Data;
 
 namespace DM_Skills.Converters
@@ -17,14 +18,16 @@ namespace DM_Skills.Converters
         /// </summary>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value== null)
+                return "";
 
             //Hent tallet og gør hvis det er mindre en 10 at der er 0 foran
             string minutes      = ((TimeSpan)value).Minutes.ToString().PadLeft(2, '0');
             string seconds      = ((TimeSpan)value).Seconds.ToString().PadLeft(2, '0');
             string milliseconds = (((TimeSpan)value).Milliseconds/10).ToString().PadLeft(2, '0'); //dividere 10 for at fjerne et 0
 
-            if (parameter != null && parameter.Equals("HideOnNull") && ((TimeSpan)value).TotalMilliseconds == 0)
-                return "";
+            //if (parameter != null && parameter.Equals("HideOnNull") && ((TimeSpan)value).TotalMilliseconds == 0)
+            //    return "";
             return string.Format("{0}:{1}:{2}", minutes, seconds, milliseconds);
         }
 
@@ -34,8 +37,10 @@ namespace DM_Skills.Converters
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var timeParams = value.ToString().Split(':');
-            if (timeParams.Length != 3)
-                return new TimeSpan();
+            var isInt = Regex.IsMatch(value as string, @"^\d+:\d+:\d+$");
+            if (!isInt)
+                return null;
+
             
             int minutes = System.Convert.ToInt32(timeParams[0]);
             int seconds = System.Convert.ToInt32(timeParams[1]);

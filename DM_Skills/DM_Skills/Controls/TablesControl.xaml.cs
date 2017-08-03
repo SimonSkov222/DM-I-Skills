@@ -35,7 +35,7 @@ namespace DM_Skills.Controls
             DependencyProperty.Register("Players", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
 
         public static readonly DependencyProperty TimeProperty =
-            DependencyProperty.Register("Time", typeof(TimeSpan), typeof(TablesControl));
+            DependencyProperty.Register("Time", typeof(TimeSpan?), typeof(TablesControl), new PropertyMetadata(null));
 
         public static readonly DependencyProperty SchoolListProperty =
             DependencyProperty.Register("SchoolList", typeof(List<string>), typeof(TablesControl), new PropertyMetadata(new List<string>()));
@@ -79,9 +79,9 @@ namespace DM_Skills.Controls
             set { SetValue(PlayersProperty, value); }
         }
 
-        public TimeSpan Time
+        public TimeSpan? Time
         {
-            get { return (TimeSpan)GetValue(TimeProperty); }
+            get { return (TimeSpan?)GetValue(TimeProperty); }
             set { SetValue(TimeProperty, value); }
         }
 
@@ -92,11 +92,15 @@ namespace DM_Skills.Controls
         }
 
 
+        public List<Models.PersonModel> MyPersons { get; set; }
+
         /// <summary>
         /// Opretter de elementer der er i xaml
         /// </summary>
         public TablesControl()
         {
+            MyPersons = new List<Models.PersonModel>();
+            MyPersons.Add(new Models.PersonModel() { Name = "Hej" });
             InitializeComponent();
         }
 
@@ -119,6 +123,11 @@ namespace DM_Skills.Controls
 
             Console.WriteLine(e.Data);
             Time = (TimeSpan)e.Data.GetData(typeof(TimeSpan));
+        }
+
+        private void AutocompleteControl_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Console.WriteLine("Changed");
         }
     }
 }

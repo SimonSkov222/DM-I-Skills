@@ -17,6 +17,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Media.Animation;
+using System.Collections;
 
 namespace DM_Skills.Controls
 {
@@ -27,15 +28,11 @@ namespace DM_Skills.Controls
     {
         public static readonly DependencyProperty PersonsProperty =
             DependencyProperty.Register(
-                "Persons", 
-                typeof(ObservableCollection<Models.PersonModel>), 
-                typeof(PersonListControl), 
-                new PropertyMetadata(new ObservableCollection<Models.PersonModel>())
+                "Persons",
+                typeof(ObservableCollection<Models.PersonModel>),
+                typeof(PersonListControl),
+                new PropertyMetadata(null)
             );
-
-        public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(PersonListControl), new PropertyMetadata("Title"));
-
 
 
         public ObservableCollection<Models.PersonModel> Persons
@@ -43,13 +40,18 @@ namespace DM_Skills.Controls
             get { return (ObservableCollection<Models.PersonModel>)GetValue(PersonsProperty); }
             set { SetValue(PersonsProperty, value); NotifyPropertyChanged(nameof(Persons)); }
         }
-        
-        public string Title
+
+      
+
+        public string Placeholder
         {
-            get { return (string)GetValue(TitleProperty); }
-            set { SetValue(TitleProperty, value); NotifyPropertyChanged(nameof(Title)); }
+            get { return (string)GetValue(PlaceholderProperty); }
+            set { SetValue(PlaceholderProperty, value); }
         }
 
+        // Using a DependencyProperty as the backing store for Placeholder.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PlaceholderProperty =
+            DependencyProperty.Register("Placeholder", typeof(string), typeof(PersonListControl), new PropertyMetadata(""));
 
 
         public bool HasPersons
@@ -71,8 +73,12 @@ namespace DM_Skills.Controls
             styleTxtInput = (Style)FindResource("TextBox_Style_Default");
             styleBtnInput = (Style)FindResource("Button_Style_Default");
 
+
             if (Persons == null)
                 Persons = new ObservableCollection<Models.PersonModel>();
+
+            Console.WriteLine(Persons.Count);
+
 
             Persons.CollectionChanged += Persons_CollectionChanged;
 
