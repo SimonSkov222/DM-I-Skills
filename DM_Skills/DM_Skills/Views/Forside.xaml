@@ -33,16 +33,16 @@
                 <StackPanel Grid.Row="0" Grid.Column="0">
 
 
-            <Controls:TablesControl Title="Bord Test"
+            <Controls:TablesControl Title="Bord 1"
                                     ShowDropLocation="{Binding ElementName=LapList, Path=IsDraggingItem, Mode=OneWay}" />
                     
-            <Controls:TablesControl Title="Bord Test"
+            <Controls:TablesControl Title="Bord 2"
                                     ShowDropLocation="{Binding ElementName=LapList, Path=IsDraggingItem, Mode=OneWay}" />
                     
-            <Controls:TablesControl Title="Bord Test"
+            <Controls:TablesControl Title="Bord 3"
                                     ShowDropLocation="{Binding ElementName=LapList, Path=IsDraggingItem, Mode=OneWay}" />
                     
-            <Controls:TablesControl Title="Bord Test"
+            <Controls:TablesControl Title="Bord 4"
                                     ShowDropLocation="{Binding ElementName=LapList, Path=IsDraggingItem, Mode=OneWay}" />
 
             <!--<Controls:TablesControl 

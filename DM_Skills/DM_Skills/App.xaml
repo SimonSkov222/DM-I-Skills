@@ -41,10 +41,14 @@
  
                 <ResourceDictionary Source="Templates/Slider_Template_Default.xaml"/>
                 <ResourceDictionary Source="Styles/Slider_Style_Default.xaml"/>
-                
+
                 <ResourceDictionary Source="Templates/DatePicker_Template_Default.xaml"/>
                 <ResourceDictionary Source="Styles/DatePicker_Style_Default.xaml"/>
-                
+
+
+                <ResourceDictionary Source="Templates/PersonListControlN_Template_Default.xaml"/>
+                <ResourceDictionary Source="Styles/PersonListControlN_Style_Default.xaml"/>
+
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
