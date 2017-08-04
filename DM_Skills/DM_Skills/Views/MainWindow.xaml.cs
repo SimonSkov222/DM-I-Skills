@@ -28,16 +28,16 @@ namespace DM_Skills
             Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
             CreateDatabase();
 
-            Loaded += (o, e) =>
-            {
-                Console.WriteLine(view_forside.stopwatch.DisplayTime);
-                var win = new Views.Projektor(view_forside.stopwatch);
-                win.Timer = view_forside.stopwatch;
-                win.Show();
+            //Loaded += (o, e) =>
+            //{
+            //    Console.WriteLine(view_forside.stopwatch.DisplayTime);
+            //    var win = new Views.Projektor(view_forside.stopwatch);
+            //    win.Timer = view_forside.stopwatch;
+            //    win.Show();
 
                 
 
-            };
+            //};
         }
 
         
@@ -96,6 +96,20 @@ namespace DM_Skills
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //debug_plc.Persons.Add(new Models.PersonModel());
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var db = new Scripts.MSSQL();
+            db.Connect(@"Server=192.168.4.221;Database=DM_i_Skills;User Id=dm;Password=DMiSKILLS2017;", "prefix");
+
+            db.Create("Test3",
+                new Scripts.MSColumns() { name = "ID", type = Scripts.MSColumns.TYPE_INT, isAutoIncrement = true, isPrimaryKey = true },
+                new Scripts.MSColumns() { name = "col1", type = Scripts.MSColumns.TYPE_INT, foreignKeyReferences = "Test([ID])" },
+                new Scripts.MSColumns() { name = "col2", type = Scripts.MSColumns.TYPE_VARCHAR }
+            );
+
+
         }
     }
 }

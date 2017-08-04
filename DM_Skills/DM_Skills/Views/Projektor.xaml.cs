@@ -120,7 +120,7 @@ namespace DM_Skills.Views
                     SetFullScreen(!GetFullScreen());
                     break;
                 case Key.Escape:
-                    if (this.WindowState == WindowState.Maximized)
+                    if (GetFullScreen())
                         SetFullScreen(false);
                     break;
             }

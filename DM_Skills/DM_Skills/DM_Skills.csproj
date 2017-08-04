@@ -83,7 +83,12 @@
     <Compile Include="Converters\ProjektorConverter.cs" />
     <Compile Include="Converters\TextToHiddenConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
+    <Compile Include="Converters\ValueToValueConverter.cs" />
     <Compile Include="Scripts\Helper.cs" />
+    <Compile Include="Scripts\IColumn.cs" />
+    <Compile Include="Scripts\IDatabase.cs" />
+    <Compile Include="Scripts\MSColumns.cs" />
+    <Compile Include="Scripts\MSSQL.cs" />
     <Compile Include="Views\Instillinger.xaml.cs">
       <DependentUpon>Instillinger.xaml</DependentUpon>
     </Compile>

@@ -38,6 +38,8 @@
         <ScrollViewer Grid.Row="1" Padding="5">
             <StackPanel Visibility="Visible" Width="700" HorizontalAlignment="Center">
 
+                <Button Content="hej" Click="Button_Click_1"></Button>
+
                 <!--<TextBox x:Name="fff"/>
                 <Label Content="{Binding ElementName=fff, Path=IsManipulationEnabled}"/>
                 <Controls:tes123/>

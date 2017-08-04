@@ -26,6 +26,7 @@ namespace SQLite_DB_LIB
         private static SQLite_LIB.SQLiteConnection sql_conn;
         private static SQLite_LIB.SQLiteCommand sql_cmd;
 
+
         /// <summary>
         /// Opret forbindelse til databasen
         /// </summary>
