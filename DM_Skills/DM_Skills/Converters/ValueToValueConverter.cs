@@ -13,9 +13,12 @@ namespace DM_Skills.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Console.WriteLine("Convert ");
-            switch (parameter.ToString().ToLower())
-            {
-                case "listtoobservablecollection":
+            //switch (parameter.ToString().ToLower())
+            //{
+            //    case "listtoobservablecollection":
+            //if (value == null)
+            //    value = new List<Models.PersonModel>();
+
                     var result = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>();
 
                     foreach (var item in (List<Models.PersonModel>)value)
@@ -24,17 +27,17 @@ namespace DM_Skills.Converters
                     }
 
                     return result;
-                default:
-                    return null;
-            }
+            //    default:
+            //        return null;
+            //}
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Console.WriteLine("Convert back");
-            switch (parameter.ToString().ToLower())
-            {
-                case "listtoobservablecollection":
+            //switch (parameter.ToString().ToLower())
+            //{
+            //    case "listtoobservablecollection":
                     var result = new List<Models.PersonModel>();
 
                     foreach (var item in (System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>)value)
@@ -43,9 +46,9 @@ namespace DM_Skills.Converters
                     }
 
                     return result;
-                default:
-                    return null;
-            }
+            //    default:
+            //        return null;
+            //}
         }
     }
 }

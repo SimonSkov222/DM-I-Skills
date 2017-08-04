@@ -13,14 +13,35 @@ namespace DM_Skills.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var persons = values[0] as ObservableCollection<Models.PersonModel>;
-            var title = values[1] as string;
+            Console.WriteLine(values.Length);
+            Console.WriteLine(parameter);
+
+            switch (parameter.ToString().ToLower())
+            {
+                case "text":
+                    return GetText(values[0], values[1]);
+                case "popup":
+                    return IsPopupOpen(values[0], values[1]);
+            }
+            return null;
+        }
+
+        private bool IsPopupOpen(object height, object isOpen) {
+            bool mHeight = (double)height > 0;
+            bool open = (bool)isOpen;
+
+            return open && mHeight;
+        }
+        private string GetText(object list, object placeholder)
+        {
+            var l = list as ObservableCollection<Models.PersonModel>;
+            var p = placeholder as string;
 
             List<string> firstnames = new List<string>();
 
-            if (persons != null)
+            if (l != null)
             {
-                foreach (var item in persons)
+                foreach (var item in l)
                 {
                     if (item.Name != null && item.Name != "")
                     {
@@ -30,12 +51,11 @@ namespace DM_Skills.Converters
                 }
             }
 
-            if ((persons != null && persons.Count == 0) || firstnames.Count == 0)
-                return title;
+            if ((l != null && l.Count == 0) || firstnames.Count == 0)
+                return p;
             else
                 return string.Join(", ", firstnames);
         }
-        
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {

@@ -28,25 +28,27 @@
                     FontWeight="Bold" FontSize="18" Margin="0 8 0 2"/>
 
 
-                <local:AutocompleteControl 
+                <local:AutocompleteControl x:Name="Skoler"  MouseEnter="PersonListControl_MouseEnter"
                     Grid.Row="1" Grid.Column="0"
                     Placeholder="Skolens Navn..."/>
 
                 <local:PlaceholderBox 
                     Grid.Row="1" Grid.Column="2"
                     Placeholder="Klasse..."/>
+                <!--<Button Content="Debug" Grid.Row="1" Grid.Column="2" Click="Button_Click"/>-->
 
 
-                <local:PersonListControl
-                    Grid.Row="3" Grid.Column="0"
-                    Placeholder="Deltagere..."
+
+                <local:PersonListControl x:Name="Personer"
+                    Tag="{Binding ElementName=Controller, Path=Title}" MouseEnter="PersonListControl_MouseEnter"
+                    Grid.Row="3" Grid.Column="0" Visibility="Visible" Placeholder="Placeholder"
                     Persons="{Binding ElementName=Controller,Path=MyPersons}"/>
-                <!--<local:PlaceholderBox />-->
 
                 <local:PlaceholderBox 
                     Grid.Row="3" Grid.Column="2"
                     Placeholder="Tider..."
                     Text="{Binding ElementName=Controller, Path=Time, Converter={StaticResource TimeToStringConvert}}"/>
+
 
 
             </Grid>

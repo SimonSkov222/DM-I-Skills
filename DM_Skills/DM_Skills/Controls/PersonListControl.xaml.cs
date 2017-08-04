@@ -38,10 +38,23 @@ namespace DM_Skills.Controls
         public ObservableCollection<Models.PersonModel> Persons
         {
             get { return (ObservableCollection<Models.PersonModel>)GetValue(PersonsProperty); }
-            set { SetValue(PersonsProperty, value); NotifyPropertyChanged(nameof(Persons)); }
+            set { SetValue(PersonsProperty, value); NotifyPropertyChanged(nameof(Persons)); listOfPersons.Children.Clear(); }
         }
 
-      
+
+        public bool IsPopupOpen
+        {
+            get { return (bool)GetValue(IsPopupOpenProperty); }
+            set { SetValue(IsPopupOpenProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsPopupOpen.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsPopupOpenProperty =
+            DependencyProperty.Register("IsPopupOpen", typeof(bool), typeof(PersonListControl), new PropertyMetadata(false));
+
+
+
+
 
         public string Placeholder
         {
@@ -59,6 +72,7 @@ namespace DM_Skills.Controls
             get { return Persons != null && Persons.Count > 0; }
         }
 
+        public ObservableCollection<Models.PersonModel> PersonsS = new ObservableCollection<Models.PersonModel>();
 
 
 
@@ -79,21 +93,41 @@ namespace DM_Skills.Controls
 
             Console.WriteLine(Persons.Count);
 
+            //Persons.CollectionChanged += Persons_CollectionChanged;
+            //Persons_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, Persons));
+            //for (int i = 0; i < Persons.Count; i++)
+            //{
 
-            Persons.CollectionChanged += Persons_CollectionChanged;
+            //}
+            //Loaded += PersonListControl_Loaded;
 
             InsertNewInputBox();
+
+            Loaded += PersonListControl_Loaded;
         }
 
-        
+        private void PersonListControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Persons.CollectionChanged += Persons_CollectionChanged;
+            Persons_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, Persons));
+            ////PersonsS.CollectionChanged += Persons_CollectionChanged;
+            //Persons.CollectionChanged += Persons_CollectionChanged;
+            //foreach (var item in Persons)
+            //{
+            //    PersonsS.Add(item);
+            //}
+        }
+
         private void Txt_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!(sender as TextBox).IsLoaded) return;
+            (sender as TextBox).TextChanged -= Txt_TextChanged;
 
             var input = (Grid)newPerson.Children[0];
             var txt = (TextBox)input.Children[0];
             var model = (Models.PersonModel)input.DataContext;
             Persons.Add(model);
+            //PersonsS.Add(model);
         }
         
 
@@ -173,6 +207,7 @@ namespace DM_Skills.Controls
         {
             var input = (Grid)(sender as Button).Parent;
             Persons.Remove((Models.PersonModel)input.DataContext);
+            PersonsS.Remove((Models.PersonModel)input.DataContext);
         }
 
         private Grid BuildInputElement()
@@ -247,23 +282,29 @@ namespace DM_Skills.Controls
         // parameter causes the property name of the caller to be substituted as an argument.
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
+            if (!this.IsLoaded)
+                return;
+
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
             if (propertyName == nameof(Persons))
             {
-                BindingOperations.GetBindingExpressionBase((TextBlock)display.Content, TextBlock.TextProperty).UpdateTarget();
+                Console.WriteLine(display.Content.GetType());
+                BindingOperations.GetBindingExpressionBase(display.Content as TextBlock, TextBlock.TextProperty).UpdateTarget();
                 NotifyPropertyChanged(nameof(HasPersons));
             }
         }
 
 
         private void Animation_Slide(object sender, MouseEventArgs e) {
-            int speed = 1000;//msec
+            int speed = 300;//msec
 
+            Console.WriteLine("{0} == {1}", sender.GetType(), (sender as UIElement).IsMouseOver);
 
             DoubleAnimation animation = null;
             if ((sender as UIElement).IsMouseOver)
             {
+                IsPopupOpen = true;
                 int msec = (int)Math.Round((1 - dropdownBorder.MaxHeight / 150) * speed);
                 animation = new DoubleAnimation()
                 {
@@ -279,23 +320,14 @@ namespace DM_Skills.Controls
                 {
                     Duration = new TimeSpan(0, 0, 0, 0, msec),
                     From = dropdownBorder.MaxHeight,
-                    To = 0,
+                    To = 0
                 };
+
+                animation.Completed += (o, ee) => { IsPopupOpen = IsMouseOver || popup.IsMouseOver; };
             }
 
             dropdownBorder.BeginAnimation(Border.MaxHeightProperty, null);
             dropdownBorder.BeginAnimation(Border.MaxHeightProperty, animation);
-        }
-
-
-        private void Grid_MouseMove(object sender, MouseEventArgs e)
-        {
-            Console.WriteLine("Move");
-        }
-
-        private void Grid_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Console.WriteLine("Leave");
         }
     }
 }

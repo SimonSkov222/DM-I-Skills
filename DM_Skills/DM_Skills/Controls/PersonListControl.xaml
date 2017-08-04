@@ -13,74 +13,37 @@
             BorderThickness="1.5"
              
              d:DesignHeight="40" d:DesignWidth="150">
-    <UserControl.Resources>
 
-        <!--<Storyboard x:Key="slideDown">
-            <DoubleAnimation
-            Storyboard.TargetName="dropdownBorder" 
-            Storyboard.TargetProperty="MaxHeight"
-            From="{Binding Path=MaxHeigth, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Border}}"
-            To="150" Duration="0:0:1" />
-        </Storyboard>
-
-        <Storyboard x:Key="slideUp">
-            <DoubleAnimation
-                Storyboard.TargetName="dropdownBorder" 
-                Storyboard.TargetProperty="MaxHeight"
-                To="0"
-                From="{Binding Path=MaxHeigth, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Border}}"
-                Duration="0:0:1" 
-                BeginTime="0:0:1"/>
-        </Storyboard>-->
-
-    </UserControl.Resources>
-
-    <UserControl.Triggers>
-        
-        <!--<EventTrigger RoutedEvent="MouseEnter">
-            <RemoveStoryboard  BeginStoryboardName="slideUp"/>
-            <BeginStoryboard x:Name="slideDown" Storyboard="{StaticResource slideDown}"/>
-        </EventTrigger>
-        
-        <EventTrigger RoutedEvent="MouseLeave">
-            <RemoveStoryboard  BeginStoryboardName="slideDown"/>
-            <BeginStoryboard x:Name="slideUp" Storyboard="{StaticResource slideUp}"/>
-        </EventTrigger>-->
-
-    </UserControl.Triggers>
-
-
-
-
-    <Grid MouseEnter="Animation_Slide" MouseLeave="Animation_Slide">
+    <Grid  MouseEnter="Animation_Slide" MouseLeave="Animation_Slide">
         <Label x:Name="display" 
                BorderThickness="0" 
                Background="Transparent"
                HorizontalContentAlignment="{Binding ElementName=controller, Path=HorizontalContentAlignment}"               
                FontWeight="{Binding ElementName=controller, Path=FontWeight}"
-               Padding="{Binding ElementName=controller, Path=Padding}"
                Margin="0" 
+               Padding="0"
                Style="{StaticResource Label_Style_Default}" 
+               
                HorizontalAlignment="Stretch" 
                VerticalAlignment="Stretch" 
                Width="auto">
             
-            <TextBlock TextTrimming="CharacterEllipsis" Foreground="{Binding ElementName=controller, Path=Foreground}">
+            <TextBlock TextTrimming="CharacterEllipsis" Foreground="{Binding ElementName=controller, Path=Foreground}">7
                 <TextBlock.Text>
-                    <MultiBinding Converter="{StaticResource PersonListConvert}" ConverterParameter="Hej">
+                    <MultiBinding Converter="{StaticResource PersonListConvert}" ConverterParameter="Text" Mode="OneWay">
                         <Binding ElementName="controller" Path="Persons"/>
-                        <Binding ElementName="controller" Path="Placeholder" Mode="OneWay"/>
+                        <Binding ElementName="controller" Path="Placeholder"/>
                     </MultiBinding>
                 </TextBlock.Text>
             </TextBlock>
         </Label>
 
-        <Popup x:Name="popup"   MouseEnter="Animation_Slide" MouseLeave="Animation_Slide"
+        <Popup x:Name="popup" MouseEnter="Animation_Slide" MouseLeave="Animation_Slide"
                PlacementTarget="{Binding ElementName=controller}">
             <Popup.IsOpen>
-                <MultiBinding Converter="{StaticResource CompareValuesToBoolConvert}" ConverterParameter="OR" Mode="OneWay">
-                    <Binding ElementName="controller" Path="IsMouseOver"/>
-                    <Binding ElementName="dropdownBorder" Path="MaxHeight" Converter="{StaticResource CompareValuesToBoolConvert}" ConverterParameter="0 False"/>
+                <MultiBinding Converter="{StaticResource PersonListConvert}" ConverterParameter="Popup" Mode="OneWay">
+                    <Binding ElementName="dropdownBorder" Path="MaxHeight"/>
+                    <Binding ElementName="controller" Path="IsPopupOpen"/>
                 </MultiBinding>
             </Popup.IsOpen>
             <Border 
@@ -93,7 +56,7 @@
                 Padding="0"
                 MinWidth="200"
                 Background="White"
-                MaxHeight="0"
+                MaxHeight="150"
                 >
 
                 <ScrollViewer 
@@ -102,7 +65,6 @@
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
                     <StackPanel Margin="5 3">
-                        <ListView ItemsSource="{Binding ElementName=controller, Path=Person1}"/>
                         <StackPanel x:Name="listOfPersons"/>
                         <Grid x:Name="newPerson"/>
                     </StackPanel>

@@ -73,6 +73,7 @@
     <Compile Include="Controls\AutocompleteControl.xaml.cs">
       <DependentUpon>AutocompleteControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PersonListControlN.cs" />
     <Compile Include="Controls\PlaceholderBox.cs" />
     <Compile Include="Controls\tes123.xaml.cs">
       <DependentUpon>tes123.xaml</DependentUpon>
@@ -170,6 +171,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\PersonListControlN_Style_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\PlaceholderBox_Style_Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,6 +228,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Templates\PasswordBox_Template_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Templates\PersonListControlN_Template_Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

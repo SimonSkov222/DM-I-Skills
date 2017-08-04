@@ -59,14 +59,19 @@ namespace DM_Skills.Controls
         
 
 
-        public ObservableCollection<string> ItemsSource
+        public ObservableCollection<object> ItemsSource
         {
-            get { return (ObservableCollection<string>)GetValue(ItemsSourceProperty); }
+            get { return (ObservableCollection<object>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
         }
 
         public static readonly DependencyProperty ItemsSourceProperty =
-            DependencyProperty.Register("ItemsSource", typeof(ObservableCollection<string>), typeof(AutocompleteControl), new PropertyMetadata(null));
+            DependencyProperty.Register(
+                "ItemsSource", 
+                typeof(ObservableCollection<object>), 
+                typeof(AutocompleteControl), 
+                new PropertyMetadata(null)
+            );
 
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(AutocompleteControl), new PropertyMetadata(""));
@@ -74,6 +79,7 @@ namespace DM_Skills.Controls
 
         private IMultiValueConverter ConvertVisibility;
 
+        private ObservableCollection<object> _ItemsSource;
 
 
         public AutocompleteControl()
@@ -83,9 +89,7 @@ namespace DM_Skills.Controls
             ConvertVisibility = (IMultiValueConverter)FindResource("AutocompleteConvert");
 
             if (ItemsSource == null)
-                ItemsSource = new ObservableCollection<string>();
-
-            ItemsSource.CollectionChanged += ItemsSource_CollectionChanged;
+                ItemsSource = new ObservableCollection<object>();
 
 
             ItemsSource.Add("Option 11");
@@ -97,6 +101,14 @@ namespace DM_Skills.Controls
             ItemsSource.Add("Option 36");
             ItemsSource.Add("Option 37");
             ItemsSource.Add("Option 32");
+
+            Loaded += AutocompleteControl_Loaded;
+        }
+
+        private void AutocompleteControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            ItemsSource.CollectionChanged += ItemsSource_CollectionChanged;
+            ItemsSource_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, ItemsSource));
         }
 
         private void ItemsSource_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)

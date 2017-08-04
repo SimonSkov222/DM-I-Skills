@@ -91,15 +91,16 @@ namespace DM_Skills.Controls
             set { SetValue(SchoolListProperty, value); }
         }
 
+        public System.Collections.ObjectModel.ObservableCollection<Models.PersonModel> _MyPersons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>();
 
-        public List<Models.PersonModel> MyPersons { get; set; }
+        public System.Collections.ObjectModel.ObservableCollection<Models.PersonModel> MyPersons { get; set ; }
 
         /// <summary>
         /// Opretter de elementer der er i xaml
         /// </summary>
         public TablesControl()
         {
-            MyPersons = new List<Models.PersonModel>();
+            MyPersons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>();
             MyPersons.Add(new Models.PersonModel() { Name = "Hej" });
             InitializeComponent();
         }
@@ -128,6 +129,22 @@ namespace DM_Skills.Controls
         private void AutocompleteControl_TextChanged(object sender, TextChangedEventArgs e)
         {
             Console.WriteLine("Changed");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("Debug click");
+            foreach (var item in MyPersons)
+            {
+                Console.WriteLine(" Item; {0}", item.Name);
+            }
+
+            MyPersons.Add(new Models.PersonModel() { Name = "Debug Person" });
+        }
+
+        private void PersonListControl_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Console.WriteLine("{0} == {1}", (sender as UserControl).Name, (sender as UserControl).ActualHeight);
         }
     }
 }
