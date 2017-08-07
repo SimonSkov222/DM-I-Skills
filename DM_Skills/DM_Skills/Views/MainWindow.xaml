@@ -22,7 +22,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Height="30" Background="{StaticResource Color_Background_Button_Blue}">
+        <Grid x:Name="grid_menu" Height="30" Background="{StaticResource Color_Background_Button_Blue}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
@@ -33,6 +33,8 @@
 
             <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="False"  Style="{StaticResource Radio_Style_MenuOption}"/>
             <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="True"  Style="{StaticResource Radio_Style_MenuOption}"/>
+            <RadioButton Grid.Column="2" x:Name="Menu_Indstillinger" Content="Indstillinger" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}"/>
+            <ToggleButton  Grid.Column="3" x:Name="Menu_Projektor" Checked="Menu_Projektor_Checked" Unchecked="Menu_Projektor_Checked" Content="Projektor" Style="{StaticResource ToggleButton_Styles_Default}"/>
         </Grid>
 
         <ScrollViewer Grid.Row="1" Padding="5">
@@ -40,49 +42,17 @@
 
                 <Button Content="hej" Click="Button_Click_1"></Button>
 
-                <!--<TextBox x:Name="fff"/>
-                <Label Content="{Binding ElementName=fff, Path=IsManipulationEnabled}"/>
-                <Controls:tes123/>
-                <ComboBox >
-                    <ComboBox.ItemTemplate>
-
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="5656"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                    
-                    <ComboBoxItem>test</ComboBoxItem>
-                    <ComboBoxItem>test</ComboBoxItem>
-                    <ComboBoxItem>test</ComboBoxItem>
-                </ComboBox>
-
-                <Button Content="Debug" Click="Button_Click"/>
-                
-                <TextBox  AllowDrop="False"  
-                          Text="" 
-                          ToolTip="Deltagere Navn" 
-                          Style="{StaticResource TextBox_Style_Default}"  
-                          Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />
-
-
-                <Controls:PersonListControl 
-                    x:Name="debug_plc" 
-                    Title="Deltagere" 
-                    Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"
-                    Padding="5 3"
-                    BorderBrush="Gray" 
-                    Background="LightGray" 
-                    BorderThickness="1.5"/>-->
-
-                <!--<Controls:AutocompleteControl Text=""/>-->
-                <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+               
+                <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Opacity="0" Style="{StaticResource Grid_Style_FadeAnimation}">
                     <View:Forside x:Name="view_forside"/>
                 </Grid>
 
 
-                <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
+                <Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Opacity="0" Style="{StaticResource Grid_Style_FadeAnimation}">
+                    <View:sog_pa_tider/>
+                </Grid>
+
+                <Grid Tag="{Binding ElementName=Menu_Indstillinger, Path=IsChecked}" Opacity="0" Style="{StaticResource Grid_Style_FadeAnimation}">
                     <View:Connection/>
                 </Grid>
 

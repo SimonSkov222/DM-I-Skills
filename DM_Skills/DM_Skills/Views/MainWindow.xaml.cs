@@ -15,10 +15,14 @@ namespace DM_Skills
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public Views.Projektor projek;
+
         /// <summary>
         /// Her connecter vi til databasen og opretter den
         /// vi tilføjet også en load event
         /// </summary>
+        /// 
         public MainWindow()
         {
             InitializeComponent();
@@ -37,7 +41,12 @@ namespace DM_Skills
             //    win.Timer = view_forside.stopwatch;
             //    win.Show();
 
-                
+            Loaded += (o, e) => { Menu_Forside.IsChecked = false; Menu_Forside.IsChecked = true; };
+
+            Loaded += (o, e) => {
+                //projek = new Views.Projektor(view_forside.stopwatch, this);
+                //projek.Closed += (oo, ee) => { Menu_Projektor.IsChecked = false; };
+            };
 
             //};
         }
@@ -112,6 +121,20 @@ namespace DM_Skills
             Console.WriteLine("ID: {0}", model.ID);
             Console.WriteLine("Name: {0}", model.Class);
             
+        }
+
+        private void Menu_Projektor_Checked(object sender, RoutedEventArgs e)
+        {
+            if (Menu_Projektor.IsChecked ?? false)
+            {
+                projek = new Views.Projektor(view_forside.stopwatch, this);
+                
+                projek.Show();
+            }
+            else
+            {
+                projek.Close();
+            }
         }
     }
 }

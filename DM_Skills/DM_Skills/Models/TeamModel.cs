@@ -50,7 +50,7 @@ namespace DM_Skills.Models
             Console.WriteLine("3");
             var myDB = Scripts.Database.GetDB();
             Console.WriteLine("4");
-            if (ID == null)
+            if (ID != null)
             {
                 return false;
             }

@@ -34,6 +34,7 @@
                 <ResourceDictionary Source="Styles/DatePickerCalendar_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/PlaceholderBox_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/PasswordBox_Style_Default.xaml"/>
+                <ResourceDictionary Source="Styles/ToggleButton_Style_Default.xaml"/>
 
 
                 <ResourceDictionary Source="Templates/Slider_Template_Default_Thumb.xaml"/>

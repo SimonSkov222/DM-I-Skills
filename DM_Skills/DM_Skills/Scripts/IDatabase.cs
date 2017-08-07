@@ -22,6 +22,7 @@ namespace DM_Skills.Scripts
         object Insert(string table, string[] columns, List<object[]> values);
 
         List<object> GetRow(string table, string columns, string format = "", params object[] arg);
+
         List<object> GetRow(string table, string[] columns, string format = "", params object[] arg);
 
         void Create(string table, params IColumn[] columns);

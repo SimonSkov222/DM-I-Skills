@@ -197,6 +197,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\ToggleButton_Style_Default.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Templates\Autocomplete_Template_Default.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

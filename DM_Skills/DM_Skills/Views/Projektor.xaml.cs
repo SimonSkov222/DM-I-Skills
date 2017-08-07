@@ -19,28 +19,30 @@ namespace DM_Skills.Views
     /// </summary>
     public partial class Projektor : Window
     {
-
+        public bool ClosedByFullScreen = false;
         public Controls.TimerControl Timer { get; set; }
+        public MainWindow Parent;
 
-        public Projektor(Controls.TimerControl timer)
+        public Projektor(Controls.TimerControl timer, MainWindow parent)
         {
             Timer = timer;
+            Parent = parent;
             InitializeComponent();
-
+            Closed += (oo, ee) => { if (!ClosedByFullScreen) Parent.Menu_Projektor.IsChecked = false; };
 
 
         }
 
         public void SetFullScreen(bool value)
         {
-
+            ClosedByFullScreen = true;
             var screen = System.Windows.Forms.Screen.FromHandle(
                 new System.Windows.Interop.WindowInteropHelper(this).Handle);
 
 
 
             Console.WriteLine("-->{0}", Timer.DisplayTime);
-            var nWin = new Projektor(Timer);
+            var nWin = new Projektor(Timer, Parent);
             nWin.Timer = this.Timer;
 
             if (value)
@@ -86,8 +88,10 @@ namespace DM_Skills.Views
                 //this.WindowState = WindowState.Normal;
             }
 
+            
 
             nWin.Show();
+            Parent.projek = nWin;
             this.Close();
         }
 

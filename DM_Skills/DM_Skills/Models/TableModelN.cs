@@ -39,7 +39,7 @@ namespace DM_Skills.Models
             Team.CallbackUpload += o =>
             {
                 foreach (var p in Persons)
-                    p.TeamID = (o as TeamModel).ID;
+                    p.TeamID = (o as TeamModel).ID ?? 0;
             };
         }
 
@@ -76,7 +76,17 @@ namespace DM_Skills.Models
 
         protected override bool OnUpload()
         {
-            return false;
+
+            School.Upload();
+            Location.Upload();
+            Team.Upload();
+
+            foreach (var p in Persons)
+            {
+                p.Upload();
+            }
+
+            return true;
         }
     }
 }

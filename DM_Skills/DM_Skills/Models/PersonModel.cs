@@ -15,7 +15,7 @@ namespace DM_Skills.Models
 
 
 
-        public int ID { get; protected set; }
+        public int? ID { get; protected set; }
         public string Name { get; set; }
         public int TeamID { get; set; }
 
@@ -36,7 +36,19 @@ namespace DM_Skills.Models
 
         protected override bool OnUpload()
         {
-            throw new NotImplementedException();
+            var myDB = Scripts.Database.GetDB();
+
+            if (ID != null)
+            {
+                return false;
+            }
+            else
+            {
+                ID = (int)myDB.Insert("Persons", "Name", Name);
+            }
+            myDB.Disconnect();
+
+            return true;
         }
     }
 }
