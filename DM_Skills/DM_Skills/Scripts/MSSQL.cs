@@ -18,6 +18,7 @@ namespace DM_Skills.Scripts
 
         private string _lastQuery;
         public string LastQuery { get { return _lastQuery; } }
+        
 
         private  SqlConnection sql_conn;
         private  SqlCommand sql_cmd;
@@ -48,7 +49,7 @@ namespace DM_Skills.Scripts
         {
             string tableWithPrefix = Prefix + table;
 
-            string command = string.Format("DROP TABLE `{0}`;", tableWithPrefix);
+            string command = string.Format("DROP TABLE [{0}];", tableWithPrefix);
             ExecuteQuery(command);
         }
 
@@ -77,19 +78,24 @@ namespace DM_Skills.Scripts
                     }
                 }
 
-                if (isMethod) continue;
-                if (columns[i].StartsWith("`") && columns[i].EndsWith("`")) continue;
-                columns[i] = "`" + columns[i] + "`";
+                if (isMethod)
+                    continue;
+                if (columns[i].StartsWith("[") && columns[i].EndsWith("]"))
+                    continue;
+
+                columns[i] = "[" + columns[i] + "]";
             }
 
-            return string.Format("SELECT {1} FROM `{0}`{2};", tableWithPrefix, string.Join(", ", columns), " " + more);
+            return string.Format("SELECT {1} FROM [{0}]{2};", tableWithPrefix, string.Join(", ", columns), " " + more);
         }
 
         public bool Exist(string table)
         {
             string tableWithPrefix = Prefix + table;
 
-            string command = string.Format("SELECT `name` FROM `sqlite_master` WHERE `type`='table' AND `name`='{0}';", tableWithPrefix);
+            string command = string.Format("SELECT * FROM information_schema.tables where [TABLE_NAME]='{0}';", tableWithPrefix);
+
+
             var result = ExecuteQuery(command);
 
             return result.Count > 0;
@@ -105,11 +111,12 @@ namespace DM_Skills.Scripts
 
 
             for (int i = 0; i < columns.Length; i++)
-                statements.Add(string.Format("`{0}` = {1}", columns[i], values[i]));
-
+            {
+                statements.Add(string.Format("[{0}] = {1}", columns[i], values[i]));
+            }
 
             string statementsCMD = string.Join(" AND ", statements.ToArray());
-            string command = string.Format("SELECT * FROM `{0}` WHERE {1};", tableWithPrefix, statementsCMD);
+            string command = string.Format("SELECT * FROM [{0}] WHERE {1};", tableWithPrefix, statementsCMD);
             var result = ExecuteQuery(command);
 
             return result.Count > 0; ;
@@ -123,19 +130,29 @@ namespace DM_Skills.Scripts
         public string GetPrimaryKeyName(string table)
         {
             string tableWithPrefix = Prefix + table;
-            var result = ExecuteQuery(string.Format("PRAGMA table_info(`{0}`)", tableWithPrefix));
+            var result = ExecuteQuery(string.Format("SELECT u.COLUMN_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS c INNER JOIN " +
+                "INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS u ON c.CONSTRAINT_NAME = u.CONSTRAINT_NAME " +
+                "where u.TABLE_NAME = '{0}' AND c.TABLE_NAME = '{0}' and c.CONSTRAINT_TYPE = 'PRIMARY KEY'", tableWithPrefix));
 
-            for (int i = 0; i < result.Count; i++)
+            if (result.Count > 0)
             {
-                if (Convert.ToBoolean(result[i][5])) return (string)result[i][1];
+                return result[0][0].ToString();
             }
-
-            return null;
+            else
+            {
+                return null;
+            }
         }
 
-        public List<object> GetRow(string table, string[] columns, string more = "")
+
+        public List<object> GetRow(string table, string column, string format = "", params object[] arg)
         {
-            string query = BuildGetRowsCMD(table, columns, more);
+            return GetRow(table, new string[] { column }, format, arg);
+        }
+
+        public List<object> GetRow(string table, string[] columns, string format = "", params object[] arg)
+        {
+            string query = BuildGetRowsCMD(table, columns, string.Format(format, arg));
 
             var result = ExecuteQuery(query);
 
@@ -143,17 +160,22 @@ namespace DM_Skills.Scripts
             else return result[0];
         }
 
-        public void Insert(string table, string column, object value)
+        public object Insert(string table, string column, object value)
         {
-            Insert(table, new string[] { column }, new object[] { value });
+            return Insert(table, new string[] { column }, new object[] { value });
         }
 
-        public void Insert(string table, string[] columns, object[] values)
+        public object Insert(string table, string[] columns, object[] values)
         {
-            Insert(table, columns, new List<object[]>() { values });
+            var result = Insert(table, columns, new List<object[]>() { values });
+            if (result != null)
+            {
+                return ((List<object>)result)[0];
+            }
+            return null;
         }
 
-        public void Insert(string table, string[] columns, List<object[]> values)
+        public object Insert(string table, string[] columns, List<object[]> values)
         {
             string tableWithPrefix = Prefix + table;
             List<string> lValues = new List<string>();
@@ -165,10 +187,37 @@ namespace DM_Skills.Scripts
                 lValues.Add(valueCMD);
             }
 
-            string columnsCMD = string.Format("`{0}`", string.Join("`, `", columns.ToArray()));
+            string columnsCMD = string.Format("[{0}]", string.Join("], [", columns.ToArray()));
             string valuesCMD = "(" + string.Join("), (", lValues) + ")";
 
-            ExecuteQuery(string.Format("INSERT INTO `{0}`({1}) VALUES {2};", tableWithPrefix, columnsCMD, valuesCMD));
+            ExecuteQuery(string.Format("INSERT INTO [{0}]({1}) VALUES {2};", tableWithPrefix, columnsCMD, valuesCMD));
+
+            //Get ID
+            var pKey = GetPrimaryKeyName(table);
+            if (pKey != "")
+            {
+
+                List<string> whrArr = new List<string>();
+                foreach (var item in values)
+                {
+                    var whrArr2 = new List<string>();
+                    for (int i = 0; i < columns.Length; i++)
+                        whrArr2.Add(string.Format("[{0}] = {1}", columns[i], item[i]));
+                    
+                    whrArr.Add("(" +string.Join(" AND ", whrArr2.ToArray()) + ")");
+                }
+
+
+                
+
+
+                string whrCMD = "WHERE " + string.Join(" OR ", whrArr.ToArray());
+
+                var result = GetRow(table, pKey, whrCMD);
+                if (result.Count > 0) return result;
+            }
+
+            return null;
         }
 
         //public void List<ExecuteQuery>(string cmd)
@@ -261,5 +310,6 @@ namespace DM_Skills.Scripts
             string command = string.Format("CREATE TABLE [{0}]\n(\n {1}\n);", tableWithPrefix, columnPart);
             ExecuteQuery(command);
         }
+        
     }
 }

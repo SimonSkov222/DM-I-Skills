@@ -23,10 +23,12 @@ namespace DM_Skills
         {
             InitializeComponent();
 
-            
 
-            Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
-            CreateDatabase();
+
+            //Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
+            //CreateDatabase();
+
+            Scripts.Database.CreateDatabase();
 
             //Loaded += (o, e) =>
             //{
@@ -100,16 +102,16 @@ namespace DM_Skills
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var db = new Scripts.MSSQL();
-            db.Connect(@"Server=192.168.4.221;Database=DM_i_Skills;User Id=dm;Password=DMiSKILLS2017;", "prefix");
 
-            db.Create("Test3",
-                new Scripts.MSColumns() { name = "ID", type = Scripts.MSColumns.TYPE_INT, isAutoIncrement = true, isPrimaryKey = true },
-                new Scripts.MSColumns() { name = "col1", type = Scripts.MSColumns.TYPE_INT, foreignKeyReferences = "Test([ID])" },
-                new Scripts.MSColumns() { name = "col2", type = Scripts.MSColumns.TYPE_VARCHAR }
-            );
-
-
+            var model = new Models.TeamModel();
+            model.Class = "meh111";
+            model.Time = "10:10:10";
+            model.Date = "02/01/2017";
+            model.Upload();
+            
+            Console.WriteLine("ID: {0}", model.ID);
+            Console.WriteLine("Name: {0}", model.Class);
+            
         }
     }
 }

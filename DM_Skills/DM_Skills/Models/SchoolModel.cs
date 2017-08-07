@@ -33,6 +33,19 @@ namespace DM_Skills.Models
 
         protected override bool OnUpload()
         {
+            var myDB = Scripts.Database.GetDB();
+
+            if (myDB.Exist("Schools", "Name", Name))
+            {
+                var result = myDB.GetRow("Schools", "ID", "WHERE [Name] = '{0}'", Name);
+                ID = (int)result[0];
+            }
+            else
+            {
+                ID = (int)myDB.Insert("Schools", "Name", Name);
+            }
+            myDB.Disconnect();
+
             return true;
         }
 

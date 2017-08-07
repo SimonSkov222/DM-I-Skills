@@ -8,17 +8,21 @@ namespace DM_Skills.Scripts
 {
     interface IDatabase
     {
+        bool IsConnected { get; }
+
+
         void Connect(string connectionString, string prefix = "");
 
         void Disconnect();
+        
+        object Insert(string table, string column, object value);
 
-        void Insert(string table, string column, object value);
+        object Insert(string table, string[] columns, object[] values);
 
-        void Insert(string table, string[] columns, object[] values);
+        object Insert(string table, string[] columns, List<object[]> values);
 
-        void Insert(string table, string[] columns, List<object[]> values);
-
-        List<object> GetRow(string table, string[] columns, string more = "");
+        List<object> GetRow(string table, string columns, string format = "", params object[] arg);
+        List<object> GetRow(string table, string[] columns, string format = "", params object[] arg);
 
         void Create(string table, params IColumn[] columns);
 

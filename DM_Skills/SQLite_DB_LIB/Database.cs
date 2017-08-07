@@ -310,7 +310,7 @@ namespace SQLite_DB_LIB
         {
 
             for (int i = 0; i < values.Length; i++)
-                if (!values[i].IsInt())
+                if (values[i] is string)
                     values[i] = string.Format("'{0}'", values[i]);
 
             return values;

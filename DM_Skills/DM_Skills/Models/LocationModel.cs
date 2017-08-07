@@ -32,7 +32,20 @@ namespace DM_Skills.Models
 
         protected override bool OnUpload()
         {
-            throw new NotImplementedException();
+            var myDB = Scripts.Database.GetDB();
+
+            if (myDB.Exist("Locations", "Name", Name))
+            {
+                var result = myDB.GetRow("Locations", "ID", "WHERE [Name] = '{0}'", Name);
+                ID = (int)result[0];
+            }
+            else
+            {
+                ID = (int)myDB.Insert("Locations", "Name", Name);
+            }
+            myDB.Disconnect();
+
+            return true;
         }
     }
 }

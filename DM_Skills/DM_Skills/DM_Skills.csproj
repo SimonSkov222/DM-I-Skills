@@ -85,6 +85,7 @@
     <Compile Include="Converters\TextToHiddenConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
     <Compile Include="Converters\ValueToValueConverter.cs" />
+    <Compile Include="Scripts\Database.cs" />
     <Compile Include="Scripts\Helper.cs" />
     <Compile Include="Scripts\IColumn.cs" />
     <Compile Include="Scripts\IDatabase.cs" />
