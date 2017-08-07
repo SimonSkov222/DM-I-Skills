@@ -16,6 +16,18 @@ namespace DM_Skills.Controls
 
 
 
+        public TimeSpan CurrentTime
+        {
+            get { return (TimeSpan)GetValue(CurrentTimeProperty); }
+            set { SetValue(CurrentTimeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CurrentTime.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurrentTimeProperty =
+            DependencyProperty.Register("CurrentTime", typeof(TimeSpan), typeof(DragAndDropTimerControl), new PropertyMetadata(null));
+
+
+
         public int Overtime
         {
             get { return (int)GetValue(OvertimeProperty); }
@@ -46,12 +58,11 @@ namespace DM_Skills.Controls
         
         private IValueConverter timespanConverter;
 
-        public TimeSpan OverTimeSpan { get; set; }
-
+        
 
         public static void CallBackProperty(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            ((DragAndDropTimerControl)sender).OverTimeSpan = new TimeSpan(0, (int)e.NewValue, 0);
+           ((DragAndDropTimerControl)sender). UpdateOverTimeLabel();
         }
 
         /// <summary>
@@ -62,39 +73,32 @@ namespace DM_Skills.Controls
         {
             InitializeComponent();
             timespanConverter = (IValueConverter)FindResource("TimeToStringConvert");
-            OverTimeSpan = new TimeSpan(0, Overtime, 0);
+            UpdateOverTimeLabel();
         }
 
 
-        public void AddOverTimeLabel(TimeSpan time)
+        public void UpdateOverTimeLabel()
         {
-            //Top element
-            if (time == null) return;
-
-            int rowID = listPanel.RowDefinitions.Count;
-            listPanel.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-
             //Position nummer
             var txtNumber = new TextBlock();
-            var txtTime = BuildTimeLabel(time);
+            var txtTime = BuildTimeLabel(new TimeSpan(0, Overtime, 0));
 
 
             //Placering
-            Grid.SetRow(txtTime, rowID);
             Grid.SetColumn(txtTime, 1);
-            Grid.SetRow(txtNumber, rowID);
             Grid.SetColumn(txtNumber, 0);
 
             //Styling
-            txtNumber.Text = string.Format("{0}.", rowID + 1);
+            txtNumber.Text = "Overtid:";
             txtNumber.VerticalAlignment = VerticalAlignment.Center;
             txtNumber.FontWeight = FontWeights.Bold;
             txtNumber.HorizontalAlignment = HorizontalAlignment.Right;
 
+            grid_overtime.Children.Clear();
 
             //Tilføj til view
-            listPanel.Children.Add(txtNumber);
-            listPanel.Children.Add(txtTime);
+            grid_overtime.Children.Add(txtNumber);
+            grid_overtime.Children.Add(txtTime);
         }
 
         /// <summary>
@@ -104,6 +108,7 @@ namespace DM_Skills.Controls
         /// </summary>
         public void Add(TimeSpan time)
         {
+
             //Top element
             if (time == null) return;
 

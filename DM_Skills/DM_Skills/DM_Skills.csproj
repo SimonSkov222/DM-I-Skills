@@ -80,7 +80,9 @@
     </Compile>
     <Compile Include="Converters\AutocompleteConverter.cs" />
     <Compile Include="Converters\CompareValuesConverter.cs" />
+    <Compile Include="Converters\DragAndDropTimerConverter.cs" />
     <Compile Include="Converters\ObservableCollectionConverter.cs" />
+    <Compile Include="Converters\OvertimeConverter.cs" />
     <Compile Include="Converters\PersonListConverter.cs" />
     <Compile Include="Converters\ProjektorConverter.cs" />
     <Compile Include="Converters\TextToHiddenConverter.cs" />

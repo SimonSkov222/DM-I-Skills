@@ -79,10 +79,11 @@
                     
                     
                     <Controls:DragAndDropTimerControl 
-                    x:Name="LapList" 
-                    Grid.Row="4" 
-                    Height="250" 
-                    VerticalAlignment="Bottom"/>
+                        x:Name="LapList" 
+                        CurrentTime="{Binding ElementName=stopwatch, Path=DisplayTime}"
+                        Grid.Row="4" 
+                        Height="250" 
+                        VerticalAlignment="Bottom"/>
                 </Grid>
 
                 <!-- StopUr -->

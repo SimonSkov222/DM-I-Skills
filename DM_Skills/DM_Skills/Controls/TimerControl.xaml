@@ -19,15 +19,21 @@
         <TextBlock 
             x:Name="txt_Timer"
             Grid.Row="0"
-            Foreground="{StaticResource Color_Foreground_Dark_2}"
             Margin="0 0 0 0"
             Text="{Binding ElementName=controller, Path=DisplayTime, Converter={StaticResource TimeToStringConvert}}"
             FontSize="{Binding ElementName=controller, Path=FontSize, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=800}"
             FontFamily="Calibri"
             VerticalAlignment="Center" 
-            HorizontalAlignment="Center"/>
+            HorizontalAlignment="Center">
+            <TextBlock.Foreground>
+                <MultiBinding Converter="{StaticResource OvertimeConvert}" ConverterParameter="Color">
+                    <Binding ElementName="controller" Path="DisplayTime"/>
+                    <Binding ElementName="controller" Path="Overtime"/>
+                </MultiBinding>
+            </TextBlock.Foreground>
+        </TextBlock>
 
-        
+
         <!-- Styring af stopur-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
             <Button x:Name="btn_Start" Content="Start" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}" Background="{StaticResource Color_Background_Button_LightBlue}"/>

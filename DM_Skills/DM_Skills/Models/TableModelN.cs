@@ -39,7 +39,7 @@ namespace DM_Skills.Models
             Team.CallbackUpload += o =>
             {
                 foreach (var p in Persons)
-                    p.TeamID = (o as TeamModel).ID;
+                    p.TeamID = (o as TeamModel).ID ?? 0;
             };
         }
 

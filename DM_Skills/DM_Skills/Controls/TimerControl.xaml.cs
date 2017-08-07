@@ -14,6 +14,22 @@ namespace DM_Skills.Controls
     /// </summary>
     public partial class TimerControl : UserControl, INotifyPropertyChanged
     {
+        public int Overtime
+        {
+            get { return (int)GetValue(OvertimeProperty); }
+            set { SetValue(OvertimeProperty, value); }
+        }
+
+        public static readonly DependencyProperty OvertimeProperty =
+            DependencyProperty.Register(
+                "Overtime",
+                typeof(int),
+                typeof(TimerControl),
+                new PropertyMetadata(1)
+            );
+
+
+
         public event Action OnStart;
         public event Action OnStop;
         public event Action<TimeSpan> OnLap;
@@ -23,6 +39,9 @@ namespace DM_Skills.Controls
         private DispatcherTimer EventTimer;
         private Stopwatch _Watch = new Stopwatch();
         public TimeSpan DisplayTime { get { return _Watch.Elapsed; } }
+
+
+        
 
 
         /// <summary>
