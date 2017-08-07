@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:DM_Skills.Controls"
              mc:Ignorable="d" 
              x:Name="Controller"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="100" d:DesignWidth="300">
     <Grid>
-        <StackPanel>
+        <StackPanel Margin="5">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -23,81 +23,54 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock 
-                    Grid.Row="0" Grid.ColumnSpan="3"
+                    Grid.Row="0" 
                     Text="{Binding ElementName=Controller, Path=Title}"  
                     FontWeight="Bold" FontSize="18" Margin="0 8 0 2"/>
-
-
-                <local:AutocompleteControl x:Name="Skoler"  MouseEnter="PersonListControl_MouseEnter"
+                
+                
+                <local:AutocompleteControl x:Name="autoSchools"
                     Grid.Row="1" Grid.Column="0"
+                    Text="{Binding ElementName=Controller, Path=Model.School.Name, Mode=TwoWay}"
+                    ItemsSource="{Binding ElementName=Controller, Path=Schools, Mode=OneWay}"
                     Placeholder="Skolens Navn..."/>
 
                 <local:PlaceholderBox 
                     Grid.Row="1" Grid.Column="2"
+                    Text="{Binding ElementName=Controller, Path=Model.Team.Class, Mode=TwoWay}"
                     Placeholder="Klasse..."/>
-                <!--<Button Content="Debug" Grid.Row="1" Grid.Column="2" Click="Button_Click"/>-->
 
 
 
                 <local:PersonListControl x:Name="Personer"
-                    Tag="{Binding ElementName=Controller, Path=Title}" MouseEnter="PersonListControl_MouseEnter"
-                    Grid.Row="3" Grid.Column="0" Visibility="Visible" Placeholder="Placeholder"
-                    Persons="{Binding ElementName=Controller,Path=MyPersons}"/>
+                    Grid.Row="3" Grid.Column="0" Visibility="Visible" 
+                    Placeholder="Deltagere..."
+                    Persons="{Binding ElementName=Controller,Path=Model.Persons, Mode=TwoWay}"/>
 
                 <local:PlaceholderBox 
+                    x:Name="txt_time"
                     Grid.Row="3" Grid.Column="2"
                     Placeholder="Tider..."
-                    Text="{Binding ElementName=Controller, Path=Time, Converter={StaticResource TimeToStringConvert}}"/>
+                    Text="{Binding ElementName=Controller, Path=Model.Team.Time, Converter={StaticResource TimeToStringConvert}, Mode=TwoWay}"/>
 
 
 
             </Grid>
-            
-            
-
-            <!--<StackPanel  Panel.ZIndex="1000" Orientation="Horizontal">
-
-                <local:Autocomplete
-                Children="{Binding ElementName=Controller, Path=SchoolList, Converter={StaticResource AutocompleteItemConvert}, Mode=OneWay}"
-                Margin="0" Padding="0" Panel.ZIndex="1000" x:Name="schoolList" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=69}">
-                    <local:Autocomplete.Target>
-                        <TextBox Text="{Binding ElementName=Controller, Path=School}" Padding="5 3" ToolTip="Skolens navn" Style="{StaticResource TextBox_Style_Default}"/>
-                    </local:Autocomplete.Target>
-                </local:Autocomplete>
-                <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
-                <TextBox Tag="tag" Style="{StaticResource TextBox_Style_Default}" Padding="5 3" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=29}" ToolTip="Klasse Navn" />
-            </StackPanel>
-
-
-            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
-                <Label Content="{Binding ElementName=Controller, Path=TeamID}" ToolTip="Hold Nr" Style="{StaticResource Label_Style_Default}"  Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=10}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="5 3" Margin="0" FontWeight="Normal"/>
-                <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
-
-                <local:PersonListControl Title="Deltagere" Tag="Navn"
-                                     Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
-                
-                --><!--<TextBox  AllowDrop="False"   
-            Text="{Binding ElementName=Controller, Path=Players}" 
-            ToolTip="Deltagere Navn" Style="{StaticResource TextBox_Style_Default}"   
-            Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}" />--><!--
-
-
-                <Grid Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=2}"/>
-                <TextBox
-                    Text="{Binding ElementName=Controller, Path=Time, Converter={StaticResource TimeToStringConvert}}"
-                    ToolTip="Tider" Style="{StaticResource TextBox_Style_Default}" 
-                    Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=43}"/>
-                    
-
-            </StackPanel>-->
         </StackPanel>
 
+
         <Label Content="Drop Her" 
-               Background="Gray" Foreground="White" 
+               Foreground="{StaticResource Color_Border_Box}" 
                HorizontalContentAlignment="Center" 
-               VerticalContentAlignment="Center"
+               BorderBrush="{StaticResource Color_Border_Box}"
+               BorderThickness="2"
+               FontSize="28"
+               FontWeight="Bold"
                Visibility="{Binding ElementName=Controller, Path=ShowDropLocation, Converter={StaticResource BoolToVisibilityConvert}}"
-               AllowDrop="True"
-               Drop="Label_Drop"/>
+               VerticalContentAlignment="Center" AllowDrop="True"
+               Drop="Label_Drop">
+            <Label.Background>
+                <SolidColorBrush Color="Gray" Opacity="0.8"/>
+            </Label.Background>
+        </Label>
     </Grid>
 </UserControl>

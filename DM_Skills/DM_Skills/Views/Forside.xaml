@@ -30,84 +30,9 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Borderne -->
-                <StackPanel Grid.Row="0" Grid.Column="0">
+        <StackPanel Grid.Row="0" Grid.Column="0" x:Name="listOfTables"/>
 
-
-            <Controls:TablesControl Title="Bord 1"
-                                    ShowDropLocation="{Binding ElementName=LapList, Path=IsDraggingItem, Mode=OneWay}" />
-                    
-            <Controls:TablesControl Title="Bord 2"
-                                    ShowDropLocation="{Binding ElementName=LapList, Path=IsDraggingItem, Mode=OneWay}" />
-                    
-            <Controls:TablesControl Title="Bord 3"
-                                    ShowDropLocation="{Binding ElementName=LapList, Path=IsDraggingItem, Mode=OneWay}" />
-                    
-            <Controls:TablesControl Title="Bord 4"
-                                    ShowDropLocation="{Binding ElementName=LapList, Path=IsDraggingItem, Mode=OneWay}" />
-
-            <!--<Controls:TablesControl 
-                    x:Name="cTable1"
-                    Title="Bord 1" 
-                    DataContext="{StaticResource table1}"
-                    School="{Binding Path=School, Mode=TwoWay}"
-                    TeamID="{Binding Path=Team, Mode=TwoWay}"
-                    Players="{Binding Path=Persons, Mode=TwoWay}"
-                    ClassID="{Binding Path=Class, Mode=TwoWay}"
-                    Time="{Binding Path=Time, Mode=TwoWay}"
-                    Margin="0 0 0 0" 
-                    FontSize="16" 
-                    Panel.ZIndex="1005"/>
-                    <Controls:TablesControl 
-                    x:Name="cTable2"
-                    Title="Bord 2" 
-                    DataContext="{StaticResource table2}"
-                    School="{Binding Path=School, Mode=TwoWay}"
-                    TeamID="{Binding Path=Team, Mode=OneWay}"
-                    Players="{Binding Path=Persons, Mode=TwoWay}"
-                    ClassID="{Binding Path=Class, Mode=TwoWay}"
-                    Time="{Binding Path=Time, Mode=TwoWay}"
-                    Margin="0 0 0 0" 
-                    FontSize="16" 
-                    Panel.ZIndex="1004"/>
-                    <Controls:TablesControl 
-                    x:Name="cTable3"
-                    Title="Bord 3" 
-                    DataContext="{StaticResource table3}"
-                    School="{Binding Path=School, Mode=TwoWay}"
-                    TeamID="{Binding Path=Team, Mode=OneWay}"
-                    Players="{Binding Path=Persons, Mode=TwoWay}"
-                    ClassID="{Binding Path=Class, Mode=TwoWay}"
-                    Time="{Binding Path=Time, Mode=TwoWay}"
-                    Margin="0 0 0 0" 
-                    FontSize="16" 
-                    Panel.ZIndex="1003"/>
-                    <Controls:TablesControl 
-                    x:Name="cTable4"
-                    Title="Bord 4" 
-                    DataContext="{StaticResource table4}"
-                    School="{Binding Path=School, Mode=TwoWay}"
-                    TeamID="{Binding Path=Team, Mode=OneWay}"
-                    Players="{Binding Path=Persons, Mode=TwoWay}"
-                    ClassID="{Binding Path=Class, Mode=TwoWay}"
-                    Time="{Binding Path=Time, Mode=TwoWay}"
-                    Margin="0 0 0 0" 
-                    FontSize="16" 
-                    Panel.ZIndex="1002"/>
-                    <Controls:TablesControl 
-                    x:Name="cTable5"
-                    Title="Bord 5" 
-                    DataContext="{StaticResource table5}"
-                    School="{Binding Path=School, Mode=TwoWay}"
-                    TeamID="{Binding Path=Team, Mode=OneWay}"
-                    Players="{Binding Path=Persons, Mode=TwoWay}"
-                    ClassID="{Binding Path=Class, Mode=TwoWay}"
-                    Time="{Binding Path=Time, Mode=TwoWay}"
-                    Margin="0 0 0 0" 
-                    FontSize="16" 
-                    Panel.ZIndex="1001"/>-->
-                </StackPanel>
-
-                <!-- Indsend, nulstil og tid liste -->
+        <!-- Indsend, nulstil og tid liste -->
                 <Grid Grid.Row="0" Grid.Column="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -151,6 +76,8 @@
                     Margin="0 5">
                     #<Run Text="{Binding ElementName=controller, Path=Round}"/>
                     </TextBlock>
+                    
+                    
                     <Controls:DragAndDropTimerControl 
                     x:Name="LapList" 
                     Grid.Row="4" 

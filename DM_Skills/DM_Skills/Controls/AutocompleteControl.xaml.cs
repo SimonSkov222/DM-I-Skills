@@ -59,16 +59,17 @@ namespace DM_Skills.Controls
         
 
 
-        public ObservableCollection<object> ItemsSource
+
+        public ObservableCollection<Models.SchoolModel> ItemsSource
         {
-            get { return (ObservableCollection<object>)GetValue(ItemsSourceProperty); }
-            set { SetValue(ItemsSourceProperty, value); }
+            get { return (ObservableCollection<Models.SchoolModel>)GetValue(ItemsSourceProperty); }
+            set { SetValue(ItemsSourceProperty, value);}
         }
 
         public static readonly DependencyProperty ItemsSourceProperty =
             DependencyProperty.Register(
                 "ItemsSource", 
-                typeof(ObservableCollection<object>), 
+                typeof(ObservableCollection<Models.SchoolModel>), 
                 typeof(AutocompleteControl), 
                 new PropertyMetadata(null)
             );
@@ -78,30 +79,18 @@ namespace DM_Skills.Controls
         
 
         private IMultiValueConverter ConvertVisibility;
-
-        private ObservableCollection<object> _ItemsSource;
+        
 
 
         public AutocompleteControl()
         {
-            InitializeComponent();
 
             ConvertVisibility = (IMultiValueConverter)FindResource("AutocompleteConvert");
 
             if (ItemsSource == null)
-                ItemsSource = new ObservableCollection<object>();
+                ItemsSource = new ObservableCollection<Models.SchoolModel>();
 
-
-            ItemsSource.Add("Option 11");
-            ItemsSource.Add("Option 12");
-            ItemsSource.Add("Option 22");
-            ItemsSource.Add("Option 24");
-            ItemsSource.Add("Option 23");
-            ItemsSource.Add("Option 35");
-            ItemsSource.Add("Option 36");
-            ItemsSource.Add("Option 37");
-            ItemsSource.Add("Option 32");
-
+            InitializeComponent();
             Loaded += AutocompleteControl_Loaded;
         }
 
@@ -109,6 +98,7 @@ namespace DM_Skills.Controls
         {
             ItemsSource.CollectionChanged += ItemsSource_CollectionChanged;
             ItemsSource_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, ItemsSource));
+         
         }
 
         private void ItemsSource_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -119,7 +109,7 @@ namespace DM_Skills.Controls
 
                     for (int i = 0; i < e.NewItems.Count; i++)
                     {
-                        var item = (string)e.NewItems[i];
+                        var item = ((Models.SchoolModel)e.NewItems[i]).Name;
                         var opt = new ListViewItem();
 
                         opt.SetBinding(ListViewItem.ContentProperty, new Binding()

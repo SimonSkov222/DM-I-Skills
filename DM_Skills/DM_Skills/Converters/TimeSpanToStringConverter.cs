@@ -18,7 +18,7 @@ namespace DM_Skills.Converters
         /// </summary>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value== null)
+            if (value== null || !(value is TimeSpan))
                 return "";
 
             //Hent tallet og gør hvis det er mindre en 10 at der er 0 foran

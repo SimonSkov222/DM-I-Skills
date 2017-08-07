@@ -49,6 +49,11 @@ namespace DM_Skills.Models
             return true;
         }
 
+
+        public override string ToString()
+        {
+            return Name;
+        }
         //public bool CanUpload() { return false; }
         //public bool Upload() { return false; }
         //public static void GetRow(int id) { }

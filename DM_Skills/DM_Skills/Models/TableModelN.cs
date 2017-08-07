@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,18 +25,22 @@ namespace DM_Skills.Models
         public SchoolModel      School      { get; set; }
         public LocationModel    Location    { get; set; }
         public TeamModel        Team        { get; set; }
-        public List<PersonModel> Persons    { get; set; }
+        public ObservableCollection<PersonModel> Persons    { get; set; }
 
         public TableModelN()
         {
             School      = new SchoolModel();
             Location    = new LocationModel();
             Team        = new TeamModel();
-            Persons     = new List<PersonModel>();
+            Persons     = new ObservableCollection<PersonModel>();
 
             School.CallbackUpload   += o => Team.SchoolID   = (o as SchoolModel).ID;
             Location.CallbackUpload += o => Team.LocationID = (o as LocationModel).ID;
-            Team.CallbackUpload     += o => Persons.ForEach(p => p.TeamID = (o as TeamModel).ID);
+            Team.CallbackUpload += o =>
+            {
+                foreach (var p in Persons)
+                    p.TeamID = (o as TeamModel).ID;
+            };
         }
 
         public override bool CanUpload {
