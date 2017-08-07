@@ -54,7 +54,62 @@ namespace DM_Skills.Views
                 }
             }
 
-            public event PropertyChangedEventHandler PropertyChanged;
+
+
+        public int NumbOfTables
+        {
+            get { return (int)GetValue(NumbOfTablesProperty); }
+            set { SetValue(NumbOfTablesProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for NumbOfTables.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty NumbOfTablesProperty =
+            DependencyProperty.Register(
+                "NumbOfTables", 
+                typeof(int), 
+                typeof(Forside), 
+                new PropertyMetadata(
+                    3, 
+                    new PropertyChangedCallback(CallBackProperty)
+                    )
+                );
+
+        public static void CallBackProperty(DependencyObject sender, DependencyPropertyChangedEventArgs e) {
+            Console.WriteLine(sender);
+            Forside element = sender as Forside;
+
+            if (e.Property == NumbOfTablesProperty)
+            {
+                element.UpdateTableLayout((int)e.NewValue);
+            }
+            
+        }
+
+        private void UpdateTableLayout(int numb) {
+            //Fjern sidste bord
+            while (listOfTables.Children.Count > numb)
+            {
+                listOfTables.Children.RemoveAt(listOfTables.Children.Count - 1);
+            }
+
+            //Tilføj nye bordre
+            while (listOfTables.Children.Count < numb)
+            {
+                Controls.TablesControl table = new Controls.TablesControl();
+                table.Title = "Bord " + (listOfTables.Children.Count +1);
+                table.Margin = new Thickness(0, 0, 0, 3);
+
+                table.SetBinding(Controls.TablesControl.ShowDropLocationProperty, new Binding() {
+                    Path = new PropertyPath("IsDraggingItem"),
+                    Source = LapList
+                });
+
+                listOfTables.Children.Add(table);
+            }
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
             /// <summary>
             /// Fortæller at en property har ændret sig
@@ -64,15 +119,16 @@ namespace DM_Skills.Views
                 //Tjekker om PropertyChanged er sat og kalder den hvis den er
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
+        
 
-            /// <summary>
-            /// Her connecter vi til databasen og opretter den
-            /// vi tilføjet også en load event
-            /// </summary>
-            public Forside()
+        /// <summary>
+        /// Her connecter vi til databasen og opretter den
+        /// vi tilføjet også en load event
+        /// </summary>
+        public Forside()
             {
                 InitializeComponent();
-            
+
 
                 Loaded += MainWindow_Loaded;
             }
@@ -85,6 +141,7 @@ namespace DM_Skills.Views
             {
                 UpdateTableTeam();
                 UpdateSchoolList();
+                UpdateTableLayout(NumbOfTables);
             }
         
             /// <summary>
@@ -154,6 +211,10 @@ namespace DM_Skills.Views
             /// </summary>
             private void Button_Upload_Click(object sender, RoutedEventArgs e)
             {
+            Random r = new Random();
+            NumbOfTables = r.Next(100);
+            return;
+
                 //Gør vi kan loop igennem bordene med et loop
                 UserControl[] values =
                 {

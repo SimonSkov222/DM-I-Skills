@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace DM_Skills.Controls
 {
@@ -13,41 +15,6 @@ namespace DM_Skills.Controls
     public partial class TablesControl : UserControl
     {
 
-        public static readonly DependencyProperty ShowDropLocationProperty =
-            DependencyProperty.Register("ShowDropLocation", typeof(bool), typeof(TablesControl), new PropertyMetadata(false));
-
-
-
-
-        public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
-        
-        public static readonly DependencyProperty SchoolProperty =
-            DependencyProperty.Register("School", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
-
-        public static readonly DependencyProperty ClassIDProperty =
-            DependencyProperty.Register("ClassID", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
-
-        public static readonly DependencyProperty TeamIDProperty =
-            DependencyProperty.Register("TeamID", typeof(int), typeof(TablesControl));
-
-        public static readonly DependencyProperty PlayersProperty =
-            DependencyProperty.Register("Players", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
-
-        public static readonly DependencyProperty TimeProperty =
-            DependencyProperty.Register("Time", typeof(TimeSpan?), typeof(TablesControl), new PropertyMetadata(null));
-
-        public static readonly DependencyProperty SchoolListProperty =
-            DependencyProperty.Register("SchoolList", typeof(List<string>), typeof(TablesControl), new PropertyMetadata(new List<string>()));
-
-
-
-
-        public bool ShowDropLocation
-        {
-            get { return (bool)GetValue(ShowDropLocationProperty); }
-            set { SetValue(ShowDropLocationProperty, value); }
-        }
 
         public string Title
         {
@@ -55,53 +22,64 @@ namespace DM_Skills.Controls
             set { SetValue(TitleProperty, value); }
         }
 
-        public string School
+        // Using a DependencyProperty as the backing store for Title.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TitleProperty =
+            DependencyProperty.Register("Title", typeof(string), typeof(TablesControl), new PropertyMetadata(""));
+
+
+
+
+        public static readonly DependencyProperty ShowDropLocationProperty =
+            DependencyProperty.Register("ShowDropLocation", typeof(bool), typeof(TablesControl), new PropertyMetadata(false));
+
+
+
+        public Models.TableModelN Model
         {
-            get { return (string)GetValue(SchoolProperty); }
-            set { SetValue(SchoolProperty, value); }
+            get { return (Models.TableModelN)GetValue(ModelProperty); }
+            set { SetValue(ModelProperty, value); }
         }
 
-        public string ClassID
+        // Using a DependencyProperty as the backing store for Model.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ModelProperty =
+            DependencyProperty.Register("Model", typeof(Models.TableModelN), typeof(TablesControl), new PropertyMetadata(null));
+
+
+
+
+        public ObservableCollection<Models.SchoolModel> Schools
         {
-            get { return (string)GetValue(ClassIDProperty); }
-            set { SetValue(ClassIDProperty, value); }
+            get { return (ObservableCollection<Models.SchoolModel>)GetValue(SchoolsProperty); }
+            set { SetValue(SchoolsProperty, value); }
         }
 
-        public int TeamID
-        {
-            get { return (int)GetValue(TeamIDProperty); }
-            set { SetValue(TeamIDProperty, value); }
-        }
+        // Using a DependencyProperty as the backing store for Schools.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SchoolsProperty =
+            DependencyProperty.Register("Schools", typeof(ObservableCollection<Models.SchoolModel>), typeof(TablesControl), new PropertyMetadata(null));
 
-        public string Players
-        {
-            get { return (string)GetValue(PlayersProperty); }
-            set { SetValue(PlayersProperty, value); }
-        }
 
-        public TimeSpan? Time
-        {
-            get { return (TimeSpan?)GetValue(TimeProperty); }
-            set { SetValue(TimeProperty, value); }
-        }
 
-        public List<string> SchoolList
-        {
-            get { return (List<string>)GetValue(SchoolListProperty); }
-            set { SetValue(SchoolListProperty, value); }
-        }
 
-        public System.Collections.ObjectModel.ObservableCollection<Models.PersonModel> _MyPersons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>();
-
-        public System.Collections.ObjectModel.ObservableCollection<Models.PersonModel> MyPersons { get; set ; }
-
+        
         /// <summary>
         /// Opretter de elementer der er i xaml
         /// </summary>
         public TablesControl()
         {
-            MyPersons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>();
-            MyPersons.Add(new Models.PersonModel() { Name = "Hej" });
+
+            Console.WriteLine("N---N");
+
+            if (Model == null)
+                Model = new Models.TableModelN();
+            if (Schools == null)
+                Schools = new ObservableCollection<Models.SchoolModel>()
+                {
+                    new Models.SchoolModel() {Name = "Hej"}
+                };
+
+            Schools.CollectionChanged += (o, e) => BindingOperations.GetBindingExpressionBase(autoSchools, AutocompleteControl.ItemsSourceProperty).UpdateSource();
+
+
             InitializeComponent();
         }
 
@@ -111,40 +89,21 @@ namespace DM_Skills.Controls
         /// </summary>
         public void Reset()
         {
-            School = null;
-            Time = new TimeSpan();
-            ClassID = null;
-            Players = null;
 
             BorderThickness = new Thickness(0);
         }
 
         private void Label_Drop(object sender, DragEventArgs e)
         {
-
-            Console.WriteLine(e.Data);
-            Time = (TimeSpan)e.Data.GetData(typeof(TimeSpan));
+            txt_time.Text = ((Label)e.Data.GetData(typeof(Label))).Content.ToString();
         }
-
-        private void AutocompleteControl_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Console.WriteLine("Changed");
-        }
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Debug click");
-            foreach (var item in MyPersons)
-            {
-                Console.WriteLine(" Item; {0}", item.Name);
-            }
-
-            MyPersons.Add(new Models.PersonModel() { Name = "Debug Person" });
-        }
-
-        private void PersonListControl_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            Console.WriteLine("{0} == {1}", (sender as UserControl).Name, (sender as UserControl).ActualHeight);
+            Schools.Add(new Models.SchoolModel() { Name = "HH" });
+            Model.Persons.Add(new Models.PersonModel() { Name = "HH" });
+            Schools.Add(new Models.SchoolModel() { Name = "HH" });
         }
     }
 }

@@ -12,9 +12,7 @@ namespace DM_Skills.Converters
     class PersonListConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
-        {
-            Console.WriteLine(values.Length);
-            Console.WriteLine(parameter);
+        { 
 
             switch (parameter.ToString().ToLower())
             {
@@ -26,9 +24,15 @@ namespace DM_Skills.Converters
             return null;
         }
 
-        private bool IsPopupOpen(object height, object isOpen) {
-            bool mHeight = (double)height > 0;
-            bool open = (bool)isOpen;
+        private bool IsPopupOpen(object height, object isOpen)
+        {
+            if (height == null || isOpen == null)
+                return false;
+            if (!(height is double) || !(isOpen is bool))
+                return false;
+
+            bool mHeight = System.Convert.ToDouble(height) > 0;
+            bool open = System.Convert.ToBoolean(isOpen);
 
             return open && mHeight;
         }

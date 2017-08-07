@@ -3,7 +3,9 @@
                     xmlns:Converters="clr-namespace:DM_Skills.Converters"
                     xmlns:local="clr-namespace:DM_Skills.Includes">
 
+    <Converters:PersonListConverter x:Key="PersonListConvert"/>
     <Converters:ProcentOfValueConverter x:Key="ProcentOfValueConvert"/>
+    <Converters:ObservableCollectionConverter x:Key="OCConvert"/>
     <Converters:TimeSpanToStringConverter x:Key="TimeToStringConvert"/>
     <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConvert" TrueValue="Visible" FalseValue="Collapsed"/>
     <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityHiddenConvert" TrueValue="Visible" FalseValue="Hidden"/>
@@ -12,7 +14,6 @@
     <Converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleReverseConvert" Reverse="True"/>
     <Converters:CompareValuesBoolConverter x:Key="CompareValuesToBoolConvert" TrueValue="True" FalseValue="False" />
     <Converters:AutocompleteConverter x:Key="AutocompleteConvert"/>
-    <Converters:PersonListConverter x:Key="PersonListConvert"/>
     <Converters:BoolToBrushConverter x:Key="PersonListBackground" TrueValue="{StaticResource Color_Background_InputBox}" FalseValue="{StaticResource Color_Background_Placeholder}"/>
     <Converters:BoolToBrushConverter x:Key="PersonListForeground" TrueValue="{StaticResource Color_Foreground_Dark_2}" FalseValue="{StaticResource Color_Foreground_Placeholder}"/>
     <Converters:ValueToValueConverter x:Key="ValueToValueConvert"/>

@@ -15,6 +15,24 @@ namespace DM_Skills.Controls
     {
 
 
+
+        public int Overtime
+        {
+            get { return (int)GetValue(OvertimeProperty); }
+            set { SetValue(OvertimeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Overtime.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OvertimeProperty =
+            DependencyProperty.Register(
+                "Overtime", 
+                typeof(int), 
+                typeof(DragAndDropTimerControl), 
+                new PropertyMetadata(1 ,new PropertyChangedCallback(CallBackProperty))
+            );
+
+
+
         public bool IsDraggingItem
         {
             get { return (bool)GetValue(IsDraggingItemProperty); }
@@ -28,8 +46,13 @@ namespace DM_Skills.Controls
         
         private IValueConverter timespanConverter;
 
-        
+        public TimeSpan OverTimeSpan { get; set; }
 
+
+        public static void CallBackProperty(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            ((DragAndDropTimerControl)sender).OverTimeSpan = new TimeSpan(0, (int)e.NewValue, 0);
+        }
 
         /// <summary>
         /// Skal være har da den opretter de elementer
@@ -39,6 +62,39 @@ namespace DM_Skills.Controls
         {
             InitializeComponent();
             timespanConverter = (IValueConverter)FindResource("TimeToStringConvert");
+            OverTimeSpan = new TimeSpan(0, Overtime, 0);
+        }
+
+
+        public void AddOverTimeLabel(TimeSpan time)
+        {
+            //Top element
+            if (time == null) return;
+
+            int rowID = listPanel.RowDefinitions.Count;
+            listPanel.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+
+            //Position nummer
+            var txtNumber = new TextBlock();
+            var txtTime = BuildTimeLabel(time);
+
+
+            //Placering
+            Grid.SetRow(txtTime, rowID);
+            Grid.SetColumn(txtTime, 1);
+            Grid.SetRow(txtNumber, rowID);
+            Grid.SetColumn(txtNumber, 0);
+
+            //Styling
+            txtNumber.Text = string.Format("{0}.", rowID + 1);
+            txtNumber.VerticalAlignment = VerticalAlignment.Center;
+            txtNumber.FontWeight = FontWeights.Bold;
+            txtNumber.HorizontalAlignment = HorizontalAlignment.Right;
+
+
+            //Tilføj til view
+            listPanel.Children.Add(txtNumber);
+            listPanel.Children.Add(txtTime);
         }
 
         /// <summary>
@@ -82,7 +138,7 @@ namespace DM_Skills.Controls
 
             //Nicenis er et library der gør at når vi trækker i et element vil vi kunne se elementet
             Nicenis.Windows.DragSource.SetAllowDrag(label, true);
-            Nicenis.Windows.DragSource.SetData(label, content);
+            Nicenis.Windows.DragSource.SetData(label, label);
             Nicenis.Windows.DragSource.SetAllowedEffects(label, DragDropEffects.Move);
             Nicenis.Windows.DragSource.SetVisualFeedbackOpacity(label, 0.8);
 

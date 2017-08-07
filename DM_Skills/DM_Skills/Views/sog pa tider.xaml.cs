@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,7 +63,7 @@ namespace DM_Skills.Views
             {
                 School = new Models.SchoolModel() { Name = "Skole" },
                 Location = new Models.LocationModel() { Name = "Lokation" },
-                Persons = new List<Models.PersonModel>() {
+                Persons = new ObservableCollection<Models.PersonModel>() {
                     new Models.PersonModel() { Name = "Person 1"},
                     new Models.PersonModel() { Name = "Person 2"}
                 },
@@ -83,7 +84,7 @@ namespace DM_Skills.Views
             {
                 School = new Models.SchoolModel() { Name = "Skole " },
                 Location = new Models.LocationModel() { Name = "Lokation " },
-                Persons = new List<Models.PersonModel>() {
+                Persons = new ObservableCollection<Models.PersonModel>() {
                     new Models.PersonModel() { Name = "Person 1 "},
                     new Models.PersonModel() { Name = "Person 2 "}
                 },
@@ -101,7 +102,7 @@ namespace DM_Skills.Views
             {
                 School = new Models.SchoolModel() { Name = "Skole 2 " },
                 Location = new Models.LocationModel() { Name = "Lokation 2 " },
-                Persons = new List<Models.PersonModel>() {
+                Persons = new ObservableCollection<Models.PersonModel>() {
                     new Models.PersonModel() { Name = "Person 2 1 "},
                     new Models.PersonModel() { Name = "Person 2 2 "}
                 },
@@ -119,7 +120,7 @@ namespace DM_Skills.Views
             {
                 School = new Models.SchoolModel() { Name = "Skole 3 " },
                 Location = new Models.LocationModel() { Name = "Lokation 3 " },
-                Persons = new List<Models.PersonModel>() {
+                Persons = new ObservableCollection<Models.PersonModel>() {
                     new Models.PersonModel() { Name = "Person 3 1 "},
                     new Models.PersonModel() { Name = "Person 3 2 "}
                 },
@@ -137,7 +138,7 @@ namespace DM_Skills.Views
             {
                 School = new Models.SchoolModel() { Name = "Skole 4 " },
                 Location = new Models.LocationModel() { Name = "Lokation 4 " },
-                Persons = new List<Models.PersonModel>() {
+                Persons = new ObservableCollection<Models.PersonModel>() {
                     new Models.PersonModel() { Name = "Person 4 1 "},
                     new Models.PersonModel() { Name = "Person 4 2 "}
                 },
@@ -155,7 +156,7 @@ namespace DM_Skills.Views
             {
                 School = new Models.SchoolModel() { Name = "Skole 5 " },
                 Location = new Models.LocationModel() { Name = "Lokation 5 " },
-                Persons = new List<Models.PersonModel>() {
+                Persons = new ObservableCollection<Models.PersonModel>() {
                     new Models.PersonModel() { Name = "Person 5 1 "},
                     new Models.PersonModel() { Name = "Person 5 2 "}
                 },
@@ -173,7 +174,7 @@ namespace DM_Skills.Views
             {
                 School = new Models.SchoolModel() { Name = "Skole 6 " },
                 Location = new Models.LocationModel() { Name = "Lokation 6 " },
-                Persons = new List<Models.PersonModel>() {
+                Persons = new ObservableCollection<Models.PersonModel>() {
                     new Models.PersonModel() { Name = "Person 6 1 "},
                     new Models.PersonModel() { Name = "Person 6 2 "}
                 },

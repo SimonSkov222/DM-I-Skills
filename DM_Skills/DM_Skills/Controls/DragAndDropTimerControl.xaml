@@ -16,6 +16,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
 
@@ -34,6 +35,7 @@
                 </Grid.ColumnDefinitions>
             </Grid>
         </ScrollViewer>
+        <Grid x:Name="overtime" Grid.Row="3"/>
     </Grid>
     
 </UserControl>
