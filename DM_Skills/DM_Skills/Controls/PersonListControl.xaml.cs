@@ -108,8 +108,11 @@ namespace DM_Skills.Controls
 
         private void PersonListControl_Loaded(object sender, RoutedEventArgs e)
         {
+            if (Persons == null)
+                return;
+
             Persons.CollectionChanged += Persons_CollectionChanged;
-            Persons_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, Persons));
+            Persons_CollectionChanged(Persons, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, Persons));
             ////PersonsS.CollectionChanged += Persons_CollectionChanged;
             //Persons.CollectionChanged += Persons_CollectionChanged;
             //foreach (var item in Persons)

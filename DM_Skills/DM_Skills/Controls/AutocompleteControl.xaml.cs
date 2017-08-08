@@ -84,18 +84,19 @@ namespace DM_Skills.Controls
 
         public AutocompleteControl()
         {
-
+            InitializeComponent();
             ConvertVisibility = (IMultiValueConverter)FindResource("AutocompleteConvert");
 
             if (ItemsSource == null)
                 ItemsSource = new ObservableCollection<Models.SchoolModel>();
 
-            InitializeComponent();
             Loaded += AutocompleteControl_Loaded;
         }
 
         private void AutocompleteControl_Loaded(object sender, RoutedEventArgs e)
         {
+            if (ItemsSource == null)
+                return;
 
             ItemsSource.CollectionChanged += ItemsSource_CollectionChanged;
             ItemsSource_CollectionChanged(ItemsSource, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, ItemsSource));

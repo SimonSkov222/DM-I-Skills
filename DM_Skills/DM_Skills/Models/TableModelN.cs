@@ -88,5 +88,8 @@ namespace DM_Skills.Models
 
             return true;
         }
+
+
+        public static ObservableCollection<TableModelN> GetTables() { return null; }
     }
 }

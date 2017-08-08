@@ -2,7 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:DM_Skills.Templates">
     <ControlTemplate x:Key="DatePicker_Template_Default" TargetType="{x:Type DatePicker}">
-
         <!--<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}"
                 Background="{TemplateBinding Background}"
                 >-->
@@ -79,9 +78,14 @@
                         </ControlTemplate>
                     </DatePickerTextBox.Template>
                 </DatePickerTextBox>
-                <Button x:Name="PART_Button" Padding="0" Style="{StaticResource Button_Style_Default}" Margin="0" Grid.Column="1" Background="Transparent"
-                        Width="{TemplateBinding ActualHeight}" Height="{Binding ActualHeight}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <Image Source="/DM_Skills;component/Images/calendar1600.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="None" />
+                <Button x:Name="PART_Button"
+                        Style="{StaticResource Button_Style_Default}" 
+                        Padding="5"
+                        VerticalAlignment="Center"
+                        VerticalContentAlignment="Center"
+                        Margin="0" Grid.Column="1" >
+
+                    <Image Source="/DM_Skills;component/Images/calendar1600.png"  />
                     
                 </Button>
                 
