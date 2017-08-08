@@ -25,21 +25,39 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Søg efter tider:" Grid.Row="0" Grid.Column="0" Margin="20 30" FontSize="16"/>
 
-        <TextBox  x:Name="txtSchoolName" Grid.Row="1" Grid.Column="0" Style="{StaticResource TextBox_Style_Default}" Margin="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ValueToThicknessConvert}, ConverterParameter='1 0'}" ToolTip="Skolens navn...."/>
-        <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBox_Style_Default}" Margin="{Binding ElementName=txtSchoolName, Path=Margin}" ToolTip="Deltagers navn...."/>
+        <Controls:PlaceholderBox 
+            x:Name="txtSchoolName" 
+            Grid.Row="1" Grid.Column="0" Margin="0"
+            Placeholder="Skolens navn...."/>
 
-        <DatePicker Grid.Row="1" Grid.Column="2" Style="{StaticResource DatePicker_Style_Default}" Margin="{Binding ElementName=txtSchoolName, Path=Margin}" DisplayDateEnd="2017-08-08" />
-        <DatePicker Grid.Row="3" Grid.Column="2" Style="{StaticResource DatePicker_Style_Default}" Margin="{Binding ElementName=txtSchoolName, Path=Margin}" DisplayDateEnd="2017-08-08" />
+        <Controls:PlaceholderBox 
+            x:Name="txtDeltager" 
+            Grid.Row="1" Grid.Column="2" Margin="0"
+            Placeholder="Deltagers navn...."/>
+
+
+        <DatePicker 
+            Grid.Row="1" Grid.Column="4" Margin="0"
+            Style="{StaticResource DatePicker_Style_Default}" 
+            ToolTip="Dato..."/>
+        
+        <DatePicker 
+            Grid.Row="3" Grid.Column="4" Margin="0"
+            Style="{StaticResource DatePicker_Style_Default}"
+            ToolTip="Dato..."/>
         
         
 
 
-        <ComboBox Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="{Binding ElementName=txtSchoolName, Path=Margin}" >
+        <ComboBox 
+            Grid.Row="3" Grid.Column="0" Margin="0">
 
             <ComboBoxItem IsSelected="True">Nyeste tider</ComboBoxItem>
             <ComboBoxItem>Hurtigste tider</ComboBoxItem>
@@ -47,31 +65,25 @@
 
         </ComboBox>
 
-        <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="{Binding ElementName=txtSchoolName, Path=Margin}">
+        <ComboBox 
+            Grid.Row="3" Grid.Column="2" Margin="0" >
 
             <ComboBoxItem IsSelected="True">Vælg lokation</ComboBoxItem>
             <ComboBoxItem>Ballerup</ComboBoxItem>
             <ComboBoxItem>Hvidovre</ComboBoxItem>
-            
+
         </ComboBox>
         
-        <!--<Grid Grid.Row="3" Grid.Column="1" VerticalAlignment="Stretch" Margin="{Binding ElementName=txtSchoolName, Path=Margin}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <CheckBox Content="Hold Nr." Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource CheckBox_Style_Default}"/>
-            <CheckBox Content="Bord Nr." Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource CheckBox_Style_Default}"/>
-        </Grid>-->
-        
-        <Button Grid.Row="5" Grid.Column="2" Content="Søg" VerticalAlignment="Center"                  
+        <Button Grid.Row="5" Grid.Column="4" 
+                Content="Søg"  
+                Margin="0"
+                Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
                 Foreground="{StaticResource Color_Foreground_Light_1}" 
                 Background="{StaticResource Color_Background_Button_Blue}" 
                 Style="{StaticResource Button_Style_Default}"
-                HorizontalAlignment="Stretch" 
-                Margin="{Binding ElementName=txtSchoolName, Path=Margin}"/>
+                HorizontalAlignment="Stretch" />
 
-        <Grid Grid.Row="7" Grid.ColumnSpan="3" Margin="0 0 0 0" HorizontalAlignment="Center" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=95}">
+        <Grid Grid.Row="7" Grid.ColumnSpan="5" Margin="0 0 0 0" HorizontalAlignment="Center" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=95}">
             <Grid.Background>
                 <RadialGradientBrush>
                     <GradientStop Color="Transparent" Offset="1"/>
@@ -82,81 +94,341 @@
             </Grid.Background>
         </Grid>
 
-        <StackPanel Grid.Row="8" Grid.ColumnSpan="3" >
+        <StackPanel Grid.Row="8" Grid.ColumnSpan="5" >
 
             <Grid Background="LightGray" Margin="0 10 0 0">
-                <Grid Margin="6 5 10 3">
+                <!--<Grid Margin="6 5 10 3">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition x:Name="widthCheckBox" Width="auto"/>
-                        <ColumnDefinition x:Name="widthSkole" Width="2*" />
-                        <ColumnDefinition x:Name="widthKlasse" Width="*" />
-                        <ColumnDefinition x:Name="widthLokation" Width="2*" />
-                        <ColumnDefinition x:Name="widthDato" Width="*" />
-                        <ColumnDefinition x:Name="widthTid" Width="*" />
+                        <ColumnDefinition x:Name="widthCheckBox"    Width="30"/>
+                        <ColumnDefinition x:Name="widthSkole"       Width="3*" />
+                        --><!--<ColumnDefinition x:Name="widthKlasse"      Width="1*" />--><!--
+                        <ColumnDefinition x:Name="widthDeltagere"   Width="3*" />
+                        <ColumnDefinition x:Name="widthLokation"    Width="2*" />
+                        <ColumnDefinition x:Name="widthDato"        Width="100" />
+                        <ColumnDefinition x:Name="widthTid"         Width="80" />
                     </Grid.ColumnDefinitions>
 
                     <CheckBox x:Name="printCheckAll" Style="{StaticResource CheckBox_Style_Default}" Grid.Column="0" Unchecked="Result_CheckAll" Checked="Result_CheckAll" />
-                    <TextBlock Text="Skole" Grid.Column="1" FontSize="18" FontWeight="Bold"/>
-                    <TextBlock Text="Klasse" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
-                    <TextBlock Text="Lokation" Grid.Column="3" FontSize="18" FontWeight="Bold"/>
-                    <TextBlock Text="Dato" Grid.Column="4" FontSize="18" FontWeight="Bold"/>
-                    <TextBlock Text="Tid" Grid.Column="5" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock Text="Skole og klasse" Grid.Column="1" FontSize="18" FontWeight="Bold"         Background="Red"  />
+                    --><!--<TextBlock Text="Klasse" Grid.Column="2" FontSize="18" FontWeight="Bold"        Background="Green"/>--><!--
+                    <TextBlock Text="Deltagere" Grid.Column="2" FontSize="18" FontWeight="Bold"     Background="Red"  />
+                    <TextBlock Text="Lokation" Grid.Column="3" FontSize="18" FontWeight="Bold"      Background="Green"    />
+                    <TextBlock Text="Dato" Grid.Column="4" FontSize="18" FontWeight="Bold"          Background="Red"  />
+                    <TextBlock Text="Tid" Grid.Column="5" FontSize="18" FontWeight="Bold"           Background="Green" />
 
-                </Grid>
+                </Grid>-->
             </Grid>
             <ListView x:Name="results" Margin="0" Padding="0"
                       SelectionMode="Multiple"
                       PreviewMouseWheel="results_PreviewMouseWheel"
                       ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                       SelectionChanged="Results_SelectionChanged"
-                      ItemsSource="{Binding ElementName=Controller, Path=Itemsss}" Visibility="Visible" FontSize="16" 
-                      AlternationCount="2" BorderThickness="0" BorderBrush="{StaticResource Color_Border_InputBox}">
+                      ItemsSource="{Binding ElementName=Controller, Path=Itemsss}" 
+                      Visibility="Visible" FontSize="16" 
+                      AlternationCount="2" BorderThickness="0" 
+                      BorderBrush="{StaticResource Color_Border_InputBox}">
                 <ListView.ItemContainerStyle>
+                    <Style  TargetType="ListViewItem">
+                        <Style.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Blue"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Red"/>
+
+                        </Style.Resources>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter Property="Background" Value="{x:Null}" />
+                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{x:Null}" />
+                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                                <Setter Property="Background" Value="White"/>
+                            </Trigger>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="LightGray"/>
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="Red" />
+                                <Setter Property="Background" Value="Gray" />
+                                <Setter Property="BorderBrush" Value="{x:Null}" />
+                                <Setter Property="Opacity" Value="1" />
+                                <Setter Property="BorderThickness" Value="0" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn >
+                            <GridViewColumn.Header>
+                                <CheckBox 
+                                        x:Name="printCheckAll" 
+                                        Style="{StaticResource CheckBox_Style_Default}" 
+                                        Grid.Column="0" 
+                                        Unchecked="Result_CheckAll" 
+                                        Checked="Result_CheckAll" />
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox 
+                                            IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ListViewItem},AncestorLevel=1}}"
+                                            Style="{StaticResource CheckBox_Style_Default}" 
+                                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                                            Margin="0" Content="" Grid.Column="0" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Deltagere" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Grid.Row="1">
+                                        <TextBlock Text="Per"  />
+                                        <TextBlock Text="Oluwayemisi Winston"  />
+                                        <TextBlock Text="Willahelm Chariovalda" />
+                                        <TextBlock Text="Funske Oskar"  />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        
+                        <GridViewColumn Header="Skole og klasse" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Path=School.Name}"/>
+                                        <TextBlock Text="{Binding Path=Team.Class}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Lokation"   DisplayMemberBinding="{Binding Path=Location.Name}" />
+                        <GridViewColumn Header="Dato"       DisplayMemberBinding="{Binding Path=Team.Date}" />
+                        <GridViewColumn Header="Tid"        DisplayMemberBinding="{Binding Path=Team.Time}" />
+                    
+
+
+
+                        <!--<GridView.Columns>
+                            --><!-- CheckBox --><!--
+                            <GridViewColumn>
+                                <GridViewColumn.Header>
+                                    <CheckBox 
+                                        x:Name="printCheckAll" 
+                                        Style="{StaticResource CheckBox_Style_Default}" 
+                                        Grid.Column="0" 
+                                        Unchecked="Result_CheckAll" 
+                                        Checked="Result_CheckAll" />
+                                </GridViewColumn.Header>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox 
+                                            IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ListViewItem},AncestorLevel=1}}"
+                                            Style="{StaticResource CheckBox_Style_Default}" 
+                                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                                            Margin="0" Content="" Grid.Column="0" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            --><!-- Skole og klasse --><!--
+                            <GridViewColumn>
+                                <GridViewColumn.Header >
+                                    <TextBlock Text="Skole og klasse"/>
+                                </GridViewColumn.Header>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Path=School.Name}"/>
+                                            <TextBlock Text="{Binding Path=Team.Class}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            --><!-- Deltagere --><!--
+                            <GridViewColumn>
+                                <GridViewColumn.Header>
+                                    <TextBlock Text="Deltagere"></TextBlock>
+                                </GridViewColumn.Header>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Grid.Row="1">
+                                            <TextBlock Text="Per"  />
+                                            <TextBlock Text="Oluwayemisi Winston"  />
+                                            <TextBlock Text="Willahelm Chariovalda" />
+                                            <TextBlock Text="Funske Oskar"  />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+
+                            --><!-- Lokation --><!--
+                            <GridViewColumn>
+                                <GridViewColumn.Header>
+                                    <TextBlock Text="Lokation"></TextBlock>
+                                </GridViewColumn.Header>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Location.Name}"></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+
+                            --><!-- Dato --><!--
+                            <GridViewColumn>
+                                <GridViewColumn.Header>
+                                    <TextBlock Text="Dato"></TextBlock>
+                                </GridViewColumn.Header>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Team.Date}"></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            --><!-- Tid --><!--
+                            <GridViewColumn>
+                                <GridViewColumn.Header>
+                                    <TextBlock Text="Tid"></TextBlock>
+                                </GridViewColumn.Header>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Team.Time}"></TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView.Columns>-->
+                    </GridView>
+                </ListView.View>
+
+
+
+                <!--<ListView.Template>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <Grid DockPanel.Dock="Top" Height="30">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition x:Name="widthCheckBox"    Width="30"/>
+                                    <ColumnDefinition SharedSizeGroup="widthSkole"   Width="3*" />
+                                    <ColumnDefinition x:Name="widthDeltagere"   Width="3*" />
+                                    <ColumnDefinition x:Name="widthLokation"    Width="2*" />
+                                    <ColumnDefinition x:Name="widthDato"        Width="100" />
+                                    <ColumnDefinition x:Name="widthTid"         Width="80" />
+                                </Grid.ColumnDefinitions>
+                                
+                                <CheckBox x:Name="printCheckAll" Style="{StaticResource CheckBox_Style_Default}" Grid.Column="0" Unchecked="Result_CheckAll" Checked="Result_CheckAll" />
+                                <TextBlock Text="Skole og klasse" Grid.Column="1" FontSize="18" FontWeight="Bold"         Background="Red"  />
+                                <TextBlock Text="Deltagere" Grid.Column="2" FontSize="18" FontWeight="Bold"     Background="Red"  />
+                                <TextBlock Text="Lokation" Grid.Column="3" FontSize="18" FontWeight="Bold"      Background="Green"    />
+                                <TextBlock Text="Dato" Grid.Column="4" FontSize="18" FontWeight="Bold"          Background="Red"  />
+                                <TextBlock Text="Tid" Grid.Column="5" FontSize="18" FontWeight="Bold"           Background="Green" />
+
+
+                            </Grid>
+                            <ItemsPresenter/>
+                        </DockPanel>
+                    </ControlTemplate>
+                </ListView.Template>
+
+
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0 5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition SharedSizeGroup="widthSkole"  Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="80" />
+                            </Grid.ColumnDefinitions>
+                            --><!--<Grid Grid.ColumnSpan="6" Grid.Row="0" Background="Red"/>--><!--
+                            <CheckBox 
+                                    IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ListViewItem},AncestorLevel=1}}"
+                                    Style="{StaticResource CheckBox_Style_Default}" 
+                                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                                    Margin="0"
+                                    Content="" Grid.Column="0" />
+
+                            <TextBlock Text="{Binding Path=School.Name}" Background="Yellow"   Grid.Row="0" Grid.Column="1" Padding="5 0 0 0" HorizontalAlignment="Left" />
+                            --><!--<TextBlock Text="{Binding Path=Team.Class}"    Grid.Row="1" Grid.Column="1" Padding="5 0 0 0" HorizontalAlignment="Left" />
+                                <TextBlock Text="{Binding Path=Location.Name}" Grid.Row="0" Grid.Column="3" Padding="5 0 0 0" HorizontalAlignment="Left" />
+                                <TextBlock Text="{Binding Path=Team.Date}"     Grid.Row="0" Grid.Column="4" Padding="5 0 0 0" HorizontalAlignment="Right" />
+                                <TextBlock Text="{Binding Path=Team.Time}"    Grid.Row="0" Grid.Column="5" Padding="5 0 0 0"  HorizontalAlignment="Left" />--><!--
+
+
+                            <StackPanel 
+                                    Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" 
+                                    Margin="5 0 0 0"   
+                                    VerticalAlignment="Top"
+                                    Width="{Binding ElementName=widthDeltagere, Path=Width}">
+                                <TextBlock Text="Per" TextWrapping="Wrap" HorizontalAlignment="Left"  />
+                                <TextBlock Text="Oluwayemisi Winston" TextWrapping="Wrap" HorizontalAlignment="Left" />
+                                <TextBlock Text="Willahelm Chariovalda"  TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                                <TextBlock Text="Funske Oskar"  TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>-->
+
+                <!--<ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="ListViewItem">
                                     <Grid  Background="{TemplateBinding Background}">
-                                        <Grid Margin="5">
+                                        <Grid Margin="0 5">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="auto"/>
-                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="{Binding ElementName=widthCheckBox, Path=Width}" />
                                                 <ColumnDefinition Width="{Binding ElementName=widthSkole, Path=Width}" />
-                                                <ColumnDefinition Width="{Binding ElementName=widthKlasse, Path=Width}" />
+                                                --><!--<ColumnDefinition Width="{Binding ElementName=widthKlasse, Path=Width}" />--><!--
+                                                <ColumnDefinition Width="{Binding ElementName=widthDeltagere, Path=Width}" />
                                                 <ColumnDefinition Width="{Binding ElementName=widthLokation, Path=Width}" />
                                                 <ColumnDefinition Width="{Binding ElementName=widthDato, Path=Width}" />
                                                 <ColumnDefinition Width="{Binding ElementName=widthTid, Path=Width}" />
                                             </Grid.ColumnDefinitions>
-                                            <!--<Grid Grid.ColumnSpan="6" Grid.Row="0" Background="Red"/>-->
-                                            <CheckBox
-                                    IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ListViewItem},AncestorLevel=1}}"
-                                    Grid.Column="0" Style="{StaticResource CheckBox_Style_Default}" HorizontalAlignment="Center" Content="" />
-                                            <TextBlock Text="{Binding Path=School.Name}" Grid.Row="0" Grid.Column="1" Padding="20 0 0 0"/>
-                                            <TextBlock Text="{Binding Path=Team.Class}" Grid.Row="0" Grid.Column="2" Padding="20 0 0 0"/>
-                                            <TextBlock Text="{Binding Path=Location.Name}" Grid.Row="0" Grid.Column="3" Padding="20 0 0 0"/>
-                                            <TextBlock Text="{Binding Path=Team.Date}" Grid.Row="0" Grid.Column="4" Padding="20 0 0 0"/>
-                                            <TextBlock Text="{Binding Path=Team.Time}" Grid.Row="0" Grid.Column="5" Padding="20 0 0 0"/>
+                                            --><!--<Grid Grid.ColumnSpan="6" Grid.Row="0" Background="Red"/>--><!--
+                                            <CheckBox 
+                                                    IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ListViewItem},AncestorLevel=1}}"
+                                                    Style="{StaticResource CheckBox_Style_Default}" 
+                                                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                                                Margin="0"
+                                                    Content="" Grid.Column="0" />
 
-                                            <!--<Grid Grid.Row="1" Margin="15 0 0 0" Grid.ColumnSpan="6">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="Per" Grid.Column="0" HorizontalAlignment="Left"/>
-                                    <TextBlock Text="Oluwayemisi Winston" Grid.Column="1" HorizontalAlignment="Center"/>
-                                    <TextBlock Text="Willahelm Chariovalda" Grid.Column="2" HorizontalAlignment="Center"/>
-                                    <TextBlock Text="Funske Oskar" Grid.Column="3" HorizontalAlignment="Center"/>
-                                </Grid>-->
-                                            <StackPanel Grid.Row="1" Grid.ColumnSpan="6" Margin="46 3 0 0">
-                                                <TextBlock Text="Per" FontSize="14" />
-                                                <TextBlock Text="Oluwayemisi Winston" FontSize="14" />
-                                                <TextBlock Text="Willahelm Chariovalda" FontSize="14" />
-                                                <TextBlock Text="Funske Oskar" FontSize="14" />
+                                            <TextBlock Text="{Binding Path=School.Name}"   Grid.Row="0" Grid.Column="1" Padding="5 0 0 0" HorizontalAlignment="Left" />
+                                            <TextBlock Text="{Binding Path=Team.Class}"    Grid.Row="1" Grid.Column="1" Padding="5 0 0 0" HorizontalAlignment="Left" />
+                                            <TextBlock Text="{Binding Path=Location.Name}" Grid.Row="0" Grid.Column="3" Padding="5 0 0 0" HorizontalAlignment="Left" />
+                                            <TextBlock Text="{Binding Path=Team.Date}"     Grid.Row="0" Grid.Column="4" Padding="5 0 0 0" HorizontalAlignment="Right" />
+                                            <TextBlock Text="{Binding Path=Team.Time}"    Grid.Row="0" Grid.Column="5" Padding="5 0 0 0"  HorizontalAlignment="Left" />
+
+
+                                            <StackPanel 
+                                                Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" 
+                                                Margin="5 0 0 0"   
+                                                VerticalAlignment="Top"
+                                                Width="{Binding ElementName=widthDeltagere, Path=Width}">
+                                                <TextBlock Text="Per" TextWrapping="Wrap" HorizontalAlignment="Left"  />
+                                                <TextBlock Text="Oluwayemisi Winston" TextWrapping="Wrap" HorizontalAlignment="Left" />
+                                                <TextBlock Text="Willahelm Chariovalda"  TextWrapping="Wrap" HorizontalAlignment="Left"/>
+                                                <TextBlock Text="Funske Oskar"  TextWrapping="Wrap" HorizontalAlignment="Left"/>
                                             </StackPanel>
                                         </Grid>
                                     </Grid>
@@ -179,7 +451,7 @@
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
                         </Style.Resources>
                     </Style>
-                </ListView.ItemContainerStyle>
+                </ListView.ItemContainerStyle>-->
                 <!--<ListView.ItemTemplate>
                     <ItemContainerTemplate >
                         <ContentControl >

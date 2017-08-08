@@ -369,6 +369,12 @@
     <Resource Include="Images\TecBlack.png" />
     <Resource Include="Images\TecWhite.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Calendar-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Calendar-3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
