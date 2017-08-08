@@ -22,9 +22,9 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="330"/>
-            <ColumnDefinition Width="330"/>
-            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Søg efter tider:" Grid.Row="0" Grid.Column="0" Margin="20 30" FontSize="16"/>
 
@@ -83,12 +83,12 @@
             <Grid Background="LightGray" Margin="0 10 0 0">
                 <Grid Margin="6 5 10 3">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="220" />
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition Width="180" />
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition x:Name="widthCheckBox" Width="auto"/>
+                        <ColumnDefinition x:Name="widthSkole" Width="2*" />
+                        <ColumnDefinition x:Name="widthKlasse" Width="*" />
+                        <ColumnDefinition x:Name="widthLokation" Width="2*" />
+                        <ColumnDefinition x:Name="widthDato" Width="*" />
+                        <ColumnDefinition x:Name="widthTid" Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <CheckBox x:Name="printCheckAll" Style="{StaticResource CheckBox_Style_Default}" Grid.Column="0" Unchecked="Result_CheckAll" Checked="Result_CheckAll" />
@@ -119,12 +119,12 @@
                                                 <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="auto" />
-                                                <ColumnDefinition Width="220" />
-                                                <ColumnDefinition Width="120" />
-                                                <ColumnDefinition Width="180" />
-                                                <ColumnDefinition Width="120" />
-                                                <ColumnDefinition Width="120" />
+                                                <ColumnDefinition Width="{Binding ElementName=widthCheckBox, Path=Width}" />
+                                                <ColumnDefinition Width="{Binding ElementName=widthSkole, Path=Width}" />
+                                                <ColumnDefinition Width="{Binding ElementName=widthKlasse, Path=Width}" />
+                                                <ColumnDefinition Width="{Binding ElementName=widthLokation, Path=Width}" />
+                                                <ColumnDefinition Width="{Binding ElementName=widthDato, Path=Width}" />
+                                                <ColumnDefinition Width="{Binding ElementName=widthTid, Path=Width}" />
                                             </Grid.ColumnDefinitions>
                                             <!--<Grid Grid.ColumnSpan="6" Grid.Row="0" Background="Red"/>-->
                                             <CheckBox
