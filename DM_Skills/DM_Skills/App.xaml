@@ -21,6 +21,7 @@
                 <ResourceDictionary Source="Templates/PlaceholderBox_Template_Default.xaml"/>
                 <!--<ResourceDictionary Source="Templates/PasswordBox_Template_Default.xaml"/>-->
                 <ResourceDictionary Source="Templates/CheckBox_Template_Status.xaml"/>
+                <ResourceDictionary Source="Templates/ListViewItem_Template_RemoveHighlight.xaml"/>
 
                 <ResourceDictionary Source="Styles/Autocomplete_Style_Default.xaml"/>
                 <ResourceDictionary Source="Styles/Label_Style_Default.xaml"/>

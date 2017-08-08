@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DM_Skills.Templates">
+    <ControlTemplate x:Key="ListViewItem_Template_RemoveHighlight" TargetType="{x:Type ListViewItem}">
+        <Border CornerRadius="0" 
+                SnapsToDevicePixels="True"  
+                BorderThickness="{TemplateBinding BorderThickness}"   
+                BorderBrush="{TemplateBinding BorderBrush}"   
+                Background="{TemplateBinding Background}">
+            <Border Name="InnerBorder" CornerRadius="0" BorderThickness="0">
+                <Grid>
+                    <GridViewRowPresenter Grid.RowSpan="0"   
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"   
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                </Grid>
+            </Border>
+        </Border>
+    </ControlTemplate>
+</ResourceDictionary>

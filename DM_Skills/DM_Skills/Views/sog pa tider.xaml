@@ -73,15 +73,25 @@
             <ComboBoxItem>Hvidovre</ComboBoxItem>
 
         </ComboBox>
-        
+
         <Button Grid.Row="5" Grid.Column="4" 
-                Content="Søg"  
+                Content="Søg"  x:Name="btnS"
                 Margin="0"
                 Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
                 Foreground="{StaticResource Color_Foreground_Light_1}" 
                 Background="{StaticResource Color_Background_Button_Blue}" 
                 Style="{StaticResource Button_Style_Default}"
                 HorizontalAlignment="Stretch" />
+
+        <Button Grid.Row="5" Grid.Column="0" 
+                Content="Udskriv"  
+                Margin="0"
+                Width="{Binding ElementName=btnS, Path=ActualWidth}"
+                Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
+                Foreground="{StaticResource Color_Foreground_Light_1}" 
+                Background="{StaticResource Color_Background_Button_Blue}" 
+                Style="{StaticResource Button_Style_Default}"
+                HorizontalAlignment="Left" />
 
         <Grid Grid.Row="7" Grid.ColumnSpan="5" Margin="0 0 0 0" HorizontalAlignment="Center" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=95}">
             <Grid.Background>
@@ -124,15 +134,17 @@
                       ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                       SelectionChanged="Results_SelectionChanged"
                       ItemsSource="{Binding ElementName=Controller, Path=Itemsss}" 
-                      Visibility="Visible" FontSize="16" 
+                      Visibility="Visible" FontSize="16"
                       AlternationCount="2" BorderThickness="0" 
                       BorderBrush="{StaticResource Color_Border_InputBox}">
                 <ListView.ItemContainerStyle>
                     <Style  TargetType="ListViewItem">
+                        <Setter Property="Foreground" Value="{StaticResource Color_Foreground_Dark_2}"/>
+                        <Setter Property="Template" Value="{StaticResource ListViewItem_Template_RemoveHighlight}"/>
                         <Style.Resources>
-                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Blue"/>
-                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Green"/>
-                            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Red"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Transparent"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Transparent"/>
 
                         </Style.Resources>
 
@@ -153,29 +165,51 @@
                             </Trigger>
 
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="Red" />
-                                <Setter Property="Background" Value="Gray" />
                                 <Setter Property="BorderBrush" Value="{x:Null}" />
-                                <Setter Property="Opacity" Value="1" />
-                                <Setter Property="BorderThickness" Value="0" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>
                 </ListView.ItemContainerStyle>
+                
 
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn >
+                    <GridView >
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="{x:Type GridViewColumnHeader}">
+                                <Setter Property="Foreground" Value="{StaticResource Color_Foreground_Dark_2}"/>
+                                <Setter Property="Background" Value="LightGray"/>
+                                <Setter Property="FontSize" Value="18"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="Padding" Value="5"/>
+
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                            <Border Background="{TemplateBinding Background}" 
+                                                    Padding="{TemplateBinding Padding}">
+                                                <ContentPresenter Content="{TemplateBinding Content}" />                                                
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+                        
+                        
+                        <GridViewColumn>
                             <GridViewColumn.Header>
                                 <CheckBox 
-                                        x:Name="printCheckAll" 
-                                        Style="{StaticResource CheckBox_Style_Default}" 
-                                        Grid.Column="0" 
-                                        Unchecked="Result_CheckAll" 
-                                        Checked="Result_CheckAll" />
+                                    x:Name="printCheckAll" 
+                                    Content="" 
+                                    Style="{StaticResource CheckBox_Style_Default}" 
+                                    VerticalContentAlignment="Center"
+                                    Unchecked="Result_CheckAll" 
+                                    Checked="Result_CheckAll" />
                             </GridViewColumn.Header>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
+                                    
                                     <CheckBox 
                                             IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ListViewItem},AncestorLevel=1}}"
                                             Style="{StaticResource CheckBox_Style_Default}" 
@@ -185,20 +219,30 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Deltagere" >
+                        <GridViewColumn Header="Deltagere" Width="190">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <StackPanel Grid.Row="1">
-                                        <TextBlock Text="Per"  />
-                                        <TextBlock Text="Oluwayemisi Winston"  />
-                                        <TextBlock Text="Willahelm Chariovalda" />
-                                        <TextBlock Text="Funske Oskar"  />
-                                    </StackPanel>
+                                    <ListView ItemsSource="{Binding Persons}" 
+                                              Background="Transparent" 
+                                              BorderThickness="0" IsHitTestVisible="False">
+                                        <ListView.ItemContainerStyle>
+
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="ListViewItem">
+                                                            <TextBlock Text="{Binding Name}" />
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                    </ListView>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        
-                        <GridViewColumn Header="Skole og klasse" >
+
+                        <GridViewColumn Header="Skole og klasse"  Width="190">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
@@ -208,9 +252,9 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Lokation"   DisplayMemberBinding="{Binding Path=Location.Name}" />
-                        <GridViewColumn Header="Dato"       DisplayMemberBinding="{Binding Path=Team.Date}" />
-                        <GridViewColumn Header="Tid"        DisplayMemberBinding="{Binding Path=Team.Time}" />
+                        <GridViewColumn Header="Lokation" DisplayMemberBinding="{Binding Path=Location.Name}" />
+                        <GridViewColumn Header="Dato" DisplayMemberBinding="{Binding Path=Team.Date}" />
+                        <GridViewColumn Header="Tid" DisplayMemberBinding="{Binding Path=Team.Time}" />
                     
 
 

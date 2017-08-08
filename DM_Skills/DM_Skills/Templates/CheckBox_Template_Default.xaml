@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:DM_Skills.Templates">
 
     <ControlTemplate x:Key="CheckBox_Template_Default" TargetType="{x:Type CheckBox}" >
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}">
             <Border x:Name="CheckBoxBorder" Height="{TemplateBinding FontSize, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=120}" 
                     Background="{TemplateBinding Background}" 
                     BorderThickness="{TemplateBinding BorderThickness}"

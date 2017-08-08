@@ -228,5 +228,22 @@ namespace DM_Skills.Views
             printCheckAll.IsChecked = results.SelectedItems.Count == results.Items.Count;
             Print_ = 0;
         }
+
+
+        private bool codeReSizeColumn = false;
+        private void results_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (!((GridViewColumnHeader)sender).IsLoaded)
+                return;
+
+            if (codeReSizeColumn)
+                return;
+
+            codeReSizeColumn = true;
+            ((GridViewColumnHeader)sender).Width = e.PreviousSize.Width;
+            codeReSizeColumn = false;
+            //((GridViewColumnHeader)sender).SizeChanged += results_SizeChanged;
+            //Console.WriteLine("Size! {0} == {1} == {2}", e.NewSize, e.PreviousSize, sender.GetType());
+        }
     }
 }
