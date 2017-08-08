@@ -111,15 +111,61 @@ namespace DM_Skills
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            var print = new Scripts.Print();
 
-            var model = new Models.TeamModel();
-            model.Class = "meh111";
-            model.Time = "10:10:10";
-            model.Date = "02/01/2017";
-            model.Upload();
-            
-            Console.WriteLine("ID: {0}", model.ID);
-            Console.WriteLine("Name: {0}", model.Class);
+            print.Test(new System.Collections.ObjectModel.ObservableCollection<Models.TableModelN>() {
+                new Models.TableModelN()
+                {
+                    School = new Models.SchoolModel() {Name = "skole"},
+                    Location = new Models.LocationModel() {Name = "ballerup"},
+                    Persons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>()
+                    {
+                        new Models.PersonModel() { Name = "bo"},
+                        new Models.PersonModel() { Name = "to"},
+                        new Models.PersonModel() { Name = "ho"}
+                    },
+                    Team = new Models.TeamModel()
+                    {
+                        Date = "08/05/2017",
+                        Time = "10:00:00",
+                        Class = "7X"
+                    }
+                },
+                new Models.TableModelN()
+                {
+                    School = new Models.SchoolModel() {Name = ""},
+                    Location = new Models.LocationModel() {Name = ""},
+                    Persons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>()
+                    {
+                        new Models.PersonModel() { Name = ""},
+                        new Models.PersonModel() { Name = ""},
+                        new Models.PersonModel() { Name = ""}
+                    },
+                    Team = new Models.TeamModel()
+                    {
+                        Date = "",
+                        Time = "",
+                        Class = ""
+                    }
+                },
+                new Models.TableModelN()
+                {
+                    School = new Models.SchoolModel() {Name = ""},
+                    Location = new Models.LocationModel() {Name = ""},
+                    Persons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>()
+                    {
+                        new Models.PersonModel() { Name = ""},
+                        new Models.PersonModel() { Name = ""},
+                        new Models.PersonModel() { Name = ""}
+                    },
+                    Team = new Models.TeamModel()
+                    {
+                        Date = "",
+                        Time = "",
+                        Class = ""
+                    }
+                }
+            });
             
         }
 

@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Nicenis">
       <HintPath>..\..\..\..\..\Desktop\.NET 4.5\Nicenis.dll</HintPath>
     </Reference>
@@ -94,6 +97,7 @@
     <Compile Include="Scripts\IDatabase.cs" />
     <Compile Include="Scripts\MSColumns.cs" />
     <Compile Include="Scripts\MSSQL.cs" />
+    <Compile Include="Scripts\Print.cs" />
     <Compile Include="Views\Instillinger.xaml.cs">
       <DependentUpon>Instillinger.xaml</DependentUpon>
     </Compile>
