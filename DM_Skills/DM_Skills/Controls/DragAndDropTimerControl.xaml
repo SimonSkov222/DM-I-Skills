@@ -21,21 +21,14 @@
         </Grid.RowDefinitions>
 
 
-        <!--<Label 
+        <Label 
             Content="Omgangs Tider:" 
             Grid.Row="1"
             FontSize="18" 
             FontWeight="Bold" 
             Foreground="{StaticResource Color_Foreground_Dark_1}" 
-            Padding="15 10 15 15"/>-->
-
-        <Label 
-            Content="{Binding ElementName=controller, Path=CurrentTime}" 
-            Grid.Row="1"
-            FontSize="18" 
-            FontWeight="Bold" 
-            Foreground="{StaticResource Color_Foreground_Dark_1}" 
             Padding="15 10 15 15"/>
+
         
         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="2">
             <Grid Name="listPanel" Margin="0 0 0 0">

@@ -50,7 +50,7 @@
                     x:Name="txt_time"
                     Grid.Row="3" Grid.Column="2"
                     Placeholder="Tider..."
-                    Text="{Binding ElementName=Controller, Path=Model.Team.Time, Converter={StaticResource TimeToStringConvert}, Mode=TwoWay}"/>
+                    Text="{Binding ElementName=Controller, Path=Model.Team.Time, Mode=TwoWay}"/>
 
 
 
