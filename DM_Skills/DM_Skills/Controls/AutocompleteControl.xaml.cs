@@ -96,8 +96,9 @@ namespace DM_Skills.Controls
 
         private void AutocompleteControl_Loaded(object sender, RoutedEventArgs e)
         {
+
             ItemsSource.CollectionChanged += ItemsSource_CollectionChanged;
-            ItemsSource_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, ItemsSource));
+            ItemsSource_CollectionChanged(ItemsSource, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, ItemsSource));
          
         }
 

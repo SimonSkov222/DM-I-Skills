@@ -18,6 +18,7 @@ namespace DM_Skills.Converters
         /// </summary>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            Console.WriteLine("T Convert");
             if (value== null || !(value is TimeSpan))
                 return "";
 
@@ -41,7 +42,7 @@ namespace DM_Skills.Converters
             if (!isInt)
                 return null;
 
-            
+
             int minutes = System.Convert.ToInt32(timeParams[0]);
             int seconds = System.Convert.ToInt32(timeParams[1]);
             int mSeconds = System.Convert.ToInt32(timeParams[2])*10;

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:n="clr-namespace:Nicenis.Windows;assembly=Nicenis"
              xmlns:local="clr-namespace:DM_Skills.Controls"
+             x:Name="controller"
              BorderThickness="2" 
              BorderBrush="{StaticResource Color_Border_Box}" 
              Background="{StaticResource Color_Background_Box}"
@@ -16,7 +17,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
 
@@ -27,6 +28,8 @@
             FontWeight="Bold" 
             Foreground="{StaticResource Color_Foreground_Dark_1}" 
             Padding="15 10 15 15"/>
+
+        
         <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="2">
             <Grid Name="listPanel" Margin="0 0 0 0">
                 <Grid.ColumnDefinitions>
@@ -35,7 +38,18 @@
                 </Grid.ColumnDefinitions>
             </Grid>
         </ScrollViewer>
-        <Grid x:Name="overtime" Grid.Row="3"/>
+        <Grid x:Name="grid_overtime" Grid.Row="3" Margin="10">
+            <Grid.Visibility>
+                <MultiBinding Converter="{StaticResource OvertimeConvert}" ConverterParameter="Visibility">
+                    <Binding ElementName="controller" Path="CurrentTime"/>
+                    <Binding ElementName="controller" Path="Overtime"/>
+                </MultiBinding>
+            </Grid.Visibility>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
     </Grid>
     
 </UserControl>
