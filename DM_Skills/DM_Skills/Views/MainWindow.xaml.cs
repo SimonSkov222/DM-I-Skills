@@ -113,7 +113,59 @@ namespace DM_Skills
         {
             var print = new Scripts.Print();
 
-            print.Test(null);
+            print.Test(new System.Collections.ObjectModel.ObservableCollection<Models.TableModelN>() {
+                new Models.TableModelN()
+                {
+                    School = new Models.SchoolModel() {Name = "skole"},
+                    Location = new Models.LocationModel() {Name = "ballerup"},
+                    Persons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>()
+                    {
+                        new Models.PersonModel() { Name = "bo"},
+                        new Models.PersonModel() { Name = "to"},
+                        new Models.PersonModel() { Name = "ho"}
+                    },
+                    Team = new Models.TeamModel()
+                    {
+                        Date = "08/05/2017",
+                        Time = "10:00:00",
+                        Class = "7X"
+                    }
+                },
+                new Models.TableModelN()
+                {
+                    School = new Models.SchoolModel() {Name = ""},
+                    Location = new Models.LocationModel() {Name = ""},
+                    Persons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>()
+                    {
+                        new Models.PersonModel() { Name = ""},
+                        new Models.PersonModel() { Name = ""},
+                        new Models.PersonModel() { Name = ""}
+                    },
+                    Team = new Models.TeamModel()
+                    {
+                        Date = "",
+                        Time = "",
+                        Class = ""
+                    }
+                },
+                new Models.TableModelN()
+                {
+                    School = new Models.SchoolModel() {Name = ""},
+                    Location = new Models.LocationModel() {Name = ""},
+                    Persons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>()
+                    {
+                        new Models.PersonModel() { Name = ""},
+                        new Models.PersonModel() { Name = ""},
+                        new Models.PersonModel() { Name = ""}
+                    },
+                    Team = new Models.TeamModel()
+                    {
+                        Date = "",
+                        Time = "",
+                        Class = ""
+                    }
+                }
+            });
             
         }
 
