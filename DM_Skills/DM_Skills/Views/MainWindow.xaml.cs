@@ -111,15 +111,9 @@ namespace DM_Skills
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            var print = new Scripts.Print();
 
-            var model = new Models.TeamModel();
-            model.Class = "meh111";
-            model.Time = "10:10:10";
-            model.Date = "02/01/2017";
-            model.Upload();
-            
-            Console.WriteLine("ID: {0}", model.ID);
-            Console.WriteLine("Name: {0}", model.Class);
+            print.Test(null);
             
         }
 
