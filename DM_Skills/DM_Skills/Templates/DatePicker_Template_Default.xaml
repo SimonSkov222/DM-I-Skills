@@ -2,6 +2,51 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:DM_Skills.Templates">
     <ControlTemplate x:Key="DatePicker_Template_Default" TargetType="{x:Type DatePicker}">
+
+
+        <Grid>
+            <DatePickerTextBox 
+                    x:Name="PART_TextBox" 
+                    ToolTip="{TemplateBinding ToolTip}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    Padding="{TemplateBinding Padding}"
+                    FontSize="{TemplateBinding FontSize}"
+                    Style="{StaticResource TextBox_Style_Default}"/>
+
+
+            <Button x:Name="PART_Button"
+                Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=90}"
+                Height="{Binding Path=ActualWidth}"
+                Style="{StaticResource Button_Style_Default}" 
+                Padding="5"
+                Background="Transparent"
+                VerticalAlignment="Center"
+                VerticalContentAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="0" Grid.Column="1" >
+
+                <Image Source="/DM_Skills;component/Images/Calendar-3.png"  />
+            </Button>
+
+
+            <Popup x:Name="PART_Popup"
+                AllowsTransparency="True"
+                StaysOpen="False"
+                Placement="Bottom"
+                PlacementRectangle="-100 -20 0 0"
+                Margin="0"
+                PlacementTarget="{Binding ElementName=PART_TextBox}"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
         <!--<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}"
                 Background="{TemplateBinding Background}"
                 >-->
@@ -10,16 +55,24 @@
                   IsChecked="{Binding ElementName=DatePickerText, Path=IsKeyboardFocused, Mode=OneWay}" 
                   
                   >-->
-        <Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Padding="{TemplateBinding Padding}"
+        <!--<Border x:Name="border" BorderThickness="{TemplateBinding BorderThickness}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                Padding="{TemplateBinding Padding}"
                 Background="{TemplateBinding Background}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                
-                <DatePickerTextBox x:Name="PART_TextBox" Grid.Column="0" Background="Transparent" Margin="0" Padding="0" BorderThickness="0" 
-                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+
+                </DatePickerTextBox>
+                --><!--<DatePickerTextBox 
+                        x:Name="PART_TextBox" Grid.Column="0" 
+                        Background="Transparent" 
+                        FontSize="{TemplateBinding FontSize}"
+                        Margin="0" Padding="0" 
+                        BorderThickness="0" 
+                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
                     <DatePickerTextBox.Template>
                         <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
                             <Grid>
@@ -67,8 +120,8 @@
                                 <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" CornerRadius="1" Opacity="1" Padding="{TemplateBinding Padding}">
                                     <Grid x:Name="WatermarkContent" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
                                         <Border x:Name="ContentElement" BorderBrush="#FFFFFFFF" BorderThickness="1" Visibility="Hidden"/>
-                                        <Border x:Name="watermark_decorator" BorderBrush="#FFFFFFFF" BorderThickness="1" Visibility="Hidden">
-                                            <ContentControl x:Name="PART_Watermark" Focusable="False" IsHitTestVisible="False" Opacity="0" Padding="2"/>
+                                        <Border x:Name="watermark_decorator" BorderBrush="#FFFFFFFF" BorderThickness="10" Visibility="Hidden">
+                                            <ContentControl x:Name="PART_Watermark" Focusable="False" IsHitTestVisible="False" Opacity="0" Padding="0"/>
                                         </Border>
                                         <ScrollViewer x:Name="PART_ContentHost" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
                                         <Border x:Name="FocusVisual" BorderBrush="#FF45D6FA" CornerRadius="1" IsHitTestVisible="False" Opacity="0"/>
@@ -77,7 +130,7 @@
                             </Grid>
                         </ControlTemplate>
                     </DatePickerTextBox.Template>
-                </DatePickerTextBox>
+                </DatePickerTextBox>--><!--
                 <Button x:Name="PART_Button"
                         Style="{StaticResource Button_Style_Default}" 
                         Padding="5"
@@ -99,7 +152,12 @@
                        
                        />
             </Grid>
-        </Border>
+        </Border>-->
+        
+        
+        
+        
+        
         
         
             <!--<Grid Width="100">

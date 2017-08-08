@@ -62,7 +62,7 @@ namespace DM_Skills.Views
             debug_item = new Models.TableModelN()
             {
                 School = new Models.SchoolModel() { Name = "Skole" },
-                Location = new Models.LocationModel() { Name = "Lokation" },
+                Location = new Models.LocationModel() { Name = "Frederiksberg" },
                 Persons = new ObservableCollection<Models.PersonModel>() {
                     new Models.PersonModel() { Name = "Person 1"},
                     new Models.PersonModel() { Name = "Person 2"}
@@ -83,7 +83,7 @@ namespace DM_Skills.Views
             Itemsss.Add(new Models.TableModelN()
             {
                 School = new Models.SchoolModel() { Name = "Skole " },
-                Location = new Models.LocationModel() { Name = "Lokation " },
+                Location = new Models.LocationModel() { Name = "Frederiksberg" },
                 Persons = new ObservableCollection<Models.PersonModel>() {
                     new Models.PersonModel() { Name = "Person 1 "},
                     new Models.PersonModel() { Name = "Person 2 "}
