@@ -14,6 +14,26 @@ namespace DM_Skills.Models
         public const string ERROR_TIME_NULL = "";
         public const string ERROR_CLASS_NULL = "";
 
+
+        public override int ErrNo {
+            get
+            {
+                var numb = 0;
+                Error = "";
+
+                if (Time == null || Time == "")
+                {
+                    numb += ERRNO_TIME_NULL;
+                }
+                if (Class == null || Class == "")
+                {
+                    numb += ERRNO_CLASS_NULL;
+                }
+
+                return numb;
+            }
+        }
+
         public int? ID { get; set; }
         public int SchoolID { get; set; }
         public int LocationID { get; set; }
@@ -26,6 +46,7 @@ namespace DM_Skills.Models
             {
                 _Date = value;
                 NotifyPropertyChanged("CanUpload");
+                NotifyPropertyChanged("ErrNo");
                 NotifyPropertyOnAll?.Invoke();
             }
         }
@@ -38,6 +59,7 @@ namespace DM_Skills.Models
             {
                 _Time = value;
                 NotifyPropertyChanged("CanUpload");
+                NotifyPropertyChanged("ErrNo");
                 NotifyPropertyOnAll?.Invoke();
             }
         }
@@ -50,6 +72,7 @@ namespace DM_Skills.Models
             {
                 _Class = value;
                 NotifyPropertyChanged("CanUpload");
+                NotifyPropertyChanged("ErrNo");
                 NotifyPropertyOnAll?.Invoke();
             }
         }
@@ -62,18 +85,18 @@ namespace DM_Skills.Models
             {
                 bool failed = false;
                 
-                ErrNo = 0;
+                //ErrNo = 0;
                 Error = "";
 
                 if (Time == null || Time == "")
                 {
-                    ErrNo += ERRNO_TIME_NULL;
+                    //ErrNo += ERRNO_TIME_NULL;
                     Error = ERROR_TIME_NULL;
                     failed = true;
                 }
                 if (Class == null || Class == "")
                 {
-                    ErrNo += ERRNO_CLASS_NULL;
+                    //ErrNo += ERRNO_CLASS_NULL;
                     Error = ERROR_CLASS_NULL;
                     failed = true;
                 }

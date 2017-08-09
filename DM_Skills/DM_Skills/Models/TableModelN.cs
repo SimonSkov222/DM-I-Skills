@@ -27,6 +27,35 @@ namespace DM_Skills.Models
         public TeamModel        Team        { get; set; }
         public ObservableCollection<PersonModel> Persons    { get; set; }
 
+        public override int ErrNo
+        {
+            get
+            {
+                var numb = 0;
+
+                if (!School.CanUpload)
+                {
+                    numb += ERRNO_SCHOOL_NAME_NULL;
+                }
+                if (!Location.CanUpload)
+                {
+                    numb += ERRNO_LOCATION_NAME_NULL;
+                }
+                if (!Team.CanUpload)
+                {
+                    numb += ERRNO_TEAM_TIME_NULL;
+                }
+
+                if (Persons.Count == 0 || Persons.Count(p => !p.CanUpload) > 0)
+                {
+                    numb += ERRNO_PERSON_ZERO;
+                }
+
+                return numb;
+            }
+        }
+
+
         public bool ErrPerson {
             get
             {
@@ -45,12 +74,22 @@ namespace DM_Skills.Models
             Persons.CollectionChanged += (o, e) => {
 
                 Console.WriteLine("New Item");
-                foreach (var item in e.NewItems)
+                if (e.NewItems != null)
                 {
-                    Console.WriteLine("-->");
-                    ((PersonModel)item).NotifyPropertyOnAll += () => NotifyPropertyChanged("CanUpload");
+                    foreach (var item in e.NewItems)
+                    {
+                        Console.WriteLine("-->");
+                        ((PersonModel)item).NotifyPropertyOnAll += () =>
+                        {
+                            NotifyPropertyChanged("ErrNo");
+                            NotifyPropertyChanged("HasData");
+                        };
+                    }
                 }
 
+
+                NotifyPropertyChanged("ErrNo");
+                NotifyPropertyChanged("HasData");
             };
             School.NotifyPropertyOnAll += () => NotifyPropertyChanged("HasData");
             Team.NotifyPropertyOnAll += () => NotifyPropertyChanged("HasData");
@@ -69,9 +108,6 @@ namespace DM_Skills.Models
         public bool HasData {
             get
             {
-                Console.WriteLine("HasData");
-
-
                 if (School.Name != null && School.Name != "")
                 {
                     return true;
@@ -92,6 +128,7 @@ namespace DM_Skills.Models
                 {
                     return true;
                 }
+                //if(Persons.Count(p => p.Name == null || p.Name == "") > 0)
 
                 return false;
             }
@@ -101,31 +138,6 @@ namespace DM_Skills.Models
             get
             {
                 Console.WriteLine("CanUpload");
-                ErrNo = 0;
-
-                if (!School.CanUpload)
-                {
-                    ErrNo += ERRNO_SCHOOL_NAME_NULL;
-                }
-                if (!Location.CanUpload)
-                {
-                    ErrNo += ERRNO_LOCATION_NAME_NULL;
-                }
-                if (!Team.CanUpload)
-                {
-                    ErrNo += ERRNO_TEAM_TIME_NULL;
-                }
-
-                if (Persons.Count == 0)
-                {
-                    ErrNo += ERRNO_PERSON_ZERO;
-                }
-                else if (Persons.Count(p => !p.CanUpload) > 0)
-                {
-                    ErrNo += ERRNO_SCHOOL_NAME_NULL;
-                }
-
-                NotifyPropertyChanged("ErrNo");
                 return ErrNo == 0;
             }
         }

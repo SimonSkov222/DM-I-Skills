@@ -35,7 +35,7 @@
                     ItemsSource="{Binding ElementName=Controller, Path=Schools, Mode=OneWay}"
                     Placeholder="Skolens Navn...">
                     <local:AutocompleteControl.Error>
-                        <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay">
+                        <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter=", Auto">
                             <Binding ElementName="Controller" Path="Model.HasData"/>
                             <Binding ElementName="Controller" Path="Model.School.CanUpload"/>
                         </MultiBinding>

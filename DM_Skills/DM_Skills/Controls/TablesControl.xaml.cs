@@ -96,6 +96,10 @@ namespace DM_Skills.Controls
         private void Label_Drop(object sender, DragEventArgs e)
         {
             txt_time.Text = ((Label)e.Data.GetData(typeof(Label))).Content.ToString();
+            BindingOperations.GetBindingExpressionBase(txt_time, PlaceholderBox.TextProperty).UpdateSource();
+            //Model.Team.Time = ((Label)e.Data.GetData(typeof(Label))).Content.ToString(); ;
+
+
         }
         
 

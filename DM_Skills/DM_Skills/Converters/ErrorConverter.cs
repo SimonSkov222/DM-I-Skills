@@ -10,10 +10,17 @@ namespace DM_Skills.Converters
 {
     class ErrorConverter : IMultiValueConverter
     {
-
+        private string name;
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            Console.WriteLine("E!!");
+            Console.WriteLine("CC");
+            if (parameter != null)
+            {
+                var ss = parameter.ToString().Split(',');
+                parameter = ss.Length > 0 ? ss[0] : null;
+                if (ss.Length > 1)
+                    name = ss[1];
+            }
 
             if (values == null)
             {
@@ -46,7 +53,7 @@ namespace DM_Skills.Converters
 
             bool hasData = (bool)values[0];
             bool canUpload = (bool)values[1];
-
+            Console.WriteLine("{0}:: {1} === {2} :: R: {3}", name, hasData, canUpload, hasData && !canUpload);
             return hasData && !canUpload;
         }
 
@@ -60,7 +67,8 @@ namespace DM_Skills.Converters
 
             bool hasData = (bool)values[0];
             int errno = (int)values[1];
-            
+
+            Console.WriteLine("{0}:: {1} === {2} :: R: {3} : Bit: {4}, V:{5}", name, hasData, (errno & index) == index, hasData && (errno & index) == index, (errno & index), errno);
             return hasData && (errno & index) == index;
         }
 
