@@ -26,6 +26,34 @@ namespace DM_Skills.Controls
 
 
 
+        public bool Error
+        {
+            get { return (bool)GetValue(ErrorProperty); }
+            set { SetValue(ErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Error.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ErrorProperty =
+            DependencyProperty.Register("Error", typeof(bool), typeof(AutocompleteControl), new PropertyMetadata(false, new PropertyChangedCallback(CallBackProperty)));
+
+        private Brush OldBrush;
+
+        public static void CallBackProperty(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var control = (AutocompleteControl)sender;
+            if ((bool)e.NewValue)
+            {
+                control.OldBrush = control.BorderBrush;
+                control.BorderBrush = Brushes.Red;
+            }
+            else if(control.OldBrush != null)
+            {
+                control.BorderBrush = control.OldBrush;
+            }
+        }
+
+
+
         public bool IsPopupOpen
         {
             get { return (bool)GetValue(IsPopupOpenProperty); }

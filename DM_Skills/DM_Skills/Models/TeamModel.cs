@@ -9,15 +9,50 @@ namespace DM_Skills.Models
     public class TeamModel : ModelSettings
     {
         const int ERRNO_TIME_NULL = 1;
+        const int ERRNO_CLASS_NULL = 2;
 
         public const string ERROR_TIME_NULL = "";
-        
+        public const string ERROR_CLASS_NULL = "";
+
         public int? ID { get; set; }
         public int SchoolID { get; set; }
         public int LocationID { get; set; }
-        public string Date { get; set; }
-        public string Time { get; set; }
-        public string Class { get; set; }
+
+        private string _Date;
+        public string Date
+        {
+            get { return _Date; }
+            set
+            {
+                _Date = value;
+                NotifyPropertyChanged("CanUpload");
+                NotifyPropertyOnAll?.Invoke();
+            }
+        }
+
+        private string _Time;
+        public string Time
+        {
+            get { return _Time; }
+            set
+            {
+                _Time = value;
+                NotifyPropertyChanged("CanUpload");
+                NotifyPropertyOnAll?.Invoke();
+            }
+        }
+
+        private string _Class;
+        public string Class
+        {
+            get { return _Class; }
+            set
+            {
+                _Class = value;
+                NotifyPropertyChanged("CanUpload");
+                NotifyPropertyOnAll?.Invoke();
+            }
+        }
 
 
 
@@ -25,43 +60,49 @@ namespace DM_Skills.Models
         {
             get
             {
+                bool failed = false;
+                
+                ErrNo = 0;
+                Error = "";
+
                 if (Time == null || Time == "")
                 {
-                    ErrNo = ERRNO_TIME_NULL;
+                    ErrNo += ERRNO_TIME_NULL;
                     Error = ERROR_TIME_NULL;
-                    return false;
+                    failed = true;
+                }
+                if (Class == null || Class == "")
+                {
+                    ErrNo += ERRNO_CLASS_NULL;
+                    Error = ERROR_CLASS_NULL;
+                    failed = true;
                 }
 
-                return true;
+
+                NotifyPropertyChanged("ErrNo");
+
+                return !failed;
             }
         }
 
 
         protected override bool OnUpload()
         {
-            Console.WriteLine("1");
 
             if (Date == null || Date == "")
             {
                 Date = DateTime.Now.ToShortDateString();
-                Console.WriteLine("2");
             }
-
-            Console.WriteLine("3");
             var myDB = Scripts.Database.GetDB();
-            Console.WriteLine("4");
             if (ID != null)
             {
                 return false;
             }
             else
             {
-                Console.WriteLine("6");
                 ID = (int)myDB.Insert("Teams", new string[] { "Class", "SchoolID", "LocationID", "Date", "Time"}, new string[] { Class });
-
             }
             myDB.Disconnect();
-            Console.WriteLine("7");
             return true;
 
 

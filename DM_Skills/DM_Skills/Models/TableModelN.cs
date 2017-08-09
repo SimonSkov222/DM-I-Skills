@@ -27,12 +27,35 @@ namespace DM_Skills.Models
         public TeamModel        Team        { get; set; }
         public ObservableCollection<PersonModel> Persons    { get; set; }
 
+        public bool ErrPerson {
+            get
+            {
+
+                return false;
+            }
+        }
+
         public TableModelN()
         {
             School      = new SchoolModel();
             Location    = new LocationModel();
             Team        = new TeamModel();
             Persons     = new ObservableCollection<PersonModel>();
+
+            Persons.CollectionChanged += (o, e) => {
+
+                Console.WriteLine("New Item");
+                foreach (var item in e.NewItems)
+                {
+                    Console.WriteLine("-->");
+                    ((PersonModel)item).NotifyPropertyOnAll += () => NotifyPropertyChanged("CanUpload");
+                }
+
+            };
+            School.NotifyPropertyOnAll += () => NotifyPropertyChanged("HasData");
+            Team.NotifyPropertyOnAll += () => NotifyPropertyChanged("HasData");
+
+
 
             School.CallbackUpload   += o => Team.SchoolID   = (o as SchoolModel).ID;
             Location.CallbackUpload += o => Team.LocationID = (o as LocationModel).ID;
@@ -43,9 +66,41 @@ namespace DM_Skills.Models
             };
         }
 
+        public bool HasData {
+            get
+            {
+                Console.WriteLine("HasData");
+
+
+                if (School.Name != null && School.Name != "")
+                {
+                    return true;
+                }
+                if (Location.Name != null && Location.Name != "")
+                {
+                    return true;
+                }
+                if (Team.Class != null && Team.Class != "")
+                {
+                    return true;
+                }
+                if (Team.Time != null && Team.Time != "")
+                {
+                    return true;
+                }
+                if (Persons.Count > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        }
+
         public override bool CanUpload {
             get
             {
+                Console.WriteLine("CanUpload");
                 ErrNo = 0;
 
                 if (!School.CanUpload)
@@ -70,9 +125,12 @@ namespace DM_Skills.Models
                     ErrNo += ERRNO_SCHOOL_NAME_NULL;
                 }
 
+                NotifyPropertyChanged("ErrNo");
                 return ErrNo == 0;
             }
         }
+
+
 
         protected override bool OnUpload()
         {

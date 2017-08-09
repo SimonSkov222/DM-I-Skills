@@ -211,8 +211,11 @@ namespace DM_Skills.Views
             /// </summary>
             private void Button_Upload_Click(object sender, RoutedEventArgs e)
             {
-            Random r = new Random();
-            NumbOfTables = r.Next(100);
+
+            foreach (var item in listOfTables.Children)
+            {
+                Console.WriteLine(((Controls.TablesControl)item).Model.School.CanUpload);
+            }
             return;
 
                 //Gør vi kan loop igennem bordene med et loop

@@ -62,7 +62,7 @@ namespace DM_Skills.Controls
 
         public static void CallBackProperty(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-           ((DragAndDropTimerControl)sender). UpdateOverTimeLabel();
+           ((DragAndDropTimerControl)sender).UpdateOverTimeLabel();
         }
 
         /// <summary>

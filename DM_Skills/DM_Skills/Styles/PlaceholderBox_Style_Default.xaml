@@ -25,6 +25,13 @@
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="Foreground" Value="#262626"/>
         <Setter Property="Template" Value="{StaticResource PlaceholderBox_Template_Default}"/>
+
+        <Style.Triggers>
+            <Trigger Property="Error" Value="true">
+                <Setter Property="PlaceholderBorderBrush" Value="Red"/>
+                <Setter Property="BorderBrush" Value="Red"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>

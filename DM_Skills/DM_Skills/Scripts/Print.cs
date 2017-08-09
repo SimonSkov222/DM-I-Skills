@@ -11,141 +11,133 @@ namespace DM_Skills.Scripts
 {
     class Print : PdfPageEventHelper
     {
+        Font fontTxt = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL);
 
+        private float[] width = new float[] { 2f, 2f, 1f, 1f, 1f };
         private int _pageNum = 1;
         public int pageNum { set { pageNum = _pageNum; } }
+        
+        PdfContentByte cb;
+        PdfTemplate template;
+        BaseFont bf = null;
+        DateTime PrintTime = DateTime.Now;
+        private float titleHeight;
 
-        public void Test(ObservableCollection<Models.TableModelN> models)
+
+        public void CreatePDF(string filename, ObservableCollection<Models.TableModelN> models)
         {
-            var width = new float[] { 2f, 2f, 1f, 1f, 1f };
-
-            Font fontH = new Font(Font.FontFamily.TIMES_ROMAN, 20f, Font.BOLD);
-            Font fontTxt = new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.NORMAL);
-
             PdfPTable pdfDoc = new PdfPTable(1);
-            PdfPTable header = new PdfPTable(5);
-
-
-            PdfPCell title = new PdfPCell(new Phrase("DM i Skills", fontH));
-
+            
             pdfDoc.DefaultCell.Border = 0;
-            title.Border = 0;
-
             pdfDoc.SetWidthPercentage(new float[] { PageSize.A4.Width -50 }, PageSize.A4);
-
-            
-
-          
-
-            header.DefaultCell.Border = 2;
-            header.SetWidths(width);
-            
-            header.AddCell("Dektagere");
-            header.AddCell("Skole og klasse");
-            header.AddCell("Lokation");
-            header.AddCell("Dato");
-            header.AddCell("Tid");
-
-
-
-
-
-
-
-            
-
-            //table2.AddCell("enghaveskolen");
-            //table2.AddCell("Oluwayemisi Winston\nOluwayemisi Winston\nOluwayemisi Winston");
-            //table2.AddCell("Ballerup");
-            //table2.AddCell("02/04/2017");
-            //table2.AddCell("12:11:10");
-
-            //table2.AddCell("enghaveskolen");
-            //table2.AddCell("Oluwayemisi Winston");
-            //table2.AddCell("Ballerup");
-            //table2.AddCell("02/04/2017");
-            //table2.AddCell("12:11:10");
-
-            pdfDoc.AddCell(title);
-            pdfDoc.AddCell(header);
 
             foreach (var i in models)
             {
                 PdfPTable data = new PdfPTable(5);
-                PdfPTable tabPerson = new PdfPTable(1);
-                tabPerson.DefaultCell.Border = 0;
 
+                data.KeepTogether = true;
+                data.DefaultCell.Phrase = new Phrase { Font = fontTxt };
                 data.DefaultCell.Border = 2;
                 data.SetWidths(width);
-
-                foreach (var person in i.Persons)
-                {
-                    tabPerson.AddCell(person.Name);
-                }
-                data.AddCell(i.School.Name + "\n" + i.Team.Class);
-                data.AddCell(tabPerson);
-                data.AddCell(i.Location.Name);
-                data.AddCell(i.Team.Date);
-                data.AddCell(i.Team.Time);
+                
+                data.AddCell(WriteData(i.School.Name + "\n" + i.Team.Class));
+                data.AddCell(WriteData(i.Persons));
+                data.AddCell(WriteData(i.Location.Name, Element.ALIGN_CENTER));
+                data.AddCell(WriteData(i.Team.Date    , Element.ALIGN_CENTER));
+                data.AddCell(WriteData(i.Team.Time    , Element.ALIGN_CENTER));
 
                 pdfDoc.AddCell(data);
 
             }
 
-
-
-
-
-
-            Document doc = new Document(PageSize.A4, 0f, 0f, 20f, 40f);
-            var fs = new System.IO.FileStream(@"C:\Users\kide\Desktop\DMiSkills.pdf", System.IO.FileMode.Create);
-            PdfWriter writer = PdfWriter.GetInstance(doc, fs);
-
-
-
-
-
-
-
-            
-            writer.PageEvent = this;
-
-
-            doc.Open();
-
-            pdfDoc.KeepTogether = true;
-            for (int i = 0; i < 100; i++)
+            try
             {
+                Document doc = new Document(PageSize.A4, 0f, 0f, 40f, 40f);
+                var fs = new FileStream(filename, FileMode.Create);
+                PdfWriter writer = PdfWriter.GetInstance(doc, fs);           
+            
+                writer.PageEvent = this;
+
+                doc.Open();
                 doc.Add(pdfDoc);
-
+                doc.Close();
             }
-            doc.Add(pdfDoc);
-
-
-            doc.Close();
+            catch (Exception)
+            {
+                Console.WriteLine("Error!");
+            }
+            
             
 
         }
 
-
-
-
-
-        PdfContentByte cb;
-        PdfTemplate template;
-        BaseFont bf = null;
-        DateTime PrintTime = DateTime.Now;
-        
-       
-        private Font _FooterFont;
-        public Font FooterFont
+        private PdfPTable WriteData(ObservableCollection<Models.PersonModel> persons)
         {
-            get { return _FooterFont; }
-            set { _FooterFont = value; }
+            PdfPTable tabPerson = new PdfPTable(1);
+
+            tabPerson.DefaultCell.Border = 0;
+            tabPerson.DefaultCell.Phrase = new Phrase { Font = fontTxt };
+            
+            foreach (var person in persons)
+            {
+                var cell = WriteData(person.Name);
+                cell.Border = 0;
+                tabPerson.AddCell(cell);
+            }
+
+            return tabPerson;
+        }
+
+        private PdfPCell WriteData(string text, int horizontal = Element.ALIGN_LEFT)
+        {
+            return new PdfPCell(new Phrase(text, fontTxt))
+                    {
+                        Border = 2,
+                        VerticalAlignment = Element.ALIGN_MIDDLE,
+                        HorizontalAlignment = horizontal
+            };
         }
 
 
 
+
+        public override void OnStartPage(PdfWriter writer, Document document)
+        {
+            base.OnStartPage(writer, document);
+            Font fontT = new Font(Font.FontFamily.HELVETICA, 20f, Font.BOLD);
+            PdfPCell title = new PdfPCell(new Phrase("DM i Skills", fontT)) { Border = 0 };
+
+            Font fontH = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
+            PdfPTable header = new PdfPTable(5);
+
+            header.TotalWidth = PageSize.A4.Width-50;
+
+            header.DefaultCell.Border = 2;
+            header.SetWidths(width);
+
+            if (writer.CurrentPageNumber == 1) {
+                title.Colspan = 5;
+                header.AddCell(title);
+            }
+
+            header.AddCell(new PdfPCell(new Phrase("Deltagere", fontH)) { Border = 2 });
+            header.AddCell(new PdfPCell(new Phrase("Skole og klasse", fontH)) { Border = 2 });
+            header.AddCell(new PdfPCell(new Phrase("Lokation", fontH)) { Border = 2, HorizontalAlignment = Element.ALIGN_CENTER });
+            header.AddCell(new PdfPCell(new Phrase("Dato", fontH)) { Border = 2, HorizontalAlignment = Element.ALIGN_CENTER });
+            header.AddCell(new PdfPCell(new Phrase("Tid", fontH)) { Border = 2, HorizontalAlignment = Element.ALIGN_CENTER });
+
+            float height = 0;
+            if (writer.CurrentPageNumber == 1)
+            {
+                titleHeight = header.CalculateHeights();
+            }
+            else {
+                height = titleHeight - header.CalculateHeights();
+            }
+
+            header.WriteSelectedRows(0, -1, 25, PageSize.A4.Height - height, writer.DirectContent);
+        }
+        
 
         public override void OnOpenDocument(PdfWriter writer, Document document)
         {

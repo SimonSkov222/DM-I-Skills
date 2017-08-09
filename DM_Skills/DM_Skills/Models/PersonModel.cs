@@ -16,13 +16,28 @@ namespace DM_Skills.Models
 
 
         public int? ID { get; protected set; }
-        public string Name { get; set; }
+
+        private string _Name;
+        public string Name
+        {
+            get { return _Name; }
+            set
+            {
+                Console.WriteLine("_Name");
+                _Name = value;
+                NotifyPropertyChanged("CanUpload");
+                Console.WriteLine(NotifyPropertyOnAll == null);
+                NotifyPropertyOnAll?.Invoke();
+            }
+        }
         public int TeamID { get; set; }
 
         public override bool CanUpload
         {
             get
             {
+                Console.WriteLine("__CanUpload");
+
                 if (Name == null || Name == "")
                 {
                     ErrNo = ERRNO_NAME_NULL;

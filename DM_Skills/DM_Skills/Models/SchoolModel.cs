@@ -8,12 +8,25 @@ namespace DM_Skills.Models
 {
     public class SchoolModel : ModelSettings
     {
+
+
         const int ERRNO_NAME_NULL = 1;
 
         public const string ERROR_NAME_NULL = "";
 
+
+        private string _Name;
+
         public int ID { get; protected set; }
-        public string Name { get; set; }
+        public string Name {
+            get { return _Name;  }
+            set
+            {
+                _Name = value;
+                NotifyPropertyChanged("CanUpload");
+                NotifyPropertyOnAll?.Invoke();
+            }
+        }
 
         public override bool CanUpload
         {
