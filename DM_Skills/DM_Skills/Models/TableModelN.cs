@@ -90,6 +90,15 @@ namespace DM_Skills.Models
         }
 
 
-        public static ObservableCollection<TableModelN> GetTables() { return null; }
+        public static ObservableCollection<TableModelN> GetTables(string order, string schoolName, string personName, LocationModel location, DateTime from, DateTime to)
+        {
+            //SELECT [] FROM [Person]
+
+            //tabTeam
+            //SELECT [] FROM [tabTeam] AS [T]
+            // INNER JOIN [] as [TT] ON [T].[COLUMN] = [TT].[COLUMN];
+
+            return null;
+        }
     }
 }

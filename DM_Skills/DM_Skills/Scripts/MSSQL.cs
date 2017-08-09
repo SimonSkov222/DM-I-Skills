@@ -160,6 +160,22 @@ namespace DM_Skills.Scripts
             else return result[0];
         }
 
+
+        public List<List<object>> GetRows(string table, string column, string format = "", params object[] arg)
+        {
+            return GetRows(table, new string[] { column }, format, arg);
+        }
+
+        public List<List<object>> GetRows(string table, string[] columns, string format = "", params object[] arg)
+        {
+            string query = BuildGetRowsCMD(table, columns, string.Format(format, arg));
+
+            var result = ExecuteQuery(query);
+
+            if (result.Count == 0) return null;
+            else return result;
+        }
+
         public object Insert(string table, string column, object value)
         {
             return Insert(table, new string[] { column }, new object[] { value });

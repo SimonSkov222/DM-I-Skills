@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,6 +46,26 @@ namespace DM_Skills.Models
             myDB.Disconnect();
 
             return true;
+        }
+
+
+        public static ObservableCollection<LocationModel> GetRange(int offset = 0, int limit = int.MaxValue)
+        {
+            var result = new ObservableCollection<LocationModel>();
+            var db = Scripts.Database.GetDB();
+
+            var data = db.GetRows("Locations", new string[] { "ID", "Name" }, "OFFSET {0} LIMIT {1} ", offset, limit);
+            foreach (var item in data)
+            {
+                result.Add(new LocationModel()
+                {
+                    ID = (int)item[0],
+                    Name = (string)item[1]
+                });
+            }
+
+
+            return result;
         }
     }
 }

@@ -25,6 +25,10 @@ namespace DM_Skills.Scripts
 
         List<object> GetRow(string table, string[] columns, string format = "", params object[] arg);
 
+        List<List<object>> GetRows(string table, string columns, string format = "", params object[] arg);
+
+        List<List<object>> GetRows(string table, string[] columns, string format = "", params object[] arg);
+
         void Create(string table, params IColumn[] columns);
 
         void Drop(string table);
