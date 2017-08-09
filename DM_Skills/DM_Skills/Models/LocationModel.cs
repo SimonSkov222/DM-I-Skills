@@ -49,12 +49,13 @@ namespace DM_Skills.Models
         }
 
 
-        public static ObservableCollection<LocationModel> GetRange(int offset = 0, int limit = int.MaxValue)
+        public static ObservableCollection<LocationModel> GetAll()
         {
             var result = new ObservableCollection<LocationModel>();
             var db = Scripts.Database.GetDB();
+            db.UseDistinct = true;
 
-            var data = db.GetRows("Locations", new string[] { "ID", "Name" }, "OFFSET {0} LIMIT {1} ", offset, limit);
+            var data = db.GetRows("Locations", new string[] { "ID", "Name" });
             foreach (var item in data)
             {
                 result.Add(new LocationModel()

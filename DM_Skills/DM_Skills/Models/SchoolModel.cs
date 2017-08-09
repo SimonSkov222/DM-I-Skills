@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +18,9 @@ namespace DM_Skills.Models
         private string _Name;
 
         public int ID { get; protected set; }
-        public string Name {
-            get { return _Name;  }
+        public string Name
+        {
+            get { return _Name; }
             set
             {
                 _Name = value;
@@ -71,5 +72,25 @@ namespace DM_Skills.Models
         //public bool Upload() { return false; }
         //public static void GetRow(int id) { }
         //public static void GetResults(int limit, int offset) { }
+
+
+        public static ObservableCollection<SchoolModel> GetAll()
+        {
+            var result = new ObservableCollection<SchoolModel>();
+            var db = Scripts.Database.GetDB();
+            db.UseDistinct = true;
+
+            var data = db.GetRows("School", new string[] { "ID", "Name" });
+            foreach (var item in data)
+            {
+                result.Add(new SchoolModel()
+                {
+                    ID = (int)item[0],
+                    Name = (string)item[1]
+                });
+            }
+
+            return result;
+        }
     }
 }

@@ -18,7 +18,8 @@ namespace DM_Skills.Scripts
 
         private string _lastQuery;
         public string LastQuery { get { return _lastQuery; } }
-        
+
+        public bool UseDistinct { get; set; }
 
         private  SqlConnection sql_conn;
         private  SqlCommand sql_cmd;
@@ -30,6 +31,7 @@ namespace DM_Skills.Scripts
             sql_conn = new SqlConnection(connectionString);
             sql_conn.Open();
 
+            UseDistinct = false;
             sql_cmd = sql_conn.CreateCommand();
 
             _prefix = prefix;
@@ -86,7 +88,7 @@ namespace DM_Skills.Scripts
                 columns[i] = "[" + columns[i] + "]";
             }
 
-            return string.Format("SELECT {1} FROM [{0}]{2};", tableWithPrefix, string.Join(", ", columns), " " + more);
+            return string.Format("SELECT{3} {1} FROM [{0}]{2};", tableWithPrefix, string.Join(", ", columns), " " + more, UseDistinct ?" DISTINCT": "");
         }
 
         public bool Exist(string table)
@@ -252,6 +254,8 @@ namespace DM_Skills.Scripts
 
         public List<List<object>> ExecuteQuery(string cmd)
         {
+
+            UseDistinct = false;
             SqlDataReader sql_reader;
 
             var result = new List<List<object>>();

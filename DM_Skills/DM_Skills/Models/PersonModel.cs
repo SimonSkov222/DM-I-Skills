@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -64,6 +64,26 @@ namespace DM_Skills.Models
             myDB.Disconnect();
 
             return true;
+        }
+
+        public static ObservableCollection<PersonModel> GetAll()
+        {
+            var result = new ObservableCollection<PersonModel>();
+            var db = Scripts.Database.GetDB();
+            db.UseDistinct = true;
+
+            var data = db.GetRows("Person", new string[] { "ID", "Name" });
+            foreach (var item in data)
+            {
+                result.Add(new PersonModel()
+                {
+                    ID = (int)item[0],
+                    TeamID = (int)item[1],
+                    Name = (string)item[2]
+                });
+            }
+
+            return result;
         }
     }
 }

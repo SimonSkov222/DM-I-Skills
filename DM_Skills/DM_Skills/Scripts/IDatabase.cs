@@ -10,6 +10,7 @@ namespace DM_Skills.Scripts
     {
         bool IsConnected { get; }
 
+        bool UseDistinct { get; set; }
 
         void Connect(string connectionString, string prefix = "");
 
