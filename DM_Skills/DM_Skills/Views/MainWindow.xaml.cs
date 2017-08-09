@@ -112,8 +112,11 @@ namespace DM_Skills
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var print = new Scripts.Print();
+            var models = new System.Collections.ObjectModel.ObservableCollection<Models.TableModelN>();
 
-            print.Test(new System.Collections.ObjectModel.ObservableCollection<Models.TableModelN>() {
+            for (int i = 0; i < 25; i++)
+            {
+                models.Add( 
                 new Models.TableModelN()
                 {
                     School = new Models.SchoolModel() {Name = "skole"},
@@ -130,42 +133,10 @@ namespace DM_Skills
                         Time = "10:00:00",
                         Class = "7X"
                     }
-                },
-                new Models.TableModelN()
-                {
-                    School = new Models.SchoolModel() {Name = ""},
-                    Location = new Models.LocationModel() {Name = ""},
-                    Persons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>()
-                    {
-                        new Models.PersonModel() { Name = ""},
-                        new Models.PersonModel() { Name = ""},
-                        new Models.PersonModel() { Name = ""}
-                    },
-                    Team = new Models.TeamModel()
-                    {
-                        Date = "",
-                        Time = "",
-                        Class = ""
-                    }
-                },
-                new Models.TableModelN()
-                {
-                    School = new Models.SchoolModel() {Name = ""},
-                    Location = new Models.LocationModel() {Name = ""},
-                    Persons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>()
-                    {
-                        new Models.PersonModel() { Name = ""},
-                        new Models.PersonModel() { Name = ""},
-                        new Models.PersonModel() { Name = ""}
-                    },
-                    Team = new Models.TeamModel()
-                    {
-                        Date = "",
-                        Time = "",
-                        Class = ""
-                    }
-                }
-            });
+                });
+            }
+
+            print.CreatePDF(@"C:\Users\kide\Desktop\DMiSkills.pdf", models);
             
         }
 

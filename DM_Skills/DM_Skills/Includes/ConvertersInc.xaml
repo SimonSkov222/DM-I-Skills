@@ -19,4 +19,5 @@
     <Converters:ValueToValueConverter x:Key="ValueToValueConvert"/>
     <Converters:OvertimeConverter x:Key="OvertimeConvert" Foreground_True="Red" Foreground_False="{StaticResource Color_Foreground_Dark_2}"/>
     <Converters:ProjektorConverter x:Key="ProjektorConvert"/>
+    <Converters:ErrorConverter x:Key="ErrorConvert"/>
 </ResourceDictionary> 

@@ -26,6 +26,34 @@ namespace DM_Skills.Controls
     /// </summary>
     public partial class PersonListControl : UserControl, INotifyPropertyChanged
     {
+
+        public bool Error
+        {
+            get { return (bool)GetValue(ErrorProperty); }
+            set { SetValue(ErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Error.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ErrorProperty =
+            DependencyProperty.Register("Error", typeof(bool), typeof(PersonListControl), new PropertyMetadata(false, new PropertyChangedCallback(CallBackProperty)));
+
+        private Brush OldBrush;
+
+        public static void CallBackProperty(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var control = (PersonListControl)sender;
+            if ((bool)e.NewValue)
+            {
+                control.OldBrush = control.BorderBrush;
+                control.BorderBrush = Brushes.Red;
+            }
+            else if (control.OldBrush != null)
+            {
+                control.BorderBrush = control.OldBrush;
+            }
+        }
+
+
         public static readonly DependencyProperty PersonsProperty =
             DependencyProperty.Register(
                 "Persons",
@@ -33,6 +61,7 @@ namespace DM_Skills.Controls
                 typeof(PersonListControl),
                 new PropertyMetadata(null)
             );
+
 
 
         public ObservableCollection<Models.PersonModel> Persons
@@ -78,7 +107,7 @@ namespace DM_Skills.Controls
 
         private Style styleTxtInput;
         private Style styleBtnInput;
-
+        private IMultiValueConverter errorConverter;
 
 
         public PersonListControl()
@@ -86,20 +115,12 @@ namespace DM_Skills.Controls
             InitializeComponent();
             styleTxtInput = (Style)FindResource("TextBox_Style_Default");
             styleBtnInput = (Style)FindResource("Button_Style_Default");
-
+            errorConverter = (IMultiValueConverter)FindResource("ErrorConvert");
 
             if (Persons == null)
                 Persons = new ObservableCollection<Models.PersonModel>();
+            
 
-            Console.WriteLine(Persons.Count);
-
-            //Persons.CollectionChanged += Persons_CollectionChanged;
-            //Persons_CollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, Persons));
-            //for (int i = 0; i < Persons.Count; i++)
-            //{
-
-            //}
-            //Loaded += PersonListControl_Loaded;
 
             InsertNewInputBox();
 
@@ -113,12 +134,7 @@ namespace DM_Skills.Controls
 
             Persons.CollectionChanged += Persons_CollectionChanged;
             Persons_CollectionChanged(Persons, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, Persons));
-            ////PersonsS.CollectionChanged += Persons_CollectionChanged;
-            //Persons.CollectionChanged += Persons_CollectionChanged;
-            //foreach (var item in Persons)
-            //{
-            //    PersonsS.Add(item);
-            //}
+
         }
 
         private void Txt_TextChanged(object sender, TextChangedEventArgs e)
@@ -130,7 +146,6 @@ namespace DM_Skills.Controls
             var txt = (TextBox)input.Children[0];
             var model = (Models.PersonModel)input.DataContext;
             Persons.Add(model);
-            //PersonsS.Add(model);
         }
         
 
@@ -155,7 +170,8 @@ namespace DM_Skills.Controls
                             input.DataContext = item;
                             //Tilføj event
                             btn.Click += Btn_Click;
-
+                            
+                            
                             //Tilføj til view
                             listOfPersons.Children.Add(input);
                         }
@@ -163,7 +179,7 @@ namespace DM_Skills.Controls
                         {
                             //Find nuværnde input element/textbox og button
                             var input = (Grid)newPerson.Children[0];
-                            var txt = (TextBox)input.Children[0];
+                            var txt = (PlaceholderBox)input.Children[0];
                             var btn = (Button)input.Children[1];
 
                             //Fjern event
@@ -174,6 +190,26 @@ namespace DM_Skills.Controls
 
                             //Går at bindingen på textbox vil skifte til det nye item der er tilføjet
                             input.DataContext = item;
+
+                            txt.SetBinding(PlaceholderBox.ErrorProperty, new MultiBinding()
+                            {
+                                Bindings =
+                                {
+                                    new Binding() {
+                                        Source = this,
+                                        Path = new PropertyPath("Error")
+                                    },
+                                    new Binding() {
+                                        Source = item,
+                                        Path = new PropertyPath("CanUpload")
+                                    }
+                                },
+                                Converter = errorConverter
+                            });
+
+
+
+
 
                             //Skift parent for input element
                             newPerson.Children.Clear();
@@ -216,7 +252,7 @@ namespace DM_Skills.Controls
         private Grid BuildInputElement()
         {
             var input = new Grid();
-            var txt = new TextBox();
+            var txt = new PlaceholderBox();
             var btn = new Button();
 
             //Placering
@@ -228,7 +264,7 @@ namespace DM_Skills.Controls
 
             //Model
             input.DataContext = new Models.PersonModel();
-            txt.SetBinding(TextBox.TextProperty, new Binding()
+            txt.SetBinding(PlaceholderBox.TextProperty, new Binding()
             {
                 Path = new PropertyPath("Name"),
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
@@ -238,8 +274,8 @@ namespace DM_Skills.Controls
             txt.TextChanged += (o,e) => NotifyPropertyChanged("Persons");
 
             //Styling
-            txt.Style = styleTxtInput;
-            txt.ToolTip = "Navn";
+            //txt.Style = styleTxtInput;
+            txt.Placeholder = "Navn";
             txt.Margin = new Thickness(0, 5, 0, 0);
             txt.Height = 30;
             txt.TabIndex = 2000 + Persons.Count;
@@ -269,7 +305,7 @@ namespace DM_Skills.Controls
         private void InsertNewInputBox()
         {
             var input = BuildInputElement();
-            var txt = (TextBox)input.Children[0];
+            var txt = (PlaceholderBox)input.Children[0];
 
             //Events
             txt.TextChanged += Txt_TextChanged;
@@ -292,7 +328,6 @@ namespace DM_Skills.Controls
 
             if (propertyName == nameof(Persons))
             {
-                Console.WriteLine(display.Content.GetType());
                 BindingOperations.GetBindingExpressionBase(display.Content as TextBlock, TextBlock.TextProperty).UpdateTarget();
                 NotifyPropertyChanged(nameof(HasPersons));
             }
@@ -301,8 +336,6 @@ namespace DM_Skills.Controls
 
         private void Animation_Slide(object sender, MouseEventArgs e) {
             int speed = 300;//msec
-
-            Console.WriteLine("{0} == {1}", sender.GetType(), (sender as UIElement).IsMouseOver);
 
             DoubleAnimation animation = null;
             if ((sender as UIElement).IsMouseOver)

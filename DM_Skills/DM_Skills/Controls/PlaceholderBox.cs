@@ -19,6 +19,17 @@ namespace DM_Skills.Controls
     {
 
 
+
+        public bool Error
+        {
+            get { return (bool)GetValue(ErrorProperty); }
+            set { SetValue(ErrorProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Error.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ErrorProperty =
+            DependencyProperty.Register("Error", typeof(bool), typeof(PlaceholderBox), new PropertyMetadata(false));
+        
         public Brush PlaceholderBackground
         {
             get { return (Brush)GetValue(PlaceholderBackgroundProperty); }

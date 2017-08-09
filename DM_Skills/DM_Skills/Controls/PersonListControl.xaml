@@ -27,8 +27,8 @@
                HorizontalAlignment="Stretch" 
                VerticalAlignment="Stretch" 
                Width="auto">
-            
-            <TextBlock TextTrimming="CharacterEllipsis" Foreground="{Binding ElementName=controller, Path=Foreground}">7
+
+            <TextBlock TextTrimming="CharacterEllipsis" Foreground="{Binding ElementName=controller, Path=Foreground}">
                 <TextBlock.Text>
                     <MultiBinding Converter="{StaticResource PersonListConvert}" ConverterParameter="Text" Mode="OneWay">
                         <Binding ElementName="controller" Path="Persons"/>

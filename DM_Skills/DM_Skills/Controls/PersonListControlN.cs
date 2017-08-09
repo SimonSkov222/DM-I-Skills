@@ -32,7 +32,7 @@ namespace DM_Skills.Controls
         private Style styleTxtInput;
         private Style styleBtnInput;
 
-        
+
 
 
         static PersonListControlN()

@@ -26,31 +26,61 @@
                     Grid.Row="0" 
                     Text="{Binding ElementName=Controller, Path=Title}"  
                     FontWeight="Bold" FontSize="18" Margin="0 8 0 2"/>
-                
-                
+
+
                 <local:AutocompleteControl x:Name="autoSchools"
-                    Grid.Row="1" Grid.Column="0"
+                    Grid.Row="1" Grid.Column="0" 
+                    
                     Text="{Binding ElementName=Controller, Path=Model.School.Name, Mode=TwoWay}"
                     ItemsSource="{Binding ElementName=Controller, Path=Schools, Mode=OneWay}"
-                    Placeholder="Skolens Navn..."/>
+                    Placeholder="Skolens Navn...">
+                    <local:AutocompleteControl.Error>
+                        <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay">
+                            <Binding ElementName="Controller" Path="Model.HasData"/>
+                            <Binding ElementName="Controller" Path="Model.School.CanUpload"/>
+                        </MultiBinding>
+                    </local:AutocompleteControl.Error>
+                </local:AutocompleteControl>
 
                 <local:PlaceholderBox 
                     Grid.Row="1" Grid.Column="2"
                     Text="{Binding ElementName=Controller, Path=Model.Team.Class, Mode=TwoWay}"
-                    Placeholder="Klasse..."/>
+                    Placeholder="Klasse...">
+                    <local:PlaceholderBox.Error>
+                        <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter="2">
+                            <Binding ElementName="Controller" Path="Model.HasData"/>
+                            <Binding ElementName="Controller" Path="Model.Team.ErrNo"/>
+                        </MultiBinding>
+                    </local:PlaceholderBox.Error>
+                </local:PlaceholderBox>
 
 
 
                 <local:PersonListControl x:Name="Personer"
                     Grid.Row="3" Grid.Column="0" Visibility="Visible" 
                     Placeholder="Deltagere..."
-                    Persons="{Binding ElementName=Controller,Path=Model.Persons, Mode=TwoWay}"/>
+                    Persons="{Binding ElementName=Controller,Path=Model.Persons, Mode=TwoWay}">
+                    <local:PersonListControl.Error>
+                        <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter="8">
+                            <Binding ElementName="Controller" Path="Model.HasData"/>
+                            <Binding ElementName="Controller" Path="Model.ErrNo"/>
+                        </MultiBinding>
+                    </local:PersonListControl.Error>
+                </local:PersonListControl>
 
+                
                 <local:PlaceholderBox 
                     x:Name="txt_time"
                     Grid.Row="3" Grid.Column="2"
                     Placeholder="Tider..."
-                    Text="{Binding ElementName=Controller, Path=Model.Team.Time, Mode=TwoWay}"/>
+                    Text="{Binding ElementName=Controller, Path=Model.Team.Time, Mode=TwoWay}">
+                    <local:PlaceholderBox.Error>
+                        <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter="1">
+                            <Binding ElementName="Controller" Path="Model.HasData"/>
+                            <Binding ElementName="Controller" Path="Model.Team.ErrNo"/>
+                        </MultiBinding>
+                    </local:PlaceholderBox.Error>
+                </local:PlaceholderBox>
 
 
 
