@@ -13,7 +13,6 @@ namespace DM_Skills.Converters
         private string name;
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            Console.WriteLine("CC");
             if (parameter != null)
             {
                 var ss = parameter.ToString().Split(',');
@@ -26,7 +25,7 @@ namespace DM_Skills.Converters
             {
                 return false;
             }
-            if (values.Length != 2)
+            if (values.Length < 2)
             {
 
                 return false;
@@ -53,8 +52,12 @@ namespace DM_Skills.Converters
 
             bool hasData = (bool)values[0];
             bool canUpload = (bool)values[1];
-            Console.WriteLine("{0}:: {1} === {2} :: R: {3}", name, hasData, canUpload, hasData && !canUpload);
-            return hasData && !canUpload;
+            bool failedUpload = false;
+
+            if (values.Length == 3 && (values[2] is bool)) {
+                failedUpload = (bool)values[2];
+            }
+            return failedUpload && hasData && !canUpload;
         }
 
         private bool GetByIndex(object[] values, int index)
@@ -67,9 +70,14 @@ namespace DM_Skills.Converters
 
             bool hasData = (bool)values[0];
             int errno = (int)values[1];
+            bool failedUpload = false;
 
-            Console.WriteLine("{0}:: {1} === {2} :: R: {3} : Bit: {4}, V:{5}", name, hasData, (errno & index) == index, hasData && (errno & index) == index, (errno & index), errno);
-            return hasData && (errno & index) == index;
+            if (values.Length == 3 && (values[2] is bool))
+            {
+                failedUpload = (bool)values[2];
+            }
+
+            return failedUpload && hasData && (errno & index) == index;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

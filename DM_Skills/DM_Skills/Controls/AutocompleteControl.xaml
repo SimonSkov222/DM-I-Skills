@@ -26,7 +26,7 @@
 
 
         <Popup 
-            x:Name="popup"
+            x:Name="popup" StaysOpen="True"
             Placement="Bottom" PlacementTarget="{Binding ElementName=controller}" >
             <Popup.IsOpen>
                 <MultiBinding Converter="{StaticResource AutocompleteConvert}" ConverterParameter="Popup" Mode="OneWay">
@@ -35,43 +35,47 @@
                     <Binding ElementName="controller" Path="IsPopupOpen"/>
                 </MultiBinding>
             </Popup.IsOpen>
-
-            <ScrollViewer 
-                    x:Name="scroll" 
-                    ScrollViewer.VerticalScrollBarVisibility="Auto"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListView x:Name="options" 
+            <Border
+                Background="White"
+                BorderBrush="{Binding ElementName=controller, Path=BorderBrush}"
+                BorderThickness="{Binding ElementName=controller, Path=BorderThickness}">
+                <ScrollViewer 
+                x:Name="scroll" 
+                MaxHeight="200"
+                PreviewMouseWheel="scroll_PreviewMouseWheel"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView x:Name="options" 
                           Margin="0"                          
                           HorizontalAlignment="Left"
                         Padding="0"
                         MinWidth="200"
-                        Background="White"
-                      Width="{Binding ElementName=controller, Path=ActualWidth}" 
-                      BorderBrush="{Binding ElementName=controller, Path=BorderBrush}"
-                      BorderThickness="{Binding ElementName=controller, Path=BorderThickness}">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
+                        Background="Transparent" BorderThickness="0"
+                      Width="{Binding ElementName=controller, Path=ActualWidth}" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
 
-                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="Options_MouseLeftButtonDown" />
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True" >
-                                    <Setter Property="FontWeight" Value="Bold" />
-                                    <Setter Property="Background" Value="Transparent" />
-                                    <Setter Property="Foreground" Value="Black" />
-                                </Trigger>
-                            </Style.Triggers>
-                            <Style.Resources>
-                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
-                                <!-- Background of selected item when focussed -->
-                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightCyan"/>
-                                <!-- Background of selected item when not focussed -->
-                                <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="LightGray" />
-                            </Style.Resources>
-                        </Style>
-                    </ListView.ItemContainerStyle>
+                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="Options_MouseLeftButtonDown" />
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True" >
+                                        <Setter Property="FontWeight" Value="Bold" />
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="Black" />
+                                    </Trigger>
+                                </Style.Triggers>
+                                <Style.Resources>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                    <!-- Background of selected item when focussed -->
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightCyan"/>
+                                    <!-- Background of selected item when not focussed -->
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="LightGray" />
+                                </Style.Resources>
+                            </Style>
+                        </ListView.ItemContainerStyle>
 
-                </ListView>
-            </ScrollViewer>
+                    </ListView>
+                </ScrollViewer>
+            </Border>
         </Popup>
     </Grid>
 </UserControl>

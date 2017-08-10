@@ -34,57 +34,45 @@
 
         <!-- Indsend, nulstil og tid liste -->
                 <Grid Grid.Row="0" Grid.Column="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <!-- Gør at vores indsend knap står i samme højde som TablesControl textboxes-->
-                    <TextBlock Text="#" Foreground="Transparent" Grid.Row="0" FontSize="18" FontWeight="Bold" Margin="0 0 0 5"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button 
+                Margin="0 30 0 0"
+                Grid.Row="1" 
+                Content="Indsend" 
+                Foreground="{StaticResource Color_Foreground_Light_1}" 
+                Background="{StaticResource Color_Background_Button_Blue}" 
+                FontSize="20" 
+                Height="50"
+                FontWeight="Bold" 
+                HorizontalAlignment="Stretch"
+                Style="{StaticResource Button_Style_Default}"
+                Click="Button_Upload_Click"/>
 
+            <Button 
+                Grid.Row="2" 
+                Content="Nulstilling af runde" 
+                Padding="15 0" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Center"
+                Style="{StaticResource Button_Style_Default}"
+                Click="Button_Reset_Click"/>
 
-                    <Button 
-                    Grid.Row="1" 
-                    Content="Indsend" 
-                    Foreground="{StaticResource Color_Foreground_Light_1}" 
-                    Background="{StaticResource Color_Background_Button_Blue}" 
-                    FontSize="20" 
-                    Height="50"
-                    FontWeight="Bold" 
-                    HorizontalAlignment="Stretch"
-                    Style="{StaticResource Button_Style_Default}"
-                    Click="Button_Upload_Click"/>
-
-                    <Button 
-                    Grid.Row="2" 
-                    Content="Nulstilling af runde" 
-                    Padding="15 0" 
-                    VerticalAlignment="Top" 
-                    HorizontalAlignment="Center"
-                    Style="{StaticResource Button_Style_Default}"
-                    Click="Button_Reset_Click"/>
-
-                    <TextBlock  
-                    Grid.Row="3" 
-                    FontSize="20" 
-                    FontWeight="Bold" 
-                    VerticalAlignment="Center" 
-                    HorizontalAlignment="Center"
-                    Foreground="{StaticResource Color_Foreground_Dark_2}"
-                    Margin="0 5">
-                    #<Run Text="{Binding ElementName=controller, Path=Round}"/>
-                    </TextBlock>
                     
-                    
-                    <Controls:DragAndDropTimerControl 
-                        x:Name="LapList" 
-                        CurrentTime="{Binding ElementName=stopwatch, Path=DisplayTime}"
-                        Grid.Row="4" 
-                        Height="250" 
-                        VerticalAlignment="Bottom"/>
-                </Grid>
+                <Controls:DragAndDropTimerControl 
+                    Margin="0 0 0 0"
+                    x:Name="LapList" 
+                    CurrentTime="{Binding ElementName=stopwatch, Path=DisplayTime}"
+                    Grid.Row="4" 
+                    Overtime="{Binding Source={StaticResource Settings}, Path=OverTimeMin}"
+                    VerticalAlignment="Stretch"
+                    />
+        </Grid>
 
                 <!-- StopUr -->
                 <Controls:TimerControl 
@@ -93,6 +81,7 @@
                 Grid.ColumnSpan="3" 
                 Margin="0 25 0 0" 
                 Height="170" 
+                Overtime="{Binding Source={StaticResource Settings}, Path=OverTimeMin}"
                 OnLap="TimerControl_OnLap" 
                 OnReset="TimerControl_OnReset"/>
             </Grid>

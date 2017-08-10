@@ -23,39 +23,6 @@ namespace DM_Skills.Views
     /// </summary>
     public partial class Forside : UserControl, INotifyPropertyChanged
     {
-            /// <summary>
-            /// Vi søger i databasen efter alle skolerne 
-            /// og laver det om til en list af strings
-            /// </summary>
-            public List<string> SchoolAutoComplete
-            {
-                get
-                {
-                    List<string> result = new List<string>();
-                    if (Database.IsConnected)
-                    {
-                        var data = Database.GetRows<int>("Schools", new string[] { "Name" });
-                        if (data != null)
-                            foreach (var item in data)
-                                result.Add((string)item[0]);
-                    }
-                    return result;
-                }
-            }
-
-            private int _Round = 1;
-            public int Round
-            {
-                get { return _Round; }
-                set
-                {
-                    _Round = value;
-                    NotifyPropertyChanged();
-                }
-            }
-
-
-
         public int NumbOfTables
         {
             get { return (int)GetValue(NumbOfTablesProperty); }
@@ -74,8 +41,9 @@ namespace DM_Skills.Views
                     )
                 );
 
+        private Models.SettingsModel Settings;
+
         public static void CallBackProperty(DependencyObject sender, DependencyPropertyChangedEventArgs e) {
-            Console.WriteLine(sender);
             Forside element = sender as Forside;
 
             if (e.Property == NumbOfTablesProperty)
@@ -86,6 +54,10 @@ namespace DM_Skills.Views
         }
 
         private void UpdateTableLayout(int numb) {
+            Console.WriteLine("TableCnt");
+            numb = numb * 20;
+            numb = numb < 0 ? 0 : numb;
+
             //Fjern sidste bord
             while (listOfTables.Children.Count > numb)
             {
@@ -102,6 +74,10 @@ namespace DM_Skills.Views
                 table.SetBinding(Controls.TablesControl.ShowDropLocationProperty, new Binding() {
                     Path = new PropertyPath("IsDraggingItem"),
                     Source = LapList
+                });
+                table.SetBinding(Controls.TablesControl.SchoolsProperty, new Binding() {
+                    Source = Settings,
+                    Path = new PropertyPath("AllSchools")
                 });
 
                 listOfTables.Children.Add(table);
@@ -126,62 +102,13 @@ namespace DM_Skills.Views
         /// vi tilføjet også en load event
         /// </summary>
         public Forside()
-            {
-                InitializeComponent();
-
-
-                Loaded += MainWindow_Loaded;
-            }
-
-            /// <summary>
-            /// Når vinduet er loaded vil vi opdatere hold nummere 
-            /// og skole autocomplete liste for bordene
-            /// </summary>
-            private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-            {
-                UpdateTableTeam();
-                UpdateSchoolList();
-                UpdateTableLayout(NumbOfTables);
-            }
+        {
+            InitializeComponent();
+            Settings = (Models.SettingsModel)FindResource("Settings");
+            Loaded += (o,e) => UpdateTableLayout(NumbOfTables);
+        }
         
-            /// <summary>
-            /// Giver alle bordene det rigtige hold nummer alt efter runde
-            /// (Vi har lavet denne function fordi vores
-            /// data binding ikke ville gøre det for os)
-            /// </summary>
-            private void UpdateTableTeam()
-            {
-                //cTable1.TeamID = (Round - 1) * 10 + 1;
-                //cTable2.TeamID = (Round - 1) * 10 + 2;
-                //cTable3.TeamID = (Round - 1) * 10 + 3;
-                //cTable4.TeamID = (Round - 1) * 10 + 4;
-                //cTable5.TeamID = (Round - 1) * 10 + 5;
-            }
-
-            /// <summary>
-            /// Opdatere autocomplete listen med skolerne for bordene
-            /// (Vi har lavet denne function fordi vores
-            /// data binding ikke ville gøre det for os)
-            /// </summary>
-            private void UpdateSchoolList()
-            {
-                ////Nulstil bordene
-                //cTable1.schoolList.Children.Clear();
-                //cTable2.schoolList.Children.Clear();
-                //cTable3.schoolList.Children.Clear();
-                //cTable4.schoolList.Children.Clear();
-                //cTable5.schoolList.Children.Clear();
-
-                ////Tilføj skolerne
-                //foreach (var item in SchoolAutoComplete)
-                //{
-                //    cTable1.schoolList.Children.Add(item);
-                //    cTable2.schoolList.Children.Add(item);
-                //    cTable3.schoolList.Children.Add(item);
-                //    cTable4.schoolList.Children.Add(item);
-                //    cTable5.schoolList.Children.Add(item);
-                //}
-            }
+       
 
             /// <summary>
             /// StopUr omgang klik.
@@ -214,7 +141,7 @@ namespace DM_Skills.Views
 
             foreach (var item in listOfTables.Children)
             {
-                Console.WriteLine(((Controls.TablesControl)item).Model.School.CanUpload);
+                ((Controls.TablesControl)item).Model.FailedUpload = true;
             }
             return;
 
@@ -265,10 +192,7 @@ namespace DM_Skills.Views
 
                     MessageBox.Show("Er nu uploadet til databasen.");
 
-                    //Gå til næste runde
-                    Round++;
-                    UpdateTableTeam();
-                    UpdateSchoolList();
+                    
                     Button_Reset_Click(null, null);
                 }
                 else

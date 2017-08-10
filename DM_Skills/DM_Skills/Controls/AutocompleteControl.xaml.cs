@@ -261,5 +261,12 @@ namespace DM_Skills.Controls
         {
             IsPopupOpen = false;
         }
+
+        private void scroll_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
+            e.Handled = true;
+        }
     }
 }

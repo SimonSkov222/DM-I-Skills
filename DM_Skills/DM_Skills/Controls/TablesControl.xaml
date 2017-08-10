@@ -38,6 +38,7 @@
                         <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter=", Auto">
                             <Binding ElementName="Controller" Path="Model.HasData"/>
                             <Binding ElementName="Controller" Path="Model.School.CanUpload"/>
+                            <Binding ElementName="Controller" Path="Model.FailedUpload"/>
                         </MultiBinding>
                     </local:AutocompleteControl.Error>
                 </local:AutocompleteControl>
@@ -50,6 +51,7 @@
                         <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter="2">
                             <Binding ElementName="Controller" Path="Model.HasData"/>
                             <Binding ElementName="Controller" Path="Model.Team.ErrNo"/>
+                            <Binding ElementName="Controller" Path="Model.FailedUpload"/>
                         </MultiBinding>
                     </local:PlaceholderBox.Error>
                 </local:PlaceholderBox>
@@ -64,6 +66,7 @@
                         <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter="8">
                             <Binding ElementName="Controller" Path="Model.HasData"/>
                             <Binding ElementName="Controller" Path="Model.ErrNo"/>
+                            <Binding ElementName="Controller" Path="Model.FailedUpload"/>
                         </MultiBinding>
                     </local:PersonListControl.Error>
                 </local:PersonListControl>
@@ -78,6 +81,7 @@
                         <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter="1">
                             <Binding ElementName="Controller" Path="Model.HasData"/>
                             <Binding ElementName="Controller" Path="Model.Team.ErrNo"/>
+                            <Binding ElementName="Controller" Path="Model.FailedUpload"/>
                         </MultiBinding>
                     </local:PlaceholderBox.Error>
                 </local:PlaceholderBox>

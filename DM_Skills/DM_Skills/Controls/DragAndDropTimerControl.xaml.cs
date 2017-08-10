@@ -148,7 +148,8 @@ namespace DM_Skills.Controls
             Nicenis.Windows.DragSource.SetVisualFeedbackOpacity(label, 0.8);
 
 
-            Nicenis.Windows.DragSource.AddGiveFeedbackHandler(label, (o,e) => {
+            Nicenis.Windows.DragSource.AddGiveFeedbackHandler(label, (o, e) =>
+            {
                 Mouse.SetCursor(Cursors.Hand);
                 e.Handled = true;
             });
@@ -156,7 +157,8 @@ namespace DM_Skills.Controls
             Nicenis.Windows.DragSource.AddDraggingHandler(label, (o, e) => { IsDraggingItem = true; });
 
 
-            label.SetBinding(Nicenis.Windows.DragSource.VisualFeedbackOffsetProperty, new Binding() {
+            label.SetBinding(Nicenis.Windows.DragSource.VisualFeedbackOffsetProperty, new Binding()
+            {
                 Path = new PropertyPath(Nicenis.Windows.DragSource.ContactPositionProperty),
                 RelativeSource = RelativeSource.Self
             });

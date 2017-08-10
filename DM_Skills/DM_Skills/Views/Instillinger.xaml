@@ -105,8 +105,9 @@
                     <Slider 
                         x:Name="TableNumb" 
                         Style="{StaticResource Slider_Style_Default}" 
+                        IsMoveToPointEnabled="True"
                         Grid.Row="0" Grid.Column="0" 
-                        Value="{Binding Source={StaticResource Settings}, Path=TableCnt}" 
+                        Value="{Binding Source={StaticResource Settings}, Path=TableCnt, IsAsync=True}" 
                         Minimum="1" Maximum="10" Margin="0 0 5 0"/>
                     
                     <Controls:PlaceholderBox 
@@ -124,12 +125,15 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <Slider x:Name="TimeNumb" 
+                            IsMoveToPointEnabled="True"
                             Style="{StaticResource Slider_Style_Default}"  
                             Grid.Row="0" Grid.Column="0"                             
                             Value="{Binding Source={StaticResource Settings}, Path=OverTimeMin}" 
                             Minimum="0" Maximum="60" Margin="0 0 5 0"/>
-                    <Controls:PlaceholderBox Text="{Binding ElementName=TimeNumb, Path=Value}" Grid.Column="1" FontSize="13"
-                                              TextAlignment="Right" Padding="0"/>
+                    <Controls:PlaceholderBox 
+                        Text="{Binding ElementName=TimeNumb, Path=Value}" 
+                        Grid.Column="1" FontSize="13" 
+                        Tag="Min" Width="53"/>
                     
                 </Grid>
 

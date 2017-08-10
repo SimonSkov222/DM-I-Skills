@@ -23,10 +23,8 @@ namespace DM_Skills.Models
             get { return _Name; }
             set
             {
-                Console.WriteLine("_Name");
                 _Name = value;
                 NotifyPropertyChanged("CanUpload");
-                Console.WriteLine(NotifyPropertyOnAll == null);
                 NotifyPropertyOnAll?.Invoke();
             }
         }
@@ -36,8 +34,6 @@ namespace DM_Skills.Models
         {
             get
             {
-                Console.WriteLine("__CanUpload");
-
                 if (Name == null || Name == "")
                 {
                     ErrNo = ERRNO_NAME_NULL;
@@ -82,6 +78,7 @@ namespace DM_Skills.Models
                     Name = (string)item[2]
                 });
             }
+            db.Disconnect();
 
             return result;
         }

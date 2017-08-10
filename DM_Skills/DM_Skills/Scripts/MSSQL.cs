@@ -28,15 +28,22 @@ namespace DM_Skills.Scripts
 
         public void Connect(string connectionString, string prefix = "")
         {
-            sql_conn = new SqlConnection(connectionString);
-            sql_conn.Open();
+            try
+            {
+                sql_conn = new SqlConnection(connectionString);
+                sql_conn.Open();
 
-            UseDistinct = false;
-            sql_cmd = sql_conn.CreateCommand();
+                UseDistinct = false;
+                sql_cmd = sql_conn.CreateCommand();
 
-            _prefix = prefix;
+                _prefix = prefix;
 
-            _isConnected = true;
+                _isConnected = true;
+            }
+            catch (Exception)
+            {
+                _isConnected = false;
+            }
         }
 
         public void Disconnect()
@@ -136,7 +143,7 @@ namespace DM_Skills.Scripts
                 "INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS u ON c.CONSTRAINT_NAME = u.CONSTRAINT_NAME " +
                 "where u.TABLE_NAME = '{0}' AND c.TABLE_NAME = '{0}' and c.CONSTRAINT_TYPE = 'PRIMARY KEY'", tableWithPrefix));
 
-            if (result.Count > 0)
+            if (result.Count > 0 && result[0].Count > 0)
             {
                 return result[0][0].ToString();
             }
@@ -212,7 +219,7 @@ namespace DM_Skills.Scripts
 
             //Get ID
             var pKey = GetPrimaryKeyName(table);
-            if (pKey != "")
+            if (pKey != null)
             {
 
                 List<string> whrArr = new List<string>();
@@ -254,6 +261,11 @@ namespace DM_Skills.Scripts
 
         public List<List<object>> ExecuteQuery(string cmd)
         {
+            if (!IsConnected)
+            {
+                Console.WriteLine("Error: Not Connected To The Database!");
+                return null;
+            }
 
             UseDistinct = false;
             SqlDataReader sql_reader;

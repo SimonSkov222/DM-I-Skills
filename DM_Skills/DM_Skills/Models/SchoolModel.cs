@@ -80,7 +80,7 @@ namespace DM_Skills.Models
             var db = Scripts.Database.GetDB();
             db.UseDistinct = true;
 
-            var data = db.GetRows("School", new string[] { "ID", "Name" });
+            var data = db.GetRows("Schools", new string[] { "ID", "Name" });
             foreach (var item in data)
             {
                 result.Add(new SchoolModel()
@@ -89,6 +89,7 @@ namespace DM_Skills.Models
                     Name = (string)item[1]
                 });
             }
+            db.Disconnect();
 
             return result;
         }

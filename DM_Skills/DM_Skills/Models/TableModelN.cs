@@ -21,11 +21,20 @@ namespace DM_Skills.Models
         const string ERROR_PERSON_ZERO              = "";
         const string ERROR_PERSONS_HAS_NAME_NULL    = "";
 
+        private bool _FailedUpload = false;
 
         public SchoolModel      School      { get; set; }
         public LocationModel    Location    { get; set; }
         public TeamModel        Team        { get; set; }
         public ObservableCollection<PersonModel> Persons    { get; set; }
+        public bool FailedUpload {
+            get { return _FailedUpload; }
+            set
+            {
+                _FailedUpload = value;
+                NotifyPropertyChanged("FailedUpload");
+            }
+        }
 
         public override int ErrNo
         {
@@ -70,15 +79,14 @@ namespace DM_Skills.Models
             Location    = new LocationModel();
             Team        = new TeamModel();
             Persons     = new ObservableCollection<PersonModel>();
+            FailedUpload = false;
 
             Persons.CollectionChanged += (o, e) => {
-
-                Console.WriteLine("New Item");
+                
                 if (e.NewItems != null)
                 {
                     foreach (var item in e.NewItems)
                     {
-                        Console.WriteLine("-->");
                         ((PersonModel)item).NotifyPropertyOnAll += () =>
                         {
                             NotifyPropertyChanged("ErrNo");
@@ -137,7 +145,6 @@ namespace DM_Skills.Models
         public override bool CanUpload {
             get
             {
-                Console.WriteLine("CanUpload");
                 return ErrNo == 0;
             }
         }
@@ -156,6 +163,8 @@ namespace DM_Skills.Models
                 p.Upload();
             }
 
+
+            FailedUpload = false;
             return true;
         }
 

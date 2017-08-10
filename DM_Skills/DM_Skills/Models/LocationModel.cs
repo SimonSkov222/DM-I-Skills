@@ -64,7 +64,7 @@ namespace DM_Skills.Models
                     Name = (string)item[1]
                 });
             }
-
+            db.Disconnect();
 
             return result;
         }
