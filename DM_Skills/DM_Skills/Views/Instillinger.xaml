@@ -81,7 +81,7 @@
         </Border>
 
         <Border BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5" Grid.Row="2" Grid.ColumnSpan="3" Margin="0 30" Padding="15 10">
-            <Grid >
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -98,11 +98,9 @@
                 <Label Grid.Row="0" Grid.Column="2" Content="Antal borde" Margin="0" Padding="0" FontSize="16" VerticalAlignment="Bottom"/>
                 <Label Grid.Row="0" Grid.Column="4" Content="Over Tid" Margin="0" Padding="0" FontSize="16" VerticalAlignment="Bottom"/>
 
-                <ComboBox Grid.Row="1" Grid.Column="0" >
-                    <ComboBoxItem IsSelected="True">Ballerup</ComboBoxItem>
-                    <ComboBoxItem>Hvidovre</ComboBoxItem>
-                    <ComboBoxItem>Frederiksberg</ComboBoxItem>
-                </ComboBox>
+                <ComboBox Grid.Row="1" Grid.Column="0" 
+                          ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations}"
+                          SelectedItem="{Binding Source={StaticResource Settings}, Path=Location}"/>
 
 
                 <Grid Grid.Column="2" Grid.Row="1" >
@@ -132,8 +130,11 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Slider x:Name="TimeNumb" Style="{StaticResource Slider_Style_Default}"  Grid.Row="0" Grid.Column="0" Value="10" 
-                             Minimum="0" Maximum="60" Margin="0 0 5 0"/>
+                    <Slider x:Name="TimeNumb" 
+                            Style="{StaticResource Slider_Style_Default}"  
+                            Grid.Row="0" Grid.Column="0"                             
+                            Value="{Binding Source={StaticResource Settings}, Path=OverTimeMin}" 
+                            Minimum="0" Maximum="60" Margin="0 0 5 0"/>
                     <Controls:PlaceholderBox Text="{Binding ElementName=TimeNumb, Path=Value}" Grid.Column="1" FontSize="13"
                                               TextAlignment="Right" Padding="0"/>
                     

@@ -68,5 +68,11 @@ namespace DM_Skills.Models
 
             return result;
         }
+
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
