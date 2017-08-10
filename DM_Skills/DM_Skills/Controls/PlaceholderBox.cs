@@ -26,6 +26,20 @@ namespace DM_Skills.Controls
             set { SetValue(ErrorProperty, value); }
         }
 
+
+
+        public Visibility IsTagVisiable
+        {
+            get { return (Visibility)GetValue(IsTagVisiableProperty); }
+            set { SetValue(IsTagVisiableProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsTagVisiable.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsTagVisiableProperty =
+            DependencyProperty.Register("IsTagVisiable", typeof(Visibility), typeof(PlaceholderBox), new PropertyMetadata(Visibility.Collapsed));
+
+
+
         // Using a DependencyProperty as the backing store for Error.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ErrorProperty =
             DependencyProperty.Register("Error", typeof(bool), typeof(PlaceholderBox), new PropertyMetadata(false));

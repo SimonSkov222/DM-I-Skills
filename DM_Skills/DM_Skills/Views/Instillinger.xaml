@@ -20,13 +20,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!--<Grid Grid.Row="1" Grid.Column="0" >
-            <Controls:PlaceholderBox Placeholder="fff" />
-            <TextBox Text="Password"  />
-            <TextBox Text="Ip Adresse"/>
-            <CheckBox Style="{StaticResource CheckBox_Style_Default}"/>
-        </Grid>-->
-
         <Border BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5" Grid.Row="0" Grid.Column="0" 
                 Background="{StaticResource Color_Background_Box}" Padding="15 10">
             <StackPanel >
@@ -43,6 +36,24 @@
                 Background="{StaticResource Color_Background_Box}" Padding="15 10">
             <StackPanel >
 
+                <Button Content="Log In" Style="{StaticResource Button_Style_Default}" 
+                        Foreground="{StaticResource Color_Foreground_Light_1}" 
+                        Background="{StaticResource Color_Background_Button_Blue}" 
+                        FontWeight="Normal" 
+                        HorizontalAlignment="Stretch"
+                        FontSize="16"
+                        Padding="0 4.5"/>
+                
+                
+                <Button Content="Log Af" Style="{StaticResource Button_Style_Default}" 
+                        Foreground="{StaticResource Color_Foreground_Light_1}" 
+                        Background="{StaticResource Color_Background_Button_Blue}" 
+                        FontWeight="Normal" 
+                        HorizontalAlignment="Stretch"
+                        FontSize="16"
+                        Padding="0 4.5"/>
+                
+                
                 <Button Content="Backup" Style="{StaticResource Button_Style_Default}" 
                         Foreground="{StaticResource Color_Foreground_Light_1}" 
                         Background="{StaticResource Color_Background_Button_Blue}" 
@@ -52,25 +63,7 @@
                         Padding="0 4.5"/>
                 
                 
-                <Button Content="Import" Style="{StaticResource Button_Style_Default}" 
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
-                        HorizontalAlignment="Stretch"
-                        FontSize="16"
-                        Padding="0 4.5"/>
-                
-                
-                <Button Content="Export" Style="{StaticResource Button_Style_Default}" 
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
-                        HorizontalAlignment="Stretch"
-                        FontSize="16"
-                        Padding="0 4.5"/>
-                
-                
-                <Button Content="Test Connection" Style="{StaticResource Button_Style_Default}" 
+                <Button Content="Fjern ubrugte skoler" Style="{StaticResource Button_Style_Default}" 
                         Foreground="{StaticResource Color_Foreground_Light_1}" 
                         Background="{StaticResource Color_Background_Button_Blue}" 
                         FontWeight="Normal" 

@@ -40,9 +40,6 @@
         <ScrollViewer Grid.Row="1" Padding="5">
             <StackPanel Visibility="Visible" Width="700" HorizontalAlignment="Center">
 
-                <Button Content="hej" Click="Button_Click_1"></Button>
-
-               
                 <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Opacity="0" Style="{StaticResource Grid_Style_FadeAnimation}">
                     <View:Forside 
                         x:Name="view_forside" 

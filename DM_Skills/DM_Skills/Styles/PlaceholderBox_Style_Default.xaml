@@ -11,6 +11,7 @@
         <Setter Property="PlaceholderFontStyle" Value="Italic"/>
         <Setter Property="PlaceholderFontWeight" Value="Normal"/>
         <Setter Property="ToolTip" Value="{Binding Path=Placeholder, RelativeSource={RelativeSource Self}}"/>
+        
 
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>

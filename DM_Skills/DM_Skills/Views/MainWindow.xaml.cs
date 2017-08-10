@@ -109,37 +109,6 @@ namespace DM_Skills
             //debug_plc.Persons.Add(new Models.PersonModel());
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var print = new Scripts.Print();
-            var models = new System.Collections.ObjectModel.ObservableCollection<Models.TableModelN>();
-
-            for (int i = 0; i < 25; i++)
-            {
-                models.Add( 
-                new Models.TableModelN()
-                {
-                    School = new Models.SchoolModel() {Name = "skole"},
-                    Location = new Models.LocationModel() {Name = "ballerup"},
-                    Persons = new System.Collections.ObjectModel.ObservableCollection<Models.PersonModel>()
-                    {
-                        new Models.PersonModel() { Name = "bo"},
-                        new Models.PersonModel() { Name = "to"},
-                        new Models.PersonModel() { Name = "ho"}
-                    },
-                    Team = new Models.TeamModel()
-                    {
-                        Date = "08/05/2017",
-                        Time = "10:00:00",
-                        Class = "7X"
-                    }
-                });
-            }
-
-            print.CreatePDF(@"C:\Users\kide\Desktop\DMiSkills.pdf", models);
-            
-        }
-
         private void Menu_Projektor_Checked(object sender, RoutedEventArgs e)
         {
             if (Menu_Projektor.IsChecked ?? false)
