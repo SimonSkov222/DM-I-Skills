@@ -106,7 +106,18 @@ namespace DM_Skills
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //debug_plc.Persons.Add(new Models.PersonModel());
+            var key = Scripts.Encrypt.NewKey();
+            var encrypt = Scripts.Encrypt.SimpleEncryptWithPassword("Bob Hansen","Kim456789112");
+            var decrypt = Scripts.Encrypt.SimpleDecryptWithPassword(encrypt, "Kim456789112");
+
+            for (int i = 0; i < key.Length; i++)
+            {
+                Console.Write(key[i]);
+            }
+
+            Console.WriteLine("\n"+encrypt);
+
+            Console.WriteLine(decrypt);
         }
 
         private void Menu_Projektor_Checked(object sender, RoutedEventArgs e)
