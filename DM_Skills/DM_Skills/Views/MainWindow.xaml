@@ -44,7 +44,9 @@
 
                
                 <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Opacity="0" Style="{StaticResource Grid_Style_FadeAnimation}">
-                    <View:Forside x:Name="view_forside" NumbOfTables="9"/>
+                    <View:Forside 
+                        x:Name="view_forside" 
+                        NumbOfTables="{Binding Source={StaticResource Settings}, Path=TableCnt}"/>
                 </Grid>
 
 

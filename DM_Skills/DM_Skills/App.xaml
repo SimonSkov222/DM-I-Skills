@@ -2,14 +2,21 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DM_Skills"
+             xmlns:Models="clr-namespace:DM_Skills.Models"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
+        
         <ResourceDictionary>
+            <Models:SettingsModel x:Key="Settings"/>
+            
             <ResourceDictionary.MergedDictionaries>
+                
+                
                 <ResourceDictionary Source="Includes/ColorsInc.xaml"/>
                 <ResourceDictionary Source="Includes/ConvertersInc.xaml"/>
-                
-                
+
+
+                <ResourceDictionary Source="Templates/ScrollView_Template_PaddingFix.xaml"/>
                 <ResourceDictionary Source="Templates/Autocomplete_Template_Default.xaml"/>
                 <ResourceDictionary Source="Templates/Button_Template_Flat.xaml"/>
                 <ResourceDictionary Source="Templates/Textbox_Template_Default.xaml"/>

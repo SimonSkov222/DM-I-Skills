@@ -111,9 +111,16 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Slider x:FieldModifier="public" x:Name="TableNumb" Style="{StaticResource Slider_Style_Default}"  Grid.Row="0" Grid.Column="0" Value="10" 
-                             Minimum="1" Maximum="10" Margin="0 0 5 0"/>
-                    <Controls:PlaceholderBox Text="{Binding ElementName=TableNumb, Path=Value}" Grid.Column="1" FontSize="13" MinWidth="30"
+                    <Slider 
+                        x:Name="TableNumb" 
+                        Style="{StaticResource Slider_Style_Default}" 
+                        Grid.Row="0" Grid.Column="0" 
+                        Value="{Binding Source={StaticResource Settings}, Path=TableCnt}" 
+                        Minimum="1" Maximum="10" Margin="0 0 5 0"/>
+                    
+                    <Controls:PlaceholderBox 
+                        Text="{Binding ElementName=TableNumb, Path=Value}" 
+                        Grid.Column="1" FontSize="13" Width="30"
                                              TextAlignment="Right"/>
                 </Grid>
 
