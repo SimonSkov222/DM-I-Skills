@@ -11,7 +11,7 @@
 
     <Grid HorizontalAlignment="Center" Margin="0 15">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -19,9 +19,10 @@
             <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-
-                <!-- Borderne -->
-        <ScrollViewer Grid.Row="0" Grid.Column="0" MaxHeight="900">
+        <Label Content="{Binding ElementName=controller,Path=ActualHeight}" Panel.ZIndex="100"/>
+        <Label Content="{Binding ElementName=ddd,Path=ActualHeight}" Panel.ZIndex="100" Margin="0 30 0 0"/>
+        <!-- Borderne -->
+        <ScrollViewer Grid.Row="0" Grid.Column="0"  x:Name="ddd">
             <StackPanel x:Name="listOfTables"/>
         </ScrollViewer>
         <!-- Indsend, nulstil og tid liste -->

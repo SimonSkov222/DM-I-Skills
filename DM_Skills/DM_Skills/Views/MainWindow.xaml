@@ -10,7 +10,7 @@
         xmlns:View="clr-namespace:DM_Skills.Views"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        FontFamily="Calibri"
+        FontFamily="Calibri" x:Name="controller"
         Background="{StaticResource Color_Background_Program}"
         Foreground="{StaticResource Color_Foreground_Program}"
         
@@ -36,11 +36,16 @@
             <RadioButton Grid.Column="2" x:Name="Menu_Indstillinger" Content="Indstillinger" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}"/>
             <ToggleButton  Grid.Column="3" x:Name="Menu_Projektor" Checked="Menu_Projektor_Checked" Unchecked="Menu_Projektor_Checked" Content="Projektor" Style="{StaticResource ToggleButton_Styles_Default}"/>
         </Grid>
-
+        
         <ScrollViewer Grid.Row="1" Padding="5">
-            <Grid Visibility="Visible" Width="700" HorizontalAlignment="Center">
+            <Grid 
+                Visibility="Visible" 
+                Height="{Binding ElementName=controller,Path=ActualHeight}"
+                Width="700" 
+                HorizontalAlignment="Center" >
                 <!--<Button Content="hej" Click="Button_Click"/>-->
-                
+                <Label Content="{Binding ElementName=controller,Path=ActualHeight}" Panel.ZIndex="100" Margin="0 60 0 0"/>
+
                 <Grid 
                     Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" 
                     Style="{StaticResource Grid_Style_FadeAnimation}"
