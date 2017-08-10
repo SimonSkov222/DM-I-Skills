@@ -3,21 +3,23 @@
                     xmlns:Controls="clr-namespace:DM_Skills.Controls">
 
     <ControlTemplate x:Key="PlaceholderBox_Template_Default" TargetType="{x:Type Controls:PlaceholderBox}">
-        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
             <Grid>
                 <TextBlock x:Name="placeholder"
+                    Grid.ColumnSpan="2"
                     Text="{TemplateBinding Placeholder}"
                     FontSize="{TemplateBinding FontSize}"
                     FontStyle="{TemplateBinding PlaceholderFontStyle}"
                     FontWeight="{TemplateBinding PlaceholderFontWeight}"
                     Background="Transparent" 
-                    Padding="{TemplateBinding Padding}"
+                           Padding="0" Margin="0"
                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                     Foreground="{TemplateBinding PlaceholderForeground}"/>
-                
+
                 <ScrollViewer Margin="0" x:Name="PART_ContentHost"
-                              FontSize="{TemplateBinding FontSize}"/>
+                              FontSize="{TemplateBinding FontSize}"  Padding="0"/>
+                
             </Grid>
         </Border>
         <ControlTemplate.Triggers>

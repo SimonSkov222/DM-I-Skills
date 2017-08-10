@@ -134,8 +134,8 @@
                     </Grid.ColumnDefinitions>
                     <Slider x:Name="TimeNumb" Style="{StaticResource Slider_Style_Default}"  Grid.Row="0" Grid.Column="0" Value="10" 
                              Minimum="0" Maximum="60" Margin="0 0 5 0"/>
-                    <Controls:PlaceholderBox Text="{Binding ElementName=TimeNumb, Path=Value}" Grid.Column="1" FontSize="13" MinWidth="30"
-                                             TextAlignment="Right"/>
+                    <Controls:PlaceholderBox Text="{Binding ElementName=TimeNumb, Path=Value}" Grid.Column="1" FontSize="13"
+                                              TextAlignment="Right" Padding="0"/>
                     
                 </Grid>
 
