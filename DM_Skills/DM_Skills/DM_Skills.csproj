@@ -42,8 +42,9 @@
     <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="Nicenis">
-      <HintPath>..\..\..\..\..\Desktop\.NET 4.5\Nicenis.dll</HintPath>
+    <Reference Include="Nicenis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\Nicenis-master\Nicenis\Nicenis\bin\Debug\Nicenis.dll</HintPath>
     </Reference>
     <Reference Include="SQLite_DB_LIB">
       <HintPath>..\SQLite_DB_LIB\bin\Debug\SQLite_DB_LIB.dll</HintPath>

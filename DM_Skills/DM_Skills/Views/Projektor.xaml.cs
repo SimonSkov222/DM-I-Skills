@@ -39,9 +39,7 @@ namespace DM_Skills.Views
             var screen = System.Windows.Forms.Screen.FromHandle(
                 new System.Windows.Interop.WindowInteropHelper(this).Handle);
 
-
-
-            Console.WriteLine("-->{0}", Timer.DisplayTime);
+            
             var nWin = new Projektor(Timer, Parent);
             nWin.Timer = this.Timer;
 
@@ -56,10 +54,6 @@ namespace DM_Skills.Views
 
                 if (screen != null)
                 {
-                    Console.WriteLine(screen.Primary);
-
-                    Console.WriteLine(screen.Bounds);
-                    Console.WriteLine(screen.WorkingArea);
                     var workingArea = screen.Bounds;
                         nWin.Left = workingArea.Left;
                         nWin.Top = workingArea.Top;

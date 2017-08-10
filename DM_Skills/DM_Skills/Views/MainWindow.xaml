@@ -38,35 +38,34 @@
         </Grid>
 
         <ScrollViewer Grid.Row="1" Padding="5">
-            <StackPanel Visibility="Visible" Width="700" HorizontalAlignment="Center">
-                <Button Content="hej" Click="Button_Click"/>
-                <Grid Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" Opacity="0" Style="{StaticResource Grid_Style_FadeAnimation}">
+            <Grid Visibility="Visible" Width="700" HorizontalAlignment="Center">
+                <!--<Button Content="hej" Click="Button_Click"/>-->
+                
+                <Grid 
+                    Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" 
+                    Style="{StaticResource Grid_Style_FadeAnimation}"
+                    Opacity="1">
                     <View:Forside 
                         x:Name="view_forside" 
                         NumbOfTables="{Binding Source={StaticResource Settings}, Path=TableCnt}"/>
                 </Grid>
 
 
-                <Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Opacity="0" Style="{StaticResource Grid_Style_FadeAnimation}">
+                <Grid 
+                    Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" 
+                    Style="{StaticResource Grid_Style_FadeAnimation}"
+                    Opacity="0" >
                     <View:sog_pa_tider/>
                 </Grid>
 
-                <Grid Tag="{Binding ElementName=Menu_Indstillinger, Path=IsChecked}" Opacity="0" Style="{StaticResource Grid_Style_FadeAnimation}">
+                <Grid 
+                    Tag="{Binding ElementName=Menu_Indstillinger, Path=IsChecked}" 
+                    Style="{StaticResource Grid_Style_FadeAnimation}"                    
+                    Opacity="0" >
                     <View:Connection x:Name="settings"/>
                 </Grid>
 
-                <!--<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
-                    <View:sog_pa_tider HorizontalAlignment="Center"/>
-                </Grid>-->
-
-                <!--<Grid Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" Style="{StaticResource Grid_Style_FadeAnimation}">
-					
-					<TextBox Text="Søg på TIDER!!!" FontSize="50"/>
-				</Grid>-->
-
-
-
-            </StackPanel>
+            </Grid>
         </ScrollViewer>
     </Grid>
 </Window>

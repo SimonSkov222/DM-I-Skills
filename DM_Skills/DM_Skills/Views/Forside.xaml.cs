@@ -43,14 +43,14 @@ namespace DM_Skills.Views
 
         private Models.SettingsModel Settings;
 
-        public static void CallBackProperty(DependencyObject sender, DependencyPropertyChangedEventArgs e) {
+        public static void CallBackProperty(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
             Forside element = sender as Forside;
 
             if (e.Property == NumbOfTablesProperty)
             {
                 element.UpdateTableLayout((int)e.NewValue);
             }
-            
         }
 
         private void UpdateTableLayout(int numb) {
@@ -58,11 +58,18 @@ namespace DM_Skills.Views
             numb = numb * 20;
             numb = numb < 0 ? 0 : numb;
 
+            var visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.IsVisible);
+
             //Fjern sidste bord
-            while (listOfTables.Children.Count > numb)
+
+            for (int i = visibleCnt; i > numb; i--)
             {
-                listOfTables.Children.RemoveAt(listOfTables.Children.Count - 1);
+                listOfTables.Children[i].Visibility = Visibility.Collapsed;
             }
+            //while (visibleCnt > numb)
+            //{
+            //    listOfTables.Children.RemoveAt(listOfTables.Children.Count - 1);
+            //}
 
             //Tilføj nye bordre
             while (listOfTables.Children.Count < numb)
@@ -81,6 +88,12 @@ namespace DM_Skills.Views
                 });
 
                 listOfTables.Children.Add(table);
+            }
+
+            visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.IsVisible);
+            for (int i = visibleCnt; i < numb; i++)
+            {
+                listOfTables.Children[i].Visibility = Visibility.Visible;
             }
         }
 
