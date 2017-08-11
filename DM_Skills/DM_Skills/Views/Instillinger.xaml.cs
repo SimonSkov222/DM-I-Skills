@@ -25,11 +25,10 @@ namespace DM_Skills.Views
             InitializeComponent();
             var p = new PasswordBox();
             Console.WriteLine(p.Password.GetType());
-        }
 
-        public void OnPasswordChanged(object sender, RoutedEventArgs e)
-        {
-            Console.WriteLine("Changes");
+            var r = new RichTextBox();
+            
         }
+        
     }
 }

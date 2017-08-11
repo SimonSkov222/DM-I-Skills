@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:DM_Skills.Templates">
-    <ControlTemplate x:Key="Textbox_Template_Default" TargetType="TextBox">
+    <ControlTemplate x:Key="Textbox_Template_Default" TargetType="{x:Type TextBoxBase}">
 
             <!--<Label 
                 Content="{TemplateBinding Tag}" 
