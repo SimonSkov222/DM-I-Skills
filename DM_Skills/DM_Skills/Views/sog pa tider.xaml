@@ -11,70 +11,75 @@
              x:Name="Controller"
              d:DesignHeight="800" d:DesignWidth="800">
 
-    <Grid Grid.Row="0" Margin="6,0,-6,0">
+    <Grid Grid.Row="0" Margin="0" Grid.IsSharedSizeScope="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="3"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <TextBlock Text="Søg efter tider:" Grid.Row="0" Grid.Column="0" Margin="20 30" FontSize="16"/>
 
-        <Controls:PlaceholderBox 
+        <Grid
+            x:Name="search_menu"
+            Loaded="Grid_Loaded" Grid.RowSpan="2" Panel.ZIndex="200" 
+              Background="{StaticResource Color_Background_Program}" 
+              VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="3"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Controls:PlaceholderBox 
             x:Name="txtSchoolName" 
-            Grid.Row="1" Grid.Column="0" Margin="0"
+            Grid.Row="0" Grid.Column="0" Margin="0"
             Placeholder="Skolens navn...."/>
 
-        <Controls:PlaceholderBox 
-            x:Name="txtDeltager" 
-            Grid.Row="1" Grid.Column="2" Margin="0"
-            Placeholder="Deltagers navn...."/>
+            <Controls:PlaceholderBox 
+                x:Name="txtDeltager" 
+                Grid.Row="0" Grid.Column="2" Margin="0"
+                Placeholder="Deltagers navn...."/>
 
+            <DatePicker 
+                Grid.Row="0" Grid.Column="4" Margin="0"
+                Style="{StaticResource DatePicker_Style_Default}" 
+                ToolTip="Dato..."/>
 
-        <DatePicker 
-            Grid.Row="1" Grid.Column="4" Margin="0"
-            Style="{StaticResource DatePicker_Style_Default}" 
-            ToolTip="Dato..."/>
-        
-        <DatePicker 
-            Grid.Row="3" Grid.Column="4" Margin="0"
-            Style="{StaticResource DatePicker_Style_Default}"
-            ToolTip="Dato..."/>
-        
-        
+            <DatePicker 
+                Grid.Row="2" Grid.Column="4" Margin="0"
+                Style="{StaticResource DatePicker_Style_Default}"
+                ToolTip="Dato..."/>
 
+            <ComboBox 
+            Grid.Row="2" Grid.Column="0" Margin="0">
 
-        <ComboBox 
-            Grid.Row="3" Grid.Column="0" Margin="0">
+                <ComboBoxItem IsSelected="True">Nyeste tider</ComboBoxItem>
+                <ComboBoxItem>Hurtigste tider</ComboBoxItem>
+                <ComboBoxItem>Alfabetisk rækkefølge</ComboBoxItem>
 
-            <ComboBoxItem IsSelected="True">Nyeste tider</ComboBoxItem>
-            <ComboBoxItem>Hurtigste tider</ComboBoxItem>
-            <ComboBoxItem>Alfabetisk rækkefølge</ComboBoxItem>
+            </ComboBox>
 
-        </ComboBox>
+            <ComboBox 
+            Grid.Row="2" Grid.Column="2" Margin="0" >
 
-        <ComboBox 
-            Grid.Row="3" Grid.Column="2" Margin="0" >
+                <ComboBoxItem IsSelected="True">Vælg lokation</ComboBoxItem>
+                <ComboBoxItem>Ballerup</ComboBoxItem>
+                <ComboBoxItem>Hvidovre</ComboBoxItem>
 
-            <ComboBoxItem IsSelected="True">Vælg lokation</ComboBoxItem>
-            <ComboBoxItem>Ballerup</ComboBoxItem>
-            <ComboBoxItem>Hvidovre</ComboBoxItem>
+            </ComboBox>
 
-        </ComboBox>
-
-        <Button Grid.Row="5" Grid.Column="4" 
+            <Button Grid.Row="4" Grid.Column="4" 
                 Content="Søg"  x:Name="btnS"
                 Margin="0"
                 Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
@@ -83,7 +88,7 @@
                 Style="{StaticResource Button_Style_Default}"
                 HorizontalAlignment="Stretch" />
 
-        <Button Grid.Row="5" Grid.Column="0" 
+            <Button Grid.Row="4" Grid.Column="0" 
                 Content="Udskriv"  
                 Margin="0"
                 Width="{Binding ElementName=btnS, Path=ActualWidth}"
@@ -91,10 +96,11 @@
                 Foreground="{StaticResource Color_Foreground_Light_1}" 
                 Background="{StaticResource Color_Background_Button_Blue}" 
                 Style="{StaticResource Button_Style_Default}"
-                HorizontalAlignment="Left" />
-
-        <Grid Grid.Row="7" Grid.ColumnSpan="5" Margin="0 0 0 0" HorizontalAlignment="Center" Width="{Binding ElementName=Controller, Path=ActualWidth, Converter={StaticResource ProcentOfValueConvert}, ConverterParameter=95}">
-            <Grid.Background>
+                HorizontalAlignment="Left" Click="Button_Print_Click" />
+            
+            
+            <Grid Grid.Row="6" Grid.ColumnSpan="5" Margin="5 0">
+                <Grid.Background>
                 <RadialGradientBrush>
                     <GradientStop Color="Transparent" Offset="1"/>
                     <GradientStop Color="#407F7F7F" Offset="0.95"/>
@@ -102,12 +108,174 @@
                     <GradientStop Color="#7F7F7F"/>
                 </RadialGradientBrush>
             </Grid.Background>
-        </Grid>
+            </Grid>
 
-        <StackPanel Grid.Row="8" Grid.ColumnSpan="5" >
+
+            <!--Header-->
+            <Border 
+                x:Name="header" Grid.Row="8" Grid.ColumnSpan="5" 
+                BorderBrush="Gray"
+                BorderThickness="0 0 0 2"
+                Height="40" Background="LightGray">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40" SharedSizeGroup="Size_Checkbox"/>
+                        <ColumnDefinition Width="188" SharedSizeGroup="Size_Person"/>
+                        <ColumnDefinition Width="188" SharedSizeGroup="Size_School"/>
+                        <ColumnDefinition Width="115" SharedSizeGroup="Size_Location"/>
+                        <ColumnDefinition Width="100" SharedSizeGroup="Size_Date"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <CheckBox 
+                    Grid.Column="0"
+                    x:Name="printCheckAll" 
+                    Style="{StaticResource CheckBox_Style_Default}" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Unchecked="SearchList_CheckAll" 
+                    Checked="SearchList_CheckAll" />
+
+                    <TextBlock Text="Deltagere"       Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="1" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                    <TextBlock Text="Skole og klasse" Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="2" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                    <TextBlock Text="Lokation"        Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="3" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                    <TextBlock Text="Dato"            Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="4" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                    <TextBlock Text="Tid"             Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="5" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                </Grid>
+            </Border>
+        </Grid>
+            
+
+        <ListView 
+            x:Name="searchList"
+            Padding="0"
+            SelectionMode="Multiple"
+            SelectionChanged="SearchList_SelectionChanged"
+            Margin="{Binding ElementName=search_menu,Path=ActualHeight, Converter={StaticResource ValueToThicknessConvert}, ConverterParameter='0 100 0 0'}"
+            ItemsSource="{Binding ElementName=Controller, Path=Itemsss}" 
+            Visibility="Visible" FontSize="16"
+            AlternationCount="2" BorderThickness="0" 
+            ScrollViewer.VerticalScrollBarVisibility="Disabled"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+            ScrollViewer.CanContentScroll="False"
+            
+            BorderBrush="{StaticResource Color_Border_InputBox}">
+
+            <ListView.Template>
+                <ControlTemplate  TargetType="ListView">
+                    <!--<ItemsPresenter/>-->
+                        <ItemsPresenter/>
+                </ControlTemplate>
+            </ListView.Template>
+            
+            
+            <ListView.ItemContainerStyle>
+                <Style  TargetType="ListViewItem">
+                    <Style.Resources>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Red"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+                        <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="Blue"/>
+                    </Style.Resources>
+
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Foreground" Value="{StaticResource Color_Foreground_Dark_2}"/>
+                    <!--<Setter Property="Template" Value="{StaticResource ListViewItem_Template_RemoveHighlight}"/>-->
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Border Background="{TemplateBinding Background}" Padding="0 5">
+                                    <ContentPresenter/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter Property="Background" Value="{x:Null}" />
+                            <Setter Property="BorderBrush" Value="{x:Null}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{x:Null}" />
+                            <Setter Property="BorderBrush" Value="{x:Null}" />
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="0">
+                            <Setter Property="Background" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                            <Setter Property="Background" Value="LightGray"/>
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="{x:Null}" />
+                        </Trigger>
+                    </Style.Triggers>      
+                </Style>
+            </ListView.ItemContainerStyle>
+            
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition SharedSizeGroup="Size_Checkbox"/>
+                            <ColumnDefinition SharedSizeGroup="Size_Person"/>
+                            <ColumnDefinition SharedSizeGroup="Size_School"/>
+                            <ColumnDefinition SharedSizeGroup="Size_Location"/>
+                            <ColumnDefinition SharedSizeGroup="Size_Date"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <CheckBox 
+                            IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type ListViewItem},AncestorLevel=1}}"
+                            Style="{StaticResource CheckBox_Style_Default}" 
+                            HorizontalAlignment="Center" 
+                            VerticalAlignment="Center"
+                            Margin="0" Content="" Grid.Column="0" />
+
+                        <ListView 
+                                Grid.Column="1"
+                                ItemsSource="{Binding Persons}" 
+                                BorderThickness="0" 
+                                Background="Transparent"
+                                VerticalAlignment="Center"
+                                IsHitTestVisible="False">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="ListViewItem">
+                                                <TextBlock Text="{Binding Name}" />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
+
+
+                        <StackPanel Grid.Column="2"  VerticalAlignment="Center">
+                            <TextBlock Text="{Binding Path=School.Name}"/>
+                            <TextBlock Text="{Binding Path=Team.Class}"/>
+                        </StackPanel>
+
+                        <TextBlock Text="{Binding Path=Location.Name}" Grid.Column="3" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=Team.Date}" Grid.Column="4" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding Path=Team.Time}" Grid.Column="5" VerticalAlignment="Center"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+        
+
+
+        <!--<StackPanel Grid.Row="1" Visibility="Visible">
 
             <Grid Background="LightGray" Margin="0 10 0 0">
-                <!--<Grid Margin="6 5 10 3">
+                --><!--<Grid Margin="6 5 10 3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition x:Name="widthCheckBox"    Width="30"/>
                         <ColumnDefinition x:Name="widthSkole"       Width="3*" />
@@ -126,7 +294,7 @@
                     <TextBlock Text="Dato" Grid.Column="4" FontSize="18" FontWeight="Bold"          Background="Red"  />
                     <TextBlock Text="Tid" Grid.Column="5" FontSize="18" FontWeight="Bold"           Background="Green" />
 
-                </Grid>-->
+                </Grid>--><!--
             </Grid>
             <ListView x:Name="results" Margin="0" Padding="0"
                       SelectionMode="Multiple"
@@ -200,7 +368,6 @@
                         <GridViewColumn>
                             <GridViewColumn.Header>
                                 <CheckBox 
-                                    x:Name="printCheckAll" 
                                     Content="" 
                                     Style="{StaticResource CheckBox_Style_Default}" 
                                     VerticalContentAlignment="Center"
@@ -259,7 +426,7 @@
 
 
 
-                        <!--<GridView.Columns>
+                        --><!--<GridView.Columns>
                             --><!-- CheckBox --><!--
                             <GridViewColumn>
                                 <GridViewColumn.Header>
@@ -350,13 +517,13 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                        </GridView.Columns>-->
+                        </GridView.Columns>--><!--
                     </GridView>
                 </ListView.View>
 
 
 
-                <!--<ListView.Template>
+                --><!--<ListView.Template>
                     <ControlTemplate>
                         <DockPanel LastChildFill="True">
                             <Grid DockPanel.Dock="Top" Height="30">
@@ -545,9 +712,9 @@
                             </Grid>
                         </ContentControl>
                     </ItemContainerTemplate>
-                </ListView.ItemTemplate>-->
+                </ListView.ItemTemplate>--><!--
             </ListView>
-        </StackPanel>
+        </StackPanel>-->
 
         <Grid x:Name="debug_grid" DataContext="{Binding ElementName=Controller, Path=debug_item}" Visibility="Collapsed">
 

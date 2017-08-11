@@ -10,14 +10,14 @@
         xmlns:View="clr-namespace:DM_Skills.Views"
 		xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        FontFamily="Calibri"
+        FontFamily="Calibri" x:Name="controller"
         Background="{StaticResource Color_Background_Program}"
         Foreground="{StaticResource Color_Foreground_Program}"
         
-        Title="MainWindow" Height="800" Width="1200">
+        Title="MainWindow" Height="800" Width="1200" MinHeight="600" MinWidth="800">
 
 
-    <Grid>
+    <Grid x:Name="debug_h">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -37,15 +37,30 @@
             <ToggleButton  Grid.Column="3" x:Name="Menu_Projektor" Checked="Menu_Projektor_Checked" Unchecked="Menu_Projektor_Checked" Content="Projektor" Style="{StaticResource ToggleButton_Styles_Default}"/>
         </Grid>
 
-        
-        <ScrollViewer Grid.Row="1" Padding="5">
-            <Grid Visibility="Visible" Width="700" HorizontalAlignment="Center">
-                <!--<Button Content="hej" Click="Button_Click" Panel.ZIndex="200"/>-->
-                
+        <!--Height="{Binding ElementName=debug_hh, Path=ActualHeight}"-->
+        <ScrollViewer Grid.Row="1" Padding="10"  x:Name="debug_hh">
+            <Grid 
+                Visibility="Visible" 
+                Width="700" 
+                HorizontalAlignment="Center" >
+                <!--<Button Content="hej" Click="Button_Click"/>-->
+                <!--<Label Background="Red" VerticalAlignment="Top" Content="{Binding ElementName=controller,Path=ActualHeight}" Panel.ZIndex="100" Margin="0 60 0 0"/>
+                <Label Background="Green" VerticalAlignment="Top" Content="{Binding ElementName=debug_h,Path=ActualHeight}" Panel.ZIndex="100" Margin="0 90 0 0"/>
+                <Label Background="Blue" VerticalAlignment="Top" Content="{Binding ElementName=debug_hh,Path=ActualHeight}" Panel.ZIndex="100" Margin="0 120 0 0"/>-->
+
                 <Grid 
                     Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" 
                     Style="{StaticResource Grid_Style_FadeAnimation}"
                     Opacity="1">
+
+                    <Grid.Height>
+                        <MultiBinding Converter="{StaticResource MinusDoubleConvert}" ConverterParameter="Height">
+                            <Binding ElementName="debug_hh" Path="ActualHeight"/>
+                            <Binding ElementName="debug_hh" Path="Padding"/>
+                        </MultiBinding>
+                    </Grid.Height>
+
+
                     <View:Forside 
                         x:Name="view_forside" 
                         NumbOfTables="{Binding Source={StaticResource Settings}, Path=TableCnt}"/>
