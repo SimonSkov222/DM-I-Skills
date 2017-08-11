@@ -54,7 +54,6 @@ namespace DM_Skills.Views
         }
 
         private void UpdateTableLayout(int numb) {
-            Console.WriteLine("TableCnt");
             var visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.IsVisible);
 
             //Fjern sidste bord

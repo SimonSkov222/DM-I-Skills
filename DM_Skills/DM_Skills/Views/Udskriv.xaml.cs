@@ -23,5 +23,13 @@ namespace DM_Skills.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+
+            var printd = new PrintDialog();
+            printd.ShowDialog();
+        }
     }
 }
