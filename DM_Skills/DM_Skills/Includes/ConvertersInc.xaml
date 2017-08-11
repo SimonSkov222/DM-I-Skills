@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:Converters="clr-namespace:DM_Skills.Converters"
-                    xmlns:local="clr-namespace:DM_Skills.Includes">
+                    xmlns:Converters="clr-namespace:DM_Skills.Converters">
 
     <Converters:PersonListConverter x:Key="PersonListConvert"/>
     <Converters:ProcentOfValueConverter x:Key="ProcentOfValueConvert"/>
@@ -20,4 +19,6 @@
     <Converters:OvertimeConverter x:Key="OvertimeConvert" Foreground_True="Red" Foreground_False="{StaticResource Color_Foreground_Dark_2}"/>
     <Converters:ProjektorConverter x:Key="ProjektorConvert"/>
     <Converters:ErrorConverter x:Key="ErrorConvert"/>
+    <Converters:MinusDoubleConverter x:Key="MinusDoubleConvert"/>
+    
 </ResourceDictionary> 
