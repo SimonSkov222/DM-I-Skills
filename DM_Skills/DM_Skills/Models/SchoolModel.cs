@@ -17,7 +17,7 @@ namespace DM_Skills.Models
 
         private string _Name;
 
-        public int ID { get; protected set; }
+        public int ID { get; set; }
         public string Name
         {
             get { return _Name; }

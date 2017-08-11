@@ -50,6 +50,8 @@ namespace DM_Skills.Scripts
 
         string BuildGetRowsCMD(string table, string[] columns, string more = "");
 
+        string GetTableName(string name);
+
 
 
 

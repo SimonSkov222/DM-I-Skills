@@ -15,7 +15,7 @@ namespace DM_Skills.Models
 
 
 
-        public int? ID { get; protected set; }
+        public int? ID { get; set; }
 
         private string _Name;
         public string Name

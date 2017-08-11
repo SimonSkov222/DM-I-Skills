@@ -78,7 +78,7 @@
                     Tag="{Binding ElementName=Menu_Indstillinger, Path=IsChecked}" 
                     Style="{StaticResource Grid_Style_FadeAnimation}"                    
                     Opacity="0" >
-                    <View:Connection x:Name="settings"/>
+                    <View:Connection x:Name="view_settings"/>
                 </Grid>
 
             </Grid>

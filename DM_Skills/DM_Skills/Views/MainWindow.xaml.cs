@@ -106,18 +106,25 @@ namespace DM_Skills
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var key = Scripts.Encrypt.NewKey();
-            var encrypt = Scripts.Encrypt.SimpleEncryptWithPassword("Bob Hansen","Kim456789112");
-            var decrypt = Scripts.Encrypt.SimpleDecryptWithPassword(encrypt, "Kim456789112");
+            var settings = (Models.SettingsModel)FindResource("Settings");
+            var data = Models.TableModelN.GetTables("School", "", "la", settings.Location, null, "");
 
-            for (int i = 0; i < key.Length; i++)
+
+            foreach (var item in data)
             {
-                Console.Write(key[i]);
+                Console.WriteLine(item.School.Name);
+                Console.WriteLine(item.Location.Name);
+                Console.WriteLine(item.Team.ID);
+                Console.WriteLine(item.Team.Date);
+                foreach (var i in item.Persons)
+                {
+                    Console.WriteLine(i.TeamID);
+                    Console.WriteLine(i.Name);
+                    Console.WriteLine("################");
+                }
+                Console.WriteLine("##################################");
+
             }
-
-            Console.WriteLine("\n"+encrypt);
-
-            Console.WriteLine(decrypt);
         }
 
         private void Menu_Projektor_Checked(object sender, RoutedEventArgs e)
