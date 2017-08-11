@@ -21,8 +21,6 @@ namespace DM_Skills.Views
     /// </summary>
     public partial class sog_pa_tider : UserControl
     {
-
-
         public Models.TableModelN debug_item
         {
             get { return (Models.TableModelN)GetValue(debug_itemProperty); }
@@ -36,52 +34,33 @@ namespace DM_Skills.Views
 
 
 
-
-        public List<Models.TableModelN> Itemsss
+        public ObservableCollection<Models.TableModelN> ItemSourceSearch
         {
-            get { return (List<Models.TableModelN>)GetValue(ItemsssProperty); }
-            set { SetValue(ItemsssProperty, value); }
+            get { return (ObservableCollection<Models.TableModelN>)GetValue(ItemSourceSearchProperty); }
+            set { SetValue(ItemSourceSearchProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for Itemsss.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ItemsssProperty =
-            DependencyProperty.Register("Itemsss", typeof(List<Models.TableModelN>), typeof(sog_pa_tider), new PropertyMetadata(null));
+        // Using a DependencyProperty as the backing store for ItemSourceSearch.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ItemSourceSearchProperty =
+            DependencyProperty.Register(
+                "ItemSourceSearch", 
+                typeof(ObservableCollection<Models.TableModelN>), 
+                typeof(sog_pa_tider), new PropertyMetadata(null));
 
 
+       
 
 
         private int Print_ = 0;
-
-        public List<Models.TableModelN> Itemss { get; set; }
-        //public Models.TableModelN debug_item { get; set; }
+        
 
         public sog_pa_tider()
         {
             InitializeComponent();
-
-            debug_item = new Models.TableModelN()
+            ItemSourceSearch = new ObservableCollection<Models.TableModelN>();
+            for (int i = 0; i < 100; i++)
             {
-                School = new Models.SchoolModel() { Name = "Skole" },
-                Location = new Models.LocationModel() { Name = "Frederiksberg" },
-                Persons = new ObservableCollection<Models.PersonModel>() {
-                    new Models.PersonModel() { Name = "Person 1"},
-                    new Models.PersonModel() { Name = "Person 2"}
-                },
-                Team = new Models.TeamModel()
-                {
-                    Date = "01-08-2017",
-                    Class = "7A",
-                    Time = "14:00:12",
-                    ID = 1
-                }
-
-            };
-
-
-            Itemsss = new List<Models.TableModelN>();
-            for (int i = 0; i < 20; i++)
-            {
-                Itemsss.Add(new Models.TableModelN()
+                ItemSourceSearch.Add(new Models.TableModelN()
                 {
                     School = new Models.SchoolModel() { Name = "Skole "+(i +1) },
                     Location = new Models.LocationModel() { Name = "Frederiksberg" },
@@ -159,7 +138,7 @@ namespace DM_Skills.Views
         //    //Console.WriteLine("Size! {0} == {1} == {2}", e.NewSize, e.PreviousSize, sender.GetType());
         //}
 
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        private  void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             var scrollviewer = (ScrollViewer)Scripts.Helper.FindAncestor(this, typeof(ScrollViewer));
 
@@ -171,15 +150,24 @@ namespace DM_Skills.Views
             };
         }
 
-        private void Button_Print_Click(object sender, RoutedEventArgs e)
+        private async void Button_Print_Click(object sender, RoutedEventArgs e)
         {
-            var wPrint = new Views.Udskriv();
-            wPrint.Owner = App.Current.MainWindow;
-            wPrint.ShowInTaskbar = false;
-            wPrint.ResizeMode = ResizeMode.NoResize;
-            wPrint.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
-            wPrint.ShowDialog();
+
+            var printd = new PrintDialog();
+            printd.ShowDialog();
+            var print = new Scripts.Print();
+            print.CreatePDF(@"C:\Users\shsk\Desktop\Debug\PDFF.pdf", ItemSourceSearch);
+
+            Console.WriteLine("Done");
+
+            //var wPrint = new Views.Udskriv();
+            //wPrint.Owner = App.Current.MainWindow;
+            //wPrint.ShowInTaskbar = false;
+            //wPrint.ResizeMode = ResizeMode.NoResize;
+            //wPrint.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            //wPrint.ShowDialog();
         }
     }
 }

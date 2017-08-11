@@ -9,6 +9,37 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>  
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel  Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <ComboBox x:Name="SelectPrinter" Grid.Column="0"/>
+
+                <Button 
+                    Content="Udskriv" Grid.Column="1"
+                    HorizontalAlignment="Right" Margin="5 0 0 0" Padding="10 0"
+                    Height="{Binding ElementName=SelectPrinter,Path=ActualHeight}"
+                    Style="{StaticResource Button_Style_Default}" 
+                    Background="{StaticResource Color_Background_Button_Blue}"
+                    Foreground="{StaticResource Color_Foreground_Light_1}" Click="Button_Click"/>
+            </Grid>
+        </StackPanel>
+        <Button 
+            Content="Udskriv" Grid.Row="1" Grid.ColumnSpan="2"
+            HorizontalAlignment="Right"
+            Style="{StaticResource Button_Style_Default}" 
+            Background="{StaticResource Color_Background_Button_Blue}"
+            Foreground="{StaticResource Color_Foreground_Light_1}"/>
     </Grid>
 </Window>
