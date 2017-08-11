@@ -37,9 +37,10 @@
             <ToggleButton  Grid.Column="3" x:Name="Menu_Projektor" Checked="Menu_Projektor_Checked" Unchecked="Menu_Projektor_Checked" Content="Projektor" Style="{StaticResource ToggleButton_Styles_Default}"/>
         </Grid>
 
+        
         <ScrollViewer Grid.Row="1" Padding="5">
             <Grid Visibility="Visible" Width="700" HorizontalAlignment="Center">
-                <!--<Button Content="hej" Click="Button_Click"/>-->
+                <!--<Button Content="hej" Click="Button_Click" Panel.ZIndex="200"/>-->
                 
                 <Grid 
                     Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" 
@@ -62,7 +63,7 @@
                     Tag="{Binding ElementName=Menu_Indstillinger, Path=IsChecked}" 
                     Style="{StaticResource Grid_Style_FadeAnimation}"                    
                     Opacity="0" >
-                    <View:Connection x:Name="settings"/>
+                    <View:Connection x:Name="view_settings"/>
                 </Grid>
 
             </Grid>

@@ -342,6 +342,11 @@ namespace DM_Skills.Scripts
             string command = string.Format("CREATE TABLE [{0}]\n(\n {1}\n);", tableWithPrefix, columnPart);
             ExecuteQuery(command);
         }
-        
+
+        public string GetTableName(string name)
+        {
+            return Prefix + name;
+
+        }
     }
 }

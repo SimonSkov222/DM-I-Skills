@@ -12,7 +12,7 @@ namespace DM_Skills.Models
 
         public const string ERROR_NAME_NULL = "";
 
-        public int ID { get; protected set; }
+        public int ID { get; set; }
         public string Name { get; set; }
 
         public override bool CanUpload
