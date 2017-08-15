@@ -39,12 +39,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GodSharp.Socket, Version=1.0.6310.2923, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GodSharp.Socket.1.0.0\lib\net35\GodSharp.Socket.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Nicenis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Desktop\Nicenis-master\Nicenis\Nicenis\bin\Debug\Nicenis.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleTCP, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleTCP.1.0.15\lib\net45\SimpleTCP.dll</HintPath>
     </Reference>
     <Reference Include="SQLite_DB_LIB">
       <HintPath>..\SQLite_DB_LIB\bin\Debug\SQLite_DB_LIB.dll</HintPath>
@@ -96,15 +102,20 @@
     <Compile Include="Converters\ValueToValueConverter.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SettingsModel.cs" />
+    <Compile Include="Scripts\Client.cs" />
     <Compile Include="Scripts\Database.cs" />
     <Compile Include="Scripts\Encrypt.cs" />
+    <Compile Include="Scripts\EnumItemsSource.cs" />
     <Compile Include="Scripts\Helper.cs" />
     <Compile Include="Scripts\IColumn.cs" />
     <Compile Include="Scripts\IDatabase.cs" />
     <Compile Include="Scripts\MSColumns.cs" />
     <Compile Include="Scripts\MSSQL.cs" />
+    <Compile Include="Scripts\Order.cs" />
+    <Compile Include="Scripts\Packet.cs" />
     <Compile Include="Scripts\Print.cs" />
     <Compile Include="Scripts\ResourceDictionaryEvents.cs" />
+    <Compile Include="Scripts\Server.cs" />
     <Compile Include="Views\Instillinger.xaml.cs">
       <DependentUpon>Instillinger.xaml</DependentUpon>
     </Compile>

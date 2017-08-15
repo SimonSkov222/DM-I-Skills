@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DM_Skills.Models
 {
+    [Serializable]
     public abstract class ModelSettings : INotifyPropertyChanged
     {
         public Action NotifyPropertyOnAll;

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace DM_Skills.Models
 {
+    [Serializable]
     public class TableModelN : ModelSettings
     {
         const int ERRNO_SCHOOL_NAME_NULL        = 1;

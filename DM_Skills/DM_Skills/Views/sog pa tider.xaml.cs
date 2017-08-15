@@ -48,7 +48,15 @@ namespace DM_Skills.Views
                 typeof(sog_pa_tider), new PropertyMetadata(null));
 
 
-       
+        public ObservableCollection<Models.LocationModel> Locations {
+            get
+            {
+                var result = Models.LocationModel.GetAll();
+                result.Insert(0, new Models.LocationModel() { Name = "Vælg lokation" });
+
+                return result;
+            }
+        }
 
 
         private int Print_ = 0;
@@ -152,12 +160,28 @@ namespace DM_Skills.Views
 
         private async void Button_Print_Click(object sender, RoutedEventArgs e)
         {
+            var items = ItemSourceSearch;
 
+            Console.WriteLine("Start");
+            var createPDF = Task.Run(() => {
+                var print = new Scripts.Print();
+                print.CreatePDF(@"C:\Users\shsk\Desktop\Debug\PDFF.pdf", items);
+                Console.WriteLine("Done1");
+            });
 
+            Console.WriteLine("Middle");
             var printd = new PrintDialog();
-            printd.ShowDialog();
-            var print = new Scripts.Print();
-            print.CreatePDF(@"C:\Users\shsk\Desktop\Debug\PDFF.pdf", ItemSourceSearch);
+            var result = printd.ShowDialog();
+
+            if(result ?? false)
+            {
+                //FlowDocument
+               // printd.PrintDocument()
+                printd.PrintVisual(searchList, "RR");
+                //printd.do
+                Console.WriteLine("Print nu");
+            }
+
 
             Console.WriteLine("Done");
 
@@ -168,6 +192,19 @@ namespace DM_Skills.Views
             //wPrint.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             //wPrint.ShowDialog();
+        }
+
+        private void Button_Search_Click(object sender, RoutedEventArgs e)
+        {
+
+            var school = txtSchoolName.Text;
+            var person = txtDeltager.Text;
+            var from = dtFrom.SelectedDate == null ? "" : dtFrom.SelectedDate.Value.ToShortDateString();
+            var to = dtTo.SelectedDate == null ? "" : dtTo.SelectedDate.Value.ToShortDateString();
+            var location = cbLocation.SelectedIndex == 0 ? null : cbLocation.SelectedItem as Models.LocationModel;
+
+            var items = Models.TableModelN.GetTables(null, school, person, location, from, to);
+            searchList.ItemsSource = items;
         }
     }
 }
