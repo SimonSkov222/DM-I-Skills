@@ -6,10 +6,23 @@ using System.Threading.Tasks;
 
 namespace DM_Skills.Scripts
 {
+
+
+    public enum ColumnTypes {
+        Int,
+        String
+    }
     interface IColumn
     {
-        string GetColumn();
+        string DefaultValue { get; set; }
+        string ForeignKeyReferences { get; set; }
+        bool IsAutoIncrement { get; set; }
+        bool IsNotNull { get; set; }
+        bool IsPrimaryKey { get; set; }
+        bool IsUniqueKey { get; set; }
 
-        string GetForeignKey();
+        ColumnTypes Type { get; set; }
+        string Name { get; set; }
+
     }
 }

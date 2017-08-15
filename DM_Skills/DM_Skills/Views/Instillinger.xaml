@@ -142,7 +142,7 @@
 
             </Grid>
         </Border>
-        <RichTextBox Grid.Row="3" Height="150" Style="{StaticResource RichTextBox_Style_Default}">
+        <RichTextBox ToolTip="Indtast Skoler" Grid.Row="3" Height="150" Style="{StaticResource RichTextBox_Style_Default}">
 
         </RichTextBox>
 

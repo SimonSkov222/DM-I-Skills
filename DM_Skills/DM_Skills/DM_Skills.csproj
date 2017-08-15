@@ -96,15 +96,17 @@
     <Compile Include="Converters\ValueToValueConverter.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\SettingsModel.cs" />
+    <Compile Include="Scripts\Column.cs" />
     <Compile Include="Scripts\Database.cs" />
     <Compile Include="Scripts\Encrypt.cs" />
     <Compile Include="Scripts\Helper.cs" />
     <Compile Include="Scripts\IColumn.cs" />
     <Compile Include="Scripts\IDatabase.cs" />
-    <Compile Include="Scripts\MSColumns.cs" />
     <Compile Include="Scripts\MSSQL.cs" />
     <Compile Include="Scripts\Print.cs" />
     <Compile Include="Scripts\ResourceDictionaryEvents.cs" />
+    <Compile Include="Scripts\SQLite.cs" />
+    <Compile Include="Scripts\TextBoxFunctioner.cs" />
     <Compile Include="Views\Instillinger.xaml.cs">
       <DependentUpon>Instillinger.xaml</DependentUpon>
     </Compile>

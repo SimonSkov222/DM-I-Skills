@@ -86,7 +86,7 @@
                 Foreground="{StaticResource Color_Foreground_Light_1}" 
                 Background="{StaticResource Color_Background_Button_Blue}" 
                 Style="{StaticResource Button_Style_Default}"
-                HorizontalAlignment="Stretch" />
+                HorizontalAlignment="Stretch" Click="btnS_Click" />
 
             <Button Grid.Row="4" Grid.Column="0" 
                 Content="Udskriv"  
