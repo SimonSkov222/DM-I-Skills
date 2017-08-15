@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DM_Skills.Scripts
 {
     class Database
     {
+        private static Models.SettingsModel Settings;
+
 
         private static IDatabase db;
         private static string Host = "192.168.4.221";
@@ -17,6 +20,11 @@ namespace DM_Skills.Scripts
 
         public static IDatabase GetDB()
         {
+            if (Settings == null)
+            {
+                Settings = Application.Current.FindResource("Settings") as Models.SettingsModel;
+            }
+
             if (db == null)
             {
                 db = new MSSQL();

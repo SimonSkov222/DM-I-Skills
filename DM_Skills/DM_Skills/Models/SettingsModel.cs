@@ -8,6 +8,11 @@ namespace DM_Skills.Models
 {
     class SettingsModel
     {
+        public bool IsServer { get; set; }
+        public bool IsClient { get; set; }
+
+
+
         private int _TableCnt = 3;
         private int _OverTimeMin = 3;
 
