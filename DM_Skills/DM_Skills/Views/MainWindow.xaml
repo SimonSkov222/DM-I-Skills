@@ -39,8 +39,15 @@
 
         <!--Height="{Binding ElementName=debug_hh, Path=ActualHeight}"-->
         <ScrollViewer Grid.Row="1" Padding="10"  x:Name="debug_hh">
-            <Grid 
-                Visibility="Visible" 
+            <Grid>
+                <RichTextBox x:Name="testPrint" Visibility="Collapsed"/>
+                <StackPanel>
+                    <Button Content="Server" Click="Button_Click_1"/>
+                    <Button Content="Client" Click="Button_Click_2"/>
+                    <Button Content="Skoler" Click="Button_Click_3" />
+                </StackPanel>
+                <Grid 
+                Visibility="Collapsed" 
                 Width="700" 
                 HorizontalAlignment="Center" >
                 <!--<Button Content="hej" Click="Button_Click"/>-->
@@ -81,6 +88,7 @@
                     <View:Connection x:Name="view_settings"/>
                 </Grid>
 
+            </Grid>
             </Grid>
         </ScrollViewer>
     </Grid>

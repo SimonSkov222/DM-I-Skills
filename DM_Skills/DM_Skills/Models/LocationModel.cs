@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DM_Skills.Models
 {
+    [Serializable]
     public class LocationModel : ModelSettings
     {
         const int ERRNO_NAME_NULL = 1;

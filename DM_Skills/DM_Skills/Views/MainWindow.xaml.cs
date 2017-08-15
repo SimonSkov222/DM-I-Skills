@@ -6,6 +6,7 @@ using System.Windows.Media;
 using SQLite_DB_LIB;                    //Database
 using System.ComponentModel;            //INotifyPropertyChanged
 using System.Runtime.CompilerServices;  //CallerMemberName for PropertyChanged
+using System.Windows.Documents;
 
 namespace DM_Skills
 {
@@ -64,12 +65,6 @@ namespace DM_Skills
 
             Loaded += (o, e) => { Menu_Forside.IsChecked = false; Menu_Forside.IsChecked = true; };
 
-            Loaded += (o, e) => {
-                //projek = new Views.Projektor(view_forside.stopwatch, this);
-                //projek.Closed += (oo, ee) => { Menu_Projektor.IsChecked = false; };
-            };
-
-            //};
         }
 
         
@@ -160,6 +155,28 @@ namespace DM_Skills
             {
                 projek.Close();
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var server = new Scripts.Server();
+            server.Connect(7788);
+        }
+        Scripts.Client Client;
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Client = new Scripts.Client();
+            Client.Connect("127.0.0.1", 7788);
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Client.Send(Scripts.PacketType.GetSchools, (o) =>
+            {
+                Console.WriteLine("Got Reply");
+                Console.WriteLine(o.GetType());
+            });
+            
         }
     }
 }

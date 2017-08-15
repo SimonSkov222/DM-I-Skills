@@ -3,13 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DM_Skills.Views"
+             xmlns:Scripts="clr-namespace:DM_Skills.Scripts"
              xmlns:Controls="clr-namespace:DM_Skills.Controls"
-             
              xmlns:Models="clr-namespace:DM_Skills.Models"
              mc:Ignorable="d" 
              x:Name="Controller"
              d:DesignHeight="800" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Scripts:EnumItemsSource
+            x:Key="ExampleEnumItemsSource"
+            Type="{x:Type Scripts:Order}"/>
+    </UserControl.Resources>
 
     <Grid Grid.Row="0" Margin="0" Grid.IsSharedSizeScope="True">
         <Grid.RowDefinitions>
@@ -52,30 +56,37 @@
                 Placeholder="Deltagers navn...."/>
 
             <DatePicker 
+                x:Name="dtFrom"
                 Grid.Row="0" Grid.Column="4" Margin="0"
                 Style="{StaticResource DatePicker_Style_Default}" 
                 ToolTip="Dato..."/>
 
             <DatePicker 
+                x:Name="dtTo"
                 Grid.Row="2" Grid.Column="4" Margin="0"
                 Style="{StaticResource DatePicker_Style_Default}"
                 ToolTip="Dato..."/>
 
             <ComboBox 
-            Grid.Row="2" Grid.Column="0" Margin="0">
+            Grid.Row="2" Grid.Column="0" Margin="0"
+                ItemsSource="{StaticResource ExampleEnumItemsSource}"
+                SelectedValue="{Binding ExampleProperty, Converter={StaticResource ExampleEnumItemsSource}}"
+                >
 
-                <ComboBoxItem IsSelected="True">Nyeste tider</ComboBoxItem>
+                <!--<ComboBoxItem IsSelected="True">Nyeste tider</ComboBoxItem>
                 <ComboBoxItem>Hurtigste tider</ComboBoxItem>
-                <ComboBoxItem>Alfabetisk rækkefølge</ComboBoxItem>
+                <ComboBoxItem>Alfabetisk rækkefølge</ComboBoxItem>-->
 
             </ComboBox>
 
             <ComboBox 
-            Grid.Row="2" Grid.Column="2" Margin="0" >
+                x:Name="cbLocation" SelectedIndex="0"
+                ItemsSource="{Binding ElementName=Controller, Path=Locations}"
+                Grid.Row="2" Grid.Column="2" Margin="0" >
 
-                <ComboBoxItem IsSelected="True">Vælg lokation</ComboBoxItem>
+                <!--<ComboBoxItem IsSelected="True">Vælg lokation</ComboBoxItem>
                 <ComboBoxItem>Ballerup</ComboBoxItem>
-                <ComboBoxItem>Hvidovre</ComboBoxItem>
+                <ComboBoxItem>Hvidovre</ComboBoxItem>-->
 
             </ComboBox>
 
@@ -86,7 +97,7 @@
                 Foreground="{StaticResource Color_Foreground_Light_1}" 
                 Background="{StaticResource Color_Background_Button_Blue}" 
                 Style="{StaticResource Button_Style_Default}"
-                HorizontalAlignment="Stretch" Click="btnS_Click" />
+                HorizontalAlignment="Stretch" Click="Button_Search_Click" />
 
             <Button Grid.Row="4" Grid.Column="0" 
                 Content="Udskriv"  
@@ -96,7 +107,7 @@
                 Foreground="{StaticResource Color_Foreground_Light_1}" 
                 Background="{StaticResource Color_Background_Button_Blue}" 
                 Style="{StaticResource Button_Style_Default}"
-                HorizontalAlignment="Left" Click="Button_Print_Click" />
+                HorizontalAlignment="Left" Click="Button_Print_Click" VerticalAlignment="Stretch" />
             
             
             <Grid Grid.Row="6" Grid.ColumnSpan="5" Margin="5 0">
