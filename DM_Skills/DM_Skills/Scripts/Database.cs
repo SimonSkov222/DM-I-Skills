@@ -29,15 +29,15 @@ namespace DM_Skills.Scripts
 
             if (localDB == null)
             {
-                localDB = new SQLite();
+                localDB = new SQLite(true);
             }
 
             if (!localDB.IsConnected)
             {
                 string connString = string.Format("Data Source={0};Version=3;", Models.SettingsModel.FileNameLocalDB);
-                db.Connect(connString, Models.SettingsModel.PrefixDB);
-
+                localDB.Connect(connString, Models.SettingsModel.PrefixDB);
             }
+            
 
             return localDB;
         }
@@ -51,7 +51,7 @@ namespace DM_Skills.Scripts
 
             if (db == null)
             {
-                db = new SQLite(true);
+                db = new SQLite();
             }
 
             if (!db.IsConnected) {
@@ -60,10 +60,12 @@ namespace DM_Skills.Scripts
                 db.Connect(connString, Models.SettingsModel.PrefixDB);
             }
 
+
             return db;
         }
 
         public static void CreateLocalDatabase() {
+
             var myDB = GetLocalDB();
             if (!myDB.Exist("Settings"))
             {
@@ -71,6 +73,7 @@ namespace DM_Skills.Scripts
                     new Column() { Name = "Name", Type = ColumnTypes.String, IsPrimaryKey=true},
                     new Column() { Name = "Value", Type = ColumnTypes.String, IsNotNull=true }
                 );
+                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "LocationDB", Models.SettingsModel.FileNameLocalDB });
             }
             myDB.Disconnect();
         }

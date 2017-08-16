@@ -22,8 +22,10 @@ namespace DM_Skills.Views
     /// </summary>
     public partial class Connection : UserControl
     {
+        Models.SettingsModel Settings;
         public Connection()
         {
+            Settings = (Models.SettingsModel)FindResource("Settings");
             InitializeComponent();
             txtIP.Text = ServerIP;
             var p = new PasswordBox();
@@ -65,36 +67,111 @@ namespace DM_Skills.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int id = Grid.GetColumn(sender as Button);
+            
+            //OpenFileDialog dlgOpen = new OpenFileDialog();
+            //SaveFileDialog dlgSave = new SaveFileDialog();
 
-            var dlg = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
-            dlg.IsFolderPicker = true;
-            dlg.ShowDialog();
+            //dlgOpen.DefaultExt = ".db";
+            //dlgOpen.Filter = "Text documents (.db)|*.db";
 
-            OpenFileDialog dlgOpen = new OpenFileDialog();
-            SaveFileDialog dlgSave = new SaveFileDialog();
+            //bool? openResult = dlgOpen.ShowDialog();
+            //bool? saveResult = dlgSave.ShowDialog();
 
-            dlgOpen.DefaultExt = ".db";
-            dlgOpen.Filter = "Text documents (.db)|*.db";
 
-            bool? openResult = dlgOpen.ShowDialog();
-            bool? saveResult = dlgSave.ShowDialog();
+            //if (openResult == true)
+            //{
+            //    txtDB.Text = dlgOpen.FileName;
+            //    filename = dlgOpen.FileName;
+            //}
 
-            string filename = "";
 
-            if (openResult == true)
+            FileDialog dlg;
+
+            if (id == 0)
             {
-                txtDB.Text = dlgOpen.FileName;
-                filename = dlgOpen.FileName;
+                dlg = new OpenFileDialog();
             }
-            if (saveResult == true)
+
+            else
             {
-                File.Create(filename);
+                dlg = new SaveFileDialog();
+            }
+
+            dlg.DefaultExt = ".sqlite";
+            dlg.Filter = "SQLite (.sqlite)|*.sqlite";
+
+
+            if (dlg.ShowDialog() ?? false)
+            {
+                string filename = dlg.FileName;
+                var myLocalDB = Scripts.Database.GetLocalDB();
+
+                myLocalDB.Update("Settings", "Value", filename, (object)"LocationDB");
+                myLocalDB.Disconnect();
+
+                MessageBox.Show(filename);
             }
 
 
 
 
 
+        }
+
+        private void Button_Start_Click(object sender, RoutedEventArgs e)
+        {
+            if (Settings.IsClient || Settings.IsServer)
+            {
+                Console.WriteLine("TODO: Indstillinger.Button_Start_Click");
+                return;
+            }
+
+            int port = 0;
+
+            if (!int.TryParse(txtPort.Text,out port))
+            {
+                Console.WriteLine("TODO: Indstillinger.Button_Start_Click");
+                return;
+            }
+
+            Settings.Server = new Scripts.Server();
+            Settings.Server.Start(port);
+            Settings.IsServer = true;
+        }
+
+        private void Button_Stop_Click(object sender, RoutedEventArgs e)
+        {
+            if (Settings.IsServer)
+            {
+                Settings.Server.Stop();
+                Settings.IsServer = false;
+            }
+        }
+
+        private void Button_Tilslut_Click(object sender, RoutedEventArgs e)
+        {
+            int port = 0;
+            if (!int.TryParse(txtPort.Text, out port))
+            {
+                Console.WriteLine("TODO: Indstillinger.Button_Start_Click");
+                return;
+            }
+
+            if (!Settings.IsClient)
+            {
+                Settings.Client = new Scripts.Client();
+                Settings.Client.Connect(txtIP.Text, int.Parse(txtPort.Text));
+                Settings.IsClient = true;
+            }
+        }
+
+        private void Button_Afbryd_Click(object sender, RoutedEventArgs e)
+        {
+            if (Settings.IsClient)
+            {
+                Settings.Client.Disconnect();
+                Settings.IsClient = false;
+            }
         }
     }
 }

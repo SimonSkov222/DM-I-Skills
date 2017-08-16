@@ -27,9 +27,8 @@ namespace DM_Skills
         public MainWindow()
         {
             //Scripts.Database.CreateDatabase();
+            Scripts.Database.CreateLocalDatabase();
             InitializeComponent();
-            console.Content += "\n";
-            Models.SettingsModel.lab = console;
 
 
             //Random r = new Random();
@@ -111,7 +110,7 @@ namespace DM_Skills
             var settings = FindResource("Settings") as Models.SettingsModel;
             settings.IsClient = true;
             settings.Client = new Scripts.Client();
-            settings.Client.Connect(txtIP.Text, 7788);
+            //settings.Client.Connect(txtIP.Text, 7788);
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)

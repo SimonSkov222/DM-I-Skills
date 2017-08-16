@@ -18,9 +18,9 @@ namespace DM_Skills.Models
         public Scripts.Server Server;
 
 
-        public static string FileNameLocalDB = System.IO.Directory.GetCurrentDirectory() + @"\DB94.db";
-        public static string FileNameDB = System.IO.Directory.GetCurrentDirectory() + @"\DB94.db";
-        public static string PrefixDB = "";
+        public static string FileNameLocalDB = System.IO.Directory.GetCurrentDirectory() + @"\DB942.sqlite";
+        public static string FileNameDB = System.IO.Directory.GetCurrentDirectory() + @"\DB94.sqlite";
+        public static string PrefixDB = "DM_Test5_";
 
         private int _TableCnt = 3;
         private int _OverTimeMin = 3;

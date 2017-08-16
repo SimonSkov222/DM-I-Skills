@@ -9,6 +9,8 @@ namespace DM_Skills.Scripts
     interface IDatabase
     {
         bool IsConnected { get; }
+        string LastQuery { get; }
+        
 
         bool UseDistinct { get; set; }
 
@@ -55,6 +57,15 @@ namespace DM_Skills.Scripts
         string GetColumn(IColumn col);
 
         string GetForeignKey(IColumn col);
+
+        void Update(string table, string column, object value, string format = "", params object[] arg);
+
+        void Update(string table, string[] columns, object[] values, string format = "", params object[] arg);
+
+        void Update(string table, string[] columns, object[] values, object pValue);
+
+        void Update(string table, string column, object value, object pValue);
+
 
 
 
