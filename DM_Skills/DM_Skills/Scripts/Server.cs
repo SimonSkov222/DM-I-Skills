@@ -79,7 +79,7 @@ namespace DM_Skills.Scripts
             e.Reply(Helper.ObjectToByteArray(reply));
         }
 
-        public void Disconnect()
+        public void Stop()
         {
            // server.Close();
         }

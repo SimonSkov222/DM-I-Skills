@@ -115,34 +115,36 @@
                   Background="{StaticResource Color_Background_Box}">
                 <StackPanel Margin="15 10">
 
-                    <Button Content="Log Ind" Style="{StaticResource Button_Style_Default}" 
+                    <Button Content="Tilslut" Style="{StaticResource Button_Style_Default}" 
                         Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
                         Foreground="{StaticResource Color_Foreground_Light_1}" 
                         Background="{StaticResource Color_Background_Button_Blue}" 
                         FontWeight="Normal" 
                         HorizontalAlignment="Stretch"
                         FontSize="16"
-                        Padding="0 4.5"/>
+                        Padding="0 4.5"
+                         Click="Button_Tilslut_Click"/>
 
 
-                    <Button Content="Log Af" Style="{StaticResource Button_Style_Default}" 
+                    <Button Content="Afbryd" Style="{StaticResource Button_Style_Default}" 
                         Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
                         Foreground="{StaticResource Color_Foreground_Light_1}" 
                         Background="{StaticResource Color_Background_Button_Blue}" 
                         FontWeight="Normal" 
                         HorizontalAlignment="Stretch"
                         FontSize="16"
-                        Padding="0 4.5"/>
+                        Padding="0 4.5"
+                        Click="Button_Afbryd_Click"/>
                     
 
-                    <Button Content="Connect" Style="{StaticResource Button_Style_Default}" 
+                    <Button Content="Start" Style="{StaticResource Button_Style_Default}" 
                         Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
                         Foreground="{StaticResource Color_Foreground_Light_1}" 
                         Background="{StaticResource Color_Background_Button_Blue}" 
                         FontWeight="Normal" 
                         HorizontalAlignment="Stretch"
                         FontSize="16"
-                        Padding="0 4.5"/>
+                        Padding="0 4.5" Click="Button_Start_Click"/>
                     
 
                     <Button Content="Disconnect" Style="{StaticResource Button_Style_Default}" 
@@ -152,7 +154,8 @@
                         FontWeight="Normal" 
                         HorizontalAlignment="Stretch"
                         FontSize="16"
-                        Padding="0 4.5"/>
+                        Padding="0 4.5"
+                            Click="Button_Stop_Click"/>
 
 
                     <Button Content="Backup" Style="{StaticResource Button_Style_Default}" 

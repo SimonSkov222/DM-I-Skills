@@ -382,5 +382,25 @@ namespace DM_Skills.Scripts
             //if (foreignKeyReferences == null) return null;
             //return string.Format(" FOREIGN KEY REFERENCES {0}", foreignKeyReferences);
         }
+
+        public void Update(string table, string column, object value, string format = "", params object[] arg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(string table, string[] columns, object[] values, string format = "", params object[] arg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(string table, string[] columns, object[] values, object pValue)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(string table, string column, object value, object pValue)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

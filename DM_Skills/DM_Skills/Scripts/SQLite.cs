@@ -21,9 +21,10 @@ namespace DM_Skills.Scripts
         public bool IsConnected { get { return _isConnected; } }
 
         private string _lastQuery;
-        public string LastQuery { get { return _lastQuery; } }
 
         public bool UseDistinct { get; set; }
+
+        public string LastQuery => _lastQuery;
 
         private SQLiteConnection sql_conn;
         private SQLiteCommand sql_cmd;
@@ -103,7 +104,7 @@ namespace DM_Skills.Scripts
 
             string pColumn = GetPrimaryKeyName(table);
 
-            if (pColumn != "")
+            if (pColumn != null && pColumn != "")
             {
 
                 List<string> whrArr = new List<string>();
@@ -179,7 +180,7 @@ namespace DM_Skills.Scripts
             {
 
                 columnCMD.Add(GetColumn(column));
-                
+
                 if (GetForeignKey(column) != null)
                     foreignCMD.Add(GetForeignKey(column));
 
@@ -304,13 +305,13 @@ namespace DM_Skills.Scripts
                 Models.SettingsModel.lab.Content += "Sending to server\n";
                 Console.WriteLine("Contact Server");
                 Settings.Client.Send(
-                        PacketType.QuerySQL, 
-                        o => 
+                        PacketType.QuerySQL,
+                        o =>
                         {
                             Console.WriteLine("Got List");
                             result = o as List<List<object>>;
                             Console.WriteLine(result.Count);
-                        }, 
+                        },
                         cmd
                 );
                 Console.WriteLine("Contact Server Done");
@@ -337,7 +338,7 @@ namespace DM_Skills.Scripts
 
             string tableWithPrefix = Prefix + table;
             var result = ExecuteQuery(string.Format("PRAGMA table_info(`{0}`)", tableWithPrefix));
-
+            Console.WriteLine("Pkey = {0}",result.Count);
             for (int i = 0; i < result.Count; i++)
             {
                 if (Convert.ToBoolean(result[i][5])) return (string)result[i][1];
@@ -374,6 +375,8 @@ namespace DM_Skills.Scripts
             string[] sqlMethod = { "*", "COUNT" };
             string tableWithPrefix = Prefix + table;
 
+            Console.WriteLine("Table "+ table);
+            Console.WriteLine(columns.Length);
 
             for (int i = 0; i < columns.Length; i++)
             {
@@ -436,5 +439,44 @@ namespace DM_Skills.Scripts
             if (col.ForeignKeyReferences == null) return null;
             return string.Format("FOREIGN KEY(`{0}`) REFERENCES {1}", col.Name, col.ForeignKeyReferences);
         }
+
+        public void Update(string table, string column, object value, string format = "", params object[] arg)
+        {
+            Update(table, new string[] { column }, new object[] { value }, format, arg);
+        }
+
+        public void Update(string table, string[] columns, object[] values, string format = "", params object[] arg)
+        {
+            string tableWithPrefix = Prefix + table;
+            values = StringsSQLready(values);
+            List<string> cmdSet = new List<string>();
+
+            for (int i = 0; i < columns.Length; i++)
+            {
+                cmdSet.Add($"`{columns[i]}` = {values[i]}");
+            }
+
+
+            string cmd = $"UPDATE `{tableWithPrefix}` ";
+
+            cmd += string.Format("SET {0}", string.Join(", ", cmdSet.ToArray()));
+            if (format != "")
+            {
+                cmd += " " + string.Format(format, arg);
+            }
+            cmd += ";";
+            ExecuteQuery(cmd);
+
+        }
+        public void Update(string table, string[] columns, object[] values, object pValue)
+        {
+            Update(table, columns, values, "WHERE `{0}` = {1}", GetPrimaryKeyName(table), StringsSQLready(new object[] { pValue })[0]);
+        }
+
+        public void Update(string table, string column, object value, object pValue)
+        {
+            Update(table, new string[] { column }, new object[] { value }, pValue);
+        }
+
     }
 }
