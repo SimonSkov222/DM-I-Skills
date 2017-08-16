@@ -52,7 +52,7 @@
                     </ScrollViewer>
                 </StackPanel>
                 <Grid 
-                Visibility="Collapsed" 
+                Visibility="Visible" 
                 Width="700" 
                 HorizontalAlignment="Center" >
                 <!--<Button Content="hej" Click="Button_Click"/>-->

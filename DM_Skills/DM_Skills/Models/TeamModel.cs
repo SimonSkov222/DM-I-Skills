@@ -129,6 +129,7 @@ namespace DM_Skills.Models
                     new object[] { Class, SchoolID, LocationID, Date, Time }));
             }
             myDB.Disconnect();
+
             return true;
 
 

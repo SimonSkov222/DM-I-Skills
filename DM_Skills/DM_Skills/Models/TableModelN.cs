@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DM_Skills.Scripts;
 
 namespace DM_Skills.Models
 {
@@ -106,9 +107,9 @@ namespace DM_Skills.Models
 
 
 
-            School.CallbackUpload   += o => Team.SchoolID   = (o as SchoolModel).ID;
-            Location.CallbackUpload += o => Team.LocationID = (o as LocationModel).ID;
-            Team.CallbackUpload += o =>
+            School.CallbackUpload   = o => Team.SchoolID   = (o as SchoolModel).ID;
+            Location.CallbackUpload = o => Team.LocationID = (o as LocationModel).ID;
+            Team.CallbackUpload = o =>
             {
                 foreach (var p in Persons)
                     p.TeamID = (o as TeamModel).ID ?? 0;
@@ -171,7 +172,7 @@ namespace DM_Skills.Models
         }
 
 
-        public static ObservableCollection<TableModelN> GetTables(string order, string schoolName, string personName, LocationModel location, string from, string to)
+        public static ObservableCollection<TableModelN> GetTables(Scripts.Order order, string schoolName, string personName, LocationModel location, string from, string to)
         {
             var result = new ObservableCollection<TableModelN>();
             var db = Scripts.Database.GetDB();
@@ -181,10 +182,10 @@ namespace DM_Skills.Models
             string table_locations = db.GetTableName("Locations");
 
             string cmd = string.Format("SELECT \n" +
-            "´Team´.´ID´, ´Team´.´Class´, ´Team´.´Time´, ´Team´.´Date´, ´School´.´ID´, ´School´.´Name´, ´Location´.´ID´, ´Location´.´Name´ \n" +
-             "FROM ´{0}´ AS ´Team´\n" +
-             "INNER JOIN ´{1}´ AS ´School´ ON ´Team´.´SchoolID´ = ´School´.´ID´ \n" +
-             "INNER JOIN ´{2}´ AS ´Location´ ON ´Team´.´LocationID´ = ´Location´.´ID´\n", table_team, table_schools, table_locations);
+            "`Team`.`ID`, `Team`.`Class`, `Team`.`Time`, `Team`.`Date`, `School`.`ID`, `School`.`Name`, `Location`.`ID`, `Location`.`Name` \n" +
+             "FROM `{0}` AS `Team`\n" +
+             "INNER JOIN `{1}` AS `School` ON `Team`.`SchoolID` = `School`.`ID` \n" +
+             "INNER JOIN `{2}` AS `Location` ON `Team`.`LocationID` = `Location`.`ID`\n", table_team, table_schools, table_locations);
 
             List<string> where = new List<string>();
 
@@ -194,7 +195,7 @@ namespace DM_Skills.Models
             {
                 personName = db.EscapeString(personName);
                 db.UseDistinct = true;
-                var persons = db.GetRows("Persons", "TeamID", "WHERE ´Name´ LIKE '%{0}%'", personName);
+                var persons = db.GetRows("Persons", "TeamID", "WHERE `Name` LIKE '%{0}%'", personName);
                 if (persons != null)
                 {
                     List<int> id = new List<int>();
@@ -205,33 +206,45 @@ namespace DM_Skills.Models
                     if (id.Count > 0)
                     {
                         string cmdID = string.Join(", ", id.ToArray());
-                        where.Add("´Team´.´ID´ IN (" + cmdID + ")");
+                        where.Add("`Team`.`ID` IN (" + cmdID + ")");
                     }
                 }
             }
             if (schoolName != "")
             {
                 schoolName = db.EscapeString(schoolName);
-                where.Add("´School´.´Name´ LIKE '%" + schoolName + "%'");
+                where.Add("`School`.`Name` LIKE '%" + schoolName + "%'");
             }
             if (location != null && location.Name != "")
             {
                 location.Name = db.EscapeString(location.Name);
-                where.Add("´Location´.´Name´ LIKE '%" + location.Name + "%'");
+                where.Add("`Location`.`Name` LIKE '%" + location.Name + "%'");
             }
             //if (from != null && from != "")
             //{
-            //    where.Add("[Team].[Date] >= '" + from + "'");
+            //    where.Add("`Team`.`Date` >= '" + from + "'");
             //}
             //if (to != null && to != "")
             //{
             //    where.Add("[Team].[Date] <= '" + to + "'");
             //}
+
             if (where.Count > 0)
             {
                 string cmdWhere = string.Join(" AND ", where.ToArray());
                 cmd += " WHERE " + cmdWhere;
             }
+
+            //cmd += "ORDER BY ";
+            //switch (order)
+            //{
+            //    case Order.NyesteTider:         cmd += "`Team`.`Date`";  break;
+            //    case Order.HurtigsteTider:      cmd += "`Team`.`Time`"; break;
+            //    case Order.Alfabetisk:          cmd += "`School`.`Name`"; break;
+            //}
+
+
+
             cmd += ";";
 
             var dataTeam = db.ExecuteQuery(cmd);
@@ -244,6 +257,26 @@ namespace DM_Skills.Models
 
                 foreach (var item in dataTeam)
                 {
+                    var dt = Convert.ToDateTime(item[3]);
+
+                    if (from != null && from != "")
+                    {
+                        var dtFrom = Convert.ToDateTime(from);
+                        if (dt < dtFrom)
+                        {
+                            continue;
+                        }
+                    }
+
+                    if (to != null && to != "")
+                    {
+                        var dtTo = Convert.ToDateTime(to);
+                        if (dt > dtTo)
+                        {
+                            continue;
+                        }
+                    }
+
                     var model = new TableModelN();
                     teamIDs.Add(Convert.ToInt32(item[0]));
                     model.Team.ID = Convert.ToInt32(item[0]);
@@ -262,7 +295,7 @@ namespace DM_Skills.Models
                 {
                     string cmdTeamIDs = string.Join(", ", teamIDs);
 
-                    var persons = db.GetRows("Persons", new string[] { "ID", "Name", "TeamID" }, "WHERE ´TeamID´ IN ({0})", cmdTeamIDs);
+                    var persons = db.GetRows("Persons", new string[] { "ID", "Name", "TeamID" }, "WHERE `TeamID` IN ({0})", cmdTeamIDs);
 
                     if (persons != null)
                     {
@@ -285,6 +318,20 @@ namespace DM_Skills.Models
             }
 
             Console.WriteLine(cmd);
+
+            switch (order)
+            {
+                case Order.NyesteTider:
+                    result = new ObservableCollection<TableModelN>(result.OrderBy(t => Convert.ToDateTime(t.Team.Date)).ToList());
+                    break;
+                case Order.HurtigsteTider:
+                    result = new ObservableCollection<TableModelN>(result.OrderBy(t => t.Team.Time).ToList());
+                    break;
+                case Order.Alfabetisk:
+                    result = new ObservableCollection<TableModelN>(result.OrderBy(t => t.School.Name).ToList());
+                    break;
+            }
+
 
             return result;
         }

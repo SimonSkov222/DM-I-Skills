@@ -6,6 +6,7 @@
     <Converters:ProcentOfValueConverter x:Key="ProcentOfValueConvert"/>
     <Converters:ObservableCollectionConverter x:Key="OCConvert"/>
     <Converters:TimeSpanToStringConverter x:Key="TimeToStringConvert"/>
+    <Converters:BoolToStringConverter x:Key="SettingsTitleConvert" TrueValue="Server" FalseValue="Client"/>
     <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConvert" TrueValue="Visible" FalseValue="Collapsed"/>
     <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityHiddenConvert" TrueValue="Visible" FalseValue="Hidden"/>
     <Converters:ValueToThicknessConverter x:Key="ValueToThicknessConvert"/>

@@ -12,7 +12,7 @@ namespace DM_Skills.Models
     public abstract class ModelSettings : INotifyPropertyChanged
     {
         public Action NotifyPropertyOnAll;
-        public event Action<object> CallbackUpload;
+        public Action<object> CallbackUpload;
         
         public virtual bool Exist       { get; protected set; }
         public virtual bool CanUpload   { get { return true; } }
