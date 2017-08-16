@@ -130,55 +130,56 @@
 
 
                     <Button Content="Afbryd" Style="{StaticResource Button_Style_Default}" 
-                        Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
-                        HorizontalAlignment="Stretch"
-                        FontSize="16"
-                        Padding="0 4.5"
-                        Click="Button_Afbryd_Click"/>
+                            Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
+                            Foreground="{StaticResource Color_Foreground_Light_1}" 
+                            Background="{StaticResource Color_Background_Button_Blue}" 
+                            FontWeight="Normal" 
+                            HorizontalAlignment="Stretch"
+                            FontSize="16"
+                            Padding="0 4.5"
+                            Click="Button_Afbryd_Click"/>
                     
 
                     <Button Content="Start" Style="{StaticResource Button_Style_Default}" 
-                        Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
-                        HorizontalAlignment="Stretch"
-                        FontSize="16"
-                        Padding="0 4.5" Click="Button_Start_Click"/>
+                            Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
+                            Foreground="{StaticResource Color_Foreground_Light_1}" 
+                            Background="{StaticResource Color_Background_Button_Blue}" 
+                            FontWeight="Normal" 
+                            HorizontalAlignment="Stretch"
+                            FontSize="16"
+                            Padding="0 4.5" 
+                            Click="Button_Start_Click"/>
                     
 
                     <Button Content="Stop" Style="{StaticResource Button_Style_Default}" 
-                        Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
-                        HorizontalAlignment="Stretch"
-                        FontSize="16"
-                        Padding="0 4.5"
+                            Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
+                            Foreground="{StaticResource Color_Foreground_Light_1}" 
+                            Background="{StaticResource Color_Background_Button_Blue}" 
+                            FontWeight="Normal" 
+                            HorizontalAlignment="Stretch"
+                            FontSize="16"
+                            Padding="0 4.5"
                             Click="Button_Stop_Click"/>
 
 
                     <Button Content="Backup" Style="{StaticResource Button_Style_Default}" 
-                        Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
-                        HorizontalAlignment="Stretch"
-                        FontSize="16"
-                        Padding="0 4.5"/>
+                            Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
+                            Foreground="{StaticResource Color_Foreground_Light_1}" 
+                            Background="{StaticResource Color_Background_Button_Blue}" 
+                            FontWeight="Normal" 
+                            HorizontalAlignment="Stretch"
+                            FontSize="16"
+                            Padding="0 4.5"/>
 
 
                     <Button Content="Fjern ubrugte skoler" Style="{StaticResource Button_Style_Default}" 
-                        Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
-                        HorizontalAlignment="Stretch"
-                        FontSize="16"
-                        Padding="0 4.5"/>
+                            Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
+                            Foreground="{StaticResource Color_Foreground_Light_1}" 
+                            Background="{StaticResource Color_Background_Button_Blue}" 
+                            FontWeight="Normal" 
+                            HorizontalAlignment="Stretch"
+                            FontSize="16"
+                            Padding="0 4.5"/>
                     
                     
                 </StackPanel>
