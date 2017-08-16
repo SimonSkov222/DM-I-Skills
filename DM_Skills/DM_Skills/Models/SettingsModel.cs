@@ -7,7 +7,6 @@ namespace DM_Skills.Models
 {
     class SettingsModel
     {
-        public static System.Windows.Controls.Label lab;
         public string Debug { get; set; }
 
 

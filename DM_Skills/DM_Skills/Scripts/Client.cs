@@ -22,8 +22,7 @@ namespace DM_Skills.Scripts
             client = new SimpleTcpClient();
             client.DataReceived += Client_DataReceived;
             client.Connect(ipAddress, port);
-
-            Models.SettingsModel.lab.Content += "Client Connected\n";
+            
 
         }
 
@@ -71,7 +70,6 @@ namespace DM_Skills.Scripts
 
         public void Send(PacketType type, Action<object> cb = null, object data = null)
         {
-            Models.SettingsModel.lab.Content += "Start sending...";
             Console.Write("Start sending...");
             waitHandel.Reset();
             var packet = new Packet()
@@ -92,7 +90,6 @@ namespace DM_Skills.Scripts
 
 
             //_stopped.WaitOne();
-            Models.SettingsModel.lab.Content += "Sending Done\n";
             Console.WriteLine("Sending Done");
         }
         

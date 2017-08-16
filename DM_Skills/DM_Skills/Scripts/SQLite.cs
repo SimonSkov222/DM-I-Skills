@@ -302,7 +302,6 @@ namespace DM_Skills.Scripts
             }
             else if (Settings.IsClient)
             {
-                Models.SettingsModel.lab.Content += "Sending to server\n";
                 Console.WriteLine("Contact Server");
                 Settings.Client.Send(
                         PacketType.QuerySQL,
@@ -316,7 +315,6 @@ namespace DM_Skills.Scripts
                 );
                 Console.WriteLine("Contact Server Done");
                 //_stopped.WaitOne();
-                Models.SettingsModel.lab.Content += "Return data\n";
                 //while (waitForReply) ;
                 return result;
             }

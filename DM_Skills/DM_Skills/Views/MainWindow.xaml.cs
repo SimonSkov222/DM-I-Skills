@@ -123,12 +123,6 @@ namespace DM_Skills
             //Console.WriteLine("Contact Done");
 
 
-            var schools = Models.SchoolModel.GetAll();
-            Models.SettingsModel.lab.Content += "Skoler:\n";
-            foreach (var item in schools)
-            {
-                Models.SettingsModel.lab.Content += $"  ID: {item.ID}, Name: {item.Name}\n";
-            }
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
