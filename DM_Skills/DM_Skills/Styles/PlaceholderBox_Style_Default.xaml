@@ -32,6 +32,12 @@
                 <Setter Property="PlaceholderBorderBrush" Value="Red"/>
                 <Setter Property="BorderBrush" Value="Red"/>
             </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Opacity" Value="0.7"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="true">
+                <Setter Property="Placeholder" Value=""/>
+            </Trigger>
         </Style.Triggers>
     </Style>
 

@@ -6,6 +6,8 @@
         <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" >
             <Grid>
 
+
+                
                 <TextBlock x:Name="placeholder"
                     Text="{TemplateBinding Placeholder}"
                     FontSize="{TemplateBinding FontSize}"
@@ -17,12 +19,12 @@
                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                     Foreground="{TemplateBinding PlaceholderForeground}"/>
 
-                <ScrollViewer Margin="0" x:Name="PART_ContentHost"
-                              FontSize="{TemplateBinding FontSize}"  Padding="0" />
-
                 <Label Content="{TemplateBinding Tag}" Margin="0"
                        Padding="{TemplateBinding Padding, Converter={StaticResource ValueToThicknessConvert}, ConverterParameter='0 0 100 0'}" 
                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalContentAlignment="Right"/>
+
+                <ScrollViewer Margin="0" x:Name="PART_ContentHost"
+                              FontSize="{TemplateBinding FontSize}"  Padding="0" />
 
             </Grid>
         </Border>

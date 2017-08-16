@@ -9,10 +9,13 @@ namespace DM_Skills.Scripts
 {
     public enum Order
     {
-        [Description("Foo Bar")]
-        FooBar,
+        [Description("Nyeste tider")]
+            NyesteTider,
 
-        [Description("Bar Foo")]
-            BarFoo
+        [Description("Hurtigste tider")]
+            HurtigsteTider,
+
+        [Description("Alfabetisk")]
+            Alfabetisk
     }
 }

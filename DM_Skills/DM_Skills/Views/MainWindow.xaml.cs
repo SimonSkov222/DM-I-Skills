@@ -29,27 +29,36 @@ namespace DM_Skills
             Scripts.Database.CreateDatabase();
             InitializeComponent();
 
-            //var d = new Models.TableModelN();
-            //d.Team.Class = "7z";
-            //d.Team.Date = "05-01-2018";
-            //d.Team.Time = "05:10:20";
-            //d.School.Name = "Hersted Skole";
-            //d.Location.Name = "ballerup";
-            //d.Persons.Add(new Models.PersonModel() { Name = "hej" });
-            //d.Persons.Add(new Models.PersonModel() { Name = "meh" });
+
+            //Random r = new Random();
+            //for (int i = 0; i < 10; i++)
+            //{
+
+            //    var d = new Models.TableModelN();
+            //    d.Team.Class = "7z" + i;
+            //    d.Team.Date = $"{r.Next(1, 25).ToString().PadLeft(2,'0')}-{r.Next(1, 11).ToString().PadLeft(2, '0')}-{r.Next(2015, 2018)}";
+            //    d.Team.Time = $"{r.Next(10, 30)}:{r.Next(10, 59)}:{r.Next(10, 59)}";
+            //    d.School.Name = $"Hersted {r.Next(100)} Skole";
+            //    d.Location.Name = "ballerup";
+            //    d.Persons.Add(new Models.PersonModel() { Name = "hej" });
+            //    d.Persons.Add(new Models.PersonModel() { Name = "meh" });
 
 
-            //var t = new Models.TableModelN();
-            //t.Team.Class = "8c";
-            //t.Team.Date = "02-04-2011";
-            //t.Team.Time = "07:64:45";
-            //t.School.Name = "Måeløv Skole";
-            //t.Location.Name = "Hvidovre";
-            //t.Persons.Add(new Models.PersonModel() { Name = "karl" });
-            //t.Persons.Add(new Models.PersonModel() { Name = "jarl" });
+            //    var t = new Models.TableModelN();
+            //    t.Team.Class = "8c" + i;
+            //    t.Team.Date = $"{r.Next(1,25).ToString().PadLeft(2, '0')}-{r.Next(1, 11).ToString().PadLeft(2, '0')}-{r.Next(2015, 2018)}";
+            //    t.Team.Time = $"{r.Next(10,30)}:{r.Next(10,59)}:{r.Next(10,59)}";
+            //    t.School.Name = $"Måeløv {r.Next(100)} Skole";
+            //    t.Location.Name = "Hvidovre";
+            //    t.Persons.Add(new Models.PersonModel() { Name = "karl" });
+            //    t.Persons.Add(new Models.PersonModel() { Name = "jarl" });
 
-            //d.Upload();
-            //t.Upload();
+            //    d.Upload();
+            //    t.Upload();
+
+            //    d = null;
+            //    t = null;
+            //}
 
             //Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
             //CreateDatabase();
@@ -122,25 +131,7 @@ namespace DM_Skills
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var settings = (Models.SettingsModel)FindResource("Settings");
-            var data = Models.TableModelN.GetTables("School", "", "la", settings.Location, null, "");
 
-
-            foreach (var item in data)
-            {
-                Console.WriteLine(item.School.Name);
-                Console.WriteLine(item.Location.Name);
-                Console.WriteLine(item.Team.ID);
-                Console.WriteLine(item.Team.Date);
-                foreach (var i in item.Persons)
-                {
-                    Console.WriteLine(i.TeamID);
-                    Console.WriteLine(i.Name);
-                    Console.WriteLine("################");
-                }
-                Console.WriteLine("##################################");
-
-            }
         }
 
         private void Menu_Projektor_Checked(object sender, RoutedEventArgs e)

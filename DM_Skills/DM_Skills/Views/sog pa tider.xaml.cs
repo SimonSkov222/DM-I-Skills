@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,8 +21,20 @@ namespace DM_Skills.Views
     /// <summary>
     /// Interaction logic for sog_pa_tider.xaml
     /// </summary>
-    public partial class sog_pa_tider : UserControl
+    public partial class sog_pa_tider : UserControl, INotifyPropertyChanged
     {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName]string name = "")
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
         public Models.TableModelN debug_item
         {
             get { return (Models.TableModelN)GetValue(debug_itemProperty); }
@@ -31,7 +45,19 @@ namespace DM_Skills.Views
         public static readonly DependencyProperty debug_itemProperty =
             DependencyProperty.Register("debug_item", typeof(Models.TableModelN), typeof(sog_pa_tider), new PropertyMetadata(null));
 
-
+        public Scripts.Order Order
+        {
+            get
+            {
+                return _Order;
+            }
+            set
+            {
+                _Order = value;
+                OnPropertyChanged();
+            }
+        }
+        private Scripts.Order _Order = Scripts.Order.NyesteTider;
 
 
         public ObservableCollection<Models.TableModelN> ItemSourceSearch
@@ -65,6 +91,7 @@ namespace DM_Skills.Views
         public sog_pa_tider()
         {
             InitializeComponent();
+            Order = Scripts.Order.NyesteTider;
             ItemSourceSearch = new ObservableCollection<Models.TableModelN>();
             for (int i = 0; i < 100; i++)
             {
@@ -158,37 +185,39 @@ namespace DM_Skills.Views
             };
         }
 
-        private async void Button_Print_Click(object sender, RoutedEventArgs e)
+        private void Button_Print_Click(object sender, RoutedEventArgs e)
         {
-            var items = ItemSourceSearch;
+            MessageBox.Show(Order.ToString());
 
-            Console.WriteLine("Start");
-            var createPDF = Task.Run(() => {
-                var print = new Scripts.Print();
-                print.CreatePDF(@"C:\Users\shsk\Desktop\Debug\PDFF.pdf", items);
-                Console.WriteLine("Done1");
-            });
+            //var items = ItemSourceSearch;
 
-            Console.WriteLine("Middle");
-            var printd = new PrintDialog();
-            var result = printd.ShowDialog();
+            //Console.WriteLine("Start");
+            //var createPDF = Task.Run(() => {
+            //    var print = new Scripts.Print();
+            //    print.CreatePDF(@"C:\Users\shsk\Desktop\Debug\PDFF.pdf", items);
+            //    Console.WriteLine("Done1");
+            //});
 
-            if(result ?? false)
-            {
-                //FlowDocument
-               // printd.PrintDocument()
-                printd.PrintVisual(searchList, "RR");
-                //printd.do
-                Console.WriteLine("Print nu");
-            }
+            //Console.WriteLine("Middle");
+            //var printd = new PrintDialog();
+            //var result = printd.ShowDialog();
+
+            //if(result ?? false)
+            //{
+            //    //FlowDocument
+            //   // printd.PrintDocument()
+            //    printd.PrintVisual(searchList, "RR");
+            //    //printd.do
+            //    Console.WriteLine("Print nu");
+            //}
 
 
-            Console.WriteLine("Done");
+            //Console.WriteLine("Done");
 
-            //var wPrint = new Views.Udskriv();
-            //wPrint.Owner = App.Current.MainWindow;
-            //wPrint.ShowInTaskbar = false;
-            //wPrint.ResizeMode = ResizeMode.NoResize;
+            ////var wPrint = new Views.Udskriv();
+            ////wPrint.Owner = App.Current.MainWindow;
+            ////wPrint.ShowInTaskbar = false;
+            ////wPrint.ResizeMode = ResizeMode.NoResize;
             //wPrint.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             //wPrint.ShowDialog();
@@ -203,7 +232,7 @@ namespace DM_Skills.Views
             var to = dtTo.SelectedDate == null ? "" : dtTo.SelectedDate.Value.ToShortDateString();
             var location = cbLocation.SelectedIndex == 0 ? null : cbLocation.SelectedItem as Models.LocationModel;
 
-            var items = Models.TableModelN.GetTables(null, school, person, location, from, to);
+            var items = Models.TableModelN.GetTables(Order, school, person, location, from, to);
             searchList.ItemsSource = items;
         }
     }

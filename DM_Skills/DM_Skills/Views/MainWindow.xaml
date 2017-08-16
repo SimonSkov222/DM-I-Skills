@@ -41,13 +41,13 @@
         <ScrollViewer Grid.Row="1" Padding="10"  x:Name="debug_hh">
             <Grid>
                 <RichTextBox x:Name="testPrint" Visibility="Collapsed"/>
-                <StackPanel>
+                <!--<StackPanel>
                     <Button Content="Server" Click="Button_Click_1"/>
                     <Button Content="Client" Click="Button_Click_2"/>
                     <Button Content="Skoler" Click="Button_Click_3" />
-                </StackPanel>
+                </StackPanel>-->
                 <Grid 
-                Visibility="Collapsed" 
+                Visibility="Visible" 
                 Width="700" 
                 HorizontalAlignment="Center" >
                 <!--<Button Content="hej" Click="Button_Click"/>-->

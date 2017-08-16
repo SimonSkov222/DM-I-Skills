@@ -13,67 +13,174 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
 
-        <Border BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5" Grid.Row="0" Grid.Column="0" 
-                Background="{StaticResource Color_Background_Box}" Padding="15 10">
-            <StackPanel >
-                <Controls:PlaceholderBox Placeholder="Bruger navn" Grid.Row="0" Grid.Column="0" Margin="2 5"/>
-                <Controls:PlaceholderBox Placeholder="Ip Adresse" Grid.Row="0" Grid.Column="1" Margin="2 5"/>
-                <PasswordBox ToolTip="Password" Grid.Row="1" Grid.Column="0" Margin="2 5" x:Name="Pass" Style="{StaticResource PasswordBox_Style_Default}"/>
-                <CheckBox Content="Database Status"  FontSize="16" IsChecked="False" IsEnabled="False" Margin="2 15 2 0" Grid.Row="1" Grid.Column="1"
-                          Template="{StaticResource CheckBox_Tempalate_Status}" />
-                
-            </StackPanel>
-        </Border>
 
-        <Border BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5" Grid.Row="0" Grid.Column="2" 
-                Background="{StaticResource Color_Background_Box}" Padding="15 10">
-            <StackPanel >
+        <Grid  Background="{StaticResource Color_Border_Box}" 
+               Grid.Row="1" Grid.Column="0"  >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
-                <Button Content="Log In" Style="{StaticResource Button_Style_Default}" 
+            <!-- Server/client knap -->
+            <Grid Grid.Row="0" Margin="1.5 1.5 1.5 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <RadioButton Content="Server" x:Name="rServer" Grid.Column="0" IsChecked="True"
+                             HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                             Style="{StaticResource Radio_Style_MenuOption}"
+                            />
+
+                <RadioButton  Checked="rClient_Checked" Unchecked="rClient_Checked" Content="Client" x:Name="rClient" Grid.Column="1" 
+                             HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                             Style="{StaticResource Radio_Style_MenuOption}"/>
+
+            </Grid>
+            
+            <!-- Server/Client Inputs -->
+            <Grid Grid.Row="1"
+                  Margin="1.5" 
+                  Background="{StaticResource Color_Background_Box}">
+                <Grid Margin="15 10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Controls:PlaceholderBox x:Name="txtIP" Placeholder="Ip Adresse" Grid.Row="0" Grid.Column="0" Margin="2 5" 
+                                             IsEnabled="{Binding ElementName=rClient, Path=IsChecked}"
+                                             />
+                    <Controls:PlaceholderBox x:Name="txtPort" Placeholder="Port" Grid.Row="0" Grid.Column="1" Margin="2 5"/>
+                    <Controls:PlaceholderBox x:Name="txtDB" Placeholder="File" Grid.Row="1" Grid.ColumnSpan="2" Margin="2 5"/>
+
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                    <Button Content="Open File" Grid.Column="0"
+                            Style="{StaticResource Button_Style_Default}" HorizontalAlignment="Stretch"
+                            Background="{StaticResource Color_Background_Button_Blue}"
+                            Foreground="{StaticResource Color_Foreground_Light_1}"
+                            Click="Button_Click"/>
+
+                        <Button Content="Save File" Grid.Column="1"
+                            Style="{StaticResource Button_Style_Default}" HorizontalAlignment="Stretch"
+                            Background="{StaticResource Color_Background_Button_Blue}"
+                            Foreground="{StaticResource Color_Foreground_Light_1}"
+                            Click="Button_Click"/>
+
+                    </Grid>
+
+                    <CheckBox Content="Database Status"  FontSize="16" 
+                              IsChecked="False" IsEnabled="False" 
+                              Margin="2 15 2 0" Grid.Row="2" Grid.Column="0"
+                                Template="{StaticResource CheckBox_Tempalate_Status}" />
+
+                </Grid>
+
+            </Grid>
+            
+            
+            <!-- Splitter -->
+            <Grid Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource Color_Background_Program}"/>
+
+
+            <!-- Menu titel -->
+            <Grid Grid.Row="0" Grid.Column="2"  Margin="1.5 1.5 1.5 0">
+                <TextBlock Text="{Binding ElementName=rServer, Path=IsChecked, Converter={StaticResource SettingsTitleConvert}}" 
+                           FontSize="{Binding ElementName=rServer, Path=FontSize}"
+                           Foreground="{StaticResource Color_Foreground_Light_1}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+
+            <!-- Menu -->
+            <Grid Grid.Row="1"
+                  Grid.Column="2"
+                  Margin="1.5" 
+                  Background="{StaticResource Color_Background_Box}">
+                <StackPanel Margin="15 10">
+
+                    <Button Content="Log Ind" Style="{StaticResource Button_Style_Default}" 
+                        Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
                         Foreground="{StaticResource Color_Foreground_Light_1}" 
                         Background="{StaticResource Color_Background_Button_Blue}" 
                         FontWeight="Normal" 
                         HorizontalAlignment="Stretch"
                         FontSize="16"
                         Padding="0 4.5"/>
-                
-                
-                <Button Content="Log Af" Style="{StaticResource Button_Style_Default}" 
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
-                        HorizontalAlignment="Stretch"
-                        FontSize="16"
-                        Padding="0 4.5"/>
-                
-                
-                <Button Content="Backup" Style="{StaticResource Button_Style_Default}" 
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
-                        HorizontalAlignment="Stretch"
-                        FontSize="16"
-                        Padding="0 4.5"/>
-                
-                
-                <Button Content="Fjern ubrugte skoler" Style="{StaticResource Button_Style_Default}" 
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
-                        HorizontalAlignment="Stretch"
-                        FontSize="16"
-                        Padding="0 4.5"/>
-            </StackPanel>
-        </Border>
 
-        <Border BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5" Grid.Row="2" Grid.ColumnSpan="3" Margin="0 30" Padding="15 10">
+
+                    <Button Content="Log Af" Style="{StaticResource Button_Style_Default}" 
+                        Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
+                        Foreground="{StaticResource Color_Foreground_Light_1}" 
+                        Background="{StaticResource Color_Background_Button_Blue}" 
+                        FontWeight="Normal" 
+                        HorizontalAlignment="Stretch"
+                        FontSize="16"
+                        Padding="0 4.5"/>
+                    
+
+                    <Button Content="Connect" Style="{StaticResource Button_Style_Default}" 
+                        Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
+                        Foreground="{StaticResource Color_Foreground_Light_1}" 
+                        Background="{StaticResource Color_Background_Button_Blue}" 
+                        FontWeight="Normal" 
+                        HorizontalAlignment="Stretch"
+                        FontSize="16"
+                        Padding="0 4.5"/>
+                    
+
+                    <Button Content="Disconnect" Style="{StaticResource Button_Style_Default}" 
+                        Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
+                        Foreground="{StaticResource Color_Foreground_Light_1}" 
+                        Background="{StaticResource Color_Background_Button_Blue}" 
+                        FontWeight="Normal" 
+                        HorizontalAlignment="Stretch"
+                        FontSize="16"
+                        Padding="0 4.5"/>
+
+
+                    <Button Content="Backup" Style="{StaticResource Button_Style_Default}" 
+                        Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
+                        Foreground="{StaticResource Color_Foreground_Light_1}" 
+                        Background="{StaticResource Color_Background_Button_Blue}" 
+                        FontWeight="Normal" 
+                        HorizontalAlignment="Stretch"
+                        FontSize="16"
+                        Padding="0 4.5"/>
+
+
+                    <Button Content="Fjern ubrugte skoler" Style="{StaticResource Button_Style_Default}" 
+                        Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
+                        Foreground="{StaticResource Color_Foreground_Light_1}" 
+                        Background="{StaticResource Color_Background_Button_Blue}" 
+                        FontWeight="Normal" 
+                        HorizontalAlignment="Stretch"
+                        FontSize="16"
+                        Padding="0 4.5"/>
+                    
+                    
+                </StackPanel>
+
+            </Grid>
+        </Grid>
+
+        <Border BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5" Grid.Row="3" Grid.ColumnSpan="3" Margin="0 30" Padding="15 10">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -142,7 +249,7 @@
 
             </Grid>
         </Border>
-        <RichTextBox ToolTip="Indtast Skoler" Grid.Row="3" Height="150" Style="{StaticResource RichTextBox_Style_Default}">
+        <RichTextBox ToolTip="Indtast Skoler" Grid.Row="4" Height="150" Style="{StaticResource RichTextBox_Style_Default}">
 
         </RichTextBox>
 

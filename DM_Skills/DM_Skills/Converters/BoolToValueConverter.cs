@@ -6,6 +6,7 @@ using System.Windows.Media;
 namespace DM_Skills.Converters
 {
 
+    public class BoolToStringConverter : BoolToValueConverter<string> { }
     public class BoolToBrushConverter : BoolToValueConverter<Brush> { }
     public class BoolToVisibilityConverter : BoolToValueConverter<Visibility> { }
 

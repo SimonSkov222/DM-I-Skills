@@ -11,7 +11,7 @@
              d:DesignHeight="800" d:DesignWidth="800">
     <UserControl.Resources>
         <Scripts:EnumItemsSource
-            x:Key="ExampleEnumItemsSource"
+            x:Key="OrderItemsSource"
             Type="{x:Type Scripts:Order}"/>
     </UserControl.Resources>
 
@@ -69,8 +69,9 @@
 
             <ComboBox 
             Grid.Row="2" Grid.Column="0" Margin="0"
-                ItemsSource="{StaticResource ExampleEnumItemsSource}"
-                SelectedValue="{Binding ExampleProperty, Converter={StaticResource ExampleEnumItemsSource}}"
+                ItemsSource="{StaticResource OrderItemsSource}"
+                SelectedIndex="0" 
+                SelectedItem="{Binding ElementName=Controller, Path=Order, Converter={StaticResource OrderItemsSource}}"
                 >
 
                 <!--<ComboBoxItem IsSelected="True">Nyeste tider</ComboBoxItem>

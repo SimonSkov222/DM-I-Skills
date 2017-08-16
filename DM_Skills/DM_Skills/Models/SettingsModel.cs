@@ -8,7 +8,7 @@ namespace DM_Skills.Models
 {
     class SettingsModel
     {
-        public static string FileNameDB = @"C:\Users\kide\Desktop\DB3.db";
+        public static string FileNameDB = @"C:\Users\kide\Desktop\DB8.db";
         private int _TableCnt = 3;
         private int _OverTimeMin = 3;
 

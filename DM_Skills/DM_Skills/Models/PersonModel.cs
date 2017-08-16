@@ -48,6 +48,7 @@ namespace DM_Skills.Models
 
         protected override bool OnUpload()
         {
+
             var myDB = Scripts.Database.GetDB();
 
             if (ID != null)
@@ -59,7 +60,7 @@ namespace DM_Skills.Models
                 ID = Convert.ToInt32(myDB.Insert("Persons", new string[] { "Name", "Teamid" }, new object[] { Name, TeamID }));
             }
             myDB.Disconnect();
-
+            
             return true;
         }
 
