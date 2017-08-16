@@ -18,7 +18,6 @@ namespace DM_Skills.Converters
         /// </summary>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Console.WriteLine("T Convert");
             if (value== null || !(value is TimeSpan))
                 return "";
 

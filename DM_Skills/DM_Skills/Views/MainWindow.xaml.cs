@@ -26,8 +26,10 @@ namespace DM_Skills
         /// 
         public MainWindow()
         {
-            Scripts.Database.CreateDatabase();
+            //Scripts.Database.CreateDatabase();
             InitializeComponent();
+            console.Content += "\n";
+            Models.SettingsModel.lab = console;
 
             //var d = new Models.TableModelN();
             //d.Team.Class = "7z";
@@ -68,57 +70,6 @@ namespace DM_Skills
         }
 
         
-        
-        /// <summary>
-        /// Opretter databasen.
-        /// Vi tjekker om en table findes i database 
-        /// og hvis den ikke gør det vil vi oprette den
-        /// </summary>
-        private void CreateDatabase()
-        {
-            if (!Database.Exist("Schools"))
-            {
-                Database.Create("Schools",
-                    new Column { name = "ID", type = Column.TYPE_INT, isPrimaryKey = true, isAutoIncrement = true },
-                    new Column { name = "Name", type = Column.TYPE_STRING, isNotNull = true }
-                );
-            }
-
-            if (!Database.Exist("Locations"))
-            {
-                Database.Create("Locations",
-                    new Column { name = "ID", type = Column.TYPE_INT, isPrimaryKey = true, isAutoIncrement = true },
-                    new Column { name = "Name", type = Column.TYPE_STRING, isNotNull = true }
-                );
-
-                Database.Insert("Locations", "Name", "Ballerup");
-                Database.Insert("Locations", "Name", "Hvidovre");
-            }
-
-            if (!Database.Exist("Teams"))
-            {
-                Database.Create("Teams",
-                    new Column { name = "ID", type = Column.TYPE_INT, isPrimaryKey = true, isAutoIncrement = true },
-                    new Column { name = "SchoolID", type = Column.TYPE_INT, isNotNull = true, foreignKeyReferences = "Schools(ID)" },
-                    new Column { name = "LocationID", type = Column.TYPE_INT, isNotNull = true, foreignKeyReferences = "Locations(ID)" },
-                    new Column { name = "Class", type = Column.TYPE_STRING, isNotNull = true },
-                    new Column { name = "Number", type = Column.TYPE_STRING, isNotNull = true },
-                    new Column { name = "Time", type = Column.TYPE_STRING, isNotNull = true },
-                    new Column { name = "Date", type = Column.TYPE_STRING, isNotNull = true }
-                );
-            }
-
-            if (!Database.Exist("Persons"))
-            {
-                Database.Create("Persons",
-                    new Column { name = "ID", type = Column.TYPE_INT, isPrimaryKey = true, isAutoIncrement = true },
-                    new Column { name = "TeamID", type = Column.TYPE_INT, isNotNull = true, foreignKeyReferences = "Teams(ID)" },
-                    new Column { name = "Name", type = Column.TYPE_STRING, isNotNull = true }
-                );
-            }
-
-
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -159,24 +110,55 @@ namespace DM_Skills
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            var server = new Scripts.Server();
-            server.Connect(7788);
+            var settings = FindResource("Settings") as Models.SettingsModel;
+            settings.IsServer = true;
+            settings.Server = new Scripts.Server();
+            settings.Server.Start(7788);
         }
-        Scripts.Client Client;
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Client = new Scripts.Client();
-            Client.Connect("127.0.0.1", 7788);
+            var settings = FindResource("Settings") as Models.SettingsModel;
+            settings.IsClient = true;
+            settings.Client = new Scripts.Client();
+            settings.Client.Connect(txtIP.Text, 7788);
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Client.Send(Scripts.PacketType.GetSchools, (o) =>
+            //var settings = FindResource("Settings") as Models.SettingsModel;
+            //Models.SettingsModel.lab.Content += "Contact Server...\n";
+            //Console.WriteLine("Contact Server...");
+            //settings.Client.Send(Scripts.PacketType.Disconnect, (o) => { System.Threading.Thread.Sleep(1000); Console.WriteLine("CB"); }, "Hej");
+            //Models.SettingsModel.lab.Content += "Contact Done\n";
+            //Console.WriteLine("Contact Done");
+
+
+            var schools = Models.SchoolModel.GetAll();
+            Models.SettingsModel.lab.Content += "Skoler:\n";
+            foreach (var item in schools)
             {
-                Console.WriteLine("Got Reply");
-                Console.WriteLine(o.GetType());
-            });
-            
+                Models.SettingsModel.lab.Content += $"  ID: {item.ID}, Name: {item.Name}\n";
+            }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Random r = new Random();
+            Scripts.Database.CreateDatabase();
+
+            for (int i = 0; i < 10; i++)
+            {
+                var d = new Models.TableModelN();
+                d.Team.Class = "7z"+i;
+                d.Team.Date = $"{r.Next(1,28).ToString().PadLeft(2,'0')}-{r.Next(1, 12).ToString().PadLeft(2, '0')}-{r.Next(2016, 2018).ToString().PadLeft(2, '0')}";
+                d.Team.Time = $"{r.Next(0,15).ToString().PadLeft(2,'0')}:{r.Next(0,59).ToString().PadLeft(2,'0')}:{r.Next(0,59).ToString().PadLeft(2,'0')}";
+                d.School.Name = $"Hersted {r.Next(1, 10)} Skole";
+                d.Location.Name = "ballerup";
+                d.Persons.Add(new Models.PersonModel() { Name = "hej" });
+                d.Persons.Add(new Models.PersonModel() { Name = "meh" });
+
+                d.Upload();
+            }
         }
     }
 }

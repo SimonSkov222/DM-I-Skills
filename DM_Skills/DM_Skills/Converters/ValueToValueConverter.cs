@@ -12,7 +12,6 @@ namespace DM_Skills.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Console.WriteLine("Convert ");
             //switch (parameter.ToString().ToLower())
             //{
             //    case "listtoobservablecollection":
@@ -34,7 +33,6 @@ namespace DM_Skills.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Console.WriteLine("Convert back");
             //switch (parameter.ToString().ToLower())
             //{
             //    case "listtoobservablecollection":

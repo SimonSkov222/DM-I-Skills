@@ -11,7 +11,8 @@ namespace DM_Skills.Scripts
         GetSchools,
         GetLocations,
         UploadTables,
-        Search
+        Search,
+        QuerySQL
     }
 
     [Serializable]

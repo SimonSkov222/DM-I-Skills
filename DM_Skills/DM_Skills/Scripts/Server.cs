@@ -20,16 +20,26 @@ namespace DM_Skills.Scripts
             
         }
 
-        public void Connect(int port = 7788)
+        public void Start(int port = 7788)
         {
-            MessageBox.Show("Server Start");
             Host = new SimpleTcpServer();            
             Host.DataReceived += Host_DataReceived;
+            Host.ClientConnected += (o, e) => {
+                Console.WriteLine("Client Connected");
+
+                Application.Current.Dispatcher.Invoke(new Action(() => {
+                    Models.SettingsModel.lab.Content += "Client Connected\n";
+                }));
+            };
             Host.Start(port);
+            Models.SettingsModel.lab.Content += "Server Started\n";
         }
 
         private void Host_DataReceived(object sender, Message e)
         {
+            Application.Current.Dispatcher.Invoke(new Action(() => {
+                Models.SettingsModel.lab.Content += "Data Received\n";
+            }));
             var packet = Helper.ByteArrayToObject(e.Data) as Packet;
             var reply = new Packet() { ID = packet.ID, Type = packet.Type };
 
@@ -45,6 +55,22 @@ namespace DM_Skills.Scripts
                 case PacketType.UploadTables:
                     break;
                 case PacketType.Search:
+                    break;
+                case PacketType.QuerySQL:
+                    var myDB = Database.GetDB();
+
+                    Application.Current.Dispatcher.Invoke(new Action(() => {
+                        Models.SettingsModel.lab.Content += $"Client Query:\n {packet.Data.ToString()}\n";
+                    }));
+
+                    var dt = myDB.ExecuteQuery(packet.Data as string);
+                    reply.Data = dt;
+
+
+                    Application.Current.Dispatcher.Invoke(new Action(() => {
+                        Models.SettingsModel.lab.Content += $"Rows: \n {dt.Count}\n";
+                    }));
+                    myDB.Disconnect();
                     break;
                 default:
                     break;

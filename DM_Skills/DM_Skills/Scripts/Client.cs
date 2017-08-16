@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DM_Skills.Scripts
 {
@@ -14,18 +16,23 @@ namespace DM_Skills.Scripts
         SimpleTcpClient client;
         Random r = new Random(157);
         Dictionary<int, Action<object>> Callbacks = new Dictionary<int, Action<object>>();
+        private ManualResetEvent waitHandel = new ManualResetEvent(false);
 
         public void Connect(string ipAddress = "127.0.0.1", int port = 7788) {
             client = new SimpleTcpClient();
             client.DataReceived += Client_DataReceived;
             client.Connect(ipAddress, port);
+
+            Models.SettingsModel.lab.Content += "Client Connected\n";
+
         }
 
         private void Client_DataReceived(object sender, Message e)
         {
-
-            Console.WriteLine("Got Reply!!");
-
+            //Application.Current.Dispatcher.Invoke(new Action(() => {
+            //    Models.SettingsModel.lab.Content += "Got Reply..";
+            //}));
+            Console.Write("Got Reply..");
             var packet = Helper.ByteArrayToObject(e.Data) as Packet;
 
             switch (packet.Type)
@@ -45,7 +52,6 @@ namespace DM_Skills.Scripts
             }
 
 
-
             if (Callbacks.ContainsKey(packet.ID))
             {
                 if (Callbacks[packet.ID] != null)
@@ -53,6 +59,10 @@ namespace DM_Skills.Scripts
                     Callbacks[packet.ID](packet.Data);
                 }
             }
+
+            Console.WriteLine("ReplayDone");
+            waitHandel.Set();
+            
         }
 
         public void Disconnect() {
@@ -61,6 +71,9 @@ namespace DM_Skills.Scripts
 
         public void Send(PacketType type, Action<object> cb = null, object data = null)
         {
+            Models.SettingsModel.lab.Content += "Start sending...";
+            Console.Write("Start sending...");
+            waitHandel.Reset();
             var packet = new Packet()
             {
                 ID = r.Next(1000, 100000),
@@ -72,8 +85,15 @@ namespace DM_Skills.Scripts
 
 
             var packetAsBytes = Helper.ObjectToByteArray(packet);
+            
             client.Write(packetAsBytes);
+            waitHandel.WaitOne();
             //client.Send(packetAsBytes);
+
+
+            //_stopped.WaitOne();
+            Models.SettingsModel.lab.Content += "Sending Done\n";
+            Console.WriteLine("Sending Done");
         }
         
 

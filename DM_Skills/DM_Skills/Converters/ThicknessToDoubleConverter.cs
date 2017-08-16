@@ -15,7 +15,6 @@ namespace DM_Skills.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Console.WriteLine(value);
             int numb = Reverse ? -1 : 1;
 
             switch ((parameter as string).ToLower())

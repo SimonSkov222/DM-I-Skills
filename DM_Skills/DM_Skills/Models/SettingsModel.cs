@@ -3,15 +3,25 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace DM_Skills.Models
 {
     class SettingsModel
     {
+        public static System.Windows.Controls.Label lab;
+        public string Debug { get; set; }
+
+
         public bool IsServer { get; set; }
         public bool IsClient { get; set; }
-               
-        public static string FileNameDB = @"C:\Users\kide\Desktop\DB3.db";
+
+        public Scripts.Client Client;
+        public Scripts.Server Server;
+
+
+        public static string FileNameLocalDB = System.IO.Directory.GetCurrentDirectory() + @"\DB94.db";
+        public static string FileNameDB = System.IO.Directory.GetCurrentDirectory() + @"\DB94.db";
+        public static string PrefixDB = "";
+
         private int _TableCnt = 3;
         private int _OverTimeMin = 3;
 
@@ -19,7 +29,15 @@ namespace DM_Skills.Models
         public int OverTimeMin { get { return _OverTimeMin; } set { _OverTimeMin = value; } }
 
         public LocationModel Location { get; set; }
-        public ObservableCollection<LocationModel> AllLocations { get { return LocationModel.GetAll(); } }
+        public ObservableCollection<LocationModel> AllLocations {
+            get
+            {
+
+                Console.WriteLine("TODO: Settings.Locations");
+                return new ObservableCollection<Models.LocationModel>();
+                return LocationModel.GetAll();
+            }
+        }
 
 
         public ObservableCollection<SchoolModel> AllSchools { get { return SchoolModel.GetAll(); } }

@@ -15,12 +15,10 @@ namespace DM_Skills.Converters
         {
             if (values == null)
             {
-                Console.WriteLine("Null");
                 return 0;
             }
             if (values.Length < 1)
             {
-                Console.WriteLine("< 1");
                 return 0;
             }
 
@@ -30,7 +28,6 @@ namespace DM_Skills.Converters
             {
                 result -= GetValue(values[i], parameter);
             }
-            Console.WriteLine("R: {0}", result);
 
             return result;
         }
@@ -39,31 +36,23 @@ namespace DM_Skills.Converters
         {
             if (value == null)
             {
-                Console.WriteLine("V null");
                 return 0;
             }
             if (!(value is double) && !(value is Thickness))
             {
-                Console.WriteLine("V typy");
                 return 0;
             }
-            Console.WriteLine("p: {0}", parameter);
             if (parameter.ToString().ToLower().Contains("height"))
             {
-                Console.WriteLine("V c");
                 if (value is double)
                 {
-                Console.WriteLine("V d");
                     return (double)value;
                 }
                 else if(value is Thickness)
                 {
-                Console.WriteLine("V t");
                     return ((Thickness)value).Top + ((Thickness)value).Bottom;
                 }
             }
-
-                Console.WriteLine("V r");
             return 0;
         }
 

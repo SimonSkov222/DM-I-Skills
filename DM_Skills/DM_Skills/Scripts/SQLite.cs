@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DM_Skills.Scripts
 {
     class SQLite : IDatabase
     {
+        private Models.SettingsModel Settings;
+
+
         private string _prefix;
         public string Prefix { get { return _prefix; } }
 
@@ -23,19 +28,31 @@ namespace DM_Skills.Scripts
         private SQLiteConnection sql_conn;
         private SQLiteCommand sql_cmd;
 
+        private bool _IsLocal = false;
+        private bool _IsLock = false;
+
+        public SQLite(bool isLocal = false)
+        {
+            _IsLocal = isLocal;
+            Settings = Application.Current.FindResource("Settings") as Models.SettingsModel;
+        }
+
 
         /// <summary>
         /// Opret forbindelse til databasen
         /// </summary>
         public void Connect(string connectionString, string prefix = "")
         {
-            //Start connection
-            sql_conn = new SQLiteConnection(connectionString);
-            sql_conn.Open();
-            sql_cmd = sql_conn.CreateCommand();
-
             _prefix = prefix;
-            _isConnected = true;
+            if (Settings.IsServer || _IsLocal)
+            {
+                //Start connection
+                sql_conn = new SQLiteConnection(connectionString);
+                sql_conn.Open();
+                sql_cmd = sql_conn.CreateCommand();
+
+                _isConnected = true;
+            }
         }
 
         /// <summary>
@@ -43,9 +60,12 @@ namespace DM_Skills.Scripts
         /// </summary>
         public void Disconnect()
         {
-            sql_cmd.Dispose(); //release all resouces
-            sql_conn.Close();
-            _isConnected = false;
+            if (Settings.IsServer || _IsLocal)
+            {
+                sql_cmd.Dispose(); //release all resouces
+                sql_conn.Close();
+                _isConnected = false;
+            }
         }
 
         public object Insert(string table, string[] columns, List<object[]> values)
@@ -136,8 +156,8 @@ namespace DM_Skills.Scripts
         /// </summary>
         public List<List<object>> GetRows(string table, string[] columns, string format = "", params object[] arg)
         {
-            string query = BuildGetRowsCMD(table, columns, string.Format(format, arg));
 
+            string query = BuildGetRowsCMD(table, columns, string.Format(format, arg));
             var result = ExecuteQuery(query);
 
             if (result.Count == 0) return null;
@@ -234,50 +254,75 @@ namespace DM_Skills.Scripts
         /// </summary>
         public List<List<object>> ExecuteQuery(string cmd)
         {
-            SQLiteDataReader sql_reader;
-            var result = new List<List<object>>();
-            bool isRead = false;
-            //Metoder der vil hente data
-            string[] readMethods = { "SELECT", "PRAGMA" };
-
-            //Find ud af om vi skal hente data
-            foreach (var item in readMethods)
-            {
-                if (cmd.ToUpper().StartsWith(item))
-                {
-                    isRead = true;
-                    break;
-                }
-            }
-
-            //SQLiteDataAdapter da = new System.Data.SQLite.SQLiteDataAdapter();
-
             _lastQuery = cmd;
-            sql_cmd.CommandText = cmd;
+            var result = new List<List<object>>();
 
-            //udfør kommando hvor man ikke venter på data
-            if (!isRead)
+            if (Settings.IsServer || _IsLocal)
             {
-                sql_cmd.ExecuteNonQuery();
-                return null;
-            }
+                SQLiteDataReader sql_reader;
+                bool isRead = false;
+                //Metoder der vil hente data
+                string[] readMethods = { "SELECT", "PRAGMA" };
 
-            //Udfør kommando hvor man skal have data tilbage
-            sql_reader = sql_cmd.ExecuteReader();
-            while (sql_reader.Read())
-            {
-                var row = new List<object>();
-
-                for (int i = 0; i < sql_reader.FieldCount; i++)
+                //Find ud af om vi skal hente data
+                foreach (var item in readMethods)
                 {
-                    row.Add(sql_reader[i]);
+                    if (cmd.ToUpper().StartsWith(item))
+                    {
+                        isRead = true;
+                        break;
+                    }
                 }
-                result.Add(row);
+
+                //SQLiteDataAdapter da = new System.Data.SQLite.SQLiteDataAdapter();
+                sql_cmd.CommandText = cmd;
+
+                //udfør kommando hvor man ikke venter på data
+                if (!isRead)
+                {
+                    sql_cmd.ExecuteNonQuery();
+                    return result;
+                }
+
+                //Udfør kommando hvor man skal have data tilbage
+                sql_reader = sql_cmd.ExecuteReader();
+                while (sql_reader.Read())
+                {
+                    var row = new List<object>();
+
+                    for (int i = 0; i < sql_reader.FieldCount; i++)
+                    {
+                        row.Add(sql_reader[i]);
+                    }
+                    result.Add(row);
+                }
+                sql_reader.Close();
+                return result;
             }
-            sql_reader.Close();
+            else if (Settings.IsClient)
+            {
+                Models.SettingsModel.lab.Content += "Sending to server\n";
+                Console.WriteLine("Contact Server");
+                Settings.Client.Send(
+                        PacketType.QuerySQL, 
+                        o => 
+                        {
+                            Console.WriteLine("Got List");
+                            result = o as List<List<object>>;
+                            Console.WriteLine(result.Count);
+                        }, 
+                        cmd
+                );
+                Console.WriteLine("Contact Server Done");
+                //_stopped.WaitOne();
+                Models.SettingsModel.lab.Content += "Return data\n";
+                //while (waitForReply) ;
+                return result;
+            }
+
             return result;
         }
-
+        private ManualResetEvent _stopped = new ManualResetEvent(false);
         ///// <summary>
         ///// Kan udføre en selv skrevet SQL query/kommando
         ///// og hvis det er en select vil position være key
@@ -327,7 +372,6 @@ namespace DM_Skills.Scripts
         {
 
             string[] sqlMethod = { "*", "COUNT" };
-
             string tableWithPrefix = Prefix + table;
 
 

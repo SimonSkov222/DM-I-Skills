@@ -51,6 +51,8 @@ namespace DM_Skills.Views
         public ObservableCollection<Models.LocationModel> Locations {
             get
             {
+                Console.WriteLine("TODO: sog_pa_tider.Locations");
+                return new ObservableCollection<Models.LocationModel>();
                 var result = Models.LocationModel.GetAll();
                 result.Insert(0, new Models.LocationModel() { Name = "Vælg lokation" });
 
