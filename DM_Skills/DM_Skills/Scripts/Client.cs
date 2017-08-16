@@ -74,10 +74,14 @@ namespace DM_Skills.Scripts
             waitHandel.Reset();
             var packet = new Packet()
             {
-                ID = r.Next(1000, 100000),
                 Type = type,
                 Data = data
             };
+
+            do
+            {
+                packet.ID = r.Next(1000, 100000);
+            } while (Callbacks.ContainsKey(packet.ID));
             
             Callbacks.Add(packet.ID, cb);
 
