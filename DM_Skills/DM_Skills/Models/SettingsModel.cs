@@ -40,7 +40,13 @@ namespace DM_Skills.Models
         }
 
 
-        public ObservableCollection<SchoolModel> AllSchools { get { return SchoolModel.GetAll(); } }
+        public ObservableCollection<SchoolModel> AllSchools { get {
+
+                Console.WriteLine("TODO: Settings.AllSchools");
+                return new ObservableCollection<SchoolModel>();
+                return SchoolModel.GetAll();
+            }
+        }
 
     }
 }
