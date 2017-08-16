@@ -28,10 +28,6 @@ namespace DM_Skills.Scripts
             else
                 (sender as RichTextBox).Tag = "Hidden";
 
-            Console.WriteLine("asd");
-            
-            
-
         }
     }
 }

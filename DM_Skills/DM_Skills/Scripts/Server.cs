@@ -69,7 +69,7 @@ namespace DM_Skills.Scripts
 
         public void Stop()
         {
-           // server.Close();
+            Host.Stop();
         }
 
         private void OnReceiveData(System.Net.Sockets.Socket socket, byte[] data)

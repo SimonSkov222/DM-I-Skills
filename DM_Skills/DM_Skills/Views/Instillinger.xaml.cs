@@ -67,23 +67,6 @@ namespace DM_Skills.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             int id = Grid.GetColumn(sender as Button);
-            
-            //OpenFileDialog dlgOpen = new OpenFileDialog();
-            //SaveFileDialog dlgSave = new SaveFileDialog();
-
-            //dlgOpen.DefaultExt = ".db";
-            //dlgOpen.Filter = "Text documents (.db)|*.db";
-
-            //bool? openResult = dlgOpen.ShowDialog();
-            //bool? saveResult = dlgSave.ShowDialog();
-
-
-            //if (openResult == true)
-            //{
-            //    txtDB.Text = dlgOpen.FileName;
-            //    filename = dlgOpen.FileName;
-            //}
-
 
             FileDialog dlg;
 
@@ -137,6 +120,17 @@ namespace DM_Skills.Views
             Settings.Server = new Scripts.Server();
             Settings.Server.Start(port);
             Settings.IsServer = true;
+
+            Scripts.Database.CreateDatabase();
+
+            var r = new Random();
+
+            for (int i = 0; i < 20; i++)
+            {
+                var b = new Models.SchoolModel() { Name = "herlev mpfdgfsdfsqdwfw" + i};
+                b.Upload();
+            }
+            Console.WriteLine("done");
         }
 
         private void Button_Stop_Click(object sender, RoutedEventArgs e)
