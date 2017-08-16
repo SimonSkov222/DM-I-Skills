@@ -10,14 +10,16 @@
         <Setter Property="Tag" Value="Show"/>
         <Setter Property="BorderThickness" Value="1.5"/>
         <Setter Property="BorderBrush" Value="#7F7F7F"/>
-        
+        <Setter Property="FontSize" Value="18"/>
+
+        <Setter Property="Template" Value="{StaticResource RichTextBox_Template_Default}"/>
+
 
         <EventSetter Event="TextChanged" Handler="OnTextChanged"/>
         <Style.Triggers>
             <Trigger Property="Tag" Value="Show">
                 <Setter Property="Foreground" Value="{StaticResource Color_Foreground_Placeholder}"/>
                 <Setter Property="Background" Value="{StaticResource Color_Background_Placeholder}"/>
-                <Setter Property="FontStyle" Value="Italic"/>
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -4,21 +4,42 @@
 
 
     <ControlTemplate x:Key="RichTextBox_Template_Default" TargetType="{x:Type RichTextBox}">
+        <Border x:Name="border" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Background="{TemplateBinding Background}">
+                <Grid>
 
-        <Grid>
-            <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"/>
-            
-            <ScrollViewer x:Name="PART_ContentHost" />
-            
-        </Grid>
+                    <TextBlock x:Name="placeholder"
+                    Text="{TemplateBinding ToolTip}"
+                    FontSize="{TemplateBinding FontSize}"
+                    FontStyle="{TemplateBinding FontStyle}"
+                    FontFamily="{TemplateBinding FontFamily}"
+                    FontWeight="{TemplateBinding FontWeight}"
+                    Background="Transparent" 
+                    Padding="{TemplateBinding Padding}" Margin="5 0 0 0"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                    Foreground="{TemplateBinding Foreground}"/>
+
+                    <ScrollViewer Margin="0" x:Name="PART_ContentHost"
+                              FontSize="{TemplateBinding FontSize}"  Padding="0" />
+
+
+                </Grid>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Tag" Value="Show">
+                    <Setter TargetName="placeholder" Property="Visibility" Value="Visible"/>
+                    <Setter TargetName="placeholder" Property="FontStyle" Value="Italic"/>
+            </Trigger>
+                <Trigger Property="Tag" Value="Hidden">
+                    <Setter TargetName="placeholder" Property="Visibility" Value="Hidden"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
 
 
 
 
-    </ControlTemplate>
-
-
-
-
-    
 </ResourceDictionary>

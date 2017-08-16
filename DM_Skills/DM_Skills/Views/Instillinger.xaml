@@ -150,7 +150,7 @@
                         Padding="0 4.5" Click="Button_Start_Click"/>
                     
 
-                    <Button Content="Disconnect" Style="{StaticResource Button_Style_Default}" 
+                    <Button Content="Stop" Style="{StaticResource Button_Style_Default}" 
                         Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
                         Foreground="{StaticResource Color_Foreground_Light_1}" 
                         Background="{StaticResource Color_Background_Button_Blue}" 
