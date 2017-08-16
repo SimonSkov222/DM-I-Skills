@@ -52,6 +52,10 @@ namespace DM_Skills.Scripts
 
         string GetTableName(string name);
 
+        string GetColumn(IColumn col);
+
+        string GetForeignKey(IColumn col);
+
 
 
 

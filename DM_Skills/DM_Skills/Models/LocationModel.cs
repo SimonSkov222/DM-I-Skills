@@ -38,11 +38,11 @@ namespace DM_Skills.Models
             if (myDB.Exist("Locations", "Name", Name))
             {
                 var result = myDB.GetRow("Locations", "ID", "WHERE [Name] = '{0}'", Name);
-                ID = (int)result[0];
+                ID = Convert.ToInt32(result[0]);
             }
             else
             {
-                ID = (int)myDB.Insert("Locations", "Name", Name);
+                ID = Convert.ToInt32(myDB.Insert("Locations", "Name", Name));
             }
             myDB.Disconnect();
 
@@ -61,8 +61,8 @@ namespace DM_Skills.Models
             {
                 result.Add(new LocationModel()
                 {
-                    ID = (int)item[0],
-                    Name = (string)item[1]
+                    ID = Convert.ToInt32(item[0]),
+                    Name = Convert.ToString(item[1])
                 });
             }
             db.Disconnect();

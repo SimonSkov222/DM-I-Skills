@@ -323,12 +323,12 @@ namespace DM_Skills.Scripts
 
             foreach (var column in columns)
             {
-                string columnCmd = column.GetColumn();
+                string columnCmd = GetColumn(column);
 
-                if (column.GetForeignKey() != null)
+                if (GetForeignKey(column) != null)
                 {
-                    (column as MSColumns).foreignKeyReferences = Prefix + (column as MSColumns).foreignKeyReferences;
-                    columnCmd += column.GetForeignKey();
+                    column.ForeignKeyReferences = Prefix + column.ForeignKeyReferences;
+                    columnCmd += GetForeignKey(column);
                 }
                     
 
@@ -347,6 +347,40 @@ namespace DM_Skills.Scripts
         {
             return Prefix + name;
 
+        }
+
+        public string GetColumn(IColumn col)
+        {
+            throw new NotImplementedException();
+
+
+            //type = string.Format(type, length);
+            //string query = string.Format("[{0}] {1}", name, type);
+
+            //if (isUniqueKey) query += " UNIQUE";
+            //if (isAutoIncrement) query += " IDENTITY(1,1)";
+            //if (isNotNull) query += " NOT NULL";
+
+            //if (defaultValue != null)
+            //{
+            //    if (type.ToUpper() == TYPE_INT)
+            //        query += string.Format(" DEFAULT {0}", defaultValue);
+            //    else
+            //        query += string.Format(" DEFAULT '{0}'", defaultValue);
+            //}
+
+            //if (isPrimaryKey) query += string.Format(", PRIMARY KEY([{0}])", name);
+
+            //return query;
+        }
+
+        public string GetForeignKey(IColumn col)
+        {
+            throw new NotImplementedException();
+
+
+            //if (foreignKeyReferences == null) return null;
+            //return string.Format(" FOREIGN KEY REFERENCES {0}", foreignKeyReferences);
         }
     }
 }

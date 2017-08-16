@@ -56,7 +56,7 @@ namespace DM_Skills.Models
             }
             else
             {
-                ID = (int)myDB.Insert("Persons", "Name", Name);
+                ID = Convert.ToInt32(myDB.Insert("Persons", new string[] { "Name", "Teamid" }, new object[] { Name, TeamID }));
             }
             myDB.Disconnect();
 

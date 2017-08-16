@@ -53,11 +53,11 @@ namespace DM_Skills.Models
             if (myDB.Exist("Schools", "Name", Name))
             {
                 var result = myDB.GetRow("Schools", "ID", "WHERE [Name] = '{0}'", Name);
-                ID = (int)result[0];
+                ID = Convert.ToInt32(result[0]);
             }
             else
             {
-                ID = (int)myDB.Insert("Schools", "Name", Name);
+                ID = Convert.ToInt32(myDB.Insert("Schools", "Name", Name));
             }
             myDB.Disconnect();
 
@@ -82,13 +82,16 @@ namespace DM_Skills.Models
             db.UseDistinct = true;
 
             var data = db.GetRows("Schools", new string[] { "ID", "Name" });
-            foreach (var item in data)
+            if (data != null)
             {
-                result.Add(new SchoolModel()
+                foreach (var item in data)
                 {
-                    ID = (int)item[0],
-                    Name = (string)item[1]
-                });
+                    result.Add(new SchoolModel()
+                    {
+                        ID = Convert.ToInt32(item[0]),
+                        Name = Convert.ToString(item[1])
+                    });
+                }
             }
             db.Disconnect();
 

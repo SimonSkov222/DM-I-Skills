@@ -5,8 +5,20 @@
 
     <ControlTemplate x:Key="RichTextBox_Template_Default" TargetType="{x:Type RichTextBox}">
 
-        <ScrollViewer x:Name="PART_ContentHost" />
+        <Grid>
+            <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"/>
+            
+            <ScrollViewer x:Name="PART_ContentHost" />
+            
+        </Grid>
+
+
+
 
     </ControlTemplate>
+
+
+
+
     
 </ResourceDictionary>

@@ -18,6 +18,7 @@ namespace DM_Skills.Scripts
         private static string Pass = "DMiSKILLS2017";
         private static string DatabaseName = "DM_i_Skills";
 
+
         public static IDatabase GetDB()
         {
             if (Settings == null)
@@ -27,11 +28,12 @@ namespace DM_Skills.Scripts
 
             if (db == null)
             {
-                db = new MSSQL();
+                db = new SQLite();
             }
 
             if (!db.IsConnected) {
-                string connString = string.Format("Server={0};Database={1};User Id={2};Password={3}", Host, DatabaseName, User, Pass);
+                //string connString = string.Format("Server={0};Database={1};User Id={2};Password={3}", Host, DatabaseName, User, Pass);
+                string connString = string.Format("Data Source={0};Version=3;", Models.SettingsModel.FileNameDB);
                 db.Connect(connString, "DM_Test2_");
             }
 
@@ -44,16 +46,16 @@ namespace DM_Skills.Scripts
             if (!myDB.Exist("Schools"))
             {
                 myDB.Create("Schools",
-                    new MSColumns { name = "ID", type = MSColumns.TYPE_INT, isPrimaryKey = true, isAutoIncrement = true },
-                    new MSColumns { name = "Name", type = MSColumns.TYPE_VARCHAR, isNotNull = true }
+                    new Column { Name = "ID", Type = ColumnTypes.Int, IsPrimaryKey = true, IsAutoIncrement = true },
+                    new Column { Name = "Name", Type = ColumnTypes.String, IsNotNull = true }
                 );
             }
 
             if (!myDB.Exist("Locations"))
             {
                 myDB.Create("Locations",
-                    new MSColumns { name = "ID", type = MSColumns.TYPE_INT, isPrimaryKey = true, isAutoIncrement = true },
-                    new MSColumns { name = "Name", type = MSColumns.TYPE_VARCHAR, isNotNull = true }
+                    new Column { Name = "ID", Type = ColumnTypes.Int, IsPrimaryKey = true, IsAutoIncrement = true },
+                    new Column { Name = "Name", Type = ColumnTypes.String, IsNotNull = true }
                 );
 
                 myDB.Insert("Locations", "Name", "Ballerup");
@@ -63,21 +65,21 @@ namespace DM_Skills.Scripts
             if (!myDB.Exist("Teams"))
             {
                 myDB.Create("Teams",
-                    new MSColumns { name = "ID", type = MSColumns.TYPE_INT, isPrimaryKey = true, isAutoIncrement = true },
-                    new MSColumns { name = "SchoolID", type = MSColumns.TYPE_INT, isNotNull = true, foreignKeyReferences = "Schools(ID)" },
-                    new MSColumns { name = "LocationID", type = MSColumns.TYPE_INT, isNotNull = true, foreignKeyReferences = "Locations(ID)" },
-                    new MSColumns { name = "Class", type = MSColumns.TYPE_VARCHAR, isNotNull = true },
-                    new MSColumns { name = "Time", type = MSColumns.TYPE_VARCHAR, isNotNull = true },
-                    new MSColumns { name = "Date", type = MSColumns.TYPE_VARCHAR, isNotNull = true }
+                    new Column { Name = "ID", Type = ColumnTypes.Int, IsPrimaryKey = true, IsAutoIncrement = true },
+                    new Column { Name = "SchoolID", Type = ColumnTypes.Int, IsNotNull = true, ForeignKeyReferences = "Schools(ID)" },
+                    new Column { Name = "LocationID", Type = ColumnTypes.Int, IsNotNull = true, ForeignKeyReferences = "Locations(ID)" },
+                    new Column { Name = "Class", Type = ColumnTypes.String, IsNotNull = true },
+                    new Column { Name = "Time", Type = ColumnTypes.String, IsNotNull = true },
+                    new Column { Name = "Date", Type = ColumnTypes.String, IsNotNull = true }
                 );
             }
 
             if (!myDB.Exist("Persons"))
             {
                 myDB.Create("Persons",
-                    new MSColumns { name = "ID", type = MSColumns.TYPE_INT, isPrimaryKey = true, isAutoIncrement = true },
-                    new MSColumns { name = "TeamID", type = MSColumns.TYPE_INT, isNotNull = true, foreignKeyReferences = "Teams(ID)" },
-                    new MSColumns { name = "Name", type = MSColumns.TYPE_VARCHAR, isNotNull = true }
+                    new Column { Name = "ID", Type = ColumnTypes.Int, IsPrimaryKey = true, IsAutoIncrement = true },
+                    new Column { Name = "TeamID", Type = ColumnTypes.Int, IsNotNull = true, ForeignKeyReferences = "Teams(ID)" },
+                    new Column { Name = "Name", Type = ColumnTypes.String, IsNotNull = true }
                 );
             }
 

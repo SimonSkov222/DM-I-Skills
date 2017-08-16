@@ -24,5 +24,7 @@ namespace DM_Skills.Scripts
             else
                 (sender as PasswordBox).Tag = "Hidden";
         }
+
+        
     }
 }

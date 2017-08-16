@@ -26,14 +26,35 @@ namespace DM_Skills
         /// 
         public MainWindow()
         {
+            Scripts.Database.CreateDatabase();
             InitializeComponent();
 
+            //var d = new Models.TableModelN();
+            //d.Team.Class = "7z";
+            //d.Team.Date = "05-01-2018";
+            //d.Team.Time = "05:10:20";
+            //d.School.Name = "Hersted Skole";
+            //d.Location.Name = "ballerup";
+            //d.Persons.Add(new Models.PersonModel() { Name = "hej" });
+            //d.Persons.Add(new Models.PersonModel() { Name = "meh" });
 
+
+            //var t = new Models.TableModelN();
+            //t.Team.Class = "8c";
+            //t.Team.Date = "02-04-2011";
+            //t.Team.Time = "07:64:45";
+            //t.School.Name = "Måeløv Skole";
+            //t.Location.Name = "Hvidovre";
+            //t.Persons.Add(new Models.PersonModel() { Name = "karl" });
+            //t.Persons.Add(new Models.PersonModel() { Name = "jarl" });
+
+            //d.Upload();
+            //t.Upload();
 
             //Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
             //CreateDatabase();
 
-            Scripts.Database.CreateDatabase();
+
 
             //Loaded += (o, e) =>
             //{
