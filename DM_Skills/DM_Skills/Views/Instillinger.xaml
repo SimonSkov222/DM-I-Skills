@@ -65,7 +65,8 @@
                                              IsEnabled="{Binding ElementName=rClient, Path=IsChecked}"
                                              />
                     <Controls:PlaceholderBox x:Name="txtPort" Placeholder="Port" Grid.Row="0" Grid.Column="1" Margin="2 5"/>
-                    <Controls:PlaceholderBox x:Name="txtDB" Placeholder="File" Grid.Row="1" Grid.ColumnSpan="2" Margin="2 5"/>
+                    <Controls:PlaceholderBox x:Name="txtDB" Placeholder="File" Grid.Row="1" Grid.ColumnSpan="2" Margin="2 5"
+                                             Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
 
                     <Grid Grid.Row="2" Grid.ColumnSpan="2">
                         <Grid.ColumnDefinitions>
@@ -76,20 +77,22 @@
                             Style="{StaticResource Button_Style_Default}" HorizontalAlignment="Stretch"
                             Background="{StaticResource Color_Background_Button_Blue}"
                             Foreground="{StaticResource Color_Foreground_Light_1}"
-                            Click="Button_Click"/>
+                            Click="Button_Click"
+                            Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
 
                         <Button Content="Save File" Grid.Column="1"
-                            Style="{StaticResource Button_Style_Default}" HorizontalAlignment="Stretch"
-                            Background="{StaticResource Color_Background_Button_Blue}"
-                            Foreground="{StaticResource Color_Foreground_Light_1}"
-                            Click="Button_Click"/>
+                                Style="{StaticResource Button_Style_Default}" HorizontalAlignment="Stretch"
+                                Background="{StaticResource Color_Background_Button_Blue}"
+                                Foreground="{StaticResource Color_Foreground_Light_1}"
+                                Click="Button_Click"
+                                Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
 
                     </Grid>
 
-                    <CheckBox Content="Database Status"  FontSize="16" 
+                    <!--<CheckBox Content="Database Status"  FontSize="16" 
                               IsChecked="False" IsEnabled="False" 
                               Margin="2 15 2 0" Grid.Row="2" Grid.Column="0"
-                                Template="{StaticResource CheckBox_Tempalate_Status}" />
+                                Template="{StaticResource CheckBox_Tempalate_Status}" />-->
 
                 </Grid>
 
