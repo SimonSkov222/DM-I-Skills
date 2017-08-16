@@ -16,10 +16,10 @@ namespace DM_Skills.Scripts
         public static T FindParent<T>(DependencyObject child) where T : DependencyObject
         {
 
-            T parent = VisualTreeHelper.GetParent(child) as T;
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
 
             if (parent != null)
-                return parent;
+                return parent as T;
             else
                 return FindParent<T>(parent);
         }

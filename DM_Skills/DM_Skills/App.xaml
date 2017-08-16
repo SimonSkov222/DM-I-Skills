@@ -57,9 +57,6 @@
                 <ResourceDictionary Source="Styles/DatePicker_Style_Default.xaml"/>
 
 
-                <ResourceDictionary Source="Templates/PersonListControlN_Template_Default.xaml"/>
-                <ResourceDictionary Source="Styles/PersonListControlN_Style_Default.xaml"/>
-
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

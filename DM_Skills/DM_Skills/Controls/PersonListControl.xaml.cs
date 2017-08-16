@@ -27,6 +27,18 @@ namespace DM_Skills.Controls
     public partial class PersonListControl : UserControl, INotifyPropertyChanged
     {
 
+
+        public bool WindowIsFocused
+        {
+            get { return (bool)GetValue(WindowIsFocusedProperty); }
+            set { SetValue(WindowIsFocusedProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for WindowIsFocused.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty WindowIsFocusedProperty =
+            DependencyProperty.Register("WindowIsFocused", typeof(bool), typeof(PersonListControl), new PropertyMetadata(false));
+
+
         public bool Error
         {
             get { return (bool)GetValue(ErrorProperty); }
@@ -125,6 +137,13 @@ namespace DM_Skills.Controls
             InsertNewInputBox();
 
             Loaded += PersonListControl_Loaded;
+            Loaded += (oo, ee) =>
+            {
+                var win = Window.GetWindow(this);
+                win.Activated += (o, e) => WindowIsFocused = true;
+                win.Deactivated += (o, e) => WindowIsFocused = false;
+                WindowIsFocused = win.IsActive;
+            };
         }
 
         private void PersonListControl_Loaded(object sender, RoutedEventArgs e)

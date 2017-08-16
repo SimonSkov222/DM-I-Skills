@@ -19,22 +19,23 @@ namespace DM_Skills.Converters
                 case "text":
                     return GetText(values[0], values[1]);
                 case "popup":
-                    return IsPopupOpen(values[0], values[1]);
+                    return IsPopupOpen(values[0], values[1], values[2]);
             }
             return null;
         }
 
-        private bool IsPopupOpen(object height, object isOpen)
+        private bool IsPopupOpen(object height, object isOpen, object isFocused)
         {
-            if (height == null || isOpen == null)
+            if (height == null || isOpen == null || isFocused == null)
                 return false;
-            if (!(height is double) || !(isOpen is bool))
+            if (!(height is double) || !(isOpen is bool) || !(isFocused is bool))
                 return false;
 
             bool mHeight = System.Convert.ToDouble(height) > 0;
             bool open = System.Convert.ToBoolean(isOpen);
+            bool focus = System.Convert.ToBoolean(isFocused);
 
-            return open && mHeight;
+            return open && mHeight && focus;
         }
         private string GetText(object list, object placeholder)
         {

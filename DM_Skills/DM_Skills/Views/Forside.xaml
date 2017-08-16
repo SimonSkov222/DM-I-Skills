@@ -19,10 +19,8 @@
             <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
-        <Label Content="{Binding ElementName=controller,Path=ActualHeight}" Panel.ZIndex="100"/>
-        <Label Content="{Binding ElementName=ddd,Path=ActualHeight}" Panel.ZIndex="100" Margin="0 30 0 0"/>
         <!-- Borderne -->
-        <ScrollViewer Grid.Row="0" Grid.Column="0"  x:Name="ddd">
+        <ScrollViewer Grid.Row="0" Grid.Column="0"  ScrollViewer.VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="listOfTables"/>
         </ScrollViewer>
         <!-- Indsend, nulstil og tid liste -->
@@ -58,7 +56,7 @@
 
                     
                 <Controls:DragAndDropTimerControl 
-                    Margin="0 0 0 0"
+                    Margin="0 20 0 0"
                     x:Name="LapList" 
                     CurrentTime="{Binding ElementName=stopwatch, Path=DisplayTime}"
                     Grid.Row="4" 
