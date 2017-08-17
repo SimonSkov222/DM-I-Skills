@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -190,41 +191,25 @@ namespace DM_Skills.Views
 
         private void Button_Print_Click(object sender, RoutedEventArgs e)
         {
-            Models.SchoolModel.CancelThread(0);
-            //MessageBox.Show(Order.ToString());
+            if (searchList.SelectedItems.Count > 0)
+            {
+                SaveFileDialog dlg = new SaveFileDialog();
+                var print = new Scripts.Print();
 
-            //var items = ItemSourceSearch;
-
-            //Console.WriteLine("Start");
-            //var createPDF = Task.Run(() => {
-            //    var print = new Scripts.Print();
-            //    print.CreatePDF(@"C:\Users\shsk\Desktop\Debug\PDFF.pdf", items);
-            //    Console.WriteLine("Done1");
-            //});
-
-            //Console.WriteLine("Middle");
-            //var printd = new PrintDialog();
-            //var result = printd.ShowDialog();
-
-            //if(result ?? false)
-            //{
-            //    //FlowDocument
-            //   // printd.PrintDocument()
-            //    printd.PrintVisual(searchList, "RR");
-            //    //printd.do
-            //    Console.WriteLine("Print nu");
-            //}
+                dlg.Filter = "(.pdf)|*.pdf";
+                if (dlg.ShowDialog() == true)
+                {
+                    var models = new ObservableCollection<Models.TableModelN>();
+                    foreach (var i in searchList.SelectedItems)
+                    {
+                        models.Add(i as Models.TableModelN);
+                    }
+                    print.CreatePDF(dlg.FileName, models);
+                }
+            }
 
 
-            //Console.WriteLine("Done");
 
-            ////var wPrint = new Views.Udskriv();
-            ////wPrint.Owner = App.Current.MainWindow;
-            ////wPrint.ShowInTaskbar = false;
-            ////wPrint.ResizeMode = ResizeMode.NoResize;
-            //wPrint.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-
-            //wPrint.ShowDialog();
         }
 
         private int? searchID = null;

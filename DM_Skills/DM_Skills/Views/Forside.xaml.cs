@@ -53,15 +53,33 @@ namespace DM_Skills.Views
             }
         }
 
-        private void UpdateTableLayout(int numb) {
-            var visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.IsVisible);
+        private void UpdateTableLayout(int numb)
+        {
+            if (numb < 1)
+            {
+                numb = 1;
+            }
+            else if (numb > 10)
+            {
+                numb = 10;
+            }
+            var visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.Visibility == Visibility.Visible);
 
             //Fjern sidste bord
 
-            for (int i = visibleCnt; i > numb; i--)
+            for (int i = visibleCnt -1; i >= numb; i--)
             {
                 listOfTables.Children[i].Visibility = Visibility.Collapsed;
             }
+
+            visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.Visibility == Visibility.Visible);
+            int all = listOfTables.Children.Count;
+            for (int i = visibleCnt; i < numb -1 && i < all -1; i++)
+            {
+                Console.WriteLine("Visbless");
+                listOfTables.Children[i].Visibility = Visibility.Visible;
+            }
+
             //while (visibleCnt > numb)
             //{
             //    listOfTables.Children.RemoveAt(listOfTables.Children.Count - 1);
@@ -70,6 +88,7 @@ namespace DM_Skills.Views
             //Tilføj nye bordre
             while (listOfTables.Children.Count < numb)
             {
+                Console.WriteLine("Create");
                 Controls.TablesControl table = new Controls.TablesControl();
                 table.Title = "Bord " + (listOfTables.Children.Count +1);
                 table.Margin = new Thickness(0, 0, 0, 3);
@@ -86,11 +105,7 @@ namespace DM_Skills.Views
                 listOfTables.Children.Add(table);
             }
 
-            visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.IsVisible);
-            for (int i = visibleCnt; i < numb; i++)
-            {
-                listOfTables.Children[i].Visibility = Visibility.Visible;
-            }
+            
         }
 
 
