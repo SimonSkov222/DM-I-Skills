@@ -168,7 +168,6 @@ namespace DM_Skills.Views
             {
                 Settings.Client = new Scripts.Client();
                 Settings.Client.Connect(txtIP.Text, int.Parse(txtPort.Text));
-                Settings.IsClient = true;
             }
         }
 
@@ -177,7 +176,6 @@ namespace DM_Skills.Views
             if (Settings.IsClient)
             {
                 Settings.Client.Disconnect();
-                Settings.IsClient = false;
             }
         }
 

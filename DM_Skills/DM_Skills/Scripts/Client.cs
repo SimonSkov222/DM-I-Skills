@@ -12,18 +12,44 @@ namespace DM_Skills.Scripts
 {
     class Client
     {
+        private Models.SettingsModel Settings;
         //SocketClient client;
         SimpleTcpClient client;
         Random r = new Random(157);
         Dictionary<int, Action<object>> Callbacks = new Dictionary<int, Action<object>>();
         private ManualResetEvent waitHandel = new ManualResetEvent(false);
 
-        public void Connect(string ipAddress = "127.0.0.1", int port = 7788) {
-            client = new SimpleTcpClient();
-            client.DataReceived += Client_DataReceived;
-            client.Connect(ipAddress, port);
-            
+        public Client()
+        {
+            Settings = (Models.SettingsModel)Application.Current.FindResource("Settings");
+        }
+        
 
+
+        public bool Connect(string ipAddress = "127.0.0.1", int port = 7788) {
+            try
+            {
+                client = new SimpleTcpClient();
+                client.DataReceived += Client_DataReceived;
+                client.Connect(ipAddress, port);
+                Thread th = new Thread(new ThreadStart(delegate () {
+                    while (true)
+                    {
+                        Console.WriteLine("Client is connected: " + client.TcpClient.Client.Available);
+                        Thread.Sleep(1000);
+                    }
+                }));
+                th.Start();
+                Settings.IsClient = true;
+                Settings.InvokeConnection();
+            }
+            catch (Exception)
+            {
+                Settings.IsClient = false;
+            }
+
+
+            return Settings.IsClient;
         }
 
         private void Client_DataReceived(object sender, Message e)
@@ -65,7 +91,10 @@ namespace DM_Skills.Scripts
         }
 
         public void Disconnect() {
-            //client.Close();
+            client.Dispose();
+            client.Disconnect();
+            Settings.IsClient = false;
+            Settings.InvokeDisconnection();
         }
 
         public void Send(PacketType type, Action<object> cb = null, object data = null)
