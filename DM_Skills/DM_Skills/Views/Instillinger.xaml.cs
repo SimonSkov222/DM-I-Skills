@@ -125,7 +125,19 @@ namespace DM_Skills.Views
             Scripts.Database.CreateDatabase();
 
             var r = new Random();
-            
+
+            for (int i = 0; i < 25; i++)
+            {
+                var d = new Models.TableModelN();
+                d.Team.Class = "7z" + i;
+                d.Team.Date = $"{r.Next(15, 17).ToString().PadLeft(2, '0')}-{r.Next(8, 8)}-{r.Next(2017, 2017)}";
+                d.Team.Time = $"{r.Next(10, 30)}:{r.Next(10, 59)}:{r.Next(10, 59)}";
+                d.School.Name = $"Hersted {r.Next(100)} Skole";
+                d.Location.Name = "ballerup";
+                d.Persons.Add(new Models.PersonModel() { Name = "hej" });
+                d.Persons.Add(new Models.PersonModel() { Name = "meh" });
+            }
+
         }
 
         private void Button_Stop_Click(object sender, RoutedEventArgs e)

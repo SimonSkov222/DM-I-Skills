@@ -35,7 +35,15 @@ namespace DM_Skills.Views
             Settings.OnUpload += delegate () 
             {
                 var locationTime = new Models.TeamModel();
-                
+                var t = "10:10:10";
+                if (locationTime.Time == null)
+                {
+                    return;
+                }
+                if (int.Parse(locationTime.Time) < int.Parse(t))
+                {
+                    Console.WriteLine(locationTime);
+                }
             };
 
         }
