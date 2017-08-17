@@ -12,6 +12,8 @@ namespace DM_Skills.Models
         public event Action OnConnection;
         public event Action OnDisconnection;
 
+        public event Action OnUpload;
+
         public bool IsServer { get; set; }
         public bool IsClient { get; set; }
 
@@ -57,6 +59,11 @@ namespace DM_Skills.Models
         public void InvokeDisconnection()
         {
             OnDisconnection?.Invoke();
+        }
+
+        public void InvokeUpload()
+        {
+            OnUpload?.Invoke();
         }
 
     }

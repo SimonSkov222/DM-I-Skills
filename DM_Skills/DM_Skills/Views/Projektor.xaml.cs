@@ -19,6 +19,8 @@ namespace DM_Skills.Views
     /// </summary>
     public partial class Projektor : Window
     {
+
+        private Models.SettingsModel Settings;
         public bool ClosedByFullScreen = false;
         public Controls.TimerControl Timer { get; set; }
         public MainWindow Parent;
@@ -29,7 +31,12 @@ namespace DM_Skills.Views
             Parent = parent;
             InitializeComponent();
             Closed += (oo, ee) => { if (!ClosedByFullScreen) Parent.Menu_Projektor.IsChecked = false; };
-
+            Settings = FindResource("Settings") as Models.SettingsModel;
+            Settings.OnUpload += delegate () 
+            {
+                var locationTime = new Models.TeamModel();
+                
+            };
 
         }
 

@@ -131,99 +131,41 @@ namespace DM_Skills.Views
             Settings = (Models.SettingsModel)FindResource("Settings");
             Loaded += (o,e) => UpdateTableLayout(NumbOfTables);
         }
-        
-       
-
-            /// <summary>
-            /// StopUr omgang klik.
-            /// Tilføj omgang tiden til vores drag and drop list 
-            /// </summary>
-            private void TimerControl_OnLap(TimeSpan obj)
-            {
-                LapList.Add(obj);
-            }
-
-            /// <summary>
-            /// StopUr Nulstil klik.
-            /// Gør at vores drag and drop list også bliver resat
-            /// </summary>
-            private void TimerControl_OnReset()
-            {
-                LapList.Reset();
-            }
-
-            /// <summary>
-            /// Indsend klik
-            /// Her tjekker vi om bordene er udfyldt rigtigt
-            /// og uploader dem hvis de er
-            /// 
-            /// Brugeren får også besked om man kunne
-            /// uploade eller ej
-            /// </summary>
-            private void Button_Upload_Click(object sender, RoutedEventArgs e)
-            {
-
-            foreach (var item in listOfTables.Children)
-            {
-                ((Controls.TablesControl)item).Model.FailedUpload = true;
-            }
-            return;
-
-                //Gør vi kan loop igennem bordene med et loop
-                UserControl[] values =
-                {
-                //cTable1,
-                //cTable2,
-                //cTable3,
-                //cTable4,
-                //cTable5
-            };
-
-                //Fortæller om vi kan oploade eller ej
-                bool canUpload = true;
-
-                foreach (var table in values)
-                {
-                    //Hent model og tjek om vi overholder 
-                    //reglerne for at kunne uploade
-                    var model = table.DataContext as Models.TableModel;
-                    if (model.HasData() && !model.CanUpload())
-                    {
-                        //Highlight det bord der er en fejl på
-                        table.BorderThickness = new Thickness(2);
-                        table.BorderBrush = Brushes.Red;
-                        canUpload = false;
-                    }
-                    else
-                    {
-                        //Fjern highlight
-                        table.BorderThickness = new Thickness(0);
-                    }
-                }
 
 
-                //Tjek om må uploade
-                if (canUpload)
-                {
-                    //Start upload for de bordere der har data
-                    foreach (var table in values)
-                    {
-                        var model = table.DataContext as Models.TableModel;
-                        if (model.HasData())
-                            model.Uplaod();
-                    }
+
+        /// <summary>
+        /// StopUr omgang klik.
+        /// Tilføj omgang tiden til vores drag and drop list 
+        /// </summary>
+        private void TimerControl_OnLap(TimeSpan obj)
+        {
+            LapList.Add(obj);
+        }
+
+        /// <summary>
+        /// StopUr Nulstil klik.
+        /// Gør at vores drag and drop list også bliver resat
+        /// </summary>
+        private void TimerControl_OnReset()
+        {
+            LapList.Reset();
+        }
+
+        /// <summary>
+        /// Indsend klik
+        /// Her tjekker vi om bordene er udfyldt rigtigt
+        /// og uploader dem hvis de er
+        /// 
+        /// Brugeren får også besked om man kunne
+        /// uploade eller ej
+        /// </summary>
+        private void Button_Upload_Click(object sender, RoutedEventArgs e)
+        {
+            Settings.InvokeUpload();
 
 
-                    MessageBox.Show("Er nu uploadet til databasen.");
-
-                    
-                    Button_Reset_Click(null, null);
-                }
-                else
-                {
-                    MessageBox.Show("Kan ikke uploade. Ret fejlne.");
-                }
-            }
+        }
 
 
             /// <summary>
