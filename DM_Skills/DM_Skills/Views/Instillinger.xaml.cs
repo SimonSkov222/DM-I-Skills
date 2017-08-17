@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -178,6 +179,40 @@ namespace DM_Skills.Views
                 Settings.Client.Disconnect();
                 Settings.IsClient = false;
             }
+        }
+
+        private void Button_SchoolUpload_Click(object sender, RoutedEventArgs e)
+        {
+            string richText = new TextRange(txtSkoleList.Document.ContentStart, txtSkoleList.Document.ContentEnd).Text;
+
+            var schoolList = Regex.Matches(richText, ".+?(?:\\n|$)", RegexOptions.Singleline)
+                .OfType<Match>()
+                .Select(m => m.Groups[0].Value)
+                .Distinct();
+
+            foreach (var i in schoolList)
+            {
+                string name = i.Trim().Replace("\n", "");
+                (new Models.SchoolModel() { Name = name }).Upload();
+            }
+
+            txtSkoleList.Document.Blocks.Clear();
+            
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var list = Models.SchoolModel.GetAll();
+
+            foreach (var i in list)
+            {
+                Console.WriteLine(i.Name);
+            }
+        }
+
+        private void Button_DeleteSchools_Click(object sender, RoutedEventArgs e)
+        {
+            Models.SchoolModel.RemoveUnused();
         }
     }
 }
