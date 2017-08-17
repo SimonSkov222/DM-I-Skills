@@ -476,5 +476,15 @@ namespace DM_Skills.Scripts
             Update(table, new string[] { column }, new object[] { value }, pValue);
         }
 
+        public void Delete(string table, string format, params object[] arg)
+        {
+            string tableWithPrefix = GetTableName(table);
+            string whr = string.Format(format, arg);
+
+
+            string cmd = string.Format("DELETE FROM `{0}` {1}", tableWithPrefix, whr);
+
+            ExecuteQuery(cmd);
+        }
     }
 }

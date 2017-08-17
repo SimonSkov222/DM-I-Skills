@@ -10,23 +10,21 @@
     <Grid Margin="0 15 0 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
 
         <Grid  Background="{StaticResource Color_Border_Box}" 
-               Grid.Row="1" Grid.Column="0"  >
+               Grid.Row="0" Grid.Column="0"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
 
             <!-- Server/client knap -->
@@ -48,7 +46,7 @@
             
             <!-- Server/Client Inputs -->
             <Grid Grid.Row="1"
-                  Margin="1.5" 
+                  Margin="1.5"
                   Background="{StaticResource Color_Background_Box}">
                 <Grid Margin="15 10">
                     <Grid.RowDefinitions>
@@ -122,7 +120,7 @@
                         Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
                         Foreground="{StaticResource Color_Foreground_Light_1}" 
                         Background="{StaticResource Color_Background_Button_Blue}" 
-                        FontWeight="Normal" 
+                        FontWeight="Normal"
                         HorizontalAlignment="Stretch"
                         FontSize="16"
                         Padding="0 4.5"
@@ -179,7 +177,8 @@
                             FontWeight="Normal" 
                             HorizontalAlignment="Stretch"
                             FontSize="16"
-                            Padding="0 4.5"/>
+                            Padding="0 4.5"
+                            Click="Button_DeleteSchools_Click"/>
                     
                     
                 </StackPanel>
@@ -187,7 +186,8 @@
             </Grid>
         </Grid>
 
-        <Border BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5" Grid.Row="3" Grid.ColumnSpan="3" Margin="0 30" Padding="15 10">
+        <!--<Border BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5" Grid.Row="3" Grid.ColumnSpan="3" Margin="0 30" Padding="15 10"
+                Background="{StaticResource Color_Background_Box}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
@@ -256,9 +256,150 @@
 
             </Grid>
         </Border>
-        <RichTextBox ToolTip="Indtast Skoler" Grid.Row="4" Height="150" Style="{StaticResource RichTextBox_Style_Default}">
 
-        </RichTextBox>
+        <Border BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5" Grid.Row="4" Padding="20" Background="{StaticResource Color_Background_Box}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <RichTextBox ToolTip="Indtast Skoler" Grid.Column="0" Height="150" Style="{StaticResource RichTextBox_Style_Default}"
+                             Margin="0 0 20 0"/>
+                <Button Content="Send" Grid.Column="1" Style="{StaticResource Button_Style_Default}" 
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        Background="{StaticResource Color_Background_Button_Blue}"
+                        Foreground="{StaticResource Color_Foreground_Light_1}"
+                        Margin="0"
+                        />
+
+            </Grid>
+        </Border>-->
+
+        <Grid Grid.Row="1"></Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Border BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5"  Padding="15 10" 
+                    Background="{StaticResource Color_Background_Box}">
+                <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <RichTextBox ToolTip="Indtast Skoler&#x0a;Ny linje er en ny skole.&#x0a;Klasser bliver fjernet af sig selv når man trykker send." 
+                                 Grid.Column="0" Grid.Row="0" Height="150"
+                                 Style="{StaticResource RichTextBox_Style_Default}"
+                                 x:Name="txtSkoleList"/>
+                    <Button Content="Indsend" Grid.Column="0" Grid.Row="1" Style="{StaticResource Button_Style_Default}" 
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Top"
+                            Background="{StaticResource Color_Background_Button_Blue}"
+                            Foreground="{StaticResource Color_Foreground_Light_1}"
+                            Margin="0,8,0,0"
+                            x:Name="btnSchoolUpload"
+                            Click="Button_SchoolUpload_Click"/>
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="0" Grid.Column="1" Background="{StaticResource Color_Background_InputBox}"/>
+
+            <Border Grid.Column="2" Grid.Row="0" BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5"
+                    Padding="15 10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+
+                    </Grid.RowDefinitions>
+
+
+                    <!--<Label Grid.Row="0" Grid.Column="1" Content="Lokation" Margin="0" Padding="0" FontSize="16" VerticalAlignment="Bottom"/>-->
+
+
+
+
+                    <ComboBox Grid.Row="0" VerticalAlignment="Top" 
+                          ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations}"
+                          SelectedItem="{Binding Source={StaticResource Settings}, Path=Location}"/>
+
+
+                    <Grid Grid.Row="1" VerticalAlignment="Center" Margin="0 13 0 0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Content="Antal borde" Margin="0" Padding="0" FontSize="16" VerticalAlignment="Bottom"/>
+                        <Slider
+                        x:Name="TableNumb"
+                        Style="{StaticResource Slider_Style_Default}" 
+                        IsMoveToPointEnabled="True"
+                        Grid.Row="1" Grid.Column="0" 
+                        Value="{Binding Source={StaticResource Settings}, Path=TableCnt}" 
+                        Minimum="1" Maximum="10" Margin="0 0 5 0"/>
+
+                        <Controls:PlaceholderBox Grid.Row="1"
+                        Text="{Binding ElementName=TableNumb, Path=Value}" 
+                        Grid.Column="1" FontSize="13" 
+                        Width="{Binding ElementName=txtTimeNumb, Path=ActualWidth}"
+                        TextAlignment="Right"/>
+                    </Grid>
+
+
+
+                    <Grid Grid.Row="2" VerticalAlignment="Bottom">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="Over Tid" Margin="0" Padding="0" FontSize="16" VerticalAlignment="Bottom"/>
+                        <Slider x:Name="TimeNumb" Grid.Row="1"
+                            IsMoveToPointEnabled="True"
+                            Style="{StaticResource Slider_Style_Default}"  Grid.Column="0"                             
+                            Value="{Binding Source={StaticResource Settings}, Path=OverTimeMin}" 
+                            Minimum="0" Maximum="60" Margin="0 0 5 0"/>
+                        <Controls:PlaceholderBox x:Name="txtTimeNumb" Grid.Row="1"
+                        Text="{Binding ElementName=TimeNumb, Path=Value}" 
+                        Grid.Column="1" FontSize="13" 
+                        Tag="Min" Width="53"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="3" Height="{Binding ElementName=btnSchoolUpload, Path=ActualHeight}" Margin="0 20 0 0">
+
+                        <Button Content="hej" Click="Button_Click_1"/>
+                    </Grid>
+
+                    </Grid>
+            </Border>
+
+
+        </Grid>
+
 
 
 

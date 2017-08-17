@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace DM_Skills.Models
@@ -97,5 +98,25 @@ namespace DM_Skills.Models
 
             return result;
         }
+
+        public static void RemoveUnused()
+        {
+            var myDB = Scripts.Database.GetDB();
+            myDB.UseDistinct = true;
+
+            var rows = myDB.GetRows("Teams", "SchoolID");
+
+
+            var ids = new List<int>();
+            if (rows != null)
+            {
+                foreach (var i in rows)
+                {
+                    ids.Add(Convert.ToInt32(i[0]));
+                }
+            }
+            myDB.Delete("Schools", "WHERE `ID` NOT IN ({0})", string.Join(", ", ids));
+        }
+
     }
 }

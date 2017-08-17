@@ -66,6 +66,8 @@ namespace DM_Skills.Scripts
 
         void Update(string table, string column, object value, object pValue);
 
+        void Delete(string table, string format, params object[] arg);
+
 
 
 
