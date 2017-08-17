@@ -9,6 +9,8 @@ namespace DM_Skills.Models
     {
         public string Debug { get; set; }
 
+        public event Action OnConnection;
+        public event Action OnDisconnection;
 
         public bool IsServer { get; set; }
         public bool IsClient { get; set; }
@@ -45,6 +47,16 @@ namespace DM_Skills.Models
                 return new ObservableCollection<SchoolModel>();
                 return SchoolModel.GetAll();
             }
+        }
+
+        public void InvokeConnection()
+        {
+            OnConnection?.Invoke();
+        }
+
+        public void InvokeDisconnection()
+        {
+            OnDisconnection?.Invoke();
         }
 
     }

@@ -318,7 +318,7 @@ namespace DM_Skills.Scripts
                         o =>
                         {
                             Console.WriteLine("Got List");
-                            //result = o as List<List<object>>;
+                            result = o as List<List<object>>;
                             //Console.WriteLine(result.Count);
                         },
                         cmd
