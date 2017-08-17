@@ -34,6 +34,7 @@ namespace DM_Skills.Scripts
 
         private void Host_DataReceived(object sender, Message e)
         {
+            Console.WriteLine("got data");
             var packet = Helper.ByteArrayToObject(e.Data) as Packet;
             var reply = new Packet() { ID = packet.ID, Type = packet.Type };
 
