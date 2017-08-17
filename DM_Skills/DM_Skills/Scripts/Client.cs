@@ -35,7 +35,15 @@ namespace DM_Skills.Scripts
                 Thread th = new Thread(new ThreadStart(delegate () {
                     while (true)
                     {
-                        Console.WriteLine("Client is connected: " + client.TcpClient.Client.Available);
+                        try
+                        {
+                            client.Write("0");
+                            Console.WriteLine("Is Connected");
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Is Disconnected");
+                        }
                         Thread.Sleep(1000);
                     }
                 }));
