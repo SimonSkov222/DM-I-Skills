@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DM_Skills.Models
@@ -14,15 +15,18 @@ namespace DM_Skills.Models
         public Action NotifyPropertyOnAll;
         public Action<object> CallbackUpload;
         
+        
         public virtual bool Exist       { get; protected set; }
         public virtual bool CanUpload   { get { return true; } }
         public virtual int ErrNo        { get; protected set; }
         public virtual string Error   { get; protected set; }
         public bool HasError { get { return ErrNo != 0; } }
-
         protected abstract bool OnUpload();
         //public abstract object OnGetRow();
         //public abstract object OnGetResult();
+
+        protected static Dictionary<int, Thread> asyncDB = new Dictionary<int, Thread>();
+        protected static Random randomKey = new Random(944);
 
         public bool Upload() {
             if (OnUpload())
@@ -32,6 +36,31 @@ namespace DM_Skills.Models
             }
 
             return false;
+        }
+
+        public static void CancelThread(int? id) {
+            int key = id ?? -1;
+            if (asyncDB.ContainsKey(key))
+            {
+                if (asyncDB[key].IsAlive)
+                {
+                    asyncDB[key].Abort();
+                }
+
+                asyncDB.Remove(key);
+            }   
+        }
+
+        protected static int GetNewThreadID() {
+            int id;
+
+            do
+            {
+                id = randomKey.Next(0, 2000);
+            } while (asyncDB.ContainsKey(id));
+
+
+            return id;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

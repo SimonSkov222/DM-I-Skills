@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -189,7 +190,8 @@ namespace DM_Skills.Views
 
         private void Button_Print_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Order.ToString());
+            Models.SchoolModel.CancelThread(0);
+            //MessageBox.Show(Order.ToString());
 
             //var items = ItemSourceSearch;
 
@@ -225,6 +227,8 @@ namespace DM_Skills.Views
             //wPrint.ShowDialog();
         }
 
+        private int? searchID = null;
+
         private void Button_Search_Click(object sender, RoutedEventArgs e)
         {
 
@@ -234,8 +238,45 @@ namespace DM_Skills.Views
             var to = dtTo.SelectedDate == null ? "" : dtTo.SelectedDate.Value.ToShortDateString();
             var location = cbLocation.SelectedIndex == 0 ? null : cbLocation.SelectedItem as Models.LocationModel;
 
-            var items = Models.TableModelN.GetTables(Order, school, person, location, from, to);
-            searchList.ItemsSource = items;
+            if (searchID.HasValue)
+            {
+                var result = MessageBox.Show(Window.GetWindow(this),
+                    "Ved at lave en ny søgning, annullere du din gamle.\n\nVil du forsætte?",
+                    "Caption", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Models.TableModelN.CancelThread(searchID);
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            searchID = Models.TableModelN.GetTables(
+                Order, 
+                school, 
+                person, 
+                location, 
+                from, to,
+                (o) => {
+                    Console.WriteLine("Done");
+                    Application.Current.Dispatcher.Invoke(delegate ()
+                    {
+                        searchList.Items.Clear();
+                    });
+                        foreach (var item in o)
+                    {
+                        Application.Current.Dispatcher.Invoke(delegate () 
+                        {
+                            searchList.Items.Add(item);
+                        });
+                        Thread.Sleep(30);
+                    }
+                    
+                    searchID = null;
+                });
+            //searchList.ItemsSource = items;
         }
     }
 }

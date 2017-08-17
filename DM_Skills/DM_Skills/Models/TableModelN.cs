@@ -5,6 +5,8 @@ using System.Text;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DM_Skills.Scripts;
+using System.Threading;
+using System.Windows;
 
 namespace DM_Skills.Models
 {
@@ -170,170 +172,175 @@ namespace DM_Skills.Models
             FailedUpload = false;
             return true;
         }
+        
 
-
-        public static ObservableCollection<TableModelN> GetTables(Scripts.Order order, string schoolName, string personName, LocationModel location, string from, string to)
+        public static int GetTables(
+                                    Order order, 
+                                    string schoolName, 
+                                    string personName,
+                                    LocationModel location, 
+                                    string from, 
+                                    string to,
+                                    Action<ObservableCollection<TableModelN>> callback
+                                    )
         {
-            var result = new ObservableCollection<TableModelN>();
-            var db = Scripts.Database.GetDB();
-
-            string table_team = db.GetTableName("Teams");
-            string table_schools = db.GetTableName("Schools");
-            string table_locations = db.GetTableName("Locations");
-
-            string cmd = string.Format("SELECT \n" +
-            "`Team`.`ID`, `Team`.`Class`, `Team`.`Time`, `Team`.`Date`, `School`.`ID`, `School`.`Name`, `Location`.`ID`, `Location`.`Name` \n" +
-             "FROM `{0}` AS `Team`\n" +
-             "INNER JOIN `{1}` AS `School` ON `Team`.`SchoolID` = `School`.`ID` \n" +
-             "INNER JOIN `{2}` AS `Location` ON `Team`.`LocationID` = `Location`.`ID`\n", table_team, table_schools, table_locations);
-
-            List<string> where = new List<string>();
+            int threadID = GetNewThreadID();
 
 
-
-            if (personName != "")
+            asyncDB[threadID] = new Thread(new ThreadStart(delegate ()
             {
-                personName = db.EscapeString(personName);
-                db.UseDistinct = true;
-                var persons = db.GetRows("Persons", "TeamID", "WHERE `Name` LIKE '%{0}%'", personName);
-                if (persons != null)
+
+                var result = new ObservableCollection<TableModelN>();
+                var db = Scripts.Database.GetDB();
+
+                string table_team = db.GetTableName("Teams");
+                string table_schools = db.GetTableName("Schools");
+                string table_locations = db.GetTableName("Locations");
+
+                string cmd = string.Format("SELECT \n" +
+                "`Team`.`ID`, `Team`.`Class`, `Team`.`Time`, `Team`.`Date`, `School`.`ID`, `School`.`Name`, `Location`.`ID`, `Location`.`Name` \n" +
+                 "FROM `{0}` AS `Team`\n" +
+                 "INNER JOIN `{1}` AS `School` ON `Team`.`SchoolID` = `School`.`ID` \n" +
+                 "INNER JOIN `{2}` AS `Location` ON `Team`.`LocationID` = `Location`.`ID`\n", table_team, table_schools, table_locations);
+
+                List<string> where = new List<string>();
+
+
+
+                if (personName != "")
                 {
-                    List<int> id = new List<int>();
-                    foreach (var item in persons)
-                    {
-                        id.Add(Convert.ToInt32(item[0]));
-                    }
-                    if (id.Count > 0)
-                    {
-                        string cmdID = string.Join(", ", id.ToArray());
-                        where.Add("`Team`.`ID` IN (" + cmdID + ")");
-                    }
-                }
-            }
-            if (schoolName != "")
-            {
-                schoolName = db.EscapeString(schoolName);
-                where.Add("`School`.`Name` LIKE '%" + schoolName + "%'");
-            }
-            if (location != null && location.Name != "")
-            {
-                location.Name = db.EscapeString(location.Name);
-                where.Add("`Location`.`Name` LIKE '%" + location.Name + "%'");
-            }
-            //if (from != null && from != "")
-            //{
-            //    where.Add("`Team`.`Date` >= '" + from + "'");
-            //}
-            //if (to != null && to != "")
-            //{
-            //    where.Add("[Team].[Date] <= '" + to + "'");
-            //}
-
-            if (where.Count > 0)
-            {
-                string cmdWhere = string.Join(" AND ", where.ToArray());
-                cmd += " WHERE " + cmdWhere;
-            }
-
-            //cmd += "ORDER BY ";
-            //switch (order)
-            //{
-            //    case Order.NyesteTider:         cmd += "`Team`.`Date`";  break;
-            //    case Order.HurtigsteTider:      cmd += "`Team`.`Time`"; break;
-            //    case Order.Alfabetisk:          cmd += "`School`.`Name`"; break;
-            //}
-
-
-
-            cmd += ";";
-
-            var dataTeam = db.ExecuteQuery(cmd);
-
-            if (dataTeam != null && dataTeam.Count > 0)
-            {
-                List<int> teamIDs = new List<int>();
-
-                //"[Team].[ID], [Team].[Class], [Team].[Time], [Team].[Date], [School].[ID], [School].[Name], [Location].[ID], [Location].[Name] \n"
-
-                foreach (var item in dataTeam)
-                {
-                    var dt = Convert.ToDateTime(item[3]);
-
-                    if (from != null && from != "")
-                    {
-                        var dtFrom = Convert.ToDateTime(from);
-                        if (dt < dtFrom)
-                        {
-                            continue;
-                        }
-                    }
-
-                    if (to != null && to != "")
-                    {
-                        var dtTo = Convert.ToDateTime(to);
-                        if (dt > dtTo)
-                        {
-                            continue;
-                        }
-                    }
-
-                    var model = new TableModelN();
-                    teamIDs.Add(Convert.ToInt32(item[0]));
-                    model.Team.ID = Convert.ToInt32(item[0]);
-                    model.Team.Class = Convert.ToString(item[1]);
-                    model.Team.Time = Convert.ToString(item[2]);
-                    model.Team.Date = Convert.ToString(item[3]);
-                    model.School.ID = Convert.ToInt32(item[4]);
-                    model.School.Name = Convert.ToString(item[5]);
-                    model.Location.ID = Convert.ToInt32(item[6]);
-                    model.Location.Name = Convert.ToString(item[7]);
-
-                    result.Add(model);
-                }
-
-                if (teamIDs.Count > 0)
-                {
-                    string cmdTeamIDs = string.Join(", ", teamIDs);
-
-                    var persons = db.GetRows("Persons", new string[] { "ID", "Name", "TeamID" }, "WHERE `TeamID` IN ({0})", cmdTeamIDs);
-
+                    personName = db.EscapeString(personName);
+                    db.UseDistinct = true;
+                    var persons = db.GetRows("Persons", "TeamID", "WHERE `Name` LIKE '%{0}%'", personName);
                     if (persons != null)
                     {
+                        List<int> id = new List<int>();
                         foreach (var item in persons)
                         {
-                            var model = new PersonModel();
-                            model.ID = Convert.ToInt32(item[0]);
-                            model.Name = Convert.ToString(item[1]);
-                            model.TeamID = Convert.ToInt32(item[2]);
+                            id.Add(Convert.ToInt32(item[0]));
+                        }
+                        if (id.Count > 0)
+                        {
+                            string cmdID = string.Join(", ", id.ToArray());
+                            where.Add("`Team`.`ID` IN (" + cmdID + ")");
+                        }
+                    }
+                }
+                if (schoolName != "")
+                {
+                    schoolName = db.EscapeString(schoolName);
+                    where.Add("`School`.`Name` LIKE '%" + schoolName + "%'");
+                }
+                if (location != null && location.Name != "")
+                {
+                    location.Name = db.EscapeString(location.Name);
+                    where.Add("`Location`.`Name` LIKE '%" + location.Name + "%'");
+                }
 
-                            var team = result.Where(o => o.Team.ID == model.TeamID).ToArray();
+                if (where.Count > 0)
+                {
+                    string cmdWhere = string.Join(" AND ", where.ToArray());
+                    cmd += " WHERE " + cmdWhere;
+                }
 
-                            if (team.Length > 0)
+
+
+                cmd += ";";
+
+                var dataTeam = db.ExecuteQuery(cmd);
+
+                if (dataTeam != null && dataTeam.Count > 0)
+                {
+                    List<int> teamIDs = new List<int>();
+
+                    foreach (var item in dataTeam)
+                    {
+                        var dt = Convert.ToDateTime(item[3]);
+
+                        if (from != null && from != "")
+                        {
+                            var dtFrom = Convert.ToDateTime(from);
+                            if (dt < dtFrom)
                             {
-                                team[0].Persons.Add(model);
+                                continue;
+                            }
+                        }
+
+                        if (to != null && to != "")
+                        {
+                            var dtTo = Convert.ToDateTime(to);
+                            if (dt > dtTo)
+                            {
+                                continue;
+                            }
+                        }
+
+                        var model = new TableModelN();
+                        teamIDs.Add(Convert.ToInt32(item[0]));
+                        model.Team.ID = Convert.ToInt32(item[0]);
+                        model.Team.Class = Convert.ToString(item[1]);
+                        model.Team.Time = Convert.ToString(item[2]);
+                        model.Team.Date = Convert.ToString(item[3]);
+                        model.School.ID = Convert.ToInt32(item[4]);
+                        model.School.Name = Convert.ToString(item[5]);
+                        model.Location.ID = Convert.ToInt32(item[6]);
+                        model.Location.Name = Convert.ToString(item[7]);
+
+                        result.Add(model);
+                    }
+
+                    if (teamIDs.Count > 0)
+                    {
+                        string cmdTeamIDs = string.Join(", ", teamIDs);
+
+                        var persons = db.GetRows("Persons", new string[] { "ID", "Name", "TeamID" }, "WHERE `TeamID` IN ({0})", cmdTeamIDs);
+
+                        if (persons != null)
+                        {
+                            foreach (var item in persons)
+                            {
+                                var model = new PersonModel();
+                                model.ID = Convert.ToInt32(item[0]);
+                                model.Name = Convert.ToString(item[1]);
+                                model.TeamID = Convert.ToInt32(item[2]);
+
+                                var team = result.Where(o => o.Team.ID == model.TeamID).ToArray();
+
+                                if (team.Length > 0)
+                                {
+                                    team[0].Persons.Add(model);
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            Console.WriteLine(cmd);
+                switch (order)
+                {
+                    case Order.NyesteTider:
+                        result = new ObservableCollection<TableModelN>(result.OrderBy(t => Convert.ToDateTime(t.Team.Date)).ToList());
+                        break;
+                    case Order.HurtigsteTider:
+                        result = new ObservableCollection<TableModelN>(result.OrderBy(t => t.Team.Time).ToList());
+                        break;
+                    case Order.Alfabetisk:
+                        result = new ObservableCollection<TableModelN>(result.OrderBy(t => t.School.Name).ToList());
+                        break;
+                }
 
-            switch (order)
-            {
-                case Order.NyesteTider:
-                    result = new ObservableCollection<TableModelN>(result.OrderBy(t => Convert.ToDateTime(t.Team.Date)).ToList());
-                    break;
-                case Order.HurtigsteTider:
-                    result = new ObservableCollection<TableModelN>(result.OrderBy(t => t.Team.Time).ToList());
-                    break;
-                case Order.Alfabetisk:
-                    result = new ObservableCollection<TableModelN>(result.OrderBy(t => t.School.Name).ToList());
-                    break;
-            }
+                
+                callback?.Invoke(result);
 
+                if (asyncDB.ContainsKey(threadID))
+                {
+                    asyncDB.Remove(threadID);
+                }
 
-            return result;
+            }));
+
+            asyncDB[threadID].Start();
+
+            return threadID;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace DM_Skills.Scripts
     {
         bool IsConnected { get; }
         string LastQuery { get; }
-        
+        Action<object> CallBack { get; set; }
 
         bool UseDistinct { get; set; }
 

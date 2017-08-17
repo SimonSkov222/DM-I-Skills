@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DM_Skills.Scripts
 {
-    class MSSQL : IDatabase
+    class MSSQL// : IDatabase
     {
 
         private string _prefix;

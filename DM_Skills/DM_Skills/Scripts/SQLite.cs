@@ -26,11 +26,15 @@ namespace DM_Skills.Scripts
 
         public string LastQuery => _lastQuery;
 
+        public Action<object> CallBack { get; set; }
+
         private SQLiteConnection sql_conn;
         private SQLiteCommand sql_cmd;
 
         private bool _IsLocal = false;
         private bool _IsLock = false;
+
+        ManualResetEvent IsLock = new ManualResetEvent(true);
 
         public SQLite(bool isLocal = false)
         {
@@ -255,6 +259,10 @@ namespace DM_Skills.Scripts
         /// </summary>
         public List<List<object>> ExecuteQuery(string cmd)
         {
+            Console.WriteLine("Wait 1");
+            IsLock.WaitOne();
+            IsLock.Reset();
+            Console.WriteLine("Wait 2");
             _lastQuery = cmd;
             var result = new List<List<object>>();
 
@@ -282,6 +290,9 @@ namespace DM_Skills.Scripts
                 if (!isRead)
                 {
                     sql_cmd.ExecuteNonQuery();
+                    IsLock.Set();
+                    CallBack?.Invoke(result);
+                    CallBack = null;
                     return result;
                 }
 
@@ -298,7 +309,6 @@ namespace DM_Skills.Scripts
                     result.Add(row);
                 }
                 sql_reader.Close();
-                return result;
             }
             else if (Settings.IsClient)
             {
@@ -308,20 +318,24 @@ namespace DM_Skills.Scripts
                         o =>
                         {
                             Console.WriteLine("Got List");
-                            result = o as List<List<object>>;
-                            Console.WriteLine(result.Count);
+                            //result = o as List<List<object>>;
+                            //Console.WriteLine(result.Count);
                         },
                         cmd
                 );
                 Console.WriteLine("Contact Server Done");
                 //_stopped.WaitOne();
                 //while (waitForReply) ;
-                return result;
             }
 
+            IsLock.Set();
+
+            CallBack?.Invoke(result);
+            CallBack = null;
             return result;
         }
-        private ManualResetEvent _stopped = new ManualResetEvent(false);
+        
+
         ///// <summary>
         ///// Kan udføre en selv skrevet SQL query/kommando
         ///// og hvis det er en select vil position være key

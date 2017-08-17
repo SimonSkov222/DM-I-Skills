@@ -164,7 +164,6 @@
             SelectionMode="Multiple"
             SelectionChanged="SearchList_SelectionChanged"
             Margin="{Binding ElementName=search_menu,Path=ActualHeight, Converter={StaticResource ValueToThicknessConvert}, ConverterParameter='0 100 0 0'}"
-            ItemsSource="{Binding ElementName=Controller, Path=ItemSourceSearch}" 
             Visibility="Visible" FontSize="16"
             AlternationCount="2" BorderThickness="0" 
             ScrollViewer.VerticalScrollBarVisibility="Disabled"
