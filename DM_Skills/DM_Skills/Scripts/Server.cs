@@ -34,38 +34,47 @@ namespace DM_Skills.Scripts
 
         private void Host_DataReceived(object sender, Message e)
         {
-            var packet = Helper.ByteArrayToObject(e.Data) as Packet;
-            var reply = new Packet() { ID = packet.ID, Type = packet.Type };
-
-            switch (packet.Type)
+            var data = Helper.ByteArrayToObject(e.Data);
+            if (data is string)
             {
-                case PacketType.Disconnect:
-                    break;
-                case PacketType.GetSchools:
-                    reply.Data = Models.SchoolModel.GetAll();
-                    break;
-                case PacketType.GetLocations:
-                    break;
-                case PacketType.UploadTables:
-                    break;
-                case PacketType.Search:
-                    break;
-                case PacketType.QuerySQL:
-                    var myDB = Database.GetDB();
-
-                 
-
-                    var dt = myDB.ExecuteQuery(packet.Data as string);
-                    reply.Data = dt;
-
-                    
-                    myDB.Disconnect();
-                    break;
-                default:
-                    break;
+                Console.WriteLine("Got String");
             }
+            else
+            {
+                Console.WriteLine("Got Packet");
+                var packet = data as Packet;
+                var reply = new Packet() { ID = packet.ID, Type = packet.Type };
 
-            e.Reply(Helper.ObjectToByteArray(reply));
+                switch (packet.Type)
+                {
+                    case PacketType.Disconnect:
+                        break;
+                    case PacketType.GetSchools:
+                        reply.Data = Models.SchoolModel.GetAll();
+                        break;
+                    case PacketType.GetLocations:
+                        break;
+                    case PacketType.UploadTables:
+                        break;
+                    case PacketType.Search:
+                        break;
+                    case PacketType.QuerySQL:
+                        var myDB = Database.GetDB();
+
+
+
+                        var dt = myDB.ExecuteQuery(packet.Data as string);
+                        reply.Data = dt;
+
+
+                        myDB.Disconnect();
+                        break;
+                    default:
+                        break;
+                }
+
+                e.Reply(Helper.ObjectToByteArray(reply));
+            }
         }
 
         public void Stop()
