@@ -225,6 +225,16 @@ namespace DM_Skills.Models
                             where.Add("`Team`.`ID` IN (" + cmdID + ")");
                         }
                     }
+                    else
+                    {
+                        callback?.Invoke(result);
+
+                        if (asyncDB.ContainsKey(threadID))
+                        {
+                            asyncDB.Remove(threadID);
+                        }
+                        return;
+                    }
                 }
                 if (schoolName != "")
                 {

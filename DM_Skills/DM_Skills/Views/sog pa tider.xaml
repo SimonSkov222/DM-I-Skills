@@ -92,23 +92,24 @@
             </ComboBox>
 
             <Button Grid.Row="4" Grid.Column="4" 
-                Content="Søg"  x:Name="btnS"
-                Margin="0"
-                Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
-                Foreground="{StaticResource Color_Foreground_Light_1}" 
-                Background="{StaticResource Color_Background_Button_Blue}" 
-                Style="{StaticResource Button_Style_Default}"
-                HorizontalAlignment="Stretch" Click="Button_Search_Click" />
+                    Content="Søg"  x:Name="btnS"
+                    Margin="0"
+                    Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
+                    Foreground="{StaticResource Color_Foreground_Light_1}" 
+                    Background="{StaticResource Color_Background_Button_Blue}" 
+                    Style="{StaticResource Button_Style_Default}"
+                    HorizontalAlignment="Stretch" Click="Button_Search_Click" />
 
             <Button Grid.Row="4" Grid.Column="0" 
-                Content="Udskriv"  
-                Margin="0"
-                Width="{Binding ElementName=btnS, Path=ActualWidth}"
-                Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
-                Foreground="{StaticResource Color_Foreground_Light_1}" 
-                Background="{StaticResource Color_Background_Button_Blue}" 
-                Style="{StaticResource Button_Style_Default}"
-                HorizontalAlignment="Left" Click="Button_Print_Click" VerticalAlignment="Stretch" />
+                    Content="Gem som PDF"   
+                    Padding="0"
+                    Margin="0"
+                    Width="{Binding ElementName=btnS, Path=ActualWidth}"
+                    Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
+                    Foreground="{StaticResource Color_Foreground_Light_1}" 
+                    Background="{StaticResource Color_Background_Button_Blue}" 
+                    Style="{StaticResource Button_Style_Default}"
+                    HorizontalAlignment="Left" Click="Button_Print_Click" VerticalAlignment="Stretch" />
             
             
             <Grid Grid.Row="6" Grid.ColumnSpan="5" Margin="5 0">

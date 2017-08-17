@@ -39,9 +39,10 @@ namespace DM_Skills.Scripts
                 data.DefaultCell.Phrase = new Phrase { Font = fontTxt };
                 data.DefaultCell.Border = 2;
                 data.SetWidths(width);
-                
-                data.AddCell(WriteData(i.School.Name + "\n" + i.Team.Class));
+
                 data.AddCell(WriteData(i.Persons));
+                data.AddCell(WriteData(i.School.Name + "\n" + i.Team.Class));
+                
                 data.AddCell(WriteData(i.Location.Name, Element.ALIGN_CENTER));
                 data.AddCell(WriteData(i.Team.Date    , Element.ALIGN_CENTER));
                 data.AddCell(WriteData(i.Team.Time    , Element.ALIGN_CENTER));
