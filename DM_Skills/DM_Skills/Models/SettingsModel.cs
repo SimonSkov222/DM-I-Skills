@@ -12,7 +12,7 @@ namespace DM_Skills.Models
         public string Debug { get; set; }
 
         public event Action OnConnection;
-        public event Action OnDisconnection;
+        public event Action<bool> OnDisconnection;
 
         public event Action OnUpload;
 
@@ -61,9 +61,9 @@ namespace DM_Skills.Models
             OnConnection?.Invoke();
         }
 
-        public void InvokeDisconnection()
+        public void InvokeDisconnection(bool disconnectedByUser)
         {
-            OnDisconnection?.Invoke();
+            OnDisconnection?.Invoke(disconnectedByUser);
         }
 
         public void InvokeUpload()
