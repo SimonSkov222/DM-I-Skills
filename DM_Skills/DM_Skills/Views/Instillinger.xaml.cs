@@ -121,6 +121,15 @@ namespace DM_Skills.Views
                 return;
             }
 
+            if (!File.Exists(txtDB.Text))
+            {
+                if (!Directory.Exists(txtDB.Text))
+                {
+                    MessageBox.Show("Stien for databasen findes ikke","Ingen database",MessageBoxButton.OK,MessageBoxImage.Error);
+                    return;
+                }
+            }
+
             Settings.Server = new Scripts.Server();
             Settings.Server.Start(port);
             Settings.IsServer = true;
