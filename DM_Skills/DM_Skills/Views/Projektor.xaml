@@ -73,18 +73,22 @@
                 <Label Content="Klasse:" FontSize="16" Grid.Row="0" Grid.Column="3" Foreground="White"/>
 
 
-                <Label Content="TEC - Ballerups bedste tid:" FontSize="16" Grid.Row="1" Grid.Column="0" Foreground="White"/>
+                <TextBlock  FontSize="16" Grid.Row="1" Grid.Column="0" Foreground="White">
+                    <Run Text="TEC - "/>
+                    <Run Text="{Binding Source={StaticResource Settings}, Path=Location.Name}"/><Run 
+                        Text="s bedste tid"/>
+                </TextBlock>
 
-                <Label Content="11:00:00" FontSize="16" Grid.Row="1" Grid.Column="1" Foreground="White" Background="{StaticResource background_Row1}"/>
-                <Label Content="øbro fri skole eeeeeeeeee" FontSize="16" Grid.Row="1" Grid.Column="2" Foreground="White" Background="{StaticResource background_Row1}"/>
-                <Label Content="8X" FontSize="16" Grid.Row="1" Grid.Column="3" Foreground="White" Background="{StaticResource background_Row1}"/>
+                <Label Content="{Binding ElementName=controller, Path=BestTime.Team.Time}" FontSize="16" Grid.Row="1" Grid.Column="1" Foreground="White" Background="{StaticResource background_Row1}"/>
+                <Label Content="{Binding ElementName=controller, Path=BestTime.School.Name}" FontSize="16" Grid.Row="1" Grid.Column="2" Foreground="White" Background="{StaticResource background_Row1}"/>
+                <Label Content="{Binding ElementName=controller, Path=BestTime.Team.Class}" FontSize="16" Grid.Row="1" Grid.Column="3" Foreground="White" Background="{StaticResource background_Row1}"/>
 
 
                 <Label Content="Dagens bedste tid:" FontSize="16" Grid.Row="2" Grid.Column="0" Foreground="White"/>
-                <Label Content="11:34:00" FontSize="16" Grid.Row="2" Grid.Column="1" Foreground="White" Background="{StaticResource background_Row2}"/>
-                <Label Content="Hanels" FontSize="16" Grid.Row="2" Grid.Column="2" Foreground="White" Background="{StaticResource background_Row2}"/>
+                <Label Content="{Binding ElementName=controller, Path=BestTimeToDay.Team.Time}" FontSize="16" Grid.Row="2" Grid.Column="1" Foreground="White" Background="{StaticResource background_Row2}"/>
+                <Label Content="{Binding ElementName=controller, Path=BestTimeToDay.School.Name}" FontSize="16" Grid.Row="2" Grid.Column="2" Foreground="White" Background="{StaticResource background_Row2}"/>
                 <Border Grid.Row="2" Grid.Column="3" CornerRadius="0 0 7 0" Background="{StaticResource background_Row2}" SnapsToDevicePixels="True">
-                    <Label Content="8Z" FontSize="16" Foreground="White"  />
+                    <Label Content="{Binding ElementName=controller, Path=BestTimeToDay.Team.Class}" FontSize="16" Foreground="White"  />
                 </Border>
             </Grid>
         </Border>
@@ -95,8 +99,8 @@
         <Label Content="Tid:" Grid.Row="2" Foreground="White" FontSize="40" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="0 0 300 75"/>
 
         <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" >
-            <Label Content="Dato: 03/08/2017" FontSize="16" Foreground="White"/>
-            <Label Content="Sted: Ballerup" FontSize="16" Foreground="White"/>
+            <Label Content="{Binding ElementName=controller, Path=Date}" FontSize="16" Foreground="White"/>
+            <Label Content="{Binding Source={StaticResource Settings}, Path=Location.Name}" FontSize="16" Foreground="White"/>
         </StackPanel>
     </Grid>
     

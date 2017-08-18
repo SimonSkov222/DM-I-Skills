@@ -352,5 +352,40 @@ namespace DM_Skills.Models
 
             return threadID;
         }
+
+        public static void GetAll()
+        {
+            var myDB = Database.GetDB();
+
+            //var teams = TeamModel.get.GetRows("");
+        }
+
+        public static TableModelN GetBestTime(DateTime? date, LocationModel location)
+        {
+            if (date == null)
+            {
+                date = new DateTime(DateTime.Now.Year,1,1);
+            }
+
+            var teams = TeamModel.GetTeamsByLocation(location);
+            TableModelN value = null;
+            var isLock = new ManualResetEvent(false);
+
+            GetTables(Order.HurtigsteTider, "", "", location, date.Value.ToShortDateString(), null, o => 
+            {
+                if (o != null && o.Count > 0)
+                {
+                    value = o[0];
+                }
+                isLock.Set();
+            });
+            isLock.WaitOne();
+
+            return value;
+
+            
+
+
+        }
     }
 }

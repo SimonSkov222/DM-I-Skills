@@ -53,6 +53,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
@@ -87,10 +88,21 @@
 
                     </Grid>
 
-                    <!--<CheckBox Content="Database Status"  FontSize="16" 
-                              IsChecked="False" IsEnabled="False" 
-                              Margin="2 15 2 0" Grid.Row="2" Grid.Column="0"
-                                Template="{StaticResource CheckBox_Tempalate_Status}" />-->
+                    <CheckBox Content="{Binding Source={StaticResource Settings}, Path=IsServer, Converter={StaticResource ServerTextConvert}}"  
+                              FontSize="16"  
+                              Visibility="{Binding ElementName=rServer, Path=IsChecked, Converter={StaticResource BoolToVisibilityConvert}}"
+                              IsChecked="{Binding Source={StaticResource Settings}, Path=IsServer}" IsEnabled="False" 
+                              Margin="0 15 0 0" Grid.Row="3" Grid.Column="0"
+                              Template="{StaticResource CheckBox_Tempalate_Status}" 
+                              VerticalAlignment="Bottom"/>
+
+                    <CheckBox Content="{Binding Source={StaticResource Settings}, Path=IsClient, Converter={StaticResource ServerTextConvert}}"
+                              FontSize="16" 
+                              Visibility="{Binding ElementName=rClient, Path=IsChecked, Converter={StaticResource BoolToVisibilityConvert}}"
+                              IsChecked="{Binding Source={StaticResource Settings}, Path=IsClient}" IsEnabled="False" 
+                              Margin="0 15 0 0" Grid.Row="3" Grid.Column="0"
+                              Template="{StaticResource CheckBox_Tempalate_Status}" 
+                              VerticalAlignment="Bottom"/>
 
                 </Grid>
 

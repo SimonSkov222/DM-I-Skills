@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 namespace DM_Skills.Models
 {
-    class SettingsModel
+    class SettingsModel : INotifyPropertyChanged
     {
         public string Debug { get; set; }
 
@@ -14,8 +16,10 @@ namespace DM_Skills.Models
 
         public event Action OnUpload;
 
-        public bool IsServer { get; set; }
-        public bool IsClient { get; set; }
+        public bool IsServer { get { return _IsServer; } set { _IsServer = value; NotifyPropertyChanged(); } }
+        public bool IsClient { get { return _IsClient; } set { _IsClient = value; NotifyPropertyChanged(); } }
+        private bool _IsServer = false;
+        private bool _IsClient = false;
 
         public Scripts.Client Client;
         public Scripts.Server Server;
@@ -31,7 +35,8 @@ namespace DM_Skills.Models
         public int TableCnt { get { return _TableCnt; } set { _TableCnt = value; } }
         public int OverTimeMin { get { return _OverTimeMin; } set { _OverTimeMin = value; } }
 
-        public LocationModel Location { get; set; }
+        public LocationModel Location { get { return _Location; } set { _Location = value; NotifyPropertyChanged(); } }
+        private LocationModel _Location;
         public ObservableCollection<LocationModel> AllLocations {
             get
             {
@@ -64,6 +69,16 @@ namespace DM_Skills.Models
         public void InvokeUpload()
         {
             OnUpload?.Invoke();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
     }

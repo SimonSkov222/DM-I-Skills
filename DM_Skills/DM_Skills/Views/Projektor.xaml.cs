@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,13 +19,20 @@ namespace DM_Skills.Views
     /// <summary>
     /// Interaction logic for Projektor.xaml
     /// </summary>
-    public partial class Projektor : Window
+    public partial class Projektor : Window, INotifyPropertyChanged
     {
 
         private Models.SettingsModel Settings;
         public bool ClosedByFullScreen = false;
         public Controls.TimerControl Timer { get; set; }
         public MainWindow Parent;
+
+        public Models.TableModelN BestTime { get { return _BestTime; } set { _BestTime = value; NotifyPropertyChanged(); } }
+        public Models.TableModelN BestTimeToDay { get { return _BestTimeToDay; } set { _BestTimeToDay = value; NotifyPropertyChanged(); } }
+        private Models.TableModelN _BestTime;
+        private Models.TableModelN _BestTimeToDay;
+        public string Date { get { return DateTime.Now.ToShortDateString(); } }
+
 
         public Projektor(Controls.TimerControl timer, MainWindow parent)
         {
@@ -32,20 +41,18 @@ namespace DM_Skills.Views
             InitializeComponent();
             Closed += (oo, ee) => { if (!ClosedByFullScreen) Parent.Menu_Projektor.IsChecked = false; };
             Settings = FindResource("Settings") as Models.SettingsModel;
-            Settings.OnUpload += delegate () 
+            Settings.OnUpload += UpdateData;
+            Loaded += (o, e) =>
             {
-                var locationTime = new Models.TeamModel();
-                var t = "10:10:10";
-                if (locationTime.Time == null)
-                {
-                    return;
-                }
-                if (int.Parse(locationTime.Time) < int.Parse(t))
-                {
-                    Console.WriteLine(locationTime);
-                }
+                UpdateData();
             };
 
+        }
+        private void UpdateData()
+        {
+            Settings.Location = new Models.LocationModel() { ID = 3, Name = "ballerup" };
+            BestTime = Models.TableModelN.GetBestTime(null, Settings.Location);
+            BestTimeToDay = Models.TableModelN.GetBestTime(DateTime.Now, Settings.Location);
         }
 
         public void SetFullScreen(bool value)
@@ -138,6 +145,16 @@ namespace DM_Skills.Views
                     break;
             }
 
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
 

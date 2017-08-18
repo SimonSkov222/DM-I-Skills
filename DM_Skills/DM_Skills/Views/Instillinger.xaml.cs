@@ -1,9 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,7 +23,7 @@ namespace DM_Skills.Views
     /// <summary>
     /// Interaction logic for Connection.xaml
     /// </summary>
-    public partial class Connection : UserControl
+    public partial class Connection : UserControl, INotifyPropertyChanged
     {
         Models.SettingsModel Settings;
         public Connection()
@@ -35,6 +37,7 @@ namespace DM_Skills.Views
             var r = new RichTextBox();
             
         }
+
         public string ServerIP { get { return Scripts.Helper.GetLocalIPv4(); } }
 
         private string clientIP = "";
@@ -126,17 +129,20 @@ namespace DM_Skills.Views
 
             var r = new Random();
 
-            for (int i = 0; i < 25; i++)
-            {
-                var d = new Models.TableModelN();
-                d.Team.Class = "7z" + i;
-                d.Team.Date = $"{r.Next(15, 17).ToString().PadLeft(2, '0')}-{r.Next(8, 8)}-{r.Next(2017, 2017)}";
-                d.Team.Time = $"{r.Next(10, 30)}:{r.Next(10, 59)}:{r.Next(10, 59)}";
-                d.School.Name = $"Hersted {r.Next(100)} Skole";
-                d.Location.Name = "ballerup";
-                d.Persons.Add(new Models.PersonModel() { Name = "hej" });
-                d.Persons.Add(new Models.PersonModel() { Name = "meh" });
-            }
+            //for (int i = 0; i < 25; i++)
+            //{
+            //    var d = new Models.TableModelN();
+            //    d.Team.Class = "7z" + i;
+            //    d.Team.Date = $"{r.Next(15, 17).ToString().PadLeft(2, '0')}-{r.Next(8, 8)}-{r.Next(2017, 2017)}";
+            //    d.Team.Time = $"{r.Next(10, 30)}:{r.Next(10, 59)}:{r.Next(10, 59)}";
+            //    d.School.Name = $"Hersted {r.Next(100)} Skole";
+            //    d.Location.Name = "ballerup";
+            //    d.Persons.Add(new Models.PersonModel() { Name = "hej" });
+            //    d.Persons.Add(new Models.PersonModel() { Name = "meh" });
+
+            //    d.Upload();
+            //    d = null;
+            //}
 
         }
 
@@ -187,7 +193,6 @@ namespace DM_Skills.Views
                 string name = i.Trim().Replace("\n", "");
                 (new Models.SchoolModel() { Name = name }).Upload();
             }
-
             txtSkoleList.Document.Blocks.Clear();
             
         }
@@ -205,6 +210,16 @@ namespace DM_Skills.Views
         private void Button_DeleteSchools_Click(object sender, RoutedEventArgs e)
         {
             Models.SchoolModel.RemoveUnused();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
