@@ -14,10 +14,6 @@ namespace DM_Skills.Scripts
 
         private static IDatabase db;
         private static IDatabase localDB;
-        private static string Host = "192.168.4.221";
-        private static string User = "dm";
-        private static string Pass = "DMiSKILLS2017";
-        private static string DatabaseName = "DM_i_Skills";
 
 
         public static IDatabase GetLocalDB()
@@ -34,8 +30,8 @@ namespace DM_Skills.Scripts
 
             if (!localDB.IsConnected)
             {
-                string connString = string.Format("Data Source={0};Version=3;", Models.SettingsModel.FileNameLocalDB);
-                localDB.Connect(connString, Models.SettingsModel.PrefixDB);
+                string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameLocalDB);
+                localDB.Connect(connString, Settings.PrefixDB);
             }
             
 
@@ -56,8 +52,8 @@ namespace DM_Skills.Scripts
 
             if (!db.IsConnected) {
                 //string connString = string.Format("Server={0};Database={1};User Id={2};Password={3}", Host, DatabaseName, User, Pass);
-                string connString = string.Format("Data Source={0};Version=3;", Models.SettingsModel.FileNameDB);
-                db.Connect(connString, Models.SettingsModel.PrefixDB);
+                string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameDB);
+                db.Connect(connString, Settings.PrefixDB);
             }
 
 
@@ -73,7 +69,7 @@ namespace DM_Skills.Scripts
                     new Column() { Name = "Name", Type = ColumnTypes.String, IsPrimaryKey=true},
                     new Column() { Name = "Value", Type = ColumnTypes.String, IsNotNull=true }
                 );
-                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "LocationDB", Models.SettingsModel.FileNameLocalDB });
+                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "LocationDB", Settings.FileNameDB });
             }
             myDB.Disconnect();
         }

@@ -89,20 +89,9 @@ namespace DM_Skills.Views
 
 
             if (dlg.ShowDialog() ?? false)
-            {
-                string filename = dlg.FileName;
-                var myLocalDB = Scripts.Database.GetLocalDB();
-
-                myLocalDB.Update("Settings", "Value", filename, (object)"LocationDB");
-                myLocalDB.Disconnect();
-
-                MessageBox.Show(filename);
+            {            
+                Settings.FileNameDB = dlg.FileName;
             }
-
-
-
-
-
         }
 
         private void Button_Start_Click(object sender, RoutedEventArgs e)
@@ -121,14 +110,30 @@ namespace DM_Skills.Views
                 return;
             }
 
-            if (!File.Exists(txtDB.Text))
+            try
             {
-                if (!Directory.Exists(txtDB.Text))
+               System.IO.Path.GetFullPath(Settings.FileNameDB);
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Stien for databasen findes ikke", "Ingen database", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            if (!File.Exists(Settings.FileNameDB))
+            {
+                if (!Directory.Exists(Settings.FileNameDB))
                 {
-                    MessageBox.Show("Stien for databasen findes ikke","Ingen database",MessageBoxButton.OK,MessageBoxImage.Error);
-                    return;
+                    //MessageBox.Show("Stien for databasen findes ikke","Ingen database",MessageBoxButton.OK,MessageBoxImage.Error);
+                    //return;
                 }
             }
+
+            //Gem db location
+            var myLocalDB = Scripts.Database.GetLocalDB();
+            myLocalDB.Update("Settings", "Value", Settings.FileNameDB, (object)"LocationDB");
+            myLocalDB.Disconnect();
 
             Settings.Server = new Scripts.Server();
             Settings.Server.Start(port);
