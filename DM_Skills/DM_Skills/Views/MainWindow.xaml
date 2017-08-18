@@ -32,7 +32,7 @@
             </Grid.ColumnDefinitions>
 
             <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="False" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasConnection}"  Style="{StaticResource Radio_Style_MenuOption}"/>
-            <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="True" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasConnection}"  Style="{StaticResource Radio_Style_MenuOption}"/>
+            <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="False" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasConnection}"  Style="{StaticResource Radio_Style_MenuOption}"/>
             <RadioButton Grid.Column="2" x:Name="Menu_Indstillinger" Content="Indstillinger" IsChecked="False" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasConnection}" Style="{StaticResource Radio_Style_MenuOption}"/>
             <ToggleButton  Grid.Column="3" x:Name="Menu_Projektor" Checked="Menu_Projektor_Checked" Unchecked="Menu_Projektor_Checked" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasConnection}" Content="Projektor" Style="{StaticResource ToggleButton_Styles_Default}"/>
         </Grid>
@@ -63,7 +63,7 @@
                 <Grid 
                     Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" 
                     Style="{StaticResource Grid_Style_FadeAnimation}"
-                    Opacity="1">
+                    Opacity="0">
 
                     <Grid.Height>
                         <MultiBinding Converter="{StaticResource MinusDoubleConvert}" ConverterParameter="Height">
@@ -83,6 +83,7 @@
                     Tag="{Binding ElementName=Menu_Side2, Path=IsChecked}" 
                     Style="{StaticResource Grid_Style_FadeAnimation}"
                     Opacity="0" >
+                    
                     <View:sog_pa_tider/>
                 </Grid>
 
