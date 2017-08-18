@@ -18,6 +18,7 @@ namespace DM_Skills.Scripts
         Random r = new Random(157);
         Dictionary<int, Action<object>> Callbacks = new Dictionary<int, Action<object>>();
         private ManualResetEvent waitHandel = new ManualResetEvent(false);
+        Thread pingServer;
 
         public Client()
         {
@@ -32,22 +33,28 @@ namespace DM_Skills.Scripts
                 client = new SimpleTcpClient();
                 client.DataReceived += Client_DataReceived;
                 client.Connect(ipAddress, port);
-                Thread th = new Thread(new ThreadStart(delegate () {
+                pingServer = new Thread(new ThreadStart(delegate () {
                     while (true)
                     {
-                        try
+                        Thread.Sleep(5000);
+                        if (Settings.IsClient)
                         {
-                            client.Write("0");
-                            Console.WriteLine("Is Connected");
+                            var replay = client.WriteLineAndGetReply("0", new TimeSpan(0, 0, 0, 0, 300));
+                            if (replay == null)
+                            {
+                                Console.WriteLine("Is Disconnected");
+                                Application.Current.Dispatcher.Invoke(delegate ()
+                                {
+
+                                    CloseConnection();
+                                    Settings.InvokeDisconnection(false);
+                                });
+                                break;
+                            }
                         }
-                        catch (Exception)
-                        {
-                            Console.WriteLine("Is Disconnected");
-                        }
-                        Thread.Sleep(1000);
                     }
                 }));
-                th.Start();
+                pingServer.Start();
                 Settings.IsClient = true;
                 Settings.InvokeConnection();
             }
@@ -98,11 +105,16 @@ namespace DM_Skills.Scripts
             
         }
 
-        public void Disconnect() {
+        private void CloseConnection() {
             client.Dispose();
             client.Disconnect();
             Settings.IsClient = false;
-            Settings.InvokeDisconnection();
+        }
+
+        public void Disconnect() {
+            pingServer.Abort();
+            CloseConnection();
+            Settings.InvokeDisconnection(true);
         }
 
         public void Send(PacketType type, Action<object> cb = null, object data = null)

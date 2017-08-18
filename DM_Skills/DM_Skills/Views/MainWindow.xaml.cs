@@ -18,6 +18,8 @@ namespace DM_Skills
     {
 
         public Views.Projektor projek;
+        private Models.SettingsModel Settings;
+        
 
         /// <summary>
         /// Her connecter vi til databasen og opretter den
@@ -30,54 +32,22 @@ namespace DM_Skills
             Scripts.Database.CreateLocalDatabase();
             InitializeComponent();
 
+            Settings = (Models.SettingsModel)FindResource("Settings");
 
-            //Random r = new Random();
-            //for (int i = 0; i < 10; i++)
-            //{
-
-            //    var d = new Models.TableModelN();
-            //    d.Team.Class = "7z" + i;
-            //    d.Team.Date = $"{r.Next(1, 25).ToString().PadLeft(2,'0')}-{r.Next(1, 11).ToString().PadLeft(2, '0')}-{r.Next(2015, 2018)}";
-            //    d.Team.Time = $"{r.Next(10, 30)}:{r.Next(10, 59)}:{r.Next(10, 59)}";
-            //    d.School.Name = $"Hersted {r.Next(100)} Skole";
-            //    d.Location.Name = "ballerup";
-            //    d.Persons.Add(new Models.PersonModel() { Name = "hej" });
-            //    d.Persons.Add(new Models.PersonModel() { Name = "meh" });
-
-
-            //    var t = new Models.TableModelN();
-            //    t.Team.Class = "8c" + i;
-            //    t.Team.Date = $"{r.Next(1,25).ToString().PadLeft(2, '0')}-{r.Next(1, 11).ToString().PadLeft(2, '0')}-{r.Next(2015, 2018)}";
-            //    t.Team.Time = $"{r.Next(10,30)}:{r.Next(10,59)}:{r.Next(10,59)}";
-            //    t.School.Name = $"Måeløv {r.Next(100)} Skole";
-            //    t.Location.Name = "Hvidovre";
-            //    t.Persons.Add(new Models.PersonModel() { Name = "karl" });
-            //    t.Persons.Add(new Models.PersonModel() { Name = "jarl" });
-
-            //    d.Upload();
-            //    t.Upload();
-
-            //    d = null;
-            //    t = null;
-            //}
-
-            //Database.Connect("Data Source=DatabaseSkillsDM.db;Version=3;", "DM_");
-            //CreateDatabase();
-
-
-
-            //Loaded += (o, e) =>
-            //{
-            //    Console.WriteLine(view_forside.stopwatch.DisplayTime);
-            //    var win = new Views.Projektor(view_forside.stopwatch);
-            //    win.Timer = view_forside.stopwatch;
-            //    win.Show();
-
+            Settings.OnConnection += Settings_OnConnection;
+            Settings.OnDisconnection += Settings_OnDisconnection;
             Loaded += (o, e) => { Menu_Forside.IsChecked = false; Menu_Forside.IsChecked = true; };
 
         }
 
-        
+        private void Settings_OnDisconnection(bool disconnectByUser)
+        {
+            Menu_Indstillinger.IsChecked = true;
+        }
+
+        private void Settings_OnConnection()
+        {
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
