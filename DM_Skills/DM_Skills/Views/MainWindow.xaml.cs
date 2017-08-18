@@ -36,7 +36,7 @@ namespace DM_Skills
 
             Settings.OnConnection += Settings_OnConnection;
             Settings.OnDisconnection += Settings_OnDisconnection;
-            Loaded += (o, e) => { Menu_Forside.IsChecked = false; Menu_Forside.IsChecked = true; };
+            Loaded += (o, e) => { Menu_Indstillinger.IsChecked = false; Menu_Indstillinger.IsChecked = true; };
 
         }
 

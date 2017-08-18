@@ -16,8 +16,27 @@ namespace DM_Skills.Models
 
         public event Action OnUpload;
 
-        public bool IsServer { get { return _IsServer; } set { _IsServer = value; NotifyPropertyChanged(); } }
-        public bool IsClient { get { return _IsClient; } set { _IsClient = value; NotifyPropertyChanged(); } }
+        public bool HasConnection { get { return IsServer || IsClient; } }
+        public bool IsServer
+        {
+            get { return _IsServer; }
+            set
+            {
+                _IsServer = value;
+                NotifyPropertyChanged();
+                NotifyPropertyChanged("HasConnection");
+            }
+        }
+        public bool IsClient
+        {
+            get { return _IsClient; }
+            set
+            {
+                _IsClient = value;
+                NotifyPropertyChanged();
+                NotifyPropertyChanged("HasConnection");
+            }
+        }
         private bool _IsServer = false;
         private bool _IsClient = false;
 
