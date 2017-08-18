@@ -64,7 +64,10 @@
                                              IsEnabled="{Binding ElementName=rClient, Path=IsChecked}"
                                              />
                     <Controls:PlaceholderBox x:Name="txtPort" Placeholder="Port" Grid.Row="0" Grid.Column="1" Margin="2 5"/>
-                    <Controls:PlaceholderBox x:Name="txtDB" Placeholder="Database placering" Grid.Row="1" Grid.ColumnSpan="2" Margin="2 5"
+                    <Controls:PlaceholderBox x:Name="txtDB" 
+                                             Text="{Binding Source={StaticResource Settings}, Path=FileNameDB}"
+                                             Placeholder="Database placering" 
+                                             Grid.Row="1" Grid.ColumnSpan="2" Margin="2 5"
                                              Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
 
                     <Grid Grid.Row="2" Grid.ColumnSpan="2">

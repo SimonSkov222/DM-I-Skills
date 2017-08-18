@@ -23,6 +23,7 @@ namespace DM_Skills.Scripts
         public Client()
         {
             Settings = (Models.SettingsModel)Application.Current.FindResource("Settings");
+            Application.Current.Exit += Current_Exit;
         }
         
 
@@ -33,6 +34,7 @@ namespace DM_Skills.Scripts
                 client = new SimpleTcpClient();
                 client.DataReceived += Client_DataReceived;
                 client.Connect(ipAddress, port);
+                
                 pingServer = new Thread(new ThreadStart(delegate () {
                     while (true)
                     {
@@ -65,6 +67,14 @@ namespace DM_Skills.Scripts
 
 
             return Settings.IsClient;
+        }
+
+        private void Current_Exit(object sender, ExitEventArgs e)
+        {
+            if (pingServer != null) {
+                pingServer.Abort();
+            }
+            CloseConnection();
         }
 
         private void Client_DataReceived(object sender, Message e)
