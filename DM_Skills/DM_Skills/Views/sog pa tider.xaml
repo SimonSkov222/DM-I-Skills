@@ -59,13 +59,13 @@
                 x:Name="dtFrom"
                 Grid.Row="0" Grid.Column="4" Margin="0"
                 Style="{StaticResource DatePicker_Style_Default}" 
-                ToolTip="Dato..."/>
+                ToolTip="Fra Dato..."/>
 
             <DatePicker 
                 x:Name="dtTo"
                 Grid.Row="2" Grid.Column="4" Margin="0"
                 Style="{StaticResource DatePicker_Style_Default}"
-                ToolTip="Dato..."/>
+                ToolTip="Til Dato..."/>
 
             <ComboBox 
             Grid.Row="2" Grid.Column="0" Margin="0"
