@@ -64,7 +64,7 @@
                                              IsEnabled="{Binding ElementName=rClient, Path=IsChecked}"
                                              />
                     <Controls:PlaceholderBox x:Name="txtPort" Placeholder="Port" Grid.Row="0" Grid.Column="1" Margin="2 5"/>
-                    <Controls:PlaceholderBox x:Name="txtDB" Placeholder="File" Grid.Row="1" Grid.ColumnSpan="2" Margin="2 5"
+                    <Controls:PlaceholderBox x:Name="txtDB" Placeholder="Database placering" Grid.Row="1" Grid.ColumnSpan="2" Margin="2 5"
                                              Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
 
                     <Grid Grid.Row="2" Grid.ColumnSpan="2">
@@ -72,14 +72,14 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                    <Button Content="Open File" Grid.Column="0"
+                    <Button Content="Vælg Database" Grid.Column="0"
                             Style="{StaticResource Button_Style_Default}" HorizontalAlignment="Stretch"
                             Background="{StaticResource Color_Background_Button_Blue}"
                             Foreground="{StaticResource Color_Foreground_Light_1}"
                             Click="Button_Click"
                             Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
 
-                        <Button Content="Save File" Grid.Column="1"
+                        <Button Content="Opret Database" Grid.Column="1"
                                 Style="{StaticResource Button_Style_Default}" HorizontalAlignment="Stretch"
                                 Background="{StaticResource Color_Background_Button_Blue}"
                                 Foreground="{StaticResource Color_Foreground_Light_1}"
@@ -96,7 +96,7 @@
                               Template="{StaticResource CheckBox_Tempalate_Status}" 
                               VerticalAlignment="Bottom"/>
 
-                    <CheckBox Content="{Binding Source={StaticResource Settings}, Path=IsClient, Converter={StaticResource ServerTextConvert}}"
+                    <CheckBox Content="{Binding Source={StaticResource Settings}, Path=IsClient, Converter={StaticResource ClientTextConvert}}"
                               FontSize="16" 
                               Visibility="{Binding ElementName=rClient, Path=IsChecked, Converter={StaticResource BoolToVisibilityConvert}}"
                               IsChecked="{Binding Source={StaticResource Settings}, Path=IsClient}" IsEnabled="False" 
@@ -310,7 +310,7 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <RichTextBox ToolTip="Indtast Skoler&#x0a;Ny linje er en ny skole.&#x0a;Klasser bliver fjernet af sig selv når man trykker send." 
+                    <RichTextBox ToolTip="Indtast Skoler&#x0a;Ny linje er en ny skole." 
                                  Grid.Column="0" Grid.Row="0" Height="150"
                                  Style="{StaticResource RichTextBox_Style_Default}"
                                  x:Name="txtSkoleList"/>
