@@ -8,7 +8,7 @@ namespace DM_Skills.Scripts
 {
     public enum PacketType {
         Broadcast_UploadTables,
-        Boardcast_UploadSchools,
+        Broadcast_UploadSchools,
         Write,
         Read,
         Ping

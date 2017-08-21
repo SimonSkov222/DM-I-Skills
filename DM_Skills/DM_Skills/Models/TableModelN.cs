@@ -160,13 +160,10 @@ namespace DM_Skills.Models
         {
 
             var db = Database.GetDB();
-            if (db is SQLite && !(db as SQLite).Boardcast.HasValue)
-            {
-                (db as SQLite).Boardcast = PacketType.Broadcast_UploadTables;
-            }
             db.Disconnect();
-
+            School.SendBroadcast = false;
             School.Upload();
+            School.SendBroadcast = true;
             Location.Upload();
             Team.Upload();
 
@@ -178,12 +175,8 @@ namespace DM_Skills.Models
 
             FailedUpload = false;
 
-
-            if (db is SQLite)
-            {
-                (db as SQLite).Boardcast = null;
-            }
-
+            RequestBroadcast(PacketType.Broadcast_UploadTables);
+            
 
             return true;
         }

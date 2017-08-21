@@ -33,6 +33,7 @@ namespace DM_Skills.Scripts
             Host.ClientConnected += (o, e) => { Console.WriteLine("Client Connected"); };
 
             
+            
             Host.Start(port);
             Settings.IsServer = true;
             Settings.InvokeConnection();
@@ -45,6 +46,37 @@ namespace DM_Skills.Scripts
             Settings.IsServer = false;
             Settings.InvokeDisconnection(true);
         }
+
+
+        public void Broadcast(PacketType type)
+        {
+            var packet = new Packet()
+            {
+                Type = type,
+                ID = -1,
+                Data = null,
+                BroadcastType = null
+            };
+            Application.Current.Dispatcher.Invoke(delegate ()
+            {
+                switch (type)
+                {
+                    case PacketType.Broadcast_UploadTables:
+                        Console.WriteLine("Broadcast_UploadTables");
+                        Settings.InvokeSchoolsChanged();
+                        Settings.InvokeUpload();
+                        break;
+                    case PacketType.Broadcast_UploadSchools:
+                        Console.WriteLine("Broadcast_UploadSchools");
+                        Settings.InvokeSchoolsChanged();
+                        break;
+                }
+            });
+
+
+            Host.Broadcast(Helper.ObjectToByteArray(packet));
+        }
+
         private void Host_DataReceived(object sender, Message e)
         {
             Packet packet;
@@ -77,20 +109,12 @@ namespace DM_Skills.Scripts
                     e.Reply(Helper.ObjectToByteArray(reply));
                     break;
                 case PacketType.Broadcast_UploadTables:
+                    Broadcast(packet.Type);
                     break;
-                case PacketType.Boardcast_UploadSchools:
-                    break;
-                default:
+                case PacketType.Broadcast_UploadSchools:
+                    Broadcast(packet.Type);
                     break;
             }
-
-            if (packet.BroadcastType.HasValue)
-            {
-                var broadcast = new Packet() { Type = packet.BroadcastType.Value, ID = -1, Data = null };
-                Host.Broadcast(Helper.ObjectToByteArray(broadcast));
-            }
-
-
         }
 
 

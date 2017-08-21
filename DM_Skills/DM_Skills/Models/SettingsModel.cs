@@ -11,6 +11,7 @@ namespace DM_Skills.Models
     {
         public string Debug { get; set; }
 
+        public event Action OnSchoolsChanged;
         public event Action OnConnection;
         public event Action<bool> OnDisconnection;
 
@@ -110,15 +111,20 @@ namespace DM_Skills.Models
         {
             get
             {
-
                 return SchoolModel.GetAll();
             }
         }
 
+        public void InvokeSchoolsChanged()
+        {
+            NotifyPropertyChanged(nameof(AllSchools));
+            OnSchoolsChanged?.Invoke();
+        }
         public void InvokeConnection()
         {
             OnConnection?.Invoke();
         }
+
 
         public void InvokeDisconnection(bool disconnectedByUser)
         {

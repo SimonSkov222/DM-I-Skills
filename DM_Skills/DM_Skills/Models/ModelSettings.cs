@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DM_Skills.Models
 {
@@ -73,6 +74,18 @@ namespace DM_Skills.Models
             }
         }
 
+        protected void RequestBroadcast(Scripts.PacketType type)
+        {
+            SettingsModel Settings = Application.Current.FindResource("Settings") as SettingsModel;
+            if (Settings.IsServer)
+            {
+                Settings.Server.Broadcast(type);
+            }
+            else if (Settings.IsClient)
+            {
+                Settings.Client.Broadcast(type);
+            }
+        }
 
         //public static object GetRow<T>(int id) { return OnGetRow(); }
         //public static object GetResults<T>(int limit, int offset) { }

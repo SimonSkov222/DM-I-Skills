@@ -109,7 +109,6 @@ namespace DM_Skills.Scripts
         
         private void Client_DataReceived(object sender, Message e)
         {
-            Console.Write("Got Reply..");
             var packet = Helper.ByteArrayToObject(e.Data) as Packet;
 
             switch (packet.Type)
@@ -124,14 +123,14 @@ namespace DM_Skills.Scripts
                 case PacketType.Broadcast_UploadTables:
                     Application.Current.Dispatcher.Invoke(delegate() 
                     {
-                        Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
+                        Settings.InvokeSchoolsChanged();
                         Settings.InvokeUpload();
                     });
                     break;
-                case PacketType.Boardcast_UploadSchools:
+                case PacketType.Broadcast_UploadSchools:
                     Application.Current.Dispatcher.Invoke(delegate ()
                     {
-                        Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
+                        Settings.InvokeSchoolsChanged();
                     });
                     break;
             }
@@ -139,6 +138,17 @@ namespace DM_Skills.Scripts
 
             
 
+        }
+
+        public void Broadcast(PacketType type)
+        {
+            var packet = new Packet()
+            {
+                ID = -1,
+                Type = type,
+                Data = null
+            };
+            client.Write(Helper.ObjectToByteArray(packet));
         }
 
 

@@ -48,14 +48,8 @@ namespace DM_Skills
 
         private void Settings_OnConnection()
         {
-
             Settings.NotifyPropertyChanged(nameof(Settings.AllLocations));
-            Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
-            Console.WriteLine("Skoler:");
-            foreach (var item in Settings.AllSchools)
-            {
-                Console.WriteLine(item);
-            }
+            Settings.InvokeSchoolsChanged();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -63,7 +57,7 @@ namespace DM_Skills
             
 
             Console.WriteLine("TablesControl Skoler:");
-            foreach (var item in (view_forside.listOfTables.Children[0] as Controls.TablesControl).Schools)
+            foreach (var item in (view_forside.listOfTables.Children[0] as Controls.TablesControl).autoSchools.ItemsSource)
             {
                 Console.WriteLine(item);
             }

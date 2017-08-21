@@ -69,17 +69,17 @@ namespace DM_Skills.Controls
         /// </summary>
         public TablesControl()
         {
-            
-
             if (Model == null)
                 Model = new Models.TableModelN();
-            if (Schools == null)
-                Schools = new ObservableCollection<Models.SchoolModel>()
-                {
-                    new Models.SchoolModel() {Name = "Hej"}
-                };
 
-            Schools.CollectionChanged += (o, e) => BindingOperations.GetBindingExpressionBase(autoSchools, AutocompleteControl.ItemsSourceProperty).UpdateSource();
+            (FindResource("Settings") as Models.SettingsModel).OnSchoolsChanged += delegate () 
+            {
+                Console.WriteLine("Skole Update");
+                autoSchools.ItemsSource = Schools;
+            };
+
+            //Schools.CollectionChanged += 
+            //    (o, e) => BindingOperations.GetBindingExpressionBase(autoSchools, AutocompleteControl.ItemsSourceProperty).UpdateSource();
 
 
             InitializeComponent();

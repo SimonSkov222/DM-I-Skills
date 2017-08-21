@@ -251,8 +251,6 @@ namespace DM_Skills.Views
                 }
             }
             txtSkoleList.Document.Blocks.Clear();
-
-            Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -268,7 +266,7 @@ namespace DM_Skills.Views
         private void Button_DeleteSchools_Click(object sender, RoutedEventArgs e)
         {
             Models.SchoolModel.RemoveUnused();
-            Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
+            Console.WriteLine("notify RemoveUnused");
         }
 
         

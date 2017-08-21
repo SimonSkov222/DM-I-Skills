@@ -12,7 +12,7 @@ namespace DM_Skills.Models
     public class SchoolModel : ModelSettings
     {
 
-
+        public bool SendBroadcast = true;
         const int ERRNO_NAME_NULL = 1;
 
         public const string ERROR_NAME_NULL = "";
@@ -51,12 +51,6 @@ namespace DM_Skills.Models
         protected override bool OnUpload()
         {
             var myDB = Scripts.Database.GetDB();
-            bool broadcastWasSet = true;
-            if (myDB is SQLite && !(myDB as SQLite).Boardcast.HasValue)
-            {
-                broadcastWasSet = false;
-                (myDB as SQLite).Boardcast = PacketType.Boardcast_UploadSchools;
-            }
 
             if (myDB.Exist("Schools", "Name", Name))
             {
@@ -69,10 +63,9 @@ namespace DM_Skills.Models
             }
             myDB.Disconnect();
 
-
-            if (myDB is SQLite && !broadcastWasSet)
+            if (SendBroadcast)
             {
-                (myDB as SQLite).Boardcast = null;
+                RequestBroadcast(PacketType.Broadcast_UploadSchools);
             }
 
             return true;

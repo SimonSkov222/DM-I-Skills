@@ -32,8 +32,6 @@ namespace DM_Skills.Scripts
         private SQLiteConnection sql_conn;
         private SQLiteCommand sql_cmd;
 
-        public PacketType? Boardcast = null;
-
         private bool _IsLocal = false;
         private bool _IsLock = false;
 
@@ -308,6 +306,8 @@ namespace DM_Skills.Scripts
                     sql_cmd.CommandText = cmd;
                     sql_cmd.ExecuteNonQuery();
                 }
+
+
             }
             else if (Settings.IsClient)
             {
@@ -319,20 +319,17 @@ namespace DM_Skills.Scripts
                         {
                             result = o as List<List<object>>;
                         }, 
-                        cmd,
-                        Boardcast
+                        cmd
                     );
                 }
                 else
                 {
-                    Settings.Client.Send(PacketType.Write, null, cmd, Boardcast);
+                    Settings.Client.Send(PacketType.Write, null, cmd);
                 }
-                //_stopped.WaitOne();
-                //while (waitForReply) ;
             }
 
             IsLock.Set();
-
+            
             CallBack?.Invoke(result);
             CallBack = null;
             return result;
