@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DM_Skills.Views"
             xmlns:Controls="clr-namespace:DM_Skills.Controls"
+             Background="{StaticResource Color_Background_Program}"
+             Padding="0 15 0 0"
             xmlns:Models="clr-namespace:DM_Skills.Models"
              mc:Ignorable="d" x:Name="controller"
              d:DesignHeight="800" d:DesignWidth="800">

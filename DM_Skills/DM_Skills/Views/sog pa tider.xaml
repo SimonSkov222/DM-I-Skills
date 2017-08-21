@@ -15,7 +15,7 @@
             Type="{x:Type Scripts:Order}"/>
     </UserControl.Resources>
 
-    <Grid Grid.Row="0" Margin="0" Grid.IsSharedSizeScope="True">
+    <Grid Grid.Row="0" Margin="0 0 0 0" Grid.IsSharedSizeScope="True">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -23,85 +23,98 @@
 
         <Grid
             x:Name="search_menu"
+            
             Loaded="Grid_Loaded" Grid.RowSpan="2" Panel.ZIndex="200" 
               Background="{StaticResource Color_Background_Program}" 
               VerticalAlignment="Top">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="3"/>
-                <RowDefinition Height="10"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+            <Grid Margin="0 15 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="3"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Controls:PlaceholderBox 
+                <Controls:PlaceholderBox 
             x:Name="txtSchoolName" 
             Grid.Row="0" Grid.Column="0" Margin="0"
             Placeholder="Skolens navn...."/>
 
-            <Controls:PlaceholderBox 
+                <Controls:PlaceholderBox 
                 x:Name="txtDeltager" 
                 Grid.Row="0" Grid.Column="2" Margin="0"
                 Placeholder="Deltagers navn...."/>
 
-            <DatePicker 
+                <DatePicker 
                 x:Name="dtFrom"
                 Grid.Row="0" Grid.Column="4" Margin="0"
                 Style="{StaticResource DatePicker_Style_Default}" 
                 ToolTip="Fra Dato..."/>
 
-            <DatePicker 
+                <DatePicker 
                 x:Name="dtTo"
                 Grid.Row="2" Grid.Column="4" Margin="0"
                 Style="{StaticResource DatePicker_Style_Default}"
                 ToolTip="Til Dato..."/>
 
-            <ComboBox 
+                <ComboBox 
             Grid.Row="2" Grid.Column="0" Margin="0"
                 ItemsSource="{StaticResource OrderItemsSource}"
                 SelectedIndex="0" 
                 SelectedItem="{Binding ElementName=Controller, Path=Order, Converter={StaticResource OrderItemsSource}}"
                 >
 
-                <!--<ComboBoxItem IsSelected="True">Nyeste tider</ComboBoxItem>
+                    <!--<ComboBoxItem IsSelected="True">Nyeste tider</ComboBoxItem>
                 <ComboBoxItem>Hurtigste tider</ComboBoxItem>
                 <ComboBoxItem>Alfabetisk rækkefølge</ComboBoxItem>-->
 
-            </ComboBox>
+                </ComboBox>
 
-            <ComboBox 
+                <ComboBox 
                 x:Name="cbLocation" SelectedIndex="0"
                 Binding.TargetUpdated="ComboBox_Location_TargetUpdated"
                 ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
                 Grid.Row="2" Grid.Column="2" Margin="0" >
 
-                <!--<ComboBoxItem IsSelected="True">Vælg lokation</ComboBoxItem>
+                    <!--<ComboBoxItem IsSelected="True">Vælg lokation</ComboBoxItem>
                 <ComboBoxItem>Ballerup</ComboBoxItem>
                 <ComboBoxItem>Hvidovre</ComboBoxItem>-->
 
-            </ComboBox>
+                </ComboBox>
 
-            <Button Grid.Row="4" Grid.Column="4" 
+                <Button Grid.Row="4" Grid.Column="4" 
                     Content="Søg"  x:Name="btnS"
                     Margin="0"
                     Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
                     Foreground="{StaticResource Color_Foreground_Light_1}" 
                     Background="{StaticResource Color_Background_Button_Blue}" 
                     Style="{StaticResource Button_Style_Default}"
-                    HorizontalAlignment="Stretch" Click="Button_Search_Click" />
+                    HorizontalAlignment="Stretch" Click="Button_Search_Click" 
+                    />
 
-            <Button Grid.Row="4" Grid.Column="0" 
+                <Button Grid.Row="4" Grid.Column="4" 
+                    Content="Annuller"  x:Name="btnA"
+                    Margin="0"
+                    Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
+                    Foreground="{StaticResource Color_Foreground_Light_1}" 
+                    Background="{StaticResource Color_Background_Button_Blue}" 
+                    Style="{StaticResource Button_Style_Default}"
+                    HorizontalAlignment="Stretch" Click="Button_Cancel_Click" 
+                    Visibility="Collapsed" />
+
+                <Button Grid.Row="4" Grid.Column="0" 
                     Content="Gem som PDF"   
                     Padding="0"
                     Margin="0"
@@ -111,37 +124,37 @@
                     Background="{StaticResource Color_Background_Button_Blue}" 
                     Style="{StaticResource Button_Style_Default}"
                     HorizontalAlignment="Left" Click="Button_Print_Click" VerticalAlignment="Stretch" />
-            
-            
-            <Grid Grid.Row="6" Grid.ColumnSpan="5" Margin="5 0">
-                <Grid.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="Transparent" Offset="1"/>
-                    <GradientStop Color="#407F7F7F" Offset="0.95"/>
-                    <GradientStop Color="#7F7F7F" Offset="0.717"/>
-                    <GradientStop Color="#7F7F7F"/>
-                </RadialGradientBrush>
-            </Grid.Background>
-            </Grid>
 
 
-            <!--Header-->
-            <Border 
+                <Grid Grid.Row="6" Grid.ColumnSpan="5" Margin="5 0">
+                    <Grid.Background>
+                        <RadialGradientBrush>
+                            <GradientStop Color="Transparent" Offset="1"/>
+                            <GradientStop Color="#407F7F7F" Offset="0.95"/>
+                            <GradientStop Color="#7F7F7F" Offset="0.717"/>
+                            <GradientStop Color="#7F7F7F"/>
+                        </RadialGradientBrush>
+                    </Grid.Background>
+                </Grid>
+
+
+                <!--Header-->
+                <Border 
                 x:Name="header" Grid.Row="8" Grid.ColumnSpan="5" 
                 BorderBrush="Gray"
                 BorderThickness="0 0 0 2"
                 Height="40" Background="LightGray">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="40" SharedSizeGroup="Size_Checkbox"/>
-                        <ColumnDefinition Width="188" SharedSizeGroup="Size_Person"/>
-                        <ColumnDefinition Width="188" SharedSizeGroup="Size_School"/>
-                        <ColumnDefinition Width="115" SharedSizeGroup="Size_Location"/>
-                        <ColumnDefinition Width="100" SharedSizeGroup="Size_Date"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" SharedSizeGroup="Size_Checkbox"/>
+                            <ColumnDefinition Width="188" SharedSizeGroup="Size_Person"/>
+                            <ColumnDefinition Width="188" SharedSizeGroup="Size_School"/>
+                            <ColumnDefinition Width="115" SharedSizeGroup="Size_Location"/>
+                            <ColumnDefinition Width="100" SharedSizeGroup="Size_Date"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <CheckBox 
+                        <CheckBox 
                     Grid.Column="0"
                     x:Name="printCheckAll" 
                     Style="{StaticResource CheckBox_Style_Default}" 
@@ -150,15 +163,15 @@
                     Unchecked="SearchList_CheckAll" 
                     Checked="SearchList_CheckAll" />
 
-                    <TextBlock Text="Deltagere"       Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="1" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
-                    <TextBlock Text="Skole og klasse" Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="2" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
-                    <TextBlock Text="Lokation"        Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="3" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
-                    <TextBlock Text="Dato"            Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="4" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
-                    <TextBlock Text="Tid"             Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="5" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
-                </Grid>
-            </Border>
+                        <TextBlock Text="Deltagere"       Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="1" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                        <TextBlock Text="Skole og klasse" Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="2" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                        <TextBlock Text="Lokation"        Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="3" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                        <TextBlock Text="Dato"            Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="4" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                        <TextBlock Text="Tid"             Foreground="{StaticResource Color_Foreground_Dark_2}"   Grid.Column="5" FontSize="18" FontWeight="Bold" VerticalAlignment="Center" />
+                    </Grid>
+                </Border>
+            </Grid>
         </Grid>
-            
 
         <ListView 
             x:Name="searchList"

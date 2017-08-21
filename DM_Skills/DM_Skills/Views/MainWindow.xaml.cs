@@ -7,6 +7,7 @@ using SQLite_DB_LIB;                    //Database
 using System.ComponentModel;            //INotifyPropertyChanged
 using System.Runtime.CompilerServices;  //CallerMemberName for PropertyChanged
 using System.Windows.Documents;
+using System.Windows.Data;
 
 namespace DM_Skills
 {
@@ -116,6 +117,25 @@ namespace DM_Skills
 
                 d.Upload();
             }
+        }
+
+        private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+
+            var margin = warningDB.Margin;
+            margin.Top = ((ScrollViewer)sender).VerticalOffset;
+            warningDB.Margin = margin;
+        }
+
+        private void Button_KlikHer_Click(object sender, RoutedEventArgs e)
+        {
+            Menu_Indstillinger.IsChecked = true;
+        }
+
+        private void WarningDB_TargetUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+            Console.WriteLine(warningDB.ActualHeight);
+            BindingOperations.GetBindingExpressionBase(gridForside, Grid.HeightProperty).UpdateTarget();
         }
     }
 }

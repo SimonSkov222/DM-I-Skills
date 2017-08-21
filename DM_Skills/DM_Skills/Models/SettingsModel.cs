@@ -17,14 +17,22 @@ namespace DM_Skills.Models
         public event Action OnUpload;
 
         public bool HasConnection { get { return IsServer || IsClient; } }
+        public bool HasLostConnection { get { return !HasConnection && HasConnectionBefore; } }
+        private bool HasConnectionBefore = false;
+
         public bool IsServer
         {
             get { return _IsServer; }
             set
             {
                 _IsServer = value;
+                if (value)
+                {
+                    HasConnectionBefore = true;
+                }
                 NotifyPropertyChanged();
                 NotifyPropertyChanged("HasConnection");
+                NotifyPropertyChanged("HasLostConnection");
             }
         }
         public bool IsClient
@@ -33,8 +41,13 @@ namespace DM_Skills.Models
             set
             {
                 _IsClient = value;
+                if (value)
+                {
+                    HasConnectionBefore = true;
+                }
                 NotifyPropertyChanged();
                 NotifyPropertyChanged("HasConnection");
+                NotifyPropertyChanged("HasLostConnection");
             }
         }
         private bool _IsServer = false;
@@ -45,7 +58,7 @@ namespace DM_Skills.Models
 
 
 
-        public string FileNameLocalDB { get { return System.IO.Directory.GetCurrentDirectory() + @"\DB942.sqlite"; } }
+        public string FileNameLocalDB { get { return System.IO.Directory.GetCurrentDirectory() + @"\DB9435.sqlite"; } }
 
         public string _FileNameDB = System.IO.Directory.GetCurrentDirectory() + @"\DB94.sqlite";
         public string FileNameDB

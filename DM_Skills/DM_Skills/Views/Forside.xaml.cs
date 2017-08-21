@@ -65,7 +65,7 @@ namespace DM_Skills.Views
                 numb = 10;
             }
             var visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.Visibility == Visibility.Visible);
-
+            
             //Fjern sidste bord
 
             for (int i = visibleCnt -1; i >= numb; i--)
@@ -169,27 +169,82 @@ namespace DM_Skills.Views
         /// </summary>
         private void Button_Upload_Click(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine("un");
+            //Settings.InvokeUpload();
+            Settings.Location = new Models.LocationModel() { Name = "ballerup"};
+            bool allowUpload = true;
+            int cnt = 0;
+            foreach (var item in listOfTables.Children)
+            {
+                if (item is Controls.TablesControl)
+                {
+                    if ((item as Controls.TablesControl).Model.HasData)
+                    {
+                        (item as Controls.TablesControl).Model.Location = Settings.Location;
+                    }
+                    Console.WriteLine("un1");
+                    Console.WriteLine((item as Controls.TablesControl).Model.ErrNo);
+                    if ((item as Controls.TablesControl).Model.HasData && !(item as Controls.TablesControl).Model.CanUpload)
+                    {
+                        (item as Controls.TablesControl).Model.FailedUpload = true;
+                        allowUpload = false;
+                    }
+                    if ((item as Controls.TablesControl).Model.HasData && (item as Controls.TablesControl).Model.CanUpload)
+                    {
+                        Console.WriteLine("un2");
+                        cnt++;
+                    }
+                }
+            }
 
-            Settings.InvokeUpload();
-
+            if (allowUpload && cnt > 0)
+            {
+                Console.WriteLine("un3");
+                foreach (var i in listOfTables.Children)
+                {
+                    if (i is Controls.TablesControl)
+                    {
+                        if ((i as Controls.TablesControl).Model.CanUpload)
+                        {
+                            Console.WriteLine("data uploaded");
+                            (i as Controls.TablesControl).Model.Upload();
+                        }
+                    }
+                }
+                Button_Reset_Click(null, null);
+            }
+            else
+            {
+                foreach (var i in listOfTables.Children)
+                {
+                    if (i is Controls.TablesControl)
+                    {
+                        (i as Controls.TablesControl).Model.Location = new Models.LocationModel();
+                    }
+                }
+            }
 
         }
 
 
-            /// <summary>
-            /// Nulstiling af runde klik.
-            /// </summary>
-            private void Button_Reset_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Nulstiling af runde klik.
+        /// </summary>
+        private void Button_Reset_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (var item in listOfTables.Children)
             {
-                //cTable1.Reset();
-                //cTable2.Reset();
-                //cTable3.Reset();
-                //cTable4.Reset();
-                //cTable5.Reset();
-
-                stopwatch.Reset();
-                LapList.Reset();
+                if (item is Controls.TablesControl)
+                {
+                    //(item as Controls.TablesControl).Model = new Models.TableModelN();
+                    (item as Controls.TablesControl).Reset();
+                }
+                
             }
+
+            stopwatch.Reset();
+            LapList.Reset();
+        }
 
         private void TablesControl_Drop(object sender, DragEventArgs e)
         {
