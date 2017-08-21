@@ -75,26 +75,41 @@ namespace DM_Skills.Models
         private int _TableCnt = 3;
         private int _OverTimeMin = 3;
 
-        public int TableCnt { get { return _TableCnt; } set { _TableCnt = value; NotifyPropertyChanged(); } }
-        public int OverTimeMin { get { return _OverTimeMin; } set { _OverTimeMin = value; NotifyPropertyChanged(); } }
-
-        public LocationModel Location { get { return _Location; } set { _Location = value; NotifyPropertyChanged(); } }
+        public int TableCnt
+        {
+            get { return _TableCnt; }
+            set
+            {
+                _TableCnt = value;
+                NotifyPropertyChanged();
+            }
+        }
+        public int OverTimeMin
+        {
+            get { return _OverTimeMin; }
+            set
+            {
+                _OverTimeMin = value;
+                NotifyPropertyChanged();
+            }
+        }
         private LocationModel _Location;
+        public LocationModel Location { get { return _Location; } set { _Location = value; NotifyPropertyChanged(); } }
+        
         public ObservableCollection<LocationModel> AllLocations {
             get
             {
-
-                Console.WriteLine("TODO: Settings.Locations");
-                return new ObservableCollection<Models.LocationModel>();
-                return LocationModel.GetAll();
+                var result = LocationModel.GetAll();
+                result.Insert(0, new Models.LocationModel() { Name = "Vælg lokation" });
+                return result;
             }
         }
 
 
-        public ObservableCollection<SchoolModel> AllSchools { get {
-
-                Console.WriteLine("TODO: Settings.AllSchools");
-                return new ObservableCollection<SchoolModel>();
+        public ObservableCollection<SchoolModel> AllSchools
+        {
+            get
+            {                
                 return SchoolModel.GetAll();
             }
         }

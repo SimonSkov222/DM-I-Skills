@@ -55,6 +55,7 @@ namespace DM_Skills.Views
 
         private void UpdateTableLayout(int numb)
         {
+            Console.WriteLine("Numb Change");
             if (numb < 1)
             {
                 numb = 1;
@@ -74,7 +75,13 @@ namespace DM_Skills.Views
 
             visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.Visibility == Visibility.Visible);
             int all = listOfTables.Children.Count;
-            for (int i = visibleCnt; i < numb -1 && i < all -1; i++)
+
+            //  V
+            //  V
+            //  H
+            //  i = 2
+            //  Numb = 10
+            for (int i = visibleCnt; i < numb && i < all; i++)
             {
                 Console.WriteLine("Visbless");
                 listOfTables.Children[i].Visibility = Visibility.Visible;

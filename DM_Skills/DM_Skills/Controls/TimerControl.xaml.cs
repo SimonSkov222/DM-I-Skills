@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Diagnostics;
+using System.Windows.Input;
 
 namespace DM_Skills.Controls
 {
@@ -40,7 +41,7 @@ namespace DM_Skills.Controls
         private Stopwatch _Watch = new Stopwatch();
         public TimeSpan DisplayTime { get { return _Watch.Elapsed; } }
 
-
+        private RadioButton rBtn_Forside;
         
 
 
@@ -54,7 +55,35 @@ namespace DM_Skills.Controls
             EventTimer = new DispatcherTimer();
             EventTimer.Interval = TimeSpan.FromMilliseconds(1);
             EventTimer.Tick += (o, e) => { NotifyPropertyChanged("DisplayTime"); };
-            
+            Application.Current.MainWindow.PreviewKeyUp += MainWindow_KeyUp;
+            rBtn_Forside = Application.Current.MainWindow.FindName("Menu_Forside") as RadioButton;
+        }
+
+        private void MainWindow_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (_Watch.IsRunning)
+            {
+                if (e.Key == Key.Space)
+                {
+                    if (rBtn_Forside == null) {
+                        Console.WriteLine("Radio button not found");
+                        return;
+                    }
+
+                    if (rBtn_Forside.IsChecked ?? false)
+                    {
+                        IInputElement focusedControl = Keyboard.FocusedElement;
+                        if (!(focusedControl is TextBox))
+                        {
+                            Button_TimeControl_Click(btn_Lap, null);
+                            Console.WriteLine("Time");
+                        }
+                    }
+                    
+                    //IInputElement focusedControl = FocusManager.GetFocusedElement(this);
+                    
+                }
+            }
         }
 
 

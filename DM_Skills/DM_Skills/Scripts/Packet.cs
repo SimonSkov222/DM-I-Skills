@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 namespace DM_Skills.Scripts
 {
     public enum PacketType {
-        Disconnect,
-        GetSchools,
-        GetLocations,
-        UploadTables,
-        Search,
-        QuerySQL
+        Broadcast_UploadTables,
+        Boardcast_UploadSchools,
+        Write,
+        Read,
+        Ping
     }
 
     [Serializable]
@@ -20,6 +19,7 @@ namespace DM_Skills.Scripts
     {
         public int ID { get; set; }
         public PacketType Type { get; set; }
+        public PacketType? BroadcastType { get; set; }
         public object Data { get; set; }
 
     }

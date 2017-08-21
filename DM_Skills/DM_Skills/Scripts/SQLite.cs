@@ -252,6 +252,19 @@ namespace DM_Skills.Scripts
             return Exist(table, new string[] { column }, new object[] { value });
         }
 
+        private bool IsReadMethod(string cmd) {
+
+            string[] readMethods = { "SELECT", "PRAGMA" };
+            foreach (var item in readMethods)
+            {
+                if (cmd.ToUpper().StartsWith(item))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// Kan udføre en selv skrevet SQL query/kommando
         /// og hvis det er en select kan man selv 
@@ -259,70 +272,60 @@ namespace DM_Skills.Scripts
         /// </summary>
         public List<List<object>> ExecuteQuery(string cmd)
         {
-            Console.WriteLine("Wait 1");
             IsLock.WaitOne();
             IsLock.Reset();
-            Console.WriteLine("Wait 2");
             _lastQuery = cmd;
             var result = new List<List<object>>();
 
             if (Settings.IsServer || _IsLocal)
             {
-                SQLiteDataReader sql_reader;
-                bool isRead = false;
-                //Metoder der vil hente data
-                string[] readMethods = { "SELECT", "PRAGMA" };
-
-                //Find ud af om vi skal hente data
-                foreach (var item in readMethods)
-                {
-                    if (cmd.ToUpper().StartsWith(item))
-                    {
-                        isRead = true;
-                        break;
-                    }
-                }
-
-                //SQLiteDataAdapter da = new System.Data.SQLite.SQLiteDataAdapter();
-                sql_cmd.CommandText = cmd;
-
                 //udfør kommando hvor man ikke venter på data
-                if (!isRead)
+                if (IsReadMethod(cmd))
                 {
-                    sql_cmd.ExecuteNonQuery();
-                    IsLock.Set();
-                    CallBack?.Invoke(result);
-                    CallBack = null;
-                    return result;
-                }
+                    SQLiteDataReader sql_reader;
+                    sql_cmd.CommandText = cmd;
 
-                //Udfør kommando hvor man skal have data tilbage
-                sql_reader = sql_cmd.ExecuteReader();
-                while (sql_reader.Read())
-                {
-                    var row = new List<object>();
-
-                    for (int i = 0; i < sql_reader.FieldCount; i++)
+                    //Udfør kommando hvor man skal have data tilbage
+                    sql_reader = sql_cmd.ExecuteReader();
+                    while (sql_reader.Read())
                     {
-                        row.Add(sql_reader[i]);
+                        var row = new List<object>();
+
+                        for (int i = 0; i < sql_reader.FieldCount; i++)
+                        {
+                            row.Add(sql_reader[i]);
+                        }
+                        result.Add(row);
                     }
-                    result.Add(row);
+                    sql_reader.Close();
                 }
-                sql_reader.Close();
+                else
+                {
+                    sql_cmd.CommandText = cmd;
+                    sql_cmd.ExecuteNonQuery();
+                }
             }
             else if (Settings.IsClient)
             {
                 Console.WriteLine("Contact Server");
-                Settings.Client.Send(
-                        PacketType.QuerySQL,
+                if (IsReadMethod(cmd))
+                {
+                    Console.WriteLine("Read Packet");
+                    Settings.Client.Send(
+                        PacketType.Read, 
                         o =>
                         {
-                            Console.WriteLine("Got List");
                             result = o as List<List<object>>;
-                            //Console.WriteLine(result.Count);
-                        },
+                        }, 
                         cmd
-                );
+                    );
+                    Console.WriteLine("Read Packet Done");
+                }
+                else
+                {
+                    Console.WriteLine("Write Packet");
+                    Settings.Client.Send(PacketType.Write, null, cmd);
+                }
                 Console.WriteLine("Contact Server Done");
                 //_stopped.WaitOne();
                 //while (waitForReply) ;

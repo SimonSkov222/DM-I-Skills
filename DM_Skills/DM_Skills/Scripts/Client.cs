@@ -41,8 +41,8 @@ namespace DM_Skills.Scripts
                         Thread.Sleep(5000);
                         if (Settings.IsClient)
                         {
-                            var replay = client.WriteLineAndGetReply("0", new TimeSpan(0, 0, 0, 0, 300));
-                            if (replay == null)
+                            var reply = client.WriteLineAndGetReply("875120", new TimeSpan(0, 0, 0, 0, 300));
+                            if (reply == null)
                             {
                                 Console.WriteLine("Is Disconnected");
                                 Application.Current.Dispatcher.Invoke(delegate ()
@@ -60,8 +60,9 @@ namespace DM_Skills.Scripts
                 Settings.IsClient = true;
                 Settings.InvokeConnection();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 Settings.IsClient = false;
             }
 
@@ -69,57 +70,8 @@ namespace DM_Skills.Scripts
             return Settings.IsClient;
         }
 
-        private void Current_Exit(object sender, ExitEventArgs e)
-        {
-            if (pingServer != null) {
-                pingServer.Abort();
-            }
-            CloseConnection();
-        }
 
-        private void Client_DataReceived(object sender, Message e)
-        {
-            //Application.Current.Dispatcher.Invoke(new Action(() => {
-            //    Models.SettingsModel.lab.Content += "Got Reply..";
-            //}));
-            Console.Write("Got Reply..");
-            var packet = Helper.ByteArrayToObject(e.Data) as Packet;
-
-            switch (packet.Type)
-            {
-                case PacketType.Disconnect:
-                    break;
-                case PacketType.GetSchools:
-                    break;
-                case PacketType.GetLocations:
-                    break;
-                case PacketType.UploadTables:
-                    break;
-                case PacketType.Search:
-                    break;
-                default:
-                    break;
-            }
-
-
-            if (Callbacks.ContainsKey(packet.ID))
-            {
-                if (Callbacks[packet.ID] != null)
-                {
-                    Callbacks[packet.ID](packet.Data);
-                }
-            }
-
-            Console.WriteLine("ReplayDone");
-            waitHandel.Set();
-            
-        }
-
-        private void CloseConnection() {
-            client.Dispose();
-            client.Disconnect();
-            Settings.IsClient = false;
-        }
+       
 
         public void Disconnect() {
             pingServer.Abort();
@@ -129,33 +81,77 @@ namespace DM_Skills.Scripts
 
         public void Send(PacketType type, Action<object> cb = null, object data = null)
         {
-            Console.Write("Start sending...");
+            Console.WriteLine("Start sending...");
             waitHandel.Reset();
             var packet = new Packet()
             {
                 Type = type,
                 Data = data
             };
-
             do
             {
                 packet.ID = r.Next(1000, 100000);
             } while (Callbacks.ContainsKey(packet.ID));
             
-            Callbacks.Add(packet.ID, cb);
-
-
-            var packetAsBytes = Helper.ObjectToByteArray(packet);
+            Callbacks.Add(packet.ID, cb);       
             
-            client.Write(packetAsBytes);
-            waitHandel.WaitOne();
-            //client.Send(packetAsBytes);
+            client.Write(Helper.ObjectToByteArray(packet));
 
-
-            //_stopped.WaitOne();
+            if(packet.Type == PacketType.Read)
+            {
+                Console.WriteLine("Sending Wait");
+                waitHandel.WaitOne();
+            }
             Console.WriteLine("Sending Done");
         }
-        
 
+
+        private void Client_DataReceived(object sender, Message e)
+        {
+            Console.Write("Got Reply..");
+            var packet = Helper.ByteArrayToObject(e.Data) as Packet;
+
+            switch (packet.Type)
+            {
+                case PacketType.Read:
+                    if (Callbacks.ContainsKey(packet.ID))
+                    {
+                        Callbacks[packet.ID]?.Invoke(packet.Data);
+                    }
+                    waitHandel.Set();
+                    break;
+                case PacketType.Broadcast_UploadTables:
+                    Application.Current.Dispatcher.Invoke(delegate() 
+                    {
+                        Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
+                        Settings.InvokeUpload();
+                    });
+                    break;
+                case PacketType.Boardcast_UploadSchools:
+                    Application.Current.Dispatcher.Invoke(delegate ()
+                    {
+                        Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
+                    });
+                    break;
+            }
+
+
+            
+            Console.WriteLine("ReplayDone");
+
+        }
+
+        private void Current_Exit(object sender, ExitEventArgs e)
+        {
+            if (pingServer != null) {
+                pingServer.Abort();
+            }
+            CloseConnection();
+        }
+        private void CloseConnection() {
+            client.Dispose();
+            client.Disconnect();
+            Settings.IsClient = false;
+        }
     }
 }

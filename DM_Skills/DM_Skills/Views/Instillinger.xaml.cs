@@ -296,5 +296,13 @@ namespace DM_Skills.Views
                 clientPort = txtPort.Text;
             }
         }
+
+        private void ComboBox_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            if ((sender as ComboBox).Items.Count > 0)
+            {
+                (sender as ComboBox).SelectedIndex = 0;
+            }
+        }
     }
 }

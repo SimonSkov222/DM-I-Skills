@@ -84,7 +84,8 @@
 
                 <ComboBox 
                 x:Name="cbLocation" SelectedIndex="0"
-                ItemsSource="{Binding ElementName=Controller, Path=Locations}"
+                Binding.TargetUpdated="ComboBox_Location_TargetUpdated"
+                ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
                 Grid.Row="2" Grid.Column="2" Margin="0" >
 
                     <!--<ComboBoxItem IsSelected="True">Vælg lokation</ComboBoxItem>

@@ -57,13 +57,16 @@ namespace DM_Skills.Models
             db.UseDistinct = true;
 
             var data = db.GetRows("Locations", new string[] { "ID", "Name" });
-            foreach (var item in data)
+            if (data != null)
             {
-                result.Add(new LocationModel()
+                foreach (var item in data)
                 {
-                    ID = Convert.ToInt32(item[0]),
-                    Name = Convert.ToString(item[1])
-                });
+                    result.Add(new LocationModel()
+                    {
+                        ID = Convert.ToInt32(item[0]),
+                        Name = Convert.ToString(item[1])
+                    });
+                }
             }
             db.Disconnect();
 
