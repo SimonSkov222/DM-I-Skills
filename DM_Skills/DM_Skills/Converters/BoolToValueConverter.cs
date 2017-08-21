@@ -8,6 +8,7 @@ namespace DM_Skills.Converters
 
     public class BoolToStringConverter : BoolToValueConverter<string> { }
     public class BoolToBrushConverter : BoolToValueConverter<Brush> { }
+    public class BoolToBoolConverter : BoolToValueConverter<bool> { }
     public class BoolToVisibilityConverter : BoolToValueConverter<Visibility> { }
 
     /// <summary>

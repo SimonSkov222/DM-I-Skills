@@ -15,6 +15,7 @@
     <Converters:AutocompleteItemConverter x:Key="AutocompleteItemConvert"/>
     <Converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleReverseConvert" Reverse="True"/>
     <Converters:CompareValuesBoolConverter x:Key="CompareValuesToBoolConvert" TrueValue="True" FalseValue="False" />
+    <Converters:BoolToBoolConverter x:Key="BoolToBoolRevConvert" TrueValue="False" FalseValue="True" />
     <Converters:AutocompleteConverter x:Key="AutocompleteConvert"/>
     <Converters:BoolToBrushConverter x:Key="PersonListBackground" TrueValue="{StaticResource Color_Background_InputBox}" FalseValue="{StaticResource Color_Background_Placeholder}"/>
     <Converters:BoolToBrushConverter x:Key="PersonListForeground" TrueValue="{StaticResource Color_Foreground_Dark_2}" FalseValue="{StaticResource Color_Foreground_Placeholder}"/>
