@@ -51,11 +51,22 @@ namespace DM_Skills
             Console.WriteLine("Connection");
             Settings.NotifyPropertyChanged(nameof(Settings.AllLocations));
             Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
+            Console.WriteLine("Skoler:");
+            foreach (var item in Settings.AllSchools)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
 
+            Console.WriteLine("TablesControl Skoler:");
+            foreach (var item in (view_forside.listOfTables.Children[0] as Controls.TablesControl).Schools)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         private void Menu_Projektor_Checked(object sender, RoutedEventArgs e)

@@ -52,7 +52,6 @@ namespace DM_Skills.Controls
             get { return (ObservableCollection<Models.SchoolModel>)GetValue(SchoolsProperty); }
             set
             {
-                Console.WriteLine("#######\n\n###\n\n");
                 SetValue(SchoolsProperty, value);
             }
         }
