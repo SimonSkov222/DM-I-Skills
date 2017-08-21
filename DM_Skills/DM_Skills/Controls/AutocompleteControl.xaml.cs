@@ -94,7 +94,6 @@ namespace DM_Skills.Controls
             set
             {
                 SetValue(ItemsSourceProperty, value);
-                Console.WriteLine("Hej!!");
                 options.Items.Clear();
                 value.CollectionChanged += ItemsSource_CollectionChanged;
                 ItemsSource_CollectionChanged(value, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, value));

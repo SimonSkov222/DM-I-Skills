@@ -50,7 +50,6 @@ namespace DM_Skills.Scripts
 
                             if (reply == null)
                             {
-                                Console.WriteLine("Is Disconnected");
                                 Application.Current.Dispatcher.Invoke(delegate ()
                                 {
 
@@ -68,7 +67,6 @@ namespace DM_Skills.Scripts
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
                 Settings.IsClient = false;
             }
 
@@ -87,7 +85,6 @@ namespace DM_Skills.Scripts
 
         public void Send(PacketType type, Action<object> cb = null, object data = null, PacketType? broadcast = null)
         {
-            Console.WriteLine("Start sending...");
             waitHandel.Reset();
             var packet = new Packet()
             {
@@ -106,10 +103,8 @@ namespace DM_Skills.Scripts
 
             if(packet.Type == PacketType.Read)
             {
-                Console.WriteLine("Sending Wait");
                 waitHandel.WaitOne();
             }
-            Console.WriteLine("Sending Done");
         }
         
         private void Client_DataReceived(object sender, Message e)
@@ -127,7 +122,6 @@ namespace DM_Skills.Scripts
                     waitHandel.Set();
                     break;
                 case PacketType.Broadcast_UploadTables:
-                    Console.WriteLine("Broadcast_UploadTables");
                     Application.Current.Dispatcher.Invoke(delegate() 
                     {
                         Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
@@ -135,7 +129,6 @@ namespace DM_Skills.Scripts
                     });
                     break;
                 case PacketType.Boardcast_UploadSchools:
-                    Console.WriteLine("Boardcast_UploadSchools");
                     Application.Current.Dispatcher.Invoke(delegate ()
                     {
                         Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
@@ -145,7 +138,6 @@ namespace DM_Skills.Scripts
 
 
             
-            Console.WriteLine("ReplayDone");
 
         }
 

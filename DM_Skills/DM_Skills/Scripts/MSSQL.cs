@@ -263,7 +263,6 @@ namespace DM_Skills.Scripts
         {
             if (!IsConnected)
             {
-                Console.WriteLine("Error: Not Connected To The Database!");
                 return null;
             }
 

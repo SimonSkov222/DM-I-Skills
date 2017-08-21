@@ -207,7 +207,6 @@ namespace DM_Skills.Views
                 location, 
                 from, to,
                 (o) => {
-                    Console.WriteLine("Done");
                     Application.Current.Dispatcher.Invoke(delegate ()
                     {
                         searchList.Items.Clear();

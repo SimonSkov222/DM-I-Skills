@@ -56,11 +56,9 @@ namespace DM_Skills.Scripts
             catch (Exception)
             {
                 //Code fundet i Client.cs
-                Console.WriteLine("Ping");
                 var code = System.Text.RegularExpressions.Regex.Match(e.MessageString, "#\\d+").Value;
                 if (code == "#875120")
                 {
-                    Console.WriteLine("Ping Send Reply");
                     e.Reply(Helper.ObjectToByteArray(new Packet() { Type = PacketType.Ping }));
                 }
                 return;

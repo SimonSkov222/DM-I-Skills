@@ -37,10 +37,8 @@ namespace DM_Skills.Views
 
         private void Connection_Loaded(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("load1");
             var myLocalDB = Scripts.Database.GetLocalDB();
-
-            Console.WriteLine("####");
+            
             
 
 
@@ -53,12 +51,7 @@ namespace DM_Skills.Views
 
             myLocalDB.Disconnect();
 
-
-            Console.WriteLine("################");
-            Console.WriteLine(serverPort);
-            Console.WriteLine(clientIP);
-            Console.WriteLine(clientPort);
-            Console.WriteLine("################");
+            
 
 
             txtIP.Text = ServerIP;
@@ -137,7 +130,6 @@ namespace DM_Skills.Views
             if (dlg.ShowDialog() ?? false)
             {            
                 Settings.FileNameDB = dlg.FileName;
-                Console.WriteLine("dlgfilename");
             }
         }
 
@@ -181,9 +173,7 @@ namespace DM_Skills.Views
             var myLocalDB = Scripts.Database.GetLocalDB();
             myLocalDB.Update("Settings", "Value", Settings.FileNameDB, (object)"LocationDB");
             myLocalDB.Disconnect();
-
-            Console.WriteLine("Opret db");
-            Console.WriteLine(Settings.FileNameDB);
+            
             Scripts.Database.CreateDatabase();
 
             Settings.Server = new Scripts.Server();

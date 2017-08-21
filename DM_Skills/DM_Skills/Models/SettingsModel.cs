@@ -110,11 +110,6 @@ namespace DM_Skills.Models
         {
             get
             {
-                //var result = SchoolModel.GetAll();
-                //foreach (var item in result)
-                //{
-                //    Console.WriteLine(item);
-                //}
 
                 return SchoolModel.GetAll();
             }

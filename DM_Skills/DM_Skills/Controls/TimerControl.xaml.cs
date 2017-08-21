@@ -66,7 +66,6 @@ namespace DM_Skills.Controls
                 if (e.Key == Key.Space)
                 {
                     if (rBtn_Forside == null) {
-                        Console.WriteLine("Radio button not found");
                         return;
                     }
 
@@ -76,7 +75,6 @@ namespace DM_Skills.Controls
                         if (!(focusedControl is TextBox))
                         {
                             Button_TimeControl_Click(btn_Lap, null);
-                            Console.WriteLine("Time");
                         }
                     }
                     
