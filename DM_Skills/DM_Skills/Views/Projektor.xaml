@@ -79,12 +79,24 @@
                         Text="s bedste tid"/>
                 </TextBlock>
 
-                <Label Content="{Binding ElementName=controller, Path=BestTime.Team.Time}" FontSize="16" Grid.Row="1" Grid.Column="1" Foreground="White" Background="{StaticResource background_Row1}"/>
-                <Label Content="{Binding ElementName=controller, Path=BestTime.School.Name}" FontSize="16" Grid.Row="1" Grid.Column="2" Foreground="White" Background="{StaticResource background_Row1}"/>
-                <Label Content="{Binding ElementName=controller, Path=BestTime.Team.Class}" FontSize="16" Grid.Row="1" Grid.Column="3" Foreground="White" Background="{StaticResource background_Row1}"/>
+                <Label 
+                    Content="{Binding ElementName=controller, Path=BestTime.Team.Time}" 
+                    FontSize="16" 
+                    Grid.Row="1" Grid.Column="1" 
+                    Foreground="White" Background="{StaticResource background_Row1}"/>
+                <Label 
+                    Content="{Binding ElementName=controller, Path=BestTime.School.Name}" 
+                    FontSize="16" 
+                    Grid.Row="1" Grid.Column="2" 
+                    Foreground="White" Background="{StaticResource background_Row1}"/>
+                <Label 
+                    Content="{Binding ElementName=controller, Path=BestTime.Team.Class}" 
+                    FontSize="16" 
+                    Grid.Row="1" Grid.Column="3" 
+                    Foreground="White" Background="{StaticResource background_Row1}"/>
 
 
-                <Label Content="Dagens bedste tid:" FontSize="16" Grid.Row="2" Grid.Column="0" Foreground="White"/>
+                <Label Content="Dagens bedste tid:" FontSize="16" Grid.Row="2" Grid.Column="0" Foreground="White" />
                 <Label Content="{Binding ElementName=controller, Path=BestTimeToDay.Team.Time}" FontSize="16" Grid.Row="2" Grid.Column="1" Foreground="White" Background="{StaticResource background_Row2}"/>
                 <Label Content="{Binding ElementName=controller, Path=BestTimeToDay.School.Name}" FontSize="16" Grid.Row="2" Grid.Column="2" Foreground="White" Background="{StaticResource background_Row2}"/>
                 <Border Grid.Row="2" Grid.Column="3" CornerRadius="0 0 7 0" Background="{StaticResource background_Row2}" SnapsToDevicePixels="True">

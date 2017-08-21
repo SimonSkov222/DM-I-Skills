@@ -13,6 +13,7 @@ namespace DM_Skills.Scripts
     {
         private Models.SettingsModel Settings;
 
+        public bool _unname = false;
 
         private string _prefix;
         public string Prefix { get { return _prefix; } }
@@ -49,9 +50,12 @@ namespace DM_Skills.Scripts
         public void Connect(string connectionString, string prefix = "")
         {
             _prefix = prefix;
-            if (Settings.IsServer || _IsLocal)
+            
+            if (Settings.IsServer || _IsLocal || _unname)
             {
                 //Start connection
+                Console.WriteLine("con");
+                Console.WriteLine(connectionString);
                 sql_conn = new SQLiteConnection(connectionString);
                 sql_conn.Open();
                 sql_cmd = sql_conn.CreateCommand();
@@ -65,7 +69,7 @@ namespace DM_Skills.Scripts
         /// </summary>
         public void Disconnect()
         {
-            if (Settings.IsServer || _IsLocal)
+            if (Settings.IsServer || _IsLocal || _unname)
             {
                 sql_cmd.Dispose(); //release all resouces
                 sql_conn.Close();
@@ -277,7 +281,7 @@ namespace DM_Skills.Scripts
             _lastQuery = cmd;
             var result = new List<List<object>>();
 
-            if (Settings.IsServer || _IsLocal)
+            if (Settings.IsServer || _IsLocal || _unname)
             {
                 //udfør kommando hvor man ikke venter på data
                 if (IsReadMethod(cmd))

@@ -37,8 +37,8 @@ namespace DM_Skills.Scripts
 
             return localDB;
         }
-        
-        public static IDatabase GetDB()
+
+        protected static IDatabase GetDB(bool _unname)
         {
             if (Settings == null)
             {
@@ -50,6 +50,11 @@ namespace DM_Skills.Scripts
                 db = new SQLite();
             }
 
+            if (db is SQLite)
+            {
+                (db as SQLite)._unname = _unname;
+            }
+
             if (!db.IsConnected) {
                 //string connString = string.Format("Server={0};Database={1};User Id={2};Password={3}", Host, DatabaseName, User, Pass);
                 string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameDB);
@@ -58,6 +63,10 @@ namespace DM_Skills.Scripts
 
 
             return db;
+        }
+        public static IDatabase GetDB()
+        {
+            return GetDB(false);
         }
 
         public static void CreateLocalDatabase() {
@@ -80,7 +89,8 @@ namespace DM_Skills.Scripts
         }
 
         public static void CreateDatabase() {
-            var myDB = GetDB();
+
+            var myDB = GetDB(true);
             
             if (!myDB.Exist("Schools"))
             {
@@ -120,6 +130,10 @@ namespace DM_Skills.Scripts
                     new Column { Name = "TeamID", Type = ColumnTypes.Int, IsNotNull = true, ForeignKeyReferences = "Teams(ID)" },
                     new Column { Name = "Name", Type = ColumnTypes.String, IsNotNull = true }
                 );
+            }
+            if (myDB is SQLite)
+            {
+                (myDB as SQLite)._unname = false;
             }
 
 

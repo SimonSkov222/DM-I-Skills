@@ -132,6 +132,7 @@ namespace DM_Skills.Views
             if (dlg.ShowDialog() ?? false)
             {            
                 Settings.FileNameDB = dlg.FileName;
+                Console.WriteLine("dlgfilename");
             }
         }
 
@@ -176,11 +177,13 @@ namespace DM_Skills.Views
             myLocalDB.Update("Settings", "Value", Settings.FileNameDB, (object)"LocationDB");
             myLocalDB.Disconnect();
 
+            Console.WriteLine("Opret db");
+            Console.WriteLine(Settings.FileNameDB);
+            Scripts.Database.CreateDatabase();
+
             Settings.Server = new Scripts.Server();
             Settings.Server.Start(port);
-            Settings.IsServer = true;
 
-            Scripts.Database.CreateDatabase();
 
             var r = new Random();
 
@@ -243,13 +246,18 @@ namespace DM_Skills.Views
                 .Select(m => m.Groups[0].Value)
                 .Distinct();
 
+
             foreach (var i in schoolList)
             {
                 string name = i.Trim().Replace("\n", "");
-                (new Models.SchoolModel() { Name = name }).Upload();
+                if (name.Length > 0)
+                {
+                    (new Models.SchoolModel() { Name = name }).Upload();
+                }
             }
             txtSkoleList.Document.Blocks.Clear();
-            
+
+            Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -265,6 +273,7 @@ namespace DM_Skills.Views
         private void Button_DeleteSchools_Click(object sender, RoutedEventArgs e)
         {
             Models.SchoolModel.RemoveUnused();
+            Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
         }
 
         
@@ -302,6 +311,20 @@ namespace DM_Skills.Views
             if ((sender as ComboBox).Items.Count > 0)
             {
                 (sender as ComboBox).SelectedIndex = 0;
+            }
+        }
+
+        private void Button_Backup_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+
+            dlg.DefaultExt = ".sqlite";
+            dlg.Filter = "SQLite (.sqlite)|*.sqlite";
+
+            if (dlg.ShowDialog() == true)
+            {
+                var fileName = dlg.FileName;
+                System.IO.File.Copy(Settings.FileNameDB, dlg.FileName);
             }
         }
     }

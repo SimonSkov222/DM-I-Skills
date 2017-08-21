@@ -185,7 +185,8 @@
                             FontWeight="Normal" 
                             HorizontalAlignment="Stretch"
                             FontSize="16"
-                            Padding="0 4.5"/>
+                            Padding="0 4.5"
+                            Click="Button_Backup_Click"/>
 
 
                     <Button Content="Fjern ubrugte skoler" Style="{StaticResource Button_Style_Default}" 
