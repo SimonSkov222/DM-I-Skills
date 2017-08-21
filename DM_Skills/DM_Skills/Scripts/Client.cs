@@ -23,7 +23,7 @@ namespace DM_Skills.Scripts
         public Client()
         {
             Settings = (Models.SettingsModel)Application.Current.FindResource("Settings");
-            Application.Current.Exit += Current_Exit;
+            Application.Current.MainWindow.Closed += MainWindow_Closed;
         }
         
 
@@ -34,14 +34,20 @@ namespace DM_Skills.Scripts
                 client = new SimpleTcpClient();
                 client.DataReceived += Client_DataReceived;
                 client.Connect(ipAddress, port);
-                
+
                 pingServer = new Thread(new ThreadStart(delegate () {
                     while (true)
                     {
                         Thread.Sleep(5000);
-                        if (Settings.IsClient)
+                        if (Settings.IsClient && client.TcpClient.Connected)
                         {
-                            var reply = client.WriteLineAndGetReply("875120", new TimeSpan(0, 0, 0, 0, 300));
+                            Message reply;
+                            try
+                            {
+                                reply = client.WriteLineAndGetReply("#875120", new TimeSpan(0, 0, 0, 0, 300));
+                            }
+                            catch (Exception) { reply = null; }
+
                             if (reply == null)
                             {
                                 Console.WriteLine("Is Disconnected");
@@ -79,14 +85,15 @@ namespace DM_Skills.Scripts
             Settings.InvokeDisconnection(true);
         }
 
-        public void Send(PacketType type, Action<object> cb = null, object data = null)
+        public void Send(PacketType type, Action<object> cb = null, object data = null, PacketType? broadcast = null)
         {
             Console.WriteLine("Start sending...");
             waitHandel.Reset();
             var packet = new Packet()
             {
                 Type = type,
-                Data = data
+                Data = data,
+                BroadcastType = broadcast
             };
             do
             {
@@ -104,8 +111,7 @@ namespace DM_Skills.Scripts
             }
             Console.WriteLine("Sending Done");
         }
-
-
+        
         private void Client_DataReceived(object sender, Message e)
         {
             Console.Write("Got Reply..");
@@ -121,6 +127,7 @@ namespace DM_Skills.Scripts
                     waitHandel.Set();
                     break;
                 case PacketType.Broadcast_UploadTables:
+                    Console.WriteLine("Broadcast_UploadTables");
                     Application.Current.Dispatcher.Invoke(delegate() 
                     {
                         Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
@@ -128,6 +135,7 @@ namespace DM_Skills.Scripts
                     });
                     break;
                 case PacketType.Boardcast_UploadSchools:
+                    Console.WriteLine("Boardcast_UploadSchools");
                     Application.Current.Dispatcher.Invoke(delegate ()
                     {
                         Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
@@ -141,7 +149,8 @@ namespace DM_Skills.Scripts
 
         }
 
-        private void Current_Exit(object sender, ExitEventArgs e)
+
+        private void MainWindow_Closed(object sender, EventArgs e)
         {
             if (pingServer != null) {
                 pingServer.Abort();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DM_Skills.Scripts;
 
 namespace DM_Skills.Models
 {
@@ -50,6 +51,12 @@ namespace DM_Skills.Models
         protected override bool OnUpload()
         {
             var myDB = Scripts.Database.GetDB();
+            bool broadcastWasSet = true;
+            if (myDB is SQLite && !(myDB as SQLite).Boardcast.HasValue)
+            {
+                broadcastWasSet = false;
+                (myDB as SQLite).Boardcast = PacketType.Boardcast_UploadSchools;
+            }
 
             if (myDB.Exist("Schools", "Name", Name))
             {
@@ -61,6 +68,12 @@ namespace DM_Skills.Models
                 ID = Convert.ToInt32(myDB.Insert("Schools", "Name", Name));
             }
             myDB.Disconnect();
+
+
+            if (myDB is SQLite && !broadcastWasSet)
+            {
+                (myDB as SQLite).Boardcast = null;
+            }
 
             return true;
         }

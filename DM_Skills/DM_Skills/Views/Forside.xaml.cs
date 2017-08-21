@@ -106,7 +106,8 @@ namespace DM_Skills.Views
                 });
                 table.SetBinding(Controls.TablesControl.SchoolsProperty, new Binding() {
                     Source = Settings,
-                    Path = new PropertyPath("AllSchools")
+                    Path = new PropertyPath("AllSchools"),
+                    Mode = BindingMode.OneWay
                 });
 
                 listOfTables.Children.Add(table);
@@ -118,10 +119,10 @@ namespace DM_Skills.Views
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-            /// <summary>
-            /// Fortæller at en property har ændret sig
-            /// </summary>
-            private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        /// <summary>
+        /// Fortæller at en property har ændret sig
+        /// </summary>
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
             {
                 //Tjekker om PropertyChanged er sat og kalder den hvis den er
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -245,17 +246,7 @@ namespace DM_Skills.Views
             stopwatch.Reset();
             LapList.Reset();
         }
-
-        private void TablesControl_Drop(object sender, DragEventArgs e)
-        {
-            Console.WriteLine("Drop");
-        }
-
-        private void TablesControl_DragEnter(object sender, DragEventArgs e)
-        {
-            Console.WriteLine("drag enter");
-
-        }
+      
     }
 
 

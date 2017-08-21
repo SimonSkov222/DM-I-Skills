@@ -32,6 +32,8 @@ namespace DM_Skills.Scripts
         private SQLiteConnection sql_conn;
         private SQLiteCommand sql_cmd;
 
+        public PacketType? Boardcast = null;
+
         private bool _IsLocal = false;
         private bool _IsLock = false;
 
@@ -311,24 +313,22 @@ namespace DM_Skills.Scripts
             }
             else if (Settings.IsClient)
             {
-                Console.WriteLine("Contact Server");
                 if (IsReadMethod(cmd))
                 {
-                    Console.WriteLine("Read Packet");
                     Settings.Client.Send(
                         PacketType.Read, 
                         o =>
                         {
                             result = o as List<List<object>>;
                         }, 
-                        cmd
+                        cmd,
+                        Boardcast
                     );
-                    Console.WriteLine("Read Packet Done");
                 }
                 else
                 {
                     Console.WriteLine("Write Packet");
-                    Settings.Client.Send(PacketType.Write, null, cmd);
+                    Settings.Client.Send(PacketType.Write, null, cmd, Boardcast);
                 }
                 Console.WriteLine("Contact Server Done");
                 //_stopped.WaitOne();
