@@ -76,17 +76,6 @@ namespace DM_Skills.Views
                 typeof(sog_pa_tider), new PropertyMetadata(null));
 
 
-        public ObservableCollection<Models.LocationModel> Locations {
-            get
-            {
-                Console.WriteLine("TODO: sog_pa_tider.Locations");
-                return new ObservableCollection<Models.LocationModel>();
-                var result = Models.LocationModel.GetAll();
-                result.Insert(0, new Models.LocationModel() { Name = "Vælg lokation" });
-
-                return result;
-            }
-        }
 
 
         private int Print_ = 0;
@@ -262,6 +251,14 @@ namespace DM_Skills.Views
                     searchID = null;
                 });
             //searchList.ItemsSource = items;
+        }
+
+        private void ComboBox_Location_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            if ((sender as ComboBox).Items.Count > 0)
+            {
+                (sender as ComboBox).SelectedIndex = 0;
+            }
         }
     }
 }

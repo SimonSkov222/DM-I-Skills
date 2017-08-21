@@ -36,10 +36,10 @@
 
         <!-- Styring af stopur-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-            <Button x:Name="btn_Start" Content="Start" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}" Background="{StaticResource Color_Background_Button_LightBlue}"/>
-            <Button x:Name="btn_Stop" Content="Stop" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}"/>
-            <Button x:Name="btn_Lap" Content="Omgang" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}" Background="{StaticResource Color_Background_Button_LightGreen}"/>
-            <Button x:Name="btn_Reset" Content="Nulstil" Click="Button_TimeControl_Click" Style="{StaticResource Button_Style_Default}"/>
+            <Button x:Name="btn_Start" Content="Start" Click="Button_TimeControl_Click" Focusable="False" Style="{StaticResource Button_Style_Default}" Background="{StaticResource Color_Background_Button_LightBlue}"/>
+            <Button x:Name="btn_Stop" Content="Stop" Click="Button_TimeControl_Click" Focusable="False" Style="{StaticResource Button_Style_Default}"/>
+            <Button x:Name="btn_Lap" Content="Omgang" Click="Button_TimeControl_Click" Focusable="False" Style="{StaticResource Button_Style_Default}" Background="{StaticResource Color_Background_Button_LightGreen}"/>
+            <Button x:Name="btn_Reset" Content="Nulstil" Click="Button_TimeControl_Click" Focusable="False" Style="{StaticResource Button_Style_Default}"/>
         </StackPanel>
         
     </Grid>

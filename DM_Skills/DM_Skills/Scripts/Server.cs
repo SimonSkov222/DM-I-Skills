@@ -12,26 +12,32 @@ namespace DM_Skills.Scripts
     class Server
     {
         //SocketServer server;
+        private Models.SettingsModel Settings;
         SimpleTcpServer Host;
-        List<System.Net.Sockets.Socket> Clients;
 
         public Server()
         {
-            
+            Settings = (Models.SettingsModel)Application.Current.FindResource("Settings");
         }
 
         public void Start(int port = 7788)
         {
             Host = new SimpleTcpServer();            
             Host.DataReceived += Host_DataReceived;
-            Host.ClientConnected += (o, e) => {
-                Console.WriteLine("Client Connected");
-
-            };
+            Host.ClientConnected += (o, e) => { Console.WriteLine("Client Connected"); };
             
             Host.Start(port);
+            Settings.IsServer = true;
+            Settings.InvokeConnection();
         }
 
+        public void Stop()
+        {
+            Host.Stop();
+            Host = null;
+            Settings.IsServer = false;
+            Settings.InvokeDisconnection(true);
+        }
         private void Host_DataReceived(object sender, Message e)
         {
             Packet packet;
@@ -39,86 +45,55 @@ namespace DM_Skills.Scripts
             try
             {
                 packet = Helper.ByteArrayToObject(e.Data) as Packet;
-                Console.WriteLine("Got Packet");
             }
             catch (Exception)
             {
-                Console.WriteLine("Got String");
-                packet = new Packet()
+                //Code fundet i Client.cs
+                Console.WriteLine("Ping");
+                Console.WriteLine(e.MessageString);
+                int code = 0;
+                int.TryParse(e.MessageString, out code);
+                Console.WriteLine(code);
+                if (code == 875120)
                 {
-                    ID = -1,
-                    Type = PacketType.Disconnect,
-                    Data = e.MessageString
-                };
+                    Console.WriteLine("Ping Send Reply");
+                    e.Reply(Helper.ObjectToByteArray(new Packet() { Type = PacketType.Ping }));
+                }
+                return;
             }
             var reply = new Packet() { ID = packet.ID, Type = packet.Type };
 
             switch (packet.Type)
             {
-                case PacketType.Disconnect:
-                    break;
-                case PacketType.GetSchools:
-                    reply.Data = Models.SchoolModel.GetAll();
-                    break;
-                case PacketType.GetLocations:
-                    break;
-                case PacketType.UploadTables:
-                    break;
-                case PacketType.Search:
-                    break;
-                case PacketType.QuerySQL:
+                case PacketType.Read:
+
                     var myDB = Database.GetDB();
-
-
-
                     var dt = myDB.ExecuteQuery(packet.Data as string);
-                    reply.Data = dt;
-
-
                     myDB.Disconnect();
+
+                    reply.Data = dt;
+                    e.Reply(Helper.ObjectToByteArray(reply));
+                    break;
+                case PacketType.Broadcast_UploadTables:
+                    break;
+                case PacketType.Boardcast_UploadSchools:
                     break;
                 default:
                     break;
             }
 
-            e.Reply(Helper.ObjectToByteArray(reply));
-
-        }
-
-        public void Stop()
-        {
-            Host.Stop();
-            Host = null;
-        }
-
-        private void OnReceiveData(System.Net.Sockets.Socket socket, byte[] data)
-        {
-            var packet = Helper.ByteArrayToObject(data) as Packet;
-            var reply = new Packet() { ID = packet.ID, Type = packet.Type };
-
-            switch (packet.Type)
+            if (packet.BroadcastType.HasValue)
             {
-                case PacketType.Disconnect:
-                    break;
-                case PacketType.GetSchools:
-                    reply.Data = Helper.ObjectToByteArray(new System.Collections.ObjectModel.ObservableCollection<object>() { "Hej",42,"asd" });
-                    socket.Send(Helper.ObjectToByteArray(reply));
-                    break;
-                case PacketType.GetLocations:
-                    break;
-                case PacketType.UploadTables:
-                    break;
-                case PacketType.Search:
-                    break;
-                default:
-                    break;
+                var broadcast = new Packet() { Type = packet.BroadcastType.Value, ID = -1, Data = null };
+                Host.Broadcast(Helper.ObjectToByteArray(broadcast));
             }
+
+
         }
 
-        private void OnClientConnect(System.Net.Sockets.Socket socket)
-        {
-            Clients.Add(socket);
-        }
+
+
+
 
     }
 }

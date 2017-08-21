@@ -235,5 +235,13 @@ namespace DM_Skills.Views
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+        private void ComboBox_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            if ((sender as ComboBox).Items.Count > 0)
+            {
+                (sender as ComboBox).SelectedIndex = 0;
+            }
+        }
     }
 }

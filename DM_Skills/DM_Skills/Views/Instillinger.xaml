@@ -347,8 +347,9 @@
 
 
 
-                    <ComboBox Grid.Row="0" VerticalAlignment="Top" 
-                          ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations}"
+                    <ComboBox Grid.Row="0" VerticalAlignment="Top"  SelectedIndex="0"
+                          Binding.TargetUpdated="ComboBox_TargetUpdated"
+                          ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
                           SelectedItem="{Binding Source={StaticResource Settings}, Path=Location}"/>
 
 

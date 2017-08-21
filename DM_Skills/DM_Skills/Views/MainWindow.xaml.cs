@@ -47,6 +47,9 @@ namespace DM_Skills
 
         private void Settings_OnConnection()
         {
+            Console.WriteLine("Connection");
+            Settings.NotifyPropertyChanged(nameof(Settings.AllLocations));
+            Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
