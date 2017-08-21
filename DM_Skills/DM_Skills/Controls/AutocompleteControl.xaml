@@ -45,13 +45,14 @@
                 PreviewMouseWheel="scroll_PreviewMouseWheel"
                 ScrollViewer.VerticalScrollBarVisibility="Auto"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    
                     <ListView x:Name="options" 
-                          Margin="0"                          
-                          HorizontalAlignment="Left"
-                        Padding="0"
-                        MinWidth="200"
-                        Background="Transparent" BorderThickness="0"
-                      Width="{Binding ElementName=controller, Path=ActualWidth}" >
+                            Margin="0"                          
+                            HorizontalAlignment="Left"
+                            Padding="0"
+                            MinWidth="200"
+                            Background="Transparent" BorderThickness="0"
+                            Width="{Binding ElementName=controller, Path=ActualWidth}" >
                         <ListView.ItemContainerStyle>
                             <Style TargetType="ListViewItem">
 
