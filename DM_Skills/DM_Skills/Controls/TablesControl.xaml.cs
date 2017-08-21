@@ -50,7 +50,11 @@ namespace DM_Skills.Controls
         public ObservableCollection<Models.SchoolModel> Schools
         {
             get { return (ObservableCollection<Models.SchoolModel>)GetValue(SchoolsProperty); }
-            set { SetValue(SchoolsProperty, value); }
+            set
+            {
+                Console.WriteLine("#######\n\n###\n\n");
+                SetValue(SchoolsProperty, value);
+            }
         }
 
         // Using a DependencyProperty as the backing store for Schools.  This enables animation, styling, binding, etc...

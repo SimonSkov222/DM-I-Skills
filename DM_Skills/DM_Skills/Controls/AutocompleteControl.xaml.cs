@@ -91,7 +91,14 @@ namespace DM_Skills.Controls
         public ObservableCollection<Models.SchoolModel> ItemsSource
         {
             get { return (ObservableCollection<Models.SchoolModel>)GetValue(ItemsSourceProperty); }
-            set { SetValue(ItemsSourceProperty, value);}
+            set
+            {
+                SetValue(ItemsSourceProperty, value);
+                Console.WriteLine("Hej!!");
+                options.Items.Clear();
+                value.CollectionChanged += ItemsSource_CollectionChanged;
+                ItemsSource_CollectionChanged(value, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, value));
+            }
         }
 
         public static readonly DependencyProperty ItemsSourceProperty =
