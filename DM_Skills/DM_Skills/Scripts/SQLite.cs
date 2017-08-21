@@ -56,8 +56,6 @@ namespace DM_Skills.Scripts
             if (Settings.IsServer || _IsLocal || _unname)
             {
                 //Start connection
-                Console.WriteLine("con");
-                Console.WriteLine(connectionString);
                 sql_conn = new SQLiteConnection(connectionString);
                 sql_conn.Open();
                 sql_cmd = sql_conn.CreateCommand();
@@ -327,10 +325,8 @@ namespace DM_Skills.Scripts
                 }
                 else
                 {
-                    Console.WriteLine("Write Packet");
                     Settings.Client.Send(PacketType.Write, null, cmd, Boardcast);
                 }
-                Console.WriteLine("Contact Server Done");
                 //_stopped.WaitOne();
                 //while (waitForReply) ;
             }
@@ -357,7 +353,6 @@ namespace DM_Skills.Scripts
 
             string tableWithPrefix = Prefix + table;
             var result = ExecuteQuery(string.Format("PRAGMA table_info(`{0}`)", tableWithPrefix));
-            Console.WriteLine("Pkey = {0}",result.Count);
             for (int i = 0; i < result.Count; i++)
             {
                 if (Convert.ToBoolean(result[i][5])) return (string)result[i][1];
@@ -393,9 +388,7 @@ namespace DM_Skills.Scripts
 
             string[] sqlMethod = { "*", "COUNT" };
             string tableWithPrefix = Prefix + table;
-
-            Console.WriteLine("Table "+ table);
-            Console.WriteLine(columns.Length);
+            
 
             for (int i = 0; i < columns.Length; i++)
             {

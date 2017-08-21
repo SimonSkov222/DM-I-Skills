@@ -55,7 +55,6 @@ namespace DM_Skills.Views
 
         private void UpdateTableLayout(int numb)
         {
-            Console.WriteLine("Numb Change");
             if (numb < 1)
             {
                 numb = 1;
@@ -83,7 +82,6 @@ namespace DM_Skills.Views
             //  Numb = 10
             for (int i = visibleCnt; i < numb && i < all; i++)
             {
-                Console.WriteLine("Visbless");
                 listOfTables.Children[i].Visibility = Visibility.Visible;
             }
 
@@ -95,7 +93,6 @@ namespace DM_Skills.Views
             //Tilføj nye bordre
             while (listOfTables.Children.Count < numb)
             {
-                Console.WriteLine("Create");
                 Controls.TablesControl table = new Controls.TablesControl();
                 table.Title = "Bord " + (listOfTables.Children.Count +1);
                 table.Margin = new Thickness(0, 0, 0, 3);
@@ -170,7 +167,6 @@ namespace DM_Skills.Views
         /// </summary>
         private void Button_Upload_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("un");
             //Settings.InvokeUpload();
             Settings.Location = new Models.LocationModel() { Name = "ballerup"};
             bool allowUpload = true;
@@ -183,8 +179,6 @@ namespace DM_Skills.Views
                     {
                         (item as Controls.TablesControl).Model.Location = Settings.Location;
                     }
-                    Console.WriteLine("un1");
-                    Console.WriteLine((item as Controls.TablesControl).Model.ErrNo);
                     if ((item as Controls.TablesControl).Model.HasData && !(item as Controls.TablesControl).Model.CanUpload)
                     {
                         (item as Controls.TablesControl).Model.FailedUpload = true;
@@ -192,7 +186,6 @@ namespace DM_Skills.Views
                     }
                     if ((item as Controls.TablesControl).Model.HasData && (item as Controls.TablesControl).Model.CanUpload)
                     {
-                        Console.WriteLine("un2");
                         cnt++;
                     }
                 }
@@ -200,14 +193,12 @@ namespace DM_Skills.Views
 
             if (allowUpload && cnt > 0)
             {
-                Console.WriteLine("un3");
                 foreach (var i in listOfTables.Children)
                 {
                     if (i is Controls.TablesControl)
                     {
                         if ((i as Controls.TablesControl).Model.CanUpload)
                         {
-                            Console.WriteLine("data uploaded");
                             (i as Controls.TablesControl).Model.Upload();
                         }
                     }

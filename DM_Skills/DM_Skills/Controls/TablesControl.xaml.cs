@@ -69,8 +69,7 @@ namespace DM_Skills.Controls
         /// </summary>
         public TablesControl()
         {
-
-            Console.WriteLine("N---N");
+            
 
             if (Model == null)
                 Model = new Models.TableModelN();

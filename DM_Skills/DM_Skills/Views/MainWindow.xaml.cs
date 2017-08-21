@@ -48,7 +48,7 @@ namespace DM_Skills
 
         private void Settings_OnConnection()
         {
-            Console.WriteLine("Connection");
+
             Settings.NotifyPropertyChanged(nameof(Settings.AllLocations));
             Settings.NotifyPropertyChanged(nameof(Settings.AllSchools));
             Console.WriteLine("Skoler:");
@@ -100,12 +100,6 @@ namespace DM_Skills
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            //var settings = FindResource("Settings") as Models.SettingsModel;
-            //Models.SettingsModel.lab.Content += "Contact Server...\n";
-            //Console.WriteLine("Contact Server...");
-            //settings.Client.Send(Scripts.PacketType.Disconnect, (o) => { System.Threading.Thread.Sleep(1000); Console.WriteLine("CB"); }, "Hej");
-            //Models.SettingsModel.lab.Content += "Contact Done\n";
-            //Console.WriteLine("Contact Done");
 
 
         }
@@ -145,7 +139,6 @@ namespace DM_Skills
 
         private void WarningDB_TargetUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
-            Console.WriteLine(warningDB.ActualHeight);
             BindingOperations.GetBindingExpressionBase(gridForside, Grid.HeightProperty).UpdateTarget();
         }
     }
