@@ -41,6 +41,7 @@ namespace DM_Skills.Scripts
                         Thread.Sleep(5000);
                         if (Settings.IsClient)
                         {
+                            client.StringEncoder = Encoding.UTF8;
                             var reply = client.WriteLineAndGetReply("875120", new TimeSpan(0, 0, 0, 0, 300));
                             if (reply == null)
                             {

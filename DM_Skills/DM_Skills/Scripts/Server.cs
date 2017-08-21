@@ -51,6 +51,7 @@ namespace DM_Skills.Scripts
                 //Code fundet i Client.cs
                 Console.WriteLine("Ping");
                 Console.WriteLine(e.MessageString);
+                Console.WriteLine(e.MessageString.GetType());
                 int code = 0;
                 int.TryParse(e.MessageString, out code);
                 Console.WriteLine(code);
