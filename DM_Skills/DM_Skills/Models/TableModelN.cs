@@ -159,6 +159,13 @@ namespace DM_Skills.Models
         protected override bool OnUpload()
         {
 
+            var db = Database.GetDB();
+            if (db is SQLite && !(db as SQLite).Boardcast.HasValue)
+            {
+                (db as SQLite).Boardcast = PacketType.Broadcast_UploadTables;
+            }
+            db.Disconnect();
+
             School.Upload();
             Location.Upload();
             Team.Upload();
@@ -170,6 +177,14 @@ namespace DM_Skills.Models
 
 
             FailedUpload = false;
+
+
+            if (db is SQLite)
+            {
+                (db as SQLite).Boardcast = null;
+            }
+
+
             return true;
         }
         
@@ -192,6 +207,7 @@ namespace DM_Skills.Models
 
                 var result = new ObservableCollection<TableModelN>();
                 var db = Scripts.Database.GetDB();
+
 
                 string table_team = db.GetTableName("Teams");
                 string table_schools = db.GetTableName("Schools");

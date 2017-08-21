@@ -18,13 +18,20 @@ namespace DM_Skills.Scripts
         public Server()
         {
             Settings = (Models.SettingsModel)Application.Current.FindResource("Settings");
+            Application.Current.MainWindow.Closed += MainWindow_Closed;
+        }
+
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+            Stop();
         }
 
         public void Start(int port = 7788)
         {
-            Host = new SimpleTcpServer();            
+            Host = new SimpleTcpServer();
             Host.DataReceived += Host_DataReceived;
             Host.ClientConnected += (o, e) => { Console.WriteLine("Client Connected"); };
+
             
             Host.Start(port);
             Settings.IsServer = true;
@@ -50,12 +57,8 @@ namespace DM_Skills.Scripts
             {
                 //Code fundet i Client.cs
                 Console.WriteLine("Ping");
-                Console.WriteLine(e.MessageString);
-                Console.WriteLine(e.MessageString.GetType());
-                int code = 0;
-                int.TryParse(e.MessageString, out code);
-                Console.WriteLine(code);
-                if (code == 875120)
+                var code = System.Text.RegularExpressions.Regex.Match(e.MessageString, "#\\d+").Value;
+                if (code == "#875120")
                 {
                     Console.WriteLine("Ping Send Reply");
                     e.Reply(Helper.ObjectToByteArray(new Packet() { Type = PacketType.Ping }));

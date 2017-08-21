@@ -164,24 +164,28 @@ namespace DM_Skills.Models
 
         public static ObservableCollection<TeamModel> GetTeamsByLocation(LocationModel location)
         {
-
+            var values = new ObservableCollection<TeamModel>();
+            if (location == null)
+            {
+                return values;
+            }
             var myDB = Scripts.Database.GetDB();
-
             var rows = myDB.GetRows("Teams", new string[] { "ID", "Class", "SchoolID", "LocationID", "Date", "Time" },"WHERE `LocationID` = {0}", location.ID);
             myDB.Disconnect();
 
-            var values = new ObservableCollection<TeamModel>();
-
-            foreach (var i in rows)
+            if (rows != null)
             {
-                var team = new TeamModel();
-                team.ID = Convert.ToInt32(i[0]);
-                team.Class = i[1].ToString();
-                team.SchoolID = Convert.ToInt32(i[2]);
-                team.LocationID = Convert.ToInt32(i[3]);
-                team.Date = i[4].ToString();
-                team.Time = i[5].ToString();
-                values.Add(team);
+                foreach (var i in rows)
+                {
+                    var team = new TeamModel();
+                    team.ID = Convert.ToInt32(i[0]);
+                    team.Class = i[1].ToString();
+                    team.SchoolID = Convert.ToInt32(i[2]);
+                    team.LocationID = Convert.ToInt32(i[3]);
+                    team.Date = i[4].ToString();
+                    team.Time = i[5].ToString();
+                    values.Add(team);
+                }
             }
             return values;
         }

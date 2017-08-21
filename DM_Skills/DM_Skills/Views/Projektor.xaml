@@ -100,7 +100,7 @@
 
         <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" >
             <Label Content="{Binding ElementName=controller, Path=Date}" FontSize="16" Foreground="White"/>
-            <Label Content="{Binding Source={StaticResource Settings}, Path=Location.Name}" FontSize="16" Foreground="White"/>
+            <Label Content="{Binding Source={StaticResource Settings}, Path=Location.Name, NotifyOnTargetUpdated=True}" Binding.TargetUpdated="Label_TargetUpdated" FontSize="16" Foreground="White"/>
         </StackPanel>
     </Grid>
     

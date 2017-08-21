@@ -156,6 +156,10 @@ namespace DM_Skills.Views
             }
         }
 
-
+        private void Label_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            Console.WriteLine("Update");
+            UpdateData();
+        }
     }
 }
