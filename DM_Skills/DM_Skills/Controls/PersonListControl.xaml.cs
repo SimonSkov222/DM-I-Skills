@@ -79,7 +79,16 @@ namespace DM_Skills.Controls
         public ObservableCollection<Models.PersonModel> Persons
         {
             get { return (ObservableCollection<Models.PersonModel>)GetValue(PersonsProperty); }
-            set { SetValue(PersonsProperty, value); NotifyPropertyChanged(nameof(Persons)); listOfPersons.Children.Clear(); }
+            set
+            {
+
+                SetValue(PersonsProperty, value);
+
+                value.CollectionChanged += Persons_CollectionChanged;
+                Persons_CollectionChanged(value, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, value));
+                NotifyPropertyChanged(nameof(Persons));
+                listOfPersons.Children.Clear();
+            }
         }
 
 
@@ -350,6 +359,12 @@ namespace DM_Skills.Controls
                 BindingOperations.GetBindingExpressionBase(display.Content as TextBlock, TextBlock.TextProperty).UpdateTarget();
                 NotifyPropertyChanged(nameof(HasPersons));
             }
+        }
+
+        public void Reset()
+        {
+            Persons = new ObservableCollection<Models.PersonModel>();
+
         }
 
 

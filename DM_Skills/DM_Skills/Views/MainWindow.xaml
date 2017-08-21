@@ -22,6 +22,9 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+      
+        
         <Grid x:Name="grid_menu" Height="30" Background="{StaticResource Color_Background_Button_Blue}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -31,44 +34,39 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="False" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasConnection}"  Style="{StaticResource Radio_Style_MenuOption}"/>
-            <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="False" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasConnection}"  Style="{StaticResource Radio_Style_MenuOption}"/>
-            <RadioButton Grid.Column="2" x:Name="Menu_Indstillinger" Content="Indstillinger" IsChecked="False" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasConnection}" Style="{StaticResource Radio_Style_MenuOption}"/>
-            <ToggleButton  Grid.Column="3" x:Name="Menu_Projektor" Checked="Menu_Projektor_Checked" Unchecked="Menu_Projektor_Checked" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasConnection}" Content="Projektor" Style="{StaticResource ToggleButton_Styles_Default}"/>
+            <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}"/>
+            <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}"/>
+            <RadioButton Grid.Column="2" x:Name="Menu_Indstillinger" Content="Indstillinger" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}"/>
+            <ToggleButton  Grid.Column="3" x:Name="Menu_Projektor" Checked="Menu_Projektor_Checked" Unchecked="Menu_Projektor_Checked" Content="Projektor" Style="{StaticResource ToggleButton_Styles_Default}"/>
         </Grid>
 
         <!--Height="{Binding ElementName=debug_hh, Path=ActualHeight}"-->
-        <ScrollViewer Grid.Row="1" Padding="10"  x:Name="debug_hh">
+        <ScrollViewer Grid.Row="1" Padding="10"  x:Name="debug_hh" ScrollChanged="ScrollViewer_ScrollChanged">
             <Grid>
-                <RichTextBox x:Name="testPrint" Visibility="Collapsed"/>
-                <StackPanel Visibility="Collapsed">
-                    <Button Content="Server" Click="Button_Click_1"/>
-                    <Button Content="Create Database" Click="Button_Click_4"/>
-                    <TextBox x:Name="txtIP"/>
-                    <Button Content="Client" Click="Button_Click_2"/>
-                    <Button Content="Display Skoler" Click="Button_Click_3" />
-                    <ScrollViewer Height="250">
-                        <Label x:Name="console" Content="test" Background="Red"/>
-                    </ScrollViewer>
-                </StackPanel>
-                <Grid 
-                Visibility="Visible" 
-                Width="700" 
-                HorizontalAlignment="Center" >
-                <!--<Button Content="hej" Click="Button_Click"/>-->
-                <!--<Label Background="Red" VerticalAlignment="Top" Content="{Binding ElementName=controller,Path=ActualHeight}" Panel.ZIndex="100" Margin="0 60 0 0"/>
-                <Label Background="Green" VerticalAlignment="Top" Content="{Binding ElementName=debug_h,Path=ActualHeight}" Panel.ZIndex="100" Margin="0 90 0 0"/>
-                <Label Background="Blue" VerticalAlignment="Top" Content="{Binding ElementName=debug_hh,Path=ActualHeight}" Panel.ZIndex="100" Margin="0 120 0 0"/>-->
-
-                <Grid 
-                    Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" 
-                    Style="{StaticResource Grid_Style_FadeAnimation}"
-                    Opacity="0">
+                <Border Grid.Row="1" Width="700" Margin="0 10 0 0" Panel.ZIndex="500" Background="{StaticResource Color_Background_Program}"
+                        BorderBrush="Red" BorderThickness="1" x:Name="warningDB" VerticalAlignment="Top"
+                        Binding.TargetUpdated="WarningDB_TargetUpdated"
+                        Visibility="{Binding Source={StaticResource Settings}, Path=HasLostConnection, Converter={StaticResource BoolToVisibilityConvert}, NotifyOnTargetUpdated=True}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="Der er ikke nogen forbindelse til en database." FontSize="16" VerticalAlignment="Center"/>
+                        <Button Content="Klik her " Style="{StaticResource Button_Style_Default}" Padding="3 0" BorderThickness="2" BorderBrush="Gray" 
+                                Click="Button_KlikHer_Click" />
+                        <TextBlock Text="for at oprette forbindelsen igen." FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                <Grid  
+                    Visibility="Visible"  Width="700"  HorizontalAlignment="Center" 
+                    Margin="{Binding ElementName=warningDB, Path=ActualHeight, Converter={StaticResource ValueToThicknessConvert}, ConverterParameter='0 100 0 0'}" >
+                    <Grid 
+                        Tag="{Binding ElementName=Menu_Forside, Path=IsChecked}" 
+                        Style="{StaticResource Grid_Style_FadeAnimation}"
+                        Opacity="0" x:Name="gridForside">
 
                     <Grid.Height>
                         <MultiBinding Converter="{StaticResource MinusDoubleConvert}" ConverterParameter="Height">
                             <Binding ElementName="debug_hh" Path="ActualHeight"/>
-                            <Binding ElementName="debug_hh" Path="Padding"/>
+                                <Binding ElementName="debug_hh" Path="Padding"/>
+                                <Binding ElementName="warningDB" Path="ActualHeight"/>
                         </MultiBinding>
                     </Grid.Height>
 

@@ -29,13 +29,54 @@ namespace DM_Skills.Views
         public Connection()
         {
             Settings = (Models.SettingsModel)FindResource("Settings");
+            Application.Current.MainWindow.Closed += MainWindow_Closed;
+            Loaded += Connection_Loaded;
             InitializeComponent();
-            txtIP.Text = ServerIP;
-            var p = new PasswordBox();
-            Console.WriteLine(p.Password.GetType());
 
-            var r = new RichTextBox();
+        }
+
+        private void Connection_Loaded(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("load1");
+            var myLocalDB = Scripts.Database.GetLocalDB();
+
+            Console.WriteLine("####");
             
+
+
+            
+            Settings.OverTimeMin        = Convert.ToInt32(myLocalDB.GetRow("Settings","Value", "WHERE `Name`='OverTime'")[0]);
+            Settings.TableCnt           = Convert.ToInt32(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='TableCount'")[0]);
+            serverPort                  = Convert.ToString(myLocalDB.GetRow("Settings","Value", "WHERE `Name`='ServerPort'")[0]);
+            clientIP                    = Convert.ToString(myLocalDB.GetRow("Settings","Value", "WHERE `Name`='ClientIP'")[0]);
+            clientPort                  = Convert.ToString(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='ClientPort'")[0]);
+
+            myLocalDB.Disconnect();
+
+
+            Console.WriteLine("################");
+            Console.WriteLine(serverPort);
+            Console.WriteLine(clientIP);
+            Console.WriteLine(clientPort);
+            Console.WriteLine("################");
+
+
+            txtIP.Text = ServerIP;
+            txtPort.Text = serverPort;
+        }
+
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+            var myLocalDB = Scripts.Database.GetLocalDB();
+
+            myLocalDB.Update("Settings", "Value", Settings.OverTimeMin, "WHERE `Name`='OverTime'");
+            myLocalDB.Update("Settings", "Value", Settings.TableCnt, "WHERE `Name`='TableCount'");
+            myLocalDB.Update("Settings", "Value", serverPort, "WHERE `Name`='ServerPort'");
+            myLocalDB.Update("Settings", "Value", clientIP, "WHERE `Name`='ClientIP'");
+            myLocalDB.Update("Settings", "Value", clientPort, "WHERE `Name`='ClientPort'");
+
+            myLocalDB.Disconnect();
+
         }
 
         public string ServerIP { get { return Scripts.Helper.GetLocalIPv4(); } }
@@ -178,7 +219,7 @@ namespace DM_Skills.Views
                 return;
             }
 
-            if (!Settings.IsClient)
+            if (!Settings.IsClient && !Settings.IsServer)
             {
                 Settings.Client = new Scripts.Client();
                 Settings.Client.Connect(txtIP.Text, int.Parse(txtPort.Text));
@@ -226,6 +267,8 @@ namespace DM_Skills.Views
             Models.SchoolModel.RemoveUnused();
         }
 
+        
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
@@ -233,6 +276,24 @@ namespace DM_Skills.Views
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private void SaveToLocal_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!(sender as TextBox).IsKeyboardFocused)
+            {
+                return;
+            }
+
+            if (rServer.IsChecked ?? false)
+            {
+                serverPort = txtPort.Text;
+            }
+            else
+            {
+                clientIP = txtIP.Text;
+                clientPort = txtPort.Text;
             }
         }
     }

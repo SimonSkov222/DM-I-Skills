@@ -89,8 +89,8 @@ namespace DM_Skills.Controls
         /// </summary>
         public void Reset()
         {
-
-            BorderThickness = new Thickness(0);
+            Model = new Models.TableModelN();
+            Personer.Reset();
         }
 
         private void Label_Drop(object sender, DragEventArgs e)

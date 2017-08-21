@@ -61,7 +61,6 @@ namespace DM_Skills.Scripts
         }
 
         public static void CreateLocalDatabase() {
-
             var myDB = GetLocalDB();
             if (!myDB.Exist("Settings"))
             {
@@ -70,6 +69,12 @@ namespace DM_Skills.Scripts
                     new Column() { Name = "Value", Type = ColumnTypes.String, IsNotNull=true }
                 );
                 myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "LocationDB", Settings.FileNameDB });
+                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "OverTime", "15" });
+                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "TableCount", "3" });
+                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "ServerPort", "" });
+                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "ClientIP", "" });
+                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "ClientPort", "" });
+
             }
             myDB.Disconnect();
         }

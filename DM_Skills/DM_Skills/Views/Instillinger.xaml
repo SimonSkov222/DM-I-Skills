@@ -4,17 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DM_Skills.Views"
+             Background="{StaticResource Color_Background_Program}"
+             Padding="0 15 0 0"
              xmlns:Controls="clr-namespace:DM_Skills.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="800">
-    <Grid Margin="0 15 0 0">
+    <Grid Margin="0 0 0 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-
+        
         <Grid  Background="{StaticResource Color_Border_Box}" 
                Grid.Row="0" Grid.Column="0"  >
             <Grid.RowDefinitions>
@@ -28,7 +30,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- Server/client knap -->
-            <Grid Grid.Row="0" Margin="1.5 1.5 1.5 0">
+            <Grid Grid.Row="0" Margin="1.5 1.5 1.5 0" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -45,8 +47,9 @@
             </Grid>
             
             <!-- Server/Client Inputs -->
-            <Grid Grid.Row="1"
-                  Margin="1.5"
+
+            <Grid Grid.Row="1" 
+                  Margin="1.5" 
                   Background="{StaticResource Color_Background_Box}">
                 <Grid Margin="15 10">
                     <Grid.RowDefinitions>
@@ -61,9 +64,9 @@
                     </Grid.ColumnDefinitions>
 
                     <Controls:PlaceholderBox x:Name="txtIP" Placeholder="Ip Adresse" Grid.Row="0" Grid.Column="0" Margin="2 5" 
-                                             IsEnabled="{Binding ElementName=rClient, Path=IsChecked}"
+                                             IsEnabled="{Binding ElementName=rClient, Path=IsChecked}"  TextChanged="SaveToLocal_TextChanged"
                                              />
-                    <Controls:PlaceholderBox x:Name="txtPort" Placeholder="Port" Grid.Row="0" Grid.Column="1" Margin="2 5"/>
+                    <Controls:PlaceholderBox x:Name="txtPort" Placeholder="Port" Grid.Row="0" Grid.Column="1" Margin="2 5" TextChanged="SaveToLocal_TextChanged"/>
                     <Controls:PlaceholderBox x:Name="txtDB" 
                                              Text="{Binding Source={StaticResource Settings}, Path=FileNameDB}"
                                              Placeholder="Database placering" 

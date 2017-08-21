@@ -25,7 +25,8 @@ namespace DM_Skills.Views
     /// </summary>
     public partial class sog_pa_tider : UserControl, INotifyPropertyChanged
     {
-
+        
+        private int? searchID = null;
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged([CallerMemberName]string name = "")
@@ -160,23 +161,7 @@ namespace DM_Skills.Views
             Print_ = 0;
         }
 
-
-        //private bool codeReSizeColumn = false;
-        //private void results_SizeChanged(object sender, SizeChangedEventArgs e)
-        //{
-        //    if (!((GridViewColumnHeader)sender).IsLoaded)
-        //        return;
-
-        //    if (codeReSizeColumn)
-        //        return;
-
-        //    codeReSizeColumn = true;
-        //    ((GridViewColumnHeader)sender).Width = e.PreviousSize.Width;
-        //    codeReSizeColumn = false;
-        //    //((GridViewColumnHeader)sender).SizeChanged += results_SizeChanged;
-        //    //Console.WriteLine("Size! {0} == {1} == {2}", e.NewSize, e.PreviousSize, sender.GetType());
-        //}
-
+        
         private  void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             var scrollviewer = (ScrollViewer)Scripts.Helper.FindAncestor(this, typeof(ScrollViewer));
@@ -212,8 +197,6 @@ namespace DM_Skills.Views
 
         }
 
-        private int? searchID = null;
-
         private void Button_Search_Click(object sender, RoutedEventArgs e)
         {
 
@@ -225,17 +208,7 @@ namespace DM_Skills.Views
 
             if (searchID.HasValue)
             {
-                var result = MessageBox.Show(Window.GetWindow(this),
-                    "Ved at lave en ny søgning, annullere du din gamle.\n\nVil du forsætte?",
-                    "Caption", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (result == MessageBoxResult.Yes)
-                {
-                    Models.TableModelN.CancelThread(searchID);
-                }
-                else
-                {
-                    return;
-                }
+                return;
             }
 
             searchID = Models.TableModelN.GetTables(
@@ -258,10 +231,33 @@ namespace DM_Skills.Views
                         });
                         Thread.Sleep(30);
                     }
-                    
+
+                    Application.Current.Dispatcher.Invoke(delegate ()
+                    {
+                        btnA.Visibility = Visibility.Collapsed;
+                        btnS.Visibility = Visibility.Visible;
+                    });
                     searchID = null;
+
                 });
+            btnS.Visibility = Visibility.Collapsed;
+            btnA.Visibility = Visibility.Visible;
+
+
             //searchList.ItemsSource = items;
+        }
+
+        private void Button_Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (searchID.HasValue)
+            {
+                Models.TableModelN.CancelThread(searchID);
+                searchID = null;
+            }
+            btnA.Visibility = Visibility.Collapsed;
+            btnS.Visibility = Visibility.Visible;
+
+
         }
     }
 }

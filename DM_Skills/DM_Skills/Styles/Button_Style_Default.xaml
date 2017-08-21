@@ -11,6 +11,7 @@
 
         <Setter Property="RenderTransform" Value="{StaticResource scaleTransform}"/>
         <Setter Property="RenderTransformOrigin" Value="0.5 0.5"/>
+        <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Margin" Value="2 5"/>
         <Setter Property="Padding" Value="25 5"/>
         <Setter Property="VerticalAlignment" Value="Top"/>

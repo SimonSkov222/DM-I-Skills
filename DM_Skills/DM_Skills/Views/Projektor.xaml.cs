@@ -50,7 +50,6 @@ namespace DM_Skills.Views
         }
         private void UpdateData()
         {
-            Settings.Location = new Models.LocationModel() { ID = 3, Name = "ballerup" };
             BestTime = Models.TableModelN.GetBestTime(null, Settings.Location);
             BestTimeToDay = Models.TableModelN.GetBestTime(DateTime.Now, Settings.Location);
         }
