@@ -107,6 +107,7 @@ namespace DM_Skills.Views
 
             if (Settings.IsServer || Settings.IsClient)
             {
+                MessageBox.Show("Serveren er igang", "Er igang", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             int id = Grid.GetColumn(sender as Button);
@@ -135,9 +136,11 @@ namespace DM_Skills.Views
 
         private void Button_Start_Click(object sender, RoutedEventArgs e)
         {
+            
+
             if (Settings.IsClient || Settings.IsServer)
             {
-                Console.WriteLine("TODO: Indstillinger.Button_Start_Click");
+                MessageBox.Show("Serveren er startet", "Server start", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -145,18 +148,29 @@ namespace DM_Skills.Views
 
             if (!int.TryParse(txtPort.Text,out port))
             {
-                Console.WriteLine("TODO: Indstillinger.Button_Start_Click");
+                MessageBox.Show("Du mangler at indtaste en port", "Ingen port", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
             try
             {
-               System.IO.Path.GetFullPath(Settings.FileNameDB);
-            }
-            catch (Exception)
-            {
+                if (!File.Exists(Settings.FileNameDB))
+                {
+                    File.Create(Settings.FileNameDB).Close();
+                    File.Delete(Settings.FileNameDB);
+                    var createDB = MessageBox.Show("Databasen findes ikke i forvejen, vil du oprette den?", "Ny database", MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.Yes);
 
+                    if (createDB == MessageBoxResult.No)
+                    {
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 MessageBox.Show("Stien for databasen findes ikke", "Ingen database", MessageBoxButton.OK, MessageBoxImage.Error);
+                Settings.FileNameDB = Settings.FileNameDefaultDB;
                 return;
             }
 
@@ -201,11 +215,13 @@ namespace DM_Skills.Views
 
         private void Button_Stop_Click(object sender, RoutedEventArgs e)
         {
-            if (Settings.IsServer)
+            if (!Settings.IsServer)
             {
-                Settings.Server.Stop();
-                Settings.IsServer = false;
+                MessageBox.Show("Du er ikke sat som server", "Ikke startet", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+            Settings.Server.Stop();
+            Settings.IsServer = false;
         }
 
         private void Button_Tilslut_Click(object sender, RoutedEventArgs e)
@@ -213,27 +229,37 @@ namespace DM_Skills.Views
             int port = 0;
             if (!int.TryParse(txtPort.Text, out port))
             {
-                Console.WriteLine("TODO: Indstillinger.Button_Start_Click");
+                MessageBox.Show("Du mangler at indtaste en port", "Ingen port", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (!Settings.IsClient && !Settings.IsServer)
+            if (txtIP.Text == null || txtIP.Text == "")
             {
-                Settings.Client = new Scripts.Client();
-                Settings.Client.Connect(txtIP.Text, int.Parse(txtPort.Text));
+                MessageBox.Show("Du mangler at indtaste en ip", "Ingen ip", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+            
+            if (Settings.IsClient && Settings.IsServer)
+            {
+                MessageBox.Show("Du er tilsluttet til en server", "Er tilsluttet", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            Settings.Client = new Scripts.Client();
+            Settings.Client.Connect(txtIP.Text, int.Parse(txtPort.Text));
         }
 
         private void Button_Afbryd_Click(object sender, RoutedEventArgs e)
         {
-            if (Settings.IsClient)
+            if (!Settings.IsClient)
             {
-                Settings.Client.Disconnect();
+                MessageBox.Show("Du er ikke tilsluttet til en server", "Ikke tilsluttet", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+            Settings.Client.Disconnect();
         }
 
         private void Button_SchoolUpload_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             string richText = new TextRange(txtSkoleList.Document.ContentStart, txtSkoleList.Document.ContentEnd).Text;
 
             var schoolList = Regex.Matches(richText, ".+?(?:\\n|$)", RegexOptions.Singleline)
@@ -244,7 +270,7 @@ namespace DM_Skills.Views
 
             foreach (var i in schoolList)
             {
-                string name = i.Trim().Replace("\n", "");
+                string name = i.Replace("\n", "").Trim();
                 if (name.Length > 0)
                 {
                     (new Models.SchoolModel() { Name = name }).Upload();
@@ -311,6 +337,10 @@ namespace DM_Skills.Views
 
         private void Button_Backup_Click(object sender, RoutedEventArgs e)
         {
+            if (!Settings.IsServer)
+            {
+                return;
+            }
             SaveFileDialog dlg = new SaveFileDialog();
 
             dlg.DefaultExt = ".sqlite";

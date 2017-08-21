@@ -38,11 +38,13 @@
                 <RadioButton Content="Server" x:Name="rServer" Grid.Column="0" IsChecked="True"
                              HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
                              Style="{StaticResource Radio_Style_MenuOption}"
+                             IsEnabled="{Binding Source={StaticResource Settings}, Path=IsClient, Converter={StaticResource BoolToBoolRevConvert}}"
                             />
 
                 <RadioButton  Checked="rClient_Checked" Unchecked="rClient_Checked" Content="Client" x:Name="rClient" Grid.Column="1" 
                              HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
-                             Style="{StaticResource Radio_Style_MenuOption}"/>
+                             Style="{StaticResource Radio_Style_MenuOption}"
+                              IsEnabled="{Binding Source={StaticResource Settings}, Path=IsServer, Converter={StaticResource BoolToBoolRevConvert}}"/>
 
             </Grid>
             
@@ -71,6 +73,7 @@
                                              Text="{Binding Source={StaticResource Settings}, Path=FileNameDB}"
                                              Placeholder="Database placering" 
                                              Grid.Row="1" Grid.ColumnSpan="2" Margin="2 5"
+                                             IsEnabled="{Binding Source={StaticResource Settings}, Path=IsServer, Converter={StaticResource BoolToBoolRevConvert}}"
                                              Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
 
                     <Grid Grid.Row="2" Grid.ColumnSpan="2">

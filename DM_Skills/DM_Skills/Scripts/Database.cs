@@ -77,7 +77,7 @@ namespace DM_Skills.Scripts
                     new Column() { Name = "Name", Type = ColumnTypes.String, IsPrimaryKey=true},
                     new Column() { Name = "Value", Type = ColumnTypes.String, IsNotNull=true }
                 );
-                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "LocationDB", Settings.FileNameDB });
+                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "LocationDB", Settings.FileNameDefaultDB });
                 myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "OverTime", "15" });
                 myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "TableCount", "3" });
                 myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "ServerPort", "" });

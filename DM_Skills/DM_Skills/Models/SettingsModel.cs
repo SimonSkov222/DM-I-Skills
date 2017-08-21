@@ -60,13 +60,20 @@ namespace DM_Skills.Models
 
         public string FileNameLocalDB { get { return System.IO.Directory.GetCurrentDirectory() + @"\DB9435.sqlite"; } }
 
-        public string _FileNameDB = System.IO.Directory.GetCurrentDirectory() + @"\DB94.sqlite";
+        public string FileNameDefaultDB = System.IO.Directory.GetCurrentDirectory() + @"\DB94.sqlite";
+
         public string FileNameDB
         {
-            get { return _FileNameDB; }
+            get
+            {
+                var db = Scripts.Database.GetLocalDB();
+                var row = db.GetRow("Settings", "Value", "WHERE `Name` = 'LocationDB'");
+                return row[0].ToString();
+            }
             set
             {
-                _FileNameDB = value;
+                var db = Scripts.Database.GetLocalDB();
+                db.Update("Settings", "Value", value, (object)"LocationDB");
                 NotifyPropertyChanged();
             }
         }
