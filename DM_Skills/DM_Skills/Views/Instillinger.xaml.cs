@@ -111,6 +111,11 @@ namespace DM_Skills.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+            if (Settings.IsServer || Settings.IsClient)
+            {
+                return;
+            }
             int id = Grid.GetColumn(sender as Button);
 
             FileDialog dlg;
