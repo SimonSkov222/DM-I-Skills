@@ -171,7 +171,7 @@ namespace DM_Skills.Views
             //Settings.InvokeUpload();
             if (!Settings.HasConnection)
             {
-                MessageBox.Show("Der er ikke nogle database", "Ingen Database", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Der er ikke nogen database", "Ingen Database", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 return;
             }

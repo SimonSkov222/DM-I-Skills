@@ -118,6 +118,8 @@ namespace DM_Skills.Scripts
                 );
 
                 myDB.Insert("Locations", "Name", "Ballerup");
+                myDB.Insert("Locations", "Name", "Frederiksberg");
+                myDB.Insert("Locations", "Name", "Gladsaxe");
                 myDB.Insert("Locations", "Name", "Hvidovre");
             }
 

@@ -23,12 +23,15 @@ namespace DM_Skills.Converters
             }
 
             double result = GetValue(values[0], parameter);
-
             for (int i = 1; i < values.Length; i++)
             {
                 result -= GetValue(values[i], parameter);
-            }
 
+            }
+            if (result < 0)
+            {
+                result = 0;
+            }
             return result;
         }
 
@@ -53,6 +56,7 @@ namespace DM_Skills.Converters
                     return ((Thickness)value).Top + ((Thickness)value).Bottom;
                 }
             }
+            
             return 0;
         }
 

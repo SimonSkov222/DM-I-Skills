@@ -59,7 +59,7 @@
     </Reference>
     <Reference Include="Nicenis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Desktop\Nicenis-master\Nicenis\Nicenis\bin\Debug\Nicenis.dll</HintPath>
+      <HintPath>F:\Debug\Nicenis.dll</HintPath>
     </Reference>
     <Reference Include="SimpleTCP, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleTCP.1.0.15\lib\net45\SimpleTCP.dll</HintPath>

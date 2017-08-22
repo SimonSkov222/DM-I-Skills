@@ -59,9 +59,9 @@ namespace DM_Skills.Models
 
 
 
-        public string FileNameLocalDB { get { return System.IO.Directory.GetCurrentDirectory() + @"\DB9435.sqlite"; } }
+        public string FileNameLocalDB { get { return System.IO.Directory.GetCurrentDirectory() + @"\DMiSkillsLocalDB.sqlite"; } }
 
-        public string FileNameDefaultDB = System.IO.Directory.GetCurrentDirectory() + @"\DB94.sqlite";
+        public string FileNameDefaultDB = System.IO.Directory.GetCurrentDirectory() + @"\DMiSkillsDB.sqlite";
 
         private string _FileNameDB = null;
         public string FileNameDB
