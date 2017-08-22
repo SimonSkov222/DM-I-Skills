@@ -68,7 +68,9 @@
                     <Controls:PlaceholderBox x:Name="txtIP" Placeholder="Ip Adresse" Grid.Row="0" Grid.Column="0" Margin="2 5" 
                                              IsEnabled="{Binding ElementName=rClient, Path=IsChecked}"  TextChanged="SaveToLocal_TextChanged"
                                              />
-                    <Controls:PlaceholderBox x:Name="txtPort" Placeholder="Port" Grid.Row="0" Grid.Column="1" Margin="2 5" TextChanged="SaveToLocal_TextChanged"/>
+                    <Controls:PlaceholderBox x:Name="txtPort" Placeholder="Port" Grid.Row="0" Grid.Column="1" Margin="2 5" 
+                                             TextChanged="SaveToLocal_TextChanged"
+                                             IsEnabled="{Binding Source={StaticResource Settings}, Path=IsServer, Converter={StaticResource BoolToBoolRevConvert}}"/>
                     <Controls:PlaceholderBox x:Name="txtDB" 
                                              Text="{Binding Source={StaticResource Settings}, Path=FileNameDB}"
                                              Placeholder="Database placering" 
