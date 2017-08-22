@@ -13,26 +13,27 @@ namespace DM_Skills.Models
     [Serializable]
     public class TableModelN : ModelSettings
     {
-        const int ERRNO_SCHOOL_NAME_NULL        = 1;
-        const int ERRNO_LOCATION_NAME_NULL      = 2;
-        const int ERRNO_TEAM_TIME_NULL          = 4;
-        const int ERRNO_PERSON_ZERO             = 8;
-        const int ERRNO_PERSON_HAS_NAME_NULL    = 16;
+        const int ERRNO_SCHOOL_NAME_NULL = 1;
+        const int ERRNO_LOCATION_NAME_NULL = 2;
+        const int ERRNO_TEAM_TIME_NULL = 4;
+        const int ERRNO_PERSON_ZERO = 8;
+        const int ERRNO_PERSON_HAS_NAME_NULL = 16;
 
 
-        const string ERROR_SCHOOL_NAME_NULL         = SchoolModel.ERROR_NAME_NULL;
-        const string ERROR_LOCATION_NAME_NULL       = LocationModel.ERROR_NAME_NULL;
-        const string ERROR_TEAM_TIME_NULL           = TeamModel.ERROR_TIME_NULL;
-        const string ERROR_PERSON_ZERO              = "";
-        const string ERROR_PERSONS_HAS_NAME_NULL    = "";
+        const string ERROR_SCHOOL_NAME_NULL = SchoolModel.ERROR_NAME_NULL;
+        const string ERROR_LOCATION_NAME_NULL = LocationModel.ERROR_NAME_NULL;
+        const string ERROR_TEAM_TIME_NULL = TeamModel.ERROR_TIME_NULL;
+        const string ERROR_PERSON_ZERO = "";
+        const string ERROR_PERSONS_HAS_NAME_NULL = "";
 
         private bool _FailedUpload = false;
 
-        public SchoolModel      School      { get; set; }
-        public LocationModel    Location    { get; set; }
-        public TeamModel        Team        { get; set; }
-        public ObservableCollection<PersonModel> Persons    { get; set; }
-        public bool FailedUpload {
+        public SchoolModel School { get; set; }
+        public LocationModel Location { get; set; }
+        public TeamModel Team { get; set; }
+        public ObservableCollection<PersonModel> Persons { get; set; }
+        public bool FailedUpload
+        {
             get { return _FailedUpload; }
             set
             {
@@ -70,7 +71,8 @@ namespace DM_Skills.Models
         }
 
 
-        public bool ErrPerson {
+        public bool ErrPerson
+        {
             get
             {
 
@@ -80,14 +82,15 @@ namespace DM_Skills.Models
 
         public TableModelN()
         {
-            School      = new SchoolModel();
-            Location    = new LocationModel();
-            Team        = new TeamModel();
-            Persons     = new ObservableCollection<PersonModel>();
+            School = new SchoolModel();
+            Location = new LocationModel();
+            Team = new TeamModel();
+            Persons = new ObservableCollection<PersonModel>();
             FailedUpload = false;
 
-            Persons.CollectionChanged += (o, e) => {
-                
+            Persons.CollectionChanged += (o, e) =>
+            {
+
                 if (e.NewItems != null)
                 {
                     foreach (var item in e.NewItems)
@@ -108,7 +111,7 @@ namespace DM_Skills.Models
             Team.NotifyPropertyOnAll += () => NotifyPropertyChanged("HasData");
 
 
-            
+
             Team.CallbackUpload = o =>
             {
                 foreach (var p in Persons)
@@ -116,7 +119,8 @@ namespace DM_Skills.Models
             };
         }
 
-        public bool HasData {
+        public bool HasData
+        {
             get
             {
                 if (School.Name != null && School.Name != "")
@@ -145,7 +149,8 @@ namespace DM_Skills.Models
             }
         }
 
-        public override bool CanUpload {
+        public override bool CanUpload
+        {
             get
             {
                 return ErrNo == 0;
@@ -177,24 +182,23 @@ namespace DM_Skills.Models
             FailedUpload = false;
 
             RequestBroadcast(PacketType.Broadcast_UploadTables);
-            
+
 
             return true;
         }
-        
+
 
         public static int GetTables(
-                                    Order order, 
-                                    string schoolName, 
+                                    Order order,
+                                    string schoolName,
                                     string personName,
-                                    LocationModel location, 
-                                    string from, 
+                                    LocationModel location,
+                                    string from,
                                     string to,
                                     Action<ObservableCollection<TableModelN>> callback
                                     )
         {
             int threadID = GetNewThreadID();
-
 
             asyncDB[threadID] = new Thread(new ThreadStart(delegate ()
             {
@@ -266,7 +270,6 @@ namespace DM_Skills.Models
 
 
                 cmd += ";";
-                Console.WriteLine(cmd);
                 var dataTeam = db.ExecuteQuery(cmd);
 
                 if (dataTeam != null && dataTeam.Count > 0)
@@ -348,7 +351,7 @@ namespace DM_Skills.Models
                         break;
                 }
 
-                
+
                 callback?.Invoke(result);
 
                 if (asyncDB.ContainsKey(threadID))
@@ -358,6 +361,7 @@ namespace DM_Skills.Models
 
             }));
 
+            asyncDB[threadID].Name = "GetTables";
             asyncDB[threadID].Start();
 
             return threadID;
@@ -370,18 +374,62 @@ namespace DM_Skills.Models
             //var teams = TeamModel.get.GetRows("");
         }
 
+
+        public static int GetBestTime(DateTime? date, LocationModel location, Action<TableModelN> callback)
+        {
+            int threadID = GetNewThreadID();
+            
+
+            asyncDB[threadID] = new Thread(new ThreadStart(delegate ()
+            {
+
+                if (date == null)
+                {
+                    date = new DateTime(DateTime.Now.Year, 1, 1);
+                }
+                TableModelN value = null;
+                var teams = TeamModel.GetTeamsByLocation(location);                
+                var isLock = new ManualResetEvent(false);
+
+                GetTables(Order.HurtigsteTider, "", "", location, date.Value.ToShortDateString(), null, o =>
+                {
+                    if (o != null && o.Count > 0)
+                    {
+                        value = o[0];
+                    }
+
+                    isLock.Set();
+                });
+                isLock.WaitOne();
+                
+
+                callback?.Invoke(value);
+
+                if (asyncDB.ContainsKey(threadID))
+                {
+                    asyncDB.Remove(threadID);
+                }
+
+            }));
+
+            asyncDB[threadID].Name = "GetBestTime";
+            asyncDB[threadID].Start();
+            
+            return threadID;
+        }
+
         public static TableModelN GetBestTime(DateTime? date, LocationModel location)
         {
             if (date == null)
             {
-                date = new DateTime(DateTime.Now.Year,1,1);
+                date = new DateTime(DateTime.Now.Year, 1, 1);
             }
 
             var teams = TeamModel.GetTeamsByLocation(location);
             TableModelN value = null;
             var isLock = new ManualResetEvent(false);
 
-            GetTables(Order.HurtigsteTider, "", "", location, date.Value.ToShortDateString(), null, o => 
+            GetTables(Order.HurtigsteTider, "", "", location, date.Value.ToShortDateString(), null, o =>
             {
                 if (o != null && o.Count > 0)
                 {
@@ -392,10 +440,6 @@ namespace DM_Skills.Models
             isLock.WaitOne();
 
             return value;
-
-            
-
-
         }
     }
 }

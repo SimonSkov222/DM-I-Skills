@@ -167,6 +167,7 @@ namespace DM_Skills.Views
         private void Button_Upload_Click(object sender, RoutedEventArgs e)
         {
             //Settings.InvokeUpload();
+
             bool allowUpload = true;
             int cnt = 0;
             foreach (var item in listOfTables.Children)
@@ -202,7 +203,7 @@ namespace DM_Skills.Views
                         }
                     }
                 }
-                //Button_Reset_Click(null, null);
+                Button_Reset_Click(null, null);
             }
             else
             {

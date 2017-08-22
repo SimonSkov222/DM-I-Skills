@@ -42,7 +42,7 @@ namespace DM_Skills.Scripts
             _IsLocal = isLocal;
             Settings = Application.Current.FindResource("Settings") as Models.SettingsModel;
         }
-
+        
 
         /// <summary>
         /// Opret forbindelse til databasen
@@ -69,7 +69,7 @@ namespace DM_Skills.Scripts
         {
             if (Settings.IsServer || _IsLocal || _unname)
             {
-                sql_cmd.Dispose(); //release all resouces
+                sql_cmd.Dispose();
                 sql_conn.Close();
                 _isConnected = false;
             }
@@ -274,6 +274,7 @@ namespace DM_Skills.Scripts
         /// </summary>
         public List<List<object>> ExecuteQuery(string cmd)
         {
+            //Console.WriteLine("ExecuteQuery");
             IsLock.WaitOne();
             IsLock.Reset();
             _lastQuery = cmd;

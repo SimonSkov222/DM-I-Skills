@@ -59,8 +59,7 @@ namespace DM_Skills.Models
             {
                 id = randomKey.Next(0, 2000);
             } while (asyncDB.ContainsKey(id));
-
-
+            
             return id;
         }
 

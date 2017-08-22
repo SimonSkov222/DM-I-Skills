@@ -37,7 +37,7 @@ namespace DM_Skills.Views
 
         private void Connection_Loaded(object sender, RoutedEventArgs e)
         {
-            var myLocalDB = Scripts.Database.GetLocalDB();
+            var myLocalDB = Scripts.Database.GetLocalDB("Connection_Loaded");
             
             
 
@@ -60,7 +60,7 @@ namespace DM_Skills.Views
 
         private void MainWindow_Closed(object sender, EventArgs e)
         {
-            var myLocalDB = Scripts.Database.GetLocalDB();
+            var myLocalDB = Scripts.Database.GetLocalDB("MainWindow_Closed");
 
             myLocalDB.Update("Settings", "Value", Settings.OverTimeMin, "WHERE `Name`='OverTime'");
             myLocalDB.Update("Settings", "Value", Settings.TableCnt, "WHERE `Name`='TableCount'");
@@ -184,7 +184,7 @@ namespace DM_Skills.Views
             }
 
             //Gem db location
-            var myLocalDB = Scripts.Database.GetLocalDB();
+            var myLocalDB = Scripts.Database.GetLocalDB("Gem db location");
             myLocalDB.Update("Settings", "Value", Settings.FileNameDB, (object)"LocationDB");
             myLocalDB.Disconnect();
             

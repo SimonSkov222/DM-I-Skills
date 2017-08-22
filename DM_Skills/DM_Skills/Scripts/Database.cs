@@ -16,7 +16,7 @@ namespace DM_Skills.Scripts
         private static IDatabase localDB;
 
 
-        public static IDatabase GetLocalDB()
+        public static IDatabase GetLocalDB(string title)
         {
             if (Settings == null)
             {
@@ -28,6 +28,16 @@ namespace DM_Skills.Scripts
                 localDB = new SQLite(true);
             }
 
+            if (localDB is SQLite)
+            {
+                //Console.WriteLine("\n\n" + "Call By " + title);
+                ////(localDB as SQLite).IsConnectionLock.WaitOne();
+                ////(localDB as SQLite).IsConnectionLock.Reset();
+                //(localDB as SQLite)._DebugTitle = title;
+                //Console.WriteLine("==== " + title);
+            }
+
+          
             if (!localDB.IsConnected)
             {
                 string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameLocalDB);
@@ -70,7 +80,7 @@ namespace DM_Skills.Scripts
         }
 
         public static void CreateLocalDatabase() {
-            var myDB = GetLocalDB();
+            var myDB = GetLocalDB("CreateLocalDatabase");
             if (!myDB.Exist("Settings"))
             {
                 myDB.Create("Settings",
