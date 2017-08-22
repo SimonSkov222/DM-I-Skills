@@ -199,8 +199,9 @@ namespace DM_Skills.Controls
 
         private void Input_KeyDown(object sender, KeyEventArgs e)
         {
-            var visibleItems = options.Items.Cast<Models.SchoolModel>().Where(o => o.Name.StartsWith(input.Text)).ToArray();
-            var cSelectedItem = visibleItems.Where(o => o.IsSelected).ToArray();
+            var visibleItems = options.Items.Cast<Models.SchoolModel>()
+                .Where(o => o.Name.ToLower().Replace(" ", "").StartsWith(input.Text.ToLower().Replace(" ", ""))).ToArray();
+            var cSelectedItem = visibleItems.Where(o => o == options.SelectedItem).ToArray();
             int cID = cSelectedItem.Length == 0 ? -1 : Array.IndexOf(visibleItems, cSelectedItem[0]);
             switch (e.Key)
             {
@@ -216,24 +217,24 @@ namespace DM_Skills.Controls
                 case Key.Enter:
                     if (cSelectedItem.Length > 0)
                     {
-                        Text = cSelectedItem[0].Content.ToString();
+                        Text = cSelectedItem[0].Name;
                         input.CaretIndex = input.Text.Length;
                     }
                     else if (visibleItems.Length > 0)
                     {
-                        Text = visibleItems[0].Content.ToString();
+                        Text = visibleItems[0].Name;
                         input.CaretIndex = input.Text.Length;
                     }
                     break;
                 case Key.Tab:
                     if (cSelectedItem.Length > 0)
                     {
-                        Text = cSelectedItem[0].Content.ToString();
+                        Text = cSelectedItem[0].Name;
                         input.CaretIndex = input.Text.Length;
                     }
                     else if (visibleItems.Length > 0)
                     {
-                        Text = visibleItems[0].Content.ToString();
+                        Text = visibleItems[0].Name;
                         input.CaretIndex = input.Text.Length;
                     }
                     break;
