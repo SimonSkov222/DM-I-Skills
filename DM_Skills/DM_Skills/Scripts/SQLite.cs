@@ -285,13 +285,13 @@ namespace DM_Skills.Scripts
         public List<List<object>> ExecuteQuery(string cmd, bool waitTillDone = false)
         {
             //Console.WriteLine("ExecuteQuery");
-            IsLock.WaitOne();
-            IsLock.Reset();
             _lastQuery = cmd;
             var result = new List<List<object>>();
 
             if (Settings.IsServer || _IsLocal || _unname)
             {
+                IsLock.WaitOne();
+                IsLock.Reset();
                 //udfør kommando hvor man ikke venter på data
                 if (IsReadMethod(cmd))
                 {
@@ -317,7 +317,7 @@ namespace DM_Skills.Scripts
                     sql_cmd.CommandText = cmd;
                     sql_cmd.ExecuteNonQuery();
                 }
-
+                IsLock.Set();
 
             }
             else if (Settings.IsClient)
@@ -325,6 +325,7 @@ namespace DM_Skills.Scripts
                 var myLock = new ManualResetEvent(false);
                 if (IsReadMethod(cmd))
                 {
+
                     Settings.Client.Send(
                         PacketType.Read, 
                         o =>
@@ -338,12 +339,14 @@ namespace DM_Skills.Scripts
                 }
                 else
                 {
-                    Settings.Client.Send(PacketType.Write, o=> myLock.Set() , cmd, waitTillDone);
+                    Settings.Client.Send(PacketType.Write, o=> {
+                        myLock.Set();
+                        
+                    } , cmd);
                 }
+
                 myLock.WaitOne();
             }
-
-            IsLock.Set();
             
             CallBack?.Invoke(result);
             CallBack = null;
