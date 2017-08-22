@@ -55,8 +55,14 @@ namespace DM_Skills.Controls
             EventTimer = new DispatcherTimer();
             EventTimer.Interval = TimeSpan.FromMilliseconds(1);
             EventTimer.Tick += (o, e) => { NotifyPropertyChanged("DisplayTime"); };
-            Application.Current.MainWindow.PreviewKeyUp += MainWindow_KeyUp;
-            rBtn_Forside = Application.Current.MainWindow.FindName("Menu_Forside") as RadioButton;
+           // if(Application.Current.MainWindow != null)
+                
+            Loaded += (o, e) => 
+            {
+                Application.Current.MainWindow.PreviewKeyUp -= MainWindow_KeyUp;
+                Application.Current.MainWindow.PreviewKeyUp += MainWindow_KeyUp;
+                //rBtn_Forside = Application.Current.MainWindow.FindResource("Menu_Forside") as RadioButton;
+            };
         }
 
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
@@ -65,11 +71,8 @@ namespace DM_Skills.Controls
             {
                 if (e.Key == Key.Space)
                 {
-                    if (rBtn_Forside == null) {
-                        return;
-                    }
 
-                    if (rBtn_Forside.IsChecked ?? false)
+                    if (this.IsVisible)
                     {
                         IInputElement focusedControl = Keyboard.FocusedElement;
                         if (!(focusedControl is TextBox))
@@ -77,9 +80,9 @@ namespace DM_Skills.Controls
                             Button_TimeControl_Click(btn_Lap, null);
                         }
                     }
-                    
+
                     //IInputElement focusedControl = FocusManager.GetFocusedElement(this);
-                    
+
                 }
             }
         }

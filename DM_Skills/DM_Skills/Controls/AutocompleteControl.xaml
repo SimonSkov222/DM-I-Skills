@@ -25,7 +25,7 @@
 
 
         <Popup 
-            x:Name="popup" StaysOpen="False"
+            x:Name="popup" StaysOpen="True"
             Placement="Bottom" PlacementTarget="{Binding ElementName=controller}" >
             <Popup.IsOpen>
                 <MultiBinding Converter="{StaticResource AutocompleteConvert}" ConverterParameter="Popup" Mode="OneWay">
