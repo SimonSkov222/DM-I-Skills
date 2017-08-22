@@ -114,6 +114,9 @@ namespace DM_Skills.Scripts
                 case PacketType.Broadcast_UploadSchools:
                     Broadcast(packet.Type);
                     break;
+                default:
+                    e.Reply(Helper.ObjectToByteArray(reply));
+                    break;
             }
         }
 
