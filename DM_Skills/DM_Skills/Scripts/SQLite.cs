@@ -129,8 +129,12 @@ namespace DM_Skills.Scripts
 
                     string whrCMD = "WHERE " + string.Join(" AND ", whrArr.ToArray());
 
-
-                    var result = GetRow(table, pColumn, whrCMD);
+                    List<object> result;
+                    do
+                    {
+                        result = GetRow(table, pColumn, whrCMD);
+                    } while (result == null);
+                    
                     if (result.Count > 0) return result[0];
                 }
             }
@@ -155,7 +159,7 @@ namespace DM_Skills.Scripts
 
             var result = ExecuteQuery(query);
 
-            if (result.Count == 0) return null;
+            if (result== null || result.Count == 0) return null;
             else return result[0];
 
         }
@@ -177,7 +181,7 @@ namespace DM_Skills.Scripts
             string query = BuildGetRowsCMD(table, columns, string.Format(format, arg));
             var result = ExecuteQuery(query);
 
-            if (result.Count == 0) return null;
+            if (result == null || result.Count == 0) return null;
             else return result;
         }
 
@@ -322,6 +326,7 @@ namespace DM_Skills.Scripts
             }
             else if (Settings.IsClient)
             {
+                Console.WriteLine("SQL: " + cmd);
                 var myLock = new ManualResetEvent(false);
                 if (IsReadMethod(cmd))
                 {
@@ -331,6 +336,7 @@ namespace DM_Skills.Scripts
                         o =>
                         {
                             result = o as List<List<object>>;
+                            Console.WriteLine("PacketType.Read");
                             myLock.Set();
                         }, 
                         cmd
@@ -340,16 +346,23 @@ namespace DM_Skills.Scripts
                 else
                 {
                     Settings.Client.Send(PacketType.Write, o=> {
+                        Console.WriteLine("PacketType.Write");
                         myLock.Set();
-                        
                     } , cmd);
                 }
+                Console.WriteLine("#####Wait for server");
+                if(!myLock.WaitOne(new TimeSpan(0, 0, 5)))
+                {
+                    Console.WriteLine("Failed reply");
+                    return null;
 
-                myLock.WaitOne();
+                }
+                Console.WriteLine("#####Done Waiting");
             }
             
             CallBack?.Invoke(result);
             CallBack = null;
+
             return result;
         }
         
@@ -367,7 +380,13 @@ namespace DM_Skills.Scripts
         {
 
             string tableWithPrefix = Prefix + table;
-            var result = ExecuteQuery(string.Format("PRAGMA table_info(`{0}`)", tableWithPrefix));
+            List<List<object>> result = ExecuteQuery(string.Format("PRAGMA table_info(`{0}`)", tableWithPrefix));
+            do
+            {
+                result = ExecuteQuery(string.Format("PRAGMA table_info(`{0}`)", tableWithPrefix));
+
+            } while (result == null);
+
             for (int i = 0; i < result.Count; i++)
             {
                 if (Convert.ToBoolean(result[i][5])) return (string)result[i][1];

@@ -73,7 +73,7 @@ namespace DM_Skills.Models
             }
         }
 
-        protected void RequestBroadcast(Scripts.PacketType type)
+        public static void RequestBroadcast(Scripts.PacketType type)
         {
             SettingsModel Settings = Application.Current.FindResource("Settings") as SettingsModel;
             if (Settings.IsServer)

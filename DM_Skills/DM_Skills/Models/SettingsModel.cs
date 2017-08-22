@@ -68,7 +68,6 @@ namespace DM_Skills.Models
         {
             get
             {
-                Console.WriteLine("Get _FileNameDB");
                 if (_FileNameDB == null)
                 {
                     var db = Scripts.Database.GetLocalDB("Get FileNameDB ID:" + System.Threading.Thread.CurrentThread.Name);
@@ -116,7 +115,7 @@ namespace DM_Skills.Models
             get
             {
                 var result = LocationModel.GetAll();
-                result.Insert(0, new Models.LocationModel() { Name = "Vælg lokation" });
+                result.Insert(0, new Models.LocationModel() { ID = -1, Name = "Vælg lokation" });
                 return result;
             }
         }
@@ -132,6 +131,7 @@ namespace DM_Skills.Models
 
         public void InvokeSchoolsChanged()
         {
+            Console.WriteLine("InvokeSchoolsChanged");
             NotifyPropertyChanged(nameof(AllSchools));
             OnSchoolsChanged?.Invoke();
         }
@@ -148,6 +148,7 @@ namespace DM_Skills.Models
 
         public void InvokeUpload()
         {
+            Console.WriteLine("InvokeUpload");
             OnUpload?.Invoke();
         }
 

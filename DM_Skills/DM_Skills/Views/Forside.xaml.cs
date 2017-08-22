@@ -169,11 +169,18 @@ namespace DM_Skills.Views
         private void Button_Upload_Click(object sender, RoutedEventArgs e)
         {
             //Settings.InvokeUpload();
+            if (!Settings.HasConnection)
+            {
+                MessageBox.Show("Der er ikke nogle database", "Ingen Database", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                return;
+            }
             if (Settings.Location == null || Settings.Location.ID == -1)
             {
                 
                 return;
             }
+
             bool allowUpload = true;
             int cnt = 0;
             foreach (var item in listOfTables.Children)
@@ -204,11 +211,13 @@ namespace DM_Skills.Views
                     {
                         if ((i as Controls.TablesControl).Model.CanUpload)
                         {
-                            Console.WriteLine("Upload to db");
+                            Console.WriteLine("### Upload Table");
+
                             (i as Controls.TablesControl).Model.Upload();
                         }
                     }
                 }
+                Models.TableModelN.RequestBroadcast(Scripts.PacketType.Broadcast_UploadTables);
                 Button_Reset_Click(null, null);
             }
             else
