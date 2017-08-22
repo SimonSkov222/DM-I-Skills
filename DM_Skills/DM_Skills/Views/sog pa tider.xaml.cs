@@ -165,21 +165,24 @@ namespace DM_Skills.Views
 
         private void Button_Print_Click(object sender, RoutedEventArgs e)
         {
-            if (searchList.SelectedItems.Count > 0)
-            {
-                SaveFileDialog dlg = new SaveFileDialog();
-                var print = new Scripts.Print();
 
-                dlg.Filter = "(.pdf)|*.pdf";
-                if (dlg.ShowDialog() == true)
+            if (searchList.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("Du har ikke valgt nogen skoler som skal udskrives");
+                return;
+            }
+            SaveFileDialog dlg = new SaveFileDialog();
+            var print = new Scripts.Print();
+
+            dlg.Filter = "(.pdf)|*.pdf";
+            if (dlg.ShowDialog() == true)
+            {
+                var models = new ObservableCollection<Models.TableModelN>();
+                foreach (var i in searchList.SelectedItems)
                 {
-                    var models = new ObservableCollection<Models.TableModelN>();
-                    foreach (var i in searchList.SelectedItems)
-                    {
-                        models.Add(i as Models.TableModelN);
-                    }
-                    print.CreatePDF(dlg.FileName, models);
+                    models.Add(i as Models.TableModelN);
                 }
+                print.CreatePDF(dlg.FileName, models);
             }
 
 
@@ -188,6 +191,8 @@ namespace DM_Skills.Views
 
         private void Button_Search_Click(object sender, RoutedEventArgs e)
         {
+            
+
 
             var school = txtSchoolName.Text;
             var person = txtDeltager.Text;
@@ -230,6 +235,12 @@ namespace DM_Skills.Views
                 });
             btnS.Visibility = Visibility.Collapsed;
             btnA.Visibility = Visibility.Visible;
+
+            if (searchList.Items.Count > 0)
+            {
+                Print.Visibility = Visibility.Visible;
+            }
+            
 
 
             //searchList.ItemsSource = items;
