@@ -115,7 +115,7 @@ namespace DM_Skills.Models
             get
             {
                 var result = LocationModel.GetAll();
-                result.Insert(0, new Models.LocationModel() { Name = "Vælg lokation" });
+                result.Insert(0, new Models.LocationModel() { ID = -1, Name = "Vælg lokation" });
                 return result;
             }
         }
