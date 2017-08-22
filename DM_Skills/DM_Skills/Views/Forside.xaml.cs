@@ -167,6 +167,7 @@ namespace DM_Skills.Views
         private void Button_Upload_Click(object sender, RoutedEventArgs e)
         {
             //Settings.InvokeUpload();
+            Console.WriteLine("#####################\n\n\n\n");
 
             bool allowUpload = true;
             int cnt = 0;

@@ -97,15 +97,17 @@ namespace DM_Skills.Scripts
             }
             var reply = new Packet() { ID = packet.ID, Type = packet.Type };
 
+            var myDB = Database.GetDB();
             switch (packet.Type)
             {
                 case PacketType.Read:
 
-                    var myDB = Database.GetDB();
                     var dt = myDB.ExecuteQuery(packet.Data as string);
-                    myDB.Disconnect();
-
                     reply.Data = dt;
+                    e.Reply(Helper.ObjectToByteArray(reply));
+                    break;
+                case PacketType.Write:
+                    myDB.ExecuteQuery(packet.Data as string);
                     e.Reply(Helper.ObjectToByteArray(reply));
                     break;
                 case PacketType.Broadcast_UploadTables:
@@ -114,10 +116,9 @@ namespace DM_Skills.Scripts
                 case PacketType.Broadcast_UploadSchools:
                     Broadcast(packet.Type);
                     break;
-                default:
-                    e.Reply(Helper.ObjectToByteArray(reply));
-                    break;
             }
+            myDB.Disconnect();
+
         }
 
 

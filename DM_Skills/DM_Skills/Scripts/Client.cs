@@ -62,7 +62,7 @@ namespace DM_Skills.Scripts
                         }
                     }
                 }));
-                //pingServer.Start();
+                pingServer.Start();
                 Settings.IsClient = true;
                 Settings.InvokeConnection();
             }
@@ -84,9 +84,8 @@ namespace DM_Skills.Scripts
             Settings.InvokeDisconnection(true);
         }
 
-        public void Send(PacketType type, Action<object> cb = null, object data = null, bool waitForReply = false)
+        public void Send(PacketType type, Action<object> cb = null, object data = null)
         {
-            Console.WriteLine("Send");
 
             var packet = new Packet()
             {
@@ -110,12 +109,10 @@ namespace DM_Skills.Scripts
             //    Console.WriteLine("WaitOne");
             //    waitHandel.WaitOne();
             //}
-                Console.WriteLine("Send Done...");
         }
         
         private void Client_DataReceived(object sender, Message e)
         {
-            Console.WriteLine("Got reply");
             var packet = Helper.ByteArrayToObject(e.Data) as Packet;
 
             //if (WaitForReply && packet.Type != PacketType.Ping)
@@ -149,10 +146,7 @@ namespace DM_Skills.Scripts
                 Callbacks.Remove(packet.ID);
             }
 
-
-
-
-            Console.WriteLine("Reply Done...");
+            
         }
 
         public void Broadcast(PacketType type)
