@@ -108,9 +108,7 @@ namespace DM_Skills.Models
             Team.NotifyPropertyOnAll += () => NotifyPropertyChanged("HasData");
 
 
-
-            School.CallbackUpload   = o => Team.SchoolID   = (o as SchoolModel).ID;
-            Location.CallbackUpload = o => Team.LocationID = (o as LocationModel).ID;
+            
             Team.CallbackUpload = o =>
             {
                 foreach (var p in Persons)
@@ -158,6 +156,9 @@ namespace DM_Skills.Models
 
         protected override bool OnUpload()
         {
+            School.CallbackUpload = o => { Team.SchoolID = (o as SchoolModel).ID; Console.WriteLine("SchoolID" + Team.SchoolID); };
+            Location.CallbackUpload = o => { Team.LocationID = (o as LocationModel).ID; Console.WriteLine(Team.LocationID); };
+
 
             var db = Database.GetDB();
             db.Disconnect();
@@ -265,7 +266,7 @@ namespace DM_Skills.Models
 
 
                 cmd += ";";
-
+                Console.WriteLine(cmd);
                 var dataTeam = db.ExecuteQuery(cmd);
 
                 if (dataTeam != null && dataTeam.Count > 0)

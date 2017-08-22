@@ -33,17 +33,21 @@ namespace DM_Skills.Models
 
         protected override bool OnUpload()
         {
+            Console.WriteLine("Upload Location");
             var myDB = Scripts.Database.GetDB();
 
             if (myDB.Exist("Locations", "Name", Name))
             {
-                var result = myDB.GetRow("Locations", "ID", "WHERE [Name] = '{0}'", Name);
+                var result = myDB.GetRow("Locations", "ID", "WHERE `Name` = '{0}'", Name);
                 ID = Convert.ToInt32(result[0]);
             }
             else
             {
                 ID = Convert.ToInt32(myDB.Insert("Locations", "Name", Name));
             }
+
+
+            Console.WriteLine("Upload Location->" + ID);
             myDB.Disconnect();
 
             return true;

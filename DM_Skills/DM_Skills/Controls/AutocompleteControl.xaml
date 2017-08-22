@@ -14,19 +14,18 @@
                  BorderThickness="0" Padding="0" Margin="0"/>-->
 
         <local:PlaceholderBox
-            Error="{Binding ElementName=controller, Path=Error}"
              x:Name="input"
+            Error="{Binding ElementName=controller, Path=Error}"
             BorderThickness="0"
-                 PreviewKeyDown="Input_KeyDown" 
-                 TextChanged="Input_TextChanged"
-                 Text="{Binding Path=Text, ElementName=controller}"
-                 Placeholder="{Binding ElementName=controller, Path=Placeholder}"
-                 MouseDoubleClick="Input_MouseDoubleClick"
-                />
+            PreviewKeyDown="Input_KeyDown" 
+            TextChanged="Input_TextChanged"
+            Text="{Binding Path=Text, ElementName=controller}"
+            Placeholder="{Binding ElementName=controller, Path=Placeholder}"
+            MouseDoubleClick="Input_MouseDoubleClick" />
 
 
         <Popup 
-            x:Name="popup" StaysOpen="True"
+            x:Name="popup" StaysOpen="False"
             Placement="Bottom" PlacementTarget="{Binding ElementName=controller}" >
             <Popup.IsOpen>
                 <MultiBinding Converter="{StaticResource AutocompleteConvert}" ConverterParameter="Popup" Mode="OneWay">
@@ -52,9 +51,33 @@
                             Padding="0"
                             MinWidth="200"
                             Background="Transparent" BorderThickness="0"
+                             ItemsSource="{Binding ElementName=controller, Path=ItemsSource}"
                             Width="{Binding ElementName=controller, Path=ActualWidth}" >
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ListViewItem Content="{Binding Path=Name}">
+                                    <ListViewItem.Visibility>
+                                        <MultiBinding Converter="{StaticResource AutocompleteConvert}" ConverterParameter="Option">
+                                            <Binding ElementName="input" Path="Text"/>
+                                            <Binding Path="Name"/>
+
+                                        </MultiBinding>
+                                    </ListViewItem.Visibility>
+                                </ListViewItem>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <!--<ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Style.Resources>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightCyan"/>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="LightGray" />
+                                </Style.Resources>
+
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+
 
                                 <EventSetter Event="PreviewMouseLeftButtonDown" Handler="Options_MouseLeftButtonDown" />
                                 <Style.Triggers>
@@ -64,15 +87,9 @@
                                         <Setter Property="Foreground" Value="Black" />
                                     </Trigger>
                                 </Style.Triggers>
-                                <Style.Resources>
-                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
-                                    <!-- Background of selected item when focussed -->
-                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="LightCyan"/>
-                                    <!-- Background of selected item when not focussed -->
-                                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}" Color="LightGray" />
-                                </Style.Resources>
                             </Style>
-                        </ListView.ItemContainerStyle>
+                        </ListView.ItemContainerStyle>-->
+
 
                     </ListView>
                 </ScrollViewer>

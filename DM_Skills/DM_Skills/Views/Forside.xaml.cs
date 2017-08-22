@@ -125,7 +125,6 @@ namespace DM_Skills.Views
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         
-
         /// <summary>
         /// Her connecter vi til databasen og opretter den
         /// vi tilføjet også en load event
@@ -168,7 +167,6 @@ namespace DM_Skills.Views
         private void Button_Upload_Click(object sender, RoutedEventArgs e)
         {
             //Settings.InvokeUpload();
-            Settings.Location = new Models.LocationModel() { Name = "ballerup"};
             bool allowUpload = true;
             int cnt = 0;
             foreach (var item in listOfTables.Children)
@@ -199,11 +197,12 @@ namespace DM_Skills.Views
                     {
                         if ((i as Controls.TablesControl).Model.CanUpload)
                         {
+                            Console.WriteLine("Upload to db");
                             (i as Controls.TablesControl).Model.Upload();
                         }
                     }
                 }
-                Button_Reset_Click(null, null);
+                //Button_Reset_Click(null, null);
             }
             else
             {

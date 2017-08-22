@@ -93,10 +93,14 @@ namespace DM_Skills.Controls
             get { return (ObservableCollection<Models.SchoolModel>)GetValue(ItemsSourceProperty); }
             set
             {
+                //Application.Current.Dispatcher.Invoke(delegate () {
+                //    options.Items.Clear();
+                //});
+
+                //options.ClearValue(ListView.ItemsSourceProperty);
                 SetValue(ItemsSourceProperty, value);
-                options.Items.Clear();
-                value.CollectionChanged += ItemsSource_CollectionChanged;
-                ItemsSource_CollectionChanged(value, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, value));
+                //value.CollectionChanged += ItemsSource_CollectionChanged;
+                //ItemsSource_CollectionChanged(value, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, value));
             }
         }
 
@@ -132,13 +136,14 @@ namespace DM_Skills.Controls
             if (ItemsSource == null)
                 return;
 
-            ItemsSource.CollectionChanged += ItemsSource_CollectionChanged;
-            ItemsSource_CollectionChanged(ItemsSource, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, ItemsSource));
+            //ItemsSource.CollectionChanged += ItemsSource_CollectionChanged;
+            //ItemsSource_CollectionChanged(ItemsSource, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, ItemsSource));
          
         }
 
         private void ItemsSource_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
+            Console.WriteLine("item+" + e.Action);
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
@@ -147,6 +152,8 @@ namespace DM_Skills.Controls
                     {
                         var item = ((Models.SchoolModel)e.NewItems[i]).Name;
                         var opt = new ListViewItem();
+                        opt.HorizontalContentAlignment = HorizontalAlignment.Left;
+                        opt.VerticalContentAlignment = VerticalAlignment.Center;
 
                         opt.SetBinding(ListViewItem.ContentProperty, new Binding()
                         {
@@ -180,6 +187,10 @@ namespace DM_Skills.Controls
                 case NotifyCollectionChangedAction.Move:
                     break;
                 case NotifyCollectionChangedAction.Reset:
+                    for (int i = options.Items.Count-1; i >= 0; i--)
+                    {
+                        options.Items.RemoveAt(i);
+                    }
                     break;
                 default:
                     break;
@@ -188,7 +199,7 @@ namespace DM_Skills.Controls
 
         private void Input_KeyDown(object sender, KeyEventArgs e)
         {
-            var visibleItems = options.Items.Cast<ListViewItem>().Where(o => o.Visibility == Visibility.Visible).ToArray();
+            var visibleItems = options.Items.Cast<Models.SchoolModel>().Where(o => o.Name.StartsWith(input.Text)).ToArray();
             var cSelectedItem = visibleItems.Where(o => o.IsSelected).ToArray();
             int cID = cSelectedItem.Length == 0 ? -1 : Array.IndexOf(visibleItems, cSelectedItem[0]);
             switch (e.Key)
@@ -205,24 +216,24 @@ namespace DM_Skills.Controls
                 case Key.Enter:
                     if (cSelectedItem.Length > 0)
                     {
-                        input.Text = cSelectedItem[0].Content.ToString();
+                        Text = cSelectedItem[0].Content.ToString();
                         input.CaretIndex = input.Text.Length;
                     }
                     else if (visibleItems.Length > 0)
                     {
-                        input.Text = visibleItems[0].Content.ToString();
+                        Text = visibleItems[0].Content.ToString();
                         input.CaretIndex = input.Text.Length;
                     }
                     break;
                 case Key.Tab:
                     if (cSelectedItem.Length > 0)
                     {
-                        input.Text = cSelectedItem[0].Content.ToString();
+                        Text = cSelectedItem[0].Content.ToString();
                         input.CaretIndex = input.Text.Length;
                     }
                     else if (visibleItems.Length > 0)
                     {
-                        input.Text = visibleItems[0].Content.ToString();
+                        Text = visibleItems[0].Content.ToString();
                         input.CaretIndex = input.Text.Length;
                     }
                     break;

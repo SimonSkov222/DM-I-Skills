@@ -446,7 +446,7 @@ namespace DM_Skills.Scripts
         public string GetForeignKey(IColumn col)
         {
             if (col.ForeignKeyReferences == null) return null;
-            return string.Format("FOREIGN KEY(`{0}`) REFERENCES {1}", col.Name, col.ForeignKeyReferences);
+            return string.Format("FOREIGN KEY(`{0}`) REFERENCES `{2}`(`{1}`)", col.Name, col.ForeignKeyReferences, Prefix);
         }
 
         public void Update(string table, string column, object value, string format = "", params object[] arg)

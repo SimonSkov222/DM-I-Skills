@@ -39,11 +39,10 @@ namespace DM_Skills.Converters
 
         private bool IsPopupOpen(ItemCollection items, string textbox, bool isOpen)
         {
-
-            var visibleItems = items.Cast<ListViewItem>().Where(o => o.Visibility == Visibility.Visible).ToArray();
+            var visibleItems = items.Cast<Models.SchoolModel>().Where(o => o.Name.StartsWith(textbox)).ToArray();
 
             if (visibleItems.Length == 1) {
-                return isOpen && !visibleItems[0].Content.ToString().Equals(textbox);
+                return isOpen && !visibleItems[0].Name.Equals(textbox);
             }
             if (visibleItems.Length > 0) {
                 return isOpen;

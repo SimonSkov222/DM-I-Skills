@@ -32,7 +32,6 @@
                     Grid.Row="1" Grid.Column="0" 
                     
                     Text="{Binding ElementName=Controller, Path=Model.School.Name, Mode=TwoWay}"
-                    ItemsSource="{Binding ElementName=Controller, Path=Schools, Mode=OneWay}"
                     Placeholder="Skolens Navn...">
                     <local:AutocompleteControl.Error>
                         <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter=", Auto">
