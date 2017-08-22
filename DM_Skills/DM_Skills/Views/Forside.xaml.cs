@@ -23,6 +23,8 @@ namespace DM_Skills.Views
     /// </summary>
     public partial class Forside : UserControl, INotifyPropertyChanged
     {
+
+        MainWindow mainWindows;
         public int NumbOfTables
         {
             get { return (int)GetValue(NumbOfTablesProperty); }
