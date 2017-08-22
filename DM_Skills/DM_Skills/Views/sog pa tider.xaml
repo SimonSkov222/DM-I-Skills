@@ -140,13 +140,17 @@
                 </Grid>
 
 
+
+                <TextBlock x:Name="ReplacedHeaderTxt" Grid.Row="8" Grid.ColumnSpan="5" Text="Der var ikke nogen resultater på din søgning" 
+                           FontSize="18" HorizontalAlignment="Center" Visibility="Collapsed"/>
                 <!--Header-->
                 <Border 
-                x:Name="header" Grid.Row="8" Grid.ColumnSpan="5" 
-                BorderBrush="Gray"
-                BorderThickness="0 0 0 2"
-                Height="40" Background="LightGray">
-                    <Grid>
+                        Visibility="Collapsed"
+                        x:Name="header" Grid.Row="8" Grid.ColumnSpan="5" 
+                        BorderBrush="Gray"
+                        BorderThickness="0 0 0 2"
+                        Height="40" Background="LightGray">
+                    <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40" SharedSizeGroup="Size_Checkbox"/>
                             <ColumnDefinition Width="188" SharedSizeGroup="Size_Person"/>

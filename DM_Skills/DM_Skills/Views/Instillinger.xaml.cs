@@ -337,6 +337,7 @@ namespace DM_Skills.Views
         {
             if (!Settings.IsServer)
             {
+                MessageBox.Show("Du er ikke startet som server", "Ikke server", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             SaveFileDialog dlg = new SaveFileDialog();

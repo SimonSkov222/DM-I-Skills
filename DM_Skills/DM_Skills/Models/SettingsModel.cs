@@ -79,6 +79,7 @@ namespace DM_Skills.Models
             }
             set
             {
+                _FileNameDB = null;
                 var db = Scripts.Database.GetLocalDB("Set FileNameDB");
                 db.Update("Settings", "Value", value, (object)"LocationDB");
                 db.Disconnect();
