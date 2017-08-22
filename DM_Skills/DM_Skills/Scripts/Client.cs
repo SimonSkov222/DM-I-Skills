@@ -34,6 +34,8 @@ namespace DM_Skills.Scripts
             {
                 client = new SimpleTcpClient();
                 client.DataReceived += Client_DataReceived;
+               // client.TcpClient.Client..SetSocketOption(System.Net.Sockets.SocketOptionLevel.Tcp, System.Net.Sockets.SocketOptionName.KeepAlive, true);
+
                 client.Connect(ipAddress, port);
 
                 pingServer = new Thread(new ThreadStart(delegate () {
@@ -53,7 +55,7 @@ namespace DM_Skills.Scripts
                             {
                                 Application.Current.Dispatcher.Invoke(delegate ()
                                 {
-
+                                    Console.WriteLine("Disconnect");
                                     CloseConnection();
                                     Settings.InvokeDisconnection(false);
                                 });
@@ -66,8 +68,9 @@ namespace DM_Skills.Scripts
                 Settings.IsClient = true;
                 Settings.InvokeConnection();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 Settings.IsClient = false;
             }
 
@@ -92,13 +95,15 @@ namespace DM_Skills.Scripts
                 Type = type,
                 Data = data
             };
-            do
+            lock (Callbacks)
             {
-                packet.ID = r.Next(1000, 100000);
-            } while (Callbacks.ContainsKey(packet.ID));
-            
-            Callbacks.Add(packet.ID, cb);       
-            
+                packet.ID = Callbacks.Count;
+                while (Callbacks.ContainsKey(packet.ID))
+                {
+                    packet.ID++;
+                }
+                Callbacks.Add(packet.ID, cb);   
+            }
             client.Write(Helper.ObjectToByteArray(packet));
 
             //if(packet.Type == PacketType.Read || waitForReply)
@@ -113,18 +118,28 @@ namespace DM_Skills.Scripts
         
         private void Client_DataReceived(object sender, Message e)
         {
+            
             var packet = Helper.ByteArrayToObject(e.Data) as Packet;
+            Console.WriteLine("Got reply -" + packet.Type);
 
             //if (WaitForReply && packet.Type != PacketType.Ping)
             //{
             //    WaitForReply = false;
             //    waitHandel.Set();
             //}
+            lock (Callbacks)
+            {
+                if (Callbacks.ContainsKey(packet.ID))
+                {
 
+                    Console.WriteLine($"Reply Callbacks - {packet.Type} ID: {packet.ID}");
+                    Callbacks[packet.ID]?.Invoke(packet.Data);
+                    Callbacks.Remove(packet.ID);
+                }
+            }
+            (new Thread(new ThreadStart(delegate () { 
             switch (packet.Type)
             {
-                case PacketType.Read:
-                    break;
                 case PacketType.Broadcast_UploadTables:
                     Application.Current.Dispatcher.Invoke(delegate() 
                     {
@@ -139,12 +154,7 @@ namespace DM_Skills.Scripts
                     });
                     break;
             }
-
-            if (Callbacks.ContainsKey(packet.ID))
-            {
-                Callbacks[packet.ID]?.Invoke(packet.Data);
-                Callbacks.Remove(packet.ID);
-            }
+            }))).Start();
 
             
         }

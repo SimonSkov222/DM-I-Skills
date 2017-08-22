@@ -51,23 +51,28 @@ namespace DM_Skills.Models
         protected override bool OnUpload()
         {
             var myDB = Scripts.Database.GetDB();
-
+            Console.WriteLine("###### Skole: ");
             if (myDB.Exist("Schools", "Name", Name))
             {
+                Console.WriteLine("Exist: ");
                 var result = myDB.GetRow("Schools", "ID", "WHERE [Name] = '{0}'", Name);
                 ID = Convert.ToInt32(result[0]);
             }
             else
             {
+                Console.WriteLine("Upload: ");
                 ID = Convert.ToInt32(myDB.Insert("Schools", "Name", Name, true));
             }
+
             myDB.Disconnect();
 
             if (SendBroadcast)
             {
+                Console.WriteLine("SendBroadcast: ");
                 RequestBroadcast(PacketType.Broadcast_UploadSchools);
             }
 
+            Console.WriteLine("########## Done: ");
             return true;
         }
 

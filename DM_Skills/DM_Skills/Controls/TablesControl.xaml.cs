@@ -72,11 +72,11 @@ namespace DM_Skills.Controls
             if (Model == null)
                 Model = new Models.TableModelN();
 
-            (FindResource("Settings") as Models.SettingsModel).OnSchoolsChanged += delegate () 
-            {
-                Console.WriteLine("Skole Update");
-                autoSchools.ItemsSource = Schools;
-            };
+            //(FindResource("Settings") as Models.SettingsModel).OnSchoolsChanged += delegate () 
+            //{
+            //    Console.WriteLine("Skole Update");
+            //    autoSchools.ItemsSource = Schools;
+            //};
 
             //Schools.CollectionChanged += 
             //    (o, e) => BindingOperations.GetBindingExpressionBase(autoSchools, AutocompleteControl.ItemsSourceProperty).UpdateSource();

@@ -168,20 +168,24 @@ namespace DM_Skills.Models
             var db = Database.GetDB();
             db.Disconnect();
             School.SendBroadcast = false;
+            Console.WriteLine("#### Skole");
             School.Upload();
             School.SendBroadcast = true;
+            Console.WriteLine("##### Location");
             Location.Upload();
             Team.Upload();
 
             foreach (var p in Persons)
             {
+                Console.WriteLine("###### Person");
                 p.Upload();
             }
 
 
+            Console.WriteLine("######################");
             FailedUpload = false;
 
-            RequestBroadcast(PacketType.Broadcast_UploadTables);
+            //RequestBroadcast(PacketType.Broadcast_UploadTables);
 
 
             return true;

@@ -168,6 +168,11 @@ namespace DM_Skills.Views
         {
             //Settings.InvokeUpload();
             Console.WriteLine("#####################\n\n\n\n");
+            if (!Settings.HasConnection)
+            {
+                MessageBox.Show("har ikke forbindelse til databasen");
+                return;
+            }
 
             bool allowUpload = true;
             int cnt = 0;
@@ -199,11 +204,13 @@ namespace DM_Skills.Views
                     {
                         if ((i as Controls.TablesControl).Model.CanUpload)
                         {
-                            Console.WriteLine("Upload to db");
+                            Console.WriteLine("### Upload Table");
+
                             (i as Controls.TablesControl).Model.Upload();
                         }
                     }
                 }
+                Models.TableModelN.RequestBroadcast(Scripts.PacketType.Broadcast_UploadTables);
                 Button_Reset_Click(null, null);
             }
             else

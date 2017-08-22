@@ -30,7 +30,7 @@ namespace DM_Skills.Scripts
         {
             Host = new SimpleTcpServer();
             Host.DataReceived += Host_DataReceived;
-            Host.ClientConnected += (o, e) => { Console.WriteLine("Client Connected"); };
+            Host.ClientConnected += (o, e) => { Console.WriteLine("Client Connected");  };
 
             
             
@@ -53,10 +53,10 @@ namespace DM_Skills.Scripts
             var packet = new Packet()
             {
                 Type = type,
-                ID = -1,
-                Data = null,
-                BroadcastType = null
+                ID = -100,
+                Data = null
             };
+            Host.Broadcast(Helper.ObjectToByteArray(packet));
             Application.Current.Dispatcher.Invoke(delegate ()
             {
                 switch (type)
@@ -74,7 +74,6 @@ namespace DM_Skills.Scripts
             });
 
 
-            Host.Broadcast(Helper.ObjectToByteArray(packet));
         }
 
         private void Host_DataReceived(object sender, Message e)
