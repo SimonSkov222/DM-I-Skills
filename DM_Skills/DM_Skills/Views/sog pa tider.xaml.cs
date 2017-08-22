@@ -25,7 +25,9 @@ namespace DM_Skills.Views
     /// </summary>
     public partial class sog_pa_tider : UserControl, INotifyPropertyChanged
     {
-        
+
+        Models.SettingsModel Settings;
+
         private int? searchID = null;
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -72,15 +74,15 @@ namespace DM_Skills.Views
         // Using a DependencyProperty as the backing store for ItemSourceSearch.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ItemSourceSearchProperty =
             DependencyProperty.Register(
-                "ItemSourceSearch", 
-                typeof(ObservableCollection<Models.TableModelN>), 
+                "ItemSourceSearch",
+                typeof(ObservableCollection<Models.TableModelN>),
                 typeof(sog_pa_tider), new PropertyMetadata(null));
 
 
 
 
         private int Print_ = 0;
-        
+
 
         public sog_pa_tider()
         {
@@ -91,7 +93,7 @@ namespace DM_Skills.Views
             {
                 ItemSourceSearch.Add(new Models.TableModelN()
                 {
-                    School = new Models.SchoolModel() { Name = "Skole "+(i +1) },
+                    School = new Models.SchoolModel() { Name = "Skole " + (i + 1) },
                     Location = new Models.LocationModel() { Name = "Frederiksberg" },
                     Persons = new ObservableCollection<Models.PersonModel>() {
                         new Models.PersonModel() { Name = "Person 1 "},
@@ -108,6 +110,7 @@ namespace DM_Skills.Views
                     }
 
                 });
+                Settings = (Models.SettingsModel)FindResource("Settings");
             }
 
             //debug_grid.DataContext = debug_item;
@@ -136,13 +139,13 @@ namespace DM_Skills.Views
         {
             if (Print_ == 1) return;
 
-            if(((CheckBox)sender).IsChecked ?? false)
+            if (((CheckBox)sender).IsChecked ?? false)
                 searchList.SelectAll();
             else
                 searchList.SelectedIndex = -1;
         }
 
-        
+
         private void SearchList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Print_ = 1;
@@ -150,8 +153,8 @@ namespace DM_Skills.Views
             Print_ = 0;
         }
 
-        
-        private  void Grid_Loaded(object sender, RoutedEventArgs e)
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             var scrollviewer = (ScrollViewer)Scripts.Helper.FindAncestor(this, typeof(ScrollViewer));
 
@@ -165,21 +168,24 @@ namespace DM_Skills.Views
 
         private void Button_Print_Click(object sender, RoutedEventArgs e)
         {
-            if (searchList.SelectedItems.Count > 0)
-            {
-                SaveFileDialog dlg = new SaveFileDialog();
-                var print = new Scripts.Print();
 
-                dlg.Filter = "(.pdf)|*.pdf";
-                if (dlg.ShowDialog() == true)
+            if (searchList.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("Du har ikke valgt nogen skoler som skal udskrives", "Ingen valgte", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            SaveFileDialog dlg = new SaveFileDialog();
+            var print = new Scripts.Print();
+
+            dlg.Filter = "(.pdf)|*.pdf";
+            if (dlg.ShowDialog() == true)
+            {
+                var models = new ObservableCollection<Models.TableModelN>();
+                foreach (var i in searchList.SelectedItems)
                 {
-                    var models = new ObservableCollection<Models.TableModelN>();
-                    foreach (var i in searchList.SelectedItems)
-                    {
-                        models.Add(i as Models.TableModelN);
-                    }
-                    print.CreatePDF(dlg.FileName, models);
+                    models.Add(i as Models.TableModelN);
                 }
+                print.CreatePDF(dlg.FileName, models);
             }
 
 
@@ -188,12 +194,24 @@ namespace DM_Skills.Views
 
         private void Button_Search_Click(object sender, RoutedEventArgs e)
         {
+            
+
+            Console.WriteLine(Settings.IsServer + "  " + Settings.IsClient);
+
+            if (!Settings.IsServer && !Settings.IsClient)
+            {
+                MessageBox.Show("Du er ikke tilsluttet til en database", "Ingen database", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
 
             var school = txtSchoolName.Text;
             var person = txtDeltager.Text;
             var from = dtFrom.SelectedDate == null ? "" : dtFrom.SelectedDate.Value.ToShortDateString();
             var to = dtTo.SelectedDate == null ? "" : dtTo.SelectedDate.Value.ToShortDateString();
             var location = cbLocation.SelectedIndex == 0 ? null : cbLocation.SelectedItem as Models.LocationModel;
+            Console.WriteLine(searchList.Items.Count + " 2");
+
 
             if (searchID.HasValue)
             {
@@ -201,35 +219,52 @@ namespace DM_Skills.Views
             }
 
             searchID = Models.TableModelN.GetTables(
-                Order, 
-                school, 
-                person, 
-                location, 
+                Order,
+                school,
+                person,
+                location,
                 from, to,
-                (o) => {
+                (o) =>
+                {
                     Application.Current.Dispatcher.Invoke(delegate ()
                     {
                         searchList.Items.Clear();
                     });
-                        foreach (var item in o)
+                    foreach (var item in o)
                     {
-                        Application.Current.Dispatcher.Invoke(delegate () 
+                        Application.Current.Dispatcher.Invoke(delegate ()
                         {
+                            searchList.Visibility = Visibility.Visible;
+                            Print.Visibility = Visibility.Visible;
+                            header.Visibility = Visibility.Visible;
+                            ReplacedHeaderTxt.Visibility = Visibility.Collapsed;
                             searchList.Items.Add(item);
+                            
                         });
                         Thread.Sleep(30);
                     }
+
 
                     Application.Current.Dispatcher.Invoke(delegate ()
                     {
                         btnA.Visibility = Visibility.Collapsed;
                         btnS.Visibility = Visibility.Visible;
+                        if (searchList.Items.Count <= 0)
+                        {
+                            searchList.Visibility = Visibility.Collapsed;
+                            Print.Visibility = Visibility.Collapsed;
+                            header.Visibility = Visibility.Collapsed;
+                            ReplacedHeaderTxt.Visibility = Visibility.Visible;
+                        }
                     });
+
                     searchID = null;
 
                 });
             btnS.Visibility = Visibility.Collapsed;
             btnA.Visibility = Visibility.Visible;
+
+            
 
 
             //searchList.ItemsSource = items;

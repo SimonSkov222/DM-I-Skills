@@ -167,6 +167,15 @@ namespace DM_Skills.Views
         private void Button_Upload_Click(object sender, RoutedEventArgs e)
         {
             //Settings.InvokeUpload();
+            if (Settings.Location == null || Settings.Location.Name == "Vælg lokation")
+            {
+                MessageBox.Show("Du har ikke valgt nogen Location", "Vælg Location", MessageBoxButton.OK, MessageBoxImage.Error);
+                MainWindow hej = new MainWindow();
+                hej.Menu_Indstillinger.IsChecked = true;
+                //Menu_Indstillinger.IsChecked = true;
+                return;
+            }
+            Console.WriteLine("hej");
             Console.WriteLine("#####################\n\n\n\n");
             if (!Settings.HasConnection)
             {

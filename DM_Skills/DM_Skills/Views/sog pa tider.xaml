@@ -115,15 +115,17 @@
                     Visibility="Collapsed" />
 
                 <Button Grid.Row="4" Grid.Column="0" 
-                    Content="Gem som PDF"   
-                    Padding="0"
-                    Margin="0"
-                    Width="{Binding ElementName=btnS, Path=ActualWidth}"
-                    Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
-                    Foreground="{StaticResource Color_Foreground_Light_1}" 
-                    Background="{StaticResource Color_Background_Button_Blue}" 
-                    Style="{StaticResource Button_Style_Default}"
-                    HorizontalAlignment="Left" Click="Button_Print_Click" VerticalAlignment="Stretch" />
+                        x:Name="Print"
+                        Visibility="Collapsed"
+                        Content="Gem som PDF"   
+                        Padding="0"
+                        Margin="0"
+                        Width="{Binding ElementName=btnS, Path=ActualWidth}"
+                        Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
+                        Foreground="{StaticResource Color_Foreground_Light_1}" 
+                        Background="{StaticResource Color_Background_Button_Blue}" 
+                        Style="{StaticResource Button_Style_Default}"
+                        HorizontalAlignment="Left" Click="Button_Print_Click" VerticalAlignment="Stretch" />
 
 
                 <Grid Grid.Row="6" Grid.ColumnSpan="5" Margin="5 0">
@@ -138,13 +140,17 @@
                 </Grid>
 
 
+
+                <TextBlock x:Name="ReplacedHeaderTxt" Grid.Row="8" Grid.ColumnSpan="5" Text="Der var ikke nogen resultater på din søgning" 
+                           FontSize="18" HorizontalAlignment="Center" Visibility="Collapsed"/>
                 <!--Header-->
                 <Border 
-                x:Name="header" Grid.Row="8" Grid.ColumnSpan="5" 
-                BorderBrush="Gray"
-                BorderThickness="0 0 0 2"
-                Height="40" Background="LightGray">
-                    <Grid>
+                        Visibility="Collapsed"
+                        x:Name="header" Grid.Row="8" Grid.ColumnSpan="5" 
+                        BorderBrush="Gray"
+                        BorderThickness="0 0 0 2"
+                        Height="40" Background="LightGray">
+                    <Grid >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="40" SharedSizeGroup="Size_Checkbox"/>
                             <ColumnDefinition Width="188" SharedSizeGroup="Size_Person"/>
@@ -175,11 +181,12 @@
 
         <ListView 
             x:Name="searchList"
+            Visibility="Collapsed"
             Padding="0"
             SelectionMode="Multiple"
             SelectionChanged="SearchList_SelectionChanged"
             Margin="{Binding ElementName=search_menu,Path=ActualHeight, Converter={StaticResource ValueToThicknessConvert}, ConverterParameter='0 100 0 0'}"
-            Visibility="Visible" FontSize="16"
+            FontSize="16"
             AlternationCount="2" BorderThickness="0" 
             ScrollViewer.VerticalScrollBarVisibility="Disabled"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled"

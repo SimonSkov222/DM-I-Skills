@@ -20,7 +20,9 @@ namespace DM_Skills
 
         public Views.Projektor projek;
         private Models.SettingsModel Settings;
-        
+
+
+
 
         /// <summary>
         /// Her connecter vi til databasen og opretter den
