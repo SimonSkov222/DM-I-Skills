@@ -176,10 +176,6 @@ namespace DM_Skills.Views
             if (Settings.Location == null || Settings.Location.ID == -1)
             {
                 MessageBox.Show("Du har ikke valgt nogen Location", "Vælg Location", MessageBoxButton.OK, MessageBoxImage.Error);
-                MainWindow hej = new MainWindow();
-                hej.Menu_Indstillinger.IsChecked = true;
-                //Menu_Indstillinger.IsChecked = true;
-
 
                 return;
             }
