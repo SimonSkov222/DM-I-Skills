@@ -276,6 +276,7 @@ namespace DM_Skills.Views
                     (new Models.SchoolModel() { Name = name }).Upload();
                 }
             }
+            Models.SchoolModel.RequestBroadcast(Scripts.PacketType.Broadcast_UploadSchools);
             txtSkoleList.Document.Blocks.Clear();
         }
 
@@ -292,7 +293,7 @@ namespace DM_Skills.Views
         private void Button_DeleteSchools_Click(object sender, RoutedEventArgs e)
         {
             Models.SchoolModel.RemoveUnused();
-            Console.WriteLine("notify RemoveUnused");
+            Models.SchoolModel.RequestBroadcast(Scripts.PacketType.Broadcast_UploadSchools);
         }
 
         

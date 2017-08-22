@@ -54,7 +54,7 @@ namespace DM_Skills.Models
             if (myDB.Exist("Schools", "Name", Name))
             {
                 Console.WriteLine("Exist: ");
-                var result = myDB.GetRow("Schools", "ID", "WHERE `Name` = '{0}' ORDER BY `Name`", Name);
+                var result = myDB.GetRow("Schools", "ID", "WHERE `Name` = '{0}'", Name);
                 ID = Convert.ToInt32(result[0]);
             }
             else
@@ -63,12 +63,7 @@ namespace DM_Skills.Models
             }
 
             myDB.Disconnect();
-
-            if (SendBroadcast)
-            {
-                RequestBroadcast(PacketType.Broadcast_UploadSchools);
-            }
-
+            
             return true;
         }
 
@@ -89,7 +84,7 @@ namespace DM_Skills.Models
             var db = Scripts.Database.GetDB();
             db.UseDistinct = true;
 
-            var data = db.GetRows("Schools", new string[] { "ID", "Name" });
+            var data = db.GetRows("Schools", new string[] { "ID", "Name" }, "ORDER BY `Name`");
             if (data != null)
             {
                 foreach (var item in data)

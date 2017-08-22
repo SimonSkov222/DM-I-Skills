@@ -37,7 +37,7 @@ namespace DM_Skills.Models
 
             if (myDB.Exist("Locations", "Name", Name))
             {
-                var result = myDB.GetRow("Locations", "ID", "WHERE `Name` = '{0}' ORDER BY ``Name`", Name);
+                var result = myDB.GetRow("Locations", "ID", "WHERE `Name` = '{0}'", Name);
                 ID = Convert.ToInt32(result[0]);
             }
             else
@@ -57,7 +57,7 @@ namespace DM_Skills.Models
             var db = Scripts.Database.GetDB();
             db.UseDistinct = true;
 
-            var data = db.GetRows("Locations", new string[] { "ID", "Name" });
+            var data = db.GetRows("Locations", new string[] { "ID", "Name" }, "ORDER BY `Name`");
             if (data != null)
             {
                 foreach (var item in data)
