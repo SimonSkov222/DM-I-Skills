@@ -179,6 +179,8 @@ namespace DM_Skills.Views
                 MainWindow hej = new MainWindow();
                 hej.Menu_Indstillinger.IsChecked = true;
                 //Menu_Indstillinger.IsChecked = true;
+
+
                 return;
             }
 
