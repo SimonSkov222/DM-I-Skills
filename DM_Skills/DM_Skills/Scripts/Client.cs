@@ -14,11 +14,12 @@ namespace DM_Skills.Scripts
     {
         private Models.SettingsModel Settings;
         //SocketClient client;
-        SimpleTcpClient client;
-        Random r = new Random(157);
-        Dictionary<int, Action<object>> Callbacks = new Dictionary<int, Action<object>>();
+        private SimpleTcpClient client;
+        private Random r = new Random(157);
+        private Dictionary<int, Action<object>> Callbacks = new Dictionary<int, Action<object>>();
         private ManualResetEvent waitHandel = new ManualResetEvent(false);
-        Thread pingServer;
+        private Thread pingServer;
+        private bool WaitForReply = false;
 
         public Client()
         {
@@ -61,7 +62,7 @@ namespace DM_Skills.Scripts
                         }
                     }
                 }));
-                pingServer.Start();
+                //pingServer.Start();
                 Settings.IsClient = true;
                 Settings.InvokeConnection();
             }
@@ -83,14 +84,14 @@ namespace DM_Skills.Scripts
             Settings.InvokeDisconnection(true);
         }
 
-        public void Send(PacketType type, Action<object> cb = null, object data = null, PacketType? broadcast = null)
+        public void Send(PacketType type, Action<object> cb = null, object data = null, bool waitForReply = false)
         {
-            waitHandel.Reset();
+            Console.WriteLine("Send");
+
             var packet = new Packet()
             {
                 Type = type,
-                Data = data,
-                BroadcastType = broadcast
+                Data = data
             };
             do
             {
@@ -101,24 +102,31 @@ namespace DM_Skills.Scripts
             
             client.Write(Helper.ObjectToByteArray(packet));
 
-            if(packet.Type == PacketType.Read)
-            {
-                waitHandel.WaitOne();
-            }
+            //if(packet.Type == PacketType.Read || waitForReply)
+            //{
+            //    WaitForReply = true;
+            //    Console.WriteLine("Reset");
+            //    waitHandel.Reset();
+            //    Console.WriteLine("WaitOne");
+            //    waitHandel.WaitOne();
+            //}
+                Console.WriteLine("Send Done...");
         }
         
         private void Client_DataReceived(object sender, Message e)
         {
+            Console.WriteLine("Got reply");
             var packet = Helper.ByteArrayToObject(e.Data) as Packet;
+
+            //if (WaitForReply && packet.Type != PacketType.Ping)
+            //{
+            //    WaitForReply = false;
+            //    waitHandel.Set();
+            //}
 
             switch (packet.Type)
             {
                 case PacketType.Read:
-                    if (Callbacks.ContainsKey(packet.ID))
-                    {
-                        Callbacks[packet.ID]?.Invoke(packet.Data);
-                    }
-                    waitHandel.Set();
                     break;
                 case PacketType.Broadcast_UploadTables:
                     Application.Current.Dispatcher.Invoke(delegate() 
@@ -135,9 +143,16 @@ namespace DM_Skills.Scripts
                     break;
             }
 
+            if (Callbacks.ContainsKey(packet.ID))
+            {
+                Callbacks[packet.ID]?.Invoke(packet.Data);
+                Callbacks.Remove(packet.ID);
+            }
 
-            
 
+
+
+            Console.WriteLine("Reply Done...");
         }
 
         public void Broadcast(PacketType type)

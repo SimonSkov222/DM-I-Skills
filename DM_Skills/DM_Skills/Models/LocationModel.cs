@@ -43,7 +43,7 @@ namespace DM_Skills.Models
             }
             else
             {
-                ID = Convert.ToInt32(myDB.Insert("Locations", "Name", Name));
+                ID = Convert.ToInt32(myDB.Insert("Locations", "Name", Name, true));
             }
 
 

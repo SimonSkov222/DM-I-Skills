@@ -59,7 +59,7 @@ namespace DM_Skills.Models
             }
             else
             {
-                ID = Convert.ToInt32(myDB.Insert("Schools", "Name", Name));
+                ID = Convert.ToInt32(myDB.Insert("Schools", "Name", Name, true));
             }
             myDB.Disconnect();
 

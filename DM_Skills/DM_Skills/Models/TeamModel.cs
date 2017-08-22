@@ -126,7 +126,7 @@ namespace DM_Skills.Models
             {
                 ID = Convert.ToInt32(myDB.Insert("Teams", 
                     new string[] { "Class", "SchoolID", "LocationID", "Date", "Time"}, 
-                    new object[] { Class, SchoolID, LocationID, Date, Time }));
+                    new object[] { Class, SchoolID, LocationID, Date, Time }, true));
             }
             myDB.Disconnect();
 

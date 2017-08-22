@@ -75,13 +75,22 @@ namespace DM_Skills.Scripts
             }
         }
 
-        public object Insert(string table, string[] columns, List<object[]> values)
+        public object Insert(string table, string[] columns, List<object[]> values, bool getID = false)
         {
             List<object> pKeys = new List<object>();
-            foreach (var item in values)
+            if (getID)
             {
-                pKeys.Add(Insert(table, columns, item));
+                foreach (var item in values)
+                {
+                    pKeys.Add(Insert(table, columns, item, getID));
 
+                }
+            }
+            else {
+                foreach (var item in values)
+                {
+                    Insert(table, columns, item, getID);
+                }
             }
             return pKeys;
         }
@@ -89,15 +98,15 @@ namespace DM_Skills.Scripts
         /// <summary>
         /// Indsæt en row med en enkelt værdi til tabel
         /// </summary>
-        public object Insert(string table, string column, object value)
+        public object Insert(string table, string column, object value, bool getID = false)
         {
-            return Insert(table, new string[] { column }, new object[] { value });
+            return Insert(table, new string[] { column }, new object[] { value }, getID);
         }
 
         /// <summary>
         /// Indsæt en row med flere værdier til tabel
         /// </summary>
-        public object Insert(string table, string[] columns, object[] values)
+        public object Insert(string table, string[] columns, object[] values, bool getID = false)
         {
             string tableWithPrefix = Prefix + table;
             values = StringsSQLready(values);
@@ -105,25 +114,26 @@ namespace DM_Skills.Scripts
             string columnsCMD = string.Format("`{0}`", string.Join("`, `", columns.ToArray()));
             string valuesCMD = string.Join(", ", values.ToArray());
 
-            ExecuteQuery(string.Format("INSERT INTO `{0}`({1}) VALUES({2});", tableWithPrefix, columnsCMD, valuesCMD));
+            ExecuteQuery(string.Format("INSERT INTO `{0}`({1}) VALUES({2});", tableWithPrefix, columnsCMD, valuesCMD), getID);
 
-
-            string pColumn = GetPrimaryKeyName(table);
-
-            if (pColumn != null && pColumn != "")
+            if (getID)
             {
+                string pColumn = GetPrimaryKeyName(table);
 
-                List<string> whrArr = new List<string>();
-                for (int i = 0; i < columns.Length; i++)
-                    whrArr.Add(string.Format("`{0}` = {1}", columns[i], values[i]));
+                if (pColumn != null && pColumn != "")
+                {
 
-                string whrCMD = "WHERE " + string.Join(" AND ", whrArr.ToArray());
+                    List<string> whrArr = new List<string>();
+                    for (int i = 0; i < columns.Length; i++)
+                        whrArr.Add(string.Format("`{0}` = {1}", columns[i], values[i]));
+
+                    string whrCMD = "WHERE " + string.Join(" AND ", whrArr.ToArray());
 
 
-                var result = GetRow(table, pColumn, whrCMD);
-                if (result.Count > 0) return result[0];
+                    var result = GetRow(table, pColumn, whrCMD);
+                    if (result.Count > 0) return result[0];
+                }
             }
-
 
             return false;
         }
@@ -272,7 +282,7 @@ namespace DM_Skills.Scripts
         /// og hvis det er en select kan man selv 
         /// vælge man bruge columns eller position som key
         /// </summary>
-        public List<List<object>> ExecuteQuery(string cmd)
+        public List<List<object>> ExecuteQuery(string cmd, bool waitTillDone = false)
         {
             IsLock.WaitOne();
             IsLock.Reset();
@@ -311,6 +321,7 @@ namespace DM_Skills.Scripts
             }
             else if (Settings.IsClient)
             {
+                var myLock = new ManualResetEvent(false);
                 if (IsReadMethod(cmd))
                 {
                     Settings.Client.Send(
@@ -318,14 +329,17 @@ namespace DM_Skills.Scripts
                         o =>
                         {
                             result = o as List<List<object>>;
+                            myLock.Set();
                         }, 
                         cmd
                     );
+                    
                 }
                 else
                 {
-                    Settings.Client.Send(PacketType.Write, null, cmd);
+                    Settings.Client.Send(PacketType.Write, o=> myLock.Set() , cmd, waitTillDone);
                 }
+                myLock.WaitOne();
             }
 
             IsLock.Set();

@@ -18,11 +18,11 @@ namespace DM_Skills.Scripts
 
         void Disconnect();
         
-        object Insert(string table, string column, object value);
+        object Insert(string table, string column, object value, bool getID = false);
 
-        object Insert(string table, string[] columns, object[] values);
+        object Insert(string table, string[] columns, object[] values, bool getID = false);
 
-        object Insert(string table, string[] columns, List<object[]> values);
+        object Insert(string table, string[] columns, List<object[]> values, bool getID = false);
 
         List<object> GetRow(string table, string columns, string format = "", params object[] arg);
 
@@ -42,7 +42,7 @@ namespace DM_Skills.Scripts
 
         bool Exist(string table, string column, object value);
 
-        List<List<object>> ExecuteQuery(string cmd);
+        List<List<object>> ExecuteQuery(string cmd, bool waitTillDone = false);
 
         string GetPrimaryKeyName(string table);
 
