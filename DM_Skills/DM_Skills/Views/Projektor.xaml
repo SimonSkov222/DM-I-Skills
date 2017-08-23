@@ -10,7 +10,7 @@
         xmlns:local="clr-namespace:DM_Skills.Views"
         mc:Ignorable="d" 
         x:Name="controller"
-        Title="Projektor" Height="600" Width="800" Background="#1a76ff">
+        Title="Projektor" Height="600" Width="800" Background="#1a76ff" Icon="/DM_Skills;component/Images/icon.png">
     <Window.Resources>
 
         <SolidColorBrush x:Key="background_Light" Color="#b03a2e"/>
