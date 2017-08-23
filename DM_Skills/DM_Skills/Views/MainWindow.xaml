@@ -13,7 +13,6 @@
         FontFamily="Calibri" x:Name="controller"
         Background="{StaticResource Color_Background_Program}"
         Foreground="{StaticResource Color_Foreground_Program}"
-        
         Title="MainWindow" Height="800" Width="1200" MinHeight="600" MinWidth="800" Icon="/DM_Skills;component/Images/icon.png">
 
 
@@ -35,8 +34,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}"/>
-            <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}"/>
+            <RadioButton Grid.Column="0" x:Name="Menu_Forside" Content="Tidtagning" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasLocation}"/>
+            <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}" IsEnabled="{Binding Source={StaticResource Settings}, Path=HasLocation}"/>
             <RadioButton Grid.Column="2" x:Name="Menu_Indstillinger" Content="Indstillinger" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}"/>
             <ToggleButton  Grid.Column="3" x:Name="Menu_Projektor" Checked="Menu_Projektor_Checked" Unchecked="Menu_Projektor_Checked" Content="Projektor" Style="{StaticResource ToggleButton_Styles_Default}"/>
         </Grid>

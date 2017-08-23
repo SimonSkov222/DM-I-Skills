@@ -9,6 +9,8 @@ namespace DM_Skills.Models
 {
     class SettingsModel : INotifyPropertyChanged
     {
+
+
         public string Version { get { return "1.0"; } }
         public string Author { get { return "Kim Danborg & Simon Skov"; } }
         public string Copyright
@@ -123,7 +125,17 @@ namespace DM_Skills.Models
             }
         }
         private LocationModel _Location;
-        public LocationModel Location { get { return _Location; } set { _Location = value; NotifyPropertyChanged(); } }
+        public LocationModel Location
+        {
+            get { return _Location; }
+            set
+            {
+
+                _Location = value;
+                NotifyPropertyChanged(nameof(HasLocation));
+                NotifyPropertyChanged();
+            }
+        }
         
         public ObservableCollection<LocationModel> AllLocations {
             get
@@ -165,6 +177,14 @@ namespace DM_Skills.Models
             Console.WriteLine("InvokeUpload");
             OnUpload?.Invoke();
         }
+        
+        public bool HasLocation
+        {
+            get
+            {
+                return _Location != null && _Location.ID != -1;
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -175,6 +195,8 @@ namespace DM_Skills.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
+
 
     }
 }

@@ -136,7 +136,9 @@ namespace DM_Skills.Scripts
 
             string filename = $"{DateTime.Now.ToShortDateString()} " +
                 $"{DateTime.Now.ToLongTimeString().Replace(":", ".")} ";
+            filename = filename.Replace("/", "-");
             string number = "";
+
             int i = 1;
 
             while (File.Exists(folder + filename + number + ".jpg"))

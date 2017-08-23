@@ -27,7 +27,23 @@ namespace DM_Skills.Views
     {
         private Models.SettingsModel Settings;
 
-        public string ServerIP { get { return Scripts.Helper.GetLocalIPv4(); } }
+        public string ServerIP
+        {
+            get
+            {
+                string ip = Scripts.Helper.GetLocalIPv4();
+                if (ip == "")
+                {
+                    ip = Scripts.Helper.GetLocalIPv4(NetworkInterfaceType.Wireless80211);
+                }
+                if (ip == "")
+                {
+                    ip = "127.0.0.1";
+                }
+                
+                return ip;
+            }
+        }
         private string clientIP = "";
         private string clientPort = "";
         private string serverPort = "";
@@ -256,7 +272,13 @@ namespace DM_Skills.Views
         }
 
         private void Button_SchoolUpload_Click(object sender, RoutedEventArgs e)
-        { 
+        {
+            if (!Settings.IsServer && !Settings.IsClient)
+            {
+                MessageBox.Show("Du er ikke tilsluttet en server", "Ingen server", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             string richText = new TextRange(txtSkoleList.Document.ContentStart, txtSkoleList.Document.ContentEnd).Text;
 
             var schoolList = Regex.Matches(richText, ".+?(?:\\n|$)", RegexOptions.Singleline)
