@@ -159,33 +159,7 @@ namespace DM_Skills.Views
             LapList.Reset();
         }
 
-        public static void CreateBitmapFromVisual(Visual target, string fileName)
-        {
-            if (target == null || string.IsNullOrEmpty(fileName))
-            {
-                return;
-            }
 
-            Rect bounds = VisualTreeHelper.GetDescendantBounds(target);
-
-            RenderTargetBitmap renderTarget = new RenderTargetBitmap((Int32)bounds.Width, (Int32)bounds.Height, 96, 96, PixelFormats.Pbgra32);
-
-            DrawingVisual visual = new DrawingVisual();
-
-            using (DrawingContext context = visual.RenderOpen())
-            {
-                VisualBrush visualBrush = new VisualBrush(target);
-                context.DrawRectangle(visualBrush, null, new Rect(new Point(), bounds.Size));
-            }
-
-            renderTarget.Render(visual);
-            PngBitmapEncoder bitmapEncoder = new PngBitmapEncoder();
-            bitmapEncoder.Frames.Add(BitmapFrame.Create(renderTarget));
-            using (System.IO.Stream stm = System.IO.File.Create(fileName))
-            {
-                bitmapEncoder.Save(stm);
-            }
-        }
 
         /// <summary>
         /// Indsend klik
@@ -197,8 +171,7 @@ namespace DM_Skills.Views
         /// </summary>
         private void Button_Upload_Click(object sender, RoutedEventArgs e)
         {
-            CreateBitmapFromVisual(listOfTables, @"C:\Users\shsk\Desktop\Test.jpg");
-
+            
             //Settings.InvokeUpload();
             if (!Settings.HasConnection)
             {
@@ -212,7 +185,7 @@ namespace DM_Skills.Views
 
                 return;
             }
-
+            
             bool allowUpload = true;
             int cnt = 0;
             foreach (var item in listOfTables.Children)
@@ -237,6 +210,7 @@ namespace DM_Skills.Views
 
             if (allowUpload && cnt > 0)
             {
+                Scripts.Helper.BackupBitmap(listOfTables);
                 foreach (var i in listOfTables.Children)
                 {
                     if (i is Controls.TablesControl)

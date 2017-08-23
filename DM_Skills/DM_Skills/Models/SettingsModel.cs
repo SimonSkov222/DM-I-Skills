@@ -73,8 +73,6 @@ namespace DM_Skills.Models
         public Scripts.Client Client;
         public Scripts.Server Server;
 
-
-
         public string FileNameLocalDB { get { return System.IO.Directory.GetCurrentDirectory() + @"\DMiSkillsLocalDB.sqlite"; } }
 
         public string FileNameDefaultDB = System.IO.Directory.GetCurrentDirectory() + @"\DMiSkillsDB.sqlite";
