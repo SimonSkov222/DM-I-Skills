@@ -136,7 +136,7 @@ namespace DM_Skills.Models
                 NotifyPropertyChanged();
             }
         }
-        
+        private ObservableCollection<LocationModel> _AllLocations = null;
         public ObservableCollection<LocationModel> AllLocations {
             get
             {
