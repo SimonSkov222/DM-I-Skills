@@ -45,7 +45,7 @@ namespace DM_Skills
 
         private void Settings_OnDisconnection(bool disconnectByUser)
         {
-            Menu_Indstillinger.IsChecked = true;
+            //Menu_Indstillinger.IsChecked = true;
         }
 
         private void Settings_OnConnection()

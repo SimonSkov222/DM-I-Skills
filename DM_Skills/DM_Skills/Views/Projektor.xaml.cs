@@ -47,6 +47,15 @@ namespace DM_Skills.Views
                 UpdateData();
             };
 
+            
+            Parent.Closed += (o, e) =>
+            {
+                if (this != null)
+                {
+                    Close();
+                }
+            };
+
         }
         private void UpdateData()
         {
@@ -145,6 +154,8 @@ namespace DM_Skills.Views
             }
 
         }
+
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
 

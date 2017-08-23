@@ -23,7 +23,6 @@
 
         <Grid
             x:Name="search_menu"
-            
             Loaded="Grid_Loaded" Grid.RowSpan="2" Panel.ZIndex="200" 
               Background="{StaticResource Color_Background_Program}" 
               VerticalAlignment="Top">
