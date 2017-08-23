@@ -64,7 +64,6 @@ namespace DM_Skills.Converters
         {
             textbox = textbox.ToLower().Replace(" ", "");
             option = option.ToLower().Replace(" ", "");
-
             return option.StartsWith(textbox) ? Visibility.Visible : Visibility.Collapsed;
         }
 
@@ -72,16 +71,13 @@ namespace DM_Skills.Converters
         {
             if (textbox == null || option == null)
             {
-                Console.WriteLine("Not 1");
                 return false;
             }
             if (!(textbox is Models.SchoolModel) || !(option is string))
             {
-                Console.WriteLine("Not 2");
                 return false;
             }
-
-            Console.WriteLine("Not " + (textbox as Models.SchoolModel).Name.Equals(option));
+            
             return (textbox as Models.SchoolModel).Name.Equals(option);
         }
     }

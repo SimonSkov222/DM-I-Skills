@@ -124,28 +124,37 @@ namespace DM_Skills.Models
         }
         private LocationModel _Location;
         public LocationModel Location { get { return _Location; } set { _Location = value; NotifyPropertyChanged(); } }
-        
+
+        private ObservableCollection<LocationModel> _AllLocations = null;
         public ObservableCollection<LocationModel> AllLocations {
             get
             {
-                var result = LocationModel.GetAll();
-                result.Insert(0, new Models.LocationModel() { ID = -1, Name = "Vælg lokation" });
-                return result;
+                if (_AllLocations == null)
+                {
+                    _AllLocations = LocationModel.GetAll();
+                    _AllLocations.Insert(0, new Models.LocationModel() { ID = -1, Name = "Vælg lokation" });
+                }
+                return _AllLocations;
             }
         }
 
-
+        private ObservableCollection<SchoolModel> _AllSchools = null;
         public ObservableCollection<SchoolModel> AllSchools
         {
             get
             {
-                return SchoolModel.GetAll();
+                Console.WriteLine("Call All_Schools");
+                if (_AllSchools == null)
+                {
+                    Console.WriteLine("Get Schools");
+                    _AllSchools = SchoolModel.GetAll();
+                }
+                return _AllSchools;
             }
         }
 
         public void InvokeSchoolsChanged()
         {
-            Console.WriteLine("InvokeSchoolsChanged");
             NotifyPropertyChanged(nameof(AllSchools));
             OnSchoolsChanged?.Invoke();
         }
@@ -170,6 +179,12 @@ namespace DM_Skills.Models
 
         public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
+            switch (propertyName)
+            {
+                case nameof(AllLocations): _AllLocations = null; break;
+                case nameof(AllSchools): _AllSchools = null; break;
+            }
+
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));

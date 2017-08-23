@@ -16,6 +16,7 @@
 
     <Grid  MouseEnter="Animation_Slide" MouseLeave="Animation_Slide">
         <Label x:Name="display" 
+               MouseLeftButtonDown="display_MouseLeftButtonDown"
                BorderThickness="0" 
                Background="Transparent"
                HorizontalContentAlignment="{Binding ElementName=controller, Path=HorizontalContentAlignment}"               

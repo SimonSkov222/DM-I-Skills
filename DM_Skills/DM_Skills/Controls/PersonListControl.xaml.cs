@@ -129,7 +129,7 @@ namespace DM_Skills.Controls
         private Style styleTxtInput;
         private Style styleBtnInput;
         private IMultiValueConverter errorConverter;
-
+        private bool HasLoaded = false;
 
         public PersonListControl()
         {
@@ -148,12 +148,19 @@ namespace DM_Skills.Controls
             Loaded += PersonListControl_Loaded;
             Loaded += (oo, ee) =>
             {
-                var win = Window.GetWindow(this);
-                win.Activated += (o, e) => WindowIsFocused = true;
-                win.Deactivated += (o, e) => WindowIsFocused = false;
-                WindowIsFocused = win.IsActive;
+                if (!HasLoaded)
+                {
+                    var win = Window.GetWindow(this);
+                    win.Activated += (o, e) => WindowIsFocused = true;
+                    win.Deactivated += (o, e) => WindowIsFocused = false;
+                    WindowIsFocused = win.IsActive;
+                    HasLoaded = true;
+                }
             };
+
+            GotFocus += (o,e) => { Console.WriteLine("GotFocus"); };
         }
+        
 
         private void PersonListControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -398,6 +405,40 @@ namespace DM_Skills.Controls
 
             dropdownBorder.BeginAnimation(Border.MaxHeightProperty, null);
             dropdownBorder.BeginAnimation(Border.MaxHeightProperty, animation);
+        }
+
+        private delegate void SimpleDelegate();
+        private void display_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var input = newPerson.Children[0] as Grid;
+            var txt = (PlaceholderBox)input.Children[0];
+
+            Dispatcher.BeginInvoke(
+                System.Windows.Threading.DispatcherPriority.ApplicationIdle ,
+                new SimpleDelegate(delegate() { txt.Focus(); })
+            );
+            //txt.Focusable = true;
+            //FocusManager.SetIsFocusScope(txt, true);
+            //FocusManager.SetFocusedElement(this, txt);
+            //Keyboard.Focus(txt);
+            //txt.SelectionStart = txt.Text.Length;
+
+
+
+            //FocusManager.SetFocusedElement(this, txt);
+
+            //Key key = Key.Enter;                    // Key to send
+            //var target = Keyboard.FocusedElement;    // Target element
+            //RoutedEvent routedEvent = Keyboard.KeyDownEvent; // Event to send
+
+            //target.RaiseEvent(
+            //    new KeyEventArgs(
+            //        Keyboard.PrimaryDevice,
+            //        PresentationSource.FromVisual(txt),
+            //        0,
+            //        key)
+            //    { RoutedEvent = routedEvent }
+            //);
         }
     }
 }

@@ -24,5 +24,6 @@
     <Converters:ProjektorConverter x:Key="ProjektorConvert"/>
     <Converters:ErrorConverter x:Key="ErrorConvert"/>
     <Converters:MinusDoubleConverter x:Key="MinusDoubleConvert"/>
-    
+    <Converters:TabIndexConverter x:Key="TabIndexConvert"/>
+
 </ResourceDictionary> 

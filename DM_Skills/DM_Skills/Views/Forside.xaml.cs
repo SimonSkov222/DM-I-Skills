@@ -99,6 +99,7 @@ namespace DM_Skills.Views
                 Controls.TablesControl table = new Controls.TablesControl();
                 table.Title = "Bord " + (listOfTables.Children.Count +1);
                 table.Margin = new Thickness(0, 0, 0, 3);
+                table.TabIndex = this.TabIndex + 1000 + listOfTables.Children.Count * 100;
 
                 table.SetBinding(Controls.TablesControl.ShowDropLocationProperty, new Binding() {
                     Path = new PropertyPath("IsDraggingItem"),
@@ -109,7 +110,7 @@ namespace DM_Skills.Views
                     Path = new PropertyPath("AllSchools"),
                     Mode = BindingMode.OneWay
                 });
-
+                
                 listOfTables.Children.Add(table);
             }
 
@@ -210,7 +211,7 @@ namespace DM_Skills.Views
 
             if (allowUpload && cnt > 0)
             {
-                Scripts.Helper.BackupBitmap(listOfTables);
+                //Scripts.Helper.BackupBitmap(listOfTables);
                 foreach (var i in listOfTables.Children)
                 {
                     if (i is Controls.TablesControl)

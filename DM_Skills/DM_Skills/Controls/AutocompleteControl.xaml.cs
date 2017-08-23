@@ -219,28 +219,24 @@ namespace DM_Skills.Controls
                 case Key.Enter:
                     if (cSelectedItem.Length > 0)
                     {
-                        Text = cSelectedItem[0].Name;
-                        options.SelectedItem = null;
+                        input.Text = cSelectedItem[0].Name;
                         input.CaretIndex = input.Text.Length;
                     }
                     else if (visibleItems.Length > 0)
                     {
-                        Text = visibleItems[0].Name;
-                        options.SelectedItem = null;
+                        input.Text = visibleItems[0].Name;
                         input.CaretIndex = input.Text.Length;
                     }
                     break;
                 case Key.Tab:
                     if (cSelectedItem.Length > 0)
                     {
-                        Text = cSelectedItem[0].Name;
-                        options.SelectedItem = null;
+                        input.Text = cSelectedItem[0].Name;
                         input.CaretIndex = input.Text.Length;
                     }
                     else if (visibleItems.Length > 0)
                     {
-                        Text = visibleItems[0].Name;
-                        options.SelectedItem = null;
+                        input.Text = visibleItems[0].Name;
                         input.CaretIndex = input.Text.Length;
                     }
                     break;
@@ -264,9 +260,9 @@ namespace DM_Skills.Controls
 
         private void Input_TextChanged(object sender, TextChangedEventArgs e)
         {
-            IsPopupOpen = true;
-            options.SelectedItem = null;
+            IsPopupOpen = this.IsKeyboardFocusWithin;
             NotifyPropertyChange("IsOpen");
+            options.UnselectAll();
         }
         private void Options_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

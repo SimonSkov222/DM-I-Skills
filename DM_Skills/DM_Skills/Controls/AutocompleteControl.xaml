@@ -19,11 +19,11 @@
             BorderThickness="0"
             PreviewKeyDown="Input_KeyDown" 
             TextChanged="Input_TextChanged"
-            Text="{Binding Path=Text, ElementName=controller}"
+            Text="{Binding Path=Text, ElementName=controller, Mode=TwoWay}"
             Placeholder="{Binding ElementName=controller, Path=Placeholder}"
             MouseDoubleClick="Input_MouseDoubleClick" />
 
-
+        <!--<Popup x:Name="popup" />-->
         <Popup 
             x:Name="popup" StaysOpen="True"
             Placement="Bottom" PlacementTarget="{Binding ElementName=controller}" >
@@ -51,70 +51,50 @@
                             Padding="0"
                             MinWidth="200"
                             Background="Transparent" BorderThickness="0"
-                             ItemsSource="{Binding ElementName=controller, Path=ItemsSource}"
+                            ItemsSource="{Binding ElementName=controller, Path=ItemsSource}"
                             Width="{Binding ElementName=controller, Path=ActualWidth}" >
-
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListViewItem}">
-                                <!--<Style.Resources>
-                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
-                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"     Color="LightGray"/>
-                                </Style.Resources>-->
-                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                   
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                                 <Setter Property="Padding" Value="5 1"/>
                                 <Setter Property="FontSize" Value="14"/>
                                 <EventSetter Event="PreviewMouseLeftButtonDown" Handler="Options_MouseLeftButtonDown"/>
 
                                 <Setter Property="Template">
                                     <Setter.Value>
-                                        <ControlTemplate TargetType="ListBoxItem">
+                                        <ControlTemplate TargetType="ListViewItem">
                                             <Label 
-                                                Margin="0"
-                                                BorderThickness="0"
-                                                Visibility="{TemplateBinding Visibility}"
-                                                Content="{TemplateBinding Content}"
+                                                Padding="{TemplateBinding Padding}"
                                                 FontSize="{TemplateBinding FontSize}"
                                                 FontWeight="{TemplateBinding FontWeight}"
-                                                Background="{TemplateBinding Background}"
                                                 Foreground="{TemplateBinding Foreground}"
-                                                Padding="{TemplateBinding Padding}"/>
+                                                Background="{TemplateBinding Background}"
+                                                Content="{TemplateBinding Content}">
+                                                <Label.Visibility>
+                                                    <MultiBinding Converter="{StaticResource AutocompleteConvert}" ConverterParameter="Option" Mode="OneWay">
+                                                        <Binding ElementName="input" Path="Text"/>
+                                                        <Binding Path="Name"/>
+                                                    </MultiBinding>
+                                                </Label.Visibility>
+                                            </Label>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Background" Value="Red"/>
+                                                </Trigger>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="Blue"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>
-
-
-                                <Style.Triggers>
-                                    <DataTrigger>
-                                        <DataTrigger.Binding>
-                                            <MultiBinding Converter="{StaticResource AutocompleteConvert}" ConverterParameter="IsSelected" Mode="OneWay">
-                                                <Binding ElementName="options" Path="SelectedItem"/>
-                                                <Binding Path="Name"/>
-                                            </MultiBinding>
-                                        </DataTrigger.Binding>
-                                        <DataTrigger.Setters>
-                                            <Setter Property="Background" Value="Green"/>
-                                        </DataTrigger.Setters>
-                                    </DataTrigger>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Background" Value="Red"/>
-                                    </Trigger>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter Property="Background" Value="LightGray"/>
-                                    </Trigger>
-                                </Style.Triggers>
                             </Style>
                         </ListView.ItemContainerStyle>
 
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ListViewItem Content="{Binding Path=Name}" >
-                                    <ListViewItem.Visibility>
-                                        <MultiBinding Converter="{StaticResource AutocompleteConvert}" ConverterParameter="Option">
-                                            <Binding ElementName="input" Path="Text"/>
-                                            <Binding Path="Name"/>
-                                        </MultiBinding>
-                                    </ListViewItem.Visibility>
-                                </ListViewItem>
+                                <Label Content="{Binding Path=Name}" Margin="0" Padding="0"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
 

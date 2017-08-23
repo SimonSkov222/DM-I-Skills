@@ -52,21 +52,6 @@
     <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Sensors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.Sensors.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\WindowsAPICodePack.1.1.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
-    </Reference>
     <Reference Include="Nicenis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>F:\Debug\Nicenis.dll</HintPath>
@@ -118,6 +103,7 @@
     <Compile Include="Converters\OvertimeConverter.cs" />
     <Compile Include="Converters\PersonListConverter.cs" />
     <Compile Include="Converters\ProjektorConverter.cs" />
+    <Compile Include="Converters\TabIndexConverter.cs" />
     <Compile Include="Converters\TextToHiddenConverter.cs" />
     <Compile Include="Converters\ThicknessToDoubleConverter.cs" />
     <Compile Include="Converters\ValueToValueConverter.cs" />
