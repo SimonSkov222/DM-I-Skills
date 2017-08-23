@@ -206,8 +206,10 @@ namespace DM_Skills.Controls
             switch (e.Key)
             {
                 case Key.Down:
-                    if(visibleItems.Length > 0 && cID < visibleItems.Length -1)
-                        options.SelectedItem = visibleItems[cID+1];
+                    if (visibleItems.Length > 0 && cID < visibleItems.Length - 1)
+                    {
+                        options.SelectedItem = visibleItems[cID + 1];
+                    }
                     break;
                 case Key.Up:
                     if(visibleItems.Length > 0 && cID > 0)
@@ -218,11 +220,13 @@ namespace DM_Skills.Controls
                     if (cSelectedItem.Length > 0)
                     {
                         Text = cSelectedItem[0].Name;
+                        options.SelectedItem = null;
                         input.CaretIndex = input.Text.Length;
                     }
                     else if (visibleItems.Length > 0)
                     {
                         Text = visibleItems[0].Name;
+                        options.SelectedItem = null;
                         input.CaretIndex = input.Text.Length;
                     }
                     break;
@@ -230,11 +234,13 @@ namespace DM_Skills.Controls
                     if (cSelectedItem.Length > 0)
                     {
                         Text = cSelectedItem[0].Name;
+                        options.SelectedItem = null;
                         input.CaretIndex = input.Text.Length;
                     }
                     else if (visibleItems.Length > 0)
                     {
                         Text = visibleItems[0].Name;
+                        options.SelectedItem = null;
                         input.CaretIndex = input.Text.Length;
                     }
                     break;
@@ -242,8 +248,6 @@ namespace DM_Skills.Controls
                     IsPopupOpen = false;
                     break;
             }
-
-
 
             NotifyPropertyChange("IsOpen");
         }
@@ -261,7 +265,7 @@ namespace DM_Skills.Controls
         private void Input_TextChanged(object sender, TextChangedEventArgs e)
         {
             IsPopupOpen = true;
-            options.SelectedIndex = -1;
+            options.SelectedItem = null;
             NotifyPropertyChange("IsOpen");
         }
         private void Options_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

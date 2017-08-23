@@ -14,6 +14,7 @@ namespace DM_Skills.Converters
     {
         public const string PARAMS_OPTION = "Option";
         public const string PARAMS_POPUP = "Popup";
+        public const string PARAMS_ISSELECTED = "IsSelected";
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
@@ -24,6 +25,8 @@ namespace DM_Skills.Converters
                     return IsPopupOpen((ItemCollection)values[0], values[1].ToString(), isOpen);
                 case PARAMS_OPTION:
                     return GetVisibilityForOption((string)values[0], values[1].ToString());
+                case PARAMS_ISSELECTED:
+                    return GetIsSelected(values[0], values[1]);
             }
 
             return null;
@@ -41,13 +44,16 @@ namespace DM_Skills.Converters
         {
             var visibleItems = items.Cast<Models.SchoolModel>().Where(o => o.Name.ToLower().Replace(" ", "").StartsWith(textbox.ToLower().Replace(" ", ""))).ToArray();
 
-            if (visibleItems.Length == 1) {
+            if (visibleItems.Length == 1)
+            {
                 return isOpen && !visibleItems[0].Name.Equals(textbox);
             }
-            if (visibleItems.Length > 0) {
+            if (visibleItems.Length > 0)
+            {
                 return isOpen;
             }
-            else {
+            else
+            {
                 return false;
             }
         }
@@ -56,11 +62,27 @@ namespace DM_Skills.Converters
 
         private Visibility GetVisibilityForOption(string textbox, string option)
         {
+            textbox = textbox.ToLower().Replace(" ", "");
+            option = option.ToLower().Replace(" ", "");
 
-            textbox = textbox.Replace(" ", "").ToLower();
-            option = option.Replace(" ", "").ToLower();
-            
             return option.StartsWith(textbox) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private bool GetIsSelected(object textbox, object option)
+        {
+            if (textbox == null || option == null)
+            {
+                Console.WriteLine("Not 1");
+                return false;
+            }
+            if (!(textbox is Models.SchoolModel) || !(option is string))
+            {
+                Console.WriteLine("Not 2");
+                return false;
+            }
+
+            Console.WriteLine("Not " + (textbox as Models.SchoolModel).Name.Equals(option));
+            return (textbox as Models.SchoolModel).Name.Equals(option);
         }
     }
 }

@@ -25,23 +25,24 @@ namespace DM_Skills.Views
     /// </summary>
     public partial class Connection : UserControl, INotifyPropertyChanged
     {
-        Models.SettingsModel Settings;
+        private Models.SettingsModel Settings;
+
+        public string ServerIP { get { return Scripts.Helper.GetLocalIPv4(); } }
+        private string clientIP = "";
+        private string clientPort = "";
+        private string serverPort = "";
+
         public Connection()
         {
-            Settings = (Models.SettingsModel)FindResource("Settings");
-            Application.Current.MainWindow.Closed += MainWindow_Closed;
-            Loaded += Connection_Loaded;
             InitializeComponent();
-
+            Loaded += Connection_Loaded;
         }
 
         private void Connection_Loaded(object sender, RoutedEventArgs e)
         {
+            Settings = (Models.SettingsModel)FindResource("Settings");
+
             var myLocalDB = Scripts.Database.GetLocalDB("Connection_Loaded");
-            
-            
-
-
             
             Settings.OverTimeMin        = Convert.ToInt32(myLocalDB.GetRow("Settings","Value", "WHERE `Name`='OverTime'")[0]);
             Settings.TableCnt           = Convert.ToInt32(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='TableCount'")[0]);
@@ -50,12 +51,12 @@ namespace DM_Skills.Views
             clientPort                  = Convert.ToString(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='ClientPort'")[0]);
 
             myLocalDB.Disconnect();
-
             
-
 
             txtIP.Text = ServerIP;
             txtPort.Text = serverPort;
+
+            Application.Current.MainWindow.Closed += MainWindow_Closed;
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
@@ -72,11 +73,7 @@ namespace DM_Skills.Views
 
         }
 
-        public string ServerIP { get { return Scripts.Helper.GetLocalIPv4(); } }
 
-        private string clientIP = "";
-        private string clientPort = "";
-        private string serverPort = "";
 
         private void rClient_Checked(object sender, RoutedEventArgs e)
         {

@@ -41,7 +41,7 @@ namespace DM_Skills.Controls
         private Stopwatch _Watch = new Stopwatch();
         public TimeSpan DisplayTime { get { return _Watch.Elapsed; } }
 
-        private RadioButton rBtn_Forside;
+        private bool HasKeyEvent = false;
         
 
 
@@ -55,14 +55,14 @@ namespace DM_Skills.Controls
             EventTimer = new DispatcherTimer();
             EventTimer.Interval = TimeSpan.FromMilliseconds(1);
             EventTimer.Tick += (o, e) => { NotifyPropertyChanged("DisplayTime"); };
-           // if(Application.Current.MainWindow != null)
-                
-            Loaded += (o, e) => 
-            {
-                Application.Current.MainWindow.PreviewKeyUp -= MainWindow_KeyUp;
-                Application.Current.MainWindow.PreviewKeyUp += MainWindow_KeyUp;
-                //rBtn_Forside = Application.Current.MainWindow.FindResource("Menu_Forside") as RadioButton;
-            };
+            //Loaded += (o, e) =>
+            //{
+            //    if (!HasKeyEvent)
+            //    {
+            //        Application.Current.MainWindow.PreviewKeyUp += MainWindow_KeyUp;
+            //        HasKeyEvent = true;
+            //    }
+            //};
         }
 
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)

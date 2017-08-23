@@ -17,10 +17,11 @@
         Title="MainWindow" Height="800" Width="1200" MinHeight="600" MinWidth="800">
 
 
-    <Grid x:Name="debug_h">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
       
@@ -41,7 +42,7 @@
         </Grid>
 
         <!--Height="{Binding ElementName=debug_hh, Path=ActualHeight}"-->
-        <ScrollViewer Grid.Row="1" Padding="10"  x:Name="debug_hh" ScrollChanged="ScrollViewer_ScrollChanged">
+        <ScrollViewer Grid.Row="1" Padding="10"  x:Name="scroll_container" ScrollChanged="ScrollViewer_ScrollChanged">
             <Grid>
                 <Grid x:Name="gridWarning" VerticalAlignment="Top">
                     <Border Grid.Row="1" Width="700" Margin="0 10 0 0" Panel.ZIndex="500" Background="{StaticResource Color_Background_Program}"
@@ -66,8 +67,8 @@
 
                     <Grid.Height>
                         <MultiBinding Converter="{StaticResource MinusDoubleConvert}" ConverterParameter="Height" Mode="OneWay">
-                                <Binding ElementName="debug_hh" Path="ActualHeight" Mode="OneWay"/>
-                                <Binding ElementName="debug_hh" Path="Padding" Mode="OneWay"/>
+                                <Binding ElementName="scroll_container" Path="ActualHeight" Mode="OneWay"/>
+                                <Binding ElementName="scroll_container" Path="Padding" Mode="OneWay"/>
                                 <Binding ElementName="gridWarning" Path="ActualHeight" Mode="OneWay"/>
                         </MultiBinding>
                     </Grid.Height>
@@ -91,11 +92,28 @@
                     Tag="{Binding ElementName=Menu_Indstillinger, Path=IsChecked}" 
                     Style="{StaticResource Grid_Style_FadeAnimation}"                    
                     Opacity="0" >
-                    <View:Connection x:Name="view_settings"/>
+                        <View:Connection x:Name="view_settings"/>
                 </Grid>
 
             </Grid>
             </Grid>
         </ScrollViewer>
+        <Grid Grid.Row="2">
+            <TextBlock HorizontalAlignment="Left" FontWeight="Bold" Foreground="{StaticResource Color_Foreground_Dark_2}" Padding="5 2">
+                <Run Text="Version:"/>
+                <Run Text="{Binding Source={StaticResource Settings}, Path=Version, Mode=OneWay}"/>
+            </TextBlock>
+
+
+            <TextBlock HorizontalAlignment="Center"  FontWeight="Bold" Foreground="{StaticResource Color_Foreground_Dark_2}" Padding="5 2">
+                <Run Text="{Binding Source={StaticResource Settings}, Path=Copyright, Mode=OneWay}"/>
+            </TextBlock>
+
+
+            <TextBlock HorizontalAlignment="Right"  FontWeight="Bold" Foreground="{StaticResource Color_Foreground_Dark_2}" Padding="5 2 20 2">
+                <Run Text="Lavet af:"/>
+                <Run Foreground="Blue" Text="{Binding Source={StaticResource Settings}, Path=Author, Mode=OneWay}"/>
+            </TextBlock>
+        </Grid>
     </Grid>
 </Window>

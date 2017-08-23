@@ -9,6 +9,22 @@ namespace DM_Skills.Models
 {
     class SettingsModel : INotifyPropertyChanged
     {
+        public string Version { get { return "1.0"; } }
+        public string Author { get { return "Kim Danborg & Simon Skov"; } }
+        public string Copyright
+        {
+            get
+            {
+                int created = 2017;
+                string value = $"Copyright {created}";
+                if(DateTime.Now.Year > created)
+                {
+                    value += $" - {DateTime.Now.Year}";
+                }
+                return value;
+            }
+        }
+
         public string Debug { get; set; }
 
         public event Action OnSchoolsChanged;
