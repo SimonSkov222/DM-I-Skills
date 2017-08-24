@@ -90,6 +90,7 @@ namespace DM_Skills.Models
                     _FileNameDB = db.GetRow("Settings", "Value", "WHERE `Name` = 'LocationDB'")[0].ToString();
                     db.Disconnect();
                 }
+                
                 return _FileNameDB;
             }
             set

@@ -212,6 +212,8 @@ namespace DM_Skills.Views
             if (allowUpload && cnt > 0)
             {
                 //Scripts.Helper.BackupBitmap(listOfTables);
+                Scripts.Helper.BackupPDF(listOfTables);
+
                 foreach (var i in listOfTables.Children)
                 {
                     if (i is Controls.TablesControl)
@@ -241,11 +243,46 @@ namespace DM_Skills.Views
         }
 
 
+        private string GetSS(int length) {
+            Random r = new Random(333);
+            string val = "";
+            string option = "qazwsxedcrfvtgbnhyujmkiolp";
+            for (int i = 0; i < length; i++)
+            {
+                string v = option.Substring(r.Next(0, option.Length), 1);
+                v = r.Next(0, 987425) % 3 == 0 ? v.ToUpper() : v.ToLower();
+                val += v;
+            }
+            return val;
+        }
+
         /// <summary>
         /// Nulstiling af runde klik.
         /// </summary>
         private void Button_Reset_Click(object sender, RoutedEventArgs e)
         {
+            Random r = new Random(146);
+            foreach (var item in listOfTables.Children)
+            {
+                if (item is Controls.TablesControl)
+                {
+                    var mod = new Models.TableModelN();
+                    mod.Team.Class = GetSS(r.Next(5, 5));
+                    mod.Team.Time = GetSS(r.Next(8, 8));
+                    mod.School.Name = GetSS(r.Next(25, 45));
+                    for (int i = 0; i < 3; i++)
+                    {
+                        var p = new Models.PersonModel();
+                        p.Name = GetSS(r.Next(13, 25));
+                        mod.Persons.Add(p);
+                    }
+                    (item as Controls.TablesControl).Model = mod;
+                }
+
+            }
+            return;
+
+
             foreach (var item in listOfTables.Children)
             {
                 if (item is Controls.TablesControl)
