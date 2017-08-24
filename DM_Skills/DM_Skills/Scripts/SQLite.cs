@@ -28,12 +28,15 @@ namespace DM_Skills.Scripts
         public string LastQuery => _lastQuery;
 
         public Action<object> CallBack { get; set; }
+        public bool MultipleQuery { get; set; }
+        public List<string> Querys { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         private SQLiteConnection sql_conn;
         private SQLiteCommand sql_cmd;
 
         private bool _IsLocal = false;
         private bool _IsLock = false;
+
 
         ManualResetEvent IsLock = new ManualResetEvent(true);
 
@@ -113,9 +116,18 @@ namespace DM_Skills.Scripts
 
             string columnsCMD = string.Format("`{0}`", string.Join("`, `", columns.ToArray()));
             string valuesCMD = string.Join(", ", values.ToArray());
+            string query = string.Format("INSERT INTO `{0}`({1}) VALUES({2});", tableWithPrefix, columnsCMD, valuesCMD);
 
-            ExecuteQuery(string.Format("INSERT INTO `{0}`({1}) VALUES({2});", tableWithPrefix, columnsCMD, valuesCMD), getID);
-
+            if (MultipleQuery)
+            {
+                Querys.Add(query);
+                return null;
+            }
+            else
+            {
+                ExecuteQuery(query);
+            }
+            
             if (getID)
             {
                 string pColumn = GetPrimaryKeyName(table);
@@ -280,92 +292,7 @@ namespace DM_Skills.Scripts
             }
             return false;
         }
-
-        /// <summary>
-        /// Kan udføre en selv skrevet SQL query/kommando
-        /// og hvis det er en select kan man selv 
-        /// vælge man bruge columns eller position som key
-        /// </summary>
-        public List<List<object>> ExecuteQuery(string cmd, bool waitTillDone = false)
-        {
-            //Console.WriteLine("ExecuteQuery");
-            _lastQuery = cmd;
-            var result = new List<List<object>>();
-
-            if (Settings.IsServer || _IsLocal || _unname)
-            {
-                IsLock.WaitOne();
-                IsLock.Reset();
-                //udfør kommando hvor man ikke venter på data
-                if (IsReadMethod(cmd))
-                {
-                    SQLiteDataReader sql_reader;
-                    sql_cmd.CommandText = cmd;
-
-                    //Udfør kommando hvor man skal have data tilbage
-                    sql_reader = sql_cmd.ExecuteReader();
-                    while (sql_reader.Read())
-                    {
-                        var row = new List<object>();
-
-                        for (int i = 0; i < sql_reader.FieldCount; i++)
-                        {
-                            row.Add(sql_reader[i]);
-                        }
-                        result.Add(row);
-                    }
-                    sql_reader.Close();
-                }
-                else
-                {
-                    sql_cmd.CommandText = cmd;
-                    sql_cmd.ExecuteNonQuery();
-                }
-                IsLock.Set();
-
-            }
-            else if (Settings.IsClient)
-            {
-                Console.WriteLine("SQL: " + cmd);
-                var myLock = new ManualResetEvent(false);
-                if (IsReadMethod(cmd))
-                {
-
-                    Settings.Client.Send(
-                        PacketType.Read, 
-                        o =>
-                        {
-                            result = o as List<List<object>>;
-                            Console.WriteLine("PacketType.Read");
-                            myLock.Set();
-                        }, 
-                        cmd
-                    );
-                    
-                }
-                else
-                {
-                    Settings.Client.Send(PacketType.Write, o=> {
-                        Console.WriteLine("PacketType.Write");
-                        myLock.Set();
-                    } , cmd);
-                }
-                Console.WriteLine("#####Wait for server");
-                if(!myLock.WaitOne(new TimeSpan(0, 0, 5)))
-                {
-                    Console.WriteLine("Failed reply");
-                    return null;
-
-                }
-                Console.WriteLine("#####Done Waiting");
-            }
-            
-            CallBack?.Invoke(result);
-            CallBack = null;
-
-            return result;
-        }
-        
+                
 
         ///// <summary>
         ///// Kan udføre en selv skrevet SQL query/kommando
@@ -533,6 +460,116 @@ namespace DM_Skills.Scripts
             string cmd = string.Format("DELETE FROM `{0}` {1}", tableWithPrefix, whr);
 
             ExecuteQuery(cmd);
+        }
+
+
+        /// <summary>
+        /// Kan udføre en selv skrevet SQL query/kommando
+        /// og hvis det er en select kan man selv 
+        /// vælge man bruge columns eller position som key
+        /// </summary>
+        public List<List<object>> ExecuteQuery(string cmd, bool waitTillDone = false)
+        {
+            //Console.WriteLine("ExecuteQuery");
+            _lastQuery = cmd;
+            var result = new List<List<object>>();
+
+            if (Settings.IsServer || _IsLocal || _unname)
+            {
+                IsLock.WaitOne();
+                IsLock.Reset();
+                //udfør kommando hvor man ikke venter på data
+                if (IsReadMethod(cmd))
+                {
+                    SQLiteDataReader sql_reader;
+                    sql_cmd.CommandText = cmd;
+
+                    //Udfør kommando hvor man skal have data tilbage
+                    sql_reader = sql_cmd.ExecuteReader();
+                    while (sql_reader.Read())
+                    {
+                        var row = new List<object>();
+
+                        for (int i = 0; i < sql_reader.FieldCount; i++)
+                        {
+                            row.Add(sql_reader[i]);
+                        }
+                        result.Add(row);
+                    }
+                    sql_reader.Close();
+                }
+                else
+                {
+                    sql_cmd.CommandText = cmd;
+                    sql_cmd.ExecuteNonQuery();
+                }
+                IsLock.Set();
+
+            }
+            else if (Settings.IsClient)
+            {
+                var myLock = new ManualResetEvent(false);
+                if (IsReadMethod(cmd))
+                {
+
+                    Settings.Client.Send(
+                        PacketType.Read,
+                        o =>
+                        {
+                            result = o as List<List<object>>;
+                            myLock.Set();
+                        },
+                        cmd
+                    );
+
+                }
+                else
+                {
+                    Settings.Client.Send(PacketType.Write, o => {
+                        myLock.Set();
+                    }, cmd);
+                }
+                Console.WriteLine("#####Wait for server");
+                if (!myLock.WaitOne(new TimeSpan(0, 0, 5)))
+                {
+                    Console.WriteLine("Failed reply");
+                    return null;
+
+                }
+                Console.WriteLine("#####Done Waiting");
+            }
+
+            CallBack?.Invoke(result);
+            CallBack = null;
+
+            return result;
+        }
+
+        public void ExecuteALL()
+        {
+            IsLock.WaitOne();
+            IsLock.Reset();
+            if (Settings.IsServer || _IsLocal || _unname)
+            {
+                foreach (var cmd in Querys)
+                {
+                    sql_cmd.CommandText = cmd;
+                    sql_cmd.ExecuteNonQuery();
+                }
+            }
+            else if (Settings.IsClient)
+            {
+                var waitForReply = new ManualResetEvent(false);
+                Settings.Client.Send(PacketType.MultipleQuery, o => waitForReply.Set(), Querys);
+                if (!waitForReply.WaitOne(new TimeSpan(0, 0, 30)))
+                {
+                    Console.WriteLine("ERROR: No Reply (ExecuteALL)");
+                }
+            }
+
+            Querys.Clear();
+            MultipleQuery = false;
+            IsLock.Set();
         }
     }
 }

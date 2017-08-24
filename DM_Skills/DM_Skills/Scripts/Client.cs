@@ -105,15 +105,6 @@ namespace DM_Skills.Scripts
                 Callbacks.Add(packet.ID, cb);   
             }
             client.Write(Helper.ObjectToByteArray(packet));
-
-            //if(packet.Type == PacketType.Read || waitForReply)
-            //{
-            //    WaitForReply = true;
-            //    Console.WriteLine("Reset");
-            //    waitHandel.Reset();
-            //    Console.WriteLine("WaitOne");
-            //    waitHandel.WaitOne();
-            //}
         }
         
         private void Client_DataReceived(object sender, Message e)
@@ -121,39 +112,34 @@ namespace DM_Skills.Scripts
             
             var packet = Helper.ByteArrayToObject(e.Data) as Packet;
             Console.WriteLine("Got reply -" + packet.Type);
-
-            //if (WaitForReply && packet.Type != PacketType.Ping)
-            //{
-            //    WaitForReply = false;
-            //    waitHandel.Set();
-            //}
+            
             lock (Callbacks)
             {
                 if (Callbacks.ContainsKey(packet.ID))
                 {
-
-                    Console.WriteLine($"Reply Callbacks - {packet.Type} ID: {packet.ID}");
+                    
                     Callbacks[packet.ID]?.Invoke(packet.Data);
                     Callbacks.Remove(packet.ID);
                 }
             }
-            (new Thread(new ThreadStart(delegate () { 
-            switch (packet.Type)
-            {
-                case PacketType.Broadcast_UploadTables:
-                    Application.Current.Dispatcher.Invoke(delegate() 
-                    {
-                        Settings.InvokeSchoolsChanged();
-                        Settings.InvokeUpload();
-                    });
-                    break;
-                case PacketType.Broadcast_UploadSchools:
-                    Application.Current.Dispatcher.Invoke(delegate ()
-                    {
-                        Settings.InvokeSchoolsChanged();
-                    });
-                    break;
-            }
+            (new Thread(new ThreadStart(delegate () 
+            { 
+                switch (packet.Type)
+                {
+                    case PacketType.Broadcast_UploadTables:
+                        Application.Current.Dispatcher.Invoke(delegate() 
+                        {
+                            Settings.InvokeSchoolsChanged();
+                            Settings.InvokeUpload();
+                        });
+                        break;
+                    case PacketType.Broadcast_UploadSchools:
+                        Application.Current.Dispatcher.Invoke(delegate ()
+                        {
+                            Settings.InvokeSchoolsChanged();
+                        });
+                        break;
+                }
             }))).Start();
 
             

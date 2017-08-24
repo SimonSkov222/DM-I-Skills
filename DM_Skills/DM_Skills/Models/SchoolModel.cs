@@ -5,13 +5,14 @@ using System.Text;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DM_Skills.Scripts;
+using System.Windows;
 
 namespace DM_Skills.Models
 {
     [Serializable]
     public class SchoolModel : ModelSettings
     {
-
+        static SettingsModel Settings = null;
         public bool SendBroadcast = true;
         const int ERRNO_NAME_NULL = 1;
 
@@ -29,6 +30,13 @@ namespace DM_Skills.Models
                 _Name = value;
                 NotifyPropertyChanged("CanUpload");
                 NotifyPropertyOnAll?.Invoke();
+            }
+        }
+
+        public SchoolModel() {
+            if (Settings == null)
+            {
+                Settings = Application.Current.FindResource("Settings") as SettingsModel;
             }
         }
 
@@ -51,11 +59,11 @@ namespace DM_Skills.Models
         protected override bool OnUpload()
         {
             var myDB = Scripts.Database.GetDB();
-            if (myDB.Exist("Schools", "Name", Name))
+            if (Settings.AllSchools.Count(m=>m.Name.ToLower() == Name.ToLower()) > 0)
             {
-                Console.WriteLine("Exist: ");
-                var result = myDB.GetRow("Schools", "ID", "WHERE `Name` = '{0}'", Name);
-                ID = Convert.ToInt32(result[0]);
+                var result = Settings.AllSchools.First(m => m.Name.ToLower() == Name.ToLower());
+                ID = result.ID;
+                Name = result.Name;
             }
             else
             {

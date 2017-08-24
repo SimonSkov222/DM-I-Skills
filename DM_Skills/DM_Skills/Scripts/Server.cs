@@ -99,6 +99,12 @@ namespace DM_Skills.Scripts
             var myDB = Database.GetDB();
             switch (packet.Type)
             {
+                case PacketType.MultipleQuery:
+                    myDB.MultipleQuery = true;
+                    myDB.Querys = packet.Data as List<string>;
+                    myDB.ExecuteALL();
+                    e.Reply(Helper.ObjectToByteArray(reply));
+                    break;
                 case PacketType.Read:
 
                     var dt = myDB.ExecuteQuery(packet.Data as string);

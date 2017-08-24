@@ -13,6 +13,8 @@ namespace DM_Skills.Scripts
         Action<object> CallBack { get; set; }
 
         bool UseDistinct { get; set; }
+        List<string> Querys { get; set; }
+        bool MultipleQuery { get; set; }
 
         void Connect(string connectionString, string prefix = "");
 
@@ -68,6 +70,7 @@ namespace DM_Skills.Scripts
 
         void Delete(string table, string format, params object[] arg);
 
+        void ExecuteALL();
 
 
 
