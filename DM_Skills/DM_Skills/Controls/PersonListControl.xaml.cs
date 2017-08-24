@@ -81,7 +81,6 @@ namespace DM_Skills.Controls
             get { return (ObservableCollection<Models.PersonModel>)GetValue(PersonsProperty); }
             set
             {
-
                 SetValue(PersonsProperty, value);
 
                 value.CollectionChanged += Persons_CollectionChanged;

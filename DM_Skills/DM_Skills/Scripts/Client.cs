@@ -41,13 +41,13 @@ namespace DM_Skills.Scripts
                 pingServer = new Thread(new ThreadStart(delegate () {
                     while (true)
                     {
-                        Thread.Sleep(5000);
+                        Thread.Sleep(25000);
                         if (Settings.IsClient && client.TcpClient.Connected)
                         {
                             Message reply;
                             try
                             {
-                                reply = client.WriteLineAndGetReply("#875120", new TimeSpan(0, 0, 0, 0, 300));
+                                reply = client.WriteLineAndGetReply("#875120", new TimeSpan(0, 0, 0, 15, 0));
                             }
                             catch (Exception) { reply = null; }
 
@@ -159,6 +159,9 @@ namespace DM_Skills.Scripts
                 Type = type,
                 Data = null
             };
+
+            
+
             client.Write(Helper.ObjectToByteArray(packet));
         }
 

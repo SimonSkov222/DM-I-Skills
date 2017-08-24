@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -57,22 +58,23 @@ namespace DM_Skills.Scripts
                 Data = data
             };
             Host.Broadcast(Helper.ObjectToByteArray(packet));
-            Application.Current.Dispatcher.Invoke(delegate ()
-            {
-                switch (type)
-                {
-                    case PacketType.Broadcast_UploadTables:
-                        Console.WriteLine("Broadcast_UploadTables");
-                        Settings.InvokeSchoolsChanged();
-                        Settings.InvokeUpload();
-                        break;
-                    case PacketType.Broadcast_UploadSchools:
-                        Console.WriteLine("Broadcast_UploadSchools");
-                        Settings.InvokeSchoolsChanged();
-                        break;
-                }
-            });
 
+            new Thread(new ThreadStart(delegate ()
+            {
+                Application.Current.Dispatcher.Invoke(delegate ()
+                {
+                    switch (type)
+                    {
+                        case PacketType.Broadcast_UploadTables:
+                            Settings.InvokeSchoolsChanged();
+                            Settings.InvokeUpload();
+                            break;
+                        case PacketType.Broadcast_UploadSchools:
+                            Settings.InvokeSchoolsChanged();
+                            break;
+                    }
+                });
+            })).Start();
 
         }
 

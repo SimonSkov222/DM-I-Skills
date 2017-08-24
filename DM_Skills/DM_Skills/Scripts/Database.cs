@@ -25,11 +25,14 @@ namespace DM_Skills.Scripts
 
             if (localDB == null)
             {
-                localDB = new SQLite(true);
+                string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameLocalDB);
+                localDB = new SQLite(connString, Settings.PrefixDB, true);
             }
 
             if (localDB is SQLite)
             {
+                string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameLocalDB);
+                (localDB as SQLite).ChangeConnectionString(connString);
                 //Console.WriteLine("\n\n" + "Call By " + title);
                 ////(localDB as SQLite).IsConnectionLock.WaitOne();
                 ////(localDB as SQLite).IsConnectionLock.Reset();
@@ -40,8 +43,8 @@ namespace DM_Skills.Scripts
           
             if (!localDB.IsConnected)
             {
-                string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameLocalDB);
-                localDB.Connect(connString, Settings.PrefixDB);
+                //string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameLocalDB);
+                //localDB.Connect(connString, Settings.PrefixDB);
             }
             
 
@@ -57,18 +60,21 @@ namespace DM_Skills.Scripts
 
             if (db == null)
             {
-                db = new SQLite();
+                string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameDB);
+                db = new SQLite(connString, Settings.PrefixDB);
             }
-
+            
             if (db is SQLite)
             {
                 (db as SQLite)._unname = _unname;
+                string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameDB);
+                (db as SQLite).ChangeConnectionString(connString);
             }
 
             if (!db.IsConnected) {
                 //string connString = string.Format("Server={0};Database={1};User Id={2};Password={3}", Host, DatabaseName, User, Pass);
-                string connString = string.Format("Data Source={0};Version=3;", Settings.FileNameDB);
-                db.Connect(connString, Settings.PrefixDB);
+                
+                //db.Connect(connString, Settings.PrefixDB);
             }
 
 

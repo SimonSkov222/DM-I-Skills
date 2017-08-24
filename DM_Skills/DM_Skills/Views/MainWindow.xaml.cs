@@ -31,6 +31,14 @@ namespace DM_Skills
         /// 
         public MainWindow()
         {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(DateTime.Now.ToShortDateString(), @"\d{2}-\d{2}-\d{4}"))
+            {
+                MessageBox.Show("De!!");
+                this.Close();
+                return;
+            }
+
+
             //Scripts.Database.CreateDatabase();
             Scripts.Database.CreateLocalDatabase();
             InitializeComponent();

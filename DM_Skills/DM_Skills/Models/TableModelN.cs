@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DM_Skills.Scripts;
 using System.Threading;
 using System.Windows;
+using System.Text.RegularExpressions;
 
 namespace DM_Skills.Models
 {
@@ -282,9 +283,13 @@ namespace DM_Skills.Models
 
                     foreach (var item in dataTeam)
                     {
+                        if (!Regex.IsMatch(item[3].ToString(), @"\d{2}-\d{2}-\d{4}"))
+                        {
+                            continue;
+                        }
                         var dt = Convert.ToDateTime(item[3]);
 
-                        if (from != null && from != "")
+                        if (from != null && from != "" && Regex.IsMatch(from, @"\d{2}-\d{2}-\d{4}"))
                         {
                             var dtFrom = Convert.ToDateTime(from);
                             if (dt < dtFrom)
@@ -293,7 +298,7 @@ namespace DM_Skills.Models
                             }
                         }
 
-                        if (to != null && to != "")
+                        if (to != null && to != "" && Regex.IsMatch(to, @"\d{2}-\d{2}-\d{4}"))
                         {
                             var dtTo = Convert.ToDateTime(to);
                             if (dt > dtTo)

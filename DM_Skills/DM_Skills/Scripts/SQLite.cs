@@ -31,6 +31,7 @@ namespace DM_Skills.Scripts
         public bool MultipleQuery { get; set; }
         public List<string> Querys { get; set; }
 
+        private string connString;
         private SQLiteConnection sql_conn;
         private SQLiteCommand sql_cmd;
 
@@ -40,32 +41,39 @@ namespace DM_Skills.Scripts
 
         ManualResetEvent IsLock = new ManualResetEvent(true);
 
-        public SQLite(bool isLocal = false)
+        public SQLite(string connection, string prefix ,bool isLocal = false)
         {
             _IsLocal = isLocal;
+            _prefix = prefix;
+            connString = connection;
             Settings = Application.Current.FindResource("Settings") as Models.SettingsModel;
             Querys = new List<string>();
             MultipleQuery = false;
 
         }
-        
+
+        public void ChangeConnectionString(string connection)
+        {
+            connString = connection;
+        }
+
 
         /// <summary>
         /// Opret forbindelse til databasen
         /// </summary>
         public void Connect(string connectionString, string prefix = "")
         {
-            _prefix = prefix;
+            //_prefix = prefix;
             
-            if (Settings.IsServer || _IsLocal || _unname)
-            {
-                //Start connection
-                sql_conn = new SQLiteConnection(connectionString);
-                sql_conn.Open();
-                sql_cmd = sql_conn.CreateCommand();
+            //if (Settings.IsServer || _IsLocal || _unname)
+            //{
+            //    //Start connection
+            //    sql_conn = new SQLiteConnection(connectionString);
+            //    sql_conn.Open();
+            //    sql_cmd = sql_conn.CreateCommand();
 
-                _isConnected = true;
-            }
+            //    _isConnected = true;
+            //}
         }
 
         /// <summary>
@@ -73,12 +81,12 @@ namespace DM_Skills.Scripts
         /// </summary>
         public void Disconnect()
         {
-            if (Settings.IsServer || _IsLocal || _unname)
-            {
-                sql_cmd.Dispose();
-                sql_conn.Close();
-                _isConnected = false;
-            }
+            //if (Settings.IsServer || _IsLocal || _unname)
+            //{
+            //    sql_cmd.Dispose();
+            //    sql_conn.Close();
+            //    _isConnected = false;
+            //}
         }
 
         public object Insert(string table, string[] columns, List<object[]> values, bool getID = false)
@@ -473,6 +481,46 @@ namespace DM_Skills.Scripts
         /// </summary>
         public List<List<object>> ExecuteQuery(string cmd, bool waitTillDone = false)
         {
+            //Console.WriteLine("ExecuteQuery" + cmd);
+            //lock (IsLock)
+            //{
+            //    IsLock.WaitOne();
+            //    IsLock.Reset();
+            //Console.WriteLine("--ExecuteQuery");
+            _lastQuery = cmd;
+            if (Settings.IsServer || _IsLocal || _unname)
+            {
+                if (IsReadMethod(cmd))
+                {
+                    return ReadQuery(cmd);
+                }
+                else
+                {
+                    WriteQuery(cmd);
+                }
+            }
+            else if (Settings.IsClient)
+            {
+                var myLock = new ManualResetEvent(false);
+                List<List<object>> values = null;
+                if (IsReadMethod(cmd))
+                {
+                    Settings.Client.Send(PacketType.Read, o => { values = o as List<List<object>>; myLock.Set(); }, cmd);
+                }
+                else
+                {
+                    Settings.Client.Send(PacketType.Write, o => { myLock.Set(); }, cmd);
+                }
+                if (!myLock.WaitOne(new TimeSpan(0, 0, 25)))
+                {
+                    MessageBox.Show("Fik ikke noget svar fra serveren");
+                }
+                return values;
+            }
+
+            //    IsLock.Set();
+          //  }
+            return null;
             //Console.WriteLine("ExecuteQuery");
             _lastQuery = cmd;
             var result = new List<List<object>>();
@@ -532,6 +580,7 @@ namespace DM_Skills.Scripts
                         myLock.Set();
                     }, cmd);
                 }
+
                 Console.WriteLine("#####Wait for server");
                 if (!myLock.WaitOne(new TimeSpan(0, 0, 5)))
                 {
@@ -539,7 +588,6 @@ namespace DM_Skills.Scripts
                     return null;
 
                 }
-                Console.WriteLine("#####Done Waiting");
             }
 
             CallBack?.Invoke(result);
@@ -573,6 +621,44 @@ namespace DM_Skills.Scripts
             Querys.Clear();
             MultipleQuery = false;
             IsLock.Set();
+        }
+
+
+        private List<List<object>> ReadQuery(string query)
+        {
+            //Console.WriteLine("ReadQuery");
+            var values = new List<List<object>>();
+            using (SQLiteConnection conn = new SQLiteConnection(connString))
+            using (SQLiteCommand build = new SQLiteCommand(query, conn))
+            {
+                conn.Open();
+                using (SQLiteDataReader read = build.ExecuteReader())
+                {
+                    while (read.Read())
+                    {
+                        var row = new List<object>();
+
+                        for (int i = 0; i < read.FieldCount; i++)
+                        {
+                            row.Add(read[i]);
+                        }
+                        values.Add(row);
+                    }
+                }
+
+            }
+
+            return values;
+        }
+        private void WriteQuery(string query)
+        {
+            //Console.WriteLine("WriteQuery");
+            using (SQLiteConnection conn = new SQLiteConnection(connString))
+            using (SQLiteCommand build = new SQLiteCommand(query, conn))
+            {
+                conn.Open();
+                build.ExecuteNonQuery();
+            }
         }
     }
 }
