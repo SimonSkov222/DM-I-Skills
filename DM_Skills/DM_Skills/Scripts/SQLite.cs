@@ -29,7 +29,7 @@ namespace DM_Skills.Scripts
 
         public Action<object> CallBack { get; set; }
         public bool MultipleQuery { get; set; }
-        public List<string> Querys { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<string> Querys { get; set; }
 
         private SQLiteConnection sql_conn;
         private SQLiteCommand sql_cmd;
@@ -44,6 +44,9 @@ namespace DM_Skills.Scripts
         {
             _IsLocal = isLocal;
             Settings = Application.Current.FindResource("Settings") as Models.SettingsModel;
+            Querys = new List<string>();
+            MultipleQuery = false;
+
         }
         
 
