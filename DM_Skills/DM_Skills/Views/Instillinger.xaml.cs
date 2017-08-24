@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -47,6 +48,8 @@ namespace DM_Skills.Views
         private string clientIP = "";
         private string clientPort = "";
         private string serverPort = "";
+        private bool hasLoaded = false;
+        private RadioButton rSettingsBtn;
 
         public Connection()
         {
@@ -56,23 +59,39 @@ namespace DM_Skills.Views
 
         private void Connection_Loaded(object sender, RoutedEventArgs e)
         {
-            Settings = (Models.SettingsModel)FindResource("Settings");
+            if (!hasLoaded)
+            {
+                hasLoaded = true;
+                Settings = (Models.SettingsModel)FindResource("Settings");
 
-            var myLocalDB = Scripts.Database.GetLocalDB("Connection_Loaded");
-            
-            Settings.OverTimeMin        = Convert.ToInt32(myLocalDB.GetRow("Settings","Value", "WHERE `Name`='OverTime'")[0]);
-            Settings.TableCnt           = Convert.ToInt32(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='TableCount'")[0]);
-            serverPort                  = Convert.ToString(myLocalDB.GetRow("Settings","Value", "WHERE `Name`='ServerPort'")[0]);
-            clientIP                    = Convert.ToString(myLocalDB.GetRow("Settings","Value", "WHERE `Name`='ClientIP'")[0]);
-            clientPort                  = Convert.ToString(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='ClientPort'")[0]);
+                var myLocalDB = Scripts.Database.GetLocalDB("Connection_Loaded");
 
-            myLocalDB.Disconnect();
-            
+                Settings.OverTimeMin = Convert.ToInt32(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='OverTime'")[0]);
+                Settings.TableCnt = Convert.ToInt32(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='TableCount'")[0]);
+                serverPort = Convert.ToString(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='ServerPort'")[0]);
+                clientIP = Convert.ToString(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='ClientIP'")[0]);
+                clientPort = Convert.ToString(myLocalDB.GetRow("Settings", "Value", "WHERE `Name`='ClientPort'")[0]);
 
-            txtIP.Text = ServerIP;
-            txtPort.Text = serverPort;
+                myLocalDB.Disconnect();
 
-            Application.Current.MainWindow.Closed += MainWindow_Closed;
+
+                txtIP.Text = ServerIP;
+                txtPort.Text = serverPort;
+
+                Application.Current.MainWindow.Closed += MainWindow_Closed;
+                //rSettingsBtn = Application.Current.MainWindow.FindName("Menu_Indstillinger") as RadioButton;
+                (Application.Current.MainWindow.FindName("Menu_Forside") as RadioButton).PreviewMouseLeftButtonDown += Connection_MouseLeftButtonDown;
+                (Application.Current.MainWindow.FindName("Menu_Projektor") as ToggleButton).PreviewMouseLeftButtonDown += Connection_MouseLeftButtonDown;
+            }
+        }
+
+        private void Connection_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (!Settings.HasLocation)
+            {
+                MessageBox.Show("Du har ikke valgt nogen Location", "Vælg Location", MessageBoxButton.OK, MessageBoxImage.Error);
+                e.Handled = true;
+            }
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
