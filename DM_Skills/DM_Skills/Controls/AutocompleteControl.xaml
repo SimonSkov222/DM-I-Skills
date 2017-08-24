@@ -43,7 +43,8 @@
                 MaxHeight="200"
                 PreviewMouseWheel="scroll_PreviewMouseWheel"
                 ScrollViewer.VerticalScrollBarVisibility="Auto"
-                ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    >
                     
                     <ListView x:Name="options" 
                             Margin="0"                          
@@ -80,10 +81,12 @@
                                             </Label>
                                             <ControlTemplate.Triggers>
                                                 <Trigger Property="IsSelected" Value="True">
-                                                    <Setter Property="Background" Value="Red"/>
+                                                    <Setter Property="Background" Value="LightGray"/>
+                                                    <Setter Property="FontWeight" Value="Bold"/>
                                                 </Trigger>
                                                 <Trigger Property="IsMouseOver" Value="True">
-                                                    <Setter Property="Background" Value="Blue"/>
+                                                    <Setter Property="Background" Value="LightGray"/>
+                                                    <Setter Property="FontWeight" Value="Bold"/>
                                                 </Trigger>
                                             </ControlTemplate.Triggers>
                                         </ControlTemplate>
