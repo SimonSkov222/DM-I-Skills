@@ -63,16 +63,13 @@ namespace DM_Skills.Scripts
             {
                 Application.Current.Dispatcher.Invoke(delegate ()
                 {
-                    MessageBox.Show("Update");
                     switch (type)
                     {
                         case PacketType.Broadcast_UploadTables:
-                            Console.WriteLine("Broadcast_UploadTables");
                             Settings.InvokeSchoolsChanged();
                             Settings.InvokeUpload();
                             break;
                         case PacketType.Broadcast_UploadSchools:
-                            Console.WriteLine("Broadcast_UploadSchools");
                             Settings.InvokeSchoolsChanged();
                             break;
                     }
