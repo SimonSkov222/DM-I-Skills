@@ -12,8 +12,11 @@ namespace DM_Skills.Scripts
         MultipleQuery,
         Write,
         Read,
-        Ping
+        Ping,
+        Broadcast_LocationChanged
     }
+
+
 
     [Serializable]
     public class Packet

@@ -66,11 +66,26 @@
                     </Grid.ColumnDefinitions>
 
                     <Controls:PlaceholderBox x:Name="txtIP" Placeholder="Ip Adresse" Grid.Row="0" Grid.Column="0" Margin="2 5" 
-                                             IsEnabled="{Binding ElementName=rClient, Path=IsChecked}"  TextChanged="SaveToLocal_TextChanged"
-                                             />
+                                             TextChanged="SaveToLocal_TextChanged"
+                                             >
+                        <Controls:PlaceholderBox.IsEnabled>
+                            <MultiBinding Converter="{StaticResource LogicalConvert}" ConverterParameter="and">
+                                <Binding ElementName="rClient" Path="IsChecked"/>
+                                <Binding Source="{StaticResource Settings}" Path="IsClient" Converter="{StaticResource BoolToBoolRevConvert}"/>
+                            </MultiBinding>
+                        </Controls:PlaceholderBox.IsEnabled>
+                    </Controls:PlaceholderBox>
+
                     <Controls:PlaceholderBox x:Name="txtPort" Placeholder="Port" Grid.Row="0" Grid.Column="1" Margin="2 5" 
                                              TextChanged="SaveToLocal_TextChanged"
-                                             IsEnabled="{Binding Source={StaticResource Settings}, Path=IsServer, Converter={StaticResource BoolToBoolRevConvert}}"/>
+                                             >
+                        <Controls:PlaceholderBox.IsEnabled>
+                            <MultiBinding Converter="{StaticResource LogicalConvert}" ConverterParameter="and">
+                                <Binding Source="{StaticResource Settings}" Path="IsServer" Converter="{StaticResource BoolToBoolRevConvert}"/>
+                                <Binding Source="{StaticResource Settings}" Path="IsClient" Converter="{StaticResource BoolToBoolRevConvert}"/>
+                            </MultiBinding>
+                        </Controls:PlaceholderBox.IsEnabled>
+                    </Controls:PlaceholderBox>
                     <Controls:PlaceholderBox x:Name="txtDB" 
                                              Text="{Binding Source={StaticResource Settings}, Path=FileNameDB}"
                                              Placeholder="Database placering" 
@@ -357,9 +372,11 @@
 
 
                     <ComboBox Grid.Row="0" VerticalAlignment="Top"  SelectedIndex="0"
-                          Binding.TargetUpdated="ComboBox_TargetUpdated"
-                          ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
-                          SelectedItem="{Binding Source={StaticResource Settings}, Path=Location}"/>
+                              Binding.TargetUpdated="ComboBox_TargetUpdated"
+                              ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
+                              SelectedItem="{Binding Source={StaticResource Settings}, Path=Location}"
+                              SelectionChanged="ComboBox_SelectionChanged"
+                              />
 
 
                     <Grid Grid.Row="1" VerticalAlignment="Center" Margin="0 13 0 0">
@@ -416,7 +433,6 @@
 
                     <Grid Grid.Row="3" Height="{Binding ElementName=btnSchoolUpload, Path=ActualHeight}" Margin="0 20 0 0">
 
-                        <Button Content="hej" Click="Button_Click_1"/>
                     </Grid>
 
                     </Grid>

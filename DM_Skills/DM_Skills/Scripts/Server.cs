@@ -49,13 +49,13 @@ namespace DM_Skills.Scripts
         }
 
 
-        public void Broadcast(PacketType type)
+        public void Broadcast(PacketType type, object data = null)
         {
             var packet = new Packet()
             {
                 Type = type,
                 ID = -100,
-                Data = null
+                Data = data
             };
             Host.Broadcast(Helper.ObjectToByteArray(packet));
 

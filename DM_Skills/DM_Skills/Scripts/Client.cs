@@ -139,6 +139,12 @@ namespace DM_Skills.Scripts
                             Settings.InvokeSchoolsChanged();
                         });
                         break;
+                    case PacketType.Broadcast_LocationChanged:
+                        Application.Current.Dispatcher.Invoke(delegate ()
+                        {
+                            Settings.Location = packet.Data as Models.LocationModel;
+                        });
+                        break;
                 }
             }))).Start();
 

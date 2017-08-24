@@ -158,6 +158,7 @@ namespace DM_Skills.Views
         private void TimerControl_OnReset()
         {
             LapList.Reset();
+            timerstarted = false;
         }
 
 
@@ -283,6 +284,7 @@ namespace DM_Skills.Views
             return;
 
 
+            timerstarted = false;
             foreach (var item in listOfTables.Children)
             {
                 if (item is Controls.TablesControl)
@@ -296,7 +298,23 @@ namespace DM_Skills.Views
             stopwatch.Reset();
             LapList.Reset();
         }
-      
+
+        private bool timerstarted = false;
+
+        private void TimerControl_OnStop()
+        {
+            if (timerstarted)
+            {
+                LapList.Add(stopwatch.DisplayTime);
+                timerstarted = false;
+            }
+        }
+
+        private void TimerControl_OnStart()
+        {
+            timerstarted = true;
+
+        }
     }
 
 
