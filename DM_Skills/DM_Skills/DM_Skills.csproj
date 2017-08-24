@@ -98,6 +98,7 @@
     <Compile Include="Converters\CompareValuesConverter.cs" />
     <Compile Include="Converters\DragAndDropTimerConverter.cs" />
     <Compile Include="Converters\ErrorConverter.cs" />
+    <Compile Include="Converters\LogicalConverter.cs" />
     <Compile Include="Converters\MinusDoubleConverter.cs" />
     <Compile Include="Converters\ObservableCollectionConverter.cs" />
     <Compile Include="Converters\OvertimeConverter.cs" />

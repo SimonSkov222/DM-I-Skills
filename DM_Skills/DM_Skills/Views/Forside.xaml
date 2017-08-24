@@ -76,6 +76,8 @@
             Height="170"
             Overtime="{Binding Source={StaticResource Settings}, Path=OverTimeMin}"
             OnLap="TimerControl_OnLap" 
+            OnStop="TimerControl_OnStop"
+            OnStart="TimerControl_OnStart"
             OnReset="TimerControl_OnReset"/>
             </Grid>
 </UserControl>

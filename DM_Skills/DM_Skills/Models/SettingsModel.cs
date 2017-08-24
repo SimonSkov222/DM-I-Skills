@@ -33,6 +33,8 @@ namespace DM_Skills.Models
         public event Action OnConnection;
         public event Action<bool> OnDisconnection;
 
+        public event Action OnLocationChanged;
+
         public event Action OnUpload;
 
         public bool HasConnection { get { return IsServer || IsClient; } }
@@ -185,6 +187,12 @@ namespace DM_Skills.Models
             Console.WriteLine("InvokeUpload");
             OnUpload?.Invoke();
         }
+
+        public void InvokeLocationChanged()
+        {
+            //NotifyPropertyChanged();
+            OnLocationChanged?.Invoke();
+        }
         
         public bool HasLocation
         {
@@ -193,6 +201,8 @@ namespace DM_Skills.Models
                 return _Location != null && _Location.ID != -1;
             }
         }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -209,6 +219,7 @@ namespace DM_Skills.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+
 
 
 

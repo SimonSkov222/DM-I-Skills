@@ -13,6 +13,7 @@
     <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityHiddenConvert" TrueValue="Visible" FalseValue="Hidden"/>
     <Converters:ValueToThicknessConverter x:Key="ValueToThicknessConvert"/>
     <Converters:AutocompleteItemConverter x:Key="AutocompleteItemConvert"/>
+    <Converters:LogicalConverter x:Key="LogicalConvert" />
     <Converters:ThicknessToDoubleConverter x:Key="ThicknessToDoubleReverseConvert" Reverse="True"/>
     <Converters:CompareValuesBoolConverter x:Key="CompareValuesToBoolConvert" TrueValue="True" FalseValue="False" />
     <Converters:BoolToBoolConverter x:Key="BoolToBoolRevConvert" TrueValue="False" FalseValue="True" />

@@ -276,6 +276,7 @@ namespace DM_Skills.Views
                 MessageBox.Show("Du er tilsluttet til en server", "Er tilsluttet", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            
             Settings.Client = new Scripts.Client();
             Settings.Client.Connect(txtIP.Text, int.Parse(txtPort.Text));
         }
@@ -287,6 +288,7 @@ namespace DM_Skills.Views
                 MessageBox.Show("Du er ikke tilsluttet til en server", "Ikke tilsluttet", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            
             Settings.Client.Disconnect();
         }
 
@@ -389,6 +391,14 @@ namespace DM_Skills.Views
                 var fileName = dlg.FileName;
                 System.IO.File.Copy(Settings.FileNameDB, dlg.FileName);
             }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //if (this.IsLoaded && Settings.IsServer)
+            //{
+            //    Settings.Server.Broadcast(Scripts.PacketType.Broadcast_LocationChanged, Settings.Location);
+            //}
         }
     }
 }
