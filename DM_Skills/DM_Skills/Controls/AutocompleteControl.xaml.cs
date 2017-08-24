@@ -203,17 +203,22 @@ namespace DM_Skills.Controls
                 .Where(o => o.Name.ToLower().Replace(" ", "").StartsWith(input.Text.ToLower().Replace(" ", ""))).ToArray();
             var cSelectedItem = visibleItems.Where(o => o == options.SelectedItem).ToArray();
             int cID = cSelectedItem.Length == 0 ? -1 : Array.IndexOf(visibleItems, cSelectedItem[0]);
+
             switch (e.Key)
             {
                 case Key.Down:
                     if (visibleItems.Length > 0 && cID < visibleItems.Length - 1)
                     {
                         options.SelectedItem = visibleItems[cID + 1];
+                        options.ScrollIntoView(options.SelectedItem);
                     }
                     break;
                 case Key.Up:
-                    if(visibleItems.Length > 0 && cID > 0)
+                    if (visibleItems.Length > 0 && cID > 0)
+                    {
                         options.SelectedItem = visibleItems[cID - 1];
+                        options.ScrollIntoView(options.SelectedItem);
+                    }
                     break;
 
                 case Key.Enter:
@@ -286,5 +291,9 @@ namespace DM_Skills.Controls
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
             e.Handled = true;
         }
+
+        
+
+
     }
 }
