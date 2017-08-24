@@ -5,11 +5,16 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace DM_Skills.Models
 {
     class SettingsModel : INotifyPropertyChanged
     {
-
+        public static SettingsModel Singleton { get; private set; }
+        public SettingsModel() {
+            Singleton = this;
+        }
 
         public string Version { get { return "1.0"; } }
         public string Author { get { return "Kim Danborg & Simon Skov"; } }
@@ -26,6 +31,7 @@ namespace DM_Skills.Models
                 return value;
             }
         }
+        
 
         public string Debug { get; set; }
 
