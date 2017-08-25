@@ -59,10 +59,10 @@ namespace DM_Skills
         {
             Settings.NotifyPropertyChanged(nameof(Settings.AllLocations));
             Settings.InvokeSchoolsChanged();
-            if (Settings.IsClient)
-            {
-                Settings.Client.Send(Scripts.PacketType.GetLocation, null, null);
-            }
+            //if (Settings.IsClient)
+            //{
+            //    Settings.Client.Send(Scripts.PacketType.GetLocation, null, null);
+            //}
         }
         
 
