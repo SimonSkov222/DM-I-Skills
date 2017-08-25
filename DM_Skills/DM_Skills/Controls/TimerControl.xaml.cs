@@ -41,7 +41,8 @@ namespace DM_Skills.Controls
         private Stopwatch _Watch = new Stopwatch();
         public TimeSpan DisplayTime { get { return _Watch.Elapsed; } }
 
-        private bool HasKeyEvent = false;
+        private bool HasLoadedOnce = false;
+        
         
 
 
@@ -57,12 +58,21 @@ namespace DM_Skills.Controls
             EventTimer.Tick += (o, e) => { NotifyPropertyChanged("DisplayTime"); };
             Loaded += (o, e) =>
             {
-                if (!HasKeyEvent)
+                if (!HasLoadedOnce)
                 {
+                    HasLoadedOnce = true;
+                    Models.SettingsModel.Singleton.OnTimerStarted += Settings_OnTimerStarted;
                     Application.Current.MainWindow.PreviewKeyUp += MainWindow_KeyUp;
-                    HasKeyEvent = true;
                 }
             };
+        }
+
+        private void Settings_OnTimerStarted()
+        {
+            if (Models.SettingsModel.Singleton.IsClient)
+            {
+                Button_TimeControl_Click(btn_Start, null);
+            }
         }
 
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
@@ -127,6 +137,7 @@ namespace DM_Skills.Controls
                 case 0:     //Start tiden
                     EventTimer.Start();
                     _Watch.Start();
+
                     break;
                 case 1:     //Stop tiden
                     _Watch.Stop();

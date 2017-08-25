@@ -55,6 +55,7 @@ namespace DM_Skills.Views
         {
             InitializeComponent();
             Loaded += Connection_Loaded;
+            
         }
 
         private void Connection_Loaded(object sender, RoutedEventArgs e)
@@ -82,6 +83,13 @@ namespace DM_Skills.Views
                 //rSettingsBtn = Application.Current.MainWindow.FindName("Menu_Indstillinger") as RadioButton;
                 (Application.Current.MainWindow.FindName("Menu_Forside") as RadioButton).PreviewMouseLeftButtonDown += Connection_MouseLeftButtonDown;
                 (Application.Current.MainWindow.FindName("Menu_Projektor") as ToggleButton).PreviewMouseLeftButtonDown += Connection_MouseLeftButtonDown;
+                Settings.OnLocationChanged += delegate () 
+                {
+                    //MessageBox.Show("SSet location");
+                    var selected = Settings.AllLocations.FirstOrDefault(m => m.Name == Settings.Location.Name);
+                    //int id =
+                    combo_Location.SelectedItem = selected;
+                };
             }
         }
 
@@ -320,15 +328,7 @@ namespace DM_Skills.Views
             txtSkoleList.Document.Blocks.Clear();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var list = Models.SchoolModel.GetAll();
 
-            foreach (var i in list)
-            {
-                Console.WriteLine(i.Name);
-            }
-        }
 
         private void Button_DeleteSchools_Click(object sender, RoutedEventArgs e)
         {
@@ -395,10 +395,11 @@ namespace DM_Skills.Views
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //if (this.IsLoaded && Settings.IsServer)
-            //{
-            //    Settings.Server.Broadcast(Scripts.PacketType.Broadcast_LocationChanged, Settings.Location);
-            //}
+            if (this.IsLoaded && Settings.IsServer)
+            {
+                //MessageBox.Show("Send Location");
+                Settings.Server.Broadcast(Scripts.PacketType.Broadcast_LocationChanged, Settings.Location);
+            }
         }
     }
 }

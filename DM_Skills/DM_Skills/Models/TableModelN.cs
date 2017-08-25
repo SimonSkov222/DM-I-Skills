@@ -162,28 +162,24 @@ namespace DM_Skills.Models
 
         protected override bool OnUpload()
         {
-            School.CallbackUpload = o => { Team.SchoolID = (o as SchoolModel).ID; Console.WriteLine("SchoolID" + Team.SchoolID); };
-            Location.CallbackUpload = o => { Team.LocationID = (o as LocationModel).ID; Console.WriteLine(Team.LocationID); };
+            School.CallbackUpload = o => { Team.SchoolID = (o as SchoolModel).ID; };
+            Location.CallbackUpload = o => { Team.LocationID = (o as LocationModel).ID;};
 
 
             var db = Database.GetDB();
             db.Disconnect();
             School.SendBroadcast = false;
-            Console.WriteLine("#### Skole");
             School.Upload();
             School.SendBroadcast = true;
-            Console.WriteLine("##### Location");
             Location.Upload();
             Team.Upload();
 
             foreach (var p in Persons)
             {
-                Console.WriteLine("###### Person");
                 p.Upload();
             }
 
-
-            Console.WriteLine("######################");
+            
             FailedUpload = false;
 
             //RequestBroadcast(PacketType.Broadcast_UploadTables);

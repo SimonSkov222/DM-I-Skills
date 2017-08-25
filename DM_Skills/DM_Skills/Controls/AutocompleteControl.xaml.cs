@@ -143,7 +143,6 @@ namespace DM_Skills.Controls
 
         private void ItemsSource_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            Console.WriteLine("item+" + e.Action);
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:

@@ -3,6 +3,7 @@ using SimpleTCP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace DM_Skills.Scripts
     {
         //SocketServer server;
         private Models.SettingsModel Settings;
+        private List<TcpClient> Clients = new List<TcpClient>();
         SimpleTcpServer Host;
 
         public Server()
@@ -29,15 +31,37 @@ namespace DM_Skills.Scripts
 
         public void Start(int port = 7788)
         {
-            Host = new SimpleTcpServer();
-            Host.DataReceived += Host_DataReceived;
-            Host.ClientConnected += (o, e) => { Console.WriteLine("Client Connected");  };
+            try
+            {
+                Host = new SimpleTcpServer();
+                Host.DataReceived += Host_DataReceived;
+                Host.ClientConnected += (o, e) => 
+                {
+
+                    for (int i = Clients.Count-1; i >= 0; i--)
+                    {
+                        if (!Clients[i].Connected)
+                        {
+                            Clients.RemoveAt(i);
+                        }
+                    }
+
+                    Clients.Add(e);
+                    Console.WriteLine("Client Connected");
+                };
 
             
             
-            Host.Start(port);
-            Settings.IsServer = true;
-            Settings.InvokeConnection();
+                Host.Start(port);
+                Settings.IsServer = true;
+                Settings.InvokeConnection();
+            }
+            catch (Exception)
+            {
+                Settings.IsServer = false;
+                MessageBox.Show("Kunne ikke starte serveren.\nTjek at porten ikke bliver brugt.", "Server ikke startet", MessageBoxButton.OK, MessageBoxImage.Error);
+                
+            }
         }
 
         public void Stop()
@@ -57,7 +81,15 @@ namespace DM_Skills.Scripts
                 ID = -100,
                 Data = data
             };
-            Host.Broadcast(Helper.ObjectToByteArray(packet));
+            try
+            {
+                MyBroadcast(Helper.ObjectToByteArray(packet));
+            }
+            catch (Exception)
+            {
+                Broadcast(type, data);
+            }
+            
 
             new Thread(new ThreadStart(delegate ()
             {
@@ -101,6 +133,11 @@ namespace DM_Skills.Scripts
             var myDB = Database.GetDB();
             switch (packet.Type)
             {
+                case PacketType.GetLocation:
+                    reply.Type = PacketType.Broadcast_LocationChanged;
+                    reply.Data = Settings.Location;
+                    e.Reply(Helper.ObjectToByteArray(reply));
+                    break;
                 case PacketType.MultipleQuery:
                     myDB.MultipleQuery = true;
                     myDB.Querys = packet.Data as List<string>;
@@ -130,6 +167,14 @@ namespace DM_Skills.Scripts
 
 
 
+        private void MyBroadcast(byte[] data)
+        {
+            foreach (var client in Clients.Where(x => x.Connected))
+            {
+                client.GetStream().Write(data, 0, data.Length);
+            }
+            
+        }
 
 
     }

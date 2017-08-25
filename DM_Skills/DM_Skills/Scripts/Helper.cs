@@ -173,13 +173,13 @@ namespace DM_Skills.Scripts
 
             int i = 1;
 
-            while (File.Exists(folder + filename + number + ".jpg"))
+            while (File.Exists(folder + filename + number + ".pdf"))
             {
                 number = $"({i})";
                 i++;
             }
 
-            string fullFilename = folder + filename + number + ".jpg";
+            string fullFilename = folder + filename + number + ".pdf";
             ObservableCollection<Models.TableModelN> models = new ObservableCollection<Models.TableModelN>();
             foreach (var item in target.Children)
             {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using SQLite_DB_LIB;                    //Database
 using System.ComponentModel;            //INotifyPropertyChanged
 using System.Runtime.CompilerServices;  //CallerMemberName for PropertyChanged
 using System.Windows.Documents;
@@ -33,7 +32,7 @@ namespace DM_Skills
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(DateTime.Now.ToShortDateString(), @"\d{2}-\d{2}-\d{4}"))
             {
-                MessageBox.Show("De!!");
+                MessageBox.Show("Din kalender format på computeren skal være sat til dansk!\n\nProgrammet lukkes", "Forkert Format", MessageBoxButton.OK, MessageBoxImage.Error);
                 this.Close();
                 return;
             }
@@ -60,18 +59,12 @@ namespace DM_Skills
         {
             Settings.NotifyPropertyChanged(nameof(Settings.AllLocations));
             Settings.InvokeSchoolsChanged();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            
-
-            Console.WriteLine("TablesControl Skoler:");
-            foreach (var item in (view_forside.listOfTables.Children[0] as Controls.TablesControl).autoSchools.ItemsSource)
+            if (Settings.IsClient)
             {
-                Console.WriteLine(item);
+                Settings.Client.Send(Scripts.PacketType.GetLocation, null, null);
             }
         }
+        
 
         private void Menu_Projektor_Checked(object sender, RoutedEventArgs e)
         {
@@ -87,46 +80,8 @@ namespace DM_Skills
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            var settings = FindResource("Settings") as Models.SettingsModel;
-            settings.IsServer = true;
-            settings.Server = new Scripts.Server();
-            settings.Server.Start(7788);
-        }
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            var settings = FindResource("Settings") as Models.SettingsModel;
-            settings.IsClient = true;
-            settings.Client = new Scripts.Client();
-            //settings.Client.Connect(txtIP.Text, 7788);
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-
-
-        }
-
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            Random r = new Random();
-            Scripts.Database.CreateDatabase();
-
-            for (int i = 0; i < 10; i++)
-            {
-                var d = new Models.TableModelN();
-                d.Team.Class = "7z"+i;
-                d.Team.Date = $"{r.Next(1,28).ToString().PadLeft(2,'0')}-{r.Next(1, 12).ToString().PadLeft(2, '0')}-{r.Next(2016, 2018).ToString().PadLeft(2, '0')}";
-                d.Team.Time = $"{r.Next(0,15).ToString().PadLeft(2,'0')}:{r.Next(0,59).ToString().PadLeft(2,'0')}:{r.Next(0,59).ToString().PadLeft(2,'0')}";
-                d.School.Name = $"Hersted {r.Next(1, 10)} Skole";
-                d.Location.Name = "ballerup";
-                d.Persons.Add(new Models.PersonModel() { Name = "hej" });
-                d.Persons.Add(new Models.PersonModel() { Name = "meh" });
-
-                d.Upload();
-            }
-        }
+        
+        
 
         private void ScrollViewer_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {

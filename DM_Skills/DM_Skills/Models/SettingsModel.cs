@@ -16,7 +16,7 @@ namespace DM_Skills.Models
             Singleton = this;
         }
 
-        public string Version { get { return "1.0"; } }
+        public string Version { get { return "1.1"; } }
         public string Author { get { return "Kim Danborg & Simon Skov"; } }
         public string Copyright
         {
@@ -38,8 +38,8 @@ namespace DM_Skills.Models
         public event Action OnSchoolsChanged;
         public event Action OnConnection;
         public event Action<bool> OnDisconnection;
-
         public event Action OnLocationChanged;
+        public event Action OnTimerStarted;
 
         public event Action OnUpload;
 
@@ -163,10 +163,10 @@ namespace DM_Skills.Models
         {
             get
             {
-                Console.WriteLine("Call All_Schools");
+                //Console.WriteLine("Call All_Schools");
                 if (_AllSchools == null)
                 {
-                    Console.WriteLine("Get Schools");
+                    //Console.WriteLine("Get Schools");
                     _AllSchools = SchoolModel.GetAll();
                 }
                 return _AllSchools;
@@ -191,7 +191,7 @@ namespace DM_Skills.Models
 
         public void InvokeUpload()
         {
-            Console.WriteLine("InvokeUpload");
+            //Console.WriteLine("InvokeUpload");
             OnUpload?.Invoke();
         }
 
@@ -200,7 +200,13 @@ namespace DM_Skills.Models
             //NotifyPropertyChanged();
             OnLocationChanged?.Invoke();
         }
-        
+
+        public void InvokeTimerStarted()
+        {
+            OnTimerStarted?.Invoke();
+        }
+
+
         public bool HasLocation
         {
             get

@@ -59,9 +59,6 @@
     <Reference Include="SimpleTCP, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleTCP.1.0.15\lib\net45\SimpleTCP.dll</HintPath>
     </Reference>
-    <Reference Include="SQLite_DB_LIB">
-      <HintPath>..\SQLite_DB_LIB\bin\Debug\SQLite_DB_LIB.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.105.2, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -349,7 +346,6 @@
     <Compile Include="Models\ModelSettings.cs" />
     <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\SchoolModel.cs" />
-    <Compile Include="Models\TableModel.cs" />
     <Compile Include="Models\TableModelN.cs" />
     <Compile Include="Models\TeamModel.cs" />
     <Compile Include="Views\Forside.xaml.cs">
