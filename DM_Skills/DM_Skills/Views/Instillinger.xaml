@@ -16,7 +16,6 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        
         <Grid  Background="{StaticResource Color_Border_Box}" 
                Grid.Row="0" Grid.Column="0"  >
             <Grid.RowDefinitions>
