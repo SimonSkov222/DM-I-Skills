@@ -281,11 +281,9 @@
 
 
                     <ComboBox Grid.Row="0" VerticalAlignment="Top"  SelectedIndex="0"
-                              IsEnabled="{Binding Source={StaticResource Settings}, Path=IsServer}"
                               Binding.TargetUpdated="ComboBox_TargetUpdated" x:Name="combo_Location"
                               ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
                               SelectedItem="{Binding Source={StaticResource Settings}, Path=Location, Mode=TwoWay}"
-                              SelectionChanged="ComboBox_SelectionChanged"
                               />
 
 
