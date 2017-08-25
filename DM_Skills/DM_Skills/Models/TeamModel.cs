@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace DM_Skills.Models
@@ -11,6 +12,7 @@ namespace DM_Skills.Models
     {
         const int ERRNO_TIME_NULL = 1;
         const int ERRNO_CLASS_NULL = 2;
+        const int ERRNO_TIME_FORMAT = 4;
 
         public const string ERROR_TIME_NULL = "";
         public const string ERROR_CLASS_NULL = "";
@@ -22,7 +24,7 @@ namespace DM_Skills.Models
                 var numb = 0;
                 Error = "";
 
-                if (Time == null || Time == "")
+                if ((Time == null || Time == "") || (Time != null && !Regex.IsMatch(Time, @"^\d\d:\d\d:\d\d$")))
                 {
                     numb += ERRNO_TIME_NULL;
                 }
@@ -30,6 +32,12 @@ namespace DM_Skills.Models
                 {
                     numb += ERRNO_CLASS_NULL;
                 }
+
+                //if (Time != null && !Regex.IsMatch(Time, @"\d\d:\d\d:\d\d"))
+                //{
+
+                //    numb += ERRNO_TIME_FORMAT;
+                //}
 
                 return numb;
             }
@@ -89,7 +97,7 @@ namespace DM_Skills.Models
                 //ErrNo = 0;
                 Error = "";
 
-                if (Time == null || Time == "")
+                if ((Time == null || Time == "") || (Time != null && !Regex.IsMatch(Time, @"^\d\d:\d\d:\d\d$")))
                 {
                     //ErrNo += ERRNO_TIME_NULL;
                     Error = ERROR_TIME_NULL;
@@ -101,6 +109,10 @@ namespace DM_Skills.Models
                     Error = ERROR_CLASS_NULL;
                     failed = true;
                 }
+                //if (Time != null && !Regex.IsMatch(Time, @"\d\d:\d\d:\d\d"))
+                //{
+                //    failed = true;
+                //}
 
 
                 NotifyPropertyChanged("ErrNo");

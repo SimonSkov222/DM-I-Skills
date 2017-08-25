@@ -79,17 +79,17 @@
                         Text="s bedste tid"/>
                 </TextBlock>
 
-                <TextBlock 
+                <TextBlock x:Name="txtTime"
                     Text="{Binding ElementName=controller, Path=BestTime.Team.Time}" 
                     FontSize="16" Padding="5 3"
                     Grid.Row="1" Grid.Column="1" 
                     Foreground="White" Background="{StaticResource background_Row1}"/>
-                <TextBlock 
+                <TextBlock x:Name="txtSchool"
                     Text="{Binding ElementName=controller, Path=BestTime.School.Name}" 
                     FontSize="16" Padding="5 3"
                     Grid.Row="1" Grid.Column="2" 
                     Foreground="White" Background="{StaticResource background_Row1}"/>
-                <TextBlock 
+                <TextBlock x:Name="txtClass"
                     Text="{Binding ElementName=controller, Path=BestTime.Team.Class}" 
                     FontSize="16" Padding="5 3"
                     Grid.Row="1" Grid.Column="3" 

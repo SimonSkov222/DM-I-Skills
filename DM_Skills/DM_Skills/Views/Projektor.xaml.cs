@@ -6,10 +6,12 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Timers;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -25,7 +27,8 @@ namespace DM_Skills.Views
         private Models.SettingsModel Settings;
         public bool ClosedByFullScreen = false;
         public Controls.TimerControl Timer { get; set; }
-        public MainWindow Parent;
+        public MainWindow Parent = null;
+        private DispatcherTimer updateTime;
 
         public Models.TableModelN BestTime { get { return _BestTime; } set { _BestTime = value; NotifyPropertyChanged(); } }
         public Models.TableModelN BestTimeToDay { get { return _BestTimeToDay; } set { _BestTimeToDay = value; NotifyPropertyChanged(); } }
@@ -42,6 +45,14 @@ namespace DM_Skills.Views
             Closed += (oo, ee) => { if (!ClosedByFullScreen) Parent.Menu_Projektor.IsChecked = false; };
             Settings = FindResource("Settings") as Models.SettingsModel;
             Settings.OnUpload += UpdateData;
+
+            updateTime = new DispatcherTimer();
+
+            updateTime.Interval = new TimeSpan(0,0,15);
+            updateTime.Tick += (o, e) => UpdateData();
+            Loaded += (o, e) => updateTime.Start();
+            Closed += (o, e) => updateTime.Stop();
+
             Loaded += (o, e) =>
             {
                 UpdateData();
@@ -57,6 +68,7 @@ namespace DM_Skills.Views
             };
 
         }
+
         private void UpdateData()
         {
             BestTime = Models.TableModelN.GetBestTime(null, Settings.Location);
@@ -152,7 +164,6 @@ namespace DM_Skills.Views
                         SetFullScreen(false);
                     break;
             }
-
         }
 
         
