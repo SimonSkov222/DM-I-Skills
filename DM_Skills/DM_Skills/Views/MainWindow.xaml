@@ -13,7 +13,7 @@
         FontFamily="Calibri" x:Name="controller"
         Background="{StaticResource Color_Background_Program}"
         Foreground="{StaticResource Color_Foreground_Program}"
-        Title="MainWindow" Height="800" Width="1200" MinHeight="600" MinWidth="800" Icon="/DM_Skills;component/Images/icon.png">
+        Title="DM I Skills" Height="800" Width="1200" MinHeight="600" MinWidth="800" Icon="/DM_Skills;component/Images/icon.png">
 
 
     <Grid>
