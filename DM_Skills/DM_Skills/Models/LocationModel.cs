@@ -11,20 +11,13 @@ namespace DM_Skills.Models
     public class LocationModel : ModelSettings
     {
         const int ERRNO_NAME_NULL = 1;
-        private SettingsModel Settings = null;
 
         public const string ERROR_NAME_NULL = "";
 
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public LocationModel()
-        {
-            if (Settings == null)
-            {
-                Settings = Application.Current.FindResource("Settings") as SettingsModel;
-            }
-        }
+       
 
         public override bool CanUpload
         {
@@ -45,9 +38,9 @@ namespace DM_Skills.Models
         {
             var myDB = Scripts.Database.GetDB();
 
-            if (Settings.AllLocations.Count(m=>m.Name.ToLower() == Name.ToLower()) > 0)
+            if (SettingsModel.Singleton.AllLocations.Count(m=>m.Name.ToLower() == Name.ToLower()) > 0)
             {
-                var result = Settings.AllLocations.First(m => m.Name.ToLower() == Name.ToLower());
+                var result = SettingsModel.Singleton.AllLocations.First(m => m.Name.ToLower() == Name.ToLower());
                 ID = result.ID;
                 Name = result.Name;
             }

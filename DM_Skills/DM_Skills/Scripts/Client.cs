@@ -19,7 +19,6 @@ namespace DM_Skills.Scripts
         private Dictionary<int, Action<object>> Callbacks = new Dictionary<int, Action<object>>();
         private ManualResetEvent waitHandel = new ManualResetEvent(false);
         private Thread pingServer;
-        private bool WaitForReply = false;
 
         public Client()
         {
@@ -49,28 +48,45 @@ namespace DM_Skills.Scripts
                             {
                                 reply = client.WriteLineAndGetReply("#875120", new TimeSpan(0, 0, 0, 15, 0));
                             }
-                            catch (Exception) { reply = null; }
+                            catch (Exception)
+                            { reply = null; }
 
                             if (reply == null)
                             {
-                                Application.Current.Dispatcher.Invoke(delegate ()
+                                var answer = MessageBox.Show("Kunne ikke få svar fra serveren.\nVil du vente på et svar?", "Timeout", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                                if (answer == MessageBoxResult.No)
                                 {
-                                    Console.WriteLine("Disconnect");
-                                    CloseConnection();
-                                    Settings.InvokeDisconnection(false);
-                                });
-                                break;
+                                    Application.Current.Dispatcher.Invoke(delegate ()
+                                    {
+                                        Console.WriteLine("Disconnect");
+                                        CloseConnection();
+                                        Settings.InvokeDisconnection(false);
+                                    });
+                                    break;
+                                }
                             }
                         }
+                        else
+                        {
+                            Application.Current.Dispatcher.Invoke(delegate ()
+                            {
+                                Console.WriteLine("Disconnect");
+                                CloseConnection();
+                                Settings.InvokeDisconnection(false);
+                            });
+                            break;
+
+                        }
                     }
+                    
                 }));
                 pingServer.Start();
+
                 Settings.IsClient = true;
                 Settings.InvokeConnection();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
                 Settings.IsClient = false;
             }
 
@@ -111,7 +127,6 @@ namespace DM_Skills.Scripts
         {
             
             var packet = Helper.ByteArrayToObject(e.Data) as Packet;
-            Console.WriteLine("Got reply -" + packet.Type);
             
             lock (Callbacks)
             {
@@ -143,6 +158,13 @@ namespace DM_Skills.Scripts
                         Application.Current.Dispatcher.Invoke(delegate ()
                         {
                             Settings.Location = packet.Data as Models.LocationModel;
+                            Settings.InvokeLocationChanged();
+                        });
+                        break;
+                    case PacketType.Broadcast_TimerStarted:
+                        Application.Current.Dispatcher.Invoke(delegate ()
+                        {
+                            Settings.InvokeTimerStarted();
                         });
                         break;
                 }

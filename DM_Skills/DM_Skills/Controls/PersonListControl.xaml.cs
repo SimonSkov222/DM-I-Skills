@@ -157,7 +157,7 @@ namespace DM_Skills.Controls
                 }
             };
 
-            GotFocus += (o,e) => { Console.WriteLine("GotFocus"); };
+//            GotFocus += (o,e) => { Console.WriteLine("GotFocus"); };
         }
         
 

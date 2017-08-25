@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SQLite_DB_LIB;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Drawing.Imaging;
@@ -69,10 +68,13 @@ namespace DM_Skills.Views
             var visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.Visibility == Visibility.Visible);
             
             //Fjern sidste bord
-
             for (int i = visibleCnt -1; i >= numb; i--)
             {
                 listOfTables.Children[i].Visibility = Visibility.Collapsed;
+                if (listOfTables.Children[i] is Controls.TablesControl)
+                {
+                    (listOfTables.Children[i] as Controls.TablesControl).Reset();
+                }
             }
 
             visibleCnt = listOfTables.Children.Cast<UIElement>().Count(o => o.Visibility == Visibility.Visible);
@@ -129,12 +131,13 @@ namespace DM_Skills.Views
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         
+
         /// <summary>
         /// Her connecter vi til databasen og opretter den
         /// vi tilføjet også en load event
         /// </summary>
         public Forside()
-        {
+        {            
             InitializeComponent();
             Settings = (Models.SettingsModel)FindResource("Settings");
             Loaded += (o,e) => UpdateTableLayout(NumbOfTables);
@@ -160,8 +163,7 @@ namespace DM_Skills.Views
             LapList.Reset();
             timerstarted = false;
         }
-
-
+        
 
         /// <summary>
         /// Indsend klik
@@ -221,7 +223,7 @@ namespace DM_Skills.Views
                     {
                         if ((i as Controls.TablesControl).Model.CanUpload)
                         {
-                            Console.WriteLine("### Upload Table");
+                            //Console.WriteLine("### Upload Table");
 
                             (i as Controls.TablesControl).Model.Upload();
                         }
@@ -244,46 +246,44 @@ namespace DM_Skills.Views
         }
 
 
-        private string GetSS(int length) {
-            Random r = new Random(333);
-            string val = "";
-            string option = "qazwsxedcrfvtgbnhyujmkiolp";
-            for (int i = 0; i < length; i++)
-            {
-                string v = option.Substring(r.Next(0, option.Length), 1);
-                v = r.Next(0, 987425) % 3 == 0 ? v.ToUpper() : v.ToLower();
-                val += v;
-            }
-            return val;
-        }
 
-        /// <summary>
-        /// Nulstiling af runde klik.
-        /// </summary>
-        private void Button_Reset_Click(object sender, RoutedEventArgs e)
+        private Random autoFill_r;
+        private int autoFill_cID = 0;
+        private int autoFill_sID = 0;
+        public void AutoFill()
         {
-            Random r = new Random(146);
+            if (autoFill_r == null)
+            {
+                autoFill_r = new Random();
+                autoFill_cID = autoFill_r.Next(2, 99);
+            }
             foreach (var item in listOfTables.Children)
             {
+                autoFill_sID++;
                 if (item is Controls.TablesControl)
                 {
                     var mod = new Models.TableModelN();
-                    mod.Team.Class = GetSS(r.Next(5, 5));
-                    mod.Team.Time = GetSS(r.Next(8, 8));
-                    mod.School.Name = GetSS(r.Next(25, 45));
+                    mod.Team.Class = autoFill_cID.ToString();
+                    mod.Team.Time = $"{autoFill_r.Next(0, 23).ToString().PadLeft(2, '0')}:{autoFill_r.Next(0, 59).ToString().PadLeft(2, '0')}:{autoFill_r.Next(0, 59).ToString().PadLeft(2, '0')}";
+                    mod.School.Name = "Min Skole #" + autoFill_sID;
                     for (int i = 0; i < 3; i++)
                     {
                         var p = new Models.PersonModel();
-                        p.Name = GetSS(r.Next(13, 25));
+                        p.Name = $"Person{i}_{autoFill_sID}";
                         mod.Persons.Add(p);
                     }
                     (item as Controls.TablesControl).Model = mod;
                 }
 
             }
-            return;
+        }
 
-
+        /// <summary>
+        /// Nulstiling af runde klik.
+        /// </summary>
+        
+        private void Button_Reset_Click(object sender, RoutedEventArgs e)
+        {
             timerstarted = false;
             foreach (var item in listOfTables.Children)
             {

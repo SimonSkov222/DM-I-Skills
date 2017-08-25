@@ -142,8 +142,6 @@ namespace DM_Skills.Scripts
 
         public override void OnOpenDocument(PdfWriter writer, Document document)
         {
-
-
             try
             {
                 PrintTime = DateTime.Now;
@@ -151,12 +149,7 @@ namespace DM_Skills.Scripts
                 cb = writer.DirectContent;
                 template = cb.CreateTemplate(50, 50);
             }
-            catch (DocumentException de)
-            {
-            }
-            catch (System.IO.IOException ioe)
-            {
-            }
+            catch (Exception){}
         }
         
         public override void OnEndPage(PdfWriter writer, Document document)

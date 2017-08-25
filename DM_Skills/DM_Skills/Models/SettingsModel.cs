@@ -5,13 +5,18 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+
 namespace DM_Skills.Models
 {
     class SettingsModel : INotifyPropertyChanged
     {
+        public static SettingsModel Singleton { get; private set; }
+        public SettingsModel() {
+            Singleton = this;
+        }
 
-
-        public string Version { get { return "1.0"; } }
+        public string Version { get { return "1.1"; } }
         public string Author { get { return "Kim Danborg & Simon Skov"; } }
         public string Copyright
         {
@@ -26,14 +31,15 @@ namespace DM_Skills.Models
                 return value;
             }
         }
+        
 
         public string Debug { get; set; }
 
         public event Action OnSchoolsChanged;
         public event Action OnConnection;
         public event Action<bool> OnDisconnection;
-
         public event Action OnLocationChanged;
+        public event Action OnTimerStarted;
 
         public event Action OnUpload;
 
@@ -157,10 +163,10 @@ namespace DM_Skills.Models
         {
             get
             {
-                Console.WriteLine("Call All_Schools");
+                //Console.WriteLine("Call All_Schools");
                 if (_AllSchools == null)
                 {
-                    Console.WriteLine("Get Schools");
+                    //Console.WriteLine("Get Schools");
                     _AllSchools = SchoolModel.GetAll();
                 }
                 return _AllSchools;
@@ -185,7 +191,7 @@ namespace DM_Skills.Models
 
         public void InvokeUpload()
         {
-            Console.WriteLine("InvokeUpload");
+            //Console.WriteLine("InvokeUpload");
             OnUpload?.Invoke();
         }
 
@@ -194,7 +200,13 @@ namespace DM_Skills.Models
             //NotifyPropertyChanged();
             OnLocationChanged?.Invoke();
         }
-        
+
+        public void InvokeTimerStarted()
+        {
+            OnTimerStarted?.Invoke();
+        }
+
+
         public bool HasLocation
         {
             get

@@ -9,11 +9,13 @@ namespace DM_Skills.Scripts
     public enum PacketType {
         Broadcast_UploadTables,
         Broadcast_UploadSchools,
+        Broadcast_LocationChanged,
+        Broadcast_TimerStarted,
+        GetLocation,
         MultipleQuery,
         Write,
         Read,
-        Ping,
-        Broadcast_LocationChanged
+        Ping
     }
 
 

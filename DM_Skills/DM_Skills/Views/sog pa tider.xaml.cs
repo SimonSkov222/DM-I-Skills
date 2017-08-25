@@ -194,10 +194,6 @@ namespace DM_Skills.Views
 
         private void Button_Search_Click(object sender, RoutedEventArgs e)
         {
-            
-
-            Console.WriteLine(Settings.IsServer + "  " + Settings.IsClient);
-
             if (!Settings.IsServer && !Settings.IsClient)
             {
                 MessageBox.Show("Du er ikke tilsluttet til en database", "Ingen database", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -210,7 +206,6 @@ namespace DM_Skills.Views
             var from = dtFrom.SelectedDate == null ? "" : dtFrom.SelectedDate.Value.ToShortDateString();
             var to = dtTo.SelectedDate == null ? "" : dtTo.SelectedDate.Value.ToShortDateString();
             var location = cbLocation.SelectedIndex == 0 ? null : cbLocation.SelectedItem as Models.LocationModel;
-            Console.WriteLine(searchList.Items.Count + " 2");
 
 
             if (searchID.HasValue)
