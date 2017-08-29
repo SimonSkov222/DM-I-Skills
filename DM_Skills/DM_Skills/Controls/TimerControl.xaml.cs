@@ -58,10 +58,9 @@ namespace DM_Skills.Controls
             EventTimer.Tick += (o, e) => { NotifyPropertyChanged("DisplayTime"); };
             Loaded += (o, e) =>
             {
-                if (!HasLoadedOnce)
+                if (!HasLoadedOnce && this.IsVisible)
                 {
                     HasLoadedOnce = true;
-                    Models.SettingsModel.Singleton.OnTimerStarted += Settings_OnTimerStarted;
                     Application.Current.MainWindow.PreviewKeyUp += MainWindow_KeyUp;
                 }
             };

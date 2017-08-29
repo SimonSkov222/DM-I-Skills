@@ -93,14 +93,18 @@ namespace DM_Skills.Scripts
                     new Column() { Name = "Name", Type = ColumnTypes.String, IsPrimaryKey=true},
                     new Column() { Name = "Value", Type = ColumnTypes.String, IsNotNull=true }
                 );
+                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "Version", Settings.Version });
                 myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "LocationDB", Settings.FileNameDefaultDB });
                 myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "OverTime", "15" });
                 myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "TableCount", "3" });
                 myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "ServerPort", "" });
                 myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "ClientIP", "" });
                 myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "ClientPort", "" });
+                myDB.Insert("Settings", new string[] { "Name", "Value" }, new string[] { "Index", "" });
 
             }
+
+            
             myDB.Disconnect();
         }
 
@@ -131,6 +135,7 @@ namespace DM_Skills.Scripts
 
             if (!myDB.Exist("Teams"))
             {
+                //      "ID_"
                 myDB.Create("Teams",
                     new Column { Name = "ID", Type = ColumnTypes.Int, IsPrimaryKey = true, IsAutoIncrement = true },
                     new Column { Name = "SchoolID", Type = ColumnTypes.Int, IsNotNull = true, ForeignKeyReferences = "Schools(ID)" },
@@ -149,12 +154,24 @@ namespace DM_Skills.Scripts
                     new Column { Name = "Name", Type = ColumnTypes.String, IsNotNull = true }
                 );
             }
+
+
+
+            if (Version.Parse(Settings.Version) >= Version.Parse("1.5"))
+            {
+                if (!myDB.Exist("Teams", "UniqueID"))
+                {
+                    var uID = new Column { Name = "UniqueID", Type = ColumnTypes.String };
+                    myDB.ExecuteQuery($"ALTER TABLE `{myDB.GetTableName("Teams")}` ADD COLUMN {myDB.GetColumn(uID)};");
+                }
+                //UniqueID
+            }
+
+
             if (myDB is SQLite)
             {
                 (myDB as SQLite)._unname = false;
             }
-
-
             myDB.Disconnect();
         }
 

@@ -15,6 +15,7 @@ using System.Timers;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace DM_Skills.Views
 {
@@ -32,8 +33,8 @@ namespace DM_Skills.Views
 
         public Models.TableModelN BestTime { get { return _BestTime; } set { _BestTime = value; NotifyPropertyChanged(); } }
         public Models.TableModelN BestTimeToDay { get { return _BestTimeToDay; } set { _BestTimeToDay = value; NotifyPropertyChanged(); } }
-        private Models.TableModelN _BestTime;
-        private Models.TableModelN _BestTimeToDay;
+        private Models.TableModelN _BestTime = new Models.TableModelN();
+        private Models.TableModelN _BestTimeToDay = new Models.TableModelN();
         public string Date { get { return DateTime.Now.ToShortDateString(); } }
 
 
@@ -68,11 +69,25 @@ namespace DM_Skills.Views
             };
 
         }
+        
 
         private void UpdateData()
         {
-            BestTime = Models.TableModelN.GetBestTime(null, Settings.Location);
-            BestTimeToDay = Models.TableModelN.GetBestTime(DateTime.Now, Settings.Location);
+            Thread getdata = new Thread(new ThreadStart(delegate ()
+            {
+
+                lock (BestTime)
+                lock (BestTimeToDay)
+                {
+                    BestTime = Models.TableModelN.GetBestTime(null, Settings.Location);
+                    BestTimeToDay = Models.TableModelN.GetBestTime(DateTime.Now, Settings.Location);
+                }
+            }));
+
+
+        getdata.Start();
+            //BestTime = Models.TableModelN.GetBestTime(null, Settings.Location);
+            //BestTimeToDay = Models.TableModelN.GetBestTime(DateTime.Now, Settings.Location);
         }
 
         public void SetFullScreen(bool value)

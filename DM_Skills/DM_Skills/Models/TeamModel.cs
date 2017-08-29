@@ -46,6 +46,7 @@ namespace DM_Skills.Models
         public int? ID { get; set; }
         public int SchoolID { get; set; }
         public int LocationID { get; set; }
+        public string UniqueID { get; set; }
 
         private string _Date;
         public string Date
@@ -137,8 +138,8 @@ namespace DM_Skills.Models
             else
             {
                 ID = Convert.ToInt32(myDB.Insert("Teams", 
-                    new string[] { "Class", "SchoolID", "LocationID", "Date", "Time"}, 
-                    new object[] { Class, SchoolID, LocationID, Date, Time }, true));
+                    new string[] { "Class", "SchoolID", "LocationID", "Date", "Time", "UniqueID" }, 
+                    new object[] { Class,   SchoolID,   LocationID,     Date,   Time,   UniqueID }, true));
             }
             myDB.Disconnect();
 

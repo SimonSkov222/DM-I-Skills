@@ -16,7 +16,7 @@ namespace DM_Skills.Models
             Singleton = this;
         }
 
-        public string Version { get { return "1.1"; } }
+        public string Version { get { return "1.5"; } }
         public string Author { get { return "Kim Danborg & Simon Skov"; } }
         public string Copyright
         {
@@ -114,6 +114,26 @@ namespace DM_Skills.Models
 
         private int _TableCnt = 3;
         private int _OverTimeMin = 3;
+
+        public string Index
+        {
+            get
+            {
+                if (_Index == null)
+                {
+                    var row = Scripts.Database.GetLocalDB("").GetRow("Settings", "Value", "WHERE `Name` = 'Index'");
+                    _Index = row[0].ToString();
+                }
+                return _Index;
+            }
+            set
+            {
+                Scripts.Database.GetLocalDB("").Update("Settings", "Value", value, (object)"Index");
+                _Index = null;
+                NotifyPropertyChanged();
+            }
+        }
+        public string _Index;
 
         public int TableCnt
         {

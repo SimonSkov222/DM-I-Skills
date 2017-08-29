@@ -38,6 +38,16 @@
             <RadioButton Grid.Column="1" x:Name="Menu_Side2" Content="Søg på tider" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}" />
             <RadioButton Grid.Column="2" x:Name="Menu_Indstillinger" Content="Indstillinger" IsChecked="False" Style="{StaticResource Radio_Style_MenuOption}"/>
             <ToggleButton  Grid.Column="3" x:Name="Menu_Projektor" Checked="Menu_Projektor_Checked" Unchecked="Menu_Projektor_Checked" Content="Projektor" Style="{StaticResource ToggleButton_Styles_Default}"/>
+            <TextBlock Grid.Column="4" 
+                       HorizontalAlignment="Right" 
+                       VerticalAlignment="Center" 
+                       FontSize="16" Foreground="Blue"  
+                       TextDecorations="Underline" 
+                       Padding="0 0 15 0"
+                       MouseLeftButtonDown="TextBlock_MouseLeftButtonDown">
+                <Run Text="Index:"/>
+                <Run Text="{Binding Source={StaticResource Settings}, Path=Index}"/>
+            </TextBlock>
         </Grid>
 
         <!--Height="{Binding ElementName=debug_hh, Path=ActualHeight}"-->

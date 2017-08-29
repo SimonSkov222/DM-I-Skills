@@ -40,6 +40,9 @@ namespace DM_Skills.Scripts
 
         bool Exist(string table);
 
+        bool Exist(string table, string column);
+        bool Exist(string table, string[] columns);
+
         bool Exist(string table, string[] columns, object[] values);
 
         bool Exist(string table, string column, object value);

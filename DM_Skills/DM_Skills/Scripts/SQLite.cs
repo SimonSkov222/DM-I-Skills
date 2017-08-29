@@ -660,5 +660,22 @@ namespace DM_Skills.Scripts
                 build.ExecuteNonQuery();
             }
         }
+
+        public bool Exist(string table, string column)
+        {
+            return Exist(table, new string[] { column });
+        }
+
+        public bool Exist(string table, string[] columns)
+        {
+            var rows = ExecuteQuery($"PRAGMA table_info({GetTableName(table)});");
+            if (rows != null)
+            {
+                var cnt = rows.Count(m => columns.Contains(m[1].ToString()));
+                return cnt == columns.Length;
+            }
+
+            return false;
+        }
     }
 }
