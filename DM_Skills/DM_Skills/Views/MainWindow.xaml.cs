@@ -36,13 +36,20 @@ namespace DM_Skills
                 this.Close();
                 return;
             }
-
+            
 
             //Scripts.Database.CreateDatabase();
             Scripts.Database.CreateLocalDatabase();
             InitializeComponent();
 
             Settings = (Models.SettingsModel)FindResource("Settings");
+
+            while (string.IsNullOrEmpty(Settings.Index))
+            {
+                Settings.Index = IPrompt.IInputBox.Show(
+                    "Indtast et unik ID for dette program",
+                    "Indtast ID", MessageBoxImage.None, "");
+            }
 
             Settings.OnConnection += Settings_OnConnection;
             Settings.OnDisconnection += Settings_OnDisconnection;
@@ -59,10 +66,10 @@ namespace DM_Skills
         {
             Settings.NotifyPropertyChanged(nameof(Settings.AllLocations));
             Settings.InvokeSchoolsChanged();
-            if (Settings.IsClient)
-            {
-                Settings.Client.Send(Scripts.PacketType.GetLocation, null, null);
-            }
+            //if (Settings.IsClient)
+            //{
+            //    Settings.Client.Send(Scripts.PacketType.GetLocation, null, null);
+            //}
         }
         
 
@@ -99,6 +106,17 @@ namespace DM_Skills
         private void WarningDB_TargetUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
         {
             BindingOperations.GetBindingExpressionBase(gridForside, Grid.HeightProperty).UpdateTarget();
+        }
+
+        private void TextBlock_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var newID = IPrompt.IInputBox.Show(
+                    "Indtast et unik ID for dette program",
+                    "Indtast ID", MessageBoxImage.None, Settings.Index);
+            if (!string.IsNullOrEmpty(newID))
+            {
+                Settings.Index = newID;
+            }
         }
     }
 }

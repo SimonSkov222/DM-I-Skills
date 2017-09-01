@@ -217,15 +217,16 @@ namespace DM_Skills.Views
                 //Scripts.Helper.BackupBitmap(listOfTables);
                 Scripts.Helper.BackupPDF(listOfTables);
 
-                foreach (var i in listOfTables.Children)
+                for (int i = 0;i < listOfTables.Children.Count; i++)
                 {
-                    if (i is Controls.TablesControl)
+                    var item = listOfTables.Children[i];
+                    if (item is Controls.TablesControl)
                     {
-                        if ((i as Controls.TablesControl).Model.CanUpload)
+                        if ((item as Controls.TablesControl).Model.CanUpload)
                         {
                             //Console.WriteLine("### Upload Table");
-
-                            (i as Controls.TablesControl).Model.Upload();
+                            (item as Controls.TablesControl).Model.Team.UniqueID = $"{Settings.Index}_{i}_{DateTimeOffset.Now.ToUnixTimeSeconds().ToString()}";
+                            (item as Controls.TablesControl).Model.Upload();
                         }
                     }
                 }

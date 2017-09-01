@@ -120,7 +120,12 @@ namespace DM_Skills.Scripts
                 }
                 Callbacks.Add(packet.ID, cb);   
             }
-            client.Write(Helper.ObjectToByteArray(packet));
+
+            try
+            {
+                client.Write(Helper.ObjectToByteArray(packet));
+            }
+            catch (Exception) { MessageBox.Show("Kan ikke sende til serveren"); }
         }
         
         private void Client_DataReceived(object sender, Message e)

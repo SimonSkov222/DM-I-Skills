@@ -513,7 +513,7 @@ namespace DM_Skills.Scripts
                 }
                 if (!myLock.WaitOne(new TimeSpan(0, 0, 25)))
                 {
-                    MessageBox.Show("Fik ikke noget svar fra serveren");
+                    MessageBox.Show("SQLite 516: Fik ikke noget svar fra serveren");                    
                 }
                 return values;
             }
@@ -659,6 +659,23 @@ namespace DM_Skills.Scripts
                 conn.Open();
                 build.ExecuteNonQuery();
             }
+        }
+
+        public bool Exist(string table, string column)
+        {
+            return Exist(table, new string[] { column });
+        }
+
+        public bool Exist(string table, string[] columns)
+        {
+            var rows = ExecuteQuery($"PRAGMA table_info({GetTableName(table)});");
+            if (rows != null)
+            {
+                var cnt = rows.Count(m => columns.Contains(m[1].ToString()));
+                return cnt == columns.Length;
+            }
+
+            return false;
         }
     }
 }
