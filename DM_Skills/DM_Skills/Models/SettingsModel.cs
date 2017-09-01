@@ -115,6 +115,8 @@ namespace DM_Skills.Models
         private int _TableCnt = 3;
         private int _OverTimeMin = 3;
 
+        public double OverTimeMill { get { return TimeSpan.FromMinutes(OverTimeMin).TotalMilliseconds; } }
+
         public string Index
         {
             get
@@ -151,6 +153,8 @@ namespace DM_Skills.Models
             {
                 _OverTimeMin = value;
                 NotifyPropertyChanged();
+                NotifyPropertyChanged("OverTimeMill");
+                
             }
         }
         private LocationModel _Location;

@@ -37,9 +37,19 @@ namespace DM_Skills.Controls
         public event Action OnReset;
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 
+        private long addTime = 5000;
+        public long AddTime { get { return addTime; } set { addTime = value; NotifyPropertyChanged("DisplayTime"); } }
         private DispatcherTimer EventTimer;
         private Stopwatch _Watch = new Stopwatch();
-        public TimeSpan DisplayTime { get { return _Watch.Elapsed; } }
+
+        public TimeSpan DisplayTime
+        {
+            get
+            {
+                var moreTime = TimeSpan.FromMilliseconds(addTime);
+                return _Watch.Elapsed + moreTime;
+            }
+        }
 
         private bool HasLoadedOnce = false;
         
@@ -52,6 +62,7 @@ namespace DM_Skills.Controls
         /// </summary>
         public TimerControl()
         {
+            
             InitializeComponent();
             EventTimer = new DispatcherTimer();
             EventTimer.Interval = TimeSpan.FromMilliseconds(1);

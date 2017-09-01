@@ -9,10 +9,11 @@
              Background="{StaticResource Color_Background_Box}" 
              BorderBrush="{StaticResource Color_Border_Box}" 
              BorderThickness="2"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="600">
     <Grid Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
@@ -41,6 +42,12 @@
             <Button x:Name="btn_Lap" Content="Omgang" Click="Button_TimeControl_Click" Focusable="False" Style="{StaticResource Button_Style_Default}" Background="{StaticResource Color_Background_Button_LightGreen}"/>
             <Button x:Name="btn_Reset" Content="Nulstil" Click="Button_TimeControl_Click" Focusable="False" Style="{StaticResource Button_Style_Default}"/>
         </StackPanel>
-        
+
+        <Slider Grid.Row="2"
+            IsMoveToPointEnabled="True"
+            Style="{StaticResource Slider_Style_Default}"                          
+            Value="{Binding ElementName=controller, Path=AddTime}" 
+            Maximum="{Binding Source={StaticResource Settings}, Path=OverTimeMill}"
+            Minimum="0" Margin="0 0 0 0"/>
     </Grid>
 </UserControl>
