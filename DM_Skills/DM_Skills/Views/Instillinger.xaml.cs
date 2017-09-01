@@ -95,11 +95,11 @@ namespace DM_Skills.Views
 
         private void Connection_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (!Settings.HasLocation)
-            {
-                MessageBox.Show("Du har ikke valgt nogen Location", "Vælg Location", MessageBoxButton.OK, MessageBoxImage.Error);
-                e.Handled = true;
-            }
+            //if (!Settings.HasLocation)
+            //{
+            //    MessageBox.Show("Du har ikke valgt nogen Location", "Vælg Location", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    e.Handled = true;
+            //}
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)

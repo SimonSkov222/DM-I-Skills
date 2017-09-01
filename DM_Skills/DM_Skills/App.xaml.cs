@@ -25,6 +25,7 @@ namespace DM_Skills
                 {
                     settings.Index = e.Args[i + 1];
                 }
+
             }
         }
     }
