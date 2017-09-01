@@ -85,7 +85,7 @@ namespace DM_Skills.Models
                 NotifyPropertyOnAll?.Invoke();
             }
         }
-
+        
 
 
         public override bool CanUpload
