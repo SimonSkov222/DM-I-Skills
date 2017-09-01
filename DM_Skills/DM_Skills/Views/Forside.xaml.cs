@@ -183,12 +183,12 @@ namespace DM_Skills.Views
 
                 return;
             }
-            if (Settings.Location == null || Settings.Location.ID == -1)
-            {
-                MessageBox.Show("Du har ikke valgt nogen Location", "Vælg Location", MessageBoxButton.OK, MessageBoxImage.Error);
+            //if (Settings.Location == null || Settings.Location.ID == -1)
+            //{
+            //    MessageBox.Show("Du har ikke valgt nogen Location", "Vælg Location", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                return;
-            }
+            //    return;
+            //}
             
             bool allowUpload = true;
             int cnt = 0;
