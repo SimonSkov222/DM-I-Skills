@@ -513,7 +513,7 @@ namespace DM_Skills.Scripts
                 }
                 if (!myLock.WaitOne(new TimeSpan(0, 0, 25)))
                 {
-                    MessageBox.Show("Fik ikke noget svar fra serveren");
+                    MessageBox.Show("SQLite 516: Fik ikke noget svar fra serveren");                    
                 }
                 return values;
             }

@@ -431,7 +431,7 @@ namespace DM_Skills.Models
             }
 
             var teams = TeamModel.GetTeamsByLocation(location);
-            TableModelN value = null;
+            TableModelN value = new TableModelN();
             var isLock = new ManualResetEvent(false);
 
             GetTables(Order.HurtigsteTider, "", "", location, date.Value.ToShortDateString(), null, o =>
