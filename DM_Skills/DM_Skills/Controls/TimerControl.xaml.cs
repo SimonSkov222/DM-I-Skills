@@ -37,8 +37,17 @@ namespace DM_Skills.Controls
         public event Action OnReset;
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 
-        private long addTime = 5000;
-        public long AddTime { get { return addTime; } set { addTime = value; NotifyPropertyChanged("DisplayTime"); } }
+        private long addTime = 0;
+        public long AddTime
+        {
+            get { return addTime; }
+            set
+            {
+                addTime = value;
+                NotifyPropertyChanged();
+                NotifyPropertyChanged("DisplayTime");
+            }
+        }
         private DispatcherTimer EventTimer;
         private Stopwatch _Watch = new Stopwatch();
 
@@ -125,6 +134,7 @@ namespace DM_Skills.Controls
         public void Reset()
         {
             Button_TimeControl_Click(btn_Reset, null);
+
         }
 
         /// <summary>
@@ -157,6 +167,7 @@ namespace DM_Skills.Controls
                 case 3:     //Stop og nulstil
                     EventTimer.Stop();
                     _Watch.Reset();
+                    AddTime = 0;
                     NotifyPropertyChanged("DisplayTime");
                     break;
             }
