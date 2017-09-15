@@ -15,7 +15,6 @@ namespace DM_Skills
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-
             var settings = FindResource("Settings") as Models.SettingsModel;
             //MessageBox.Show(DateTimeOffset.Now.ToUnixTimeSeconds().ToString());
 

@@ -49,12 +49,12 @@ namespace DM_Skills.Views
         private string clientPort = "";
         private string serverPort = "";
         private bool hasLoaded = false;
-        private RadioButton rSettingsBtn;
 
         public Connection()
         {
             InitializeComponent();
             Loaded += Connection_Loaded;
+
             
         }
 
@@ -90,6 +90,10 @@ namespace DM_Skills.Views
                     //int id =
                     combo_Location.SelectedItem = selected;
                 };
+
+
+                //Settings.Server.Debug_Output += s => Application.Current.Dispatcher.Invoke(delegate () { sOutput.Text += $"{s}\n"; });
+                //Settings.Client.Debug_Output += s => Application.Current.Dispatcher.Invoke(delegate () { cOutput.Text += $"{s}\n"; });
             }
         }
 
@@ -229,8 +233,7 @@ namespace DM_Skills.Views
             myLocalDB.Disconnect();
             
             Scripts.Database.CreateDatabase();
-
-            Settings.Server = new Scripts.Server();
+            
             Settings.Server.Start(port);
 
 
@@ -285,7 +288,6 @@ namespace DM_Skills.Views
                 return;
             }
             
-            Settings.Client = new Scripts.Client();
             Settings.Client.Connect(txtIP.Text, int.Parse(txtPort.Text));
         }
 
@@ -324,7 +326,7 @@ namespace DM_Skills.Views
                     (new Models.SchoolModel() { Name = name }).Upload();
                 }
             }
-            Models.SchoolModel.RequestBroadcast(Scripts.PacketType.Broadcast_UploadSchools);
+            Models.SchoolModel.RequestBroadcast(Scripts.JsonCommandIDs.Broadcast_UploadSchools);
             txtSkoleList.Document.Blocks.Clear();
         }
 
@@ -333,7 +335,7 @@ namespace DM_Skills.Views
         private void Button_DeleteSchools_Click(object sender, RoutedEventArgs e)
         {
             Models.SchoolModel.RemoveUnused();
-            Models.SchoolModel.RequestBroadcast(Scripts.PacketType.Broadcast_UploadSchools);
+            Models.SchoolModel.RequestBroadcast(Scripts.JsonCommandIDs.Broadcast_UploadSchools);
         }
 
         
@@ -398,8 +400,13 @@ namespace DM_Skills.Views
             if (this.IsLoaded && Settings.IsServer)
             {
                 //MessageBox.Show("Send Location");
-                Settings.Server.Broadcast(Scripts.PacketType.Broadcast_LocationChanged, Settings.Location);
+                //Settings.Server.Broadcast(Scripts.PacketType.Broadcast_LocationChanged, Settings.Location);
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Resources["Color_Background_Button_Blue"] = Brushes.Red;
         }
     }
 }

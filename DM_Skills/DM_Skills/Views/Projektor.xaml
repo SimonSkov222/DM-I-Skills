@@ -37,22 +37,21 @@
         </Grid.RowDefinitions>
 
         <Canvas Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="4">
-            <Ellipse Width="400" Height="400" Fill="{StaticResource tecBackground}" Canvas.Top="369" Canvas.Left="-200" RenderTransformOrigin="0.469,0.52" >
-            </Ellipse>
-            <Ellipse Width="364" Height="415" Fill="{StaticResource tecBackground}" Canvas.Top="354" Canvas.Left="618" RenderTransformOrigin="0.469,0.52" />
-            <Ellipse Width="82" Height="192" Fill="{StaticResource tecBackground}" Canvas.Top="64" Canvas.Left="-44" RenderTransformOrigin="0.469,0.52" />
-            <Ellipse Width="100" Height="114" Fill="{StaticResource tecBackground}" Canvas.Top="-62" Canvas.Left="736" RenderTransformOrigin="0.469,0.52" />
-            <Ellipse Width="186" Height="106" Fill="{StaticResource tecBackground}" Canvas.Top="-62" Canvas.Left="275" RenderTransformOrigin="0.469,0.52" />
-            <Ellipse Width="172" Height="129" Fill="{StaticResource tecBackground}" Canvas.Top="-62" Canvas.Left="441" RenderTransformOrigin="0.469,0.52" />
-            <Ellipse Width="288" Height="254" Fill="{StaticResource tecBackground}" Canvas.Top="435" Canvas.Left="258" RenderTransformOrigin="0.469,0.52" />
-            <Ellipse Width="253" Height="154" Fill="{StaticResource tecBackground}" Canvas.Top="-42" RenderTransformOrigin="0.469,0.52" Canvas.Left="-22" />
-            <Ellipse Width="172" Height="160" Fill="{StaticResource tecBackground}" Canvas.Top="230" Canvas.Left="700" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="400" Height="400" Fill="{DynamicResource tecBackground}" Canvas.Top="369" Canvas.Left="-200" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="364" Height="415" Fill="{DynamicResource tecBackground}" Canvas.Top="354" Canvas.Left="618" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="82" Height="192"  Fill="{DynamicResource tecBackground}" Canvas.Top="64" Canvas.Left="-44" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="100" Height="114" Fill="{DynamicResource tecBackground}" Canvas.Top="-62" Canvas.Left="736" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="186" Height="106" Fill="{DynamicResource tecBackground}" Canvas.Top="-62" Canvas.Left="275" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="172" Height="129" Fill="{DynamicResource tecBackground}" Canvas.Top="-62" Canvas.Left="441" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="288" Height="254" Fill="{DynamicResource tecBackground}" Canvas.Top="435" Canvas.Left="258" RenderTransformOrigin="0.469,0.52" />
+            <Ellipse Width="253" Height="154" Fill="{DynamicResource tecBackground}" Canvas.Top="-42" RenderTransformOrigin="0.469,0.52" Canvas.Left="-22" />
+            <Ellipse Width="172" Height="160" Fill="{DynamicResource tecBackground}" Canvas.Top="230" Canvas.Left="700" RenderTransformOrigin="0.469,0.52" />
 
         </Canvas>
 
         <Image Source="/DM_Skills;component/Images/TecWhite.png" Grid.Row="0" Grid.Column="0" Width="200" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,1,0"/>
-        <Border CornerRadius="10" SnapsToDevicePixels="True" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="{StaticResource tecBackground}"
-            BorderBrush="{StaticResource tecBackground}" BorderThickness="5" ClipToBounds="True" Grid.ColumnSpan="2" Margin="0 50 0 0">
+        <Border CornerRadius="10" SnapsToDevicePixels="True" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" Background="{DynamicResource tecBackground}"
+            BorderBrush="{DynamicResource tecBackground}" BorderThickness="5" ClipToBounds="True" Grid.ColumnSpan="2" Margin="0 50 0 0">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
@@ -83,24 +82,24 @@
                     Text="{Binding ElementName=controller, Path=BestTime.Team.Time}" 
                     FontSize="16" Padding="5 3"
                     Grid.Row="1" Grid.Column="1" 
-                    Foreground="White" Background="{StaticResource background_Row1}"/>
+                    Foreground="White" Background="{DynamicResource background_Row1}"/>
                 <TextBlock x:Name="txtSchool"
                     Text="{Binding ElementName=controller, Path=BestTime.School.Name}" 
                     FontSize="16" Padding="5 3"
                     Grid.Row="1" Grid.Column="2" 
-                    Foreground="White" Background="{StaticResource background_Row1}"/>
+                    Foreground="White" Background="{DynamicResource background_Row1}"/>
                 <TextBlock x:Name="txtClass"
                     Text="{Binding ElementName=controller, Path=BestTime.Team.Class}" 
                     FontSize="16" Padding="5 3"
                     Grid.Row="1" Grid.Column="3" 
-                    Foreground="White" Background="{StaticResource background_Row1}"/>
+                    Foreground="White" Background="{DynamicResource background_Row1}"/>
 
 
                 <TextBlock Text="Dagens bedste tid:" FontSize="16" Grid.Row="2" Grid.Column="0" Foreground="White" Padding="5 3"/>
 
-                <TextBlock Text="{Binding ElementName=controller, Path=BestTimeToDay.Team.Time}" FontSize="16" Grid.Row="2" Grid.Column="1" Foreground="White" Background="{StaticResource background_Row2}" Padding="5 3"/>
-                <TextBlock Text="{Binding ElementName=controller, Path=BestTimeToDay.School.Name}" FontSize="16" Grid.Row="2" Grid.Column="2" Foreground="White" Background="{StaticResource background_Row2}" Padding="5 3"/>
-                <Border Grid.Row="2" Grid.Column="3" CornerRadius="0 0 7 0" Background="{StaticResource background_Row2}" SnapsToDevicePixels="True">
+                <TextBlock Text="{Binding ElementName=controller, Path=BestTimeToDay.Team.Time}" FontSize="16" Grid.Row="2" Grid.Column="1" Foreground="White" Background="{DynamicResource background_Row2}" Padding="5 3"/>
+                <TextBlock Text="{Binding ElementName=controller, Path=BestTimeToDay.School.Name}" FontSize="16" Grid.Row="2" Grid.Column="2" Foreground="White" Background="{DynamicResource background_Row2}" Padding="5 3"/>
+                <Border Grid.Row="2" Grid.Column="3" CornerRadius="0 0 7 0" Background="{DynamicResource background_Row2}" SnapsToDevicePixels="True">
                     <TextBlock Text="{Binding ElementName=controller, Path=BestTimeToDay.Team.Class}" FontSize="16" Foreground="White"  Padding="5 3"/>
                 </Border>
             </Grid>

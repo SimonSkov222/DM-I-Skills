@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace DM_Skills.Scripts
 {
@@ -201,6 +202,17 @@ namespace DM_Skills.Scripts
             //CreateBitmapFromVisual(target, fullFilename);
 
 
+        }
+
+
+        public static void ProcessUITasks()
+        {
+            DispatcherFrame frame = new DispatcherFrame();
+            Dispatcher.CurrentDispatcher.BeginInvoke(DispatcherPriority.Background, new DispatcherOperationCallback(delegate (object parameter) {
+                frame.Continue = false;
+                return null;
+            }), null);
+            Dispatcher.PushFrame(frame);
         }
     }
 }

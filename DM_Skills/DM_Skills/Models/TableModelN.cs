@@ -34,6 +34,7 @@ namespace DM_Skills.Models
         public TeamModel Team { get; set; }
         public ObservableCollection<PersonModel> Persons { get; set; }
         public bool FailedUpload
+
         {
             get { return _FailedUpload; }
             set
