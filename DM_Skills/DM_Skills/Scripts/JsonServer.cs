@@ -50,10 +50,13 @@ namespace DM_Skills.Scripts
             try
             {
                 Host = new SimpleTcpServer();
-                Host.Delimiter = 0x10;
-                Host.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimter data received"); };
+                //Host.Delimiter = 0x10;
+                //Host.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimter data received"); };
+                //Host.DataReceived += (o, e) => { Console.WriteLine("##############Data received"); };
                 Host.DataReceived += DataReceived;
+                //Host.DelimiterDataReceived += DataReceived;
                 Host.ClientConnected += ClientConnected;
+                Host.ClientDisconnected += (o, e) => { Console.WriteLine("Client disconnected!!"); };
 
                 Host.Start(port);
 
@@ -64,8 +67,9 @@ namespace DM_Skills.Scripts
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine("Warning#001 :" + ex.Message);
                 InvokeOutput("Server Not Started.");
                 return false;
             }
@@ -91,13 +95,18 @@ namespace DM_Skills.Scripts
         
         public void Broadcast(int command, object data = null)
         {
-            var packet = PackJson(command, null, data);            
+            var packet = PackJson(command, null, data) + Host.StringEncoder.GetString(new byte[] { Host.Delimiter });            
 
             var dataInBytes = Host.StringEncoder.GetBytes(packet);
             foreach (var client in Clients.Where(x => x.Connected))
             {
                 try { client.GetStream().Write(dataInBytes, 0, dataInBytes.Length); }
-                catch (Exception) { client.Close(); client.Dispose(); }
+                catch (Exception ex) {
+
+                    Console.WriteLine("Warning#002 :" + ex.Message);
+                    client.Close();
+                    client.Dispose();
+                }
             }
             InvokeOutput($"Broadcast Send: {packet}");
         }
@@ -145,11 +154,12 @@ namespace DM_Skills.Scripts
                 var replyPacket = PackJson((int)packet[0], (int)packet[1], reply);
                 try
                 {
-                    e.Reply(replyPacket);
+                    e.ReplyLine(replyPacket);
                     InvokeOutput($"Reply Send: {replyPacket}");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Console.WriteLine("Warning#003 :" + ex.Message);
                     InvokeOutput($"Reply Not Send: {replyPacket}");
                 }
             }
@@ -174,7 +184,7 @@ namespace DM_Skills.Scripts
 
 
             Clients.Add(e);
-            InvokeOutput("Client Connected.");
+            InvokeOutput($"Client Connected({e.Connected}).");
         }
         
         private void Program_Exit(object sender, EventArgs e)
