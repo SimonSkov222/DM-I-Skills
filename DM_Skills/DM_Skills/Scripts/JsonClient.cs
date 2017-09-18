@@ -30,11 +30,11 @@ namespace DM_Skills.Scripts
         {
             JsonConverter = converterJson;
             DataController = dataController;
-            Application.Current.LoadCompleted += (o, e) => Application.Current.MainWindow.Closed += Program_Exit;
+            //Application.Current.LoadCompleted += (o, e) => Application.Current.MainWindow.Closed += Program_Exit;
             //Application.Current.Exit += Program_Exit;
             //pingServer = new Thread(new ThreadStart(Ping_Method));
 
-            disconnectTimer.Tick += DisconnectTimer_Tick; ;
+            disconnectTimer.Tick += DisconnectTimer_Tick;
             disconnectTimer.Interval = timeout;
         }
         
@@ -50,8 +50,9 @@ namespace DM_Skills.Scripts
             try
             {
                 client = new SimpleTcpClient();
-                client.Delimiter = 0x10;
-                client.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimiter data received"); };
+                //client.Delimiter = 0x10;
+                //client.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimiter data received"); };
+                //client.DelimiterDataReceived += DataReceived;
                 client.DataReceived += DataReceived;
 
                 client.Connect(ipAddress, port);
@@ -66,8 +67,9 @@ namespace DM_Skills.Scripts
                 OnConnected?.Invoke();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine("Warning#001: " + ex.Message);
                 InvokeOutput("Client Not Connected.");
                 return false;
             }
@@ -90,15 +92,18 @@ namespace DM_Skills.Scripts
 
         public void Send(int command, object data = null, Action<object> cb = null)
         {
+            Console.WriteLine("Start Send");
             int packetID = SaveCallback(cb);
             var packet = PackJson(command, packetID, data);
             try
             {
                 client.Write(packet);
+
                 InvokeOutput($"Packet Send: {packet}");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine("Warning#002: " + ex.Message);
                 InvokeOutput($"Packet Not Send: {packet}");
             }
         }
@@ -149,7 +154,6 @@ namespace DM_Skills.Scripts
             if (client != null)
             {
                 client.Disconnect();
-                client.Dispose();
             }
             Callbacks.Clear();
             InvokeOutput("Client Disconnected.");
@@ -157,7 +161,7 @@ namespace DM_Skills.Scripts
         }
         
         private void InvokeOutput(string text) {
-            //Console.WriteLine("Client: "+text);
+            Console.WriteLine("Client: "+text);
             //Debug_Output?.Invoke(text);
             //Helper.ProcessUITasks();
         }
@@ -168,6 +172,7 @@ namespace DM_Skills.Scripts
 
         private void DataReceived(object sender, Message e)
         {
+            Console.WriteLine("Got packet");
             var packet = UnpackJson(e.MessageString);
 
             switch ((int)packet[0])
@@ -187,8 +192,9 @@ namespace DM_Skills.Scripts
                     e.Reply(replyPacket);
                     InvokeOutput($"Reply Send: {replyPacket}");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Console.WriteLine("Warning#003: " + ex.Message);
                     InvokeOutput($"Reply Not Send: {replyPacket}");
                 }
             }
