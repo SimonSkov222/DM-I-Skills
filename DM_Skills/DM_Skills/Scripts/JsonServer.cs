@@ -50,6 +50,8 @@ namespace DM_Skills.Scripts
             try
             {
                 Host = new SimpleTcpServer();
+                Host.Delimiter = 0x10;
+                Host.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimter data received"); };
                 Host.DataReceived += DataReceived;
                 Host.ClientConnected += ClientConnected;
 
@@ -165,8 +167,7 @@ namespace DM_Skills.Scripts
             {
                 if (!Clients[i].Connected)
                 {
-                    //DisconnectClient(Clients[i]);
-                    Clients.RemoveAt(i);
+                    //Clients.RemoveAt(i);
                     Console.WriteLine("Remove client");
                 }
             }
