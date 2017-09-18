@@ -209,7 +209,6 @@ namespace DM_Skills.Models
                 return _AllSchools;
             }
         }
-        
 
 
         public void InvokeSchoolsChanged()
@@ -257,6 +256,9 @@ namespace DM_Skills.Models
                 return _Location != null && _Location.ID != -1;
             }
         }
+
+        public bool UseGetTime { get; set; }
+        public bool UseGetLocation { get; set; }
 
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -179,7 +179,7 @@ namespace DM_Skills.Controls
             {
                 case 0: OnStart?.Invoke(); break;
                 case 1: OnStop?.Invoke(); break;
-                case 2: if (_Watch.IsRunning) { OnLap?.Invoke(_Watch.Elapsed); } break;
+                case 2: if (_Watch.IsRunning) { OnLap?.Invoke(_Watch.Elapsed + TimeSpan.FromMilliseconds(addTime)); } break;
                 case 3: OnReset?.Invoke(); break;
             }
 
