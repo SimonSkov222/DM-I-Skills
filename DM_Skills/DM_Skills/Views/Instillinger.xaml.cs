@@ -424,6 +424,7 @@ namespace DM_Skills.Views
         {
             if (Settings.IsClient)
             {
+                Console.WriteLine("Get location :)");
                 Settings.Client.Send((int)Scripts.JsonCommandIDs.GetLocation);
             }
         }

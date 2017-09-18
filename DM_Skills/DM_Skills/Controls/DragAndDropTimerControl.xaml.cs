@@ -183,5 +183,11 @@ namespace DM_Skills.Controls
             listPanel.RowDefinitions.Clear();
             listPanel.Children.Clear();
         }
+        
+
+        private void btn_Reset_Click(object sender, RoutedEventArgs e)
+        {
+            Reset();
+        }
     }
 }
