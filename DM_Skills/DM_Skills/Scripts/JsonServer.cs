@@ -51,9 +51,12 @@ namespace DM_Skills.Scripts
             {
                 Host = new SimpleTcpServer();
                 //Host.Delimiter = 0x10;
-                Host.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimter data received"); };
+                //Host.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimter data received"); };
+                //Host.DataReceived += (o, e) => { Console.WriteLine("##############Data received"); };
                 Host.DataReceived += DataReceived;
+                //Host.DelimiterDataReceived += DataReceived;
                 Host.ClientConnected += ClientConnected;
+                Host.ClientDisconnected += (o, e) => { Console.WriteLine("Client disconnected!!"); };
 
                 Host.Start(port);
 
@@ -64,8 +67,9 @@ namespace DM_Skills.Scripts
 
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                Console.WriteLine("Warning#001 :" + ex.Message);
                 InvokeOutput("Server Not Started.");
                 return false;
             }
@@ -97,7 +101,12 @@ namespace DM_Skills.Scripts
             foreach (var client in Clients.Where(x => x.Connected))
             {
                 try { client.GetStream().Write(dataInBytes, 0, dataInBytes.Length); }
-                catch (Exception) { client.Close(); client.Dispose(); }
+                catch (Exception ex) {
+
+                    Console.WriteLine("Warning#002 :" + ex.Message);
+                    client.Close();
+                    client.Dispose();
+                }
             }
             InvokeOutput($"Broadcast Send: {packet}");
         }
@@ -148,8 +157,9 @@ namespace DM_Skills.Scripts
                     e.ReplyLine(replyPacket);
                     InvokeOutput($"Reply Send: {replyPacket}");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    Console.WriteLine("Warning#003 :" + ex.Message);
                     InvokeOutput($"Reply Not Send: {replyPacket}");
                 }
             }
@@ -174,7 +184,7 @@ namespace DM_Skills.Scripts
 
 
             Clients.Add(e);
-            InvokeOutput("Client Connected.");
+            InvokeOutput($"Client Connected({e.Connected}).");
         }
         
         private void Program_Exit(object sender, EventArgs e)
