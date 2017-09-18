@@ -56,6 +56,7 @@ namespace DM_Skills.Models
         public event Action<LocationModel> OnLocationChanged;
         public event Action OnTimerStarted;
         public event Action OnTimerStopped;
+        public event Action OnTimerReset;
         public event Action<MouseButtonEventArgs> OnMouseClick;
 
         public event Action OnUpload;
@@ -246,6 +247,13 @@ namespace DM_Skills.Models
             });
         }
 
+        public void InvokeTimerReset()
+        {
+            System.Windows.Application.Current.Dispatcher.Invoke(delegate ()
+            {
+                OnTimerReset?.Invoke();
+            });
+        }
         public void InvokeTimerStarted()
         {
             System.Windows.Application.Current.Dispatcher.Invoke(delegate ()

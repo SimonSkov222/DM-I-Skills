@@ -81,6 +81,15 @@ namespace DM_Skills.Controls
                 }
             };
 
+
+            Models.SettingsModel.Singleton.OnTimerReset += () =>
+            {
+                if (Models.SettingsModel.Singleton.IsClient && Models.SettingsModel.Singleton.UseGetTime)
+                {
+                    Button_Reset_Click(null, null);
+                }
+            };
+
             Models.SettingsModel.Singleton.OnTimerStarted += () => 
             {
                 if (Models.SettingsModel.Singleton.IsClient && Models.SettingsModel.Singleton.UseGetTime)
@@ -192,6 +201,12 @@ namespace DM_Skills.Controls
         }
         private void Button_Reset_Click(object sender, RoutedEventArgs e)
         {
+            if (Models.SettingsModel.Singleton.IsServer)
+            {
+                Models.SettingsModel.Singleton.Server.BroadcastLine((int)Scripts.JsonCommandIDs.Broadcast_TimerReset);
+
+            }
+
             EventTimer.Stop();
             _Watch.Reset();
             AddTime = 0;

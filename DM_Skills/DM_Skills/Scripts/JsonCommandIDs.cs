@@ -17,6 +17,7 @@ namespace DM_Skills.Scripts
         Write = 8,
         Read =9,
         GetTime = 10,
-        Broadcast_TimerStopped = 11
+        Broadcast_TimerStopped = 11,
+        Broadcast_TimerReset = 12
     }
 }
