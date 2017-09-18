@@ -47,9 +47,9 @@
                 </Grid.ColumnDefinitions>
 
                 <Controls:PlaceholderBox 
-            x:Name="txtSchoolName" 
-            Grid.Row="0" Grid.Column="0" Margin="0"
-            Placeholder="Skolens navn...."/>
+                    x:Name="txtSchoolName" 
+                    Grid.Row="0" Grid.Column="0" Margin="0"
+                    Placeholder="Skolens navn...."/>
 
                 <Controls:PlaceholderBox 
                 x:Name="txtDeltager" 
@@ -97,8 +97,8 @@
                     Content="Søg"  x:Name="btnS"
                     Margin="0"
                     Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
-                    Foreground="{StaticResource Color_Foreground_Light_1}" 
-                    Background="{StaticResource Color_Background_Button_Blue}" 
+                    Foreground="{DynamicResource Color_Foreground_Light_1}" 
+                    Background="{DynamicResource Color_Background_Button_Blue}" 
                     Style="{StaticResource Button_Style_Default}"
                     HorizontalAlignment="Stretch" Click="Button_Search_Click" 
                     />
@@ -107,8 +107,8 @@
                     Content="Annuller"  x:Name="btnA"
                     Margin="0"
                     Height="{Binding ElementName=txtSchoolName, Path=ActualHeight}"
-                    Foreground="{StaticResource Color_Foreground_Light_1}" 
-                    Background="{StaticResource Color_Background_Button_Blue}" 
+                    Foreground="{DynamicResource Color_Foreground_Light_1}" 
+                    Background="{DynamicResource Color_Background_Button_Blue}" 
                     Style="{StaticResource Button_Style_Default}"
                     HorizontalAlignment="Stretch" Click="Button_Cancel_Click" 
                     Visibility="Collapsed" />

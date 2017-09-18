@@ -18,7 +18,7 @@
                            Padding="2"
                            />
             </Border>
-            <Label x:Name="txt" Content="{TemplateBinding Content}" FontWeight="Bold" FontSize="{TemplateBinding FontSize}" VerticalAlignment="Center"/>
+            <Label x:Name="txt" Content="{TemplateBinding Content}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" VerticalAlignment="Center"/>
             
         </StackPanel>
         <ControlTemplate.Triggers>

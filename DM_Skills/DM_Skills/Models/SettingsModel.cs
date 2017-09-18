@@ -13,11 +13,25 @@ namespace DM_Skills.Models
     class SettingsModel : INotifyPropertyChanged
     {
         public static SettingsModel Singleton { get; private set; }
-        public SettingsModel() {
+        public SettingsModel()
+        {
             Singleton = this;
+
+            Client = new Scripts.JsonClient(converterTCP, dataReceuveClient);
+            Client.OnConnected      += delegate() { IsClient = true; InvokeConnection(); };
+            Client.OnDisconnected   += (byUser) => { IsClient = false; InvokeDisconnection(byUser); };
+
+            Server = new Scripts.JsonServer(converterTCP, dataReceuveServer);
+            Server.OnStarted += delegate() { IsServer = true; InvokeConnection(); };
+            Server.OnStopped += delegate() { IsServer = false; InvokeConnection(); };
         }
 
-        public string Version { get { return "1.5"; } }
+        private Scripts.IConverterJsonTCP converterTCP = new Scripts.JsonObjectConverter();
+        private Scripts.IDataReceive dataReceuveClient = new Scripts.DataReceivedClient();
+        private Scripts.IDataReceive dataReceuveServer = new Scripts.DataReceivedServer();
+
+
+        public string Version { get { return "1.6"; } }
         public string Author { get { return "Kim Danborg & Simon Skov"; } }
         public string Copyright
         {
@@ -82,8 +96,8 @@ namespace DM_Skills.Models
         private bool _IsServer = false;
         private bool _IsClient = false;
 
-        public Scripts.Client Client;
-        public Scripts.Server Server;
+        public Scripts.JsonClient Client;
+        public Scripts.JsonServer Server;
 
         public string FileNameLocalDB { get { return System.IO.Directory.GetCurrentDirectory() + @"\DMiSkillsLocalDB.sqlite"; } }
 
@@ -116,9 +130,12 @@ namespace DM_Skills.Models
 
         private int _TableCnt = 3;
         private int _OverTimeMin = 3;
+        public string _Index;
+        private LocationModel _Location;
+        private ObservableCollection<LocationModel> _AllLocations = null;
+        private ObservableCollection<SchoolModel> _AllSchools = null;
 
         public double OverTimeMill { get { return TimeSpan.FromMinutes(OverTimeMin).TotalMilliseconds; } }
-
         public string Index
         {
             get
@@ -137,8 +154,6 @@ namespace DM_Skills.Models
                 NotifyPropertyChanged();
             }
         }
-        public string _Index;
-
         public int TableCnt
         {
             get { return _TableCnt; }
@@ -159,7 +174,6 @@ namespace DM_Skills.Models
                 
             }
         }
-        private LocationModel _Location;
         public LocationModel Location
         {
             get { return _Location; }
@@ -171,7 +185,6 @@ namespace DM_Skills.Models
                 NotifyPropertyChanged();
             }
         }
-        private ObservableCollection<LocationModel> _AllLocations = null;
         public ObservableCollection<LocationModel> AllLocations {
             get
             {
@@ -183,8 +196,6 @@ namespace DM_Skills.Models
                 return _AllLocations;
             }
         }
-
-        private ObservableCollection<SchoolModel> _AllSchools = null;
         public ObservableCollection<SchoolModel> AllSchools
         {
             get
@@ -198,6 +209,9 @@ namespace DM_Skills.Models
                 return _AllSchools;
             }
         }
+        public bool HasLocation { get { return _Location != null && _Location.ID != -1; } }
+        
+
 
         public void InvokeSchoolsChanged()
         {
@@ -246,9 +260,7 @@ namespace DM_Skills.Models
         }
 
 
-
         public event PropertyChangedEventHandler PropertyChanged;
-
         public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             switch (propertyName)
@@ -262,9 +274,5 @@ namespace DM_Skills.Models
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-
-
-
-
     }
 }

@@ -23,8 +23,7 @@ namespace DM_Skills.Views
     /// </summary>
     public partial class Forside : UserControl, INotifyPropertyChanged
     {
-
-        MainWindow mainWindows;
+        
         public int NumbOfTables
         {
             get { return (int)GetValue(NumbOfTablesProperty); }
@@ -230,7 +229,7 @@ namespace DM_Skills.Views
                         }
                     }
                 }
-                Models.TableModelN.RequestBroadcast(Scripts.PacketType.Broadcast_UploadTables);
+                Models.TableModelN.RequestBroadcast(Scripts.JsonCommandIDs.Broadcast_UploadTables);
                 Button_Reset_Click(null, null);
             }
             else

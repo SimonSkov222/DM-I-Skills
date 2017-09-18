@@ -318,7 +318,7 @@ namespace DM_Skills.Scripts
         {
 
             string tableWithPrefix = Prefix + table;
-            List<List<object>> result = ExecuteQuery(string.Format("PRAGMA table_info(`{0}`)", tableWithPrefix));
+            List<List<object>> result = null;
             do
             {
                 result = ExecuteQuery(string.Format("PRAGMA table_info(`{0}`)", tableWithPrefix));
@@ -505,14 +505,19 @@ namespace DM_Skills.Scripts
                 List<List<object>> values = null;
                 if (IsReadMethod(cmd))
                 {
-                    Settings.Client.Send(PacketType.Read, o => { values = o as List<List<object>>; myLock.Set(); }, cmd);
+                    Console.WriteLine($"Read SQL: {cmd}");
+                    Settings.Client.Send((int)JsonCommandIDs.Read, cmd, o => { values = o as List<List<object>>; myLock.Set(); });
+                    //Settings.Client.Send(PacketType.Read, o => { values = o as List<List<object>>; myLock.Set(); }, cmd);
                 }
                 else
                 {
-                    Settings.Client.Send(PacketType.Write, o => { myLock.Set(); }, cmd);
+                    Console.WriteLine($"Write SQL: {cmd}");
+                    Settings.Client.Send((int)JsonCommandIDs.Write, cmd, o => { myLock.Set(); });
+                    //Settings.Client.Send(PacketType.Write, o => { myLock.Set(); }, cmd);
                 }
                 if (!myLock.WaitOne(new TimeSpan(0, 0, 25)))
                 {
+                    Console.WriteLine($"No Answer");
                     //MessageBox.Show("SQLite 516: Fik ikke noget svar fra serveren");                    
                 }
                 return values;
@@ -562,23 +567,24 @@ namespace DM_Skills.Scripts
                 var myLock = new ManualResetEvent(false);
                 if (IsReadMethod(cmd))
                 {
-
-                    Settings.Client.Send(
-                        PacketType.Read,
-                        o =>
-                        {
-                            result = o as List<List<object>>;
-                            myLock.Set();
-                        },
-                        cmd
-                    );
+                    Settings.Client.Send((int)JsonCommandIDs.Read, cmd, o => { result = o as List<List<object>>; myLock.Set(); });
+                    //Settings.Client.Send(
+                    //    PacketType.Read,
+                    //    o =>
+                    //    {
+                    //        result = o as List<List<object>>;
+                    //        myLock.Set();
+                    //    },
+                    //    cmd
+                    //);
 
                 }
                 else
                 {
-                    Settings.Client.Send(PacketType.Write, o => {
-                        myLock.Set();
-                    }, cmd);
+                    Settings.Client.Send((int)JsonCommandIDs.Read, cmd, o => myLock.Set());
+                    //Settings.Client.Send(PacketType.Write, o => {
+                    //    myLock.Set();
+                    //}, cmd);
                 }
 
                 Console.WriteLine("#####Wait for server");
@@ -611,7 +617,8 @@ namespace DM_Skills.Scripts
             else if (Settings.IsClient)
             {
                 var waitForReply = new ManualResetEvent(false);
-                Settings.Client.Send(PacketType.MultipleQuery, o => waitForReply.Set(), Querys);
+                Settings.Client.Send((int)JsonCommandIDs.MultipleQuery, Querys, o => waitForReply.Set());
+                //Settings.Client.Send(PacketType.MultipleQuery, o => waitForReply.Set(), Querys);
                 if (!waitForReply.WaitOne(new TimeSpan(0, 0, 30)))
                 {
                     Console.WriteLine("ERROR: No Reply (ExecuteALL)");

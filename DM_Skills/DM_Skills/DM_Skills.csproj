@@ -55,6 +55,12 @@
     <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c6752e45808247c2, processorArchitecture=MSIL">
+      <HintPath>..\packages\JSON.1.0.1\lib\net40\Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Nicenis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\Debug\Nicenis.dll</HintPath>
     <Reference Include="Nicenis">
       <HintPath>E:\DM I SKILLS 1\Program\Nicenis.dll</HintPath>
     </Reference>
@@ -112,11 +118,20 @@
     <Compile Include="Scripts\Client.cs" />
     <Compile Include="Scripts\Column.cs" />
     <Compile Include="Scripts\Database.cs" />
+    <Compile Include="Scripts\DataReceivedClient.cs" />
+    <Compile Include="Scripts\DataReceivedServer.cs" />
     <Compile Include="Scripts\Encrypt.cs" />
     <Compile Include="Scripts\EnumItemsSource.cs" />
     <Compile Include="Scripts\Helper.cs" />
     <Compile Include="Scripts\IColumn.cs" />
+    <Compile Include="Scripts\IConverterJsonTCP.cs" />
     <Compile Include="Scripts\IDatabase.cs" />
+    <Compile Include="Scripts\IDataReceive.cs" />
+    <Compile Include="Scripts\JsonClient.cs" />
+    <Compile Include="Scripts\JsonCommandIDs.cs" />
+    <Compile Include="Scripts\JsonObjectConverter.cs" />
+    <Compile Include="Scripts\JsonServer.cs" />
+    <Compile Include="Scripts\JsonTCP.cs" />
     <Compile Include="Scripts\MSSQL.cs" />
     <Compile Include="Scripts\Order.cs" />
     <Compile Include="Scripts\Packet.cs" />
@@ -133,6 +148,9 @@
     </Compile>
     <Compile Include="Views\sog pa tider.xaml.cs">
       <DependentUpon>sog pa tider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestSiden.xaml.cs">
+      <DependentUpon>TestSiden.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Udskriv.xaml.cs">
       <DependentUpon>Udskriv.xaml</DependentUpon>
@@ -365,6 +383,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TestSiden.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Udskriv.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -421,6 +443,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Libs\Nicenis.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.105.2\build\net451\System.Data.SQLite.Core.targets')" />

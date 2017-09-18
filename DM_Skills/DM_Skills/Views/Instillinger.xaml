@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DM_Skills.Views"
-             Background="{StaticResource Color_Background_Program}"
+             Background="{DynamicResource Color_Background_Program}"
              Padding="0 15 0 0"
              xmlns:Controls="clr-namespace:DM_Skills.Controls"
              mc:Ignorable="d" 
@@ -14,9 +14,11 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Grid  Background="{StaticResource Color_Border_Box}" 
+        <Grid  Background="{DynamicResource Color_Border_Box}" 
                Grid.Row="0" Grid.Column="0"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -51,7 +53,7 @@
 
             <Grid Grid.Row="1" 
                   Margin="1.5" 
-                  Background="{StaticResource Color_Background_Box}">
+                  Background="{DynamicResource Color_Background_Box}">
                 <Grid Margin="15 10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
@@ -99,15 +101,15 @@
                         </Grid.ColumnDefinitions>
                     <Button Content="Vælg Database" Grid.Column="0"
                             Style="{StaticResource Button_Style_Default}" HorizontalAlignment="Stretch"
-                            Background="{StaticResource Color_Background_Button_Blue}"
-                            Foreground="{StaticResource Color_Foreground_Light_1}"
+                            Background="{DynamicResource Color_Background_Button_Blue}"
+                            Foreground="{DynamicResource Color_Foreground_Light_1}"
                             Click="Button_Click"
                             Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
 
                         <Button Content="Opret Database" Grid.Column="1"
                                 Style="{StaticResource Button_Style_Default}" HorizontalAlignment="Stretch"
-                                Background="{StaticResource Color_Background_Button_Blue}"
-                                Foreground="{StaticResource Color_Foreground_Light_1}"
+                                Background="{DynamicResource Color_Background_Button_Blue}"
+                                Foreground="{DynamicResource Color_Foreground_Light_1}"
                                 Click="Button_Click"
                                 Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
 
@@ -135,14 +137,14 @@
             
             
             <!-- Splitter -->
-            <Grid Grid.Column="1" Grid.RowSpan="2" Background="{StaticResource Color_Background_Program}"/>
+            <Grid Grid.Column="1" Grid.RowSpan="2" Background="{DynamicResource Color_Background_Program}"/>
 
 
             <!-- Menu titel -->
             <Grid Grid.Row="0" Grid.Column="2"  Margin="1.5 1.5 1.5 0">
                 <TextBlock Text="{Binding ElementName=rServer, Path=IsChecked, Converter={StaticResource SettingsTitleConvert}}" 
                            FontSize="{Binding ElementName=rServer, Path=FontSize}"
-                           Foreground="{StaticResource Color_Foreground_Light_1}"
+                           Foreground="{DynamicResource Color_Foreground_Light_1}"
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Grid>
 
@@ -150,13 +152,13 @@
             <Grid Grid.Row="1"
                   Grid.Column="2"
                   Margin="1.5" 
-                  Background="{StaticResource Color_Background_Box}">
+                  Background="{DynamicResource Color_Background_Box}">
                 <StackPanel Margin="15 10">
 
                     <Button Content="Tilslut" Style="{StaticResource Button_Style_Default}" 
                         Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                        Foreground="{StaticResource Color_Foreground_Light_1}" 
-                        Background="{StaticResource Color_Background_Button_Blue}" 
+                        Foreground="{DynamicResource Color_Foreground_Light_1}" 
+                        Background="{DynamicResource Color_Background_Button_Blue}" 
                         FontWeight="Normal"
                         HorizontalAlignment="Stretch"
                         FontSize="16"
@@ -166,8 +168,8 @@
 
                     <Button Content="Afbryd" Style="{StaticResource Button_Style_Default}" 
                             Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                            Foreground="{StaticResource Color_Foreground_Light_1}" 
-                            Background="{StaticResource Color_Background_Button_Blue}" 
+                            Foreground="{DynamicResource Color_Foreground_Light_1}" 
+                            Background="{DynamicResource Color_Background_Button_Blue}" 
                             FontWeight="Normal" 
                             HorizontalAlignment="Stretch"
                             FontSize="16"
@@ -177,8 +179,8 @@
 
                     <Button Content="Start" Style="{StaticResource Button_Style_Default}" 
                             Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                            Foreground="{StaticResource Color_Foreground_Light_1}" 
-                            Background="{StaticResource Color_Background_Button_Blue}" 
+                            Foreground="{DynamicResource Color_Foreground_Light_1}" 
+                            Background="{DynamicResource Color_Background_Button_Blue}" 
                             FontWeight="Normal" 
                             HorizontalAlignment="Stretch"
                             FontSize="16"
@@ -188,8 +190,8 @@
 
                     <Button Content="Stop" Style="{StaticResource Button_Style_Default}" 
                             Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                            Foreground="{StaticResource Color_Foreground_Light_1}" 
-                            Background="{StaticResource Color_Background_Button_Blue}" 
+                            Foreground="{DynamicResource Color_Foreground_Light_1}" 
+                            Background="{DynamicResource Color_Background_Button_Blue}" 
                             FontWeight="Normal" 
                             HorizontalAlignment="Stretch"
                             FontSize="16"
@@ -199,8 +201,8 @@
 
                     <Button Content="Backup" Style="{StaticResource Button_Style_Default}" 
                             Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                            Foreground="{StaticResource Color_Foreground_Light_1}" 
-                            Background="{StaticResource Color_Background_Button_Blue}" 
+                            Foreground="{DynamicResource Color_Foreground_Light_1}" 
+                            Background="{DynamicResource Color_Background_Button_Blue}" 
                             FontWeight="Normal" 
                             HorizontalAlignment="Stretch"
                             FontSize="16"
@@ -210,8 +212,8 @@
 
                     <Button Content="Fjern ubrugte skoler" Style="{StaticResource Button_Style_Default}" 
                             Visibility="{Binding ElementName=rServer, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                            Foreground="{StaticResource Color_Foreground_Light_1}" 
-                            Background="{StaticResource Color_Background_Button_Blue}" 
+                            Foreground="{DynamicResource Color_Foreground_Light_1}" 
+                            Background="{DynamicResource Color_Background_Button_Blue}" 
                             FontWeight="Normal" 
                             HorizontalAlignment="Stretch"
                             FontSize="16"
@@ -253,33 +255,28 @@
                     <Button Content="Indsend" Grid.Column="0" Grid.Row="1" Style="{StaticResource Button_Style_Default}" 
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Top"
-                            Background="{StaticResource Color_Background_Button_Blue}"
-                            Foreground="{StaticResource Color_Foreground_Light_1}"
+                            Background="{DynamicResource Color_Background_Button_Blue}"
+                            Foreground="{DynamicResource Color_Foreground_Light_1}"
                             Margin="0,8,0,0"
                             x:Name="btnSchoolUpload"
                             Click="Button_SchoolUpload_Click"/>
                 </Grid>
             </Border>
 
-            <Grid Grid.Row="0" Grid.Column="1" Background="{StaticResource Color_Background_InputBox}"/>
+            <Grid Grid.Row="0" Grid.Column="1" Background="{DynamicResource Color_Background_InputBox}"/>
 
-            <Border Grid.Column="2" Grid.Row="0" BorderBrush="{StaticResource Color_Border_Box}" BorderThickness="1.5"
+            <Border Grid.Column="2" Grid.Row="0" BorderBrush="{DynamicResource Color_Border_Box}" BorderThickness="1.5"
                     Padding="15 10">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
 
                     </Grid.RowDefinitions>
-
-
-                    <!--<Label Grid.Row="0" Grid.Column="1" Content="Lokation" Margin="0" Padding="0" FontSize="16" VerticalAlignment="Bottom"/>-->
-
-
-
-
+                    
                     <ComboBox Grid.Row="0" VerticalAlignment="Top"  SelectedIndex="0"
                               Binding.TargetUpdated="ComboBox_TargetUpdated" x:Name="combo_Location"
                               ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
@@ -313,8 +310,6 @@
                         TextAlignment="Right"/>
                     </Grid>
 
-
-
                     <Grid Grid.Row="2" VerticalAlignment="Bottom">
 
                         <Grid.ColumnDefinitions>
@@ -339,9 +334,12 @@
 
                     </Grid>
 
-                    <Grid Grid.Row="3" Height="{Binding ElementName=btnSchoolUpload, Path=ActualHeight}" Margin="0 20 0 0">
+                    <CheckBox Grid.Row="3" Content="Hent lokation fra server" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"/>
+                    <CheckBox Grid.Row="4" Content="Server starter stopur" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"/>
 
-                    </Grid>
+                    <!--<Grid Grid.Row="3" Height="{Binding ElementName=btnSchoolUpload, Path=ActualHeight}" Margin="0 20 0 0">
+
+                    </Grid>-->
 
                     </Grid>
             </Border>
@@ -349,6 +347,38 @@
 
         </Grid>
 
+
+        <Grid Grid.Row="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="250"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Server Output" Grid.Column="0"/>
+            <Button Content="debug" Click="Button_Click_1"/>
+            <Label Content="Client Output" Grid.Column="2"/>
+            
+            <ScrollViewer Height=" 250" Grid.Column="0" Grid.Row="1">
+                <TextBox Background="Transparent"
+                         x:Name="sOutput"
+                         BorderThickness="0"
+                         Text="{Binding Text, Mode=OneWay}"
+                         IsReadOnly="True" />
+            </ScrollViewer>
+            <ScrollViewer Height=" 250" Grid.Column="2" Grid.Row="1">
+                <TextBox Background="Transparent"
+                     x:Name="cOutput"
+                     BorderThickness="0"
+                     Text="{Binding Text, Mode=OneWay}"
+                     IsReadOnly="True"
+                     TextWrapping="Wrap" />
+            </ScrollViewer>
+
+        </Grid>
 
 
 

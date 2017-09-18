@@ -73,16 +73,18 @@ namespace DM_Skills.Models
             }
         }
 
-        public static void RequestBroadcast(Scripts.PacketType type)
+        public static void RequestBroadcast(Scripts.JsonCommandIDs type)
         {
+
+            Console.WriteLine("TODO: ModelSettings.cs:76");
             SettingsModel Settings = Application.Current.FindResource("Settings") as SettingsModel;
             if (Settings.IsServer)
             {
-                Settings.Server.Broadcast(type);
+                Settings.Server.Broadcast((int)type);
             }
             else if (Settings.IsClient)
             {
-                Settings.Client.Broadcast(type);
+                Settings.Client.Broadcast((int)type);
             }
         }
 
