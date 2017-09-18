@@ -52,8 +52,8 @@ namespace DM_Skills.Scripts
                 client = new SimpleTcpClient();
                 client.Delimiter = 10;
                 //client.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimiter data received"); };
-                //client.DelimiterDataReceived += DataReceived;
-                client.DataReceived += DataReceived;
+                client.DelimiterDataReceived += DataReceived;
+                //client.DataReceived += DataReceived;
 
                 client.Connect(ipAddress, port);
 

@@ -53,8 +53,8 @@ namespace DM_Skills.Scripts
                 Host.Delimiter = 10;
                 //Host.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimter data received"); };
                 //Host.DataReceived += (o, e) => { Console.WriteLine("##############Data received"); };
-                Host.DataReceived += DataReceived;
-                //Host.DelimiterDataReceived += DataReceived;
+                //Host.DataReceived += DataReceived;
+                Host.DelimiterDataReceived += DataReceived;
                 Host.ClientConnected += ClientConnected;
                 Host.ClientDisconnected += (o, e) => { Console.WriteLine("Client disconnected!!"); };
 
