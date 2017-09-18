@@ -80,7 +80,7 @@ namespace DM_Skills.Models
             SettingsModel Settings = Application.Current.FindResource("Settings") as SettingsModel;
             if (Settings.IsServer)
             {
-                Settings.Server.Broadcast((int)type);
+                Settings.Server.BroadcastLine((int)type);
             }
             else if (Settings.IsClient)
             {

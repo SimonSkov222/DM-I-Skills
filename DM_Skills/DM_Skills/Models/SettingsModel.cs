@@ -91,6 +91,7 @@ namespace DM_Skills.Models
                 NotifyPropertyChanged();
                 NotifyPropertyChanged("HasConnection");
                 NotifyPropertyChanged("HasLostConnection");
+                NotifyPropertyChanged(nameof(CanUseTimerControlButtons));
             }
         }
         private bool _IsServer = false;
@@ -210,6 +211,7 @@ namespace DM_Skills.Models
             }
         }
 
+        
 
         public void InvokeSchoolsChanged()
         {
@@ -260,10 +262,10 @@ namespace DM_Skills.Models
                 return _Location != null && _Location.ID != -1;
             }
         }
-
-        public bool UseGetTime { get; set; }
+        private bool _UseGetTime = false;
+        public bool UseGetTime { get { return _UseGetTime; } set { _UseGetTime = value; NotifyPropertyChanged(nameof(CanUseTimerControlButtons)); } }
         public bool UseGetLocation { get; set; }
-
+        public bool CanUseTimerControlButtons { get { return !IsClient && !UseGetTime; } }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

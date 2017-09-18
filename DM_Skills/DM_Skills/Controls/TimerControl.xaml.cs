@@ -61,8 +61,8 @@ namespace DM_Skills.Controls
         }
 
         private bool HasLoadedOnce = false;
-        
-        
+
+
 
 
         /// <summary>
@@ -71,8 +71,16 @@ namespace DM_Skills.Controls
         /// </summary>
         public TimerControl()
         {
-            
+
             InitializeComponent();
+            Models.SettingsModel.Singleton.OnTimerStarted += () => 
+            {
+                if (Models.SettingsModel.Singleton.IsClient && Models.SettingsModel.Singleton.UseGetTime)
+                {
+                    _Watch.Elapsed.Add(new TimeSpan(0, 10, 0));
+                    Button_Start_Click(null, null);
+                }
+            };
             EventTimer = new DispatcherTimer();
             EventTimer.Interval = TimeSpan.FromMilliseconds(1);
             EventTimer.Tick += (o, e) => { NotifyPropertyChanged("DisplayTime"); };
@@ -90,7 +98,7 @@ namespace DM_Skills.Controls
         {
             if (Models.SettingsModel.Singleton.IsClient)
             {
-                Button_TimeControl_Click(btn_Start, null);
+                Button_Start_Click(btn_Start, null);
             }
         }
 
@@ -106,7 +114,7 @@ namespace DM_Skills.Controls
                         IInputElement focusedControl = Keyboard.FocusedElement;
                         if (!(focusedControl is TextBox))
                         {
-                            Button_TimeControl_Click(btn_Lap, null);
+                            Button_Lab_Click(btn_Lap, null);
                         }
                     }
 
@@ -133,57 +141,108 @@ namespace DM_Skills.Controls
         /// </summary>
         public void Reset()
         {
-            Button_TimeControl_Click(btn_Reset, null);
-
+            Button_Reset_Click(btn_Reset, null);
         }
 
-        /// <summary>
-        /// Når man trykker på en knap vil denne metode blive kaldt
-        /// Denne metode finder frem til hvad knap man har trykket på
-        /// og udføre det knappen skal gøre
-        /// </summary>
-        private void Button_TimeControl_Click(object sender, RoutedEventArgs e)
+
+
+        private void Button_Start_Click(object sender, RoutedEventArgs e)
         {
-            //Find knap id
-            int id = -1;
-            if ((sender as Button).Name == btn_Start.Name) id = 0;
-            else if ((sender as Button).Name == btn_Stop.Name) id = 1;
-            else if ((sender as Button).Name == btn_Lap.Name) id = 2;
-            else if ((sender as Button).Name == btn_Reset.Name) id = 3;
+            if (_Watch.IsRunning) { return; }
 
-            //Hvad skal knappen gøre
-            switch (id)
+
+            if (Models.SettingsModel.Singleton.IsServer)
             {
-                case 0:     //Start tiden
-                    EventTimer.Start();
-                    _Watch.Start();
+                Models.SettingsModel.Singleton.Server.Broadcast((int)Scripts.JsonCommandIDs.Broadcast_TimerStarted);
 
-                    break;
-                case 1:     //Stop tiden
-                    _Watch.Stop();
-                    EventTimer.Stop();
-                    NotifyPropertyChanged("DisplayTime");
-                    break;
-                case 3:     //Stop og nulstil
-                    EventTimer.Stop();
-                    _Watch.Reset();
-                    AddTime = 0;
-                    NotifyPropertyChanged("DisplayTime");
-                    break;
             }
 
-            //
-            //  Kald evnet
-            //
-            switch (id)
-            {
-                case 0: OnStart?.Invoke(); break;
-                case 1: OnStop?.Invoke(); break;
-                case 2: if (_Watch.IsRunning) { OnLap?.Invoke(_Watch.Elapsed + TimeSpan.FromMilliseconds(addTime)); } break;
-                case 3: OnReset?.Invoke(); break;
-            }
 
+
+            EventTimer.Start();
+            _Watch.Start();
+
+            OnStart?.Invoke();
         }
+
+
+
+        private void Button_Stop_Click(object sender, RoutedEventArgs e)
+        {
+            if (!_Watch.IsRunning) { return; }
+
+            if (Models.SettingsModel.Singleton.IsServer)
+            {
+                Models.SettingsModel.Singleton.Server.Broadcast((int)Scripts.JsonCommandIDs.Broadcast_TimerStopped);
+            }
+
+            _Watch.Stop();
+            EventTimer.Stop();
+            NotifyPropertyChanged("DisplayTime");
+
+            OnStop?.Invoke();
+        }
+        private void Button_Reset_Click(object sender, RoutedEventArgs e)
+        {
+            EventTimer.Stop();
+            _Watch.Reset();
+            AddTime = 0;
+            NotifyPropertyChanged("DisplayTime");
+        }
+
+        private void Button_Lab_Click(object sender, RoutedEventArgs e)
+        {
+            if (!_Watch.IsRunning) { return; }
+            OnLap?.Invoke(_Watch.Elapsed + TimeSpan.FromMilliseconds(addTime));
+        }
+
+        ///// <summary>
+        ///// Når man trykker på en knap vil denne metode blive kaldt
+        ///// Denne metode finder frem til hvad knap man har trykket på
+        ///// og udføre det knappen skal gøre
+        ///// </summary>
+        //private void Button_TimeControl_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //Find knap id
+        //    int id = -1;
+        //    if ((sender as Button).Name == btn_Start.Name) id = 0;
+        //    else if ((sender as Button).Name == btn_Stop.Name) id = 1;
+        //    else if ((sender as Button).Name == btn_Lap.Name) id = 2;
+        //    else if ((sender as Button).Name == btn_Reset.Name) id = 3;
+
+        //    //Hvad skal knappen gøre
+        //    switch (id)
+        //    {
+        //        case 0:     //Start tiden
+        //            EventTimer.Start();
+        //            _Watch.Start();
+
+        //            break;
+        //        case 1:     //Stop tiden
+        //            _Watch.Stop();
+        //            EventTimer.Stop();
+        //            NotifyPropertyChanged("DisplayTime");
+        //            break;
+        //        case 3:     //Stop og nulstil
+        //            EventTimer.Stop();
+        //            _Watch.Reset();
+        //            AddTime = 0;
+        //            NotifyPropertyChanged("DisplayTime");
+        //            break;
+        //    }
+
+        //    //
+        //    //  Kald evnet
+        //    //
+        //    switch (id)
+        //    {
+        //        case 0: OnStart?.Invoke(); break;
+        //        case 1: OnStop?.Invoke(); break;
+        //        case 2: if (_Watch.IsRunning) { OnLap?.Invoke(_Watch.Elapsed + TimeSpan.FromMilliseconds(addTime)); } break;
+        //        case 3: OnReset?.Invoke(); break;
+        //    }
+
+        //}
 
     }
 }

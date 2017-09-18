@@ -16,6 +16,7 @@ namespace DM_Skills.Scripts
         MultipleQuery = 7,
         Write = 8,
         Read =9,
-        GetTime = 10
+        GetTime = 10,
+        Broadcast_TimerStopped = 11
     }
 }
