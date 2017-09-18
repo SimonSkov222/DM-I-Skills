@@ -50,11 +50,11 @@ namespace DM_Skills.Scripts
             try
             {
                 Host = new SimpleTcpServer();
-                //Host.Delimiter = 0x10;
+                Host.Delimiter = 10;
                 //Host.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimter data received"); };
                 //Host.DataReceived += (o, e) => { Console.WriteLine("##############Data received"); };
-                Host.DataReceived += DataReceived;
-                //Host.DelimiterDataReceived += DataReceived;
+                //Host.DataReceived += DataReceived;
+                Host.DelimiterDataReceived += DataReceived;
                 Host.ClientConnected += ClientConnected;
                 Host.ClientDisconnected += (o, e) => { Console.WriteLine("Client disconnected!!"); };
 
@@ -145,7 +145,7 @@ namespace DM_Skills.Scripts
 
             switch ((int)packet[0])
             {
-                case COMMAND_PING:          e.Reply(e.MessageString);           return;
+                case COMMAND_PING:          e.Reply(e.MessageString + Host.StringEncoder.GetString(new byte[] { Host.Delimiter }));           return;
                 case COMMAND_DISCONNECT:    DisconnectClient(e.TcpClient);      return;
             }
 
@@ -154,7 +154,7 @@ namespace DM_Skills.Scripts
                 var replyPacket = PackJson((int)packet[0], (int)packet[1], reply);
                 try
                 {
-                    e.ReplyLine(replyPacket);
+                    e.Reply(replyPacket + Host.StringEncoder.GetString(new byte[] { Host.Delimiter }));
                     InvokeOutput($"Reply Send: {replyPacket}");
                 }
                 catch (Exception ex)

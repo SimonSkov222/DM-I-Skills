@@ -50,10 +50,10 @@ namespace DM_Skills.Scripts
             try
             {
                 client = new SimpleTcpClient();
-                //client.Delimiter = 0x10;
+                client.Delimiter = 10;
                 //client.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimiter data received"); };
-                //client.DelimiterDataReceived += DataReceived;
-                client.DataReceived += DataReceived;
+                client.DelimiterDataReceived += DataReceived;
+                //client.DataReceived += DataReceived;
 
                 client.Connect(ipAddress, port);
 
@@ -92,12 +92,11 @@ namespace DM_Skills.Scripts
 
         public void Send(int command, object data = null, Action<object> cb = null)
         {
-            Console.WriteLine("Start Send");
             int packetID = SaveCallback(cb);
             var packet = PackJson(command, packetID, data);
             try
             {
-                client.WriteLine(packet);
+                client.Write(packet + client.StringEncoder.GetString(new byte[] { client.Delimiter }));
 
                 InvokeOutput($"Packet Send: {packet}");
             }
@@ -189,7 +188,7 @@ namespace DM_Skills.Scripts
                 var replyPacket = PackJson((int)packet[0], (int)packet[1], reply);
                 try
                 {
-                    e.Reply(replyPacket);
+                    e.Reply(replyPacket + client.StringEncoder.GetString(new byte[] { client.Delimiter }));
                     InvokeOutput($"Reply Send: {replyPacket}");
                 }
                 catch (Exception ex)
