@@ -22,6 +22,7 @@ namespace DM_Skills.Scripts
                 case (int)JsonCommandIDs.Broadcast_UploadTables:    Models.SettingsModel.Singleton.InvokeUpload(); break;
 
                 case (int)JsonCommandIDs.Broadcast_TimerStopped: Models.SettingsModel.Singleton.InvokeTimerStopped(); break;
+                case (int)JsonCommandIDs.Broadcast_TimerReset: Models.SettingsModel.Singleton.InvokeTimerReset(); break;
             }
 
             return false;
