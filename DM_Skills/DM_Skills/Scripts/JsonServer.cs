@@ -11,10 +11,6 @@ using System.Windows.Threading;
 
 namespace DM_Skills.Scripts
 {
-    enum JsonConverterType
-    {
-
-    }
 
     class JsonServer : JsonTCP
     {
@@ -40,7 +36,7 @@ namespace DM_Skills.Scripts
             disconnectPing.Interval = timeoutPing;
 
 
-            Application.Current.LoadCompleted += (o, e) => Application.Current.MainWindow.Closed += Program_Exit;
+            //Application.Current.LoadCompleted += (o, e) => Application.Current.MainWindow.Closed += Program_Exit;
             //Application.Current.Exit += Program_Exit;
         }
         

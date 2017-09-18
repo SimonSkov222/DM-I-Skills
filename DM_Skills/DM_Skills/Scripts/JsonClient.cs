@@ -160,7 +160,7 @@ namespace DM_Skills.Scripts
 
             switch ((int)packet[0])
             {
-                case COMMAND_PING:          disconnectTimer.Stop(); disconnectTimer.Start();        return;
+                case COMMAND_PING: disconnectTimer.Stop(); disconnectTimer.Start(); Console.WriteLine("Ping");       return;
                 case COMMAND_DISCONNECT:    CloseConnection(false);                                 return;
             }
             

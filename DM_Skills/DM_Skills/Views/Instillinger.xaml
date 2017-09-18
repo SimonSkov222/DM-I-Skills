@@ -271,17 +271,12 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
 
                     </Grid.RowDefinitions>
-
-
-                    <!--<Label Grid.Row="0" Grid.Column="1" Content="Lokation" Margin="0" Padding="0" FontSize="16" VerticalAlignment="Bottom"/>-->
-
-
-
-
+                    
                     <ComboBox Grid.Row="0" VerticalAlignment="Top"  SelectedIndex="0"
                               Binding.TargetUpdated="ComboBox_TargetUpdated" x:Name="combo_Location"
                               ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
@@ -315,8 +310,6 @@
                         TextAlignment="Right"/>
                     </Grid>
 
-
-
                     <Grid Grid.Row="2" VerticalAlignment="Bottom">
 
                         <Grid.ColumnDefinitions>
@@ -341,9 +334,12 @@
 
                     </Grid>
 
-                    <Grid Grid.Row="3" Height="{Binding ElementName=btnSchoolUpload, Path=ActualHeight}" Margin="0 20 0 0">
+                    <CheckBox Grid.Row="3" Content="Hent lokation fra server" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"/>
+                    <CheckBox Grid.Row="4" Content="Server starter stopur" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"/>
 
-                    </Grid>
+                    <!--<Grid Grid.Row="3" Height="{Binding ElementName=btnSchoolUpload, Path=ActualHeight}" Margin="0 20 0 0">
+
+                    </Grid>-->
 
                     </Grid>
             </Border>
