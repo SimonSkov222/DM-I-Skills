@@ -163,7 +163,7 @@ namespace DM_Skills.Scripts
                         Application.Current.Dispatcher.Invoke(delegate ()
                         {
                             Settings.Location = packet.Data as Models.LocationModel;
-                            Settings.InvokeLocationChanged();
+                            Settings.InvokeLocationChanged(null);
                         });
                         break;
                     case PacketType.Broadcast_TimerStarted:

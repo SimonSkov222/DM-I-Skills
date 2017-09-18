@@ -68,12 +68,12 @@ namespace DM_Skills
             Settings.InvokeSchoolsChanged();
             if (Settings.IsClient)
             {
-                if (true)
+                if (Settings.UseGetLocation)
                 {
                     Settings.Client.Send((int)Scripts.JsonCommandIDs.GetLocation);
                 }
 
-                if (true)
+                if (Settings.UseGetTime)
                 {
                     Settings.Client.Send((int)Scripts.JsonCommandIDs.GetTime);
                 }

@@ -85,7 +85,7 @@ namespace DM_Skills.Views
                 (Application.Current.MainWindow.FindName("Menu_Projektor") as ToggleButton).PreviewMouseLeftButtonDown += Connection_MouseLeftButtonDown;
                 Settings.OnLocationChanged += newLocation =>
                 {
-                    if (true)
+                    if (Settings.UseGetLocation)
                     {
                         Console.WriteLine("Set location");
                         Settings.Location = newLocation;
