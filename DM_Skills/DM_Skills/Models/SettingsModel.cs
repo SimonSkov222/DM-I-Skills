@@ -235,8 +235,12 @@ namespace DM_Skills.Models
 
         public void InvokeLocationChanged(object newLocation)
         {
-            //NotifyPropertyChanged();
-            OnLocationChanged?.Invoke((LocationModel)newLocation);
+
+            System.Windows.Application.Current.Dispatcher.Invoke(delegate ()
+            {
+                //NotifyPropertyChanged();
+                OnLocationChanged?.Invoke((LocationModel)newLocation);
+            });
         }
 
         public void InvokeTimerStarted()
