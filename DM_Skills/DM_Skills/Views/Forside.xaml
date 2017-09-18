@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
         <!-- Borderne -->
         <ScrollViewer Grid.Row="0" Grid.Column="0"  ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="listOfTables"/>
+            <StackPanel x:Name="listOfTables" KeyboardNavigation.TabNavigation="Cycle"/>
         </ScrollViewer>
         <!-- Indsend, nulstil og tid liste -->
         <Grid Grid.Row="0" Grid.Column="2" x:Name="testGrid">

@@ -104,6 +104,18 @@ namespace DM_Skills.Controls
 
 
 
+        public TextBox TabAfterEnd
+        {
+            get { return (TextBox)GetValue(TabAfterEndProperty); }
+            set { SetValue(TabAfterEndProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TabAfterEnd.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TabAfterEndProperty =
+            DependencyProperty.Register("TabAfterEnd", typeof(TextBox), typeof(PersonListControl));
+
+
+
 
         public string Placeholder
         {
@@ -156,8 +168,6 @@ namespace DM_Skills.Controls
                     HasLoaded = true;
                 }
             };
-
-//            GotFocus += (o,e) => { Console.WriteLine("GotFocus"); };
         }
         
 
@@ -416,28 +426,34 @@ namespace DM_Skills.Controls
                 System.Windows.Threading.DispatcherPriority.ApplicationIdle ,
                 new SimpleDelegate(delegate() { txt.Focus(); })
             );
-            //txt.Focusable = true;
-            //FocusManager.SetIsFocusScope(txt, true);
-            //FocusManager.SetFocusedElement(this, txt);
-            //Keyboard.Focus(txt);
-            //txt.SelectionStart = txt.Text.Length;
+        }
 
+        private void popup_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            Console.WriteLine($"mcap {popup.IsMouseCaptured}");
+        }
 
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            popup.IsOpen = true;
+        }
 
-            //FocusManager.SetFocusedElement(this, txt);
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            //popup.IsOpen = false;
+        }
 
-            //Key key = Key.Enter;                    // Key to send
-            //var target = Keyboard.FocusedElement;    // Target element
-            //RoutedEvent routedEvent = Keyboard.KeyDownEvent; // Event to send
+        private void newPerson_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Tab)
+            {
+                IsPopupOpen = false;
 
-            //target.RaiseEvent(
-            //    new KeyEventArgs(
-            //        Keyboard.PrimaryDevice,
-            //        PresentationSource.FromVisual(txt),
-            //        0,
-            //        key)
-            //    { RoutedEvent = routedEvent }
-            //);
+                Dispatcher.BeginInvoke(
+                        System.Windows.Threading.DispatcherPriority.ApplicationIdle,
+                        new Action(delegate () { TabAfterEnd.Focus(); })
+                    );
+            }
         }
     }
 }

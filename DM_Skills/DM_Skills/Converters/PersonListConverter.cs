@@ -34,6 +34,7 @@ namespace DM_Skills.Converters
             bool mHeight = System.Convert.ToDouble(height) > 0;
             bool open = System.Convert.ToBoolean(isOpen);
             bool focus = System.Convert.ToBoolean(isFocused);
+            
 
             return open && mHeight && focus;
         }
@@ -64,7 +65,7 @@ namespace DM_Skills.Converters
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return new object[] { 0, false, true };
         }
     }
 }

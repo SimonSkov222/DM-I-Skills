@@ -63,7 +63,7 @@ namespace DM_Skills.Controls
 
 
 
-        
+
         /// <summary>
         /// Opretter de elementer der er i xaml
         /// </summary>
@@ -81,7 +81,6 @@ namespace DM_Skills.Controls
             //Schools.CollectionChanged += 
             //   (o, e) => BindingOperations.GetBindingExpressionBase(autoSchools, AutocompleteControl.ItemsSourceProperty).UpdateSource();
 
-
             InitializeComponent();
         }
 
@@ -93,6 +92,7 @@ namespace DM_Skills.Controls
         {
             Model = new Models.TableModelN();
             Personer.Reset();
+
         }
 
         private void Label_Drop(object sender, DragEventArgs e)
@@ -103,13 +103,68 @@ namespace DM_Skills.Controls
 
 
         }
-        
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Schools.Add(new Models.SchoolModel() { Name = "HH" });
             Model.Persons.Add(new Models.PersonModel() { Name = "HH" });
             Schools.Add(new Models.SchoolModel() { Name = "HH" });
+        }
+
+        private delegate void SimpleDelegate();
+        private void PlaceholderBox_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+
+            if (e.Key == System.Windows.Input.Key.Tab)
+            {
+
+                Personer.dropdownBorder.BeginAnimation(Border.MaxHeightProperty, null);
+                Personer.IsPopupOpen = true;
+                Personer.dropdownBorder.MaxHeight = 150;
+                Scripts.Helper.ProcessUITasks();
+
+                if (Personer.listOfPersons.Children.Count > 0)
+                {
+                    var input = Personer.listOfPersons.Children[0] as Grid;
+                    var txt = (PlaceholderBox)input.Children[0];
+
+                    Dispatcher.BeginInvoke(
+                        System.Windows.Threading.DispatcherPriority.ApplicationIdle,
+                        new SimpleDelegate(delegate () { txt.Focus(); })
+                    );
+                }
+                else
+                {
+                    var input = Personer.newPerson.Children[0] as Grid;
+                    var txt = (PlaceholderBox)input.Children[0];
+                    Dispatcher.BeginInvoke(
+                        System.Windows.Threading.DispatcherPriority.ApplicationIdle,
+                        new SimpleDelegate(delegate () { txt.Focus(); })
+                    );
+                }
+                //var input = newPerson.Children[0] as Grid;
+                //var txt = (PlaceholderBox)input.Children[0];
+
+                //Dispatcher.BeginInvoke(
+                //    System.Windows.Threading.DispatcherPriority.ApplicationIdle,
+                //    new SimpleDelegate(delegate () { txt.Focus(); })
+                //);
+            }
+        }
+
+        
+        private void Personer_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+
+            //if (e.Key == System.Windows.Input.Key.Tab)
+            //{
+            //    Console.WriteLine("2");
+            //    Dispatcher.BeginInvoke(
+            //            System.Windows.Threading.DispatcherPriority.ApplicationIdle,
+            //            new SimpleDelegate(delegate () { txt_time.Focus(); })
+            //        );
+            //}
         }
     }
 }

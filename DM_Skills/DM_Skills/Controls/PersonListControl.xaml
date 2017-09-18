@@ -14,7 +14,7 @@
              
              d:DesignHeight="40" d:DesignWidth="150">
 
-    <Grid  MouseEnter="Animation_Slide" MouseLeave="Animation_Slide">
+    <Grid  MouseEnter="Animation_Slide" MouseLeave="Animation_Slide" >
         <Label x:Name="display" 
                MouseLeftButtonDown="display_MouseLeftButtonDown"
                BorderThickness="0" 
@@ -44,7 +44,7 @@
             <Popup.IsOpen>
                 <MultiBinding Converter="{StaticResource PersonListConvert}" ConverterParameter="Popup" Mode="OneWay">
                     <Binding ElementName="dropdownBorder" Path="MaxHeight"/>
-                    <Binding ElementName="controller" Path="IsPopupOpen"/>
+                    <Binding ElementName="controller" Path="IsPopupOpen" Mode="OneWay"/>
                     <Binding ElementName="controller" Path="WindowIsFocused"/>
                 </MultiBinding>
             </Popup.IsOpen>
@@ -54,7 +54,7 @@
                 BorderBrush="{Binding ElementName=controller, Path=BorderBrush}" 
                 BorderThickness="{Binding ElementName=controller, Path=BorderThickness}"
                 Width="{Binding ElementName=controller, Path=ActualWidth}"
-                
+                IsHitTestVisible="True"
                 Padding="0"
                 MinWidth="200"
                 Background="White"
@@ -62,13 +62,13 @@
                 >
 
                 <ScrollViewer 
-                    x:Name="scroll" 
+                    x:Name="scroll" IsHitTestVisible="True"
                     ScrollViewer.VerticalScrollBarVisibility="Auto"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
-                    <StackPanel Margin="5 3">
+                    <StackPanel Margin="5 3" >
                         <StackPanel x:Name="listOfPersons"/>
-                        <Grid x:Name="newPerson"/>
+                        <Grid x:Name="newPerson" PreviewKeyDown="newPerson_PreviewKeyDown"/>
                     </StackPanel>
 
                 </ScrollViewer>

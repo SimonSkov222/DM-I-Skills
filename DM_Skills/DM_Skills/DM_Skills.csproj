@@ -55,9 +55,8 @@
     <Reference Include="itextsharp, Version=5.5.11.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.11\lib\itextsharp.dll</HintPath>
     </Reference>
-    <Reference Include="Nicenis, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\Debug\Nicenis.dll</HintPath>
+    <Reference Include="Nicenis">
+      <HintPath>E:\DM I SKILLS 1\Program\Nicenis.dll</HintPath>
     </Reference>
     <Reference Include="SimpleTCP, Version=1.0.15.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleTCP.1.0.15\lib\net45\SimpleTCP.dll</HintPath>

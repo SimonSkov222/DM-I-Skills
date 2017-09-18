@@ -9,7 +9,7 @@
              d:DesignHeight="100" d:DesignWidth="300">
     <Grid>
         <StackPanel Margin="5">
-            <Grid>
+            <Grid KeyboardNavigation.TabNavigation="Continue">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -22,17 +22,18 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock 
+                <TextBox 
                     Grid.Row="0" 
+                    KeyboardNavigation.TabIndex="-1"
                     Text="{Binding ElementName=Controller, Path=Title}"  
                     FontWeight="Bold" FontSize="18" Margin="0 8 0 2"/>
 
 
                 <local:AutocompleteControl x:Name="autoSchools"
                     Grid.Row="1" Grid.Column="0"
-                    TabIndex="{Binding ElementName=Controller, Path=TabIndex, ConverterParameter='100', Converter={StaticResource TabIndexConvert}}"
                     Text="{Binding ElementName=Controller, Path=Model.School.Name, Mode=TwoWay}"
                     ItemsSource="{Binding ElementName=Controller,Path=Schools}"
+                    
                     Placeholder="Skolens Navn...">
                     <local:AutocompleteControl.Error>
                         <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter=", Auto">
@@ -46,7 +47,7 @@
                 <local:PlaceholderBox 
                     Grid.Row="1" Grid.Column="2"
                     Text="{Binding ElementName=Controller, Path=Model.Team.Class, Mode=TwoWay}"
-                    TabIndex="{Binding ElementName=Controller, Path=TabIndex, ConverterParameter='200', Converter={StaticResource TabIndexConvert}}"
+                    PreviewKeyDown="PlaceholderBox_PreviewKeyDown"
                     Placeholder="Klasse...">
                     <local:PlaceholderBox.Error>
                         <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter="2">
@@ -62,8 +63,9 @@
                 <local:PersonListControl x:Name="Personer"
                     Grid.Row="3" Grid.Column="0" Visibility="Visible" 
                     Placeholder="Deltagere..."
-                    TabIndex="{Binding ElementName=Controller, Path=TabIndex, ConverterParameter='300', Converter={StaticResource TabIndexConvert}}"
-                    Persons="{Binding ElementName=Controller,Path=Model.Persons, Mode=TwoWay}">
+                    PreviewKeyDown="Personer_PreviewKeyDown"
+                    Persons="{Binding ElementName=Controller,Path=Model.Persons, Mode=TwoWay}"
+                    TabAfterEnd="{Binding ElementName=txt_time}">
                     <local:PersonListControl.Error>
                         <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter="8">
                             <Binding ElementName="Controller" Path="Model.HasData"/>
@@ -78,7 +80,6 @@
                     x:Name="txt_time"
                     Grid.Row="3" Grid.Column="2"
                     Placeholder="Tider..." 
-                    TabIndex="{Binding ElementName=Controller, Path=TabIndex, ConverterParameter='400', Converter={StaticResource TabIndexConvert}}"
                     Text="{Binding ElementName=Controller, Path=Model.Team.Time, Mode=TwoWay}">
                     <local:PlaceholderBox.Error>
                         <MultiBinding Converter="{StaticResource ErrorConvert}" Mode="OneWay" ConverterParameter="1">

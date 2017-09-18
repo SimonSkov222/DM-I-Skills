@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace DM_Skills.Models
@@ -40,6 +41,7 @@ namespace DM_Skills.Models
         public event Action<bool> OnDisconnection;
         public event Action OnLocationChanged;
         public event Action OnTimerStarted;
+        public event Action<MouseButtonEventArgs> OnMouseClick;
 
         public event Action OnUpload;
 
@@ -228,6 +230,10 @@ namespace DM_Skills.Models
         public void InvokeTimerStarted()
         {
             OnTimerStarted?.Invoke();
+        }
+        public void InvokeMouseClick(MouseButtonEventArgs e)
+        {
+            OnMouseClick?.Invoke(e);
         }
 
 
