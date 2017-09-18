@@ -77,7 +77,7 @@ namespace DM_Skills.Controls
             {
                 if (Models.SettingsModel.Singleton.IsClient && Models.SettingsModel.Singleton.UseGetTime)
                 {
-                    _Watch.Elapsed.Add(new TimeSpan(0, 10, 0));
+                    addTime = 10000;
                     Button_Start_Click(null, null);
                 }
             };
@@ -153,7 +153,7 @@ namespace DM_Skills.Controls
 
             if (Models.SettingsModel.Singleton.IsServer)
             {
-                Models.SettingsModel.Singleton.Server.Broadcast((int)Scripts.JsonCommandIDs.Broadcast_TimerStarted);
+                Models.SettingsModel.Singleton.Server.BroadcastLine((int)Scripts.JsonCommandIDs.Broadcast_TimerStarted);
 
             }
 
@@ -173,7 +173,7 @@ namespace DM_Skills.Controls
 
             if (Models.SettingsModel.Singleton.IsServer)
             {
-                Models.SettingsModel.Singleton.Server.Broadcast((int)Scripts.JsonCommandIDs.Broadcast_TimerStopped);
+                Models.SettingsModel.Singleton.Server.BroadcastLine((int)Scripts.JsonCommandIDs.Broadcast_TimerStopped);
             }
 
             _Watch.Stop();
