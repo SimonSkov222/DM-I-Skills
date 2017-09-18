@@ -257,6 +257,9 @@ namespace DM_Skills.Models
             }
         }
 
+        public bool UseGetTime { get; set; }
+        public bool UseGetLocation { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
