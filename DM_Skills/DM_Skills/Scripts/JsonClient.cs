@@ -50,6 +50,8 @@ namespace DM_Skills.Scripts
             try
             {
                 client = new SimpleTcpClient();
+                client.Delimiter = 0x10;
+                client.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimiter data received"); };
                 client.DataReceived += DataReceived;
 
                 client.Connect(ipAddress, port);
@@ -58,6 +60,9 @@ namespace DM_Skills.Scripts
                 //pingServer.Start();
 
                 InvokeOutput("Client Connected.");
+                Application.Current.MainWindow.Closed += MainWindow_Closed;
+
+
                 OnConnected?.Invoke();
                 return true;
             }
@@ -69,8 +74,15 @@ namespace DM_Skills.Scripts
             
         }
 
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+            MessageBox.Show("Close connection");
+            CloseConnection(false);
+        }
+
         public void Disconnect()
         {
+            Application.Current.MainWindow.Closed -= MainWindow_Closed;
             //pingServer.Abort();
             Send(COMMAND_DISCONNECT);
             CloseConnection(true);
