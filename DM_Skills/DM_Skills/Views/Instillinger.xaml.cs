@@ -83,12 +83,17 @@ namespace DM_Skills.Views
                 //rSettingsBtn = Application.Current.MainWindow.FindName("Menu_Indstillinger") as RadioButton;
                 (Application.Current.MainWindow.FindName("Menu_Forside") as RadioButton).PreviewMouseLeftButtonDown += Connection_MouseLeftButtonDown;
                 (Application.Current.MainWindow.FindName("Menu_Projektor") as ToggleButton).PreviewMouseLeftButtonDown += Connection_MouseLeftButtonDown;
-                Settings.OnLocationChanged += delegate () 
+                Settings.OnLocationChanged += newLocation =>
                 {
-                    //MessageBox.Show("SSet location");
-                    var selected = Settings.AllLocations.FirstOrDefault(m => m.Name == Settings.Location.Name);
-                    //int id =
-                    combo_Location.SelectedItem = selected;
+                    if (true)
+                    {
+                        Console.WriteLine("Set location");
+                        Settings.Location = newLocation;
+                        //MessageBox.Show("SSet location");
+                        //var selected = Settings.AllLocations.FirstOrDefault(m => m.Name == newLocation.Name);
+                        //int id =
+                        //combo_Location.SelectedItem = selected;
+                    }
                 };
 
 
@@ -287,8 +292,12 @@ namespace DM_Skills.Views
                 MessageBox.Show("Du er tilsluttet til en server", "Er tilsluttet", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            
-            Settings.Client.Connect(txtIP.Text, int.Parse(txtPort.Text));
+
+            if (!Settings.Client.Connect(txtIP.Text, int.Parse(txtPort.Text))) {
+
+                MessageBox.Show("Kunne ikke oprette forbindelse", "Er ikke tilsluttet", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
         }
 
         private void Button_Afbryd_Click(object sender, RoutedEventArgs e)
@@ -400,13 +409,29 @@ namespace DM_Skills.Views
             if (this.IsLoaded && Settings.IsServer)
             {
                 //MessageBox.Show("Send Location");
-                //Settings.Server.Broadcast(Scripts.PacketType.Broadcast_LocationChanged, Settings.Location);
+                Console.WriteLine("Send Location");
+                Settings.Server.Broadcast((int)Scripts.JsonCommandIDs.Broadcast_LocationChanged, Settings.Location);
             }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Resources["Color_Background_Button_Blue"] = Brushes.Red;
+        }
+
+        private void CheckBox_Location_Checked(object sender, RoutedEventArgs e)
+        {
+            if (Settings.IsClient)
+            {
+                Settings.Client.Send((int)Scripts.JsonCommandIDs.GetLocation);
+            }
+        }
+        private void CheckBox_GetTime_Checked(object sender, RoutedEventArgs e)
+        {
+            if (Settings.IsClient)
+            {
+                Settings.Client.Send((int)Scripts.JsonCommandIDs.GetTime);
+            }
         }
     }
 }

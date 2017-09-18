@@ -16,6 +16,6 @@ namespace DM_Skills.Scripts
         MultipleQuery = 7,
         Write = 8,
         Read =9,
-        Ping = 10
+        GetTime = 10
     }
 }

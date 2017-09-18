@@ -24,6 +24,11 @@ namespace DM_Skills.Scripts
                     Database.GetDB().ExecuteQuery((string)data);
                     return true;
 
+                case (int)JsonCommandIDs.GetLocation:
+                    Console.WriteLine("Send location");
+                    reply = Models.SettingsModel.Singleton.Location;
+                    return true;
+
 
                 case (int)JsonCommandIDs.Broadcast_LocationChanged:     ((JsonServer)sender).Broadcast((int)JsonCommandIDs.Broadcast_LocationChanged, data); break;
                 case (int)JsonCommandIDs.Broadcast_TimerStarted:        ((JsonServer)sender).Broadcast((int)JsonCommandIDs.Broadcast_TimerStarted); break;

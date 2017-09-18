@@ -278,6 +278,7 @@
                     </Grid.RowDefinitions>
                     
                     <ComboBox Grid.Row="0" VerticalAlignment="Top"  SelectedIndex="0"
+                              SelectionChanged="ComboBox_SelectionChanged"
                               Binding.TargetUpdated="ComboBox_TargetUpdated" x:Name="combo_Location"
                               ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
                               SelectedItem="{Binding Source={StaticResource Settings}, Path=Location, Mode=TwoWay}"
@@ -334,8 +335,8 @@
 
                     </Grid>
 
-                    <CheckBox Grid.Row="3" Content="Hent lokation fra server" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"/>
-                    <CheckBox Grid.Row="4" Content="Server starter stopur" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"/>
+                    <CheckBox Grid.Row="3" Content="Hent lokation fra server" FontWeight="Normal" Checked="CheckBox_Location_Checked" Style="{StaticResource CheckBox_Style_Default}"/>
+                    <CheckBox Grid.Row="4" Content="Server starter stopur" FontWeight="Normal" Checked="CheckBox_GetTime_Checked" Style="{StaticResource CheckBox_Style_Default}"/>
 
                     <!--<Grid Grid.Row="3" Height="{Binding ElementName=btnSchoolUpload, Path=ActualHeight}" Margin="0 20 0 0">
 

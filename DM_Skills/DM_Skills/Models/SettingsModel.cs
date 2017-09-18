@@ -53,7 +53,7 @@ namespace DM_Skills.Models
         public event Action OnSchoolsChanged;
         public event Action OnConnection;
         public event Action<bool> OnDisconnection;
-        public event Action OnLocationChanged;
+        public event Action<LocationModel> OnLocationChanged;
         public event Action OnTimerStarted;
         public event Action<MouseButtonEventArgs> OnMouseClick;
 
@@ -209,7 +209,6 @@ namespace DM_Skills.Models
                 return _AllSchools;
             }
         }
-        public bool HasLocation { get { return _Location != null && _Location.ID != -1; } }
         
 
 
@@ -235,10 +234,10 @@ namespace DM_Skills.Models
             OnUpload?.Invoke();
         }
 
-        public void InvokeLocationChanged()
+        public void InvokeLocationChanged(object newLocation)
         {
             //NotifyPropertyChanged();
-            OnLocationChanged?.Invoke();
+            OnLocationChanged?.Invoke((LocationModel)newLocation);
         }
 
         public void InvokeTimerStarted()
