@@ -17,6 +17,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
 
@@ -37,7 +38,7 @@
                 </Grid.ColumnDefinitions>
             </Grid>
         </ScrollViewer>
-        <Grid x:Name="grid_overtime" Grid.Row="3" Margin="10">
+        <Grid x:Name="grid_overtime" Grid.Row="3" Margin="10 10 10 2">
             <Grid.Visibility>
                 <MultiBinding Converter="{StaticResource OvertimeConvert}" ConverterParameter="Visibility">
                     <Binding ElementName="controller" Path="CurrentTime"/>
@@ -49,6 +50,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
         </Grid>
+        <Button Content="Nulstil" Grid.Row="4" x:Name="btn_Reset"
+                
+                Style="{StaticResource Button_Style_Default}" 
+                HorizontalAlignment="Stretch" Click="btn_Reset_Click"/>
     </Grid>
     
 </UserControl>
