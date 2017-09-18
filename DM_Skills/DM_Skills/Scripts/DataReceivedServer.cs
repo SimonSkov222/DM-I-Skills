@@ -30,17 +30,17 @@ namespace DM_Skills.Scripts
                     return true;
 
 
-                case (int)JsonCommandIDs.Broadcast_LocationChanged:     ((JsonServer)sender).Broadcast((int)JsonCommandIDs.Broadcast_LocationChanged, data); break;
-                case (int)JsonCommandIDs.Broadcast_TimerStarted:        ((JsonServer)sender).Broadcast((int)JsonCommandIDs.Broadcast_TimerStarted); break;
+                case (int)JsonCommandIDs.Broadcast_LocationChanged:     ((JsonServer)sender).BroadcastLine((int)JsonCommandIDs.Broadcast_LocationChanged, data); break;
+                case (int)JsonCommandIDs.Broadcast_TimerStarted:        ((JsonServer)sender).BroadcastLine((int)JsonCommandIDs.Broadcast_TimerStarted); break;
 
                 case (int)JsonCommandIDs.Broadcast_UploadSchools:
-                    ((JsonServer)sender).Broadcast((int)JsonCommandIDs.Broadcast_UploadSchools);
+                    ((JsonServer)sender).BroadcastLine((int)JsonCommandIDs.Broadcast_UploadSchools);
                     Models.SettingsModel.Singleton.InvokeSchoolsChanged();
 
                     break;
 
                 case (int)JsonCommandIDs.Broadcast_UploadTables:
-                    ((JsonServer)sender).Broadcast((int)JsonCommandIDs.Broadcast_UploadTables);
+                    ((JsonServer)sender).BroadcastLine((int)JsonCommandIDs.Broadcast_UploadTables);
                     Models.SettingsModel.Singleton.InvokeUpload();
                     break;
             }

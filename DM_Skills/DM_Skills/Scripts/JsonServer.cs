@@ -32,7 +32,7 @@ namespace DM_Skills.Scripts
             JsonConverter = converterJson;
             DataController = dataController;
 
-            disconnectPing.Tick += (o, e) => { Broadcast(COMMAND_PING); InvokeOutput("Broadcast Ping"); };
+            disconnectPing.Tick += (o, e) => { BroadcastLine(COMMAND_PING); InvokeOutput("Broadcast Ping"); };
             disconnectPing.Interval = timeoutPing;
 
 
@@ -50,10 +50,13 @@ namespace DM_Skills.Scripts
             try
             {
                 Host = new SimpleTcpServer();
+                //Host.Delimiter
                 //Host.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimter data received"); };
                 //Host.DataReceived += (o, e) => { Console.WriteLine("##############Data received"); };
                 //Host.DataReceived += DataReceived;
                 Host.DelimiterDataReceived += DataReceived;
+                Host.DataReceived += (o, e) => { Console.WriteLine($"##############Data received-{e.MessageString}"); };
+
                 Host.ClientConnected += ClientConnected;
                 Host.ClientDisconnected += (o, e) => { Console.WriteLine("Client disconnected!!"); };
 
@@ -77,7 +80,7 @@ namespace DM_Skills.Scripts
         public void Stop()
         {
             disconnectPing.Stop();
-            Broadcast(COMMAND_DISCONNECT);
+            BroadcastLine(COMMAND_DISCONNECT);
             Host.Stop();
             Host = null;
 
@@ -91,13 +94,29 @@ namespace DM_Skills.Scripts
             InvokeOutput("Server Stopped.");
             OnStopped?.Invoke();
         }
-        
+
+        public void BroadcastLine(int command, object data = null)
+        {
+            var packet = PackJson(command, null, data) + Host.StringEncoder.GetString(new byte[] { Host.Delimiter });            
+           
+            var dataInBytes = Host.StringEncoder.GetBytes(packet);
+            foreach (var client in Clients.Where(x => x.Connected))
+            {
+                try { client.GetStream().Write(dataInBytes, 0, dataInBytes.Length); }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine("Warning#004 :" + ex.Message);
+                    client.Close();
+                    client.Dispose();
+                }
+            }
+            InvokeOutput($"BroadcastLine Send: {packet}");
+        }
         public void Broadcast(int command, object data = null)
         {
             var packet = PackJson(command, null, data);// + Host.StringEncoder.GetString(new byte[] { Host.Delimiter });            
-            Host.BroadcastLine(packet);
-            return;
-
+       
             var dataInBytes = Host.StringEncoder.GetBytes(packet);
             foreach (var client in Clients.Where(x => x.Connected))
             {
@@ -109,7 +128,7 @@ namespace DM_Skills.Scripts
                     client.Dispose();
                 }
             }
-            InvokeOutput($"Broadcast Send: {packet}");
+            InvokeOutput($"Broadcast0 Send: {packet}");
         }
 
         /////////////////////////////////////
@@ -131,8 +150,8 @@ namespace DM_Skills.Scripts
         }
 
         private void DisconnectClient(TcpClient client) {
-            client.Close();
-            client.Dispose();
+            //client.Close();
+            //client.Dispose();
         }
 
         /////////////////////////////////////

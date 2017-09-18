@@ -89,11 +89,11 @@ namespace DM_Skills.Views
                     if (Settings.UseGetLocation)
                     {
                         Console.WriteLine("Set location");
-                        Settings.Location = newLocation;
+                        //Settings.Location = newLocation;
                         //MessageBox.Show("SSet location");
-                        //var selected = Settings.AllLocations.FirstOrDefault(m => m.Name == newLocation.Name);
+                        var selected = Settings.AllLocations.FirstOrDefault(m => m.Name == newLocation.Name);
                         //int id =
-                        //combo_Location.SelectedItem = selected;
+                        combo_Location.SelectedItem = selected;
                     }
                 };
 
@@ -411,7 +411,7 @@ namespace DM_Skills.Views
             {
                 //MessageBox.Show("Send Location");
                 Console.WriteLine("Send Location");
-                Settings.Server.Broadcast((int)Scripts.JsonCommandIDs.Broadcast_LocationChanged, Settings.Location);
+                Settings.Server.BroadcastLine((int)Scripts.JsonCommandIDs.Broadcast_LocationChanged, Settings.Location);
             }
         }
 
