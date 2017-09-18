@@ -77,7 +77,6 @@ namespace DM_Skills.Controls
             {
                 if (Models.SettingsModel.Singleton.IsClient && Models.SettingsModel.Singleton.UseGetTime)
                 {
-                    addTime = 0;
                     Button_Stop_Click(null, null);
                 }
             };
@@ -86,7 +85,7 @@ namespace DM_Skills.Controls
             {
                 if (Models.SettingsModel.Singleton.IsClient && Models.SettingsModel.Singleton.UseGetTime)
                 {
-                    addTime = 10000;
+                    addTime = 0;
                     Button_Start_Click(null, null);
                 }
             };
