@@ -337,21 +337,13 @@
 
                     <CheckBox Grid.Row="3" Content="Hent lokation fra server" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"
                               Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                              IsChecked="{Binding Source={StaticResource Settings}, Path=UseGetLocation}"/>
+                              IsChecked="{Binding Source={StaticResource Settings}, Path=UseGetLocation}"
+                              Checked="CheckBox_Location_Checked"/>
+                    
                     <CheckBox Grid.Row="4" Content="Server starter stopur" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"
                               Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
-                              IsChecked="{Binding Source={StaticResource Settings}, Path=UseGetTime}"/>
-
-
-                    <!--<CheckBox Content="{Binding Source={StaticResource Settings}, Path=IsServer, Converter={StaticResource ServerTextConvert}}"  
-                              FontSize="16"  
-                              Visibility="{Binding ElementName=rServer, Path=IsChecked, Converter={StaticResource BoolToVisibilityConvert}}"
-                              IsChecked="{Binding Source={StaticResource Settings}, Path=IsServer}" IsEnabled="False" 
-                              Margin="0 15 0 0" Grid.Row="3" Grid.Column="0"
-                              Template="{StaticResource CheckBox_Tempalate_Status}" 
-                              VerticalAlignment="Bottom"/>-->
-                    <CheckBox Grid.Row="3" Content="Hent lokation fra server" FontWeight="Normal" Checked="CheckBox_Location_Checked" Style="{StaticResource CheckBox_Style_Default}"/>
-                    <CheckBox Grid.Row="4" Content="Server starter stopur" FontWeight="Normal" Checked="CheckBox_GetTime_Checked" Style="{StaticResource CheckBox_Style_Default}"/>
+                              IsChecked="{Binding Source={StaticResource Settings}, Path=UseGetTime}"
+                              Checked="CheckBox_GetTime_Checked"/>
 
                     <!--<Grid Grid.Row="3" Height="{Binding ElementName=btnSchoolUpload, Path=ActualHeight}" Margin="0 20 0 0">
 
