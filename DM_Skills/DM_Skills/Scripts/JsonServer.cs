@@ -50,7 +50,7 @@ namespace DM_Skills.Scripts
             try
             {
                 Host = new SimpleTcpServer();
-                Host.Delimiter = 0x10;
+                //Host.Delimiter = 0x10;
                 Host.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimter data received"); };
                 Host.DataReceived += DataReceived;
                 Host.ClientConnected += ClientConnected;
@@ -91,7 +91,7 @@ namespace DM_Skills.Scripts
         
         public void Broadcast(int command, object data = null)
         {
-            var packet = PackJson(command, null, data);            
+            var packet = PackJson(command, null, data) + Host.StringEncoder.GetString(new byte[] { Host.Delimiter });            
 
             var dataInBytes = Host.StringEncoder.GetBytes(packet);
             foreach (var client in Clients.Where(x => x.Connected))
@@ -145,7 +145,7 @@ namespace DM_Skills.Scripts
                 var replyPacket = PackJson((int)packet[0], (int)packet[1], reply);
                 try
                 {
-                    e.Reply(replyPacket);
+                    e.ReplyLine(replyPacket);
                     InvokeOutput($"Reply Send: {replyPacket}");
                 }
                 catch (Exception)
