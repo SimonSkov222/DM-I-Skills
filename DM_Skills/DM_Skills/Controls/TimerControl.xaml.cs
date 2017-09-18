@@ -158,7 +158,10 @@ namespace DM_Skills.Controls
         /// </summary>
         public void Reset()
         {
-            Button_Reset_Click(btn_Reset, null);
+            if (!Models.SettingsModel.Singleton.IsClient && !Models.SettingsModel.Singleton.UseGetTime)
+            {
+                Button_Reset_Click(btn_Reset, null);
+            }
         }
 
 
