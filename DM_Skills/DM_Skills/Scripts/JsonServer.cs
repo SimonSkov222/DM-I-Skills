@@ -50,7 +50,6 @@ namespace DM_Skills.Scripts
             try
             {
                 Host = new SimpleTcpServer();
-                Host.Delimiter = 10;
                 //Host.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimter data received"); };
                 //Host.DataReceived += (o, e) => { Console.WriteLine("##############Data received"); };
                 //Host.DataReceived += DataReceived;
@@ -95,7 +94,9 @@ namespace DM_Skills.Scripts
         
         public void Broadcast(int command, object data = null)
         {
-            var packet = PackJson(command, null, data) + Host.StringEncoder.GetString(new byte[] { Host.Delimiter });            
+            var packet = PackJson(command, null, data);// + Host.StringEncoder.GetString(new byte[] { Host.Delimiter });            
+            Host.BroadcastLine(packet);
+            return;
 
             var dataInBytes = Host.StringEncoder.GetBytes(packet);
             foreach (var client in Clients.Where(x => x.Connected))
@@ -145,7 +146,7 @@ namespace DM_Skills.Scripts
 
             switch ((int)packet[0])
             {
-                case COMMAND_PING:          e.Reply(e.MessageString + Host.StringEncoder.GetString(new byte[] { Host.Delimiter }));           return;
+                case COMMAND_PING:          e.ReplyLine(e.MessageString);           return;
                 case COMMAND_DISCONNECT:    DisconnectClient(e.TcpClient);      return;
             }
 
@@ -154,7 +155,7 @@ namespace DM_Skills.Scripts
                 var replyPacket = PackJson((int)packet[0], (int)packet[1], reply);
                 try
                 {
-                    e.Reply(replyPacket + Host.StringEncoder.GetString(new byte[] { Host.Delimiter }));
+                    e.ReplyLine(replyPacket);
                     InvokeOutput($"Reply Send: {replyPacket}");
                 }
                 catch (Exception ex)

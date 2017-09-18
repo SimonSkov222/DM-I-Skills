@@ -50,7 +50,7 @@ namespace DM_Skills.Scripts
             try
             {
                 client = new SimpleTcpClient();
-                client.Delimiter = 10;
+                //client.Delimiter = 10;
                 //client.DelimiterDataReceived += (o, e) => { Console.WriteLine("Delimiter data received"); };
                 client.DelimiterDataReceived += DataReceived;
                 //client.DataReceived += DataReceived;
@@ -96,7 +96,7 @@ namespace DM_Skills.Scripts
             var packet = PackJson(command, packetID, data);
             try
             {
-                client.Write(packet + client.StringEncoder.GetString(new byte[] { client.Delimiter }));
+                client.WriteLine(packet);
 
                 InvokeOutput($"Packet Send: {packet}");
             }
