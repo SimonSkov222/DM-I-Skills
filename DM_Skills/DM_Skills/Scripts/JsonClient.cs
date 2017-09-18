@@ -97,7 +97,7 @@ namespace DM_Skills.Scripts
             var packet = PackJson(command, packetID, data);
             try
             {
-                client.Write(packet);
+                client.WriteLine(packet);
 
                 InvokeOutput($"Packet Send: {packet}");
             }
