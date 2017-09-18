@@ -162,8 +162,14 @@ namespace DM_Skills.Scripts
         {
             //Fjern disconnected clients
             for (int i = Clients.Count - 1; i >= 0; i--)
+            {
                 if (!Clients[i].Connected)
+                {
+                    //DisconnectClient(Clients[i]);
                     Clients.RemoveAt(i);
+                    Console.WriteLine("Remove client");
+                }
+            }
 
 
             Clients.Add(e);
