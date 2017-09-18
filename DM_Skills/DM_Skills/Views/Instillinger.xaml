@@ -334,8 +334,10 @@
 
                     </Grid>
 
-                    <CheckBox Grid.Row="3" Content="Hent lokation fra server" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"/>
-                    <CheckBox Grid.Row="4" Content="Server starter stopur" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"/>
+                    <CheckBox Grid.Row="3" Content="Hent lokation fra server" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"
+                              Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
+                    <CheckBox Grid.Row="4" Content="Server starter stopur" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"
+                              Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"/>
 
                     <!--<Grid Grid.Row="3" Height="{Binding ElementName=btnSchoolUpload, Path=ActualHeight}" Margin="0 20 0 0">
 

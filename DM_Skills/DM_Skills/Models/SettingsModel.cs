@@ -209,8 +209,6 @@ namespace DM_Skills.Models
                 return _AllSchools;
             }
         }
-        public bool HasLocation { get { return _Location != null && _Location.ID != -1; } }
-        
 
 
         public void InvokeSchoolsChanged()
