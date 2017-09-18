@@ -16,10 +16,12 @@ namespace DM_Skills.Scripts
             switch (command)
             {
                 case (int)JsonCommandIDs.GetLocation:
-                case (int)JsonCommandIDs.Broadcast_LocationChanged: Models.SettingsModel.Singleton.InvokeLocationChanged(data); Console.WriteLine("Location Changed"); break;
-                case (int)JsonCommandIDs.Broadcast_TimerStarted:    Models.SettingsModel.Singleton.InvokeTimerStarted(); Console.WriteLine("Location Changed"); break;
-                case (int)JsonCommandIDs.Broadcast_UploadSchools:   Models.SettingsModel.Singleton.InvokeSchoolsChanged(); Console.WriteLine("Location Changed"); break;
-                case (int)JsonCommandIDs.Broadcast_UploadTables:    Models.SettingsModel.Singleton.InvokeUpload(); Console.WriteLine("Location Changed"); break;
+                case (int)JsonCommandIDs.Broadcast_LocationChanged: Models.SettingsModel.Singleton.InvokeLocationChanged(data); break;
+                case (int)JsonCommandIDs.Broadcast_TimerStarted:    Models.SettingsModel.Singleton.InvokeTimerStarted(); break;
+                case (int)JsonCommandIDs.Broadcast_UploadSchools:   Models.SettingsModel.Singleton.InvokeSchoolsChanged(); break;
+                case (int)JsonCommandIDs.Broadcast_UploadTables:    Models.SettingsModel.Singleton.InvokeUpload(); break;
+
+                case (int)JsonCommandIDs.Broadcast_TimerStopped: Models.SettingsModel.Singleton.InvokeTimerStopped(); break;
             }
 
             return false;

@@ -73,6 +73,15 @@ namespace DM_Skills.Controls
         {
 
             InitializeComponent();
+            Models.SettingsModel.Singleton.OnTimerStopped += () =>
+            {
+                if (Models.SettingsModel.Singleton.IsClient && Models.SettingsModel.Singleton.UseGetTime)
+                {
+                    addTime = 0;
+                    Button_Stop_Click(null, null);
+                }
+            };
+
             Models.SettingsModel.Singleton.OnTimerStarted += () => 
             {
                 if (Models.SettingsModel.Singleton.IsClient && Models.SettingsModel.Singleton.UseGetTime)
