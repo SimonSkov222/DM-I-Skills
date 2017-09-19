@@ -76,7 +76,7 @@ namespace DM_Skills.Controls
 
             Models.SettingsModel.Singleton.OnGetTimeStatus = () =>
             {
-                return "{ \\\"T\\\" : \\\"" + _Watch.Elapsed.TotalMilliseconds + "\\\", \\\"B\\\": " + (_Watch .IsRunning ? 1 : 0) + " }";//new object[] { _Watch.Elapsed.TotalMilliseconds, false };
+                return "{ (T) : (" + _Watch.Elapsed.TotalMilliseconds + "), (B): " + (_Watch .IsRunning ? 1 : 0) + " }";//new object[] { _Watch.Elapsed.TotalMilliseconds, false };
             };
             Models.SettingsModel.Singleton.OnSetTimeStatus = (msec, started) =>
             {
