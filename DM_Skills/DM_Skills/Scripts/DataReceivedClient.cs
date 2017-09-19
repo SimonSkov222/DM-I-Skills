@@ -25,7 +25,7 @@ namespace DM_Skills.Scripts
                 case (int)JsonCommandIDs.Broadcast_TimerReset:      Models.SettingsModel.Singleton.InvokeTimerReset(); break;
                 case (int)JsonCommandIDs.GetTime:
                     var text = ((string)data).Replace("(", "\"").Replace(")", "\"");
-                    var json = Json.JsonParser.FromJson((string)data);
+                    var json = Json.JsonParser.FromJson(text);
                     var time = Convert.ToDouble(json["T"]);
                     var started = Convert.ToBoolean(json["B"]);
 
