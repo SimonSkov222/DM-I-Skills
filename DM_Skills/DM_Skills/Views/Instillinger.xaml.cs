@@ -408,7 +408,7 @@ namespace DM_Skills.Views
             if (this.IsLoaded && Settings.IsServer)
             {
                 //MessageBox.Show("Send Location");
-                Console.WriteLine("Send Location");
+                //Console.WriteLine("Send Location");
                 Settings.Server.BroadcastLine((int)Scripts.JsonCommandIDs.Broadcast_LocationChanged, Settings.Location);
             }
         }
