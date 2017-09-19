@@ -95,6 +95,7 @@ namespace DM_Skills.Controls
             {
                 Button_Reset_Click(null, null);
                 AddTime = Convert.ToInt64(msec);
+                LateTime = Convert.ToInt64(sliderTime);
 
 
                 if (started)
