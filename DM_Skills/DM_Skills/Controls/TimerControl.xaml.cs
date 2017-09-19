@@ -80,7 +80,10 @@ namespace DM_Skills.Controls
             };
             Models.SettingsModel.Singleton.OnSetTimeStatus = (msec, started) =>
             {
+                Button_Reset_Click(null, null);
                 AddTime = Convert.ToInt64(msec);
+
+
                 if (started)
                     Button_Start_Click(null, null);
                 else
