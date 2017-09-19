@@ -55,10 +55,8 @@ namespace DM_Skills.Scripts
                 //Host.DataReceived += (o, e) => { Console.WriteLine("##############Data received"); };
                 //Host.DataReceived += DataReceived;
                 Host.DelimiterDataReceived += DataReceived;
-                Host.DataReceived += (o, e) => { Console.WriteLine($"##############Data received-{e.MessageString}"); };
 
                 Host.ClientConnected += ClientConnected;
-                Host.ClientDisconnected += (o, e) => { Console.WriteLine("Client disconnected!!"); };
 
                 Host.Start(port);
 
@@ -197,8 +195,7 @@ namespace DM_Skills.Scripts
             {
                 if (!Clients[i].Connected)
                 {
-                    //Clients.RemoveAt(i);
-                    Console.WriteLine("Remove client");
+                    Clients.RemoveAt(i);
                 }
             }
 

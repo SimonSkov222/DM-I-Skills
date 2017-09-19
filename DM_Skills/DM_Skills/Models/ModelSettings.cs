@@ -75,8 +75,6 @@ namespace DM_Skills.Models
 
         public static void RequestBroadcast(Scripts.JsonCommandIDs type)
         {
-
-            Console.WriteLine("TODO: ModelSettings.cs:76");
             SettingsModel Settings = Application.Current.FindResource("Settings") as SettingsModel;
             if (Settings.IsServer)
             {

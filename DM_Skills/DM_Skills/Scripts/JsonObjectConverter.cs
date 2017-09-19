@@ -20,6 +20,7 @@ namespace DM_Skills.Scripts
             objectKeys.Add(typeof(TeamModel).FullName, "TM");
             objectKeys.Add(typeof(TableModelN).FullName, "TAM");
             objectKeys.Add(typeof(string).FullName, "STR");
+            objectKeys.Add(typeof(double).FullName, "DOU");
             objectKeys.Add(typeof(List<List<object>>).FullName, "LIST");
             
             convertTo.Add(objectKeys[typeof(LocationModel).FullName], To_LocationModel);
@@ -28,6 +29,7 @@ namespace DM_Skills.Scripts
             convertTo.Add(objectKeys[typeof(TeamModel).FullName], To_TeamModel);
             convertTo.Add(objectKeys[typeof(TableModelN).FullName], To_TableModel);
             convertTo.Add(objectKeys[typeof(string).FullName], To_String);
+            convertTo.Add(objectKeys[typeof(double).FullName], To_Double);
             convertTo.Add(objectKeys[typeof(List<List<object>>).FullName], To_QueryRead);
 
             convertFrom.Add(objectKeys[typeof(LocationModel).FullName], From_LocationModel);
@@ -36,6 +38,7 @@ namespace DM_Skills.Scripts
             convertFrom.Add(objectKeys[typeof(TeamModel).FullName], From_TeamModel);
             convertFrom.Add(objectKeys[typeof(TableModelN).FullName], From_TableModel);
             convertFrom.Add(objectKeys[typeof(string).FullName], From_String);
+            convertFrom.Add(objectKeys[typeof(double).FullName], From_Double);
             convertFrom.Add(objectKeys[typeof(List<List<object>>).FullName], From_QueryRead);
         }
 
@@ -112,6 +115,11 @@ namespace DM_Skills.Scripts
         private string To_String(object data)
         {
             return "{ \"Str\" : \"" + (string)data + "\"}";
+        }
+
+        private string To_Double(object data)
+        {
+            return "{ \"Val\" : \"" + (double)data + "\"}";
         }
 
         private string To_QueryRead(object data)
@@ -201,6 +209,10 @@ namespace DM_Skills.Scripts
         private object From_String(Dictionary<string, object> data)
         {
             return data["Str"];
+        }
+        private object From_Double(Dictionary<string, object> data)
+        {
+            return Convert.ToDouble(data["Val"]);
         }
 
         private object From_QueryRead(Dictionary<string, object> data)

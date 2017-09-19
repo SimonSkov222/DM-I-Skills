@@ -428,10 +428,10 @@ namespace DM_Skills.Controls
             );
         }
 
-        private void popup_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            Console.WriteLine($"mcap {popup.IsMouseCaptured}");
-        }
+        //private void popup_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        //{
+        //    Console.WriteLine($"mcap {popup.IsMouseCaptured}");
+        //}
 
         private void Grid_MouseEnter(object sender, MouseEventArgs e)
         {

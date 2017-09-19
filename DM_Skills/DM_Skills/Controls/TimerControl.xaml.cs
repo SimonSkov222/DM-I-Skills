@@ -73,6 +73,17 @@ namespace DM_Skills.Controls
         {
 
             InitializeComponent();
+
+            Models.SettingsModel.Singleton.OnGetTime = () =>
+            {
+                return _Watch.Elapsed.TotalMilliseconds;
+            };
+            Models.SettingsModel.Singleton.OnSetTime = (msec) =>
+            {
+                AddTime = Convert.ToInt64(msec);
+            };
+
+
             Models.SettingsModel.Singleton.OnTimerStopped += () =>
             {
                 if (Models.SettingsModel.Singleton.IsClient && Models.SettingsModel.Singleton.UseGetTime)

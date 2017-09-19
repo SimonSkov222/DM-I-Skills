@@ -50,6 +50,8 @@ namespace DM_Skills.Models
 
         public string Debug { get; set; }
 
+        public Func<double> OnGetTime;
+        public Action<double> OnSetTime;
         public event Action OnSchoolsChanged;
         public event Action OnConnection;
         public event Action<bool> OnDisconnection;
@@ -272,6 +274,8 @@ namespace DM_Skills.Models
         {
             OnMouseClick?.Invoke(e);
         }
+        public double InvokeGetTime() { return OnGetTime?.Invoke() ?? 0; }
+        public void InvokeSetTime(double msec) { OnSetTime?.Invoke(msec); }
 
 
         public bool HasLocation
@@ -284,7 +288,7 @@ namespace DM_Skills.Models
         private bool _UseGetTime = false;
         public bool UseGetTime { get { return _UseGetTime; } set { _UseGetTime = value; NotifyPropertyChanged(nameof(CanUseTimerControlButtons)); } }
         public bool UseGetLocation { get; set; }
-        public bool CanUseTimerControlButtons { get { return !IsClient && !UseGetTime; } }
+        public bool CanUseTimerControlButtons { get { return !(IsClient && UseGetTime); } }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

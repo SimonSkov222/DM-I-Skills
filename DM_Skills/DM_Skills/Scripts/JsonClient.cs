@@ -160,7 +160,7 @@ namespace DM_Skills.Scripts
         }
         
         private void InvokeOutput(string text) {
-            Console.WriteLine("Client: "+text);
+            //Console.WriteLine("Client: "+text);
             //Debug_Output?.Invoke(text);
             //Helper.ProcessUITasks();
         }
@@ -171,13 +171,12 @@ namespace DM_Skills.Scripts
 
         private void DataReceived(object sender, Message e)
         {
-            Console.WriteLine("Got packet");
             var packet = UnpackJson(e.MessageString);
 
             switch ((int)packet[0])
             {
-                case COMMAND_PING: disconnectTimer.Stop(); disconnectTimer.Start(); Console.WriteLine("Ping");       return;
-                case COMMAND_DISCONNECT:    CloseConnection(false);                                 return;
+                case COMMAND_PING: disconnectTimer.Stop(); disconnectTimer.Start();     return;
+                case COMMAND_DISCONNECT:    CloseConnection(false);                     return;
             }
             
             

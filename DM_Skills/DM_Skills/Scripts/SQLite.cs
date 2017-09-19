@@ -505,19 +505,19 @@ namespace DM_Skills.Scripts
                 List<List<object>> values = null;
                 if (IsReadMethod(cmd))
                 {
-                    Console.WriteLine($"Read SQL: {cmd}");
+                    //Console.WriteLine($"Read SQL: {cmd}");
                     Settings.Client.Send((int)JsonCommandIDs.Read, cmd, o => { values = o as List<List<object>>; myLock.Set(); });
                     //Settings.Client.Send(PacketType.Read, o => { values = o as List<List<object>>; myLock.Set(); }, cmd);
                 }
                 else
                 {
-                    Console.WriteLine($"Write SQL: {cmd}");
+                    //Console.WriteLine($"Write SQL: {cmd}");
                     Settings.Client.Send((int)JsonCommandIDs.Write, cmd, o => { myLock.Set(); });
                     //Settings.Client.Send(PacketType.Write, o => { myLock.Set(); }, cmd);
                 }
                 if (!myLock.WaitOne(new TimeSpan(0, 0, 25)))
                 {
-                    Console.WriteLine($"No Answer");
+                    //Console.WriteLine($"No Answer");
                     //MessageBox.Show("SQLite 516: Fik ikke noget svar fra serveren");                    
                 }
                 return values;
@@ -586,11 +586,9 @@ namespace DM_Skills.Scripts
                     //    myLock.Set();
                     //}, cmd);
                 }
-
-                Console.WriteLine("#####Wait for server");
+                
                 if (!myLock.WaitOne(new TimeSpan(0, 0, 5)))
                 {
-                    Console.WriteLine("Failed reply");
                     return null;
 
                 }

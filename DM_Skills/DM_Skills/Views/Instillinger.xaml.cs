@@ -85,10 +85,8 @@ namespace DM_Skills.Views
                 (Application.Current.MainWindow.FindName("Menu_Projektor") as ToggleButton).PreviewMouseLeftButtonDown += Connection_MouseLeftButtonDown;
                 Settings.OnLocationChanged += newLocation =>
                 {
-                    Console.WriteLine("Got location");
                     if (Settings.UseGetLocation)
                     {
-                        Console.WriteLine("Set location");
                         //Settings.Location = newLocation;
                         //MessageBox.Show("SSet location");
                         var selected = Settings.AllLocations.FirstOrDefault(m => m.Name == newLocation.Name);
@@ -424,7 +422,6 @@ namespace DM_Skills.Views
         {
             if (Settings.IsClient)
             {
-                Console.WriteLine("Get location :)");
                 Settings.Client.Send((int)Scripts.JsonCommandIDs.GetLocation);
             }
         }
