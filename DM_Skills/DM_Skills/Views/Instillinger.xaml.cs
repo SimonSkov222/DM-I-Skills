@@ -192,9 +192,8 @@ namespace DM_Skills.Views
                 return;
             }
 
-            int port = 0;
 
-            if (!int.TryParse(txtPort.Text,out port))
+            if (!int.TryParse(txtPort.Text, out int port))
             {
                 MessageBox.Show("Du mangler at indtaste en port", "Ingen port", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -273,8 +272,7 @@ namespace DM_Skills.Views
 
         private void Button_Tilslut_Click(object sender, RoutedEventArgs e)
         {
-            int port = 0;
-            if (!int.TryParse(txtPort.Text, out port))
+            if (!int.TryParse(txtPort.Text, out int port))
             {
                 MessageBox.Show("Du mangler at indtaste en port", "Ingen port", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -352,10 +350,7 @@ namespace DM_Skills.Views
 
         public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private void SaveToLocal_TextChanged(object sender, TextChangedEventArgs e)

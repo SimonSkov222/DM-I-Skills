@@ -302,11 +302,8 @@ namespace DM_Skills.Models
                 case nameof(AllLocations): _AllLocations = null; break;
                 case nameof(AllSchools): _AllSchools = null; break;
             }
-
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
+            
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
