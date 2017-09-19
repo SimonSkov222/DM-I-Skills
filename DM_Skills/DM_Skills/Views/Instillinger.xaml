@@ -282,7 +282,7 @@
                               Binding.TargetUpdated="ComboBox_TargetUpdated" x:Name="combo_Location"
                               ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
                               SelectedItem="{Binding Source={StaticResource Settings}, Path=Location, Mode=TwoWay}"
-                              IsEnabled="{Binding Source={StaticResource Settings}, Path=UseGetLocation, Converter={StaticResource BoolToBoolRevConvert}}"
+                              IsEnabled="{Binding Source={StaticResource Settings}, Path=CanChangeLocation}"
                               />
 
 
