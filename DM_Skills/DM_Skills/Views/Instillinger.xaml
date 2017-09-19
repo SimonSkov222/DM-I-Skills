@@ -282,6 +282,7 @@
                               Binding.TargetUpdated="ComboBox_TargetUpdated" x:Name="combo_Location"
                               ItemsSource="{Binding Source={StaticResource Settings}, Path=AllLocations, NotifyOnTargetUpdated=True}"
                               SelectedItem="{Binding Source={StaticResource Settings}, Path=Location, Mode=TwoWay}"
+                              IsEnabled="{Binding Source={StaticResource Settings}, Path=UseGetLocation, Converter={StaticResource BoolToBoolRevConvert}}"
                               />
 
 
@@ -340,7 +341,7 @@
                               IsChecked="{Binding Source={StaticResource Settings}, Path=UseGetLocation}"
                               Checked="CheckBox_Location_Checked"/>
                     
-                    <CheckBox Grid.Row="4" Content="Server starter stopur" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"
+                    <CheckBox Grid.Row="4" Content="Server styre stopur" FontWeight="Normal" Style="{StaticResource CheckBox_Style_Default}"
                               Visibility="{Binding ElementName=rClient, Path=IsChecked,Converter={StaticResource BoolToVisibilityConvert}}"
                               IsChecked="{Binding Source={StaticResource Settings}, Path=UseGetTime}"
                               Checked="CheckBox_GetTime_Checked"/>

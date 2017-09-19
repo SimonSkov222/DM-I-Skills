@@ -41,7 +41,7 @@ namespace DM_Skills.Views
                 {
                     ip = "127.0.0.1";
                 }
-                
+
                 return ip;
             }
         }
@@ -55,7 +55,7 @@ namespace DM_Skills.Views
             InitializeComponent();
             Loaded += Connection_Loaded;
 
-            
+
         }
 
         private void Connection_Loaded(object sender, RoutedEventArgs e)
@@ -143,7 +143,7 @@ namespace DM_Skills.Views
             {
                 clientPort = txtPort.Text;
                 txtPort.Text = serverPort;
-                
+
                 clientIP = txtIP.Text;
                 txtIP.Text = ServerIP;
 
@@ -177,14 +177,14 @@ namespace DM_Skills.Views
 
 
             if (dlg.ShowDialog() ?? false)
-            {            
+            {
                 Settings.FileNameDB = dlg.FileName;
             }
         }
 
         private void Button_Start_Click(object sender, RoutedEventArgs e)
         {
-            
+
 
             if (Settings.IsClient || Settings.IsServer)
             {
@@ -234,9 +234,9 @@ namespace DM_Skills.Views
             var myLocalDB = Scripts.Database.GetLocalDB("Gem db location");
             myLocalDB.Update("Settings", "Value", Settings.FileNameDB, (object)"LocationDB");
             myLocalDB.Disconnect();
-            
+
             Scripts.Database.CreateDatabase();
-            
+
             Settings.Server.Start(port);
 
 
@@ -283,7 +283,7 @@ namespace DM_Skills.Views
                 MessageBox.Show("Du mangler at indtaste en ip", "Ingen ip", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            
+
             if (Settings.IsClient && Settings.IsServer)
             {
                 MessageBox.Show("Du er tilsluttet til en server", "Er tilsluttet", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -304,7 +304,7 @@ namespace DM_Skills.Views
                 MessageBox.Show("Du er ikke tilsluttet til en server", "Ikke tilsluttet", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            
+
             Settings.Client.Disconnect();
         }
 
@@ -344,7 +344,7 @@ namespace DM_Skills.Views
             Models.SchoolModel.RequestBroadcast(Scripts.JsonCommandIDs.Broadcast_UploadSchools);
         }
 
-        
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -415,13 +415,17 @@ namespace DM_Skills.Views
 
         private void CheckBox_Location_Checked(object sender, RoutedEventArgs e)
         {
+            if (!IsLoaded) return;
+                
             if (Settings.IsClient)
             {
-                Settings.Client.Send((int)Scripts.JsonCommandIDs.GetLocation);
+                Settings.Client.Send((int) Scripts.JsonCommandIDs.GetLocation);
             }
         }
         private void CheckBox_GetTime_Checked(object sender, RoutedEventArgs e)
         {
+            if (!IsLoaded) return;
+
             if (Settings.IsClient)
             {
                 Settings.Client.Send((int)Scripts.JsonCommandIDs.GetTime);

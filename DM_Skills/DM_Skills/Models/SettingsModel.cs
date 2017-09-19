@@ -289,9 +289,10 @@ namespace DM_Skills.Models
                 return _Location != null && _Location.ID != -1;
             }
         }
-        private bool _UseGetTime = false;
+        private bool _UseGetTime = true;
+        private bool _UseGetLocation = true;
         public bool UseGetTime { get { return _UseGetTime; } set { _UseGetTime = value; NotifyPropertyChanged(nameof(CanUseTimerControlButtons)); } }
-        public bool UseGetLocation { get; set; }
+        public bool UseGetLocation { get { return _UseGetLocation; } set { _UseGetLocation = value; NotifyPropertyChanged(); } }
         public bool CanUseTimerControlButtons { get { return !(IsClient && UseGetTime); } }
 
         public event PropertyChangedEventHandler PropertyChanged;
