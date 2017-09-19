@@ -80,6 +80,8 @@ namespace DM_Skills.Models
                 NotifyPropertyChanged();
                 NotifyPropertyChanged("HasConnection");
                 NotifyPropertyChanged("HasLostConnection");
+                NotifyPropertyChanged(nameof(CanUseTimerControlButtons));
+                NotifyPropertyChanged(nameof(CanChangeLocation));
             }
         }
         public bool IsClient
@@ -96,6 +98,7 @@ namespace DM_Skills.Models
                 NotifyPropertyChanged("HasConnection");
                 NotifyPropertyChanged("HasLostConnection");
                 NotifyPropertyChanged(nameof(CanUseTimerControlButtons));
+                NotifyPropertyChanged(nameof(CanChangeLocation));
             }
         }
         private bool _IsServer = false;
@@ -294,7 +297,7 @@ namespace DM_Skills.Models
         public bool UseGetTime { get { return _UseGetTime; } set { _UseGetTime = value; NotifyPropertyChanged(nameof(CanUseTimerControlButtons)); } }
         public bool UseGetLocation { get { return _UseGetLocation; } set { _UseGetLocation = value; NotifyPropertyChanged(nameof(CanChangeLocation)); } }
         public bool CanUseTimerControlButtons { get { return !(IsClient && UseGetTime); } }
-        public bool CanChangeLocation { get { Console.WriteLine($"-- {IsClient} -- {UseGetLocation} -- {!(IsClient && UseGetLocation)}"); return !(IsClient && UseGetLocation); } }
+        public bool CanChangeLocation { get { return !(IsClient && UseGetLocation); } }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
