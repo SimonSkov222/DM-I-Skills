@@ -159,6 +159,7 @@ namespace DM_Skills.Views
         /// </summary>
         private void TimerControl_OnReset()
         {
+            //LapList.Reset();
             timerstarted = false;
         }
         
