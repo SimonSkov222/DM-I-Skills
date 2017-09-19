@@ -17,6 +17,8 @@ namespace DM_Skills.Scripts
         public event Action OnConnected;
         public event Action<bool> OnDisconnected;
 
+
+        private bool hasConnectedBefore = false;
         //SocketClient client;
         private SimpleTcpClient client;
         private Dictionary<int, Action<object>> Callbacks = new Dictionary<int, Action<object>>();
@@ -61,8 +63,11 @@ namespace DM_Skills.Scripts
                 //pingServer.Start();
 
                 InvokeOutput("Client Connected.");
-                Application.Current.MainWindow.Closed += MainWindow_Closed;
-
+                if (!hasConnectedBefore)
+                {
+                    hasConnectedBefore = true;
+                    Application.Current.MainWindow.Closed += Program_Exit;
+                }
 
                 OnConnected?.Invoke();
                 return true;
@@ -75,17 +80,9 @@ namespace DM_Skills.Scripts
             }
             
         }
-
-        private void MainWindow_Closed(object sender, EventArgs e)
-        {
-            MessageBox.Show("Close connection");
-            CloseConnection(false);
-        }
-
+        
         public void Disconnect()
         {
-            Application.Current.MainWindow.Closed -= MainWindow_Closed;
-            //pingServer.Abort();
             Send(COMMAND_DISCONNECT);
             CloseConnection(true);
         }

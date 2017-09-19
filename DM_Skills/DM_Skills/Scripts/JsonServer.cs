@@ -19,7 +19,7 @@ namespace DM_Skills.Scripts
         public event Action OnStarted;
         public event Action OnStopped;
 
-
+        private bool hasConnectedBefore = false;
         private List<TcpClient> Clients = new List<TcpClient>();
         private SimpleTcpServer Host;
 
@@ -62,6 +62,12 @@ namespace DM_Skills.Scripts
 
                 disconnectPing.Start();
                 InvokeOutput("Server Started.");
+
+                if (!hasConnectedBefore)
+                {
+                    hasConnectedBefore = true;
+                    Application.Current.MainWindow.Closed += Program_Exit;
+                }
                 OnStarted?.Invoke();
 
 
@@ -144,7 +150,7 @@ namespace DM_Skills.Scripts
 
         private void InvokeOutput(string text)
         {
-            Console.WriteLine("Server: " +text);
+            //Console.WriteLine("Server: " +text);
         }
 
         private void DisconnectClient(TcpClient client) {
