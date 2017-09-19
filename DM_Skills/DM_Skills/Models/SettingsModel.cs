@@ -51,7 +51,7 @@ namespace DM_Skills.Models
         public string Debug { get; set; }
 
         public Func<string> OnGetTimeStatus;
-        public Action<double, bool> OnSetTimeStatus;
+        public Action<double,double, bool> OnSetTimeStatus;
         public event Action OnSchoolsChanged;
         public event Action OnConnection;
         public event Action<bool> OnDisconnection;
@@ -275,7 +275,11 @@ namespace DM_Skills.Models
             OnMouseClick?.Invoke(e);
         }
         public string InvokeGetTime() { return OnGetTimeStatus?.Invoke() ?? ""; }
-        public void InvokeSetTime(double msec, bool started) { OnSetTimeStatus?.Invoke(msec, started); }
+        public void InvokeSetTime(double msec, double sliderTime, bool started)
+        {
+            if(UseGetTime)
+                OnSetTimeStatus?.Invoke(msec, sliderTime, started);
+        }
 
 
         public bool HasLocation

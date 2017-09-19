@@ -45,10 +45,11 @@
 
         <Slider Grid.Row="2"
             IsMoveToPointEnabled="True"
+                
             Style="{StaticResource Slider_Style_Default}"                          
             Value="{Binding ElementName=controller, Path=AddTime}" 
             Maximum="{Binding Source={StaticResource Settings}, Path=OverTimeMill}"
             IsEnabled="{Binding Source={StaticResource Settings}, Path=CanUseTimerControlButtons}"
-            Minimum="0" Margin="0 0 0 0"/>
+            Minimum="0" Margin="0 0 0 0" ValueChanged="Slider_ValueChanged"/>
     </Grid>
 </UserControl>

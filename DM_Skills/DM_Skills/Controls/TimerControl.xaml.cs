@@ -37,6 +37,19 @@ namespace DM_Skills.Controls
         public event Action OnReset;
         public event PropertyChangedEventHandler PropertyChanged; //INotifyPropertyChanged
 
+        private long lateTime = 0;
+        public long LateTime
+        {
+            get { return lateTime; }
+            set
+            {
+                lateTime = value;
+                NotifyPropertyChanged();
+                NotifyPropertyChanged("DisplayTime");
+            }
+        }
+
+
         private long addTime = 0;
         public long AddTime
         {
@@ -48,6 +61,7 @@ namespace DM_Skills.Controls
                 NotifyPropertyChanged("DisplayTime");
             }
         }
+        private DispatcherTimer sliderChangeTimer;
         private DispatcherTimer EventTimer;
         private Stopwatch _Watch = new Stopwatch();
 
@@ -55,8 +69,7 @@ namespace DM_Skills.Controls
         {
             get
             {
-                var moreTime = TimeSpan.FromMilliseconds(addTime);
-                return _Watch.Elapsed + moreTime;
+                return _Watch.Elapsed + TimeSpan.FromMilliseconds(AddTime) + TimeSpan.FromMilliseconds(LateTime);
             }
         }
 
@@ -76,9 +89,9 @@ namespace DM_Skills.Controls
 
             Models.SettingsModel.Singleton.OnGetTimeStatus = () =>
             {
-                return "{ (T) : (" + _Watch.Elapsed.TotalMilliseconds + "), (B): " + (_Watch .IsRunning ? 1 : 0) + " }";//new object[] { _Watch.Elapsed.TotalMilliseconds, false };
+                return "{ (T) : (" + _Watch.Elapsed.TotalMilliseconds + "), (S): ("+AddTime+"),(B): " + (_Watch .IsRunning ? 1 : 0) + " }";//new object[] { _Watch.Elapsed.TotalMilliseconds, false };
             };
-            Models.SettingsModel.Singleton.OnSetTimeStatus = (msec, started) =>
+            Models.SettingsModel.Singleton.OnSetTimeStatus = (msec, sliderTime, started) =>
             {
                 Button_Reset_Click(null, null);
                 AddTime = Convert.ToInt64(msec);
@@ -117,6 +130,22 @@ namespace DM_Skills.Controls
                     Button_Start_Click(null, null);
                 }
             };
+
+            sliderChangeTimer = new DispatcherTimer();
+            sliderChangeTimer.Interval = TimeSpan.FromSeconds(1);
+            sliderChangeTimer.Tick += (o, e) => 
+            {
+                if ((long)(o as DispatcherTimer).Tag == AddTime)
+                {
+                    Models.SettingsModel.Singleton.Server.BroadcastLine(
+                        (int)Scripts.JsonCommandIDs.Broadcast_TimerUpdate,
+                        Models.SettingsModel.Singleton.InvokeGetTime()
+                    );
+                    sliderChangeTimer.Stop();
+                }
+
+            };
+
             EventTimer = new DispatcherTimer();
             EventTimer.Interval = TimeSpan.FromMilliseconds(1);
             EventTimer.Tick += (o, e) => { NotifyPropertyChanged("DisplayTime"); };
@@ -232,6 +261,7 @@ namespace DM_Skills.Controls
             EventTimer.Stop();
             _Watch.Reset();
             AddTime = 0;
+            LateTime = 0;
             NotifyPropertyChanged("DisplayTime");
         }
 
@@ -239,6 +269,16 @@ namespace DM_Skills.Controls
         {
             if (!_Watch.IsRunning) { return; }
             OnLap?.Invoke(_Watch.Elapsed + TimeSpan.FromMilliseconds(addTime));
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (Models.SettingsModel.Singleton.IsServer)
+            {
+                sliderChangeTimer.Stop();
+                sliderChangeTimer.Tag = AddTime;
+                sliderChangeTimer.Start();
+            }
         }
 
         ///// <summary>
