@@ -23,7 +23,12 @@ namespace DM_Skills.Scripts
 
                 case (int)JsonCommandIDs.Broadcast_TimerStopped:    Models.SettingsModel.Singleton.InvokeTimerStopped(); break;
                 case (int)JsonCommandIDs.Broadcast_TimerReset:      Models.SettingsModel.Singleton.InvokeTimerReset(); break;
-                case (int)JsonCommandIDs.GetTime:                   Models.SettingsModel.Singleton.InvokeSetTime((double)data, false); break;
+                case (int)JsonCommandIDs.GetTime:
+                    var json = Json.JsonParser.FromJson((string)data);
+                    var time = Convert.ToDouble(json["T"]);
+                    var started = Convert.ToBoolean(json["B"]);
+
+                    Models.SettingsModel.Singleton.InvokeSetTime(time, started); break;
             }
 
             return false;
