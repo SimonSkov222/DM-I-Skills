@@ -74,11 +74,11 @@ namespace DM_Skills.Controls
 
             InitializeComponent();
 
-            Models.SettingsModel.Singleton.OnGetTime = () =>
+            Models.SettingsModel.Singleton.OnGetTimeStatus = () =>
             {
-                return _Watch.Elapsed.TotalMilliseconds;
+                return new object[] { _Watch.Elapsed.TotalMilliseconds, false };
             };
-            Models.SettingsModel.Singleton.OnSetTime = (msec) =>
+            Models.SettingsModel.Singleton.OnSetTimeStatus = (msec, started) =>
             {
                 AddTime = Convert.ToInt64(msec);
             };

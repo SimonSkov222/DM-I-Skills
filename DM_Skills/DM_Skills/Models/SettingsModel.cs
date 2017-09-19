@@ -50,8 +50,8 @@ namespace DM_Skills.Models
 
         public string Debug { get; set; }
 
-        public Func<double> OnGetTime;
-        public Action<double> OnSetTime;
+        public Func<object> OnGetTimeStatus;
+        public Action<double, bool> OnSetTimeStatus;
         public event Action OnSchoolsChanged;
         public event Action OnConnection;
         public event Action<bool> OnDisconnection;
@@ -274,8 +274,8 @@ namespace DM_Skills.Models
         {
             OnMouseClick?.Invoke(e);
         }
-        public double InvokeGetTime() { return OnGetTime?.Invoke() ?? 0; }
-        public void InvokeSetTime(double msec) { OnSetTime?.Invoke(msec); }
+        public object InvokeGetTime() { return OnGetTimeStatus?.Invoke() ?? 0; }
+        public void InvokeSetTime(double msec, bool started) { OnSetTimeStatus?.Invoke(msec, started); }
 
 
         public bool HasLocation
